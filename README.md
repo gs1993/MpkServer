@@ -1,5 +1,6 @@
 # Coffee or Riots #
-## Projekt Zespołowy ##
+Projekt Zespołowy przy współpracy z firmą Netland
+
 ## System zarządzania Autobusami ##
 
 This README would normally document whatever steps are necessary to get your application up and running.
