@@ -10,3 +10,4 @@ System monitorowania i zarządzania flotą autobusów obejmie cały tabor zarzą
 * Michał Sobiecki
 * Grzegorz Sawiński
 * Łukasz Zimnoch
+* Rafał Kopryk
