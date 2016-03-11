@@ -1,7 +1,7 @@
 # Coffee or Riots #
 Projekt Zespołowy przy współpracy z firmą Netland
 
-## System zarządzania Autobusami ##
+## System zarządzania ruchem i geolokalizacją autobusów ##
 
 This README would normally document whatever steps are necessary to get your application up and running.
 
