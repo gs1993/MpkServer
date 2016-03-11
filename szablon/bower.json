@@ -1,0 +1,37 @@
+{
+  "name": "NewCorner",
+  "version": "1.0.0",
+  "authors": [
+    "Maciej <maciejtatol@gmail.com>"
+  ],
+  "description": "Szablon sekretykobiety",
+  "main": "main.html",
+  "keywords": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "imagesloaded": "latest",
+    "jquery": "latest",
+    "jquery.easing": "latest",
+    "slick.js": "latest",
+    "superfish": "latest",
+    "font-awesome": "latest",
+    "jquery-sticky": "latest",
+    "jquery-resize-image-to-parent": "latest"
+  },
+  "dependencies": {
+    "imagesloaded": "latest",
+    "jquery": "latest",
+    "jquery.easing": "latest",
+    "slick.js": "latest",
+    "superfish": "latest",
+    "font-awesome": "latest",
+    "jquery-sticky": "latest"
+  }
+}

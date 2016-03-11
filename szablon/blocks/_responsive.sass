@@ -1,0 +1,49 @@
+/* RESOLUTIONS
+ *==========================================================================
+$screen-sm: 639px
+$screen-md: 767px
+$screen-lg: 1023px
+
+/* DEVICES REGION
+ *==========================================================================
+
+// MOBILE/TABLET BREAKER
+$tab: 768px
+// TABLET/PC BREAKER
+$pc: 1025px
+
+// MOBILE 0px - 767px
+=PHONE_ONLY
+  @media (max-width: $tab - 1px)
+    @content
+
+// TABLET 768px - 1024px
+=TAB_ONLY
+  @media (min-width: $tab) and (max-width: $pc -1px)
+    @content
+
+// PC 1024px - +
+=PC_ONLY
+  @media (min-width: $pc)
+    @content
+
+// UNNAMED
+=TAB_MIN
+  @media (min-width: $tab)
+    @content
+
+=PC_MIN
+  @media (min-width: $pc)
+    @content
+
+=TAB_MAX
+  @media (max-width: $pc - 1px)
+    @content
+
+=MIN($min-width)
+  @media (min-width: $min-width)
+    @content
+
+=MAX($max-width)
+  @media (max-width: $max-width)
+    @content
