@@ -3,30 +3,10 @@ Projekt Zespołowy przy współpracy z firmą Netland
 
 ## System zarządzania ruchem i geolokalizacją autobusów ##
 
-This README would normally document whatever steps are necessary to get your application up and running.
+System monitorowania i zarządzania flotą autobusów obejmie cały tabor zarządzany przez MPK. Będzie dostarczał informacji o stanie pojazdów i przekazywał do systemu Tablic Informacyjnych informacje o geograficznym położeni autobusu.
 
-### What is this repository for? ###
+### Twórcy ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* Michał Sobiecki
+* Grzegorz Sawiński
+* Łukasz Zimnoch
