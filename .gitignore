@@ -1,1 +1,13 @@
 # Created by .ignore support plugin (hsz.mobi)
+/robocza/packages
+/robocza/Core/bin
+/robocza/Core/obj
+/robocza/Data/obj
+/robocza/Data/bin
+/robocza/DataTests/obj
+/robocza/DataTests/bin
+/robocza/TestResults
+/robocza/WebApiServer/obj
+/robocza/WebApiServer/bin
+/robocza/WebSocketServer/obj
+/robocza/WebSocketServer/bin
