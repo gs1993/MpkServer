@@ -5727,6 +5727,8 @@ a.tabnav-extra:hover {
 }
 
 .panelLogin {
+  transition: -webkit-transform 0.36s ease;
+  transition: transform 0.36s ease;
   position: absolute;
   width: 300px;
   height: auto;
@@ -5740,11 +5742,17 @@ a.tabnav-extra:hover {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.75);
+  -webkit-transform: scale(1, 1);
+      -ms-transform: scale(1, 1);
+          transform: scale(1, 1);
 }
 
 .panelLogin.-hidden {
   opacity: 0;
   z-index: 0;
+  -webkit-transform: scale(0.5, 0.5);
+      -ms-transform: scale(0.5, 0.5);
+          transform: scale(0.5, 0.5);
 }
 
 .panelLogin__wrapper {
@@ -5787,6 +5795,7 @@ a.tabnav-extra:hover {
   top: 0px;
   right: 3px;
   color: red;
+  cursor: pointer;
 }
 
 .panelLogin__icon {
