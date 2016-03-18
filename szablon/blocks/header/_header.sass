@@ -11,8 +11,14 @@
     margin: 0 auto
     background-image: url(../blocks/header/src/headerLogo.png)
     background-size: 100% 100%
+    opacity: 0.9
+    cursor: pointer
+    &:hover
+      transition: opacity 0.36s ease
+      opacity: 1
 
   &__switcher
+    transition: transform 0.36s ease, background 0.8s ease
     position: fixed
     top: 0
     left: 0
@@ -23,10 +29,21 @@
     padding: 40px
     text-align: left
     transform: scale(1, 1)
+    opacity: 1
     &.-hidden
+      transition: all 0.83s ease
       opacity: 0
       transform: scale(2, 2)
       z-index: 0
+      background: transparent
+  &__panel
+    margin-top: 30px
+    cursor: default
+    text-align: center
+  &__button
+    display: block
+    font-size: 10px
+    font-weight: 300
   &__item
     list-style-type: none
     text-align: center
@@ -34,12 +51,89 @@
     margin: 1rem
     line-height: 2
     color: white
+    cursor: pointer
+    &:hover
+      .header__buttonIconBG
+        background: #495aff
+        transform: scale(1)
   &__buttonIconBG
+    transition: transform 0.36s ease
     width: 80px
     height: 80px
     display: block
-    background: #8AD3AF
+    background: #3949ab
     border-radius: 6px
+    margin: 0 auto
+    transform: scale(0.9)
+  &__buttonIcon
+    font-size: 3em
+    line-height: 80px
+
+.headerProfile
+  &__corner
+    position: absolute
+    width: 45px
+    height: 45px
+    top: 0
+    right: 0
+    z-index: 103
+    margin: 0 auto
+    background-image: url(../blocks/header/src/headerGear.png)
+    background-size: 100% 100%
+    opacity: 0.9
+    cursor: pointer
+    &:hover
+      transition: opacity 0.36s ease
+      opacity: 1
+
+  &__switcher
+    transition: transform 0.36s ease, background 0.8s ease
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0, 0, 0, 0.8)
+    z-index: 102
+    padding: 40px
+    text-align: left
+    transform: scale(1, 1)
+    opacity: 1
+    &.-hidden
+      transition: all 0.83s ease
+      opacity: 0
+      transform: scale(2, 2)
+      z-index: 0
+      background: transparent
+  &__panel
+    margin-top: 30px
+    cursor: default
+    text-align: center
+  &__button
+    display: block
+    font-size: 10px
+    font-weight: 300
+  &__item
+    list-style-type: none
+    text-align: center
+    display: inline-block
+    margin: 1rem
+    line-height: 2
+    color: white
+    cursor: pointer
+    &:hover
+      .headerProfile__buttonIconBG
+        background: #495aff
+        transform: scale(1)
+  &__buttonIconBG
+    transition: transform 0.36s ease
+    width: 80px
+    height: 80px
+    display: block
+    background: #3949ab
+    border-radius: 6px
+    margin: 0 auto
+    transform: scale(0.9)
   &__buttonIcon
     font-size: 3em
     line-height: 80px

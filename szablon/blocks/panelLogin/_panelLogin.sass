@@ -2,7 +2,7 @@
 
 .panelLogin
   position: absolute
-  width: 500px
+  width: 300px
   height: auto
   top: 30%
   right: 0
@@ -11,10 +11,10 @@
   opacity: 1
 
   margin: 0 auto
-  background-color: rgba(255, 255, 255, 0.75)
-  border: 1px solid rgba(0, 0, 0, 0.5)
-  border-radius: 10px
-  padding: 20px
+  background-color: rgba(255, 255, 255, 1)
+  border: 1px solid rgba(255, 255, 255, 0.5)
+  border-radius: 5px
+  box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.75)
 
   &.-hidden
     opacity: 0
@@ -22,6 +22,7 @@
 
   &__wrapper
     position: relative
+    padding: 20px
   &__title
     font-family: Lato, sans-serif
     font-size: 24px
@@ -40,7 +41,6 @@
     text-align: center
     input
       display: block
-      min-width: 200px
       margin: 5px auto
       padding: 8px 10px
       border-radius: 15px
@@ -50,8 +50,8 @@
       @extend .btn-primary
   &__close
     position: absolute
-    top: 2px
-    right: 2px
+    top: 0px
+    right: 3px
     color: red
 
   &__icon

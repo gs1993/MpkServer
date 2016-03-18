@@ -3182,7 +3182,7 @@ input, textarea {
   font-family: Lato, sans-serif;
 }
 
-/* WEBSITE BLOCKS
+/* ADDONS
  *========================================================================== */
 /*
  * Primer
@@ -5546,9 +5546,18 @@ a.tabnav-extra:hover {
   margin: 0 auto;
   background-image: url(../blocks/header/src/headerLogo.png);
   background-size: 100% 100%;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.header__corner:hover {
+  transition: opacity 0.36s ease;
+  opacity: 1;
 }
 
 .header__switcher {
+  transition: -webkit-transform 0.36s ease, background 0.8s ease;
+  transition: transform 0.36s ease, background 0.8s ease;
   position: fixed;
   top: 0;
   left: 0;
@@ -5561,14 +5570,29 @@ a.tabnav-extra:hover {
   -webkit-transform: scale(1, 1);
       -ms-transform: scale(1, 1);
           transform: scale(1, 1);
+  opacity: 1;
 }
 
 .header__switcher.-hidden {
+  transition: all 0.83s ease;
   opacity: 0;
   -webkit-transform: scale(2, 2);
       -ms-transform: scale(2, 2);
           transform: scale(2, 2);
   z-index: 0;
+  background: transparent;
+}
+
+.header__panel {
+  margin-top: 30px;
+  cursor: default;
+  text-align: center;
+}
+
+.header__button {
+  display: block;
+  font-size: 10px;
+  font-weight: 300;
 }
 
 .header__item {
@@ -5578,14 +5602,28 @@ a.tabnav-extra:hover {
   margin: 1rem;
   line-height: 2;
   color: white;
+  cursor: pointer;
+}
+
+.header__item:hover .header__buttonIconBG {
+  background: #495aff;
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
 }
 
 .header__buttonIconBG {
+  transition: -webkit-transform 0.36s ease;
+  transition: transform 0.36s ease;
   width: 80px;
   height: 80px;
   display: block;
-  background: #8AD3AF;
+  background: #3949ab;
   border-radius: 6px;
+  margin: 0 auto;
+  -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+          transform: scale(0.9);
 }
 
 .header__buttonIcon {
@@ -5593,9 +5631,104 @@ a.tabnav-extra:hover {
   line-height: 80px;
 }
 
+.headerProfile__corner {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  top: 0;
+  right: 0;
+  z-index: 103;
+  margin: 0 auto;
+  background-image: url(../blocks/header/src/headerGear.png);
+  background-size: 100% 100%;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.headerProfile__corner:hover {
+  transition: opacity 0.36s ease;
+  opacity: 1;
+}
+
+.headerProfile__switcher {
+  transition: -webkit-transform 0.36s ease, background 0.8s ease;
+  transition: transform 0.36s ease, background 0.8s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 102;
+  padding: 40px;
+  text-align: left;
+  -webkit-transform: scale(1, 1);
+      -ms-transform: scale(1, 1);
+          transform: scale(1, 1);
+  opacity: 1;
+}
+
+.headerProfile__switcher.-hidden {
+  transition: all 0.83s ease;
+  opacity: 0;
+  -webkit-transform: scale(2, 2);
+      -ms-transform: scale(2, 2);
+          transform: scale(2, 2);
+  z-index: 0;
+  background: transparent;
+}
+
+.headerProfile__panel {
+  margin-top: 30px;
+  cursor: default;
+  text-align: center;
+}
+
+.headerProfile__button {
+  display: block;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.headerProfile__item {
+  list-style-type: none;
+  text-align: center;
+  display: inline-block;
+  margin: 1rem;
+  line-height: 2;
+  color: white;
+  cursor: pointer;
+}
+
+.headerProfile__item:hover .headerProfile__buttonIconBG {
+  background: #495aff;
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+}
+
+.headerProfile__buttonIconBG {
+  transition: -webkit-transform 0.36s ease;
+  transition: transform 0.36s ease;
+  width: 80px;
+  height: 80px;
+  display: block;
+  background: #3949ab;
+  border-radius: 6px;
+  margin: 0 auto;
+  -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.headerProfile__buttonIcon {
+  font-size: 3em;
+  line-height: 80px;
+}
+
 .panelLogin {
   position: absolute;
-  width: 500px;
+  width: 300px;
   height: auto;
   top: 30%;
   right: 0;
@@ -5603,10 +5736,10 @@ a.tabnav-extra:hover {
   z-index: 100;
   opacity: 1;
   margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  padding: 20px;
+  background-color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.75);
 }
 
 .panelLogin.-hidden {
@@ -5616,6 +5749,7 @@ a.tabnav-extra:hover {
 
 .panelLogin__wrapper {
   position: relative;
+  padding: 20px;
 }
 
 .panelLogin__title {
@@ -5642,7 +5776,6 @@ a.tabnav-extra:hover {
 
 .panelLogin__form input {
   display: block;
-  min-width: 200px;
   margin: 5px auto;
   padding: 8px 10px;
   border-radius: 15px;
@@ -5651,8 +5784,8 @@ a.tabnav-extra:hover {
 
 .panelLogin__close {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: 0px;
+  right: 3px;
   color: red;
 }
 
