@@ -1,0 +1,31 @@
+@charset "UTF-8"
+
+.panelLogin
+  position: absolute
+  width: 500px
+  height: auto
+  top: 30%
+  right: 0
+  left: 0
+  z-index: 100
+  opacity: 1
+
+  margin: 0 auto
+  background-color: rgba(255, 255, 255, 0.75)
+  border: 1px solid black
+  border-radius: 15px
+  padding: 20px
+
+  &.-hidden
+    opacity: 0
+    z-index: 0
+
+  &__wrapper
+    position: relative
+  &__close
+    position: absolute
+    top: 2px
+    right: 2px
+    color: red
+  &__icon
+    font-size: 3em

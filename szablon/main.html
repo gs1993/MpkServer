@@ -40,14 +40,33 @@
       <div class="header__switcher -hidden">
         <div class="background"></div>
         <ul class="header__panel">
-          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG"></span>Logowanie</span></li>
-          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG"></span>Logowanie</span></li>
-          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG"></span>Logowanie</span></li>
+          <li id="panel-loginButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-sign-in"></div></span>Logowanie</span></li>
+          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-sign-in"></div></span>Rejestracja</span></li>
+          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-sign-in"></div></span>Odzyskaj konto</span></li>
+          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-power-off"></div></span>Wyloguj</span></li>
+          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-sign-in"></div></span>Ustawienia</span></li>
         </ul>
       </div>
     </div>
     <div class="googleMaps">
       <div id="googleMaps" class="googleMaps__API"></div>
+    </div>
+    <div class="panelLogin -hidden">
+      <div class="panelLogin__wrapper">
+        <div class="panelLogin__title">Panel Logowania</div>
+        <div class="panelLogin__text">Jakis tam tekst wstępny
+          <div class="panelLogin__form">
+            <input placeholder="Prosze podać login">
+            <input placeholder="Prosze podać nazwisko">
+            <button type="submit">Zaloguj</button>
+          </div>
+        </div><span class="panelLogin__close"><span class="panelLogin__icon fa fa-times"></span></span>
+      </div>
     </div>
   </body>
 </html>

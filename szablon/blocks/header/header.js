@@ -3,11 +3,15 @@
  */
 
 $(document).ready(function () {
-  $('.header__corner').on("mouseenter", function () {
+  $('.header__corner').on("click", function () {
     $('.header__switcher').toggleClass('-hidden');
   });
 
-  $('.header__switcher').on("click", function () {
+  $('.header__item').on("click", function () {
     $('.header__switcher').toggleClass('-hidden');
+  });
+
+  $('#panel-loginButton').on("click", function () {
+    $('.panelLogin').toggleClass('-hidden');
   });
 });
