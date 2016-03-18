@@ -1,9 +1,10 @@
 {
-  "name": "NewCorner",
+  "name": "ProjektZespolowyMPK",
   "version": "1.0.0",
   "devDependencies": {
     "grunt": "latest",
     "grunt-autoprefixer": "latest",
+    "grunt-cli": "^0.1.13",
     "grunt-concurrent": "latest",
     "grunt-contrib-connect": "latest",
     "grunt-contrib-copy": "latest",
