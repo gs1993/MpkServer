@@ -5,9 +5,20 @@ html( lang="pl")
     include _header.jade
     .googleMaps
       .googleMaps__API#googleMaps
+    .panelWelcome.panel
+      .panelWelcome__wrapper
+        span.panelWelcome__buttonIconBG
+          .panelWelcome__buttonIcon.fa.fa-bus
+        .panelWelcome__title Witaj w systemie MPK
+        .panelWelcome__text Projekt zespołowy.
+        .panelWelcome__navigation
+          a(href="#") Logowanie
+          a(href="#") Rejestracja
+        span.panelWelcome__close
+          span.panelWelcome__icon.fa.fa-times
 
 
-    .panelLogin.-hidden
+    .panelLogin.panel.-hidden
       .panelLogin__wrapper
         .panelLogin__title Panel Logowania
         .panelLogin__text Prosze podać dane do logowania.
