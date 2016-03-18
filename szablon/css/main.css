@@ -4194,7 +4194,7 @@ dl.form.errored dd.error:before {
   top: -2px;
 }
 
-.hfields .btn {
+.hfields .btn, .hfields .panelLogin__form button, .panelLogin__form .hfields button {
   float: left;
   margin: 28px 25px 0 -20px;
 }
@@ -4222,7 +4222,7 @@ input::-webkit-inner-spin-button {
   z-index: 2;
 }
 
-.input-group input[type="text"] + .btn {
+.input-group input[type="text"] + .btn, .input-group .panelLogin__form input[type="text"] + button, .panelLogin__form .input-group input[type="text"] + button {
   margin-left: 0;
 }
 
@@ -4241,22 +4241,26 @@ input::-webkit-inner-spin-button {
 }
 
 .input-group input:first-child,
-.input-group-button:first-child .btn {
+.input-group-button:first-child .btn,
+.input-group-button:first-child .panelLogin__form button, .panelLogin__form
+.input-group-button:first-child button {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.input-group-button:first-child .btn {
+.input-group-button:first-child .btn, .input-group-button:first-child .panelLogin__form button, .panelLogin__form .input-group-button:first-child button {
   margin-right: -1px;
 }
 
 .input-group input:last-child,
-.input-group-button:last-child .btn {
+.input-group-button:last-child .btn,
+.input-group-button:last-child .panelLogin__form button, .panelLogin__form
+.input-group-button:last-child button {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.input-group-button:last-child .btn {
+.input-group-button:last-child .btn, .input-group-button:last-child .panelLogin__form button, .panelLogin__form .input-group-button:last-child button {
   margin-left: -1px;
 }
 
@@ -4271,11 +4275,11 @@ input::-webkit-inner-spin-button {
   content: "";
 }
 
-.form-actions .btn {
+.form-actions .btn, .form-actions .panelLogin__form button, .panelLogin__form .form-actions button {
   float: right;
 }
 
-.form-actions .btn + .btn {
+.form-actions .btn + .btn, .form-actions .panelLogin__form button + .btn, .panelLogin__form .form-actions button + .btn, .form-actions .panelLogin__form .btn + button, .panelLogin__form .form-actions .btn + button, .form-actions .panelLogin__form button + button, .panelLogin__form .form-actions button + button {
   margin-right: 5px;
 }
 
@@ -4671,7 +4675,7 @@ input::-webkit-inner-spin-button {
   border-radius: 20px;
 }
 
-.btn {
+.btn, .panelLogin__form button {
   position: relative;
   display: inline-block;
   padding: 6px 12px;
@@ -4693,51 +4697,51 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-.btn i {
+.btn i, .panelLogin__form button i {
   font-style: normal;
   font-weight: 500;
   opacity: 0.6;
 }
 
-.btn .octicon {
+.btn .octicon, .panelLogin__form button .octicon {
   vertical-align: text-top;
 }
 
-.btn .counter {
+.btn .counter, .panelLogin__form button .counter {
   text-shadow: none;
   background-color: #e5e5e5;
 }
 
-.btn:focus {
+.btn:focus, .panelLogin__form button:focus {
   text-decoration: none;
   border-color: #51a7e8;
   outline: none;
   box-shadow: 0 0 5px rgba(81, 167, 232, 0.5);
 }
 
-.btn:focus:hover, .btn.selected:focus {
+.btn:focus:hover, .panelLogin__form button:focus:hover, .btn.selected:focus, .panelLogin__form button.selected:focus {
   border-color: #51a7e8;
 }
 
-.btn:hover, .btn:active, .btn.zeroclipboard-is-hover, .btn.zeroclipboard-is-active {
+.btn:hover, .panelLogin__form button:hover, .btn:active, .panelLogin__form button:active, .btn.zeroclipboard-is-hover, .panelLogin__form button.zeroclipboard-is-hover, .btn.zeroclipboard-is-active, .panelLogin__form button.zeroclipboard-is-active {
   text-decoration: none;
   background-color: #ddd;
   background-image: linear-gradient(#eee, #ddd);
   border-color: #ccc;
 }
 
-.btn:active, .btn.selected, .btn.zeroclipboard-is-active {
+.btn:active, .panelLogin__form button:active, .btn.selected, .panelLogin__form button.selected, .btn.zeroclipboard-is-active, .panelLogin__form button.zeroclipboard-is-active {
   background-color: #dcdcdc;
   background-image: none;
   border-color: #b5b5b5;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.btn.selected:hover {
+.btn.selected:hover, .panelLogin__form button.selected:hover {
   background-color: #cfcfcf;
 }
 
-.btn:disabled, .btn:disabled:hover, .btn.disabled, .btn.disabled:hover {
+.btn:disabled, .panelLogin__form button:disabled, .btn:disabled:hover, .panelLogin__form button:disabled:hover, .btn.disabled, .panelLogin__form button.disabled, .btn.disabled:hover, .panelLogin__form button.disabled:hover {
   color: rgba(102, 102, 102, 0.5);
   cursor: default;
   background-color: rgba(229, 229, 229, 0.5);
@@ -4746,7 +4750,7 @@ input::-webkit-inner-spin-button {
   box-shadow: none;
 }
 
-.btn-primary {
+.btn-primary, .panelLogin__form button {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
   background-color: #60b044;
@@ -4754,30 +4758,30 @@ input::-webkit-inner-spin-button {
   border-color: #5ca941;
 }
 
-.btn-primary .counter {
+.btn-primary .counter, .panelLogin__form button .counter {
   color: #60b044;
   background-color: #fff;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .panelLogin__form button:hover {
   color: #fff;
   background-color: #569e3d;
   background-image: linear-gradient(#79d858, #569e3d);
   border-color: #4a993e;
 }
 
-.btn-primary:active, .btn-primary.selected {
+.btn-primary:active, .panelLogin__form button:active, .btn-primary.selected, .panelLogin__form button.selected {
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
   background-color: #569e3d;
   background-image: none;
   border-color: #418737;
 }
 
-.btn-primary.selected:hover {
+.btn-primary.selected:hover, .panelLogin__form button.selected:hover {
   background-color: #4c8b36;
 }
 
-.btn-primary:disabled, .btn-primary:disabled:hover, .btn-primary.disabled, .btn-primary.disabled:hover {
+.btn-primary:disabled, .panelLogin__form button:disabled, .btn-primary:disabled:hover, .panelLogin__form button:disabled:hover, .btn-primary.disabled, .panelLogin__form button.disabled, .btn-primary.disabled:hover, .panelLogin__form button.disabled:hover {
   color: #fefefe;
   background-color: #add39f;
   background-image: linear-gradient(#c3ecb4, #add39f);
@@ -4948,39 +4952,41 @@ input::-webkit-inner-spin-button {
   content: "";
 }
 
-.btn-group .btn {
+.btn-group .btn, .btn-group .panelLogin__form button, .panelLogin__form .btn-group button {
   position: relative;
   float: left;
 }
 
-.btn-group .btn:not(:first-child):not(:last-child) {
+.btn-group .btn:not(:first-child):not(:last-child), .btn-group .panelLogin__form button:not(:first-child):not(:last-child), .panelLogin__form .btn-group button:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
 
-.btn-group .btn:first-child:not(:last-child) {
+.btn-group .btn:first-child:not(:last-child), .btn-group .panelLogin__form button:first-child:not(:last-child), .panelLogin__form .btn-group button:first-child:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.btn-group .btn:last-child:not(:first-child) {
+.btn-group .btn:last-child:not(:first-child), .btn-group .panelLogin__form button:last-child:not(:first-child), .panelLogin__form .btn-group button:last-child:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.btn-group .btn:hover, .btn-group .btn:active, .btn-group .btn.selected {
+.btn-group .btn:hover, .btn-group .panelLogin__form button:hover, .panelLogin__form .btn-group button:hover, .btn-group .btn:active, .btn-group .panelLogin__form button:active, .panelLogin__form .btn-group button:active, .btn-group .btn.selected, .btn-group .panelLogin__form button.selected, .panelLogin__form .btn-group button.selected {
   z-index: 2;
 }
 
-.btn-group .btn:focus {
+.btn-group .btn:focus, .btn-group .panelLogin__form button:focus, .panelLogin__form .btn-group button:focus {
   z-index: 3;
 }
 
-.btn-group .btn + .btn {
+.btn-group .btn + .btn, .btn-group .panelLogin__form button + .btn, .panelLogin__form .btn-group button + .btn, .btn-group .panelLogin__form .btn + button, .panelLogin__form .btn-group .btn + button, .btn-group .panelLogin__form button + button, .panelLogin__form .btn-group button + button {
   margin-left: -1px;
 }
 
-.btn-group .btn + .button_to,
+.btn-group .btn + .button_to, .btn-group .panelLogin__form button + .button_to, .panelLogin__form .btn-group button + .button_to,
 .btn-group .button_to + .btn,
+.btn-group .panelLogin__form .button_to + button, .panelLogin__form
+.btn-group .button_to + button,
 .btn-group .button_to + .button_to {
   margin-left: -1px;
 }
@@ -4989,22 +4995,23 @@ input::-webkit-inner-spin-button {
   float: left;
 }
 
-.btn-group .button_to .btn {
+.btn-group .button_to .btn, .btn-group .button_to .panelLogin__form button, .panelLogin__form .btn-group .button_to button {
   border-radius: 0;
 }
 
-.btn-group .button_to:first-child .btn {
+.btn-group .button_to:first-child .btn, .btn-group .button_to:first-child .panelLogin__form button, .panelLogin__form .btn-group .button_to:first-child button {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
 
-.btn-group .button_to:last-child .btn {
+.btn-group .button_to:last-child .btn, .btn-group .button_to:last-child .panelLogin__form button, .panelLogin__form .btn-group .button_to:last-child button {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
 
 .btn-group + .btn-group,
-.btn-group + .btn {
+.btn-group + .btn, .panelLogin__form
+.btn-group + button {
   margin-left: 5px;
 }
 
@@ -5597,8 +5604,8 @@ a.tabnav-extra:hover {
   opacity: 1;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.75);
-  border: 1px solid black;
-  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   padding: 20px;
 }
 
@@ -5625,6 +5632,21 @@ a.tabnav-extra:hover {
   font-weight: 700;
   line-height: 18px;
   margin-bottom: 15px;
+}
+
+.panelLogin__form {
+  padding: 5px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.panelLogin__form input {
+  display: block;
+  min-width: 200px;
+  margin: 5px auto;
+  padding: 8px 10px;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 .panelLogin__close {
