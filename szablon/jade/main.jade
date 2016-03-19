@@ -22,18 +22,35 @@ html( lang="pl")
     .panelLogin.panel.-hidden
       .panelLogin__wrapper
         .panelLogin__title Panel Logowania
-        .panelLogin__text Prosze podać dane do logowania.!!!
+        .panelLogin__alert.-info.-hidden
+          i.fa.fa-info-circle
+          |Konto o takim emailu nie istnieje.
+        .panelLogin__alert.-danger.-hidden
+          i.fa.fa-info-circle
+          | Hasło przypisane do tego emailu, jest nie poprawne.
         .panelLogin__form
           input(placeholder="Email")
           input(type='password' placeholder="Hasło")
-          button(type="submit") Zaloguj
+          button(type="submit") Zaloguj się
         span.panelLogin__close
           span.panelLogin__icon.fa.fa-times
+        .panelLogin__navigation Nie masz konta?
+          a(href="#").panelLogin__ToRegister Zarejestruj się.
 
     .panelRegister.panel.-hidden
       .panelRegister__wrapper
         .panelRegister__title Panel Rejestracji
-        .panelRegister__text Prosze podać dane do Rejestracji.!!!
+        .panelRegister__alert.-info.-hidden
+          i.fa.fa-info-circle
+          | Konto o takim emailu już istnieje.
+        .panelRegister__alert.-info.-hidden
+          i.fa.fa-info-circle
+          | Wprowadzone dane są nie poprawne.
+        .panelRegister__alert.-danger.-hidden
+          i.fa.fa-info-circle
+          | Hasła nie są takie same.
+        .panelRegister__alert.-success.-hidden
+          | Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
         .panelRegister__form
           input(placeholder="Email")
           input(type='password' placeholder="Hasło")
@@ -41,4 +58,7 @@ html( lang="pl")
           button(type="submit") Zarajestuj
         span.panelRegister__close
           span.panelRegister__icon.fa.fa-times
+        .panelRegister__navigation Masz już konto?
+          a(href="#").panelRegister__ToLogin Zaloguj się.
+
 

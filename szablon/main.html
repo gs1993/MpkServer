@@ -89,24 +89,30 @@
     <div class="panelLogin panel -hidden">
       <div class="panelLogin__wrapper">
         <div class="panelLogin__title">Panel Logowania</div>
-        <div class="panelLogin__text">Prosze podać dane do logowania.!!!</div>
+        <div class="panelLogin__alert -info -hidden"><i class="fa fa-info-circle"></i>Konto o takim emailu nie istnieje.</div>
+        <div class="panelLogin__alert -danger -hidden"><i class="fa fa-info-circle"></i>Hasło przypisane do tego emailu, jest nie poprawne.</div>
         <div class="panelLogin__form">
           <input placeholder="Email">
           <input type="password" placeholder="Hasło">
-          <button type="submit">Zaloguj</button>
+          <button type="submit">Zaloguj się</button>
         </div><span class="panelLogin__close"><span class="panelLogin__icon fa fa-times"></span></span>
+        <div class="panelLogin__navigation">Nie masz konta?<a href="#" class="panelLogin__ToRegister">Zarejestruj się.</a></div>
       </div>
     </div>
     <div class="panelRegister panel -hidden">
       <div class="panelRegister__wrapper">
         <div class="panelRegister__title">Panel Rejestracji</div>
-        <div class="panelRegister__text">Prosze podać dane do Rejestracji.!!!</div>
+        <div class="panelRegister__alert -info -hidden"><i class="fa fa-info-circle"></i>Konto o takim emailu już istnieje.</div>
+        <div class="panelRegister__alert -info -hidden"><i class="fa fa-info-circle"></i>Wprowadzone dane są nie poprawne.</div>
+        <div class="panelRegister__alert -danger -hidden"><i class="fa fa-info-circle"></i>Hasła nie są takie same.</div>
+        <div class="panelRegister__alert -success -hidden">Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.</div>
         <div class="panelRegister__form">
           <input placeholder="Email">
           <input type="password" placeholder="Hasło">
           <input type="password" placeholder="Potwierdz Hasło">
           <button type="submit">Zarajestuj</button>
         </div><span class="panelRegister__close"><span class="panelRegister__icon fa fa-times"></span></span>
+        <div class="panelRegister__navigation">Masz już konto?<a href="#" class="panelRegister__ToLogin">Zaloguj się.</a></div>
       </div>
     </div>
   </body>
