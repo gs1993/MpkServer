@@ -61,4 +61,29 @@ html( lang="pl")
         .panelRegister__navigation Masz już konto?
           a(href="#").panelRegister__ToLogin Zaloguj się.
 
+    .panelResetPassword.panel.-hidden
+      .panelResetPassword__wrapper
+        .panelResetPassword__title Panel Odzyskiwania Hasła
+        .panelResetPassword__alert.-info.-hidden
+          i.fa.fa-info-circle
+          | Nie ma takiego konta.
+        .panelResetPassword__alert.-success.-hidden
+          | Na wskazany email został wysłany link weryfikacyjny.
+        .panelResetPassword__alert.-success.-hidden
+          | Nowe hasło zostało ustawione. Możesz się teraz
+          a(href="#").panelResetPassword__ToLogin zalogować
+          | .
+        .panelResetPassword__form
+          input(placeholder="Email")
+          button(type="submit") Odzyskaj hasło
+        .panelResetPassword__form
+          input(type='password' placeholder="Hasło")
+          input(type='password' placeholder="Potwierdz Hasło")
+          button(type="submit") Zatwierdz nowe hasło
+        span.panelResetPassword__close
+          span.panelResetPassword__icon.fa.fa-times
+        .panelResetPassword__navigation Nie masz konta?
+          a(href="#").panelResetPassword__ToRegister Zarejestruj się.
+
+
 

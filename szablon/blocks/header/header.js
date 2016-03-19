@@ -26,8 +26,10 @@ $(document).ready(function () {
   $('#panel-loginButton').on("click", function () {
     $('.panelLogin').toggleClass('-hidden');
   });
-    $('#panel-registerButton').on("click", function () {
-        $('.panelRegister').toggleClass('-hidden');
-    });
-
+  $('#panel-registerButton').on("click", function () {
+    $('.panelRegister').toggleClass('-hidden');
+  });
+  $('#panel-odzyskajKontoButton').on("click", function () {
+    $('.panelResetPassword').toggleClass('-hidden');
+  });
 });
