@@ -12,6 +12,7 @@ html( lang="pl")
         .panelWelcome__title Witaj w systemie MPK
         .panelWelcome__text Projekt zespołowy.
         .panelWelcome__navigation
+          //<a href="#" style="display:block;">Link #01</a>
           a(href="#") Logowanie
           a(href="#") Rejestracja
         span.panelWelcome__close
@@ -23,9 +24,21 @@ html( lang="pl")
         .panelLogin__title Panel Logowania
         .panelLogin__text Prosze podać dane do logowania.!!!
         .panelLogin__form
-          input(placeholder="Prosze podać login")
-          input(placeholder="Prosze podać nazwisko")
+          input(placeholder="Email")
+          input(type='password' placeholder="Hasło")
           button(type="submit") Zaloguj
         span.panelLogin__close
           span.panelLogin__icon.fa.fa-times
+
+    .panelRegister.panel.-hidden
+      .panelRegister__wrapper
+        .panelRegister__title Panel Rejestracji
+        .panelRegister__text Prosze podać dane do Rejestracji.!!!
+        .panelRegister__form
+          input(placeholder="Email")
+          input(type='password' placeholder="Hasło")
+          input(type='password' placeholder="Potwierdz Hasło")
+          button(type="submit") Zarajestuj
+        span.panelRegister__close
+          span.panelRegister__icon.fa.fa-times
 
