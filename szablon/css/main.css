@@ -5989,6 +5989,10 @@ a.tabnav-extra:hover {
   color: firebrick;
 }
 
+.panelLogin__alert.-hidden {
+  display: none;
+}
+
 .panelLogin__form {
   padding: 5px;
   margin: 0 auto;
@@ -6142,6 +6146,19 @@ a.tabnav-extra:hover {
 
 .panelRegister__alert.-danger {
   color: firebrick;
+}
+
+.panelRegister__alert.-success {
+  color: forestgreen;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.panelRegister__alert.-hidden {
+  display: none;
 }
 
 .panelRegister__form {

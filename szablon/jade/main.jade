@@ -22,10 +22,10 @@ html( lang="pl")
     .panelLogin.panel.-hidden
       .panelLogin__wrapper
         .panelLogin__title Panel Logowania
-        .panelLogin__alert.-info
+        .panelLogin__alert.-info.-hidden
           i.fa.fa-info-circle
           |Konto o takim emailu nie istnieje.
-        .panelLogin__alert.-danger
+        .panelLogin__alert.-danger.-hidden
           i.fa.fa-info-circle
           | Hasło przypisane do tego emailu, jest nie poprawne.
         .panelLogin__form
@@ -40,15 +40,17 @@ html( lang="pl")
     .panelRegister.panel.-hidden
       .panelRegister__wrapper
         .panelRegister__title Panel Rejestracji
-        .panelRegister__alert.-info
+        .panelRegister__alert.-info.-hidden
           i.fa.fa-info-circle
           | Konto o takim emailu już istnieje.
-        .panelRegister__alert.-info
+        .panelRegister__alert.-info.-hidden
           i.fa.fa-info-circle
           | Wprowadzone dane są nie poprawne.
-        .panelRegister__alert.-danger
+        .panelRegister__alert.-danger.-hidden
           i.fa.fa-info-circle
           | Hasła nie są takie same.
+        .panelRegister__alert.-success.-hidden
+          | Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
         .panelRegister__form
           input(placeholder="Email")
           input(type='password' placeholder="Hasło")
