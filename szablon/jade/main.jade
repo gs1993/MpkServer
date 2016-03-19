@@ -63,27 +63,23 @@ html( lang="pl")
 
     .panelResetPassword.panel.-hidden
       .panelResetPassword__wrapper
-        .panelResetPassword__title Panel Rejestracji
+        .panelResetPassword__title Panel Odzyskiwania Hasła
         .panelResetPassword__alert.-info.-hidden
           i.fa.fa-info-circle
-          | Konto o takim emailu już istnieje.
-        .panelResetPassword__alert.-info.-hidden
-          i.fa.fa-info-circle
-          | Wprowadzone dane są nie poprawne.
-        .panelResetPassword__alert.-danger.-hidden
-          i.fa.fa-info-circle
-          | Hasła nie są takie same.
+          | Nie ma takiego konta.
         .panelResetPassword__alert.-success.-hidden
-          | Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
+          | Na wskazany email został wysłany link weryfikacyjny.
         .panelResetPassword__form
           input(placeholder="Email")
+          button(type="submit") Odzyskaj hasło
+        .panelResetPassword__form
           input(type='password' placeholder="Hasło")
           input(type='password' placeholder="Potwierdz Hasło")
-          button(type="submit") Zarajestuj
+          button(type="submit") Zatwierdz nowe hasło
         span.panelResetPassword__close
           span.panelResetPassword__icon.fa.fa-times
-        .panelResetPassword__navigation Masz już konto?
-          a(href="#").panelResetPassword__ToLogin Zaloguj się.
+        .panelResetPassword__navigation Nie masz konta?
+          a(href="#").panelResetPassword__ToRegister Zarejestruj się.
 
 
 

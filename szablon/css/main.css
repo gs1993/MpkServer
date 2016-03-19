@@ -6386,6 +6386,14 @@ a.tabnav-extra:hover {
   text-decoration: underline;
 }
 
+.panelResetPassword__ToRegister {
+  margin-left: 5px;
+}
+
+.panelResetPassword__ToRegister:hover {
+  text-decoration: underline;
+}
+
 .panelResetPassword__close {
   transition: opacity 0.36s ease;
   position: absolute;

@@ -117,18 +117,19 @@
     </div>
     <div class="panelResetPassword panel -hidden">
       <div class="panelResetPassword__wrapper">
-        <div class="panelResetPassword__title">Panel Rejestracji</div>
-        <div class="panelResetPassword__alert -info -hidden"><i class="fa fa-info-circle"></i>Konto o takim emailu już istnieje.</div>
-        <div class="panelResetPassword__alert -info -hidden"><i class="fa fa-info-circle"></i>Wprowadzone dane są nie poprawne.</div>
-        <div class="panelResetPassword__alert -danger -hidden"><i class="fa fa-info-circle"></i>Hasła nie są takie same.</div>
-        <div class="panelResetPassword__alert -success -hidden">Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.</div>
+        <div class="panelResetPassword__title">Panel Odzyskiwania Hasła</div>
+        <div class="panelResetPassword__alert -info -hidden"><i class="fa fa-info-circle"></i>Nie ma takiego konta.</div>
+        <div class="panelResetPassword__alert -success -hidden">Na wskazany email został wysłany link weryfikacyjny.</div>
         <div class="panelResetPassword__form">
           <input placeholder="Email">
+          <button type="submit">Odzyskaj hasło</button>
+        </div>
+        <div class="panelResetPassword__form">
           <input type="password" placeholder="Hasło">
           <input type="password" placeholder="Potwierdz Hasło">
-          <button type="submit">Zarajestuj</button>
+          <button type="submit">Zatwierdz nowe hasło</button>
         </div><span class="panelResetPassword__close"><span class="panelResetPassword__icon fa fa-times"></span></span>
-        <div class="panelResetPassword__navigation">Masz już konto?<a href="#" class="panelResetPassword__ToLogin">Zaloguj się.</a></div>
+        <div class="panelResetPassword__navigation">Nie masz konta?<a href="#" class="panelResetPassword__ToRegister">Zarejestruj się.</a></div>
       </div>
     </div>
   </body>
