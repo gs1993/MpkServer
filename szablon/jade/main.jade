@@ -22,13 +22,20 @@ html( lang="pl")
     .panelLogin.panel.-hidden
       .panelLogin__wrapper
         .panelLogin__title Panel Logowania
-        .panelLogin__text Prosze podać dane do logowania.!!!
+        .panelLogin__alert.-info
+          i.fa.fa-info-circle
+          |Konto o takim emailu nie istnieje.
+        .panelLogin__alert.-danger
+          i.fa.fa-info-circle
+          | Hasło przypisane do tego emailu, jest nie poprawne.
         .panelLogin__form
           input(placeholder="Email")
           input(type='password' placeholder="Hasło")
           button(type="submit") Zaloguj
         span.panelLogin__close
           span.panelLogin__icon.fa.fa-times
+        .panelLogin__hyperlink Nie masz konta?
+          a(href="#").panelLogin__ToRegister Zarejestruj się.
 
     .panelRegister.panel.-hidden
       .panelRegister__wrapper

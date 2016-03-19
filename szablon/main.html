@@ -89,12 +89,14 @@
     <div class="panelLogin panel -hidden">
       <div class="panelLogin__wrapper">
         <div class="panelLogin__title">Panel Logowania</div>
-        <div class="panelLogin__text">Prosze podać dane do logowania.!!!</div>
+        <div class="panelLogin__alert -info"><i class="fa fa-info-circle"></i>Konto o takim emailu nie istnieje.</div>
+        <div class="panelLogin__alert -danger"><i class="fa fa-info-circle"></i>Hasło przypisane do tego emailu, jest nie poprawne.</div>
         <div class="panelLogin__form">
           <input placeholder="Email">
           <input type="password" placeholder="Hasło">
           <button type="submit">Zaloguj</button>
         </div><span class="panelLogin__close"><span class="panelLogin__icon fa fa-times"></span></span>
+        <div class="panelLogin__hyperlink">Nie masz konta?<a href="#" class="panelLogin__ToRegister">Zarejestruj się.</a></div>
       </div>
     </div>
     <div class="panelRegister panel -hidden">
