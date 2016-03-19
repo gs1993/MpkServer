@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="pl">
   <head>
-    <title>Szablon strony w D3</title>
+    <title>Projekt Zespolow || MPK</title>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="shortcut icon" href="/favicon.ico"><!-- bower:js -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <script>
+      document.write('<script src="http://'
+              + (location.host || 'localhost').split(':')[0]
+              + ':35729/livereload.js"></'
+              + 'script>')
+      
+    </script><!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/ev-emitter/ev-emitter.js"></script>
 <script src="bower_components/imagesloaded/imagesloaded.js"></script>
@@ -15,16 +22,49 @@
 <script src="bower_components/superfish/dist/js/hoverIntent.js"></script>
 <script src="bower_components/jquery-sticky/jquery.sticky.js"></script>
 <!-- endbower -->
+    <!-- MAPY GOOGLA -->
+    <script src="http://maps.google.com/maps/api/js"></script>
+    <script src="https://jquery-xml2json-plugin.googlecode.com/svn/trunk/jquery.xml2json.js"></script><!-- MAPY GOOGLA -->
     <script src="scripts/vendor.min.js"></script><!-- bower:css -->
 <link rel="stylesheet" href="bower_components/superfish/dist/css/superfish.css" />
 <!-- endbower -->
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <div class="box">
-      <div class="box2">
-        <p>tester</p>
-        <p>czesc</p>
+    <!--
+    Created by salimike on 18.03.16.
+    
+    -->
+    <div class="header">
+      <div class="header__corner"></div>
+      <div class="header__switcher -hidden">
+        <div class="background"></div>
+        <ul class="header__panel">
+          <li id="panel-loginButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-sign-in"></div></span>Logowanie</span></li>
+          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-sign-in"></div></span>Rejestracja</span></li>
+          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-sign-in"></div></span>Odzyskaj konto</span></li>
+          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-power-off"></div></span>Wyloguj</span></li>
+          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-sign-in"></div></span>Ustawienia</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="googleMaps">
+      <div id="googleMaps" class="googleMaps__API"></div>
+    </div>
+    <div class="panelLogin -hidden">
+      <div class="panelLogin__wrapper">
+        <div class="panelLogin__title">Panel Logowania</div>
+        <div class="panelLogin__text">Prosze podać dane do logowania.</div>
+        <div class="panelLogin__form">
+          <input placeholder="Prosze podać login">
+          <input placeholder="Prosze podać nazwisko">
+          <button type="submit">Zaloguj</button>
+        </div><span class="panelLogin__close"><span class="panelLogin__icon fa fa-times"></span></span>
       </div>
     </div>
   </body>

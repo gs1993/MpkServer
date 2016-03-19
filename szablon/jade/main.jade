@@ -1,8 +1,20 @@
 doctype html
 html( lang="pl")
-    include _head.jade
-    body
-        .box
-            .box2
-                p tester
-                p czesc
+  include _head.jade
+  body
+    include _header.jade
+    .googleMaps
+      .googleMaps__API#googleMaps
+
+
+    .panelLogin.-hidden
+      .panelLogin__wrapper
+        .panelLogin__title Panel Logowania
+        .panelLogin__text Prosze podać dane do logowania.
+        .panelLogin__form
+          input(placeholder="Prosze podać login")
+          input(placeholder="Prosze podać nazwisko")
+          button(type="submit") Zaloguj
+        span.panelLogin__close
+          span.panelLogin__icon.fa.fa-times
+

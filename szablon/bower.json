@@ -1,8 +1,8 @@
 {
-  "name": "NewCorner",
+  "name": "ProjektZespolowyMPK",
   "version": "1.0.0",
   "authors": [
-    "Maciej <maciejtatol@gmail.com>"
+    "Michal Sobiecki <kontakt@msobiecki.com>"
   ],
   "description": "Szablon sekretykobiety",
   "main": "main.html",
@@ -23,7 +23,8 @@
     "superfish": "latest",
     "font-awesome": "latest",
     "jquery-sticky": "latest",
-    "jquery-resize-image-to-parent": "latest"
+    "jquery-resize-image-to-parent": "latest",
+    "primer-css": "^2.7.1"
   },
   "dependencies": {
     "imagesloaded": "latest",

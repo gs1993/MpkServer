@@ -1,0 +1,58 @@
+@charset "UTF-8"
+
+.panelLogin
+  position: absolute
+  width: 500px
+  height: auto
+  top: 30%
+  right: 0
+  left: 0
+  z-index: 100
+  opacity: 1
+
+  margin: 0 auto
+  background-color: rgba(255, 255, 255, 0.75)
+  border: 1px solid rgba(0, 0, 0, 0.5)
+  border-radius: 10px
+  padding: 20px
+
+  &.-hidden
+    opacity: 0
+    z-index: 0
+
+  &__wrapper
+    position: relative
+  &__title
+    font-family: Lato, sans-serif
+    font-size: 24px
+    font-weight: 700
+    line-height: 26px
+    margin-bottom: 15px
+  &__text
+    font-family: Lato, sans-serif
+    font-size: 16px
+    font-weight: 700
+    line-height: 18px
+    margin-bottom: 15px
+  &__form
+    padding: 5px
+    margin: 0 auto
+    text-align: center
+    input
+      display: block
+      min-width: 200px
+      margin: 5px auto
+      padding: 8px 10px
+      border-radius: 15px
+      border: 1px solid rgba(0, 0, 0, 0.5)
+    button
+      @extend .btn
+      @extend .btn-primary
+  &__close
+    position: absolute
+    top: 2px
+    right: 2px
+    color: red
+
+  &__icon
+    font-size: 3em
