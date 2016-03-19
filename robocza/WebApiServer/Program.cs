@@ -1,27 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 using System.Web.Http.SelfHost;
+using Core.Logger;
+using Data.Service;
+using SimpleInjector;
+using SimpleInjector.Extensions.ExecutionContextScoping;
+using SimpleInjector.Integration.WebApi;
+using WebApiServer.Misc;
+using WebApiServer.Services;
 
 namespace WebApiServer
 {
     class Program
     {
+        public static HttpSelfHostConfiguration Config = new HttpSelfHostConfiguration("http://localhost:50000");
         static void Main(string[] args)
         {
-            var config = new HttpSelfHostConfiguration("http://localhost:5000");
-            config.Routes.MapHttpRoute(
-                "API Default", "{controller}/{id}",
-                new {id = RouteParameter.Optional});
-            using (HttpSelfHostServer server = new HttpSelfHostServer(config))
+
+            using (var container = GetContainer())
             {
-                server.OpenAsync().Wait();
-                Console.WriteLine("WebApi Host on");
-                Console.ReadLine();
+
+                ILogger logger = container.GetInstance<ILogger>();
+                logger.Log("Init webApi server");
+
+                Config.Filters.Clear();
+
+                var us = container.GetInstance<IUserService>();
+
+
+                Config.Filters.Add(new SimpleAuthFilter(us));
+
+                using (HttpSelfHostServer server = new HttpSelfHostServer(Config))
+                {
+                    server.OpenAsync().Wait();
+                    logger.Log("webApi server started");
+                    Console.ReadLine();
+                }
             }
+        }
+
+        public static Container GetContainer()
+        {
+            var container = new Container();
+
+            container.Options.DefaultScopedLifestyle = new ExecutionContextScopeLifestyle();
+
+            //Rejestracja serwisów
+            container.Register<ILogger, ConsoleLogger>(Lifestyle.Singleton);
+            container.Register<IDatabaseService,DatabaseService>(Lifestyle.Singleton);
+            container.Register<IUserService,UserService>(Lifestyle.Singleton);
+
+            //WebApi config
+            WebApiConfig();
+
+            container.RegisterWebApiControllers(Config);
+
+            Config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
+
+            container.Verify();
+
+            return container;
+        }
+
+        public static void WebApiConfig()
+        {
+            Config.EnableCors();
+            Config.Routes.MapHttpRoute(
+                   "API Default", "{controller}/{id}",
+                   new { id = RouteParameter.Optional });
+            Config.Formatters.Clear();
+            Config.Formatters.Add(new JsonMediaTypeFormatter());
         }
     }
 }
