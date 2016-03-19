@@ -6016,6 +6016,7 @@ a.tabnav-extra:hover {
 
 .panelLogin__form button {
   margin-top: 20px;
+  border-color: #3949ab;
   padding: 10px 20px;
   background: #3949ab;
   background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(250, 198, 100, 0.27) 100%), #2976df;
@@ -6024,6 +6025,10 @@ a.tabnav-extra:hover {
 .panelLogin__form button:hover {
   background: #4152d2;
   background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(250, 198, 100, 0.27) 100%), #2e8bff;
+}
+
+.panelLogin__navigation {
+  margin-top: 20px;
 }
 
 .panelLogin__ToRegister {
@@ -6094,18 +6099,49 @@ a.tabnav-extra:hover {
 
 .panelRegister__title {
   font-family: Lato, sans-serif;
-  font-size: 24px;
-  font-weight: 700;
+  font-weight: 300;
   line-height: 26px;
   margin-bottom: 15px;
+  font-size: 25.5px;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .panelRegister__text {
   font-family: Lato, sans-serif;
-  font-size: 16px;
   font-weight: 700;
-  line-height: 18px;
-  margin-bottom: 15px;
+  max-width: 350px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: 1.25px;
+  text-align: center;
+  color: #999;
+}
+
+.panelRegister__alert {
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 1.35px;
+  text-align: left;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.panelRegister__alert i {
+  margin-right: 4px;
+}
+
+.panelRegister__alert.-info {
+  color: darkred;
+}
+
+.panelRegister__alert.-danger {
+  color: firebrick;
 }
 
 .panelRegister__form {
@@ -6115,19 +6151,65 @@ a.tabnav-extra:hover {
 }
 
 .panelRegister__form input {
+  font-weight: 400;
+  max-width: 300px;
+  width: 100%;
   display: block;
   margin: 5px auto;
   padding: 8px 10px;
-  border-radius: 15px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid blue;
+  font-size: 16px;
+}
+
+.panelRegister__form input:focus {
+  border-bottom: 1px solid deepskyblue;
+}
+
+.panelRegister__form button {
+  margin-top: 20px;
+  border-color: #3949ab;
+  padding: 10px 20px;
+  background: #3949ab;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(250, 198, 100, 0.27) 100%), #2976df;
+}
+
+.panelRegister__form button:hover {
+  background: #4152d2;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(250, 198, 100, 0.27) 100%), #2e8bff;
+}
+
+.panelRegister__navigation {
+  margin-top: 20px;
+}
+
+.panelRegister__ToLogin {
+  margin-left: 5px;
+}
+
+.panelRegister__ToLogin:hover {
+  text-decoration: underline;
 }
 
 .panelRegister__close {
+  transition: opacity 0.36s ease;
   position: absolute;
   top: 0px;
   right: 3px;
-  color: red;
+  color: #222222;
   cursor: pointer;
+  opacity: 0.4;
+}
+
+.panelRegister__close:hover {
+  opacity: 0.8;
+}
+
+.panelRegister__close .panelRegister__icon {
+  font-size: 1.8em !important;
 }
 
 .panelRegister__icon {
