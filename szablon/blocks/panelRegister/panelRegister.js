@@ -3,7 +3,7 @@
  */
 
 $(document).ready(function () {
-  $('.panelLogin__close').on("click", function () {
-    $('.panelLogin').toggleClass('-hidden');
+  $('.panelRegister__close').on("click", function () {
+    $('.panelRegister').toggleClass('-hidden');
   });
 });
