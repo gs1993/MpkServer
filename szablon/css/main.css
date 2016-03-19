@@ -4194,7 +4194,7 @@ dl.form.errored dd.error:before {
   top: -2px;
 }
 
-.hfields .btn, .hfields .panelWelcome__form button, .panelWelcome__form .hfields button, .hfields .panelLogin__form button, .panelLogin__form .hfields button, .hfields .panelRegister__form button, .panelRegister__form .hfields button {
+.hfields .btn, .hfields .panelWelcome__form button, .panelWelcome__form .hfields button, .hfields .panelLogin__form button, .panelLogin__form .hfields button, .hfields .panelRegister__form button, .panelRegister__form .hfields button, .hfields .panelResetPassword__form button, .panelResetPassword__form .hfields button {
   float: left;
   margin: 28px 25px 0 -20px;
 }
@@ -4222,7 +4222,7 @@ input::-webkit-inner-spin-button {
   z-index: 2;
 }
 
-.input-group input[type="text"] + .btn, .input-group .panelWelcome__form input[type="text"] + button, .panelWelcome__form .input-group input[type="text"] + button, .input-group .panelLogin__form input[type="text"] + button, .panelLogin__form .input-group input[type="text"] + button, .input-group .panelRegister__form input[type="text"] + button, .panelRegister__form .input-group input[type="text"] + button {
+.input-group input[type="text"] + .btn, .input-group .panelWelcome__form input[type="text"] + button, .panelWelcome__form .input-group input[type="text"] + button, .input-group .panelLogin__form input[type="text"] + button, .panelLogin__form .input-group input[type="text"] + button, .input-group .panelRegister__form input[type="text"] + button, .panelRegister__form .input-group input[type="text"] + button, .input-group .panelResetPassword__form input[type="text"] + button, .panelResetPassword__form .input-group input[type="text"] + button {
   margin-left: 0;
 }
 
@@ -4247,12 +4247,14 @@ input::-webkit-inner-spin-button {
 .input-group-button:first-child .panelLogin__form button, .panelLogin__form
 .input-group-button:first-child button,
 .input-group-button:first-child .panelRegister__form button, .panelRegister__form
+.input-group-button:first-child button,
+.input-group-button:first-child .panelResetPassword__form button, .panelResetPassword__form
 .input-group-button:first-child button {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.input-group-button:first-child .btn, .input-group-button:first-child .panelWelcome__form button, .panelWelcome__form .input-group-button:first-child button, .input-group-button:first-child .panelLogin__form button, .panelLogin__form .input-group-button:first-child button, .input-group-button:first-child .panelRegister__form button, .panelRegister__form .input-group-button:first-child button {
+.input-group-button:first-child .btn, .input-group-button:first-child .panelWelcome__form button, .panelWelcome__form .input-group-button:first-child button, .input-group-button:first-child .panelLogin__form button, .panelLogin__form .input-group-button:first-child button, .input-group-button:first-child .panelRegister__form button, .panelRegister__form .input-group-button:first-child button, .input-group-button:first-child .panelResetPassword__form button, .panelResetPassword__form .input-group-button:first-child button {
   margin-right: -1px;
 }
 
@@ -4263,12 +4265,14 @@ input::-webkit-inner-spin-button {
 .input-group-button:last-child .panelLogin__form button, .panelLogin__form
 .input-group-button:last-child button,
 .input-group-button:last-child .panelRegister__form button, .panelRegister__form
+.input-group-button:last-child button,
+.input-group-button:last-child .panelResetPassword__form button, .panelResetPassword__form
 .input-group-button:last-child button {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.input-group-button:last-child .btn, .input-group-button:last-child .panelWelcome__form button, .panelWelcome__form .input-group-button:last-child button, .input-group-button:last-child .panelLogin__form button, .panelLogin__form .input-group-button:last-child button, .input-group-button:last-child .panelRegister__form button, .panelRegister__form .input-group-button:last-child button {
+.input-group-button:last-child .btn, .input-group-button:last-child .panelWelcome__form button, .panelWelcome__form .input-group-button:last-child button, .input-group-button:last-child .panelLogin__form button, .panelLogin__form .input-group-button:last-child button, .input-group-button:last-child .panelRegister__form button, .panelRegister__form .input-group-button:last-child button, .input-group-button:last-child .panelResetPassword__form button, .panelResetPassword__form .input-group-button:last-child button {
   margin-left: -1px;
 }
 
@@ -4283,11 +4287,11 @@ input::-webkit-inner-spin-button {
   content: "";
 }
 
-.form-actions .btn, .form-actions .panelWelcome__form button, .panelWelcome__form .form-actions button, .form-actions .panelLogin__form button, .panelLogin__form .form-actions button, .form-actions .panelRegister__form button, .panelRegister__form .form-actions button {
+.form-actions .btn, .form-actions .panelWelcome__form button, .panelWelcome__form .form-actions button, .form-actions .panelLogin__form button, .panelLogin__form .form-actions button, .form-actions .panelRegister__form button, .panelRegister__form .form-actions button, .form-actions .panelResetPassword__form button, .panelResetPassword__form .form-actions button {
   float: right;
 }
 
-.form-actions .btn + .btn, .form-actions .panelWelcome__form button + .btn, .panelWelcome__form .form-actions button + .btn, .form-actions .panelLogin__form button + .btn, .panelLogin__form .form-actions button + .btn, .form-actions .panelRegister__form button + .btn, .panelRegister__form .form-actions button + .btn, .form-actions .panelWelcome__form .btn + button, .panelWelcome__form .form-actions .btn + button, .form-actions .panelWelcome__form button + button, .panelWelcome__form .form-actions button + button, .form-actions .panelLogin__form .panelWelcome__form button + button, .panelWelcome__form .panelLogin__form .form-actions button + button, .form-actions .panelRegister__form .panelWelcome__form button + button, .panelWelcome__form .panelRegister__form .form-actions button + button, .form-actions .panelLogin__form .btn + button, .panelLogin__form .form-actions .btn + button, .form-actions .panelWelcome__form .panelLogin__form button + button, .panelLogin__form .form-actions .panelWelcome__form button + button, .panelWelcome__form .form-actions .panelLogin__form button + button, .panelLogin__form .panelWelcome__form .form-actions button + button, .form-actions .panelLogin__form button + button, .panelLogin__form .form-actions button + button, .form-actions .panelRegister__form .panelLogin__form button + button, .panelLogin__form .panelRegister__form .form-actions button + button, .form-actions .panelRegister__form .btn + button, .panelRegister__form .form-actions .btn + button, .form-actions .panelWelcome__form .panelRegister__form button + button, .panelRegister__form .form-actions .panelWelcome__form button + button, .panelWelcome__form .form-actions .panelRegister__form button + button, .panelRegister__form .panelWelcome__form .form-actions button + button, .form-actions .panelLogin__form .panelRegister__form button + button, .panelRegister__form .form-actions .panelLogin__form button + button, .panelLogin__form .form-actions .panelRegister__form button + button, .panelRegister__form .panelLogin__form .form-actions button + button, .form-actions .panelRegister__form button + button, .panelRegister__form .form-actions button + button {
+.form-actions .btn + .btn, .form-actions .panelWelcome__form button + .btn, .panelWelcome__form .form-actions button + .btn, .form-actions .panelLogin__form button + .btn, .panelLogin__form .form-actions button + .btn, .form-actions .panelRegister__form button + .btn, .panelRegister__form .form-actions button + .btn, .form-actions .panelResetPassword__form button + .btn, .panelResetPassword__form .form-actions button + .btn, .form-actions .panelWelcome__form .btn + button, .panelWelcome__form .form-actions .btn + button, .form-actions .panelWelcome__form button + button, .panelWelcome__form .form-actions button + button, .form-actions .panelLogin__form .panelWelcome__form button + button, .panelWelcome__form .panelLogin__form .form-actions button + button, .form-actions .panelRegister__form .panelWelcome__form button + button, .panelWelcome__form .panelRegister__form .form-actions button + button, .form-actions .panelResetPassword__form .panelWelcome__form button + button, .panelWelcome__form .panelResetPassword__form .form-actions button + button, .form-actions .panelLogin__form .btn + button, .panelLogin__form .form-actions .btn + button, .form-actions .panelWelcome__form .panelLogin__form button + button, .panelLogin__form .form-actions .panelWelcome__form button + button, .panelWelcome__form .form-actions .panelLogin__form button + button, .panelLogin__form .panelWelcome__form .form-actions button + button, .form-actions .panelLogin__form button + button, .panelLogin__form .form-actions button + button, .form-actions .panelRegister__form .panelLogin__form button + button, .panelLogin__form .panelRegister__form .form-actions button + button, .form-actions .panelResetPassword__form .panelLogin__form button + button, .panelLogin__form .panelResetPassword__form .form-actions button + button, .form-actions .panelRegister__form .btn + button, .panelRegister__form .form-actions .btn + button, .form-actions .panelWelcome__form .panelRegister__form button + button, .panelRegister__form .form-actions .panelWelcome__form button + button, .panelWelcome__form .form-actions .panelRegister__form button + button, .panelRegister__form .panelWelcome__form .form-actions button + button, .form-actions .panelLogin__form .panelRegister__form button + button, .panelRegister__form .form-actions .panelLogin__form button + button, .panelLogin__form .form-actions .panelRegister__form button + button, .panelRegister__form .panelLogin__form .form-actions button + button, .form-actions .panelRegister__form button + button, .panelRegister__form .form-actions button + button, .form-actions .panelResetPassword__form .panelRegister__form button + button, .panelRegister__form .panelResetPassword__form .form-actions button + button, .form-actions .panelResetPassword__form .btn + button, .panelResetPassword__form .form-actions .btn + button, .form-actions .panelWelcome__form .panelResetPassword__form button + button, .panelResetPassword__form .form-actions .panelWelcome__form button + button, .panelWelcome__form .form-actions .panelResetPassword__form button + button, .panelResetPassword__form .panelWelcome__form .form-actions button + button, .form-actions .panelLogin__form .panelResetPassword__form button + button, .panelResetPassword__form .form-actions .panelLogin__form button + button, .panelLogin__form .form-actions .panelResetPassword__form button + button, .panelResetPassword__form .panelLogin__form .form-actions button + button, .form-actions .panelRegister__form .panelResetPassword__form button + button, .panelResetPassword__form .form-actions .panelRegister__form button + button, .panelRegister__form .form-actions .panelResetPassword__form button + button, .panelResetPassword__form .panelRegister__form .form-actions button + button, .form-actions .panelResetPassword__form button + button, .panelResetPassword__form .form-actions button + button {
   margin-right: 5px;
 }
 
@@ -4683,7 +4687,7 @@ input::-webkit-inner-spin-button {
   border-radius: 20px;
 }
 
-.btn, .panelWelcome__form button, .panelLogin__form button, .panelRegister__form button {
+.btn, .panelWelcome__form button, .panelLogin__form button, .panelRegister__form button, .panelResetPassword__form button {
   position: relative;
   display: inline-block;
   padding: 6px 12px;
@@ -4705,51 +4709,51 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-.btn i, .panelWelcome__form button i, .panelLogin__form button i, .panelRegister__form button i {
+.btn i, .panelWelcome__form button i, .panelLogin__form button i, .panelRegister__form button i, .panelResetPassword__form button i {
   font-style: normal;
   font-weight: 500;
   opacity: 0.6;
 }
 
-.btn .octicon, .panelWelcome__form button .octicon, .panelLogin__form button .octicon, .panelRegister__form button .octicon {
+.btn .octicon, .panelWelcome__form button .octicon, .panelLogin__form button .octicon, .panelRegister__form button .octicon, .panelResetPassword__form button .octicon {
   vertical-align: text-top;
 }
 
-.btn .counter, .panelWelcome__form button .counter, .panelLogin__form button .counter, .panelRegister__form button .counter {
+.btn .counter, .panelWelcome__form button .counter, .panelLogin__form button .counter, .panelRegister__form button .counter, .panelResetPassword__form button .counter {
   text-shadow: none;
   background-color: #e5e5e5;
 }
 
-.btn:focus, .panelWelcome__form button:focus, .panelLogin__form button:focus, .panelRegister__form button:focus {
+.btn:focus, .panelWelcome__form button:focus, .panelLogin__form button:focus, .panelRegister__form button:focus, .panelResetPassword__form button:focus {
   text-decoration: none;
   border-color: #51a7e8;
   outline: none;
   box-shadow: 0 0 5px rgba(81, 167, 232, 0.5);
 }
 
-.btn:focus:hover, .panelWelcome__form button:focus:hover, .panelLogin__form button:focus:hover, .panelRegister__form button:focus:hover, .btn.selected:focus, .panelWelcome__form button.selected:focus, .panelLogin__form button.selected:focus, .panelRegister__form button.selected:focus {
+.btn:focus:hover, .panelWelcome__form button:focus:hover, .panelLogin__form button:focus:hover, .panelRegister__form button:focus:hover, .panelResetPassword__form button:focus:hover, .btn.selected:focus, .panelWelcome__form button.selected:focus, .panelLogin__form button.selected:focus, .panelRegister__form button.selected:focus, .panelResetPassword__form button.selected:focus {
   border-color: #51a7e8;
 }
 
-.btn:hover, .panelWelcome__form button:hover, .panelLogin__form button:hover, .panelRegister__form button:hover, .btn:active, .panelWelcome__form button:active, .panelLogin__form button:active, .panelRegister__form button:active, .btn.zeroclipboard-is-hover, .panelWelcome__form button.zeroclipboard-is-hover, .panelLogin__form button.zeroclipboard-is-hover, .panelRegister__form button.zeroclipboard-is-hover, .btn.zeroclipboard-is-active, .panelWelcome__form button.zeroclipboard-is-active, .panelLogin__form button.zeroclipboard-is-active, .panelRegister__form button.zeroclipboard-is-active {
+.btn:hover, .panelWelcome__form button:hover, .panelLogin__form button:hover, .panelRegister__form button:hover, .panelResetPassword__form button:hover, .btn:active, .panelWelcome__form button:active, .panelLogin__form button:active, .panelRegister__form button:active, .panelResetPassword__form button:active, .btn.zeroclipboard-is-hover, .panelWelcome__form button.zeroclipboard-is-hover, .panelLogin__form button.zeroclipboard-is-hover, .panelRegister__form button.zeroclipboard-is-hover, .panelResetPassword__form button.zeroclipboard-is-hover, .btn.zeroclipboard-is-active, .panelWelcome__form button.zeroclipboard-is-active, .panelLogin__form button.zeroclipboard-is-active, .panelRegister__form button.zeroclipboard-is-active, .panelResetPassword__form button.zeroclipboard-is-active {
   text-decoration: none;
   background-color: #ddd;
   background-image: linear-gradient(#eee, #ddd);
   border-color: #ccc;
 }
 
-.btn:active, .panelWelcome__form button:active, .panelLogin__form button:active, .panelRegister__form button:active, .btn.selected, .panelWelcome__form button.selected, .panelLogin__form button.selected, .panelRegister__form button.selected, .btn.zeroclipboard-is-active, .panelWelcome__form button.zeroclipboard-is-active, .panelLogin__form button.zeroclipboard-is-active, .panelRegister__form button.zeroclipboard-is-active {
+.btn:active, .panelWelcome__form button:active, .panelLogin__form button:active, .panelRegister__form button:active, .panelResetPassword__form button:active, .btn.selected, .panelWelcome__form button.selected, .panelLogin__form button.selected, .panelRegister__form button.selected, .panelResetPassword__form button.selected, .btn.zeroclipboard-is-active, .panelWelcome__form button.zeroclipboard-is-active, .panelLogin__form button.zeroclipboard-is-active, .panelRegister__form button.zeroclipboard-is-active, .panelResetPassword__form button.zeroclipboard-is-active {
   background-color: #dcdcdc;
   background-image: none;
   border-color: #b5b5b5;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.btn.selected:hover, .panelWelcome__form button.selected:hover, .panelLogin__form button.selected:hover, .panelRegister__form button.selected:hover {
+.btn.selected:hover, .panelWelcome__form button.selected:hover, .panelLogin__form button.selected:hover, .panelRegister__form button.selected:hover, .panelResetPassword__form button.selected:hover {
   background-color: #cfcfcf;
 }
 
-.btn:disabled, .panelWelcome__form button:disabled, .panelLogin__form button:disabled, .panelRegister__form button:disabled, .btn:disabled:hover, .panelWelcome__form button:disabled:hover, .panelLogin__form button:disabled:hover, .panelRegister__form button:disabled:hover, .btn.disabled, .panelWelcome__form button.disabled, .panelLogin__form button.disabled, .panelRegister__form button.disabled, .btn.disabled:hover, .panelWelcome__form button.disabled:hover, .panelLogin__form button.disabled:hover, .panelRegister__form button.disabled:hover {
+.btn:disabled, .panelWelcome__form button:disabled, .panelLogin__form button:disabled, .panelRegister__form button:disabled, .panelResetPassword__form button:disabled, .btn:disabled:hover, .panelWelcome__form button:disabled:hover, .panelLogin__form button:disabled:hover, .panelRegister__form button:disabled:hover, .panelResetPassword__form button:disabled:hover, .btn.disabled, .panelWelcome__form button.disabled, .panelLogin__form button.disabled, .panelRegister__form button.disabled, .panelResetPassword__form button.disabled, .btn.disabled:hover, .panelWelcome__form button.disabled:hover, .panelLogin__form button.disabled:hover, .panelRegister__form button.disabled:hover, .panelResetPassword__form button.disabled:hover {
   color: rgba(102, 102, 102, 0.5);
   cursor: default;
   background-color: rgba(229, 229, 229, 0.5);
@@ -4758,7 +4762,7 @@ input::-webkit-inner-spin-button {
   box-shadow: none;
 }
 
-.btn-primary, .panelWelcome__form button, .panelLogin__form button, .panelRegister__form button {
+.btn-primary, .panelWelcome__form button, .panelLogin__form button, .panelRegister__form button, .panelResetPassword__form button {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
   background-color: #60b044;
@@ -4766,30 +4770,30 @@ input::-webkit-inner-spin-button {
   border-color: #5ca941;
 }
 
-.btn-primary .counter, .panelWelcome__form button .counter, .panelLogin__form button .counter, .panelRegister__form button .counter {
+.btn-primary .counter, .panelWelcome__form button .counter, .panelLogin__form button .counter, .panelRegister__form button .counter, .panelResetPassword__form button .counter {
   color: #60b044;
   background-color: #fff;
 }
 
-.btn-primary:hover, .panelWelcome__form button:hover, .panelLogin__form button:hover, .panelRegister__form button:hover {
+.btn-primary:hover, .panelWelcome__form button:hover, .panelLogin__form button:hover, .panelRegister__form button:hover, .panelResetPassword__form button:hover {
   color: #fff;
   background-color: #569e3d;
   background-image: linear-gradient(#79d858, #569e3d);
   border-color: #4a993e;
 }
 
-.btn-primary:active, .panelWelcome__form button:active, .panelLogin__form button:active, .panelRegister__form button:active, .btn-primary.selected, .panelWelcome__form button.selected, .panelLogin__form button.selected, .panelRegister__form button.selected {
+.btn-primary:active, .panelWelcome__form button:active, .panelLogin__form button:active, .panelRegister__form button:active, .panelResetPassword__form button:active, .btn-primary.selected, .panelWelcome__form button.selected, .panelLogin__form button.selected, .panelRegister__form button.selected, .panelResetPassword__form button.selected {
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
   background-color: #569e3d;
   background-image: none;
   border-color: #418737;
 }
 
-.btn-primary.selected:hover, .panelWelcome__form button.selected:hover, .panelLogin__form button.selected:hover, .panelRegister__form button.selected:hover {
+.btn-primary.selected:hover, .panelWelcome__form button.selected:hover, .panelLogin__form button.selected:hover, .panelRegister__form button.selected:hover, .panelResetPassword__form button.selected:hover {
   background-color: #4c8b36;
 }
 
-.btn-primary:disabled, .panelWelcome__form button:disabled, .panelLogin__form button:disabled, .panelRegister__form button:disabled, .btn-primary:disabled:hover, .panelWelcome__form button:disabled:hover, .panelLogin__form button:disabled:hover, .panelRegister__form button:disabled:hover, .btn-primary.disabled, .panelWelcome__form button.disabled, .panelLogin__form button.disabled, .panelRegister__form button.disabled, .btn-primary.disabled:hover, .panelWelcome__form button.disabled:hover, .panelLogin__form button.disabled:hover, .panelRegister__form button.disabled:hover {
+.btn-primary:disabled, .panelWelcome__form button:disabled, .panelLogin__form button:disabled, .panelRegister__form button:disabled, .panelResetPassword__form button:disabled, .btn-primary:disabled:hover, .panelWelcome__form button:disabled:hover, .panelLogin__form button:disabled:hover, .panelRegister__form button:disabled:hover, .panelResetPassword__form button:disabled:hover, .btn-primary.disabled, .panelWelcome__form button.disabled, .panelLogin__form button.disabled, .panelRegister__form button.disabled, .panelResetPassword__form button.disabled, .btn-primary.disabled:hover, .panelWelcome__form button.disabled:hover, .panelLogin__form button.disabled:hover, .panelRegister__form button.disabled:hover, .panelResetPassword__form button.disabled:hover {
   color: #fefefe;
   background-color: #add39f;
   background-image: linear-gradient(#c3ecb4, #add39f);
@@ -4960,44 +4964,46 @@ input::-webkit-inner-spin-button {
   content: "";
 }
 
-.btn-group .btn, .btn-group .panelWelcome__form button, .panelWelcome__form .btn-group button, .btn-group .panelLogin__form button, .panelLogin__form .btn-group button, .btn-group .panelRegister__form button, .panelRegister__form .btn-group button {
+.btn-group .btn, .btn-group .panelWelcome__form button, .panelWelcome__form .btn-group button, .btn-group .panelLogin__form button, .panelLogin__form .btn-group button, .btn-group .panelRegister__form button, .panelRegister__form .btn-group button, .btn-group .panelResetPassword__form button, .panelResetPassword__form .btn-group button {
   position: relative;
   float: left;
 }
 
-.btn-group .btn:not(:first-child):not(:last-child), .btn-group .panelWelcome__form button:not(:first-child):not(:last-child), .panelWelcome__form .btn-group button:not(:first-child):not(:last-child), .btn-group .panelLogin__form button:not(:first-child):not(:last-child), .panelLogin__form .btn-group button:not(:first-child):not(:last-child), .btn-group .panelRegister__form button:not(:first-child):not(:last-child), .panelRegister__form .btn-group button:not(:first-child):not(:last-child) {
+.btn-group .btn:not(:first-child):not(:last-child), .btn-group .panelWelcome__form button:not(:first-child):not(:last-child), .panelWelcome__form .btn-group button:not(:first-child):not(:last-child), .btn-group .panelLogin__form button:not(:first-child):not(:last-child), .panelLogin__form .btn-group button:not(:first-child):not(:last-child), .btn-group .panelRegister__form button:not(:first-child):not(:last-child), .panelRegister__form .btn-group button:not(:first-child):not(:last-child), .btn-group .panelResetPassword__form button:not(:first-child):not(:last-child), .panelResetPassword__form .btn-group button:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
 
-.btn-group .btn:first-child:not(:last-child), .btn-group .panelWelcome__form button:first-child:not(:last-child), .panelWelcome__form .btn-group button:first-child:not(:last-child), .btn-group .panelLogin__form button:first-child:not(:last-child), .panelLogin__form .btn-group button:first-child:not(:last-child), .btn-group .panelRegister__form button:first-child:not(:last-child), .panelRegister__form .btn-group button:first-child:not(:last-child) {
+.btn-group .btn:first-child:not(:last-child), .btn-group .panelWelcome__form button:first-child:not(:last-child), .panelWelcome__form .btn-group button:first-child:not(:last-child), .btn-group .panelLogin__form button:first-child:not(:last-child), .panelLogin__form .btn-group button:first-child:not(:last-child), .btn-group .panelRegister__form button:first-child:not(:last-child), .panelRegister__form .btn-group button:first-child:not(:last-child), .btn-group .panelResetPassword__form button:first-child:not(:last-child), .panelResetPassword__form .btn-group button:first-child:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.btn-group .btn:last-child:not(:first-child), .btn-group .panelWelcome__form button:last-child:not(:first-child), .panelWelcome__form .btn-group button:last-child:not(:first-child), .btn-group .panelLogin__form button:last-child:not(:first-child), .panelLogin__form .btn-group button:last-child:not(:first-child), .btn-group .panelRegister__form button:last-child:not(:first-child), .panelRegister__form .btn-group button:last-child:not(:first-child) {
+.btn-group .btn:last-child:not(:first-child), .btn-group .panelWelcome__form button:last-child:not(:first-child), .panelWelcome__form .btn-group button:last-child:not(:first-child), .btn-group .panelLogin__form button:last-child:not(:first-child), .panelLogin__form .btn-group button:last-child:not(:first-child), .btn-group .panelRegister__form button:last-child:not(:first-child), .panelRegister__form .btn-group button:last-child:not(:first-child), .btn-group .panelResetPassword__form button:last-child:not(:first-child), .panelResetPassword__form .btn-group button:last-child:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.btn-group .btn:hover, .btn-group .panelWelcome__form button:hover, .panelWelcome__form .btn-group button:hover, .btn-group .panelLogin__form button:hover, .panelLogin__form .btn-group button:hover, .btn-group .panelRegister__form button:hover, .panelRegister__form .btn-group button:hover, .btn-group .btn:active, .btn-group .panelWelcome__form button:active, .panelWelcome__form .btn-group button:active, .btn-group .panelLogin__form button:active, .panelLogin__form .btn-group button:active, .btn-group .panelRegister__form button:active, .panelRegister__form .btn-group button:active, .btn-group .btn.selected, .btn-group .panelWelcome__form button.selected, .panelWelcome__form .btn-group button.selected, .btn-group .panelLogin__form button.selected, .panelLogin__form .btn-group button.selected, .btn-group .panelRegister__form button.selected, .panelRegister__form .btn-group button.selected {
+.btn-group .btn:hover, .btn-group .panelWelcome__form button:hover, .panelWelcome__form .btn-group button:hover, .btn-group .panelLogin__form button:hover, .panelLogin__form .btn-group button:hover, .btn-group .panelRegister__form button:hover, .panelRegister__form .btn-group button:hover, .btn-group .panelResetPassword__form button:hover, .panelResetPassword__form .btn-group button:hover, .btn-group .btn:active, .btn-group .panelWelcome__form button:active, .panelWelcome__form .btn-group button:active, .btn-group .panelLogin__form button:active, .panelLogin__form .btn-group button:active, .btn-group .panelRegister__form button:active, .panelRegister__form .btn-group button:active, .btn-group .panelResetPassword__form button:active, .panelResetPassword__form .btn-group button:active, .btn-group .btn.selected, .btn-group .panelWelcome__form button.selected, .panelWelcome__form .btn-group button.selected, .btn-group .panelLogin__form button.selected, .panelLogin__form .btn-group button.selected, .btn-group .panelRegister__form button.selected, .panelRegister__form .btn-group button.selected, .btn-group .panelResetPassword__form button.selected, .panelResetPassword__form .btn-group button.selected {
   z-index: 2;
 }
 
-.btn-group .btn:focus, .btn-group .panelWelcome__form button:focus, .panelWelcome__form .btn-group button:focus, .btn-group .panelLogin__form button:focus, .panelLogin__form .btn-group button:focus, .btn-group .panelRegister__form button:focus, .panelRegister__form .btn-group button:focus {
+.btn-group .btn:focus, .btn-group .panelWelcome__form button:focus, .panelWelcome__form .btn-group button:focus, .btn-group .panelLogin__form button:focus, .panelLogin__form .btn-group button:focus, .btn-group .panelRegister__form button:focus, .panelRegister__form .btn-group button:focus, .btn-group .panelResetPassword__form button:focus, .panelResetPassword__form .btn-group button:focus {
   z-index: 3;
 }
 
-.btn-group .btn + .btn, .btn-group .panelWelcome__form button + .btn, .panelWelcome__form .btn-group button + .btn, .btn-group .panelLogin__form button + .btn, .panelLogin__form .btn-group button + .btn, .btn-group .panelRegister__form button + .btn, .panelRegister__form .btn-group button + .btn, .btn-group .panelWelcome__form .btn + button, .panelWelcome__form .btn-group .btn + button, .btn-group .panelWelcome__form button + button, .panelWelcome__form .btn-group button + button, .btn-group .panelLogin__form .panelWelcome__form button + button, .panelWelcome__form .panelLogin__form .btn-group button + button, .btn-group .panelRegister__form .panelWelcome__form button + button, .panelWelcome__form .panelRegister__form .btn-group button + button, .btn-group .panelLogin__form .btn + button, .panelLogin__form .btn-group .btn + button, .btn-group .panelWelcome__form .panelLogin__form button + button, .panelLogin__form .btn-group .panelWelcome__form button + button, .panelWelcome__form .btn-group .panelLogin__form button + button, .panelLogin__form .panelWelcome__form .btn-group button + button, .btn-group .panelLogin__form button + button, .panelLogin__form .btn-group button + button, .btn-group .panelRegister__form .panelLogin__form button + button, .panelLogin__form .panelRegister__form .btn-group button + button, .btn-group .panelRegister__form .btn + button, .panelRegister__form .btn-group .btn + button, .btn-group .panelWelcome__form .panelRegister__form button + button, .panelRegister__form .btn-group .panelWelcome__form button + button, .panelWelcome__form .btn-group .panelRegister__form button + button, .panelRegister__form .panelWelcome__form .btn-group button + button, .btn-group .panelLogin__form .panelRegister__form button + button, .panelRegister__form .btn-group .panelLogin__form button + button, .panelLogin__form .btn-group .panelRegister__form button + button, .panelRegister__form .panelLogin__form .btn-group button + button, .btn-group .panelRegister__form button + button, .panelRegister__form .btn-group button + button {
+.btn-group .btn + .btn, .btn-group .panelWelcome__form button + .btn, .panelWelcome__form .btn-group button + .btn, .btn-group .panelLogin__form button + .btn, .panelLogin__form .btn-group button + .btn, .btn-group .panelRegister__form button + .btn, .panelRegister__form .btn-group button + .btn, .btn-group .panelResetPassword__form button + .btn, .panelResetPassword__form .btn-group button + .btn, .btn-group .panelWelcome__form .btn + button, .panelWelcome__form .btn-group .btn + button, .btn-group .panelWelcome__form button + button, .panelWelcome__form .btn-group button + button, .btn-group .panelLogin__form .panelWelcome__form button + button, .panelWelcome__form .panelLogin__form .btn-group button + button, .btn-group .panelRegister__form .panelWelcome__form button + button, .panelWelcome__form .panelRegister__form .btn-group button + button, .btn-group .panelResetPassword__form .panelWelcome__form button + button, .panelWelcome__form .panelResetPassword__form .btn-group button + button, .btn-group .panelLogin__form .btn + button, .panelLogin__form .btn-group .btn + button, .btn-group .panelWelcome__form .panelLogin__form button + button, .panelLogin__form .btn-group .panelWelcome__form button + button, .panelWelcome__form .btn-group .panelLogin__form button + button, .panelLogin__form .panelWelcome__form .btn-group button + button, .btn-group .panelLogin__form button + button, .panelLogin__form .btn-group button + button, .btn-group .panelRegister__form .panelLogin__form button + button, .panelLogin__form .panelRegister__form .btn-group button + button, .btn-group .panelResetPassword__form .panelLogin__form button + button, .panelLogin__form .panelResetPassword__form .btn-group button + button, .btn-group .panelRegister__form .btn + button, .panelRegister__form .btn-group .btn + button, .btn-group .panelWelcome__form .panelRegister__form button + button, .panelRegister__form .btn-group .panelWelcome__form button + button, .panelWelcome__form .btn-group .panelRegister__form button + button, .panelRegister__form .panelWelcome__form .btn-group button + button, .btn-group .panelLogin__form .panelRegister__form button + button, .panelRegister__form .btn-group .panelLogin__form button + button, .panelLogin__form .btn-group .panelRegister__form button + button, .panelRegister__form .panelLogin__form .btn-group button + button, .btn-group .panelRegister__form button + button, .panelRegister__form .btn-group button + button, .btn-group .panelResetPassword__form .panelRegister__form button + button, .panelRegister__form .panelResetPassword__form .btn-group button + button, .btn-group .panelResetPassword__form .btn + button, .panelResetPassword__form .btn-group .btn + button, .btn-group .panelWelcome__form .panelResetPassword__form button + button, .panelResetPassword__form .btn-group .panelWelcome__form button + button, .panelWelcome__form .btn-group .panelResetPassword__form button + button, .panelResetPassword__form .panelWelcome__form .btn-group button + button, .btn-group .panelLogin__form .panelResetPassword__form button + button, .panelResetPassword__form .btn-group .panelLogin__form button + button, .panelLogin__form .btn-group .panelResetPassword__form button + button, .panelResetPassword__form .panelLogin__form .btn-group button + button, .btn-group .panelRegister__form .panelResetPassword__form button + button, .panelResetPassword__form .btn-group .panelRegister__form button + button, .panelRegister__form .btn-group .panelResetPassword__form button + button, .panelResetPassword__form .panelRegister__form .btn-group button + button, .btn-group .panelResetPassword__form button + button, .panelResetPassword__form .btn-group button + button {
   margin-left: -1px;
 }
 
-.btn-group .btn + .button_to, .btn-group .panelWelcome__form button + .button_to, .panelWelcome__form .btn-group button + .button_to, .btn-group .panelLogin__form button + .button_to, .panelLogin__form .btn-group button + .button_to, .btn-group .panelRegister__form button + .button_to, .panelRegister__form .btn-group button + .button_to,
+.btn-group .btn + .button_to, .btn-group .panelWelcome__form button + .button_to, .panelWelcome__form .btn-group button + .button_to, .btn-group .panelLogin__form button + .button_to, .panelLogin__form .btn-group button + .button_to, .btn-group .panelRegister__form button + .button_to, .panelRegister__form .btn-group button + .button_to, .btn-group .panelResetPassword__form button + .button_to, .panelResetPassword__form .btn-group button + .button_to,
 .btn-group .button_to + .btn,
 .btn-group .panelWelcome__form .button_to + button, .panelWelcome__form
 .btn-group .button_to + button,
 .btn-group .panelLogin__form .button_to + button, .panelLogin__form
 .btn-group .button_to + button,
 .btn-group .panelRegister__form .button_to + button, .panelRegister__form
+.btn-group .button_to + button,
+.btn-group .panelResetPassword__form .button_to + button, .panelResetPassword__form
 .btn-group .button_to + button,
 .btn-group .button_to + .button_to {
   margin-left: -1px;
@@ -5007,16 +5013,16 @@ input::-webkit-inner-spin-button {
   float: left;
 }
 
-.btn-group .button_to .btn, .btn-group .button_to .panelWelcome__form button, .panelWelcome__form .btn-group .button_to button, .btn-group .button_to .panelLogin__form button, .panelLogin__form .btn-group .button_to button, .btn-group .button_to .panelRegister__form button, .panelRegister__form .btn-group .button_to button {
+.btn-group .button_to .btn, .btn-group .button_to .panelWelcome__form button, .panelWelcome__form .btn-group .button_to button, .btn-group .button_to .panelLogin__form button, .panelLogin__form .btn-group .button_to button, .btn-group .button_to .panelRegister__form button, .panelRegister__form .btn-group .button_to button, .btn-group .button_to .panelResetPassword__form button, .panelResetPassword__form .btn-group .button_to button {
   border-radius: 0;
 }
 
-.btn-group .button_to:first-child .btn, .btn-group .button_to:first-child .panelWelcome__form button, .panelWelcome__form .btn-group .button_to:first-child button, .btn-group .button_to:first-child .panelLogin__form button, .panelLogin__form .btn-group .button_to:first-child button, .btn-group .button_to:first-child .panelRegister__form button, .panelRegister__form .btn-group .button_to:first-child button {
+.btn-group .button_to:first-child .btn, .btn-group .button_to:first-child .panelWelcome__form button, .panelWelcome__form .btn-group .button_to:first-child button, .btn-group .button_to:first-child .panelLogin__form button, .panelLogin__form .btn-group .button_to:first-child button, .btn-group .button_to:first-child .panelRegister__form button, .panelRegister__form .btn-group .button_to:first-child button, .btn-group .button_to:first-child .panelResetPassword__form button, .panelResetPassword__form .btn-group .button_to:first-child button {
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
 }
 
-.btn-group .button_to:last-child .btn, .btn-group .button_to:last-child .panelWelcome__form button, .panelWelcome__form .btn-group .button_to:last-child button, .btn-group .button_to:last-child .panelLogin__form button, .panelLogin__form .btn-group .button_to:last-child button, .btn-group .button_to:last-child .panelRegister__form button, .panelRegister__form .btn-group .button_to:last-child button {
+.btn-group .button_to:last-child .btn, .btn-group .button_to:last-child .panelWelcome__form button, .panelWelcome__form .btn-group .button_to:last-child button, .btn-group .button_to:last-child .panelLogin__form button, .panelLogin__form .btn-group .button_to:last-child button, .btn-group .button_to:last-child .panelRegister__form button, .panelRegister__form .btn-group .button_to:last-child button, .btn-group .button_to:last-child .panelResetPassword__form button, .panelResetPassword__form .btn-group .button_to:last-child button {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -5025,6 +5031,7 @@ input::-webkit-inner-spin-button {
 .btn-group + .btn, .panelWelcome__form
 .btn-group + button, .panelLogin__form
 .btn-group + button, .panelRegister__form
+.btn-group + button, .panelResetPassword__form
 .btn-group + button {
   margin-left: 5px;
 }
@@ -6230,5 +6237,173 @@ a.tabnav-extra:hover {
 }
 
 .panelRegister__icon {
+  font-size: 3em;
+}
+
+.panelResetPassword {
+  transition: -webkit-transform 0.36s ease;
+  transition: transform 0.36s ease;
+  position: absolute;
+  max-width: 530px;
+  width: 100%;
+  height: auto;
+  top: calc(50% - 158.5px);
+  right: 0;
+  left: 0;
+  z-index: 100;
+  opacity: 1;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  box-shadow: 0 60px 80px 0 rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  -webkit-transform: scale(1, 1);
+      -ms-transform: scale(1, 1);
+          transform: scale(1, 1);
+}
+
+.panelResetPassword.-hidden {
+  opacity: 0;
+  z-index: 0;
+  -webkit-transform: scale(0.5, 0.5);
+      -ms-transform: scale(0.5, 0.5);
+          transform: scale(0.5, 0.5);
+}
+
+.panelResetPassword__wrapper {
+  position: relative;
+  padding: 20px;
+}
+
+.panelResetPassword__title {
+  font-family: Lato, sans-serif;
+  font-weight: 300;
+  line-height: 26px;
+  margin-bottom: 15px;
+  font-size: 25.5px;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.panelResetPassword__text {
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  max-width: 350px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: 1.25px;
+  text-align: center;
+  color: #999;
+}
+
+.panelResetPassword__alert {
+  font-family: Lato, sans-serif;
+  font-weight: 400;
+  margin: 0 auto;
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 1.35px;
+  text-align: left;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.panelResetPassword__alert i {
+  margin-right: 4px;
+}
+
+.panelResetPassword__alert.-info {
+  color: darkred;
+}
+
+.panelResetPassword__alert.-danger {
+  color: firebrick;
+}
+
+.panelResetPassword__alert.-success {
+  color: forestgreen;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.panelResetPassword__alert.-hidden {
+  display: none;
+}
+
+.panelResetPassword__form {
+  padding: 5px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.panelResetPassword__form input {
+  font-weight: 400;
+  max-width: 300px;
+  width: 100%;
+  display: block;
+  margin: 5px auto;
+  padding: 8px 10px;
+  border-radius: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid blue;
+  font-size: 16px;
+}
+
+.panelResetPassword__form input:focus {
+  border-bottom: 1px solid deepskyblue;
+}
+
+.panelResetPassword__form button {
+  margin-top: 20px;
+  border-color: #3949ab;
+  padding: 10px 20px;
+  background: #3949ab;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(250, 198, 100, 0.27) 100%), #2976df;
+}
+
+.panelResetPassword__form button:hover {
+  background: #4152d2;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(250, 198, 100, 0.27) 100%), #2e8bff;
+}
+
+.panelResetPassword__navigation {
+  margin-top: 20px;
+}
+
+.panelResetPassword__ToLogin {
+  margin-left: 5px;
+}
+
+.panelResetPassword__ToLogin:hover {
+  text-decoration: underline;
+}
+
+.panelResetPassword__close {
+  transition: opacity 0.36s ease;
+  position: absolute;
+  top: 0px;
+  right: 3px;
+  color: #222222;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.panelResetPassword__close:hover {
+  opacity: 0.8;
+}
+
+.panelResetPassword__close .panelResetPassword__icon {
+  font-size: 1.8em !important;
+}
+
+.panelResetPassword__icon {
   font-size: 3em;
 }
