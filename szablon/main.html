@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
     <script>
       document.write('<script src="http://'
               + (location.host || 'localhost').split(':')[0]
@@ -40,23 +40,51 @@
       <div class="header__switcher -hidden">
         <div class="background"></div>
         <ul class="header__panel">
-          <li id="panel-loginButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
-                <div class="header__buttonIcon fa fa-sign-in"></div></span>Logowanie</span></li>
-          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
-                <div class="header__buttonIcon fa fa-sign-in"></div></span>Rejestracja</span></li>
-          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
-                <div class="header__buttonIcon fa fa-sign-in"></div></span>Odzyskaj konto</span></li>
-          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
-                <div class="header__buttonIcon fa fa-power-off"></div></span>Wyloguj</span></li>
-          <li class="header__item"><span class="header__button"><span class="header__buttonIconBG">
-                <div class="header__buttonIcon fa fa-sign-in"></div></span>Ustawienia</span></li>
+          <li id="panel-autobusyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-bus"></div></span>Autobusy</span></li>
+          <li id="panel-przystankiButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-map-signs"></div></span>Przystanki</span></li>
+          <li id="panel-trasyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-road"></div></span>Trasy</span></li>
+          <li id="panel-uzytkownicyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-users"></div></span>Użytkownicy</span></li>
+          <li id="panel-kontroleButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-eye"></div></span>Kontrole</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="headerProfile">
+      <div class="headerProfile__corner"></div>
+      <div class="headerProfile__switcher -hidden">
+        <div class="background"></div>
+        <ul class="headerProfile__panel">
+          <li id="panel-loginButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-power-off"></div></span>Logowanie</span></li>
+          <li id="panel-registerButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-sign-in"></div></span>Rejestracja</span></li>
+          <li id="panel-odzyskajKontoButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-key"></div></span>Odzyskaj konto</span></li>
+          <li id="panel-mojeKontoButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-user"></div></span>Moje Konto</span></li>
+          <li id="panel-ustawieniaButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-cogs"></div></span>Ustawienia</span></li>
+          <li id="panel-wylogujButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-sign-out"></div></span>Wyloguj</span></li>
         </ul>
       </div>
     </div>
     <div class="googleMaps">
       <div id="googleMaps" class="googleMaps__API"></div>
     </div>
-    <div class="panelLogin -hidden">
+    <div class="panelWelcome panel">
+      <div class="panelWelcome__wrapper"><span class="panelWelcome__buttonIconBG">
+          <div class="panelWelcome__buttonIcon fa fa-bus"></div></span>
+        <div class="panelWelcome__title">Witaj w systemie MPK</div>
+        <div class="panelWelcome__text">Projekt zespołowy.</div>
+        <div class="panelWelcome__navigation"><a href="#">Logowanie</a><a href="#">Rejestracja</a></div><span class="panelWelcome__close"><span class="panelWelcome__icon fa fa-times"></span></span>
+      </div>
+    </div>
+    <div class="panelLogin panel -hidden">
       <div class="panelLogin__wrapper">
         <div class="panelLogin__title">Panel Logowania</div>
         <div class="panelLogin__text">Prosze podać dane do logowania.</div>
