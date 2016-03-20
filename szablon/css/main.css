@@ -5977,12 +5977,12 @@ a.tabnav-extra:hover {
   max-width: 530px;
   width: 100%;
   height: auto;
-  top: calc(50% - 158.5px);
+  top: calc(50% - 187.5px);
   right: 0;
   left: 0;
   z-index: 100;
   opacity: 1;
-  margin: 50px auto 0;
+  margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid white;
   border-radius: 5px;
@@ -6006,6 +6006,7 @@ a.tabnav-extra:hover {
   .panelLogin {
     max-width: 100%;
     position: relative;
+    margin: 50px auto 0;
   }
 }
 
@@ -6082,13 +6083,17 @@ a.tabnav-extra:hover {
 }
 
 .panelLogin__form i {
-  font-size: 20px;
-  position: relative;
+  font-size: 1.5em;
+  line-height: 30px;
+  position: absolute;
   z-index: 1;
-  left: -140px;
-  top: -28px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   color: #7B7B7B;
-  width: 0;
+  text-align: center;
+  width: 30px;
 }
 
 .panelLogin__form input {
@@ -6124,20 +6129,25 @@ a.tabnav-extra:hover {
 }
 
 .panelLogin__form label {
+  margin-top: 5px;
+  display: inline-block;
+  height: 30px;
   cursor: pointer;
   color: #9C969C;
   font-weight: 400;
   max-width: 300px;
+  line-height: 30px;
 }
 
 .panelLogin__form label .icon {
+  line-height: 30px;
   width: 17px;
   height: 18px;
   border-radius: 2px;
   position: relative;
   display: inline-block;
   border: 1px solid;
-  top: 3px;
+  top: 5px;
 }
 
 .panelLogin__form label .icon:before, .panelLogin__form label .icon:after {
@@ -6203,6 +6213,12 @@ a.tabnav-extra:hover {
 
 .panelLogin__form button:hover {
   background: #98D3EA;
+}
+
+.panelLogin__formwrapper {
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .panelLogin__navigation {

@@ -27,26 +27,22 @@ html( lang="pl")
       .panelLogin__wrapper
         .panelLogin__title Panel logowania
         .panelLogin__alert.-info.-hidden
-<<<<<<< HEAD
-          i.fa.fa-info-circle
-          | Konto o takim emailu nie istnieje.
-=======
           h3
             i.fa.fa-warning
             |Uwaga!
           |Konto o takim adresie e-mail nie istnieje.
-
->>>>>>> 9ed95c84df9d1049df4db02e0716526b657a44af
         .panelLogin__alert.-danger.-hidden
           i.fa.fa-info-circle
           | Hasło przypisane do tego emailu, jest nie poprawne.
 
 
         .panelLogin__form
-          input(placeholder="twój e-mail")
-          i.fa.fa-envelope-o
-          input(type='password' placeholder="hasło")
-          i.fa.fa-lock
+          .panelLogin__formwrapper
+            input(placeholder="twój e-mail")
+            i.fa.fa-envelope-o
+          .panelLogin__formwrapper
+            input(type='password' placeholder="hasło")
+            i.fa.fa-lock
           .remembermebox
             input(type="checkbox" checked).check#check
             label(for="check")

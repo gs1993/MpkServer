@@ -6,17 +6,17 @@
   max-width: 530px
   width: 100%
   height: auto
-  top: calc(50% - 158.5px)
+  top: calc(50% - 187.5px)
   right: 0
   left: 0
   z-index: 100
   opacity: 1
 
-  margin: 50px auto 0
+  margin: 0 auto
   background-color: rgba(255, 255, 255, 0.95)
   border: 1px solid rgba(255, 255, 255, 1)
   border-radius: 5px
-  box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.45)
+  box-shadow: 0px 0px 45px 0px rgba(0, 0, 0, 0.45)
 
   overflow: hidden
 
@@ -30,6 +30,7 @@
   +PHONE_ONLY
     max-width: 100%
     position: relative
+    margin: 50px auto 0
 
   &__wrapper
     position: relative
@@ -86,13 +87,17 @@
     margin: 0 auto
     text-align: center
     i
-      font-size: 20px
-      position: relative
+      font-size: 1.5em
+      line-height: 30px
+      position: absolute
       z-index: 1
-      left: -140px
-      top: -28px
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
       color: #7B7B7B
-      width: 0
+      text-align: center
+      width: 30px
 
     input
       background: transparent
@@ -121,35 +126,40 @@
       margin-bottom: 20px
 
     label
+      margin-top: 5px
+      display: inline-block
+      height: 30px
       cursor: pointer
 
       color: #9C969C
       font-weight: 400
       max-width: 300px
+      line-height: 30px
       .icon
+        line-height: 30px
         width: 17px
         height: 18px
         border-radius: 2px
         position: relative
         display: inline-block
         border: 1px solid
-        top: 3px
-      .icon:before,.icon:after
-        content: ''
-        width: 10px
-        height: 2px
-        background: white
-        position: absolute
-        transition: all .2s ease-in-out 0s
-      .icon:before
-        left: 3px
-        width: 5px
-        bottom: 6px
-        transform: scale(0) rotate(0)
-      .icon:after
-        top: 6px
-        right: 0
-        transform: scale(0) rotate(0)
+        top: 5px
+        &:before, &:after
+          content: ''
+          width: 10px
+          height: 2px
+          background: white
+          position: absolute
+          transition: all .2s ease-in-out 0s
+        &:before
+          left: 3px
+          width: 5px
+          bottom: 6px
+          transform: scale(0) rotate(0)
+        &:after
+          top: 6px
+          right: 0
+          transform: scale(0) rotate(0)
 
     .check
       display: none
@@ -161,7 +171,6 @@
         transform: scale(1) rotate(45deg)
       .icon:after
         transform: scale(1) rotate(-45deg)
-
 
     button
       text-transform: uppercase
@@ -175,14 +184,17 @@
       &:hover
         background: #98D3EA
 
-
+  &__formwrapper
+    position: relative
+    max-width: 300px
+    margin: 0 auto
 
   &__navigation
     margin-top: 20px
   &__ToRegister
-      margin-left: 5px
-      &:hover
-        text-decoration: underline
+    margin-left: 5px
+    &:hover
+      text-decoration: underline
   &__close
     transition: opacity 0.36s ease
     position: absolute
