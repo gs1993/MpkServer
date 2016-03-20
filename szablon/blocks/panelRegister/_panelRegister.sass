@@ -12,7 +12,7 @@
   z-index: 100
   opacity: 1
 
-  margin: 0 auto
+  margin: 50px auto 0
   background-color: rgba(255, 255, 255, 1)
   border: 1px solid rgba(255, 255, 255, 0.5)
   border-radius: 5px
@@ -21,11 +21,14 @@
   overflow: hidden
 
   transform: scale(1, 1)
-
+  +PHONE_ONLY
+    max-width: 100%
+    position: relative
   &.-hidden
     opacity: 0
     z-index: 0
     transform: scale(0.5, 0.5)
+    display: none
 
   &__wrapper
     position: relative

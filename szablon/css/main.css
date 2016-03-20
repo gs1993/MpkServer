@@ -5592,6 +5592,7 @@ a.tabnav-extra:hover {
       -ms-transform: scale(1, 1);
           transform: scale(1, 1);
   opacity: 1;
+  overflow-y: scroll;
 }
 
 .header__switcher.-hidden {
@@ -5686,6 +5687,7 @@ a.tabnav-extra:hover {
       -ms-transform: scale(1, 1);
           transform: scale(1, 1);
   opacity: 1;
+  overflow-y: scroll;
 }
 
 .headerProfile__switcher.-hidden {
@@ -5752,7 +5754,7 @@ a.tabnav-extra:hover {
   height: 38px;
   top: 4px;
   right: 50px;
-  z-index: 103;
+  z-index: 100;
   margin: 0 auto;
   background-color: rgba(57, 73, 171, 0.8);
   border-radius: 5px;
@@ -5804,7 +5806,7 @@ a.tabnav-extra:hover {
   left: 0;
   z-index: 100;
   opacity: 1;
-  margin: 0 auto;
+  margin: 50px auto 0;
   background-color: white;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
@@ -5815,12 +5817,20 @@ a.tabnav-extra:hover {
           transform: scale(1, 1);
 }
 
+@media (max-width: 767px) {
+  .panelWelcome {
+    position: relative;
+    max-width: 100%;
+  }
+}
+
 .panelWelcome.-hidden {
   opacity: 0;
   z-index: 0;
   -webkit-transform: scale(0.5, 0.5);
       -ms-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
+  display: none;
 }
 
 .panelWelcome__wrapper {
@@ -5972,7 +5982,7 @@ a.tabnav-extra:hover {
   left: 0;
   z-index: 100;
   opacity: 1;
-  margin: 0 auto;
+  margin: 50px auto 0;
   background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid white;
   border-radius: 5px;
@@ -5989,6 +5999,14 @@ a.tabnav-extra:hover {
   -webkit-transform: scale(0.5, 0.5);
       -ms-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .panelLogin {
+    max-width: 100%;
+    position: relative;
+  }
 }
 
 .panelLogin__wrapper {
@@ -6233,7 +6251,7 @@ a.tabnav-extra:hover {
   left: 0;
   z-index: 100;
   opacity: 1;
-  margin: 0 auto;
+  margin: 50px auto 0;
   background-color: white;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
@@ -6244,12 +6262,20 @@ a.tabnav-extra:hover {
           transform: scale(1, 1);
 }
 
+@media (max-width: 767px) {
+  .panelRegister {
+    max-width: 100%;
+    position: relative;
+  }
+}
+
 .panelRegister.-hidden {
   opacity: 0;
   z-index: 0;
   -webkit-transform: scale(0.5, 0.5);
       -ms-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
+  display: none;
 }
 
 .panelRegister__wrapper {
@@ -6401,7 +6427,7 @@ a.tabnav-extra:hover {
   left: 0;
   z-index: 100;
   opacity: 1;
-  margin: 0 auto;
+  margin: 50px auto 0;
   background-color: white;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
@@ -6412,12 +6438,20 @@ a.tabnav-extra:hover {
           transform: scale(1, 1);
 }
 
+@media (max-width: 767px) {
+  .panelResetPassword {
+    max-width: 100%;
+    position: relative;
+  }
+}
+
 .panelResetPassword.-hidden {
   opacity: 0;
   z-index: 0;
   -webkit-transform: scale(0.5, 0.5);
       -ms-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
+  display: none;
 }
 
 .panelResetPassword__wrapper {
@@ -6762,7 +6796,7 @@ a.tabnav-extra:hover {
   left: 0;
   z-index: 100;
   opacity: 1;
-  margin: 50px auto;
+  margin: 50px auto 0;
   background-color: white;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 5px;
@@ -6785,6 +6819,7 @@ a.tabnav-extra:hover {
   -webkit-transform: scale(0.5, 0.5);
       -ms-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
+  display: none;
 }
 
 .panelAutobusy__wrapper {
@@ -6995,9 +7030,9 @@ a.tabnav-extra:hover {
 
 @media (max-width: 767px) {
   .panelAutobusy__navigation {
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
