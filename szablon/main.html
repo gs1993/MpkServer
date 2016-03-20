@@ -89,13 +89,15 @@
     </div>
     <div class="panelLogin panel -hidden">
       <div class="panelLogin__wrapper">
-        <div class="panelLogin__title">Panel Logowania</div>
-        <div class="panelLogin__alert -info -hidden"><i class="fa fa-info-circle"></i>Konto o takim emailu nie istnieje.</div>
+        <div class="panelLogin__title">Panel logowania</div>
+        <div class="panelLogin__alert -info -hidden">
+          <h3><i class="fa fa-warning"></i>Uwaga!</h3>Konto o takim adresie e-mail nie istnieje.
+        </div>
         <div class="panelLogin__alert -danger -hidden"><i class="fa fa-info-circle"></i>Hasło przypisane do tego emailu, jest nie poprawne.</div>
         <div class="panelLogin__form">
-          <input placeholder="Email">
-          <input type="password" placeholder="Hasło">
-          <div class="form-checkbox">
+          <input placeholder="twój e-mail"><i class="fa fa-envelope-o"></i>
+          <input type="password" placeholder="hasło"><i class="fa fa-lock"></i>
+          <div class="remembermebox">
             <input type="checkbox" checked id="check" class="check">
             <label for="check"><span class="icon"></span> Zapamiętaj mnie</label>
           </div>
