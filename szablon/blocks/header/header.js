@@ -32,4 +32,8 @@ $(document).ready(function () {
   $('#panel-odzyskajKontoButton').on("click", function () {
     $('.panelResetPassword').toggleClass('-hidden');
   });
+
+  $('#panel-autobusyButton').on("click", function () {
+    $('.panelAutobusy').toggleClass('-hidden');
+  });
 });
