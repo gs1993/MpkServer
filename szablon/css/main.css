@@ -6609,8 +6609,7 @@ a.tabnav-extra:hover {
 
 .panelList__content {
   border: 1px solid #D2E3E9;
-  height: 100%;
-  max-height: 300px;
+  height: auto;
   overflow-y: scroll;
 }
 
@@ -6787,8 +6786,8 @@ a.tabnav-extra:hover {
 .panelAutobusy {
   transition: -webkit-transform 0.36s ease;
   transition: transform 0.36s ease;
-  position: absolute;
-  max-width: 900px;
+  position: relative;
+  max-width: 960px;
   width: 100%;
   height: auto;
   top: calc(50% - 307px);
