@@ -21,7 +21,7 @@ html( lang="pl")
 
     .panelLogin.panel.-hidden
       .panelLogin__wrapper
-        .panelLogin__title Panel Logowania
+        .panelLogin__title Panel logowania
         .panelLogin__alert.-info.-hidden
           i.fa.fa-info-circle
           |Konto o takim emailu nie istnieje.
@@ -29,9 +29,11 @@ html( lang="pl")
           i.fa.fa-info-circle
           | Hasło przypisane do tego emailu, jest nie poprawne.
         .panelLogin__form
-          input(placeholder="Email")
-          input(type='password' placeholder="Hasło")
-          .form-checkbox
+          input(placeholder="twój e-mail")
+          i.fa.fa-envelope-o
+          input(type='password' placeholder="hasło")
+          i.fa.fa-lock
+          .remembermebox
             input(type="checkbox" checked).check#check
             label(for="check")
               span.icon
