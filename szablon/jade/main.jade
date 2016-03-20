@@ -19,15 +19,22 @@ html( lang="pl")
           span.panelWelcome__icon.fa.fa-times
 
 
+
+
     .panelLogin.panel.-hidden
       .panelLogin__wrapper
         .panelLogin__title Panel logowania
         .panelLogin__alert.-info.-hidden
-          i.fa.fa-info-circle
-          |Konto o takim emailu nie istnieje.
+          h3
+            i.fa.fa-warning
+            |Uwaga!
+          |Konto o takim adresie e-mail nie istnieje.
+
         .panelLogin__alert.-danger.-hidden
           i.fa.fa-info-circle
           | Hasło przypisane do tego emailu, jest nie poprawne.
+
+
         .panelLogin__form
           input(placeholder="twój e-mail")
           i.fa.fa-envelope-o

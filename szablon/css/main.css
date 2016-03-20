@@ -5919,8 +5919,8 @@ a.tabnav-extra:hover {
   z-index: 100;
   opacity: 1;
   margin: 0 auto;
-  background-color: white;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid white;
   border-radius: 5px;
   box-shadow: 0px 0px 45px 0px rgba(0, 0, 0, 0.45);
   overflow: hidden;
@@ -5966,7 +5966,6 @@ a.tabnav-extra:hover {
 }
 
 .panelLogin__alert {
-  max-width: 300px;
   font-family: Lato, sans-serif;
   font-weight: 400;
   margin: 0 auto;
@@ -5976,6 +5975,9 @@ a.tabnav-extra:hover {
   text-align: left;
   color: #222;
   margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  border-left: 5px solid;
 }
 
 .panelLogin__alert i {
@@ -5983,7 +5985,9 @@ a.tabnav-extra:hover {
 }
 
 .panelLogin__alert.-info {
-  color: darkred;
+  color: #fff;
+  background: #dd4b39;
+  border-color: #c23321;
 }
 
 .panelLogin__alert.-danger {
@@ -5992,6 +5996,11 @@ a.tabnav-extra:hover {
 
 .panelLogin__alert.-hidden {
   display: none;
+}
+
+.panelLogin__alert h3 {
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 
 .panelLogin__form {
@@ -6011,6 +6020,7 @@ a.tabnav-extra:hover {
 }
 
 .panelLogin__form input {
+  background: transparent;
   box-shadow: none !important;
   outline: none;
   font-weight: 400;
