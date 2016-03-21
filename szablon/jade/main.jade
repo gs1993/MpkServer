@@ -25,23 +25,25 @@ html( lang="pl")
 
     .panelLogin.panel.-hidden
       .panelLogin__wrapper
-        .panelLogin__title Panel logowania
-        .panelLogin__alert.-info.-hidden
+        .panelLogin__title Panel Logowania
+        .panelLogin__alert.-info.hidden
           h3
             i.fa.fa-warning
-            |Uwaga!
-          |Konto o takim adresie e-mail nie istnieje.
-        .panelLogin__alert.-danger.-hidden
-          i.fa.fa-info-circle
+            | Uwaga!
+          | Konto o takim adresie e-mail nie istnieje.
+        .panelLogin__alert.-info.hidden
+          h3
+            i.fa.fa-warning
+            | Uwaga!
           | Hasło przypisane do tego emailu, jest nie poprawne.
 
 
         .panelLogin__form
           .panelLogin__formwrapper
-            input(placeholder="twój e-mail")
+            input(placeholder="E-mail")
             i.fa.fa-envelope-o
           .panelLogin__formwrapper
-            input(type='password' placeholder="hasło")
+            input(type='password' placeholder="Hasło")
             i.fa.fa-lock
           .remembermebox
             input(type="checkbox" checked).check#check
@@ -58,20 +60,35 @@ html( lang="pl")
       .panelRegister__wrapper
         .panelRegister__title Panel Rejestracji
         .panelRegister__alert.-info.-hidden
-          i.fa.fa-info-circle
+          h3
+            i.fa.fa-warning
+            | Uwaga!
           | Konto o takim emailu już istnieje.
         .panelRegister__alert.-info.-hidden
-          i.fa.fa-info-circle
+          h3
+            i.fa.fa-warning
+            | Uwaga!
           | Wprowadzone dane są nie poprawne.
         .panelRegister__alert.-danger.-hidden
-          i.fa.fa-info-circle
+          h3
+            i.fa.fa-warning
+            | Błąd!
           | Hasła nie są takie same.
         .panelRegister__alert.-success.-hidden
+          h3
+            i.fa.fa-info
+            | Informacja!
           | Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
         .panelRegister__form
-          input(placeholder="Email")
-          input(type='password' placeholder="Hasło")
-          input(type='password' placeholder="Potwierdz Hasło")
+          .panelLogin__formwrapper
+            input(placeholder="E-mail")
+            i.fa.fa-envelope-o
+          .panelLogin__formwrapper
+            input(type='password' placeholder="Hasło")
+            i.fa.fa-lock
+          .panelLogin__formwrapper
+            input(type='password' placeholder="Powtórz hasło")
+            i.fa.fa-lock
           button(type="submit") Zarajestuj
         span.panelRegister__close
           span.panelRegister__icon.fa.fa-times
