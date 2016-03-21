@@ -6705,7 +6705,7 @@ a.tabnav-extra:hover {
   overflow-y: scroll;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   .panelList__content {
     height: auto;
     overflow-y: hidden;
@@ -6958,7 +6958,11 @@ a.tabnav-extra:hover {
 
 @media (max-width: 1024px) {
   .panelAutobusy {
-    position: relative;
+    position: absolute !important;
+    width: 100% !important;
+    margin: 55px 0 0;
+    bottom: 0 !important;
+    top: 0 !important;
   }
 }
 
@@ -6972,7 +6976,8 @@ a.tabnav-extra:hover {
 }
 
 .panelAutobusy__list {
-  max-width: 900px;
+  max-width: 920px;
+  width: 100% !important;
 }
 
 .panelAutobusy__wrapper {

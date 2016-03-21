@@ -19,7 +19,11 @@
   overflow: hidden
   transform: scale(1, 1)
   +TAB_MAX
-    position: relative
+    position: absolute !important
+    width: 100% !important
+    margin: 55px 0 0
+    bottom: 0 !important
+    top: 0 !important
 
   &.-hidden
     opacity: 0
@@ -27,7 +31,8 @@
     transform: scale(0.5, 0.5)
     display: none
   &__list
-    max-width: 900px
+    max-width: 920px
+    width: 100% !important
   &__wrapper
     position: relative
     padding: 20px
