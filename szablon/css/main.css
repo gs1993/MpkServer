@@ -5790,6 +5790,14 @@ a.tabnav-extra:hover {
   }
 }
 
+#containerDrag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
 .panelWelcome {
   transition: -webkit-transform 0.36s ease;
   transition: transform 0.36s ease;

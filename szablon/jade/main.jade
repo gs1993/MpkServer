@@ -1,247 +1,248 @@
 doctype html
 html( lang="pl")
   include _head.jade
-  body
+  body#body
     include _header.jade
-    .googleMaps
-      .googleMaps__API#googleMaps
+    #containerDrag
+      .googleMaps
+        .googleMaps__API#googleMaps
 
 
-    .panelWelcome.panel
-      .panelWelcome__wrapper
-        span.panelWelcome__buttonIconBG
-          .panelWelcome__buttonIcon.fa.fa-bus
-        .panelWelcome__title Witaj w systemie MPK
-        .panelWelcome__text Projekt zespołowy.
-        .panelWelcome__navigation
-          //<a href="#" style="display:block;">Link #01</a>
-          a(href="#") Logowanie
-          a(href="#") Rejestracja
-        span.panelWelcome__close
-          span.panelWelcome__icon.fa.fa-times
+      .panelWelcome.panel
+        .panelWelcome__wrapper
+          span.panelWelcome__buttonIconBG
+            .panelWelcome__buttonIcon.fa.fa-bus
+          .panelWelcome__title Witaj w systemie MPK
+          .panelWelcome__text Projekt zespołowy.
+          .panelWelcome__navigation
+            //<a href="#" style="display:block;">Link #01</a>
+            a(href="#") Logowanie
+            a(href="#") Rejestracja
+          span.panelWelcome__close
+            span.panelWelcome__icon.fa.fa-times
 
 
 
 
-    .panelLogin.panel.-hidden
-      .panelLogin__wrapper
-        .panelLogin__title Panel Logowania
-        .panelLogin__alert.-info.hidden
-          h3
-            i.fa.fa-warning
-            | Uwaga!
-          | Konto o takim adresie e-mail nie istnieje.
-        .panelLogin__alert.-info.hidden
-          h3
-            i.fa.fa-warning
-            | Uwaga!
-          | Hasło przypisane do tego emailu, jest nie poprawne.
+      .panelLogin.panel.-hidden
+        .panelLogin__wrapper
+          .panelLogin__title Panel Logowania
+          .panelLogin__alert.-info.hidden
+            h3
+              i.fa.fa-warning
+              | Uwaga!
+            | Konto o takim adresie e-mail nie istnieje.
+          .panelLogin__alert.-info.hidden
+            h3
+              i.fa.fa-warning
+              | Uwaga!
+            | Hasło przypisane do tego emailu, jest nie poprawne.
 
 
-        .panelLogin__form
-          .panelLogin__formwrapper
-            input(placeholder="E-mail")
-            i.fa.fa-envelope-o
-          .panelLogin__formwrapper
-            input(type='password' placeholder="Hasło")
-            i.fa.fa-lock
-          .remembermebox
-            input(type="checkbox" checked).check#check
-            label(for="check")
-              span.icon
-              |  Zapamiętaj mnie
-          button(type="submit") Zaloguj się
-        span.panelLogin__close
-          span.panelLogin__icon.fa.fa-times
-        .panelLogin__navigation Nie masz konta?
-          a(href="#").panelLogin__ToRegister Zarejestruj się.
+          .panelLogin__form
+            .panelLogin__formwrapper
+              input(placeholder="E-mail")
+              i.fa.fa-envelope-o
+            .panelLogin__formwrapper
+              input(type='password' placeholder="Hasło")
+              i.fa.fa-lock
+            .remembermebox
+              input(type="checkbox" checked).check#check
+              label(for="check")
+                span.icon
+                |  Zapamiętaj mnie
+            button(type="submit") Zaloguj się
+          span.panelLogin__close
+            span.panelLogin__icon.fa.fa-times
+          .panelLogin__navigation Nie masz konta?
+            a(href="#").panelLogin__ToRegister Zarejestruj się.
 
-    .panelRegister.panel.-hidden
-      .panelRegister__wrapper
-        .panelRegister__title Panel Rejestracji
-        .panelRegister__alert.-info.-hidden
-          h3
-            i.fa.fa-warning
-            | Uwaga!
-          | Konto o takim emailu już istnieje.
-        .panelRegister__alert.-info.-hidden
-          h3
-            i.fa.fa-warning
-            | Uwaga!
-          | Wprowadzone dane są nie poprawne.
-        .panelRegister__alert.-danger.-hidden
-          h3
-            i.fa.fa-warning
-            | Błąd!
-          | Hasła nie są takie same.
-        .panelRegister__alert.-success.-hidden
-          h3
-            i.fa.fa-info
-            | Informacja!
-          | Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
-        .panelRegister__form
-          .panelRegister__formwrapper
-            input(placeholder="E-mail")
-            i.fa.fa-envelope-o
-          .panelRegister__formwrapper
-            input(type='password' placeholder="Hasło")
-            i.fa.fa-lock
-          .panelRegister__formwrapper
-            input(type='password' placeholder="Powtórz hasło")
-            i.fa.fa-lock
-          button(type="submit") Zarajestuj
-        span.panelRegister__close
-          span.panelRegister__icon.fa.fa-times
-        .panelRegister__navigation Masz już konto?
-          a(href="#").panelRegister__ToLogin Zaloguj się.
+      .panelRegister.panel.-hidden
+        .panelRegister__wrapper
+          .panelRegister__title Panel Rejestracji
+          .panelRegister__alert.-info.-hidden
+            h3
+              i.fa.fa-warning
+              | Uwaga!
+            | Konto o takim emailu już istnieje.
+          .panelRegister__alert.-info.-hidden
+            h3
+              i.fa.fa-warning
+              | Uwaga!
+            | Wprowadzone dane są nie poprawne.
+          .panelRegister__alert.-danger.-hidden
+            h3
+              i.fa.fa-warning
+              | Błąd!
+            | Hasła nie są takie same.
+          .panelRegister__alert.-success.-hidden
+            h3
+              i.fa.fa-info
+              | Informacja!
+            | Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
+          .panelRegister__form
+            .panelRegister__formwrapper
+              input(placeholder="E-mail")
+              i.fa.fa-envelope-o
+            .panelRegister__formwrapper
+              input(type='password' placeholder="Hasło")
+              i.fa.fa-lock
+            .panelRegister__formwrapper
+              input(type='password' placeholder="Powtórz hasło")
+              i.fa.fa-lock
+            button(type="submit") Zarajestuj
+          span.panelRegister__close
+            span.panelRegister__icon.fa.fa-times
+          .panelRegister__navigation Masz już konto?
+            a(href="#").panelRegister__ToLogin Zaloguj się.
 
-    .panelResetPassword.panel.-hidden
-      .panelResetPassword__wrapper
-        .panelResetPassword__title Panel Odzyskiwania Hasła
-        .panelResetPassword__alert.-info.-hidden
-          h3
-            i.fa.fa-warning
-            | Uwaga!
-          | Nie ma takiego konta.
-        .panelResetPassword__alert.-success.-hidden
-          h3
-            i.fa.fa-info
-            | Informacja!
-          | Na wskazany email został wysłany link weryfikacyjny.
-        .panelResetPassword__alert.-success.-hidden
-          h3
-            i.fa.fa-info
-            | Informacja!
-          | Nowe hasło zostało ustawione. Możesz się teraz
-        .panelResetPassword__alert.-info.-hidden
-          h3
-            i.fa.fa-warning
-            | Informacja!
-          | Hasła nie są takie same.
-          a(href="#").panelResetPassword__ToLogin zalogować
-          | .
-        .panelResetPassword__form
-          .panelResetPassword__formwrapper
-            input(placeholder="E-mail")
-            i.fa.fa-envelope-o
-            button(type="submit") Odzyskaj hasło
-        .panelResetPassword__form
-          .panelResetPassword__formwrapper
-            input(type='password' placeholder="Hasło")
-            i.fa.fa-lock
-          .panelResetPassword__formwrapper
-            input(type='password' placeholder="Powtórz hasło")
-            i.fa.fa-lock
-          button(type="submit") Zatwierdz nowe hasło
-        span.panelResetPassword__close
-          span.panelResetPassword__icon.fa.fa-times
-        .panelResetPassword__navigation Nie masz konta?
-          a(href="#").panelResetPassword__ToRegister Zarejestruj się.
+      .panelResetPassword.panel.-hidden
+        .panelResetPassword__wrapper
+          .panelResetPassword__title Panel Odzyskiwania Hasła
+          .panelResetPassword__alert.-info.-hidden
+            h3
+              i.fa.fa-warning
+              | Uwaga!
+            | Nie ma takiego konta.
+          .panelResetPassword__alert.-success.-hidden
+            h3
+              i.fa.fa-info
+              | Informacja!
+            | Na wskazany email został wysłany link weryfikacyjny.
+          .panelResetPassword__alert.-success.-hidden
+            h3
+              i.fa.fa-info
+              | Informacja!
+            | Nowe hasło zostało ustawione. Możesz się teraz
+          .panelResetPassword__alert.-info.-hidden
+            h3
+              i.fa.fa-warning
+              | Informacja!
+            | Hasła nie są takie same.
+            a(href="#").panelResetPassword__ToLogin zalogować
+            | .
+          .panelResetPassword__form
+            .panelResetPassword__formwrapper
+              input(placeholder="E-mail")
+              i.fa.fa-envelope-o
+              button(type="submit") Odzyskaj hasło
+          .panelResetPassword__form
+            .panelResetPassword__formwrapper
+              input(type='password' placeholder="Hasło")
+              i.fa.fa-lock
+            .panelResetPassword__formwrapper
+              input(type='password' placeholder="Powtórz hasło")
+              i.fa.fa-lock
+            button(type="submit") Zatwierdz nowe hasło
+          span.panelResetPassword__close
+            span.panelResetPassword__icon.fa.fa-times
+          .panelResetPassword__navigation Nie masz konta?
+            a(href="#").panelResetPassword__ToRegister Zarejestruj się.
 
 
-    .panelAutobusy.panel.-hidden
-      .panelAutobusy__wrapper
-        .panelAutobusy__title Panel Zarządzania Autobusami
-        .panelAutobusy__subtitle Zarządzanie flotą autobusów.
-        .panelAutobusy__navigation
-          a(href="#").panelAutobusy__navigation__item Lista Autobusów
-          a(href="#").panelAutobusy__navigation__item Dodaj Autobus
-        .panelAutobusy__content
-          .panelAutobusy__content__Title Lista Autobusów
-          .panelAutobusy__content__Filtr
-            .panelAutobusy__content__Filtr__item
-              input(placeholder="Szukaj autobusu...")
-            .panelAutobusy__content__Filtr__item
-              input(placeholder="Filtr Stanów autobusu")
-            .panelAutobusy__content__Filtr__item
-              input(placeholder="Typ autobusu")
-            .panelAutobusy__content__Filtr__item
-              input(placeholder="Biletomat")
-          .panelAutobusy__contentList
+      .panelAutobusy.panel.-hidden
+        .panelAutobusy__wrapper
+          .panelAutobusy__title Panel Zarządzania Autobusami
+          .panelAutobusy__subtitle Zarządzanie flotą autobusów.
+          .panelAutobusy__navigation
+            a(href="#").panelAutobusy__navigation__item Lista Autobusów
+            a(href="#").panelAutobusy__navigation__item Dodaj Autobus
+          .panelAutobusy__content
+            .panelAutobusy__content__Title Lista Autobusów
+            .panelAutobusy__content__Filtr
+              .panelAutobusy__content__Filtr__item
+                input(placeholder="Szukaj autobusu...")
+              .panelAutobusy__content__Filtr__item
+                input(placeholder="Filtr Stanów autobusu")
+              .panelAutobusy__content__Filtr__item
+                input(placeholder="Typ autobusu")
+              .panelAutobusy__content__Filtr__item
+                input(placeholder="Biletomat")
+            .panelAutobusy__contentList
 
-          .panelList
-            .panelList__header
-              .panelList__headeritemType Typ
-              .panelList__headeritemName Numer Autobusu
-              .panelList__headeritemStatus Status
-              .panelList__headeritemBiletomat Biletomat
-              .panelList__headeritemnavigation
-            .panelList__content
-              .panelList__item
-                .panelList__itemType
-                  .fa.fa-bus
-                .panelList__itemName 102
-                .panelList__itemStatus Aktywny
-                .panelList__itemBiletomat
-                  .fa.fa-times-circle-o
-                .panelList__navigation Zobacz szczegóły
-              .panelList__item
-                .panelList__itemType
-                  .fa.fa-bus
-                .panelList__itemName 103
-                .panelList__itemStatus Aktywny
-                .panelList__itemBiletomat
-                  .fa.fa-times-circle-o
-                .panelList__navigation Zobacz szczegóły
-              .panelList__item
-                .panelList__itemType
-                  .fa.fa-bus
-                .panelList__itemName 5
-                .panelList__itemStatus Aktywny
-                .panelList__itemBiletomat
-                  .fa.fa-times-circle-o
-                .panelList__navigation Zobacz szczegóły
-              .panelList__item
-                .panelList__itemType
-                  .fa.fa-bus
-                .panelList__itemName 6
-                .panelList__itemStatus Aktywny
-                .panelList__itemBiletomat
-                  .fa.fa-times-circle-o
-                .panelList__navigation Zobacz szczegóły
-              .panelList__item
-                .panelList__itemType
-                  .fa.fa-bus
-                .panelList__itemName 7
-                .panelList__itemStatus Aktywny
-                .panelList__itemBiletomat
-                  .fa.fa-times-circle-o
-                .panelList__navigation Zobacz szczegóły
-              .panelList__item
-                .panelList__itemType
-                  .fa.fa-bus
-                .panelList__itemName 8
-                .panelList__itemStatus Aktywny
-                .panelList__itemBiletomat
-                  .fa.fa-times-circle-o
-                .panelList__navigation Zobacz szczegóły
-              .panelList__item
-                .panelList__itemType
-                  .fa.fa-bus
-                .panelList__itemName 9
-                .panelList__itemStatus Aktywny
-                .panelList__itemBiletomat
-                  .fa.fa-times-circle-o
-                .panelList__navigation Zobacz szczegóły
-              .panelList__item
-                .panelList__itemType
-                  .fa.fa-bus
-                .panelList__itemName 10
-                .panelList__itemStatus Aktywny
-                .panelList__itemBiletomat
-                  .fa.fa-times-circle-o
-                .panelList__navigation Zobacz szczegóły
-              .panelList__item
-                .panelList__itemType
-                  .fa.fa-bus
-                .panelList__itemName 11
-                .panelList__itemStatus Aktywny
-                .panelList__itemBiletomat
-                  .fa.fa-times-circle-o
-                .panelList__navigation Zobacz szczegóły
+            .panelList
+              .panelList__header
+                .panelList__headeritemType Typ
+                .panelList__headeritemName Numer Autobusu
+                .panelList__headeritemStatus Status
+                .panelList__headeritemBiletomat Biletomat
+                .panelList__headeritemnavigation
+              .panelList__content
+                .panelList__item
+                  .panelList__itemType
+                    .fa.fa-bus
+                  .panelList__itemName 102
+                  .panelList__itemStatus Aktywny
+                  .panelList__itemBiletomat
+                    .fa.fa-times-circle-o
+                  .panelList__navigation Zobacz szczegóły
+                .panelList__item
+                  .panelList__itemType
+                    .fa.fa-bus
+                  .panelList__itemName 103
+                  .panelList__itemStatus Aktywny
+                  .panelList__itemBiletomat
+                    .fa.fa-times-circle-o
+                  .panelList__navigation Zobacz szczegóły
+                .panelList__item
+                  .panelList__itemType
+                    .fa.fa-bus
+                  .panelList__itemName 5
+                  .panelList__itemStatus Aktywny
+                  .panelList__itemBiletomat
+                    .fa.fa-times-circle-o
+                  .panelList__navigation Zobacz szczegóły
+                .panelList__item
+                  .panelList__itemType
+                    .fa.fa-bus
+                  .panelList__itemName 6
+                  .panelList__itemStatus Aktywny
+                  .panelList__itemBiletomat
+                    .fa.fa-times-circle-o
+                  .panelList__navigation Zobacz szczegóły
+                .panelList__item
+                  .panelList__itemType
+                    .fa.fa-bus
+                  .panelList__itemName 7
+                  .panelList__itemStatus Aktywny
+                  .panelList__itemBiletomat
+                    .fa.fa-times-circle-o
+                  .panelList__navigation Zobacz szczegóły
+                .panelList__item
+                  .panelList__itemType
+                    .fa.fa-bus
+                  .panelList__itemName 8
+                  .panelList__itemStatus Aktywny
+                  .panelList__itemBiletomat
+                    .fa.fa-times-circle-o
+                  .panelList__navigation Zobacz szczegóły
+                .panelList__item
+                  .panelList__itemType
+                    .fa.fa-bus
+                  .panelList__itemName 9
+                  .panelList__itemStatus Aktywny
+                  .panelList__itemBiletomat
+                    .fa.fa-times-circle-o
+                  .panelList__navigation Zobacz szczegóły
+                .panelList__item
+                  .panelList__itemType
+                    .fa.fa-bus
+                  .panelList__itemName 10
+                  .panelList__itemStatus Aktywny
+                  .panelList__itemBiletomat
+                    .fa.fa-times-circle-o
+                  .panelList__navigation Zobacz szczegóły
+                .panelList__item
+                  .panelList__itemType
+                    .fa.fa-bus
+                  .panelList__itemName 11
+                  .panelList__itemStatus Aktywny
+                  .panelList__itemBiletomat
+                    .fa.fa-times-circle-o
+                  .panelList__navigation Zobacz szczegóły
 
-        span.panelAutobusy__close
-          span.panelAutobusy__icon.fa.fa-times
+          span.panelAutobusy__close
+            span.panelAutobusy__icon.fa.fa-times
 
 
 
