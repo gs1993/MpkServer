@@ -242,12 +242,26 @@ html( lang="pl")
           span.panelAutobusy__close
             span.panelAutobusy__icon.fa.fa-times
 
+
       .panelDodajAutobus__dragger
         .panelDodajAutobus.panel.-hidden.dragger
           .panelDodajAutobus__wrapper
             .panelDodajAutobus__title Dodaj Autobus
             .panelDodajAutobus__subtitle Panel dodawania nowych autobusów.
-
+            .panelDodajAutobus__content
+              .panelDodajAutobus__content__Title Dane Autobusu
+              .panelDodajAutobus__content__Filtr
+                .panelDodajAutobus__content__Filtr__item
+                  input(placeholder="Numer Rejestracyjny")
+                .panelDodajAutobus__content__Filtr__item
+                  input(placeholder="Numer Autobusu")
+                .panelDodajAutobus__content__Filtr__item
+                  input(placeholder="Typ autobusu")
+                .panelDodajAutobus__content__Filtr__item
+                  input(placeholder="Biletomat")
+            .panelDodajAutobus__navigation
+              button.panelDodajAutobus__navigation__item Dodaj Autobus
+              a(href="#").panelDodajAutobus__navigation__item.-abort Anuluj
             span.panelDodajAutobus__close
               span.panelDodajAutobus__icon.fa.fa-times
 

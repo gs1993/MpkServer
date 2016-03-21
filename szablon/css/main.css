@@ -6958,10 +6958,9 @@ a.tabnav-extra:hover {
 
 @media (max-width: 1024px) {
   .panelAutobusy {
-    position: absolute !important;
+    position: relative !important;
     width: 100% !important;
-    margin: 55px 0 0;
-    bottom: 0 !important;
+    margin: 55px auto 0;
     top: 0 !important;
   }
 }
@@ -6983,6 +6982,12 @@ a.tabnav-extra:hover {
 .panelAutobusy__wrapper {
   position: relative;
   padding: 20px;
+}
+
+@media (max-width: 1024px) {
+  .panelAutobusy__wrapper {
+    overflow: scroll;
+  }
 }
 
 .panelAutobusy__title {
@@ -7318,17 +7323,18 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajAutobus__dragger {
-  top: 50px;
-  right: 0;
-  margin-right: 20px;
   position: absolute;
+  top: 0;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
 }
 
 .panelDodajAutobus {
   transition: -webkit-transform 0.36s ease;
   transition: transform 0.36s ease;
   position: absolute;
-  max-width: 400px;
+  max-width: 800px;
   width: 100%;
   height: auto;
   top: 0;
@@ -7336,7 +7342,7 @@ a.tabnav-extra:hover {
   left: 0;
   z-index: 100;
   opacity: 1;
-  margin: 0;
+  margin: 55px 20px 20px 20px;
   background-color: rgba(255, 255, 255, 0.95);
   border: 1px solid white;
   border-radius: 5px;
@@ -7349,7 +7355,10 @@ a.tabnav-extra:hover {
 
 @media (max-width: 1024px) {
   .panelDodajAutobus {
-    position: relative;
+    position: relative !important;
+    width: 100% !important;
+    margin: 55px auto 0;
+    top: 0 !important;
   }
 }
 
@@ -7365,6 +7374,12 @@ a.tabnav-extra:hover {
 .panelDodajAutobus__wrapper {
   position: relative;
   padding: 20px;
+}
+
+@media (max-width: 1024px) {
+  .panelDodajAutobus__wrapper {
+    overflow: scroll;
+  }
 }
 
 .panelDodajAutobus__title {
@@ -7559,9 +7574,9 @@ a.tabnav-extra:hover {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
@@ -7691,7 +7706,7 @@ a.tabnav-extra:hover {
   opacity: 0.8;
 }
 
-.panelDodajAutobus__close .panelAutobusy__icon {
+.panelDodajAutobus__close .panelDodajAutobus__icon {
   font-size: 1.8em !important;
 }
 
