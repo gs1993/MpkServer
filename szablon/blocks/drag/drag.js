@@ -4,6 +4,6 @@
 
 $(document).ready(function () {
   $(function() {
-    $( ".dragger" ).draggable({ containment: "#containerDrag", scroll: false })
+    $( ".dragger" ).draggable({ cursor: "move", containment: "#containerDrag", scroll: false })
   });
 });
