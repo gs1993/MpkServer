@@ -140,13 +140,13 @@ html( lang="pl")
             a(href="#").panelResetPassword__ToRegister Zarejestruj się.
 
 
-      .panelAutobusy.panel.-hidden
+      .panelAutobusy.panel.-hidden.dragger
         .panelAutobusy__wrapper
           .panelAutobusy__title Panel Zarządzania Autobusami
           .panelAutobusy__subtitle Zarządzanie flotą autobusów.
           .panelAutobusy__navigation
             a(href="#").panelAutobusy__navigation__item Lista Autobusów
-            a(href="#").panelAutobusy__navigation__item Dodaj Autobus
+            a(href="#").panelAutobusy__navigation__item#panel-DodajautobusyButton Dodaj Autobus
           .panelAutobusy__content
             .panelAutobusy__content__Title Lista Autobusów
             .panelAutobusy__content__Filtr
@@ -240,9 +240,17 @@ html( lang="pl")
                     .panelList__itemBiletomat
                       .fa.fa-times-circle-o
                     .panelList__navigation Zobacz szczegóły
-
           span.panelAutobusy__close
             span.panelAutobusy__icon.fa.fa-times
+
+      .panelDodajAutobus__dragger
+        .panelDodajAutobus.panel.-hidden.dragger
+          .panelDodajAutobus__wrapper
+            .panelDodajAutobus__title Dodaj Autobus
+            .panelDodajAutobus__subtitle Panel dodawania nowych autobusów.
+
+            span.panelDodajAutobus__close
+              span.panelDodajAutobus__icon.fa.fa-times
 
 
 
