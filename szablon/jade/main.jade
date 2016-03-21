@@ -80,13 +80,13 @@ html( lang="pl")
             | Informacja!
           | Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
         .panelRegister__form
-          .panelLogin__formwrapper
+          .panelRegister__formwrapper
             input(placeholder="E-mail")
             i.fa.fa-envelope-o
-          .panelLogin__formwrapper
+          .panelRegister__formwrapper
             input(type='password' placeholder="Hasło")
             i.fa.fa-lock
-          .panelLogin__formwrapper
+          .panelRegister__formwrapper
             input(type='password' placeholder="Powtórz hasło")
             i.fa.fa-lock
           button(type="submit") Zarajestuj
@@ -99,20 +99,39 @@ html( lang="pl")
       .panelResetPassword__wrapper
         .panelResetPassword__title Panel Odzyskiwania Hasła
         .panelResetPassword__alert.-info.-hidden
-          i.fa.fa-info-circle
+          h3
+            i.fa.fa-warning
+            | Uwaga!
           | Nie ma takiego konta.
         .panelResetPassword__alert.-success.-hidden
+          h3
+            i.fa.fa-info
+            | Informacja!
           | Na wskazany email został wysłany link weryfikacyjny.
         .panelResetPassword__alert.-success.-hidden
+          h3
+            i.fa.fa-info
+            | Informacja!
           | Nowe hasło zostało ustawione. Możesz się teraz
+        .panelResetPassword__alert.-info.-hidden
+          h3
+            i.fa.fa-warning
+            | Informacja!
+          | Hasła nie są takie same.
           a(href="#").panelResetPassword__ToLogin zalogować
           | .
         .panelResetPassword__form
-          input(placeholder="Email")
-          button(type="submit") Odzyskaj hasło
+          .panelResetPassword__formwrapper
+            input(placeholder="E-mail")
+            i.fa.fa-envelope-o
+            button(type="submit") Odzyskaj hasło
         .panelResetPassword__form
-          input(type='password' placeholder="Hasło")
-          input(type='password' placeholder="Potwierdz Hasło")
+          .panelResetPassword__formwrapper
+            input(type='password' placeholder="Hasło")
+            i.fa.fa-lock
+          .panelResetPassword__formwrapper
+            input(type='password' placeholder="Powtórz hasło")
+            i.fa.fa-lock
           button(type="submit") Zatwierdz nowe hasło
         span.panelResetPassword__close
           span.panelResetPassword__icon.fa.fa-times

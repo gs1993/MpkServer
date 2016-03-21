@@ -128,13 +128,13 @@
           <h3><i class="fa fa-info"></i>Informacja!</h3>Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
         </div>
         <div class="panelRegister__form">
-          <div class="panelLogin__formwrapper">
+          <div class="panelRegister__formwrapper">
             <input placeholder="E-mail"><i class="fa fa-envelope-o"></i>
           </div>
-          <div class="panelLogin__formwrapper">
+          <div class="panelRegister__formwrapper">
             <input type="password" placeholder="Hasło"><i class="fa fa-lock"></i>
           </div>
-          <div class="panelLogin__formwrapper">
+          <div class="panelRegister__formwrapper">
             <input type="password" placeholder="Powtórz hasło"><i class="fa fa-lock"></i>
           </div>
           <button type="submit">Zarajestuj</button>
@@ -145,16 +145,31 @@
     <div class="panelResetPassword panel -hidden">
       <div class="panelResetPassword__wrapper">
         <div class="panelResetPassword__title">Panel Odzyskiwania Hasła</div>
-        <div class="panelResetPassword__alert -info -hidden"><i class="fa fa-info-circle"></i>Nie ma takiego konta.</div>
-        <div class="panelResetPassword__alert -success -hidden">Na wskazany email został wysłany link weryfikacyjny.</div>
-        <div class="panelResetPassword__alert -success -hidden">Nowe hasło zostało ustawione. Możesz się teraz<a href="#" class="panelResetPassword__ToLogin">zalogować</a>.</div>
-        <div class="panelResetPassword__form">
-          <input placeholder="Email">
-          <button type="submit">Odzyskaj hasło</button>
+        <div class="panelResetPassword__alert -info -hidden">
+          <h3><i class="fa fa-warning"></i>Uwaga!</h3>Nie ma takiego konta.
+        </div>
+        <div class="panelResetPassword__alert -success -hidden">
+          <h3><i class="fa fa-info"></i>Informacja!</h3>Na wskazany email został wysłany link weryfikacyjny.
+        </div>
+        <div class="panelResetPassword__alert -success -hidden">
+          <h3><i class="fa fa-info"></i>Informacja!</h3>Nowe hasło zostało ustawione. Możesz się teraz
+        </div>
+        <div class="panelResetPassword__alert -info -hidden">
+          <h3><i class="fa fa-warning"></i>Informacja!</h3>Hasła nie są takie same.<a href="#" class="panelResetPassword__ToLogin">zalogować</a>.
         </div>
         <div class="panelResetPassword__form">
-          <input type="password" placeholder="Hasło">
-          <input type="password" placeholder="Potwierdz Hasło">
+          <div class="panelResetPassword__formwrapper">
+            <input placeholder="E-mail"><i class="fa fa-envelope-o"></i>
+            <button type="submit">Odzyskaj hasło</button>
+          </div>
+        </div>
+        <div class="panelResetPassword__form">
+          <div class="panelResetPassword__formwrapper">
+            <input type="password" placeholder="Hasło"><i class="fa fa-lock"></i>
+          </div>
+          <div class="panelResetPassword__formwrapper">
+            <input type="password" placeholder="Powtórz hasło"><i class="fa fa-lock"></i>
+          </div>
           <button type="submit">Zatwierdz nowe hasło</button>
         </div><span class="panelResetPassword__close"><span class="panelResetPassword__icon fa fa-times"></span></span>
         <div class="panelResetPassword__navigation">Nie masz konta?<a href="#" class="panelResetPassword__ToRegister">Zarejestruj się.</a></div>
