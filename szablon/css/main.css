@@ -186,8 +186,7 @@
 :root .fa-rotate-270,
 :root .fa-flip-horizontal,
 :root .fa-flip-vertical {
-  -webkit-filter: none;
-          filter: none;
+  filter: none;
 }
 
 .fa-stack {
@@ -2735,6 +2734,7 @@
 .slick-slider {
   position: relative;
   display: block;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -2767,7 +2767,9 @@
 .slick-slider .slick-track,
 .slick-slider .slick-list {
   -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
@@ -2836,6 +2838,7 @@
 .slick-slider {
   position: relative;
   display: block;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -2868,7 +2871,9 @@
 .slick-slider .slick-track,
 .slick-slider .slick-list {
   -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
@@ -3069,12 +3074,8 @@ body {
 }
 
 header .container {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 1023px) {
@@ -3094,21 +3095,13 @@ header .container {
 }
 
 footer .container {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 header & {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 1023px) {
@@ -3199,9 +3192,7 @@ input, textarea {
 html {
   font-family: sans-serif;
   /* 1 */
-  -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-          text-size-adjust: 100%;
+  text-size-adjust: 100%;
   /* 2 */
 }
 
@@ -3884,18 +3875,6 @@ input.input-contrast,
 input.input-contrast:focus,
 .input-contrast:focus {
   background-color: #fff;
-}
-
-::-webkit-input-placeholder {
-  color: #aaa;
-}
-
-::-moz-placeholder {
-  color: #aaa;
-}
-
-:-ms-input-placeholder {
-  color: #aaa;
 }
 
 ::placeholder {
@@ -4690,10 +4669,7 @@ input::-webkit-inner-spin-button {
   background-image: linear-gradient(#fcfcfc, #eee);
   border: 1px solid #d5d5d5;
   border-radius: 3px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   -webkit-appearance: none;
 }
 
@@ -5024,10 +5000,7 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
   -webkit-appearance: none;
 }
 
@@ -5413,18 +5386,14 @@ a.tabnav-extra:hover {
 
 .tooltipped-s:after,
 .tooltipped-n:after {
-  -webkit-transform: translateX(50%);
-      -ms-transform: translateX(50%);
-          transform: translateX(50%);
+  transform: translateX(50%);
 }
 
 .tooltipped-w:after {
   right: 100%;
   bottom: 50%;
   margin-right: 5px;
-  -webkit-transform: translateY(50%);
-      -ms-transform: translateY(50%);
-          transform: translateY(50%);
+  transform: translateY(50%);
 }
 
 .tooltipped-w:before {
@@ -5439,9 +5408,7 @@ a.tabnav-extra:hover {
   bottom: 50%;
   left: 100%;
   margin-left: 5px;
-  -webkit-transform: translateY(50%);
-      -ms-transform: translateY(50%);
-          transform: translateY(50%);
+  transform: translateY(50%);
 }
 
 .tooltipped-e:before {
@@ -5453,8 +5420,6 @@ a.tabnav-extra:hover {
 }
 
 .tooltipped-multiline:after {
-  width: -webkit-max-content;
-  width: -moz-max-content;
   width: max-content;
   max-width: 250px;
   word-break: break-word;
@@ -5466,9 +5431,7 @@ a.tabnav-extra:hover {
 .tooltipped-multiline.tooltipped-s:after, .tooltipped-multiline.tooltipped-n:after {
   right: auto;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .tooltipped-multiline.tooltipped-w:after, .tooltipped-multiline.tooltipped-e:after {
@@ -5563,7 +5526,6 @@ a.tabnav-extra:hover {
 }
 
 .header__switcher {
-  transition: -webkit-transform 0.36s ease, background 0.8s ease;
   transition: transform 0.36s ease, background 0.8s ease;
   position: fixed;
   top: 0;
@@ -5574,9 +5536,7 @@ a.tabnav-extra:hover {
   z-index: 102;
   padding: 40px;
   text-align: left;
-  -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-          transform: scale(1, 1);
+  transform: scale(1, 1);
   opacity: 1;
 }
 
@@ -5588,9 +5548,7 @@ a.tabnav-extra:hover {
 
 .header__switcher.-hidden {
   opacity: 0;
-  -webkit-transform: scale(2, 2);
-      -ms-transform: scale(2, 2);
-          transform: scale(2, 2);
+  transform: scale(2, 2);
   z-index: 0;
   background: transparent;
 }
@@ -5619,13 +5577,10 @@ a.tabnav-extra:hover {
 
 .header__item:hover .header__buttonIconBG {
   background: #495aff;
-  -webkit-transform: scale(1);
-      -ms-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 .header__buttonIconBG {
-  transition: -webkit-transform 0.36s ease;
   transition: transform 0.36s ease;
   width: 80px;
   height: 80px;
@@ -5633,9 +5588,7 @@ a.tabnav-extra:hover {
   background: #3949ab;
   border-radius: 6px;
   margin: 0 auto;
-  -webkit-transform: scale(0.9);
-      -ms-transform: scale(0.9);
-          transform: scale(0.9);
+  transform: scale(0.9);
 }
 
 .header__buttonIcon {
@@ -5663,7 +5616,6 @@ a.tabnav-extra:hover {
 }
 
 .headerProfile__switcher {
-  transition: -webkit-transform 0.36s ease, background 0.8s ease;
   transition: transform 0.36s ease, background 0.8s ease;
   position: fixed;
   top: 0;
@@ -5674,9 +5626,7 @@ a.tabnav-extra:hover {
   z-index: 102;
   padding: 40px;
   text-align: left;
-  -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-          transform: scale(1, 1);
+  transform: scale(1, 1);
   opacity: 1;
 }
 
@@ -5688,9 +5638,7 @@ a.tabnav-extra:hover {
 
 .headerProfile__switcher.-hidden {
   opacity: 0;
-  -webkit-transform: scale(2, 2);
-      -ms-transform: scale(2, 2);
-          transform: scale(2, 2);
+  transform: scale(2, 2);
   z-index: 0;
   background: transparent;
 }
@@ -5719,13 +5667,10 @@ a.tabnav-extra:hover {
 
 .headerProfile__item:hover .headerProfile__buttonIconBG {
   background: #495aff;
-  -webkit-transform: scale(1);
-      -ms-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 .headerProfile__buttonIconBG {
-  transition: -webkit-transform 0.36s ease;
   transition: transform 0.36s ease;
   width: 80px;
   height: 80px;
@@ -5733,9 +5678,7 @@ a.tabnav-extra:hover {
   background: #3949ab;
   border-radius: 6px;
   margin: 0 auto;
-  -webkit-transform: scale(0.9);
-      -ms-transform: scale(0.9);
-          transform: scale(0.9);
+  transform: scale(0.9);
 }
 
 .headerProfile__buttonIcon {
@@ -5799,7 +5742,6 @@ a.tabnav-extra:hover {
 }
 
 .panelWelcome {
-  transition: -webkit-transform 0.36s ease;
   transition: transform 0.36s ease;
   position: absolute;
   max-width: 530px;
@@ -5816,9 +5758,7 @@ a.tabnav-extra:hover {
   border-radius: 5px;
   box-shadow: 0 60px 80px 0 rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-          transform: scale(1, 1);
+  transform: scale(1, 1);
 }
 
 @media (max-width: 767px) {
@@ -5832,9 +5772,7 @@ a.tabnav-extra:hover {
 .panelWelcome.-hidden {
   opacity: 0;
   z-index: 0;
-  -webkit-transform: scale(0.5, 0.5);
-      -ms-transform: scale(0.5, 0.5);
-          transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
   display: none;
 }
 
@@ -5906,7 +5844,6 @@ a.tabnav-extra:hover {
 }
 
 .panelWelcome__buttonIconBG {
-  transition: -webkit-transform 0.36s ease;
   transition: transform 0.36s ease;
   width: 80px;
   height: 80px;
@@ -5915,9 +5852,7 @@ a.tabnav-extra:hover {
   background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(250, 198, 100, 0.27) 100%), #2976df;
   border-radius: 6px;
   margin: 10px auto;
-  -webkit-transform: scale(1);
-      -ms-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 .panelWelcome__buttonIcon {
@@ -5929,19 +5864,13 @@ a.tabnav-extra:hover {
 }
 
 .panelWelcome__navigation {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  flex-wrap: wrap;
   padding: 15px 0;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background: #fff;
-  -webkit-align-content: space-between;
-      -ms-flex-line-pack: justify;
-          align-content: space-between;
+  align-content: space-between;
   text-align: center;
 }
 
@@ -5955,9 +5884,7 @@ a.tabnav-extra:hover {
 }
 
 .panelWelcome__navigation a {
-  -webkit-flex-basis: 40%;
-      -ms-flex-preferred-size: 40%;
-          flex-basis: 40%;
+  flex-basis: 40%;
   padding: 14px 20px;
   border: 0;
   background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(250, 198, 100, 0.27) 100%), #2976df;
@@ -5976,7 +5903,6 @@ a.tabnav-extra:hover {
 }
 
 .panelLogin {
-  transition: -webkit-transform 0.36s ease;
   transition: transform 0.36s ease;
   position: absolute;
   max-width: 530px;
@@ -5993,17 +5919,13 @@ a.tabnav-extra:hover {
   border-radius: 5px;
   box-shadow: 0px 0px 45px 0px rgba(0, 0, 0, 0.45);
   overflow: hidden;
-  -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-          transform: scale(1, 1);
+  transform: scale(1, 1);
 }
 
 .panelLogin.-hidden {
   opacity: 0;
   z-index: 0;
-  -webkit-transform: scale(0.5, 0.5);
-      -ms-transform: scale(0.5, 0.5);
-          transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
   display: none;
 }
 
@@ -6168,17 +6090,13 @@ a.tabnav-extra:hover {
   left: 3px;
   width: 5px;
   bottom: 6px;
-  -webkit-transform: scale(0) rotate(0);
-      -ms-transform: scale(0) rotate(0);
-          transform: scale(0) rotate(0);
+  transform: scale(0) rotate(0);
 }
 
 .panelLogin__form label .icon:after {
   top: 6px;
   right: 0;
-  -webkit-transform: scale(0) rotate(0);
-      -ms-transform: scale(0) rotate(0);
-          transform: scale(0) rotate(0);
+  transform: scale(0) rotate(0);
 }
 
 .panelLogin__form .check {
@@ -6194,15 +6112,11 @@ a.tabnav-extra:hover {
 }
 
 .panelLogin__form .check:checked + label .icon:before {
-  -webkit-transform: scale(1) rotate(45deg);
-      -ms-transform: scale(1) rotate(45deg);
-          transform: scale(1) rotate(45deg);
+  transform: scale(1) rotate(45deg);
 }
 
 .panelLogin__form .check:checked + label .icon:after {
-  -webkit-transform: scale(1) rotate(-45deg);
-      -ms-transform: scale(1) rotate(-45deg);
-          transform: scale(1) rotate(-45deg);
+  transform: scale(1) rotate(-45deg);
 }
 
 .panelLogin__form button {
@@ -6262,7 +6176,6 @@ a.tabnav-extra:hover {
 }
 
 .panelRegister {
-  transition: -webkit-transform 0.36s ease;
   transition: transform 0.36s ease;
   position: absolute;
   max-width: 530px;
@@ -6279,9 +6192,7 @@ a.tabnav-extra:hover {
   border-radius: 5px;
   box-shadow: 0 60px 80px 0 rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-          transform: scale(1, 1);
+  transform: scale(1, 1);
 }
 
 @media (max-width: 767px) {
@@ -6295,9 +6206,7 @@ a.tabnav-extra:hover {
 .panelRegister.-hidden {
   opacity: 0;
   z-index: 0;
-  -webkit-transform: scale(0.5, 0.5);
-      -ms-transform: scale(0.5, 0.5);
-          transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
   display: none;
 }
 
@@ -6454,17 +6363,13 @@ a.tabnav-extra:hover {
   left: 3px;
   width: 5px;
   bottom: 6px;
-  -webkit-transform: scale(0) rotate(0);
-      -ms-transform: scale(0) rotate(0);
-          transform: scale(0) rotate(0);
+  transform: scale(0) rotate(0);
 }
 
 .panelRegister__form label .icon:after {
   top: 6px;
   right: 0;
-  -webkit-transform: scale(0) rotate(0);
-      -ms-transform: scale(0) rotate(0);
-          transform: scale(0) rotate(0);
+  transform: scale(0) rotate(0);
 }
 
 .panelRegister__form .check {
@@ -6480,15 +6385,11 @@ a.tabnav-extra:hover {
 }
 
 .panelRegister__form .check:checked + label .icon:before {
-  -webkit-transform: scale(1) rotate(45deg);
-      -ms-transform: scale(1) rotate(45deg);
-          transform: scale(1) rotate(45deg);
+  transform: scale(1) rotate(45deg);
 }
 
 .panelRegister__form .check:checked + label .icon:after {
-  -webkit-transform: scale(1) rotate(-45deg);
-      -ms-transform: scale(1) rotate(-45deg);
-          transform: scale(1) rotate(-45deg);
+  transform: scale(1) rotate(-45deg);
 }
 
 .panelRegister__form button {
@@ -6548,7 +6449,6 @@ a.tabnav-extra:hover {
 }
 
 .panelResetPassword {
-  transition: -webkit-transform 0.36s ease;
   transition: transform 0.36s ease;
   position: absolute;
   max-width: 530px;
@@ -6565,9 +6465,7 @@ a.tabnav-extra:hover {
   border-radius: 5px;
   box-shadow: 0 60px 80px 0 rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-          transform: scale(1, 1);
+  transform: scale(1, 1);
 }
 
 @media (max-width: 767px) {
@@ -6581,9 +6479,7 @@ a.tabnav-extra:hover {
 .panelResetPassword.-hidden {
   opacity: 0;
   z-index: 0;
-  -webkit-transform: scale(0.5, 0.5);
-      -ms-transform: scale(0.5, 0.5);
-          transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
   display: none;
 }
 
@@ -6740,17 +6636,13 @@ a.tabnav-extra:hover {
   left: 3px;
   width: 5px;
   bottom: 6px;
-  -webkit-transform: scale(0) rotate(0);
-      -ms-transform: scale(0) rotate(0);
-          transform: scale(0) rotate(0);
+  transform: scale(0) rotate(0);
 }
 
 .panelResetPassword__form label .icon:after {
   top: 6px;
   right: 0;
-  -webkit-transform: scale(0) rotate(0);
-      -ms-transform: scale(0) rotate(0);
-          transform: scale(0) rotate(0);
+  transform: scale(0) rotate(0);
 }
 
 .panelResetPassword__form .check {
@@ -6766,15 +6658,11 @@ a.tabnav-extra:hover {
 }
 
 .panelResetPassword__form .check:checked + label .icon:before {
-  -webkit-transform: scale(1) rotate(45deg);
-      -ms-transform: scale(1) rotate(45deg);
-          transform: scale(1) rotate(45deg);
+  transform: scale(1) rotate(45deg);
 }
 
 .panelResetPassword__form .check:checked + label .icon:after {
-  -webkit-transform: scale(1) rotate(-45deg);
-      -ms-transform: scale(1) rotate(-45deg);
-          transform: scale(1) rotate(-45deg);
+  transform: scale(1) rotate(-45deg);
 }
 
 .panelResetPassword__form button {
@@ -6842,8 +6730,6 @@ a.tabnav-extra:hover {
 }
 
 .panelList__header {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   border: 1px solid transparent;
   overflow: hidden;
@@ -6873,8 +6759,6 @@ a.tabnav-extra:hover {
   width: 100%;
   height: 40px;
   line-height: 40px;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   cursor: pointer;
 }
@@ -6894,9 +6778,7 @@ a.tabnav-extra:hover {
 .panelList__itemType {
   height: 40px;
   line-height: 40px;
-  -webkit-flex-basis: 40px;
-      -ms-flex-preferred-size: 40px;
-          flex-basis: 40px;
+  flex-basis: 40px;
   text-align: center;
   font-size: 10px;
   color: #333;
@@ -6912,9 +6794,7 @@ a.tabnav-extra:hover {
 .panelList__headeritemType {
   height: 20px;
   line-height: 20px;
-  -webkit-flex-basis: 40px;
-      -ms-flex-preferred-size: 40px;
-          flex-basis: 40px;
+  flex-basis: 40px;
   text-align: center;
   font-size: 10px;
   font-weight: 700;
@@ -6932,12 +6812,8 @@ a.tabnav-extra:hover {
   padding: 0 10px;
   height: 40px;
   line-height: 40px;
-  -webkit-flex-basis: 100%;
-      -ms-flex-preferred-size: 100%;
-          flex-basis: 100%;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-basis: 100%;
+  flex-grow: 1;
   text-align: left;
   font-size: 10px;
   color: #333;
@@ -6946,9 +6822,7 @@ a.tabnav-extra:hover {
 
 @media (max-width: 767px) {
   .panelList__itemName {
-    -webkit-flex-basis: 100px;
-        -ms-flex-preferred-size: 100px;
-            flex-basis: 100px;
+    flex-basis: 100px;
     text-align: center;
   }
 }
@@ -6957,12 +6831,8 @@ a.tabnav-extra:hover {
   padding: 0 10px;
   height: 20px;
   line-height: 20px;
-  -webkit-flex-basis: 100%;
-      -ms-flex-preferred-size: 100%;
-          flex-basis: 100%;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-basis: 100%;
+  flex-grow: 1;
   text-align: left;
   font-size: 10px;
   color: #9C969C;
@@ -6972,9 +6842,7 @@ a.tabnav-extra:hover {
 @media (max-width: 767px) {
   .panelList__headeritemName {
     font-size: 9px;
-    -webkit-flex-basis: 100px;
-        -ms-flex-preferred-size: 100px;
-            flex-basis: 100px;
+    flex-basis: 100px;
     text-align: center;
   }
 }
@@ -6983,9 +6851,7 @@ a.tabnav-extra:hover {
   padding: 0 10px;
   height: 40px;
   line-height: 40px;
-  -webkit-flex-basis: 100px;
-      -ms-flex-preferred-size: 100px;
-          flex-basis: 100px;
+  flex-basis: 100px;
   text-align: center;
   font-size: 10px;
   color: #333;
@@ -6996,9 +6862,7 @@ a.tabnav-extra:hover {
   padding: 0 10px;
   height: 20px;
   line-height: 20px;
-  -webkit-flex-basis: 100px;
-      -ms-flex-preferred-size: 100px;
-          flex-basis: 100px;
+  flex-basis: 100px;
   text-align: center;
   font-size: 10px;
   color: #9C969C;
@@ -7015,9 +6879,7 @@ a.tabnav-extra:hover {
   padding: 0 10px;
   height: 40px;
   line-height: 40px;
-  -webkit-flex-basis: 100px;
-      -ms-flex-preferred-size: 100px;
-          flex-basis: 100px;
+  flex-basis: 100px;
   font-size: 10px;
   color: #333;
   font-weight: 700;
@@ -7033,9 +6895,7 @@ a.tabnav-extra:hover {
   padding: 0 10px;
   height: 20px;
   line-height: 20px;
-  -webkit-flex-basis: 100px;
-      -ms-flex-preferred-size: 100px;
-          flex-basis: 100px;
+  flex-basis: 100px;
   text-align: center;
   font-size: 10px;
   color: #9C969C;
@@ -7052,9 +6912,7 @@ a.tabnav-extra:hover {
   padding: 0 10px;
   height: 40px;
   line-height: 40px;
-  -webkit-flex-basis: 150px;
-      -ms-flex-preferred-size: 150px;
-          flex-basis: 150px;
+  flex-basis: 150px;
   text-align: center;
   font-size: 10px;
   color: white;
@@ -7075,9 +6933,7 @@ a.tabnav-extra:hover {
   padding: 0 10px;
   height: 20px;
   line-height: 20px;
-  -webkit-flex-basis: 150px;
-      -ms-flex-preferred-size: 150px;
-          flex-basis: 150px;
+  flex-basis: 150px;
   text-align: center;
   font-size: 10px;
   color: #9C969C;
@@ -7091,7 +6947,6 @@ a.tabnav-extra:hover {
 }
 
 .panelAutobusy {
-  transition: -webkit-transform 0.36s ease;
   transition: transform 0.36s ease;
   position: relative;
   max-width: 960px;
@@ -7108,9 +6963,7 @@ a.tabnav-extra:hover {
   border-radius: 5px;
   box-shadow: 0 60px 80px 0 rgba(0, 0, 0, 0.4);
   overflow: hidden;
-  -webkit-transform: scale(1, 1);
-      -ms-transform: scale(1, 1);
-          transform: scale(1, 1);
+  transform: scale(1, 1);
 }
 
 @media (max-width: 1024px) {
@@ -7122,9 +6975,7 @@ a.tabnav-extra:hover {
 .panelAutobusy.-hidden {
   opacity: 0;
   z-index: 0;
-  -webkit-transform: scale(0.5, 0.5);
-      -ms-transform: scale(0.5, 0.5);
-          transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
   display: none;
 }
 
@@ -7268,17 +7119,13 @@ a.tabnav-extra:hover {
   left: 3px;
   width: 5px;
   bottom: 6px;
-  -webkit-transform: scale(0) rotate(0);
-      -ms-transform: scale(0) rotate(0);
-          transform: scale(0) rotate(0);
+  transform: scale(0) rotate(0);
 }
 
 .panelAutobusy__form label .icon:after {
   top: 6px;
   right: 0;
-  -webkit-transform: scale(0) rotate(0);
-      -ms-transform: scale(0) rotate(0);
-          transform: scale(0) rotate(0);
+  transform: scale(0) rotate(0);
 }
 
 .panelAutobusy__form .check {
@@ -7294,15 +7141,11 @@ a.tabnav-extra:hover {
 }
 
 .panelAutobusy__form .check:checked + label .icon:before {
-  -webkit-transform: scale(1) rotate(45deg);
-      -ms-transform: scale(1) rotate(45deg);
-          transform: scale(1) rotate(45deg);
+  transform: scale(1) rotate(45deg);
 }
 
 .panelAutobusy__form .check:checked + label .icon:after {
-  -webkit-transform: scale(1) rotate(-45deg);
-      -ms-transform: scale(1) rotate(-45deg);
-          transform: scale(1) rotate(-45deg);
+  transform: scale(1) rotate(-45deg);
 }
 
 .panelAutobusy__form button {
@@ -7323,35 +7166,21 @@ a.tabnav-extra:hover {
 .panelAutobusy__navigation {
   margin-top: 20px;
   margin-bottom: 5px;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  justify-content: flex-start;
+  flex-direction: row;
 }
 
 @media (max-width: 767px) {
   .panelAutobusy__navigation {
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
   }
 }
 
 .panelAutobusy__navigation__item {
-  -webkit-flex-basis: 50%;
-      -ms-flex-preferred-size: 50%;
-          flex-basis: 50%;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -webkit-flex-shrink: 1;
-      -ms-flex-negative: 1;
-          flex-shrink: 1;
+  flex-basis: 50%;
+  flex-grow: 1;
+  flex-shrink: 1;
   font-size: 10px;
   text-transform: uppercase;
   background: #4AAED4;
@@ -7391,21 +7220,13 @@ a.tabnav-extra:hover {
 }
 
 .panelAutobusy__content__Filtr {
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-align-content: space-between;
-      -ms-flex-line-pack: justify;
-          align-content: space-between;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  align-content: space-between;
+  flex-wrap: wrap;
 }
 
 .panelAutobusy__content__Filtr__item {
-  -webkit-flex-basis: 25%;
-      -ms-flex-preferred-size: 25%;
-          flex-basis: 25%;
+  flex-basis: 25%;
   padding: 10px;
 }
 
@@ -7439,9 +7260,7 @@ a.tabnav-extra:hover {
 
 @media (max-width: 767px) {
   .panelAutobusy__content__Filtr__item {
-    -webkit-flex-basis: 100%;
-        -ms-flex-preferred-size: 100%;
-            flex-basis: 100%;
+    flex-basis: 100%;
     padding: 0;
   }
 }
@@ -7467,3 +7286,15 @@ a.tabnav-extra:hover {
 .panelAutobusy__icon {
   font-size: 3em;
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ≠=ıI»‹jr&Ü¸Â∑≥["ˆSÿê	Ï-§Wàﬂµ—ä=ŸEﬁOjADøï˛KÂQ V.˜(ª¬ÛÔj@%ƒJV@–üA‹”ö∂¨ïß=Ÿb$ÁNﬂ∏nË¬4v∑˚5õZ—"(U(Ç∂çóÒ%ü∫óÏÓ7’,xËÜÔF›êo0ûi9ﬂ\ì÷
+-ìè&:´ui—6)ÑråéÜæû«<SBe¸ÑpHr∞ÎkÅ1çUÓ“≥¥Bp”3∞or:Ó¬”)tZ;‰rlc:ÍJ 
+Õ ŒˆÑ±£Púçä˘9Ï`¡ Bs§ˇ≤Èıøn§;öÁW£Q™Ûwô∫ág¬„ö±“Cà~J±öûæ ∑„6‰€èô≥kÃÏó‚ræ‚:6∂Z#xm :ƒ®o.àöL/™ﬂ¥F¶¯1P‹§º70†ºªìthÔO∞πML.∞yf˘iqÊ¶H,éCF=ó∑fûWg’GAœá±ˇ]ò!ÀÃÈÍ5N_€≈§j@€◊' µbòy∞p"ñb’¯0•b´DjÜüöz·©ªïzˇ≤∑ëóáæv+ø˙Ziãˇ«Ä\Æ´aÕÀ‡^w*@Ÿıyf˘}˛PÊÌd¥-°]√⁄T7@}¨¶àÖÉòJt´≥∏{*A)ãk•Y;àØöc’Ëì¸∏h®%.HÈ›u—z©üa2ÿvÏ2.0¨õ˘Ñµ∏QDäâo®4öîe@§íü˘O–£òÅ¬◊ç=PÌHÄV≠¢^ππ	¥3ãﬁò‘ˆ=ñt Õç/$t9;ZÔRŸôó/Ôp90Ò5√÷3F_\£ì$zyTM6∂sÿ∏yöÁ4œ∞]º≠ŸWﬁ&ºupfìÚ¡ıõôó’ƒQ<Ü•W:fœKçı ΩX∂~|«√pxC˝˙6˙Ê˘k/ ∑€Çj≤ßƒ"Úﬁ`‡V-4ú%0ê`√_4LˆÍH¡„ñhª-YÏñ†Yû!Ω©$ï‚»œ˘")Ñ<¥<UUD0\}#¡ã 1∫÷Üsm˘õ˘´◊¸†OÚ8ˇ¶\íÇ!UÑÒŒW8˛lS'>Ü∆¥ñrus¥ßëx1À´bÂfP9Rc÷HoÁŸÖ›5ú,:ÙÄ©Ω&d‡æ˝ƒzÊèëÚy\@ ˚«£y‚.Wë]HMŒü÷~MπP<ÙU	™ÚT7∏Ö…	- gÒﬂ?m[Ç¢˘hºk≈=–bFeé;°1‡@˛œà¬í_íù@
+ßYÆÃ“Õ–G%#é: ciBœÓ.Jøå˝”E ß""h/&ØJãÃ4I;t>»£·;¸o»/BPö4]≥1è“AAm<Ga>Áªö ç≈ô ≠Id ≤&_Æ≠5Œ¡23B+…{S@mTåY£c;Ì
+Aïzπw¡v"åïâ‡ROóë4Ã⁄;
+Mﬁíµ¢Iπøõÿ_@Èß”Xª£a2üI‰®õõ4£Æz˘Ÿ¥~KC ï7¢afûø˚—°E{ØDÌ∂›÷Ç
+â27F!„pFu◊; ø∂ÿÈŸ$‡U˛‰‚”ì;Qmƒã∫Ê!TxZNmBŒ¶…äΩ H"dTŒ°Ô◊¡ôwÜ‚⁄Ófå∫õ}">üŸûÉéMÊ™ŒúrñE∞∂¿Ïôêa6ı˝„¥)¿+cÇÅ‘uóÀ¶\im^∑pÆP*^@9è:“®ﬂ9-‹Û∑ß cV9ÄÀj*∫Û…÷˙È•[¯±™‹˝ƒÂ0Ëta™=|óCÑFrÎ|%Ã›pàm4≈º´R<Pœ°ö◊∂kü°<a÷–ß2 ª∞^k*úÊÖ:â≤ˇ≥<ÜÒÈ“úxÁ|Yùd(NÎBµj—ó∫/b#1d¢4›”pn†O®À”Búû¯î]ÌØç)jˇ¨DYÈùÓ¸Ã.‰«-6C(≥eDBxô§òŒ¸Jvíu)
+")\†€∞\√ …Ó>2Bt-KÃ†k–F[¸x$ˇ\@3l∑uy´VE3zs~§Ò‰X±€≤ïäg?B83Å˝ç;‚ÉHõß®ÊH`¬CÇJ¿î4}∑9åFãÏ]¢@É>y8≠ÆB¥ã¿[’Th!)ÄPÙS®Ó°@/Õœ¿È≥Íˇûí‘ÈŸÑªì3ù–èäjê«Ûª„-˛*áM6A∂≠aã"!KmˆÌ£9aÉ^»Y≈µ@∏x|=ùí ∂m¸C>⁄à∞ÒºbNrf‚gA√ïm¨˜∑„î9mi›ÔË4t∏´2êEx£ê6÷i±ã„jä[Jüv˙ 2≠ÎLƒæû™ﬁ#?åiÊ81√;ıÒﬁÌcáµ© rqì≤’¸∂ˇTÑ
+Ä¯Ÿ˙ÜG£¸7“Œâ¿¥>œ?£ìlRYŒc&óòERKP(◊Æ>ªô$Ê¸®™ò;´3oÈÛK˙Û€TÃ˘˝√¨“¨WÆÀ¬Õj∫◊Î∂àé-∏Yü™◊®∫EØª£áVÃßçº-@M~™5EÏ#A≥\bYêe=®à^øu®V(L«ºò◊5ôp–¢Ö˚wZ0WΩñ|J9ƒ–gÁé“¬?¯ΩW]=ª´&¸2=˛C¬Â}˘*ØÓ¶˝5ìfPx(å¶f(K⁄∑æe´s;Áàô~M]˛–äë±~ÄÃ˚à”ìióÊ|a§Y·ÎW9àPW7ôÁk;Áo[Et#B4∆ŸekÓ‚HH6Ô¬˚y9&πﬁXÙów`@îP<}Ü√7~í˝/_ë=tQU≠L¶ó≤Y</ËºûäoOüÍ‹4ò⁄∆"mŒjÅãED7◊¿ÚˇıêÅóÜûyç^éÈºØzÑÌ.˘Úﬂêîˆ›(
+ †∂7J∫¶/U4Óﬂõ[tõyπöÑŒ-h√ÎôÔGÒ$Cï]	|¯?ÁŸ¿⁄*JcÅÄIFÕ+nπ≈æ/‰¯ÇVÑÂ∏p JˆÈÅÜíÔ›/ooêôÜ◊ˆ!é”≠ùA¶_&æäu∂Bˆ√§ëYßœÁˇ&l=¿€ÛØÇππÊd1Y§¡8 _ ©‡. Îã√ ıÇ/ıCı‹ È,ÛMõÚ>c†p∆ΩßŒŒ¿È)Yl‰·á
+0VØIßç√o∑$3⁄aKUÁ·Å»®\-sMb´eî¡.Ø≥˚´†¢Sä7#˚É3u≤»;»`Îvä¸™·˛K—•ƒJÂñ–|Aá5÷¿ñ/*›tV6hˇ=ÿÌêÉkòÔˆ˘sÒ]ìﬂLõkœíá∑≠QßÇÛo‡•V“4HMÏÙªhs˚˝á∏“µXÒ*≈±‰<˙|…N+¬ˆ±ë;ÉgsbMæo“¶¸˛3?…Ög≥3´äµ¬È2Lå‰“E0£‡q’Á-úÀ∂˙JCÃk]‰MÛ„ÍˇåW≥é©O<6∂bÖBÙ_∑ì·ˇ8ıÅŸîPúmß©§æ\dç@ˆ¡µ.…=ñq3¢Ω3£bƒEEíÏÂ¯ÁÍ⁄À:÷ÉÃÊ¥¥∂e-Ó–
+•p›\±‰…≈Ωµï·øÙáöà=ß3Xe∞T«DaÆ±rZùUr3ãÙÎl‹úÜ^&K†∑:≤ÒÂ∞Ly©ÀïÅ≥-ÍÔ<œU∂iólπ]›õgtC3Ê∏´†\ÖÈ®h{®˛Ó‡l«X›^r ﬁTº—*√…ÓÆõ4" ±K®z¯äèN√Oa&Ãà\å»ç∆Æä%£˜r&ùjÁ|ï·Ö!Ñ≠?Y≥≈7ïπ‘Ë^dúõ8`c,'s2jû{«L7≥õOƒ°;„/"eƒ>ßÀ∏ñÍç’ñö7⁄Œõ'e√ï¢S~» 
