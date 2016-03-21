@@ -6,30 +6,28 @@
   max-width: 530px
   width: 100%
   height: auto
-  top: calc(50% - 170px)
+  top: calc(50% - 187.5px)
   right: 0
   left: 0
   z-index: 100
   opacity: 1
-
   margin: 0 auto
-  background-color: rgba(255, 255, 255, 1)
-  border: 1px solid rgba(255, 255, 255, 0.5)
+  background-color: rgba(255, 255, 255, 0.95)
+  border: 1px solid rgba(255, 255, 255, 1)
   border-radius: 5px
-  box-shadow: 0 60px 80px 0 rgba(0, 0, 0, 0.4)
-
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3)
   overflow: hidden
-
   transform: scale(1, 1)
-  +PHONE_ONLY
-    max-width: 100%
-    position: relative
-    margin: 50px auto
+
   &.-hidden
     opacity: 0
     z-index: 0
     transform: scale(0.5, 0.5)
     display: none
+  +PHONE_ONLY
+    max-width: 100%
+    position: relative
+    margin: 50px auto 0
 
   &__wrapper
     position: relative
@@ -43,7 +41,7 @@
     letter-spacing: 2px
     text-align: center
     //text-transform: uppercase
-    color: #4AAED4
+    color: rgba(57, 73, 171, 0.8)
   &__text
     font-family: Lato, sans-serif
     font-weight: 700
@@ -106,75 +104,28 @@
       max-width: 300px
       width: 100%
       display: block
-      margin: 0px auto
-      padding: 3px 10px
+      margin: 5px auto
+      padding: 5px 10px
       padding-left: 40px
       border-radius: 0
       border-top: 0
       border-left: 0
       border-right: 0
-      border-bottom: 2px solid #D2E3E9
+      //border-bottom: 2px solid #D2E3E9
+      border-bottom: 2px solid rgba(156, 150, 156, 0.25)
       font-size: 16px
       &:focus
-        border-bottom: 2px solid #98D3EA
+        border-bottom: 2px solid rgba(57, 73, 171, 0.5)
       &:focus + i
-        color: #4AAED4
+        color: rgba(57, 73, 171, 0.8)
 
-    .remembermebox
-      margin-top: 0
-      margin-bottom: 20px
 
-    label
-      margin-top: 5px
-      display: inline-block
-      height: 30px
-      cursor: pointer
-
-      color: #9C969C
-      font-weight: 400
-      max-width: 300px
-      line-height: 30px
-      .icon
-        line-height: 30px
-        width: 17px
-        height: 18px
-        border-radius: 2px
-        position: relative
-        display: inline-block
-        border: 1px solid
-        top: 5px
-        &:before, &:after
-          content: ''
-          width: 10px
-          height: 2px
-          background: white
-          position: absolute
-          transition: all .2s ease-in-out 0s
-        &:before
-          left: 3px
-          width: 5px
-          bottom: 6px
-          transform: scale(0) rotate(0)
-        &:after
-          top: 6px
-          right: 0
-          transform: scale(0) rotate(0)
-
-    .check
-      display: none
-    .check:checked + label
-      color: #4AAED4
-      .icon
-        background: #4AAED4
-      .icon:before
-        transform: scale(1) rotate(45deg)
-      .icon:after
-        transform: scale(1) rotate(-45deg)
 
     button
-      margin-top: 20px
+      margin-top: 15px
       text-transform: uppercase
-      background: #4AAED4
+      //background: #4AAED4
+      background: rgba(57, 73, 171, 0.8)
       color: white
       border: none
       padding: 15px 20px
@@ -182,12 +133,13 @@
       max-width: 300px
       width: 100%
       &:hover
-        background: #98D3EA
+        background: rgb(57, 73, 171)
 
   &__formwrapper
     position: relative
     max-width: 300px
     margin: 0 auto
+
   &__navigation
     margin-top: 20px
   &__ToLogin
@@ -197,8 +149,8 @@
   &__close
     transition: opacity 0.36s ease
     position: absolute
-    top: 0px
-    right: 3px
+    top: 10px
+    right: 10px
     color: #222222
     cursor: pointer
     opacity: 0.4
