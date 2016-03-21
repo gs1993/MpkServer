@@ -6847,12 +6847,26 @@ a.tabnav-extra:hover {
   display: flex;
   border: 1px solid transparent;
   overflow: hidden;
+  margin-right: 15px;
+}
+
+@media (max-width: 767px) {
+  .panelList__header {
+    margin-right: 0;
+  }
 }
 
 .panelList__content {
   border: 1px solid #D2E3E9;
-  height: auto;
+  height: 200px;
   overflow-y: scroll;
+}
+
+@media (max-width: 767px) {
+  .panelList__content {
+    height: auto;
+    overflow-y: hidden;
+  }
 }
 
 .panelList__item {
@@ -6908,6 +6922,12 @@ a.tabnav-extra:hover {
   padding: 0 5px;
 }
 
+@media (max-width: 767px) {
+  .panelList__headeritemType {
+    font-size: 9px;
+  }
+}
+
 .panelList__itemName {
   padding: 0 10px;
   height: 40px;
@@ -6924,6 +6944,15 @@ a.tabnav-extra:hover {
   font-weight: 700;
 }
 
+@media (max-width: 767px) {
+  .panelList__itemName {
+    -webkit-flex-basis: 100px;
+        -ms-flex-preferred-size: 100px;
+            flex-basis: 100px;
+    text-align: center;
+  }
+}
+
 .panelList__headeritemName {
   padding: 0 10px;
   height: 20px;
@@ -6938,6 +6967,16 @@ a.tabnav-extra:hover {
   font-size: 10px;
   color: #9C969C;
   font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .panelList__headeritemName {
+    font-size: 9px;
+    -webkit-flex-basis: 100px;
+        -ms-flex-preferred-size: 100px;
+            flex-basis: 100px;
+    text-align: center;
+  }
 }
 
 .panelList__itemStatus {
@@ -6964,6 +7003,12 @@ a.tabnav-extra:hover {
   font-size: 10px;
   color: #9C969C;
   font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .panelList__headeritemStatus {
+    font-size: 9px;
+  }
 }
 
 .panelList__itemBiletomat {
@@ -6997,6 +7042,12 @@ a.tabnav-extra:hover {
   font-weight: 700;
 }
 
+@media (max-width: 767px) {
+  .panelList__headeritemBiletomat {
+    font-size: 9px;
+  }
+}
+
 .panelList__navigation {
   padding: 0 10px;
   height: 40px;
@@ -7012,6 +7063,14 @@ a.tabnav-extra:hover {
   overflow: hidden;
 }
 
+@media (max-width: 767px) {
+  .panelList__navigation {
+    opacity: 1;
+    color: #222222;
+    font-size: 9px;
+  }
+}
+
 .panelList__headeritemnavigation {
   padding: 0 10px;
   height: 20px;
@@ -7023,6 +7082,12 @@ a.tabnav-extra:hover {
   font-size: 10px;
   color: #9C969C;
   font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .panelList__headeritemnavigation {
+    font-size: 8px;
+  }
 }
 
 .panelAutobusy {
@@ -7307,7 +7372,7 @@ a.tabnav-extra:hover {
 
 .panelAutobusy__content {
   border-top: 2px solid #D2E3E9;
-  padding: 20px;
+  padding-top: 10px;
 }
 
 .panelAutobusy__content__Title {
