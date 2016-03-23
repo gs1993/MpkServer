@@ -36,4 +36,7 @@ $(document).ready(function () {
   $('#panel-autobusyButton').on("click", function () {
     $('.panelAutobusy').toggleClass('-hidden');
   });
+  $('#panel-przystankiButton').on("click", function () {
+    $('.panelPrzystanki').toggleClass('-hidden');
+  });
 });

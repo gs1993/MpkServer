@@ -1,0 +1,123 @@
+.panelPrzystanki.panel.-hidden.dragger
+  .panelPrzystanki__wrapper
+    .panelPrzystanki__title Panel Zarządzania Przystankami
+    .panelPrzystanki__subtitle Zarządzanie przystankami w systemie.
+    .panelPrzystanki__navigation
+      a(href="#").panelPrzystanki__navigation__item#panel-DodajautobusyButton Dodaj Przystanek
+    .panelPrzystanki__content
+      .panelPrzystanki__content__Title Lista Przystanków
+      .panelPrzystanki__content__Filtr
+        .panelPrzystanki__content__Filtr__item
+          input(placeholder="Szukaj autobusu...")
+        .panelPrzystanki__content__Filtr__item
+          input(placeholder="Filtr stanów autobusu")
+        .panelPrzystanki__content__Filtr__item
+          input(placeholder="Typ autobusu")
+        .panelPrzystanki__content__Filtr__item
+          input(placeholder="Biletomat")
+      .panelPrzystanki__contentList
+
+        .panelList
+          .panelList__header
+            .panelList__headeritemType Typ
+            .panelList__headeritemName Numer Autobusu
+            .panelList__headeritemStatus Status
+            .panelList__headeritemBiletomat Biletomat
+            .panelList__headeritemnavigation Szczegóły
+          .panelAutobusy__list.panelList__content
+            .panelList__item
+              .panelList__itemType
+                .fa.fa-bus
+              .panelList__itemName 102
+              .panelList__itemStatus Aktywny
+              .panelList__itemBiletomat
+                .fa.fa-times-circle-o
+              .panelList__navigation Zobacz
+            .panelList__item
+              .panelList__itemType
+                .fa.fa-bus
+              .panelList__itemName 103
+              .panelList__itemStatus Aktywny
+              .panelList__itemBiletomat
+                .fa.fa-times-circle-o
+              .panelList__navigation Zobacz
+            .panelList__item
+              .panelList__itemType
+                .fa.fa-bus
+              .panelList__itemName 5
+              .panelList__itemStatus Aktywny
+              .panelList__itemBiletomat
+                .fa.fa-times-circle-o
+              .panelList__navigation Zobacz
+            .panelList__item
+              .panelList__itemType
+                .fa.fa-bus
+              .panelList__itemName 6
+              .panelList__itemStatus Aktywny
+              .panelList__itemBiletomat
+                .fa.fa-times-circle-o
+              .panelList__navigation Zobacz
+            .panelList__item
+              .panelList__itemType
+                .fa.fa-bus
+              .panelList__itemName 7
+              .panelList__itemStatus Aktywny
+              .panelList__itemBiletomat
+                .fa.fa-times-circle-o
+              .panelList__navigation Zobacz
+            .panelList__item
+              .panelList__itemType
+                .fa.fa-bus
+              .panelList__itemName 8
+              .panelList__itemStatus Aktywny
+              .panelList__itemBiletomat
+                .fa.fa-times-circle-o
+              .panelList__navigation Zobacz
+            .panelList__item
+              .panelList__itemType
+                .fa.fa-bus
+              .panelList__itemName 9
+              .panelList__itemStatus Aktywny
+              .panelList__itemBiletomat
+                .fa.fa-times-circle-o
+              .panelList__navigation Zobacz
+            .panelList__item
+              .panelList__itemType
+                .fa.fa-bus
+              .panelList__itemName 10
+              .panelList__itemStatus Aktywny
+              .panelList__itemBiletomat
+                .fa.fa-times-circle-o
+              .panelList__navigation Zobacz
+            .panelList__item
+              .panelList__itemType
+                .fa.fa-bus
+              .panelList__itemName 11
+              .panelList__itemStatus Aktywny
+              .panelList__itemBiletomat
+                .fa.fa-times-circle-o
+              .panelList__navigation Zobacz
+    span.panelPrzystanki__close
+      span.panelPrzystanki__icon.fa.fa-times
+
+.panelDodajAutobus__dragger
+  .panelDodajAutobus.panel.-hidden.dragger
+    .panelDodajAutobus__wrapper
+      .panelDodajAutobus__title Dodaj Autobus
+      .panelDodajAutobus__subtitle Panel dodawania nowych autobusów.
+      .panelDodajAutobus__content
+        .panelDodajAutobus__content__Title Dane Autobusu
+        .panelDodajAutobus__content__Filtr
+          .panelDodajAutobus__content__Filtr__item
+            input(placeholder="Numer Rejestracyjny")
+          .panelDodajAutobus__content__Filtr__item
+            input(placeholder="Numer VIN")
+          .panelDodajAutobus__content__Filtr__item
+            input(placeholder="Typ autobusu")
+          .panelDodajAutobus__content__Filtr__item
+            input(placeholder="Biletomat")
+      .panelDodajAutobus__navigation
+        button.panelDodajAutobus__navigation__item Dodaj Autobus
+        a(href="#").panelDodajAutobus__navigation__item.-abort Anuluj
+      span.panelDodajAutobus__close
+        span.panelDodajAutobus__icon.fa.fa-times
