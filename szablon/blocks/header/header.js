@@ -39,4 +39,7 @@ $(document).ready(function () {
   $('#panel-przystankiButton').on("click", function () {
     $('.panelPrzystanki').toggleClass('-hidden');
   });
+  $('#panel-uzytkownicyButton').on("click", function () {
+    $('.panelUsers').toggleClass('-hidden');
+  });
 });
