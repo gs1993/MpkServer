@@ -15,4 +15,16 @@ $(document).ready(function () {
       minWidth: 500
     });
   });
+
+  var uriGetBus = 'api/products';
+
+  // Send an AJAX request
+  $.getJSON(uriGetBus)
+    .done(function (data) {
+      // On success, 'data' contains a list of products.
+      $.each(data, function (key, item) {
+        // Add a list item for the product.
+        $('<li>', {text: formatItem(item)}).appendTo($('#products'));
+      });
+    });
 });
