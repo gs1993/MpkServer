@@ -3,7 +3,7 @@
     .panelPrzystanki__title Panel Zarządzania Przystankami
     .panelPrzystanki__subtitle Zarządzanie przystankami w systemie.
     .panelPrzystanki__navigation
-      a(href="#").panelPrzystanki__navigation__item#panel-DodajautobusyButton Dodaj Przystanek
+      a(href="#").panelPrzystanki__navigation__item#panel-DodajPrzystanekButton Dodaj Przystanek
     .panelPrzystanki__content
       .panelPrzystanki__content__Title Lista Przystanków
       .panelPrzystanki__content__Filtr
@@ -24,7 +24,7 @@
             .panelList__headeritemStatus Status
             .panelList__headeritemBiletomat Biletomat
             .panelList__headeritemnavigation Szczegóły
-          .panelAutobusy__list.panelList__content
+          .panelPrzystanki__list.panelList__content
             .panelList__item
               .panelList__itemType
                 .fa.fa-bus
@@ -100,24 +100,26 @@
     span.panelPrzystanki__close
       span.panelPrzystanki__icon.fa.fa-times
 
-.panelDodajAutobus__dragger
-  .panelDodajAutobus.panel.-hidden.dragger
-    .panelDodajAutobus__wrapper
-      .panelDodajAutobus__title Dodaj Autobus
-      .panelDodajAutobus__subtitle Panel dodawania nowych autobusów.
-      .panelDodajAutobus__content
-        .panelDodajAutobus__content__Title Dane Autobusu
-        .panelDodajAutobus__content__Filtr
-          .panelDodajAutobus__content__Filtr__item
-            input(placeholder="Numer Rejestracyjny")
-          .panelDodajAutobus__content__Filtr__item
-            input(placeholder="Numer VIN")
-          .panelDodajAutobus__content__Filtr__item
-            input(placeholder="Typ autobusu")
-          .panelDodajAutobus__content__Filtr__item
+.panelDodajPrzystanek__dragger
+  .panelDodajPrzystanek.panel.-hidden.dragger
+    .panelDodajPrzystanek__wrapper
+      .panelDodajPrzystanek__title Dodaj Przystanek
+      .panelDodajPrzystanek__subtitle Panel dodawania nowych przystanków.
+      .panelDodajPrzystanek__content
+        .panelDodajPrzystanek__content__Title Dane Przystanku
+        .panelDodajPrzystanek__content__Filtr
+          .panelDodajPrzystanek__content__Filtr__item
+            input(placeholder="Nazwa przystanku")
+          .panelDodajPrzystanek__content__Filtr__item
+            input(placeholder="Lokalizacja")
+          .panelDodajPrzystanek__content__Filtr__item
             input(placeholder="Biletomat")
-      .panelDodajAutobus__navigation
-        button.panelDodajAutobus__navigation__item Dodaj Autobus
-        a(href="#").panelDodajAutobus__navigation__item.-abort Anuluj
-      span.panelDodajAutobus__close
-        span.panelDodajAutobus__icon.fa.fa-times
+          .panelDodajPrzystanek__content__Filtr__item
+            input(placeholder="Kiosk")
+          .panelDodajPrzystanek__content__Filtr__item
+            input(placeholder="Typ przystanku")
+      .panelDodajPrzystanek__navigation
+        button.panelDodajPrzystanek__navigation__item Dodaj Autobus
+        a(href="#").panelDodajPrzystanek__navigation__item.-abort Anuluj
+      span.panelDodajPrzystanek__close
+        span.panelDodajPrzystanek__icon.fa.fa-times
