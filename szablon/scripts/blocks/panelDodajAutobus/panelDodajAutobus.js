@@ -10,4 +10,22 @@ $(document).ready(function () {
   $('#panel-DodajautobusyButton').on("click", function () {
     $('.panelDodajAutobus').toggleClass('-hidden');
   });
+
+  $(".js-example-placeholder-single.crud").select2({
+    placeholder: "Wybierz",
+    allowClear: true,
+    width: '100%',
+    minimumResultsForSearch: -1
+
+  });
+  $(".js-example-placeholder-single.scrud").select2({
+    placeholder: "Wybierz",
+    allowClear: true,
+    width: '100%',
+
+
+  });
+
+
+
 });

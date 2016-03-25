@@ -1,20 +1,28 @@
 .panelAutobusy.panel.-hidden.dragger
+  .panelAutobusy__title Panel Zarządzania Autobusami
   .panelAutobusy__wrapper
-    .panelAutobusy__title Panel Zarządzania Autobusami
-    .panelAutobusy__subtitle Zarządzanie flotą autobusów.
-    .panelAutobusy__navigation
-      a(href="#").panelAutobusy__navigation__item#panel-DodajautobusyButton Dodaj Autobus
     .panelAutobusy__content
       .panelAutobusy__content__Title Lista Autobusów
       .panelAutobusy__content__Filtr
         .panelAutobusy__content__Filtr__item
-          input(placeholder="Szukaj autobusu...")
+          input(placeholder="Szukaj autobusu")
         .panelAutobusy__content__Filtr__item
-          input(placeholder="Filtr stanów autobusu")
+            select.js-example-placeholder-single.status
+              option
+              option(value=0) Aktywny
+              option(value=1) W zajezdni
+              option(value=2) W serwisie
         .panelAutobusy__content__Filtr__item
-          input(placeholder="Typ autobusu")
-        .panelAutobusy__content__Filtr__item
-          input(placeholder="Biletomat")
+
+            select.js-example-placeholder-single.typ
+              option
+              option(value=0) Normalny
+              option(value=1) Przegubowy
+        .panelAutobusy__content__Filtr__item.check
+
+              input(type="checkbox")#czyautobusmabiletomat
+              label(for="czyautobusmabiletomat")
+              p Biletomat
       .panelAutobusy__contentList
 
         .panelList
@@ -97,27 +105,50 @@
               .panelList__itemBiletomat
                 .fa.fa-times-circle-o
               .panelList__navigation Zobacz
-    span.panelAutobusy__close
-      span.panelAutobusy__icon.fa.fa-times
+    .panelAutobusy__navigation
+      a(href="#").panelAutobusy__navigation__item#panel-DodajautobusyButton Dodaj Autobus
+  span.panelAutobusy__close
+    span.panelAutobusy__icon.fa.fa-times
 
 .panelDodajAutobus__dragger
   .panelDodajAutobus.panel.-hidden.dragger
+    .panelDodajAutobus__title Dodaj Autobus
     .panelDodajAutobus__wrapper
-      .panelDodajAutobus__title Dodaj Autobus
-      .panelDodajAutobus__subtitle Panel dodawania nowych autobusów.
       .panelDodajAutobus__content
         .panelDodajAutobus__content__Title Dane Autobusu
-        .panelDodajAutobus__content__Filtr
-          .panelDodajAutobus__content__Filtr__item
-            input(placeholder="Numer Rejestracyjny")
-          .panelDodajAutobus__content__Filtr__item
-            input(placeholder="Numer VIN")
-          .panelDodajAutobus__content__Filtr__item
-            input(placeholder="Typ autobusu")
-          .panelDodajAutobus__content__Filtr__item
-            input(placeholder="Biletomat")
+        .panelDodajAutobus__content__form
+          .panelDodajAutobus__content__form__item
+            span.item Numer Rejestracyjny
+            input(placeholder="Podaj Nr. Rejestracyjny")
+          .panelDodajAutobus__content__form__item
+            span.item Numer VIN
+            input(placeholder="Podaj Nr. VIN")
+          .panelDodajAutobus__content__form__item
+            span.item Typ Autobusu
+            select.js-example-placeholder-single.crud
+              option(value=0) Normalny
+              option(value=1) Przegubowy
+          .panelDodajAutobus__content__form__item
+            span.item Czy ma Biletomat?
+            select.js-example-placeholder-single.crud
+              option(value=0) Nie
+              option(value=1) Tak
+          .panelDodajAutobus__content__form__item
+            span.item Status
+            select.js-example-placeholder-single.crud
+              option(value=0) Aktywny
+              option(value=1) W zajezdni
+              option(value=2) W serwisie
+          .panelDodajAutobus__content__form__item
+            span.item Numer Autobusu
+            select.js-example-placeholder-single.scrud
+              option(value=0) 100
+              option(value=1) 103
+              option(value=2) 104
       .panelDodajAutobus__navigation
-        button.panelDodajAutobus__navigation__item Dodaj Autobus
-        a(href="#").panelDodajAutobus__navigation__item.-abort Anuluj
-      span.panelDodajAutobus__close
-        span.panelDodajAutobus__icon.fa.fa-times
+        button.green.panelDodajAutobus__navigation__item.green Dodaj Autobus
+        a(href="#").panelDodajAutobus__navigation__item.gray.-abort Anuluj
+    span.panelDodajAutobus__close
+      span.panelDodajAutobus__icon.fa.fa-times
+
+

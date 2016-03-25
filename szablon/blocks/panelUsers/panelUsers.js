@@ -15,4 +15,21 @@ $(document).ready(function () {
       minWidth: 500
     });
   });
+  $(".js-example-placeholder-single.status").select2({
+    placeholder: "Wybierz status",
+    allowClear: true,
+    showSearchBox: false,
+    width: '100%',
+    minimumResultsForSearch: -1
+
+
+  });
+  $(".js-example-placeholder-single.ranga").select2({
+    placeholder: "Wybierz range",
+    allowClear: true,
+    showSearchBox: false,
+    width: '100%',
+    minimumResultsForSearch: -1
+
+  });
 });

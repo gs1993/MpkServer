@@ -10,4 +10,11 @@ $(document).ready(function () {
   $('#panel-DodajUsersButton').on("click", function () {
     $('.panelDodajUsers').toggleClass('-hidden');
   });
+
+  $(".js-example-placeholder-single.crud").select2({
+    placeholder: "Wybierz",
+    allowClear: true,
+    width: '100%',
+    minimumResultsForSearch: -1
+  });
 });

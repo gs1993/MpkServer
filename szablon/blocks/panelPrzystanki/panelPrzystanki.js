@@ -15,4 +15,8 @@ $(document).ready(function () {
       minWidth: 500
     });
   });
+  $(".js-example-placeholder-multiple.linie").select2({
+    placeholder: "Wpisz lub wybierz linie",
+    width: '100%'
+  });
 });

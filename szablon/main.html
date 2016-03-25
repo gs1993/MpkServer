@@ -21,6 +21,7 @@
 <script src="bower_components/superfish/dist/js/superfish.js"></script>
 <script src="bower_components/superfish/dist/js/hoverIntent.js"></script>
 <script src="bower_components/jquery-sticky/jquery.sticky.js"></script>
+<script src="bower_components/select2/dist/js/select2.js"></script>
 <!-- endbower -->
     <!-- MAPY GOOGLA -->
     <script src="http://maps.google.com/maps/api/js"></script>
@@ -30,15 +31,15 @@
 <link rel="stylesheet" href="bower_components/superfish/dist/css/superfish.css" />
 <!-- endbower -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body id="body">
-    <!--
-    Created by salimike on 18.03.16.
-    
+    <!--Created by salimike on 18.03.16.
     -->
+    <div class="bar"></div>
     <div class="header">
-      <div class="header__corner"></div>
+      <div class="header__corner"><i class="fa fa-bars"></i></div>
       <div class="header__switcher -hidden">
         <div class="background"></div>
         <ul class="header__panel">
@@ -55,8 +56,9 @@
         </ul>
       </div>
     </div>
+    <div class="headerLogo"><i class="fa fa-bus"></i><span><b>mpk</b></span></div>
     <div class="headerProfile">
-      <div class="headerProfile__corner"></div>
+      <div class="headerProfile__corner"><i class="fa fa-gears"></i></div>
       <div class="headerProfile__switcher -hidden">
         <div class="background"></div>
         <ul class="headerProfile__panel">
@@ -84,10 +86,10 @@
         <div class="panelWelcome__wrapper"><span class="panelWelcome__buttonIconBG">
             <div class="panelWelcome__buttonIcon fa fa-bus"></div></span>
           <div class="panelWelcome__title">Witaj w systemie MPK</div>
-          <div class="panelWelcome__text">Projekt zespołowy.</div>
-          <div class="panelWelcome__navigation">
-            <!--<a href="#" style="display:block;">Link #01</a>--><a href="#">Logowanie</a><a href="#">Rejestracja</a>
-          </div><span class="panelWelcome__close"><span class="panelWelcome__icon fa fa-times"></span></span>
+          <div class="panelWelcome__text">Projekt zespołowy.</div><span class="panelWelcome__close"><span class="panelWelcome__icon fa fa-times"></span></span>
+        </div>
+        <div class="panelWelcome__navigation">
+          <!--<a href="#" style="display:block;">Link #01</a>--><a href="#" class="blue">Logowanie</a><a href="#" class="green">Rejestracja</a>
         </div>
       </div>
       <div class="panelLogin panel -hidden">
@@ -179,24 +181,33 @@
         </div>
       </div>
       <div class="panelAutobusy panel -hidden dragger">
+        <div class="panelAutobusy__title">Panel Zarządzania Autobusami</div>
         <div class="panelAutobusy__wrapper">
-          <div class="panelAutobusy__title">Panel Zarządzania Autobusami</div>
-          <div class="panelAutobusy__subtitle">Zarządzanie flotą autobusów.</div>
-          <div class="panelAutobusy__navigation"><a href="#" id="panel-DodajautobusyButton" class="panelAutobusy__navigation__item">Dodaj Autobus</a></div>
           <div class="panelAutobusy__content">
             <div class="panelAutobusy__content__Title">Lista Autobusów</div>
             <div class="panelAutobusy__content__Filtr">
               <div class="panelAutobusy__content__Filtr__item">
-                <input placeholder="Szukaj autobusu...">
+                <input placeholder="Szukaj autobusu">
               </div>
               <div class="panelAutobusy__content__Filtr__item">
-                <input placeholder="Filtr stanów autobusu">
+                <select class="js-example-placeholder-single status">
+                  <option></option>
+                  <option value="0">Aktywny</option>
+                  <option value="1">W zajezdni</option>
+                  <option value="2">W serwisie</option>
+                </select>
               </div>
               <div class="panelAutobusy__content__Filtr__item">
-                <input placeholder="Typ autobusu">
+                <select class="js-example-placeholder-single typ">
+                  <option></option>
+                  <option value="0">Normalny</option>
+                  <option value="1">Przegubowy</option>
+                </select>
               </div>
-              <div class="panelAutobusy__content__Filtr__item">
-                <input placeholder="Biletomat">
+              <div class="panelAutobusy__content__Filtr__item check">
+                <input type="checkbox" id="czyautobusmabiletomat">
+                <label for="czyautobusmabiletomat"></label>
+                <p>Biletomat</p>
               </div>
             </div>
             <div class="panelAutobusy__contentList">
@@ -311,163 +322,184 @@
                 </div>
               </div>
             </div>
-          </div><span class="panelAutobusy__close"><span class="panelAutobusy__icon fa fa-times"></span></span>
-        </div>
+          </div>
+          <div class="panelAutobusy__navigation"><a href="#" id="panel-DodajautobusyButton" class="panelAutobusy__navigation__item">Dodaj Autobus</a></div>
+        </div><span class="panelAutobusy__close"><span class="panelAutobusy__icon fa fa-times"></span></span>
       </div>
       <div class="panelDodajAutobus__dragger">
         <div class="panelDodajAutobus panel -hidden dragger">
+          <div class="panelDodajAutobus__title">Dodaj Autobus</div>
           <div class="panelDodajAutobus__wrapper">
-            <div class="panelDodajAutobus__title">Dodaj Autobus</div>
-            <div class="panelDodajAutobus__subtitle">Panel dodawania nowych autobusów.</div>
             <div class="panelDodajAutobus__content">
               <div class="panelDodajAutobus__content__Title">Dane Autobusu</div>
-              <div class="panelDodajAutobus__content__Filtr">
-                <div class="panelDodajAutobus__content__Filtr__item">
-                  <input placeholder="Numer Rejestracyjny">
+              <div class="panelDodajAutobus__content__form">
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Numer Rejestracyjny</span>
+                  <input placeholder="Podaj Nr. Rejestracyjny">
                 </div>
-                <div class="panelDodajAutobus__content__Filtr__item">
-                  <input placeholder="Numer VIN">
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Numer VIN</span>
+                  <input placeholder="Podaj Nr. VIN">
                 </div>
-                <div class="panelDodajAutobus__content__Filtr__item">
-                  <input placeholder="Typ autobusu">
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Typ Autobusu</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Normalny</option>
+                    <option value="1">Przegubowy</option>
+                  </select>
                 </div>
-                <div class="panelDodajAutobus__content__Filtr__item">
-                  <input placeholder="Biletomat">
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Czy ma Biletomat?</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Nie</option>
+                    <option value="1">Tak</option>
+                  </select>
+                </div>
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Status</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Aktywny</option>
+                    <option value="1">W zajezdni</option>
+                    <option value="2">W serwisie</option>
+                  </select>
+                </div>
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Numer Autobusu</span>
+                  <select class="js-example-placeholder-single scrud">
+                    <option value="0">100</option>
+                    <option value="1">103</option>
+                    <option value="2">104</option>
+                  </select>
                 </div>
               </div>
             </div>
             <div class="panelDodajAutobus__navigation">
-              <button class="panelDodajAutobus__navigation__item">Dodaj Autobus</button><a href="#" class="panelDodajAutobus__navigation__item -abort">Anuluj</a>
-            </div><span class="panelDodajAutobus__close"><span class="panelDodajAutobus__icon fa fa-times"></span></span>
-          </div>
+              <button class="green panelDodajAutobus__navigation__item green">Dodaj Autobus</button><a href="#" class="panelDodajAutobus__navigation__item gray -abort">Anuluj</a>
+            </div>
+          </div><span class="panelDodajAutobus__close"><span class="panelDodajAutobus__icon fa fa-times"></span></span>
         </div>
       </div>
       <div class="panelPrzystanki panel -hidden dragger">
+        <div class="panelPrzystanki__title">Panel Zarządzania Przystankami</div>
         <div class="panelPrzystanki__wrapper">
-          <div class="panelPrzystanki__title">Panel Zarządzania Przystankami</div>
-          <div class="panelPrzystanki__subtitle">Zarządzanie przystankami w systemie.</div>
-          <div class="panelPrzystanki__navigation"><a href="#" id="panel-DodajPrzystanekButton" class="panelPrzystanki__navigation__item">Dodaj Przystanek</a></div>
           <div class="panelPrzystanki__content">
             <div class="panelPrzystanki__content__Title">Lista Przystanków</div>
             <div class="panelPrzystanki__content__Filtr">
               <div class="panelPrzystanki__content__Filtr__item">
-                <input placeholder="Szukaj autobusu...">
+                <input placeholder="Szukaj przystanku">
               </div>
               <div class="panelPrzystanki__content__Filtr__item">
-                <input placeholder="Filtr stanów autobusu">
+                <input placeholder="Szukaj ulicy">
               </div>
               <div class="panelPrzystanki__content__Filtr__item">
-                <input placeholder="Typ autobusu">
+                <select multiple class="js-example-placeholder-multiple linie">
+                  <option></option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                  <option>16</option>
+                  <option>17</option>
+                  <option>18</option>
+                  <option>19</option>
+                </select>
+                <!--input(placeholder="Typ autobusu")-->
               </div>
-              <div class="panelPrzystanki__content__Filtr__item">
-                <input placeholder="Biletomat">
+              <div class="panelPrzystanki__content__Filtr__item check">
+                <input type="checkbox" id="czyprzystanekmabiletomat">
+                <label for="czyprzystanekmabiletomat"></label>
+                <p>Biletomat</p>
+              </div>
+              <div class="panelPrzystanki__content__Filtr__item check">
+                <input type="checkbox" id="czyprzystanekmakiosk">
+                <label for="czyprzystanekmakiosk"></label>
+                <p>Kiosk</p>
               </div>
             </div>
             <div class="panelPrzystanki__contentList">
               <div class="panelList">
                 <div class="panelList__header">
-                  <div class="panelList__headeritemType">Typ</div>
-                  <div class="panelList__headeritemName">Numer Autobusu</div>
-                  <div class="panelList__headeritemStatus">Status</div>
+                  <div class="panelList__headeritemName">Nazwa przystanku</div>
+                  <div class="panelList__headeritemUlica">Ulica</div>
+                  <div class="panelList__headeritemLinie">Linie</div>
                   <div class="panelList__headeritemBiletomat">Biletomat</div>
+                  <div class="panelList__headeritemKiosk">Kiosk</div>
                   <div class="panelList__headeritemnavigation">Szczegóły</div>
                 </div>
                 <div class="panelPrzystanki__list panelList__content">
                   <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">102</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
+                    <div class="panelList__itemName">Lubelska</div>
+                    <div class="panelList__itemUlica">Poprzeczna</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
                     <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__itemKiosk">
                       <div class="fa fa-times-circle-o"></div>
                     </div>
                     <div class="panelList__navigation">Zobacz</div>
                   </div>
                   <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">103</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
+                    <div class="panelList__itemName">Dworzec Główny</div>
+                    <div class="panelList__itemUlica">Dworcowa</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
                     <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__itemKiosk">
                       <div class="fa fa-times-circle-o"></div>
                     </div>
                     <div class="panelList__navigation">Zobacz</div>
                   </div>
                   <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">5</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
+                    <div class="panelList__itemName">Uniwersytet Stadion</div>
+                    <div class="panelList__itemUlica">Warszawska</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
                     <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__itemKiosk">
                       <div class="fa fa-times-circle-o"></div>
                     </div>
                     <div class="panelList__navigation">Zobacz</div>
                   </div>
                   <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">6</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
+                    <div class="panelList__itemName">Uniwersytet Świetlista</div>
+                    <div class="panelList__itemUlica">Słoneczna</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
                     <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__itemKiosk">
                       <div class="fa fa-times-circle-o"></div>
                     </div>
                     <div class="panelList__navigation">Zobacz</div>
                   </div>
                   <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">7</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
+                    <div class="panelList__itemName">Partyzantów</div>
+                    <div class="panelList__itemUlica">Partyzantów</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
                     <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__itemKiosk">
                       <div class="fa fa-times-circle-o"></div>
                     </div>
                     <div class="panelList__navigation">Zobacz</div>
                   </div>
                   <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">8</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
+                    <div class="panelList__itemName">Uniwersytet-Prawocheńskiego</div>
+                    <div class="panelList__itemUlica">Warszawska</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
                     <div class="panelList__itemBiletomat">
                       <div class="fa fa-times-circle-o"></div>
                     </div>
-                    <div class="panelList__navigation">Zobacz</div>
-                  </div>
-                  <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">9</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
-                      <div class="fa fa-times-circle-o"></div>
-                    </div>
-                    <div class="panelList__navigation">Zobacz</div>
-                  </div>
-                  <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">10</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
-                      <div class="fa fa-times-circle-o"></div>
-                    </div>
-                    <div class="panelList__navigation">Zobacz</div>
-                  </div>
-                  <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">11</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
+                    <div class="panelList__itemKiosk">
                       <div class="fa fa-times-circle-o"></div>
                     </div>
                     <div class="panelList__navigation">Zobacz</div>
@@ -475,193 +507,158 @@
                 </div>
               </div>
             </div>
-          </div><span class="panelPrzystanki__close"><span class="panelPrzystanki__icon fa fa-times"></span></span>
-        </div>
+          </div>
+          <div class="panelPrzystanki__navigation"><a href="#" id="panel-DodajPrzystanekButton" class="panelPrzystanki__navigation__item">Dodaj Przystanek</a></div>
+        </div><span class="panelPrzystanki__close"><span class="panelPrzystanki__icon fa fa-times"></span></span>
       </div>
       <div class="panelDodajPrzystanek__dragger">
         <div class="panelDodajPrzystanek panel -hidden dragger">
+          <div class="panelDodajPrzystanek__title">Dodaj Przystanek</div>
           <div class="panelDodajPrzystanek__wrapper">
-            <div class="panelDodajPrzystanek__title">Dodaj Przystanek</div>
-            <div class="panelDodajPrzystanek__subtitle">Panel dodawania nowych przystanków.</div>
             <div class="panelDodajPrzystanek__content">
               <div class="panelDodajPrzystanek__content__Title">Dane Przystanku</div>
-              <div class="panelDodajPrzystanek__content__Filtr">
-                <div class="panelDodajPrzystanek__content__Filtr__item">
-                  <input placeholder="Nazwa przystanku">
+              <div class="panelDodajPrzystanek__content__form">
+                <div class="panelDodajPrzystanek__content__form__item"><span class="item">Nazwa przystanku</span>
+                  <input placeholder="Podaj nazwę przystanku">
                 </div>
-                <div class="panelDodajPrzystanek__content__Filtr__item">
-                  <input placeholder="Lokalizacja">
+                <div class="panelDodajPrzystanek__content__form__item"><span class="item">Lokalizacja</span>
+                  <input placeholder="Podaj lokalizackje">
                 </div>
-                <div class="panelDodajPrzystanek__content__Filtr__item">
-                  <input placeholder="Biletomat">
+                <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma biletomat?</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Nie</option>
+                    <option value="1">Tak</option>
+                  </select>
                 </div>
-                <div class="panelDodajPrzystanek__content__Filtr__item">
-                  <input placeholder="Kiosk">
+                <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma kiosk?</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Nie</option>
+                    <option value="1">Tak</option>
+                  </select>
                 </div>
-                <div class="panelDodajPrzystanek__content__Filtr__item">
-                  <input placeholder="Typ przystanku">
+                <div class="panelDodajPrzystanek__content__form__item"><span class="item">Linie</span>
+                  <select multiple class="js-example-placeholder-multiple linie">
+                    <option></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                  </select>
                 </div>
               </div>
             </div>
             <div class="panelDodajPrzystanek__navigation">
-              <button class="panelDodajPrzystanek__navigation__item">Dodaj Autobus</button><a href="#" class="panelDodajPrzystanek__navigation__item -abort">Anuluj</a>
-            </div><span class="panelDodajPrzystanek__close"><span class="panelDodajPrzystanek__icon fa fa-times"></span></span>
-          </div>
+              <button class="panelDodajPrzystanek__navigation__item green">Dodaj Autobus</button><a href="#" class="panelDodajPrzystanek__navigation__item gray -abort">Anuluj</a>
+            </div>
+          </div><span class="panelDodajPrzystanek__close"><span class="panelDodajPrzystanek__icon fa fa-times"></span></span>
         </div>
       </div>
       <div class="panelUsers panel -hidden dragger">
+        <div class="panelUsers__title">Panel Zarządzania Użytkownikami</div>
         <div class="panelUsers__wrapper">
-          <div class="panelUsers__title">Panel Zarządzania Użytkownikami</div>
-          <div class="panelUsers__subtitle">Zarządzanie użytkownikami systemu.</div>
-          <div class="panelUsers__navigation"><a href="#" id="panel-DodajUsersButton" class="panelUsers__navigation__item">Dodaj Użytkownika</a></div>
           <div class="panelUsers__content">
             <div class="panelUsers__content__Title">Lista Użytkowników</div>
             <div class="panelUsers__content__Filtr">
               <div class="panelUsers__content__Filtr__item">
                 <input placeholder="Szukaj użytkownika...">
               </div>
+              <div class="panelUsers__content__Filtr__item">
+                <select class="js-example-placeholder-single status">
+                  <option></option>
+                  <option value="0">Nieaktywny</option>
+                  <option value="1">Aktywny</option>
+                </select>
+              </div>
+              <div class="panelUsers__content__Filtr__item">
+                <select class="js-example-placeholder-single ranga">
+                  <option></option>
+                  <option value="0">Użytkownik</option>
+                  <option value="1">Kontroler</option>
+                  <option value="1">Administrator</option>
+                </select>
+              </div>
             </div>
             <div class="panelUsers__contentList">
               <div class="panelList">
                 <div class="panelList__header">
-                  <div class="panelList__headeritemType">Typ</div>
                   <div class="panelList__headeritemName">Email</div>
-                  <div class="panelList__headeritemStatus">Ranga</div>
-                  <div class="panelList__headeritemBiletomat">Status</div>
+                  <div class="panelList__headeritemRanga">Ranga</div>
+                  <div class="panelList__headeritemStatus">Status</div>
                   <div class="panelList__headeritemnavigation">Szczegóły</div>
                 </div>
                 <div class="panelUsers__list panelList__content">
                   <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">102</div>
+                    <div class="panelList__itemName">kontroler@dev.com</div>
+                    <div class="panelList__itemRanga">Kontroler</div>
                     <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
-                      <div class="fa fa-times-circle-o"></div>
-                    </div>
                     <div class="panelList__navigation">Zobacz</div>
                   </div>
                   <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">103</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
-                      <div class="fa fa-times-circle-o"></div>
-                    </div>
+                    <div class="panelList__itemName">bolek@dev.com</div>
+                    <div class="panelList__itemRanga">Uzytkownik</div>
+                    <div class="panelList__itemStatus">nieaktywny</div>
                     <div class="panelList__navigation">Zobacz</div>
                   </div>
                   <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">5</div>
+                    <div class="panelList__itemName">admin@dev.com</div>
+                    <div class="panelList__itemRanga">Administrator</div>
                     <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
-                      <div class="fa fa-times-circle-o"></div>
-                    </div>
-                    <div class="panelList__navigation">Zobacz</div>
-                  </div>
-                  <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">6</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
-                      <div class="fa fa-times-circle-o"></div>
-                    </div>
-                    <div class="panelList__navigation">Zobacz</div>
-                  </div>
-                  <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">7</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
-                      <div class="fa fa-times-circle-o"></div>
-                    </div>
-                    <div class="panelList__navigation">Zobacz</div>
-                  </div>
-                  <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">8</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
-                      <div class="fa fa-times-circle-o"></div>
-                    </div>
-                    <div class="panelList__navigation">Zobacz</div>
-                  </div>
-                  <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">9</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
-                      <div class="fa fa-times-circle-o"></div>
-                    </div>
-                    <div class="panelList__navigation">Zobacz</div>
-                  </div>
-                  <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">10</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
-                      <div class="fa fa-times-circle-o"></div>
-                    </div>
-                    <div class="panelList__navigation">Zobacz</div>
-                  </div>
-                  <div class="panelList__item">
-                    <div class="panelList__itemType">
-                      <div class="fa fa-bus"></div>
-                    </div>
-                    <div class="panelList__itemName">11</div>
-                    <div class="panelList__itemStatus">Aktywny</div>
-                    <div class="panelList__itemBiletomat">
-                      <div class="fa fa-times-circle-o"></div>
-                    </div>
                     <div class="panelList__navigation">Zobacz</div>
                   </div>
                 </div>
               </div>
             </div>
-          </div><span class="panelUsers__close"><span class="panelUsers__icon fa fa-times"></span></span>
-        </div>
+          </div>
+          <div class="panelUsers__navigation"><a href="#" id="panel-DodajUsersButton" class="panelUsers__navigation__item">Dodaj Użytkownika</a></div>
+        </div><span class="panelUsers__close"><span class="panelUsers__icon fa fa-times"></span></span>
       </div>
       <div class="panelDodajUsers__dragger">
         <div class="panelDodajUsers panel -hidden dragger">
+          <div class="panelDodajUsers__title">Dodaj Użytkownika</div>
           <div class="panelDodajUsers__wrapper">
-            <div class="panelDodajUsers__title">Dodaj Użytkownika</div>
-            <div class="panelDodajUsers__subtitle">Panel dodawania nowych autobusów.</div>
             <div class="panelDodajUsers__content">
-              <div class="panelDodajUsers__content__Title">Dane Autobusu</div>
-              <div class="panelDodajUsers__content__Filtr">
-                <div class="panelDodajUsers__content__Filtr__item">
-                  <input placeholder="Numer Rejestracyjny">
+              <div class="panelDodajUsers__content__Title">Dane Użytkownika</div>
+              <div class="panelDodajUsers__content__form">
+                <div class="panelDodajUsers__content__form__item"><span class="item">E-mail</span>
+                  <input placeholder="Podaj adres e-mail">
                 </div>
-                <div class="panelDodajUsers__content__Filtr__item">
-                  <input placeholder="Numer VIN">
+                <div class="panelDodajUsers__content__form__item"><span class="item">Hasło</span>
+                  <input type="password" placeholder="Podaj hasło">
                 </div>
-                <div class="panelDodajUsers__content__Filtr__item">
-                  <input placeholder="Typ autobusu">
+                <div class="panelDodajUsers__content__form__item"><span class="item">Ranga</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Użytkownik</option>
+                    <option value="1">Kontroler</option>
+                    <option value="1">Administrator</option>
+                  </select>
                 </div>
-                <div class="panelDodajUsers__content__Filtr__item">
-                  <input placeholder="Biletomat">
+                <div class="panelDodajUsers__content__form__item"><span class="item">Status</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Nieaktywny</option>
+                    <option value="1">Aktywny</option>
+                  </select>
                 </div>
               </div>
             </div>
             <div class="panelDodajUsers__navigation">
-              <button class="panelDodajUsers__navigation__item">Dodaj Użytkownika</button><a href="#" class="panelDodajUsers__navigation__item -abort">Anuluj</a>
-            </div><span class="panelDodajUsers__close"><span class="panelDodajUsers__icon fa fa-times"></span></span>
-          </div>
+              <button class="panelDodajUsers__navigation__item green">Dodaj Użytkownika</button><a href="#" class="panelDodajUsers__navigation__item -abort">Anuluj</a>
+            </div>
+          </div><span class="panelDodajUsers__close"><span class="panelDodajUsers_icon fa fa-times"></span></span>
         </div>
       </div>
     </div>

@@ -14,13 +14,13 @@ html( lang="pl")
             .panelWelcome__buttonIcon.fa.fa-bus
           .panelWelcome__title Witaj w systemie MPK
           .panelWelcome__text Projekt zespołowy.
-          .panelWelcome__navigation
-            //<a href="#" style="display:block;">Link #01</a>
-            a(href="#") Logowanie
-            a(href="#") Rejestracja
+
           span.panelWelcome__close
             span.panelWelcome__icon.fa.fa-times
-
+        .panelWelcome__navigation
+          //<a href="#" style="display:block;">Link #01</a>
+          a(href="#").blue Logowanie
+          a(href="#").green Rejestracja
       include _panelLogin.jade
       include _panelRegister.jade
       include _panelResetPassword.jade
