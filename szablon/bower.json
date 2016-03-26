@@ -24,7 +24,8 @@
     "font-awesome": "latest",
     "jquery-sticky": "latest",
     "jquery-resize-image-to-parent": "latest",
-    "primer-css": "^2.7.1"
+    "primer-css": "^2.7.1",
+    "select2": "latest"
   },
   "dependencies": {
     "imagesloaded": "latest",
@@ -33,6 +34,7 @@
     "slick.js": "latest",
     "superfish": "latest",
     "font-awesome": "latest",
-    "jquery-sticky": "latest"
+    "jquery-sticky": "latest",
+    "select2": "latest"
   }
 }

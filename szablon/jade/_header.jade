@@ -1,8 +1,9 @@
 //
    Created by salimike on 18.03.16.
-
+.bar
 .header
   .header__corner
+    i.fa.fa-bars
   .header__switcher.-hidden
     .background
     ul.header__panel
@@ -31,8 +32,13 @@
           span.header__buttonIconBG
             .header__buttonIcon.fa.fa-eye
           | Kontrole
+.headerLogo
+  i.fa.fa-bus
+  span
+    b mpk
 .headerProfile
   .headerProfile__corner
+    i.fa.fa-gears
   .headerProfile__switcher.-hidden
     .background
     ul.headerProfile__panel
@@ -56,13 +62,16 @@
           span.headerProfile__buttonIconBG
             .headerProfile__buttonIcon.fa.fa-user
           | Moje Konto
-      li.headerProfile__item#panel-ustawieniaButton
+      li.headerProfile__item#panel-InformacjeButton
         span.headerProfile__button
           span.headerProfile__buttonIconBG
-            .headerProfile__buttonIcon.fa.fa-cogs
-          | Ustawienia
+            .headerProfile__buttonIcon.fa.fa-info-circle
+          | Informacje
       li.headerProfile__item#panel-wylogujButton
         span.headerProfile__button
           span.headerProfile__buttonIconBG
             .headerProfile__buttonIcon.fa.fa-sign-out
           | Wyloguj
+
+.headerUserPanel
+  span Zalogowany: nazwaUzytkownika@cmok.pl

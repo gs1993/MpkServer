@@ -1,0 +1,32 @@
+.panelLogin.panel.-hidden
+  .panelLogin__wrapper
+    .panelLogin__title Panel Logowania
+    .panelLogin__alert.-info.hidden
+      h3
+        i.fa.fa-warning
+        | Uwaga!
+      | Konto o takim adresie e-mail nie istnieje.
+    .panelLogin__alert.-info.hidden
+      h3
+        i.fa.fa-warning
+        | Uwaga!
+      | Hasło przypisane do tego emailu, jest nie poprawne.
+
+
+    .panelLogin__form
+      .panelLogin__formwrapper
+        input(placeholder="E-mail")
+        i.fa.fa-envelope-o
+      .panelLogin__formwrapper
+        input(type='password' placeholder="Hasło")
+        i.fa.fa-lock
+      .remembermebox
+        input(type="checkbox" checked).check#check
+        label(for="check")
+          span.icon
+          |  Zapamiętaj mnie
+      button(type="submit") Zaloguj się
+    span.panelLogin__close
+      span.panelLogin__icon.fa.fa-times
+    .panelLogin__navigation Nie masz konta?
+      a(href="#").panelLogin__ToRegister Zarejestruj się.
