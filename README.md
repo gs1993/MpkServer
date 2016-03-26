@@ -68,3 +68,45 @@ contentType: "application/json",
 });
 ```
 w data powinien znajdować się jsonowy odpowiednik obiektu modelu w parametrze akcji kontrolera
+
+# WebSocketServer #
+
+Przykładowe użycie serwera:
+
+```
+#!javascript
+
+var ws = new WebSocket("ws://localhost:7878");
+        ws.onmessage = function(data){console.log(data);}
+        var data = {BusId:'1',BusStopId:'2'};
+        var obj = {
+          Action: "busStop.Activity",
+          Data: JSON.stringify(data)
+        };
+
+        ws.send(JSON.stringify(obj));
+```
+
+obj główny:
+
+```
+#!c#
+    public class MessageDto
+    {
+        public string Action { get; set; }
+        public string Data { get; set; }
+    }
+
+```
+obj zwrotki:
+
+```
+#!c#
+    public class MessageResultDto
+    {
+        public ResultState State { get; set; }
+        public string Data { get; set; }
+    }
+```
+Tyle, że dostaje się je w JSON'ie.
+Zawartość data przy wysyłaniu i odbieraniu zależna od akcji. Teoretycznie od strony front endu, jedyne co będzie potrzebne to połączenie się z serverem + zautoryzowanie się by dostawać na bierząco eventy aktywności.
