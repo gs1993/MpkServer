@@ -1,5 +1,6 @@
 ﻿using Data.Enums;
 using Data.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Data.Migrations
 {
@@ -17,7 +18,18 @@ namespace Data.Migrations
 
         protected override void Seed(Data.MainDbContex context)
         {
-           context.Buss.AddOrUpdate(new Bus ()
+            var passwordHash = new PasswordHasher();
+            string password = passwordHash.HashPassword("Password@123");
+            context.Users.AddOrUpdate(u=>u.UserName,
+                new ApiUser()
+                {
+                    UserName = "lukraik",
+                    PasswordHash = password,
+                    PhoneNumber = "08869879"
+
+                });
+
+            context.Buss.AddOrUpdate(new Bus ()
            {
                BusType = BusType.Articulated,
                GotMachine = false,
