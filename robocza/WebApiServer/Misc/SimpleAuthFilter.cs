@@ -36,15 +36,13 @@ namespace WebApiServer.Misc
             HttpRequestMessage request = context.Request;
             AuthenticationHeaderValue authorization = request.Headers.Authorization;
 
-            if (context.ActionContext.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any())
-            {
-                return;
-            }
+            if (authorization == null) return;
 
-            if (authorization == null  || authorization.Scheme != AuthenticationScheme || string.IsNullOrEmpty(authorization.Parameter))
+            if (authorization.Scheme != AuthenticationScheme) return;
+
+            if (string.IsNullOrEmpty(authorization.Parameter))
             {
                 context.ErrorResult = new AuthenticationFailureResult("Missing credentials",request);
-                return;
             }
 
             var um = _userService.GetUserManager();

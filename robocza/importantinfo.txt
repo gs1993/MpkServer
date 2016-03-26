@@ -1,0 +1,12 @@
+netsh http add urlacl url=http://+:50000/ user=RaikPraca
+
+
+$.ajax({
+  type: "POST",
+  url: "http://localhost:50000/Test/TestPost",
+  data: '{"Test":"asdasd"}',
+crossDomain: true,
+  success: function(result){console.log(result)},
+contentType: "application/json",
+    dataType: 'json'
+});

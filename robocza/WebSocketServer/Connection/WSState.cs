@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace WebSocketServer.Connection
 {
-    public class Class1
+    public enum WSState
     {
+        Connected,
+        Authorized
     }
 }

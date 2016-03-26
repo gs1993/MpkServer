@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Transfer.TestTransfer
+namespace WebSocketServer.MessageResolver
 {
-    public class TestObj
+    interface IMessage
     {
-        public string Test { get; set; }
+
     }
 }
