@@ -37,7 +37,7 @@ Jak sama nazwa mówi pozwala na CORS, przydawało mi się do testowania przy pom
 # Entity framework #
 w razie problemów z bazą danych
 na solucji Data należy uruchomić console nuget i wpisać
-1. update-database
+update-database
 
 
 # WebApi #
