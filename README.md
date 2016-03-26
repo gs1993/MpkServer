@@ -12,6 +12,7 @@ System monitorowania i zarządzania flotą autobusów obejmie cały tabor zarzą
 * Łukasz Zimnoch
 * Rafał Kopryk
 
+# Autoryzacja #
 Tymczasowo(?) autoryzacja do serwisu restowego(webApi) jest na zasadzie nagłówka Authorization: Basic.
 Przy każdym zapytaniu do kontrolera w nagłówkach musi się znajdować nagłówek:
 
