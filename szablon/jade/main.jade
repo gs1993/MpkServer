@@ -1,7 +1,89 @@
 doctype html
 html( lang="pl")
-    include _head.jade
-    body
-        .box
-            .box2
-                p tester
+  include _head.jade
+  body
+    include _header.jade
+    .googleMaps
+      .googleMaps__API#googleMaps
+    .panelWelcome.panel
+      .panelWelcome__wrapper
+        span.panelWelcome__buttonIconBG
+          .panelWelcome__buttonIcon.fa.fa-bus
+        .panelWelcome__title Witaj w systemie MPK
+        .panelWelcome__text Projekt zespołowy.
+        .panelWelcome__navigation
+          //<a href="#" style="display:block;">Link #01</a>
+          a(href="#") Logowanie
+          a(href="#") Rejestracja
+        span.panelWelcome__close
+          span.panelWelcome__icon.fa.fa-times
+
+
+    .panelLogin.panel.-hidden
+      .panelLogin__wrapper
+        .panelLogin__title Panel Logowania
+        .panelLogin__alert.-info.-hidden
+          i.fa.fa-info-circle
+          |Konto o takim emailu nie istnieje.
+        .panelLogin__alert.-danger.-hidden
+          i.fa.fa-info-circle
+          | Hasło przypisane do tego emailu, jest nie poprawne.
+        .panelLogin__form
+          input(placeholder="Email")
+          input(type='password' placeholder="Hasło")
+          button(type="submit") Zaloguj się
+        span.panelLogin__close
+          span.panelLogin__icon.fa.fa-times
+        .panelLogin__navigation Nie masz konta?
+          a(href="#").panelLogin__ToRegister Zarejestruj się.
+
+    .panelRegister.panel.-hidden
+      .panelRegister__wrapper
+        .panelRegister__title Panel Rejestracji
+        .panelRegister__alert.-info.-hidden
+          i.fa.fa-info-circle
+          | Konto o takim emailu już istnieje.
+        .panelRegister__alert.-info.-hidden
+          i.fa.fa-info-circle
+          | Wprowadzone dane są nie poprawne.
+        .panelRegister__alert.-danger.-hidden
+          i.fa.fa-info-circle
+          | Hasła nie są takie same.
+        .panelRegister__alert.-success.-hidden
+          | Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
+        .panelRegister__form
+          input(placeholder="Email")
+          input(type='password' placeholder="Hasło")
+          input(type='password' placeholder="Potwierdz Hasło")
+          button(type="submit") Zarajestuj
+        span.panelRegister__close
+          span.panelRegister__icon.fa.fa-times
+        .panelRegister__navigation Masz już konto?
+          a(href="#").panelRegister__ToLogin Zaloguj się.
+
+    .panelResetPassword.panel.-hidden
+      .panelResetPassword__wrapper
+        .panelResetPassword__title Panel Odzyskiwania Hasła
+        .panelResetPassword__alert.-info.-hidden
+          i.fa.fa-info-circle
+          | Nie ma takiego konta.
+        .panelResetPassword__alert.-success.-hidden
+          | Na wskazany email został wysłany link weryfikacyjny.
+        .panelResetPassword__alert.-success.-hidden
+          | Nowe hasło zostało ustawione. Możesz się teraz
+          a(href="#").panelResetPassword__ToLogin zalogować
+          | .
+        .panelResetPassword__form
+          input(placeholder="Email")
+          button(type="submit") Odzyskaj hasło
+        .panelResetPassword__form
+          input(type='password' placeholder="Hasło")
+          input(type='password' placeholder="Potwierdz Hasło")
+          button(type="submit") Zatwierdz nowe hasło
+        span.panelResetPassword__close
+          span.panelResetPassword__icon.fa.fa-times
+        .panelResetPassword__navigation Nie masz konta?
+          a(href="#").panelResetPassword__ToRegister Zarejestruj się.
+
+
+
