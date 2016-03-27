@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebSocketServer.Connection;
 
 namespace WebSocketServer.MessageResolver
 {
     public interface IMessageResolver
     {
-        Task<string> ResolveRequest(string msg);
+        Task<string> ResolveRequest(string msg,IConnection connection);
     }
 }

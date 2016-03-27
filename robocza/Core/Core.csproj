@@ -45,8 +45,11 @@
     <Compile Include="Logger\LogType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transfer\Attributes\MessageAttribute.cs" />
+    <Compile Include="Transfer\Base\EmptyDto.cs" />
     <Compile Include="Transfer\BusStopHandler\BusStopActivityDto.cs" />
     <Compile Include="Transfer\BusStopHandler\BusStopResultDto.cs" />
+    <Compile Include="Transfer\EventEmitterHandler\RegisterForEmitDto.cs" />
+    <Compile Include="Transfer\EventEmitterHandler\UnregisterForEmitDto.cs" />
     <Compile Include="Transfer\TestTransfer\TestObj.cs" />
   </ItemGroup>
   <ItemGroup>

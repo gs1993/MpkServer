@@ -16,8 +16,6 @@ namespace Data
                 
         }
 
-        public DbSet<Role> RealRoles { get; set; }
-        
         public DbSet<Bus> Buss { get; set; }
 
         public DbSet<BusStop> BusStops { get; set; }

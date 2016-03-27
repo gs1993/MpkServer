@@ -13,11 +13,11 @@ namespace Data.Models
         
         public string RegistrationNumber { get; set; }
 
-        public bool GotMachine { get; set; }
+        public string BusNumber { get; set; }
+
+        public bool GotMachine { get; set; }  //(Czy ma biletomat)
 
         public BusType BusType { get; set; }
-
-        public bool IsActive { get; set; }
 
         public DateTime LastControl { get; set; }   
     }

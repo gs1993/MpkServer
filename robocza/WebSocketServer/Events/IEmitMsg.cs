@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebSocketServer.MessageResolver.Dto;
 
-namespace WebSocketServer.MessageResolver.Dto
+namespace WebSocketServer.Events
 {
-    public enum ResultState
+    public interface IEmitMsg
     {
-        Ok,
-        Event,
-        Error
+        string Data { get; set; }
     }
 }
