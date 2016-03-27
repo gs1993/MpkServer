@@ -14,6 +14,7 @@ namespace WebSocketServer.Connection
         void OnClose();
         void OnMsg(string msg);
         void Send(string msg);
+        void Send(object obj);
         WSState State { get; }
     }
 }

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebSocketServer.MessageResolver.Dto
+namespace WebSocketServer.Events
 {
-    public class MessageResultDto
+    public class EmitMsg:IEmitMsg
     {
-        public ResultState State { get; set; }
         public string Data { get; set; }
     }
 }

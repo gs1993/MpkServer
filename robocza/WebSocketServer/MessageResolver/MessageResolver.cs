@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Core.Transfer.Attributes;
 using Newtonsoft.Json;
 using SimpleInjector;
+using WebSocketServer.Connection;
 using WebSocketServer.Handlers;
 using WebSocketServer.MessageResolver.Dto;
 
@@ -46,7 +47,7 @@ namespace WebSocketServer.MessageResolver
             return type;
         }
 
-        public Task<string> ResolveRequest(string msg)
+        public Task<string> ResolveRequest(string msg,IConnection connection)
         {
             var result = new MessageResultDto();
             try
@@ -57,7 +58,7 @@ namespace WebSocketServer.MessageResolver
                 var handler = _container.GetInstance(getHandlerType("busStop.Activity"));
                 var methodInfo = handlerType.GetMethod("Handle", new Type[] {getGenericTypes("busStop.Activity").First()});
                 var dto = JsonConvert.DeserializeObject(messageDto.Data, genericTypes[0]);
-                var handlerResult = methodInfo.Invoke(handler, new object[] {dto});
+                var handlerResult = methodInfo.Invoke(handler, new object[] {dto, connection });
 
                 result.State=ResultState.Ok;
                 result.Data = JsonConvert.SerializeObject(handlerResult);

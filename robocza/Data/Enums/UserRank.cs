@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebSocketServer.MessageResolver.Dto
+namespace Data.Enums
 {
-    public enum ResultState
+    public enum UserRank
     {
-        Ok,
-        Event,
-        Error
+        User,
+        Device,
+        Controler,
+        Admin
     }
 }

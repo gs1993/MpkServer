@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Fleck;
+using Newtonsoft.Json;
 using SimpleInjector;
 using WebSocketServer.MessageResolver;
 
@@ -37,13 +38,18 @@ namespace WebSocketServer.Connection
 
         public async void OnMsg(string msg)
         {
-            var result = await _resolver.ResolveRequest(msg);
+            var result = await _resolver.ResolveRequest(msg,this);
             this.Send(result);
         }
 
         public void Send(string msg)
         {
             _con.Send(msg);
+        }
+
+        public void Send(object obj)
+        {
+            _con.Send(JsonConvert.SerializeObject(obj));
         }
 
         public WSState State => _state;

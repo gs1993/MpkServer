@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebSocketServer.MessageResolver.Dto
+namespace Core.Transfer.Base
 {
-    public enum ResultState
+    public class EmptyDto
     {
-        Ok,
-        Event,
-        Error
     }
 }

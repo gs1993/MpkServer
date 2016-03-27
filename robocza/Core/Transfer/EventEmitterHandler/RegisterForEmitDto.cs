@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebSocketServer.MessageResolver.Dto
+namespace Core.Transfer.EventEmitterHandler
 {
-    public enum ResultState
+    public class RegisterForEmitDto
     {
-        Ok,
-        Event,
-        Error
+        
     }
 }

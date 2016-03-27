@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
 using WebSocketServer.Connection;
+using WebSocketServer.Events;
 using WebSocketServer.Handlers;
 using WebSocketServer.MessageResolver;
 
@@ -72,6 +73,7 @@ namespace WebSocketServer
             container.Register<IConnectionHolder,ConnectionHolder>(Lifestyle.Singleton);
             container.Register<IMessageResolver,MessageResolver.MessageResolver>(Lifestyle.Singleton);
             container.Register(typeof(IMessageHandler<,>), assemblies);
+            container.Register<IEventEmitter,EventEmitter>(Lifestyle.Singleton);
 
             container.Verify();
 

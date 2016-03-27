@@ -32,7 +32,7 @@ namespace WebApiServer.Services
             using (var db = _db.CreateContext())
             {
                 var user = _um.FindById(id);
-                var userRoles = db.RealRoles.Where(role => user.Roles.Any(userRole => userRole.RoleId == role.Id)).ToList();
+                var userRoles = db.Roles.Where(role => user.Roles.Any(userRole => userRole.RoleId == role.Id)).ToList();
 
                 var identity = new Identity(user, userRoles);
                 var principal = new Principal(identity);
