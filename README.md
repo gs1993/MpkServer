@@ -21,9 +21,7 @@ Przy każdym zapytaniu do kontrolera w nagłówkach musi się znajdować nagłó
 Authorization: Basic (base64)loginUzytkownika+haslo
 ```
 w innym przypadku zwracany jest błąd autoryzacji
-
-możliwa w przyszłości zmiana na sesje itp ale na ten moment wydaje mi się to zbędne
-
+w przyszłości można pomyśleć o czymś innym ^^
 # Nagłówek cors #
 
 ```
@@ -42,7 +40,7 @@ update-database
 
 # WebApi #
 
-w razie problemu z postawieniem servera na systemie może sie pojawić problem z rezerwowaniem adresów. Należy wtedy w konsoli(z uprawnieniami administratora) wpisać:
+może sie pojawić problem z rezerwowaniem adresów. Należy wtedy w konsoli(z uprawnieniami administratora) wpisać:
 
 
 ```
