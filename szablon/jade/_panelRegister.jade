@@ -21,15 +21,15 @@
         i.fa.fa-info
         | Informacja!
       | Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
-    .panelRegister__form
+    form(method="POST" action="").panelRegister__form
       .panelRegister__formwrapper
-        input(placeholder="E-mail")
+        input(name="user_email" placeholder="E-mail")
         i.fa.fa-envelope-o
       .panelRegister__formwrapper
-        input(type='password' placeholder="Hasło")
+        input(name="user_password" type="password" placeholder="Hasło")
         i.fa.fa-lock
       .panelRegister__formwrapper
-        input(type='password' placeholder="Powtórz hasło")
+        input(name="user_password_again" type="password" placeholder="Powtórz hasło")
         i.fa.fa-lock
       button(type="submit") Zarajestuj
     span.panelRegister__close

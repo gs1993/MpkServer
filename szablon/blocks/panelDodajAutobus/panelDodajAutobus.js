@@ -10,7 +10,9 @@ $(document).ready(function () {
   $('#panel-DodajautobusyButton').on("click", function () {
     $('.panelDodajAutobus').toggleClass('-hidden');
   });
-
+  $('.panelDodajAutobus__navigation .-abort').on("click", function () {
+    $('.panelDodajAutobus').toggleClass('-hidden');
+  });
   $(".js-example-placeholder-single.crud").select2({
     placeholder: "Wybierz",
     allowClear: true,

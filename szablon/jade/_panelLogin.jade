@@ -13,12 +13,12 @@
       | Hasło przypisane do tego emailu, jest nie poprawne.
 
 
-    .panelLogin__form
+    form(method="POST" action="").panelLogin__form
       .panelLogin__formwrapper
-        input(placeholder="E-mail")
+        input(name="user_email" placeholder="E-mail")
         i.fa.fa-envelope-o
       .panelLogin__formwrapper
-        input(type='password' placeholder="Hasło")
+        input(name="user_password" type="password" placeholder="Hasło")
         i.fa.fa-lock
       .remembermebox
         input(type="checkbox" checked).check#check
