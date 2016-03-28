@@ -60,8 +60,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ActivityType.cs" />
     <Compile Include="Enums\BusStopType.cs" />
     <Compile Include="Enums\BusType.cs" />
+    <Compile Include="Enums\UserRank.cs" />
     <Compile Include="MainDbContext.cs" />
     <Compile Include="Migrations\201603151656060_init.cs" />
     <Compile Include="Migrations\201603151656060_init.Designer.cs">
@@ -75,10 +77,15 @@
     <Compile Include="Migrations\201603191719208_3.Designer.cs">
       <DependentUpon>201603191719208_3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603272140386_changes.cs" />
+    <Compile Include="Migrations\201603272140386_changes.Designer.cs">
+      <DependentUpon>201603272140386_changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\Autobus.cs" />
     <Compile Include="Models\BusStop.cs" />
-    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Track.cs" />
     <Compile Include="Models\ApiUser.cs" />
     <Compile Include="Program.cs" />
@@ -100,8 +107,13 @@
     <EmbeddedResource Include="Migrations\201603191719208_3.resx">
       <DependentUpon>201603191719208_3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603272140386_changes.resx">
+      <DependentUpon>201603272140386_changes.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Expressions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

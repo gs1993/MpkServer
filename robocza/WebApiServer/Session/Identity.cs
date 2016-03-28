@@ -5,6 +5,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Data.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WebApiServer.Session
 {
@@ -12,9 +13,9 @@ namespace WebApiServer.Session
     {
         public ApiUser User {get;private set; }
 
-        public List<Role> UserRoles { get; private set; }
+        public List<IdentityRole> UserRoles { get; private set; }
 
-        public Identity(ApiUser user,List<Role> userRoles)
+        public Identity(ApiUser user,List<IdentityRole> userRoles)
         {
             User = user;
             UserRoles = userRoles;

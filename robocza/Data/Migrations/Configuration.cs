@@ -34,7 +34,6 @@ namespace Data.Migrations
                BusType = BusType.Articulated,
                GotMachine = false,
                Id = 1,
-               IsActive = true,
                LastControl = DateTime.Now,
                RegistrationNumber = "12211NLI"
            });

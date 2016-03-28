@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Data.Models
+namespace WebSocketServer.Connection
 {
-    public class Role:IdentityRole
+    public enum WSState
     {
+        Connected,
+        Authorized
     }
 }

@@ -18,7 +18,7 @@ using WebApiServer.Services;
 
 namespace WebApiServer.Controllers
 {
-    [EnableCors("*","*","*")]
+
     public class TestController : ApiController
     {
         private IDatabaseService _db;
@@ -29,6 +29,7 @@ namespace WebApiServer.Controllers
             logger.Log("TestController");
             _userService = userService;
         }
+        [Authorize]
         public Bus GetJson()
         {
             using (var db = _db.CreateContext())
@@ -47,7 +48,7 @@ namespace WebApiServer.Controllers
             }
 
         }
-        [AllowAnonymous]
+        [EnableCors("*", "*", "*")]
         public TestObj TestPost(TestObj posObj)
         {
             return posObj;

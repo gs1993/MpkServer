@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace Core.Transfer.BusStopHandler
 {
-    public class Class1
+    public class BusStopResultDto
     {
+        public string Test { get; set; }
     }
 }
