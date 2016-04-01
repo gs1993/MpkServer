@@ -53,5 +53,10 @@ namespace WebSocketServer.Connection
         }
 
         public WSState State => _state;
+
+        public void SetState(WSState state)
+        {
+            _state = state;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations.Sql;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,10 +54,10 @@ namespace WebSocketServer.MessageResolver
             try
             {
                 var messageDto = JsonConvert.DeserializeObject<MessageDto>(msg);
-                var genericTypes = getGenericTypes("busStop.Activity");
-                var handlerType = getHandlerType("busStop.Activity");
-                var handler = _container.GetInstance(getHandlerType("busStop.Activity"));
-                var methodInfo = handlerType.GetMethod("Handle", new Type[] {getGenericTypes("busStop.Activity").First()});
+                var genericTypes = getGenericTypes(messageDto.Action);
+                var handlerType = getHandlerType(messageDto.Action);
+                var handler = _container.GetInstance(getHandlerType(messageDto.Action));
+                var methodInfo = handlerType.GetMethod("Handle", new Type[] {getGenericTypes(messageDto.Action).First()});
                 var dto = JsonConvert.DeserializeObject(messageDto.Data, genericTypes[0]);
                 var handlerResult = methodInfo.Invoke(handler, new object[] {dto, connection });
 
@@ -67,6 +68,7 @@ namespace WebSocketServer.MessageResolver
             catch (HandlingException exception)
             {
                 result.State = exception.State;
+                result.Data = JsonConvert.SerializeObject(new {msg = exception.Msg});
             }
             
             return Task.FromResult(JsonConvert.SerializeObject(result));

@@ -24,6 +24,7 @@ namespace Data.Migrations
                 new ApiUser()
                 {
                     UserName = "lukraik",
+                    Email = "lukraik@gmail.com",
                     PasswordHash = password,
                     PhoneNumber = "08869879"
 

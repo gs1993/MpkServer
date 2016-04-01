@@ -16,6 +16,7 @@ using WebSocketServer.Connection;
 using WebSocketServer.Events;
 using WebSocketServer.Handlers;
 using WebSocketServer.MessageResolver;
+using WebSocketServer.Services;
 
 namespace WebSocketServer
 {
@@ -70,6 +71,7 @@ namespace WebSocketServer
             //Rejestracja serwisów
             container.Register<ILogger, ConsoleLogger>(Lifestyle.Singleton);
             container.Register<IDatabaseService, DatabaseService>(Lifestyle.Singleton);
+            container.Register<IUserService, UserService>(Lifestyle.Singleton);
             container.Register<IConnectionHolder,ConnectionHolder>(Lifestyle.Singleton);
             container.Register<IMessageResolver,MessageResolver.MessageResolver>(Lifestyle.Singleton);
             container.Register(typeof(IMessageHandler<,>), assemblies);

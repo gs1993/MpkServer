@@ -21,5 +21,7 @@ namespace Data
         public DbSet<BusStop> BusStops { get; set; }
 
         public DbSet<Track> Tracks { get; set; }
+        
+        public DbSet<RegisterTokens> Tokens { get; set; }
     }
 }

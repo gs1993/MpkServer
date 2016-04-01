@@ -81,11 +81,16 @@
     <Compile Include="Migrations\201603272140386_changes.Designer.cs">
       <DependentUpon>201603272140386_changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604011820190_addToken.cs" />
+    <Compile Include="Migrations\201604011820190_addToken.Designer.cs">
+      <DependentUpon>201604011820190_addToken.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\Autobus.cs" />
     <Compile Include="Models\BusStop.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\RegisterTokens.cs" />
     <Compile Include="Models\Track.cs" />
     <Compile Include="Models\ApiUser.cs" />
     <Compile Include="Program.cs" />
@@ -109,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603272140386_changes.resx">
       <DependentUpon>201603272140386_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604011820190_addToken.resx">
+      <DependentUpon>201604011820190_addToken.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -81,8 +81,8 @@
     <Compile Include="Events\EventEmitter.cs" />
     <Compile Include="Events\IEmitMsg.cs" />
     <Compile Include="Events\IEventEmitter.cs" />
+    <Compile Include="Handlers\Action\AuthHandler.cs" />
     <Compile Include="Handlers\Action\BusStopHandler.cs" />
-    <Compile Include="Handlers\Action\EventEmitterHandler.cs" />
     <Compile Include="Handlers\IMessageHandler.cs" />
     <Compile Include="Handlers\TaskHelper.cs" />
     <Compile Include="MessageResolver\Dto\MessageDto.cs" />
@@ -94,6 +94,8 @@
     <Compile Include="MessageResolver\MessageResolver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
