@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data.Models;
 using Fleck;
 using Newtonsoft.Json;
 using SimpleInjector;
@@ -15,7 +16,8 @@ namespace WebSocketServer.Connection
         private readonly IWebSocketConnection _con;
         private WSState _state;
         private readonly IMessageResolver _resolver;
-
+        private ApiUser _user;
+        public ApiUser User => _user;
 
         public Connection(IWebSocketConnection connection,Container container)
         {
@@ -53,6 +55,12 @@ namespace WebSocketServer.Connection
         }
 
         public WSState State => _state;
+
+        public void Auth(ApiUser user)
+        {
+            _user = user;
+            SetState(WSState.Authorized);
+        }
 
         public void SetState(WSState state)
         {

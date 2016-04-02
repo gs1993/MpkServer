@@ -18,7 +18,7 @@ namespace WebSocketServer.Events
             var sendData = new EmitMsg {Data = JsonConvert.SerializeObject(obj)};
             foreach (var con in _cons)
             {
-                con.Send(sendData);
+                if(con.State==WSState.Authorized)con.Send(sendData);
             }
         }
 

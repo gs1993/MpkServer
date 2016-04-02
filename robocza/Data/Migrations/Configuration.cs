@@ -26,18 +26,30 @@ namespace Data.Migrations
                     UserName = "lukraik",
                     Email = "lukraik@gmail.com",
                     PasswordHash = password,
-                    PhoneNumber = "08869879"
+                    PhoneNumber = "08869879",
+                    Activated = true
 
                 });
+            context.Users.AddOrUpdate(u => u.UserName, new ApiUser()
+                {
+                    UserName = "driver1",
+                    Email = "driver1",
+                    PasswordHash = password,
+                    PhoneNumber = "082329183",
+                    Rank=UserRank.Device,
+                    Activated = true
+                });
+
 
             context.Buss.AddOrUpdate(new Bus ()
-           {
-               BusType = BusType.Articulated,
-               GotMachine = false,
-               Id = 1,
-               LastControl = DateTime.Now,
-               RegistrationNumber = "12211NLI"
-           });
+               {
+                   BusType = BusType.Articulated,
+                   GotMachine = false,
+                   Id = 1,
+                   LastControl = DateTime.Now,
+                   RegistrationNumber = "12211NLI",
+                   Driver = context.Users.First(x => x.UserName=="driver1")
+               });
 
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -78,7 +90,7 @@ namespace Data.Migrations
             context.Tracks.AddOrUpdate(new Track()
             {
                 Id = 1,
-                Tracks = "1;2;3"
+                BusStops = "1;2;3"
             });
         }
     }

@@ -20,5 +20,7 @@ namespace Data.Models
         public BusType BusType { get; set; }
 
         public DateTime LastControl { get; set; }   
+
+        public ApiUser Driver { get; set; }
     }
 }

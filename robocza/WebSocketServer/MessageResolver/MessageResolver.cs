@@ -48,7 +48,7 @@ namespace WebSocketServer.MessageResolver
             return type;
         }
 
-        public Task<string> ResolveRequest(string msg,IConnection connection)
+        public async Task<string> ResolveRequest(string msg,IConnection connection)
         {
             var result = new MessageResultDto();
             try
@@ -57,11 +57,12 @@ namespace WebSocketServer.MessageResolver
                 var genericTypes = getGenericTypes(messageDto.Action);
                 var handlerType = getHandlerType(messageDto.Action);
                 var handler = _container.GetInstance(getHandlerType(messageDto.Action));
-                var methodInfo = handlerType.GetMethod("Handle", new Type[] {getGenericTypes(messageDto.Action).First()});
+                var methodInfo = handlerType.GetMethod("Handle", new[] {genericTypes.First(),typeof(IConnection)});
                 var dto = JsonConvert.DeserializeObject(messageDto.Data, genericTypes[0]);
-                var handlerResult = methodInfo.Invoke(handler, new object[] {dto, connection });
+                var handlerResult = await (dynamic)methodInfo.Invoke(handler, new[] {dto, connection });
 
                 result.State=ResultState.Ok;
+
                 result.Data = JsonConvert.SerializeObject(handlerResult);
 
             }
@@ -70,8 +71,8 @@ namespace WebSocketServer.MessageResolver
                 result.State = exception.State;
                 result.Data = JsonConvert.SerializeObject(new {msg = exception.Msg});
             }
-            
-            return Task.FromResult(JsonConvert.SerializeObject(result));
+
+            return JsonConvert.SerializeObject(result);
         }
     }
 }

@@ -85,6 +85,14 @@
     <Compile Include="Migrations\201604011820190_addToken.Designer.cs">
       <DependentUpon>201604011820190_addToken.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604020907571_busDriver.cs" />
+    <Compile Include="Migrations\201604020907571_busDriver.Designer.cs">
+      <DependentUpon>201604020907571_busDriver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604020944148_someChanges.cs" />
+    <Compile Include="Migrations\201604020944148_someChanges.Designer.cs">
+      <DependentUpon>201604020944148_someChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\Autobus.cs" />
@@ -117,6 +125,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604011820190_addToken.resx">
       <DependentUpon>201604011820190_addToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604020907571_busDriver.resx">
+      <DependentUpon>201604020907571_busDriver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604020944148_someChanges.resx">
+      <DependentUpon>201604020944148_someChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
