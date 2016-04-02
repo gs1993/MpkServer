@@ -25,7 +25,11 @@
     "jquery-sticky": "latest",
     "jquery-resize-image-to-parent": "latest",
     "primer-css": "^2.7.1",
-    "select2": "latest"
+    "select2": "latest",
+    "ajax": "^1.0.10",
+    "angular-route": "^1.5.3",
+    "angular-cookies": "^1.5.3",
+    "angular": "^1.5.3"
   },
   "dependencies": {
     "imagesloaded": "latest",
