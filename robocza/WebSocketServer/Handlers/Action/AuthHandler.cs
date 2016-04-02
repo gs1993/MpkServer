@@ -17,40 +17,45 @@ using WebSocketServer.Services;
 
 namespace WebSocketServer.Handlers.Action
 {
-    public class AuthHandler:IMessageHandler<AuthDto,EmptyDto>
+    public class AuthHandler : IMessageHandler<AuthDto, EmptyDto>
     {
         private readonly IEventEmitter _emitter;
+        private readonly IDatabaseService _databaseService;
         private readonly IUserService _userService;
-        private readonly UserManager<ApiUser> _um; 
 
-        public AuthHandler(IEventEmitter emitter, IUserService userService)
+        public AuthHandler(IEventEmitter emitter, IUserService userService, IDatabaseService databaseService)
         {
             _emitter = emitter;
             _userService = userService;
-            _um = _userService.GetUserManager();
+            _databaseService = databaseService;
         }
 
         public Task<EmptyDto> Handle(AuthDto dto, IConnection connection)
         {
-            var user = _um.FindByEmail(dto.Email);
-            if (_um.CheckPassword(user, dto.Password))
+            using (var db = _databaseService.CreateContext())
             {
-                switch (user.Rank)
+                var um = _userService.GetUserManager(db);
+                var user = um.FindByEmail(dto.Email);
+                if (um.CheckPassword(user, dto.Password))
                 {
-                    case UserRank.User:
-                        _emitter.Subscribe(connection);
-                        break;
-                    case UserRank.Device:
-
-                        break;
+                    switch (user.Rank)
+                    {
+                        case UserRank.User:
+                            _emitter.Subscribe(connection);
+                            break;
+                        case UserRank.Device:
+                            break;
+                    }
+                    connection.Auth(user);
                 }
-                connection.Auth(user);
+                else
+                {
+                    throw new HandlingException(ResultState.Error, "User not found");
+                }
+                return TaskHelper.EmptyResult();
             }
-            else
-            {
-                throw new HandlingException(ResultState.Error, "User not found");
-            }
-            return TaskHelper.EmptyResult();
+
+
         }
     }
 }

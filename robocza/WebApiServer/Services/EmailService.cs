@@ -17,7 +17,7 @@ namespace WebApiServer.Services
     {
         public class SendGridEmailService : IIdentityMessageService
         {
-            public async Task SendAsync(IdentityMessage message)
+            public Task SendAsync(IdentityMessage message)
             {
                 var fromAddress = new MailAddress("mpkemailtest123@gmail.com", "mpkemailtest123@gmail.com");
                 var toAddress = new MailAddress(message.Destination,message.Destination);
@@ -42,6 +42,8 @@ namespace WebApiServer.Services
                 {
                     smtp.Send(msg);
                 }
+
+                return null;
             }
         }
     }

@@ -20,7 +20,7 @@ namespace Data.Migrations
         {
             var passwordHash = new PasswordHasher();
             string password = passwordHash.HashPassword("Password@123");
-            context.Users.AddOrUpdate(u=>u.UserName,
+            context.Users.AddOrUpdate(u => u.UserName,
                 new ApiUser()
                 {
                     UserName = "lukraik",
@@ -30,27 +30,55 @@ namespace Data.Migrations
                     Activated = true
 
                 });
-            context.Users.AddOrUpdate(u => u.UserName, new ApiUser()
+            context.Users.AddOrUpdate(u => u.UserName,
+                new ApiUser()
                 {
-                    UserName = "driver1",
-                    Email = "driver1",
+                    UserName = "test",
+                    Email = "test",
                     PasswordHash = password,
-                    PhoneNumber = "082329183",
-                    Rank=UserRank.Device,
+                    PhoneNumber = "08869879",
+                    Rank = UserRank.Device,
                     Activated = true
                 });
+            context.Users.AddOrUpdate(u => u.UserName, new ApiUser()
+            {
+                Id = "drivId",
+                UserName = "driver1",
+                Email = "driver1",
+                PasswordHash = password,
+                PhoneNumber = "082329183",
+                Rank = UserRank.Device,
+                Activated = true
+            });
 
 
-            context.Buss.AddOrUpdate(new Bus ()
-               {
-                   BusType = BusType.Articulated,
-                   GotMachine = false,
-                   Id = 1,
-                   LastControl = DateTime.Now,
-                   RegistrationNumber = "12211NLI",
-                   Driver = context.Users.First(x => x.UserName=="driver1")
-               });
-
+            context.Buss.AddOrUpdate(new Bus()
+            {
+                BusType = BusType.Articulated,
+                GotMachine = false,
+                Id = 1,
+                LastControl = DateTime.Now,
+                RegistrationNumber = "12211NLI",
+                BusNumber = "0892"
+            });
+            context.Buss.AddOrUpdate(new Bus()
+            {
+                BusType = BusType.Normal,
+                GotMachine = false,
+                Id = 2,
+                LastControl = new DateTime(2015, 01, 02),
+                RegistrationNumber = "1DDNLD",
+                BusNumber = "0784"
+            });
+            context.Buss.AddOrUpdate(new Bus()
+            {
+                BusType = BusType.Normal,
+                GotMachine = false,
+                Id = 3,
+                LastControl = new DateTime(2015, 01, 02),
+                RegistrationNumber = "TREWQ3",
+                BusNumber = "0584"
+            });
             context.BusStops.AddOrUpdate(new BusStop()
             {
                 GotMachine = false,
@@ -61,7 +89,7 @@ namespace Data.Migrations
                 Lat = 42.3,
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska Polskiego",
-                Name = "Przystanek kołobrzeska"
+                Name = "Przystanek kołobrzeska",
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -73,7 +101,7 @@ namespace Data.Migrations
                 Lat = 42.3,
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska niepolskiego",
-                Name = "Przystanek dwa"
+                Name = "Przystanek dwa",
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -85,7 +113,24 @@ namespace Data.Migrations
                 Lat = 42.3,
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska tymczasowego",
-                Name = "Przystanek trzy"
+                Name = "Przystanek trzy",
+            });
+            context.BusStops.AddOrUpdate(new BusStop()
+            {
+                GotMachine = false,
+                LastControl = DateTime.Now,
+                Id = 4,
+                BusStopType = BusStopType.Normal,
+                GotKiosk = false,
+                Lat = 42.3,
+                Lng = 45.3,
+                LocalizationString = "Ulica Pacyfistyczna",
+                Name = "Przystanek cztery",
+            });
+            context.Tracks.AddOrUpdate(new Track()
+            {
+                Id = 1,
+                BusStops = "1;2;3"
             });
             context.Tracks.AddOrUpdate(new Track()
             {
