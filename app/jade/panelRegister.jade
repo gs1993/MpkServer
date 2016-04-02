@@ -1,0 +1,39 @@
+.panelRegister.panel
+  .panelRegister__wrapper
+    .panelRegister__title Panel Rejestracji
+    .panelRegister__alert.-info.-hidden
+      h3
+        i.fa.fa-warning
+        | Uwaga!
+      | Konto o takim emailu już istnieje.
+    .panelRegister__alert.-info.-hidden
+      h3
+        i.fa.fa-warning
+        | Uwaga!
+      | Wprowadzone dane są nie poprawne.
+    .panelRegister__alert.-danger.-hidden
+      h3
+        i.fa.fa-warning
+        | Błąd!
+      | Hasła nie są takie same.
+    .panelRegister__alert.-success.-hidden
+      h3
+        i.fa.fa-info
+        | Informacja!
+      | Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
+    form(method="POST" action="").panelRegister__form
+      .panelRegister__formwrapper
+        input(name="user_email" placeholder="E-mail")
+        i.fa.fa-envelope-o
+      .panelRegister__formwrapper
+        input(name="user_password" type="password" placeholder="Hasło")
+        i.fa.fa-lock
+      .panelRegister__formwrapper
+        input(name="user_password_again" type="password" placeholder="Powtórz hasło")
+        i.fa.fa-lock
+      button(type="submit") Zarajestuj
+    a(href="#/home")
+      span.panelRegister__close
+        span.panelRegister__icon.fa.fa-times
+    .panelRegister__navigation Masz już konto?
+      a(href="#/login").panelRegister__ToLogin Zaloguj się.

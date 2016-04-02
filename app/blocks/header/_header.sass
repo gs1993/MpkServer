@@ -1,0 +1,214 @@
+@charset "UTF-8"
+.bar
+  height: 40px
+  width: 100%
+  z-index: 100
+  background: rgba(60,141,188,0.9)
+  position: absolute
+
+.header
+  &__corner
+    position: absolute
+    width: 40px
+    height: 40px
+    top: 0
+    right: 40px
+    //left: 0
+    z-index: 103
+    margin: 0 auto
+    //background-image: url(../blocks/header/src/headerLogo.png)
+    //background-size: 100% 100%
+    opacity: 0.9
+    cursor: pointer
+    &:hover
+      transition: opacity 0.36s ease
+      opacity: 1
+      background: #367fa9
+    +PHONE_ONLY
+      left: 0
+      right: 100%
+    i
+      font-size: 20px
+      padding: 10px
+      color: #fff
+
+
+  &__switcher
+    transition: transform 0.36s ease, background 0.8s ease
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0, 0, 0, 0.95)
+    z-index: 102
+    padding: 40px
+    text-align: left
+    transform: scale(1, 1)
+    opacity: 1
+    +PHONE_ONLY
+      overflow-y: scroll
+    &.-hidden
+      opacity: 0
+      transform: scale(2, 2)
+      z-index: 0
+      background: transparent
+
+  &__panel
+    margin-top: 30px
+    cursor: default
+    text-align: center
+  &__button
+    display: block
+    font-size: 10px
+    font-weight: 300
+  &__item
+    list-style-type: none
+    text-align: center
+    display: inline-block
+    margin: 1rem
+    line-height: 2
+    color: white
+    cursor: pointer
+    &:hover
+      .header__buttonIconBG
+        background: #495aff
+        transform: scale(1)
+  &__buttonIconBG
+    transition: transform 0.36s ease
+    width: 80px
+    height: 80px
+    display: block
+    background: #3949ab
+    border-radius: 6px
+    margin: 0 auto
+    transform: scale(0.9)
+  &__buttonIcon
+    font-size: 3em
+    line-height: 80px
+
+.headerProfile
+  &__corner
+    position: absolute
+    width: 40px
+    height: 40px
+    top: 0
+    right: 1px
+    z-index: 103
+    margin: 0 auto
+    //background-image: url(../blocks/header/src/headerGear.png)
+    //background-size: 100% 100%
+    opacity: 0.9
+    cursor: pointer
+    &:hover
+      transition: opacity 0.36s ease
+      opacity: 1
+      background: #367fa9
+    i
+      font-size: 20px
+      padding: 10px
+      color: #fff
+
+
+  &__switcher
+    transition: transform 0.36s ease, background 0.8s ease
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0, 0, 0, 0.95)
+    z-index: 102
+    padding: 40px
+    text-align: left
+    transform: scale(1, 1)
+    opacity: 1
+    +PHONE_ONLY
+      overflow-y: scroll
+    &.-hidden
+      opacity: 0
+      transform: scale(2, 2)
+      z-index: 0
+      background: transparent
+  &__panel
+    margin-top: 30px
+    cursor: default
+    text-align: center
+  &__button
+    display: block
+    font-size: 10px
+    font-weight: 300
+  &__item
+    list-style-type: none
+    text-align: center
+    display: inline-block
+    margin: 1rem
+    line-height: 2
+    color: white
+    cursor: pointer
+    &:hover
+      .headerProfile__buttonIconBG
+        background: #495aff
+        transform: scale(1)
+  &__buttonIconBG
+    transition: transform 0.36s ease
+    width: 80px
+    height: 80px
+    display: block
+    background: #3949ab
+    border-radius: 6px
+    margin: 0 auto
+    transform: scale(0.9)
+  &__buttonIcon
+    font-size: 3em
+    line-height: 80px
+
+.headerUserPanel
+  position: absolute
+  max-width: 250px
+  width: 100%
+  height: 40px
+  top: 0px
+  right: 80px
+  z-index: 100
+  margin: 0 auto
+  //background-color: rgba(57, 73, 171, 0.8)
+  border-radius: 5px
+  opacity: 0.9
+  cursor: pointer
+  line-height: 38px
+  text-align: center
+  &:hover
+    transition: opacity 0.36s ease
+    opacity: 1
+  span
+    color: white
+    font-weight: 300
+    font-size: 12px
+  &.-hidden
+    display: none
+    overflow: hidden
+  +PHONE_ONLY
+    top: 3px
+    display: block
+    width: 100%
+    right: 0
+    left: 0
+    max-width: 200px
+    span
+      font-size: 9px
+.headerLogo
+  width: 120px
+  height: 40px
+  position: absolute
+  z-index: 101
+  color: #fff
+  padding: 8px 20px
+  i
+    font-size: 25px
+  span
+    margin-left: 7px
+    font-size: 19px
+    position: absolute
+  +PHONE_ONLY
+    display: none
