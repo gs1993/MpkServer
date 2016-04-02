@@ -3,7 +3,7 @@
 .bar
 .header
   .header__corner
-    i.fa.fa-bars
+    i.fa.fa-bus
   .header__switcher.-hidden
     .background
     ul.header__panel
@@ -33,9 +33,7 @@
             .header__buttonIcon.fa.fa-eye
           | Kontrole
 .headerLogo
-  i.fa.fa-bus
-  span
-    b mpk
+  span MPK OLSZTYN
 .headerProfile
   .headerProfile__corner
     i.fa.fa-gears
@@ -43,15 +41,17 @@
     .background
     ul.headerProfile__panel
       li.headerProfile__item#panel-loginButton
-        span.headerProfile__button
-          span.headerProfile__buttonIconBG
-            .headerProfile__buttonIcon.fa.fa-power-off
-          | Logowanie
+        a(href="#/login")
+          span.headerProfile__button
+            span.headerProfile__buttonIconBG
+              .headerProfile__buttonIcon.fa.fa-power-off
+            | Logowanie
       li.headerProfile__item#panel-registerButton
-        span.headerProfile__button
-          span.headerProfile__buttonIconBG
-            .headerProfile__buttonIcon.fa.fa-sign-in
-          | Rejestracja
+        a(href="#/register")
+          span.headerProfile__button
+            span.headerProfile__buttonIconBG
+              .headerProfile__buttonIcon.fa.fa-sign-in
+            | Rejestracja
       li.headerProfile__item#panel-odzyskajKontoButton
         span.headerProfile__button
           span.headerProfile__buttonIconBG
@@ -68,10 +68,11 @@
             .headerProfile__buttonIcon.fa.fa-info-circle
           | Informacje
       li.headerProfile__item#panel-wylogujButton
-        span.headerProfile__button
-          span.headerProfile__buttonIconBG
-            .headerProfile__buttonIcon.fa.fa-sign-out
-          | Wyloguj
+        a(href="#/login")
+          span.headerProfile__button
+            span.headerProfile__buttonIconBG
+              .headerProfile__buttonIcon.fa.fa-sign-out
+            | Wyloguj
 
 .headerUserPanel
-  span Zalogowany: nazwaUzytkownika@cmok.pl
+  span Zalogowany: {{vm.user.username}}

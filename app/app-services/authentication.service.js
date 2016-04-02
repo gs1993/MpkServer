@@ -29,7 +29,7 @@
                         if (user !== null && user.password === password) {
                             response = { success: true };
                         } else {
-                            response = { success: false, message: 'Username or password is incorrect' };
+                            response = { success: false, message: 'Info: Wprowadzone dane sa nie poprawne!' };
                         }
                         callback(response);
                     });

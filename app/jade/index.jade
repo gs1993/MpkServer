@@ -6,7 +6,7 @@ html( lang="pl" ng-app="app")
     #containerDrag
       .googleMaps
         .googleMaps__API#googleMaps
-      div(ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message")
+      .flash__info(ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message")
       div(ng-view)
 
     script(src='app.js')

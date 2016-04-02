@@ -16,16 +16,23 @@
 
         function register() {
             vm.dataLoading = true;
-            UserService.Create(vm.user)
-                .then(function (response) {
-                    if (response.success) {
-                        FlashService.Success('Registration successful', true);
-                        $location.path('/login');
-                    } else {
-                        FlashService.Error(response.message);
-                        vm.dataLoading = false;
-                    }
-                });
+            if (vm.user.passwordagain === vm.user.password) {
+                UserService.Create(vm.user)
+                    .then(function (response) {
+                        if (response.success) {
+                            FlashService.Success('Konto zostało zarejestrowane.', true);
+                            $location.path('/login');
+                        } else {
+                            FlashService.Error(response.message);
+                            vm.dataLoading = false;
+                        }
+                    });
+            }
+            else
+            {
+                FlashService.Error('Podane hasła nie sa identyczne.', true);
+                vm.dataLoading = false;
+            }
         }
     }
 
