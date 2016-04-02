@@ -20,7 +20,7 @@ namespace Data.Migrations
         {
             var passwordHash = new PasswordHasher();
             string password = passwordHash.HashPassword("Password@123");
-            context.Users.AddOrUpdate(u => u.UserName,
+            context.Users.AddOrUpdate(u=>u.UserName,
                 new ApiUser()
                 {
                     UserName = "lukraik",
@@ -41,25 +41,26 @@ namespace Data.Migrations
                     Activated = true
                 });
             context.Users.AddOrUpdate(u => u.UserName, new ApiUser()
-            {
-                Id = "drivId",
-                UserName = "driver1",
-                Email = "driver1",
-                PasswordHash = password,
-                PhoneNumber = "082329183",
-                Rank = UserRank.Device,
-                Activated = true
-            });
+                {
+                    UserName = "driver1",
+                    Email = "driver1",
+                    PasswordHash = password,
+                    PhoneNumber = "082329183",
+                    Rank=UserRank.Device,
+                    Activated = true
+                });
 
 
-            context.Buss.AddOrUpdate(new Bus()
-            {
-                BusType = BusType.Articulated,
-                GotMachine = false,
-                Id = 1,
-                LastControl = DateTime.Now,
-                RegistrationNumber = "12211NLI",
-                BusNumber = "0892"
+            context.Buss.AddOrUpdate(new Bus ()
+           {
+               BusType = BusType.Articulated,
+               GotMachine = false,
+               Id = 1,
+               LastControl = DateTime.Now,
+               RegistrationNumber = "12211NLI",
+               IsArchive = false,
+               BusNumber = "0892",
+                Driver = context.Users.First(x => x.UserName == "driver1")
             });
             context.Buss.AddOrUpdate(new Bus()
             {
@@ -68,7 +69,9 @@ namespace Data.Migrations
                 Id = 2,
                 LastControl = new DateTime(2015, 01, 02),
                 RegistrationNumber = "1DDNLD",
-                BusNumber = "0784"
+                IsArchive = true,
+                BusNumber = "0784",
+                Driver = context.Users.First(x => x.UserName == "driver1")
             });
             context.Buss.AddOrUpdate(new Bus()
             {
@@ -77,7 +80,9 @@ namespace Data.Migrations
                 Id = 3,
                 LastControl = new DateTime(2015, 01, 02),
                 RegistrationNumber = "TREWQ3",
-                BusNumber = "0584"
+                IsArchive = false,
+                BusNumber = "0584",
+                Driver = context.Users.First(x => x.UserName == "driver1")
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -90,6 +95,7 @@ namespace Data.Migrations
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska Polskiego",
                 Name = "Przystanek kołobrzeska",
+                IsArchive = false
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -102,6 +108,7 @@ namespace Data.Migrations
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska niepolskiego",
                 Name = "Przystanek dwa",
+                IsArchive = true
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -114,6 +121,7 @@ namespace Data.Migrations
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska tymczasowego",
                 Name = "Przystanek trzy",
+                IsArchive = false
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -126,16 +134,19 @@ namespace Data.Migrations
                 Lng = 45.3,
                 LocalizationString = "Ulica Pacyfistyczna",
                 Name = "Przystanek cztery",
+                IsArchive = false
             });
             context.Tracks.AddOrUpdate(new Track()
             {
                 Id = 1,
-                BusStops = "1;2;3"
+                BusStops = "1;2;3",
+                IsArchive = false
             });
             context.Tracks.AddOrUpdate(new Track()
             {
                 Id = 1,
-                BusStops = "1;2;3"
+                BusStops = "3;2;1",
+                IsArchive = true
             });
         }
     }

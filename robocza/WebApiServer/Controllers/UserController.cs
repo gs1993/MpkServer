@@ -12,7 +12,7 @@ using WebApiServer.Services;
 
 namespace WebApiServer.Controllers
 {
-    [EnableCors("*","*","*")]
+        
     public class UserController:ApiController
     {
         private IUserService _userService;

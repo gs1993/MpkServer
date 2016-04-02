@@ -141,6 +141,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BusController.cs" />
+    <Compile Include="Controllers\BusStopController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Misc\SimpleAuthFilter.cs" />
@@ -164,6 +166,10 @@
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{c19a71f2-2601-4e65-9c5c-4e00c364ab30}</Project>
       <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSocketServer\WebSocketServer.csproj">
+      <Project>{63488DF3-E10F-4E7A-8414-231A5A68C733}</Project>
+      <Name>WebSocketServer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

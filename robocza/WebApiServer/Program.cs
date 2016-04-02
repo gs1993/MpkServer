@@ -36,7 +36,6 @@ namespace WebApiServer
 
                 var us = container.GetInstance<IUserService>();
 
-
                 Config.Filters.Add(new SimpleAuthFilter(us));
 
                 using (HttpSelfHostServer server = new HttpSelfHostServer(Config))

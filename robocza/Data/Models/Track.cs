@@ -13,6 +13,8 @@ namespace Data.Models
 
         public string BusStops { get; set; }
 
+        public bool IsArchive { get; set; }
+
         [NotMapped]
         public int[] BusStopsIds
         {
