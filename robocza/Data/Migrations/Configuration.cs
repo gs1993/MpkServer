@@ -26,7 +26,8 @@ namespace Data.Migrations
                     UserName = "lukraik",
                     Email = "lukraik@gmail.com",
                     PasswordHash = password,
-                    PhoneNumber = "08869879"
+                    PhoneNumber = "08869879",
+                    Activated = true
 
                 });
             context.Users.AddOrUpdate(u => u.UserName,
@@ -36,8 +37,19 @@ namespace Data.Migrations
                     Email = "test",
                     PasswordHash = password,
                     PhoneNumber = "08869879"
-
+                    Rank = UserRank.Device,
+                    Activated = true
                 });
+            context.Users.AddOrUpdate(u => u.UserName, new ApiUser()
+                {
+                    UserName = "driver1",
+                    Email = "driver1",
+                    PasswordHash = password,
+                    PhoneNumber = "082329183",
+                    Rank=UserRank.Device,
+                    Activated = true
+                });
+
 
             context.Buss.AddOrUpdate(new Bus ()
            {
@@ -47,8 +59,9 @@ namespace Data.Migrations
                LastControl = DateTime.Now,
                RegistrationNumber = "12211NLI",
                IsArchive = false,
-               BusNumber = "0892"
-           });
+               BusNumber = "0892",
+                Driver = context.Users.First(x => x.UserName == "driver1")
+            });
             context.Buss.AddOrUpdate(new Bus()
             {
                 BusType = BusType.Normal,
@@ -57,7 +70,8 @@ namespace Data.Migrations
                 LastControl = new DateTime(2015, 01, 02),
                 RegistrationNumber = "1DDNLD",
                 IsArchive = true,
-                BusNumber = "0784"
+                BusNumber = "0784",
+                Driver = context.Users.First(x => x.UserName == "driver1")
             });
             context.Buss.AddOrUpdate(new Bus()
             {
@@ -67,7 +81,8 @@ namespace Data.Migrations
                 LastControl = new DateTime(2015, 01, 02),
                 RegistrationNumber = "TREWQ3",
                 IsArchive = false,
-                BusNumber = "0584"
+                BusNumber = "0584",
+                Driver = context.Users.First(x => x.UserName == "driver1")
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Transfer.Authhandler;
 using Core.Transfer.Base;
+using Data.Enums;
 using Data.Models;
 using Data.Service;
 using Microsoft.AspNet.Identity;
@@ -34,11 +35,20 @@ namespace WebSocketServer.Handlers.Action
             var user = _um.FindByEmail(dto.Email);
             if (_um.CheckPassword(user, dto.Password))
             {
-                connection.SetState(WSState.Authorized);
+                switch (user.Rank)
+                {
+                    case UserRank.User:
+                        _emitter.Subscribe(connection);
+                        break;
+                    case UserRank.Device:
+
+                        break;
+                }
+                connection.Auth(user);
             }
             else
             {
-                throw new HandlingException(ResultState.Error, "");
+                throw new HandlingException(ResultState.Error, "User not found");
             }
             return TaskHelper.EmptyResult();
         }

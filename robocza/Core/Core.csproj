@@ -51,6 +51,7 @@
     <Compile Include="Transfer\BusStopHandler\BusStopResultDto.cs" />
     <Compile Include="Transfer\Bus\BusDto.cs" />
     <Compile Include="Transfer\Bus\GetBusDto.cs" />
+    <Compile Include="Transfer\Emit\EventDto.cs" />
     <Compile Include="Transfer\TestTransfer\TestObj.cs" />
     <Compile Include="Transfer\User\UserDto.cs" />
     <Compile Include="Transfer\User\UserLoginDto.cs" />
