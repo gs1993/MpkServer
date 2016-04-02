@@ -1,7 +1,6 @@
 /**
  * Created by msobiecki on 02.04.16.
  */
-
 (function () {
     'use strict';
 

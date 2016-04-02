@@ -12,6 +12,11 @@
     config.$inject = ['$routeProvider', '$locationProvider'];
     function config($routeProvider, $locationProvider) {
         $routeProvider
+            .when('/', {
+                controller: 'HomeController',
+                templateUrl: 'home.html',
+                controllerAs: 'vm'
+            })
             .when('/home', {
                 controller: 'HomeController',
                 templateUrl: 'home.html',
@@ -29,9 +34,9 @@
                 controllerAs: 'vm'
             })
             .when('/welcome', {
-                controller: 'WelcomeController',
+                controller: '',
                 templateUrl: 'panelWelcome.html',
-                controllerAs: 'vm'
+                controllerAs: ''
             })
 
             .otherwise({ redirectTo: '/home' });
