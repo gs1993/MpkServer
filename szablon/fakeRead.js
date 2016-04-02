@@ -1,5 +1,5 @@
 var deviceWebstocket = new WebSocket("ws://localhost:7878");
-deviceWebstocket.onmessage = function(data){console.log(data);}
+deviceWebstocket.onmessage = function(data){console.log(JSON.parse(JSON.parse(data.data).Data));}
 
 var sendAuth = function(){
 	var data = {Email:'lukraik@gmail.com',Password:'Password@123'};
