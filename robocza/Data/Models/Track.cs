@@ -13,6 +13,8 @@ namespace Data.Models
 
         public string Tracks { get; set; }
 
+        public bool IsArchive { get; set; }
+
         [NotMapped]
         public int[] TracksId
         {

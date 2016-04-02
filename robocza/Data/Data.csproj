@@ -85,6 +85,18 @@
     <Compile Include="Migrations\201604011820190_addToken.Designer.cs">
       <DependentUpon>201604011820190_addToken.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604021217504_addTestUser.cs" />
+    <Compile Include="Migrations\201604021217504_addTestUser.Designer.cs">
+      <DependentUpon>201604021217504_addTestUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604021529057_addIsArchive.cs" />
+    <Compile Include="Migrations\201604021529057_addIsArchive.Designer.cs">
+      <DependentUpon>201604021529057_addIsArchive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604021536340_addFixIsArchive.cs" />
+    <Compile Include="Migrations\201604021536340_addFixIsArchive.Designer.cs">
+      <DependentUpon>201604021536340_addFixIsArchive.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\Autobus.cs" />
@@ -117,6 +129,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604011820190_addToken.resx">
       <DependentUpon>201604011820190_addToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604021217504_addTestUser.resx">
+      <DependentUpon>201604021217504_addTestUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604021529057_addIsArchive.resx">
+      <DependentUpon>201604021529057_addIsArchive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604021536340_addFixIsArchive.resx">
+      <DependentUpon>201604021536340_addFixIsArchive.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

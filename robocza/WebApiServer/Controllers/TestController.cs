@@ -45,13 +45,13 @@ namespace WebApiServer.Controllers
 
 
                 return db.Buss.First();
-            }
+            }   
 
         }
         [EnableCors("*", "*", "*")]
         public TestObj TestPost(TestObj posObj)
         {
-            return posObj;
+                return posObj;
         }
     }
 }

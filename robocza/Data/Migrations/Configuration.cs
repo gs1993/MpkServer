@@ -29,6 +29,15 @@ namespace Data.Migrations
                     PhoneNumber = "08869879"
 
                 });
+            context.Users.AddOrUpdate(u => u.UserName,
+                new ApiUser()
+                {
+                    UserName = "test",
+                    Email = "test",
+                    PasswordHash = password,
+                    PhoneNumber = "08869879"
+
+                });
 
             context.Buss.AddOrUpdate(new Bus ()
            {
@@ -36,9 +45,30 @@ namespace Data.Migrations
                GotMachine = false,
                Id = 1,
                LastControl = DateTime.Now,
-               RegistrationNumber = "12211NLI"
+               RegistrationNumber = "12211NLI",
+               IsArchive = false,
+               BusNumber = "0892"
            });
-
+            context.Buss.AddOrUpdate(new Bus()
+            {
+                BusType = BusType.Normal,
+                GotMachine = false,
+                Id = 2,
+                LastControl = new DateTime(2015, 01, 02),
+                RegistrationNumber = "1DDNLD",
+                IsArchive = true,
+                BusNumber = "0784"
+            });
+            context.Buss.AddOrUpdate(new Bus()
+            {
+                BusType = BusType.Normal,
+                GotMachine = false,
+                Id = 3,
+                LastControl = new DateTime(2015, 01, 02),
+                RegistrationNumber = "TREWQ3",
+                IsArchive = false,
+                BusNumber = "0584"
+            });
             context.BusStops.AddOrUpdate(new BusStop()
             {
                 GotMachine = false,
@@ -49,7 +79,8 @@ namespace Data.Migrations
                 Lat = 42.3,
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska Polskiego",
-                Name = "Przystanek kołobrzeska"
+                Name = "Przystanek kołobrzeska",
+                IsArchive = false
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -61,7 +92,8 @@ namespace Data.Migrations
                 Lat = 42.3,
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska niepolskiego",
-                Name = "Przystanek dwa"
+                Name = "Przystanek dwa",
+                IsArchive = true
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -73,12 +105,33 @@ namespace Data.Migrations
                 Lat = 42.3,
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska tymczasowego",
-                Name = "Przystanek trzy"
+                Name = "Przystanek trzy",
+                IsArchive = false
+            });
+            context.BusStops.AddOrUpdate(new BusStop()
+            {
+                GotMachine = false,
+                LastControl = DateTime.Now,
+                Id = 4,
+                BusStopType = BusStopType.Normal,
+                GotKiosk = false,
+                Lat = 42.3,
+                Lng = 45.3,
+                LocalizationString = "Ulica Pacyfistyczna",
+                Name = "Przystanek cztery",
+                IsArchive = false
             });
             context.Tracks.AddOrUpdate(new Track()
             {
                 Id = 1,
-                Tracks = "1;2;3"
+                Tracks = "1;2;3",
+                IsArchive = false
+            });
+            context.Tracks.AddOrUpdate(new Track()
+            {
+                Id = 1,
+                Tracks = "3;2;1",
+                IsArchive = true
             });
         }
     }

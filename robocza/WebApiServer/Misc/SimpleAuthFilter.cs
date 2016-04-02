@@ -68,7 +68,8 @@ namespace WebApiServer.Misc
         {
             var task = Task.Run(() =>
             {
-                var encoder = new Base64TextEncoder();
+                    var encoder = new Base64TextEncoder();
+                
                 var result = Encoding.UTF8.GetString(encoder.Decode(parameter));
                 var values = result.Split(';');
                 if (values.Count() > 1)return new Tuple<string, string>(values[0], values[1]);
