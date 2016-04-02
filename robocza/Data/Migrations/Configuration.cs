@@ -36,7 +36,7 @@ namespace Data.Migrations
                     UserName = "test",
                     Email = "test",
                     PasswordHash = password,
-                    PhoneNumber = "08869879"
+                    PhoneNumber = "08869879",
                     Rank = UserRank.Device,
                     Activated = true
                 });
@@ -139,13 +139,13 @@ namespace Data.Migrations
             context.Tracks.AddOrUpdate(new Track()
             {
                 Id = 1,
-                Tracks = "1;2;3",
+                BusStops = "1;2;3",
                 IsArchive = false
             });
             context.Tracks.AddOrUpdate(new Track()
             {
                 Id = 1,
-                Tracks = "3;2;1",
+                BusStops = "3;2;1",
                 IsArchive = true
             });
         }
