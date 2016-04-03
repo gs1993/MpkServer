@@ -87,5 +87,45 @@
         a(href="#").panelDodajAutobus__navigation__item.gray.-abort Anuluj
     span.panelDodajAutobus__close
       span.panelDodajAutobus__icon.fa.fa-times
+.panelWyswietlAutobus__dragger
+  .panelWyswietlAutobus.panel.-hidden.dragger
+    .panelWyswietlAutobus__title Dodaj Autobus
+    .panelWyswietlAutobus__wrapper
+      .panelWyswietlAutobus__content
+        .panelWyswietlAutobus__content__Title Dane Autobusu
+        .panelWyswietlAutobus__content__form
+          .panelWyswietlAutobus__content__form__item
+            span.item Numer Rejestracyjny
+            input(placeholder="Podaj Nr. Rejestracyjny")
+          .panelWyswietlAutobus__content__form__item
+            span.item Numer VIN
+            input(placeholder="Podaj Nr. VIN")
+          .panelWyswietlAutobus__content__form__item
+            span.item Typ Autobusu
+            select.js-example-placeholder-single.crud
+              option(value=0) Normalny
+              option(value=1) Przegubowy
+          .panelDodajAutobus__content__form__item
+            span.item Czy ma Biletomat?
+            select.js-example-placeholder-single.crud
+              option(value=0) Nie
+              option(value=1) Tak
+          .panelWyswietlAutobus__content__form__item
+            span.item Status
+            select.js-example-placeholder-single.crud
+              option(value=0) Aktywny
+              option(value=1) W zajezdni
+              option(value=2) W serwisie
+          .panelWyswietlAutobus__content__form__item
+            span.item Numer Autobusu
+            select.js-example-placeholder-single.scrud
+              option(value=0) 100
+              option(value=1) 103
+              option(value=2) 104
+      .panelWyswietlAutobus__navigation
+        button.green.panelWyswietlAutobus__navigation__item.green Dodaj Autobus
+        a(href="#").panelWyswietlAutobus__navigation__item.gray.-abort Anuluj
+    span.panelWyswietlAutobus__close
+      span.panelWyswietlAutobus__icon.fa.fa-times
 
 
