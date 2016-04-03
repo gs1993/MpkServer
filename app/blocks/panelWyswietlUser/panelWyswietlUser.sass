@@ -109,7 +109,6 @@
           background: #008d4c
       &.red
         background: #a60605
-        float: left
         order: 3
         &:hover
           background: #b00a11
@@ -129,9 +128,8 @@
         text-align: center
     &__form
       display: flex
-      align-content: space-between
       flex-wrap: wrap
-      justify-content: space-between
+      justify-content: flex-start
       &__item
 
         &.check
@@ -141,10 +139,10 @@
 
         overflow: hidden
         flex-basis: 50%
-        padding: 10px 0
+        padding: 10px
         margin: 5px 0
 
-        input,input[type="password"]
+        input
           height: 40px
           box-shadow: none !important
           outline: none
@@ -152,8 +150,6 @@
           max-width: 300px
           width: 100%
           display: block
-          margin: 5px auto
-          padding: 8px 10px
           border-radius: 0
           border-top: 0
           border-left: 0
@@ -162,6 +158,7 @@
           font-size: 16px
           &:focus
             border-bottom: 2px solid #4AAED4
+
         select
           height: 40px
           box-shadow: none !important
@@ -170,8 +167,6 @@
           max-width: 300px
           width: 100%
           display: block
-          margin: 5px auto
-          padding: 8px 10px
           border-radius: 0
           border-top: 0
           border-left: 0

@@ -75,39 +75,6 @@
       color: firebrick
     &.-hidden
       display: none
-  &__form
-    padding: 5px
-    margin: 0 auto
-    text-align: center
-    input
-      box-shadow: none !important
-      outline: none
-      font-weight: 400
-      max-width: 300px
-      width: 100%
-      display: block
-      margin: 5px auto
-      padding: 8px 10px
-      border-radius: 0
-      border-top: 0
-      border-left: 0
-      border-right: 0
-      border-bottom: 2px solid #D2E3E9
-      font-size: 16px
-      &:focus
-        border-bottom: 2px solid #4AAED4
-
-    button
-      text-transform: uppercase
-      background: #008d4c
-      border-color: #008d4c
-      color: white
-      padding: 15px 20px
-      border-radius: 25px
-      max-width: 300px
-      width: 100%
-      &:hover
-        background: #98D3EA
 
   &__navigation
     margin-top: 20px
@@ -149,7 +116,8 @@
         text-align: center
     &__Filtr
       display: flex
-      align-content: space-between
+      align-content: flex-start
+      justify-content: flex-start
       flex-wrap: wrap
       &__item
         &.check
@@ -157,7 +125,6 @@
           text-align: center
           margin-right: 2px
         overflow: hidden
-        flex-basis: 25%
         padding: 10px
         margin: 5px 0
         &:first-of-type
@@ -166,27 +133,31 @@
           padding-right: 0
 
         input
-          box-shadow: none !important
+          padding: 0 10px
+          font-size: 16px
+          min-width: 300px
+          height: 40px
           outline: none
-          font-weight: 400
-          width: 100%
           display: block
-          //margin: 5px auto
-          padding: 8px 10px
           border-radius: 0
-          border: 1px solid #aaa
-          font-size: 12px
+          border-top: 0
+          border-left: 0
+          border-right: 0
+          border-bottom: 2px solid #D2E3E9
+          &:focus
+            border-bottom: 2px solid #4AAED4
         select
           box-shadow: none !important
+          height: 40px
           outline: none
-          font-weight: 400
-          width: 100%
           display: block
-          //margin: 5px auto
-          padding: 8px 10px
           border-radius: 0
-          border: 1px solid #aaa
-          font-size: 12px
+          border-top: 0
+          border-left: 0
+          border-right: 0
+          border-bottom: 2px solid #D2E3E9
+          &:focus
+            border-bottom: 2px solid #4AAED4
 
         input[type=checkbox]
           display: none
@@ -219,10 +190,8 @@
           flex-basis: 100%
           padding: 0
         p
-          font-size: 10px
-          line-height: 10px
-          letter-spacing: 1px
-
+          text-transform: uppercase
+          font-size: 9px
         .select2
           &-container
             .select2-selection

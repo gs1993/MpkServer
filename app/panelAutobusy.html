@@ -9,8 +9,8 @@
           <input placeholder="Szukaj autobusu"/>
         </div>
         <div class="panelAutobusy__content__Filtr__item">
-          <select class="js-example-placeholder-single status">
-            <option></option>
+          <select>
+            <option value="">Status</option>
             <option value="0">Nieaktywny</option>
             <option value="1">Aktywny</option>
             <option value="2">W trasie</option>
@@ -18,8 +18,8 @@
           </select>
         </div>
         <div class="panelAutobusy__content__Filtr__item">
-          <select class="js-example-placeholder-single typ">
-            <option></option>
+          <select>
+            <option value="">Typ</option>
             <option value="0">Normalny</option>
             <option value="1">Przegubowy</option>
           </select>
@@ -33,23 +33,22 @@
       <div class="panelAutobusy__contentList">
         <div class="panelList">
           <div class="panelList__header">
-            <div class="panelList__headeritemType">Typ</div>
-            <div class="panelList__headeritemName">Numer Autobusu</div>
-            <div class="panelList__headeritemStatus">Status</div>
-            <div class="panelList__headeritemBiletomat">Biletomat</div>
-            <div class="panelList__headeritemnavigation">Szczegóły</div>
+            <div class="panelList__headeritem">Typ</div>
+            <div class="panelList__headeritem">Numer Autobusu</div>
+            <div class="panelList__headeritem">Status</div>
+            <div class="panelList__headeritem">Biletomat</div>
+            <div class="panelList__headeritem">Szczegóły</div>
           </div>
           <div id="GetBusList" class="panelAutobusy__list panelList__content">
             <div class="panelList__item">
-              <div class="panelList__itemType">
+              <div class="panelList__itemCell">
                 <div class="fa fa-bus"></div>
               </div>
-              <div class="panelList__itemName">Przykładowy</div>
-              <div class="panelList__itemStatus">Aktywny</div>
-              <div class="panelList__itemBiletomat">
+              <div class="panelList__itemCell">Przykładowy</div>
+              <div class="panelList__itemCell">Aktywny</div>
+              <div class="panelList__itemCell">
                 <div class="fa fa-times-circle-o"></div>
-              </div><a href="#/bus/show">
-                <div class="panelList__navigation">Zobacz</div></a>
+              </div><a href="#/bus/show" class="panelList__itemCell">Zobacz</a>
             </div>
           </div>
         </div>
