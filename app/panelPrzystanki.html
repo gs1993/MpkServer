@@ -1,0 +1,196 @@
+
+<div class="panelPrzystanki panel dragger">
+  <div class="panelPrzystanki__title">Panel Zarządzania Przystankami</div>
+  <div class="panelPrzystanki__wrapper">
+    <div class="panelPrzystanki__content">
+      <div class="panelPrzystanki__content__Title">Lista Przystanków</div>
+      <div class="panelPrzystanki__content__Filtr">
+        <div class="panelPrzystanki__content__Filtr__item">
+          <input placeholder="Szukaj przystanku"/>
+        </div>
+        <div class="panelPrzystanki__content__Filtr__item">
+          <input placeholder="Szukaj ulicy"/>
+        </div>
+        <div class="panelPrzystanki__content__Filtr__item">
+          <select multiple="multiple" class="js-example-placeholder-multiple linie">
+            <option></option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+          </select>
+          <!--input(placeholder="Typ autobusu")-->
+        </div>
+        <div class="panelPrzystanki__content__Filtr__item check">
+          <input type="checkbox" id="czyprzystanekmabiletomat"/>
+          <label for="czyprzystanekmabiletomat"></label>
+          <p>Biletomat</p>
+        </div>
+        <div class="panelPrzystanki__content__Filtr__item check">
+          <input type="checkbox" id="czyprzystanekmakiosk"/>
+          <label for="czyprzystanekmakiosk"></label>
+          <p>Kiosk</p>
+        </div>
+      </div>
+      <div class="panelPrzystanki__contentList">
+        <div class="panelList">
+          <div class="panelList__header">
+            <div class="panelList__headeritemName">Nazwa przystanku</div>
+            <div class="panelList__headeritemUlica">Ulica</div>
+            <div class="panelList__headeritemLinie">Linie</div>
+            <div class="panelList__headeritemBiletomat">Biletomat</div>
+            <div class="panelList__headeritemKiosk">Kiosk</div>
+            <div class="panelList__headeritemnavigation">Szczegóły</div>
+          </div>
+          <div class="panelPrzystanki__list panelList__content">
+            <div class="panelList__item">
+              <div class="panelList__itemName">Lubelska</div>
+              <div class="panelList__itemUlica">Poprzeczna</div>
+              <div class="panelList__itemLinie">1,2,3</div>
+              <div class="panelList__itemBiletomat">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__itemKiosk">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__navigation">Zobacz</div>
+            </div>
+            <div class="panelList__item">
+              <div class="panelList__itemName">Dworzec Główny</div>
+              <div class="panelList__itemUlica">Dworcowa</div>
+              <div class="panelList__itemLinie">1,2,3</div>
+              <div class="panelList__itemBiletomat">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__itemKiosk">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__navigation">Zobacz</div>
+            </div>
+            <div class="panelList__item">
+              <div class="panelList__itemName">Uniwersytet Stadion</div>
+              <div class="panelList__itemUlica">Warszawska</div>
+              <div class="panelList__itemLinie">1,2,3</div>
+              <div class="panelList__itemBiletomat">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__itemKiosk">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__navigation">Zobacz</div>
+            </div>
+            <div class="panelList__item">
+              <div class="panelList__itemName">Uniwersytet Świetlista</div>
+              <div class="panelList__itemUlica">Słoneczna</div>
+              <div class="panelList__itemLinie">1,2,3</div>
+              <div class="panelList__itemBiletomat">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__itemKiosk">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__navigation">Zobacz</div>
+            </div>
+            <div class="panelList__item">
+              <div class="panelList__itemName">Partyzantów</div>
+              <div class="panelList__itemUlica">Partyzantów</div>
+              <div class="panelList__itemLinie">1,2,3</div>
+              <div class="panelList__itemBiletomat">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__itemKiosk">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__navigation">Zobacz</div>
+            </div>
+            <div class="panelList__item">
+              <div class="panelList__itemName">Uniwersytet-Prawocheńskiego</div>
+              <div class="panelList__itemUlica">Warszawska</div>
+              <div class="panelList__itemLinie">1,2,3</div>
+              <div class="panelList__itemBiletomat">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__itemKiosk">
+                <div class="fa fa-times-circle-o"></div>
+              </div>
+              <div class="panelList__navigation">Zobacz</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panelPrzystanki__navigation"><a href="#" id="panel-DodajPrzystanekButton" class="panelPrzystanki__navigation__item">Dodaj Przystanek</a></div>
+  </div><a href="#"><span class="panelPrzystanki__close"><span class="panelPrzystanki__icon fa fa-times"></span></span></a>
+</div>
+<div class="panelDodajPrzystanek__dragger">
+  <div class="panelDodajPrzystanek panel -hidden dragger">
+    <div class="panelDodajPrzystanek__title">Dodaj Przystanek</div>
+    <div class="panelDodajPrzystanek__wrapper">
+      <div class="panelDodajPrzystanek__content">
+        <div class="panelDodajPrzystanek__content__Title">Dane Przystanku</div>
+        <div class="panelDodajPrzystanek__content__form">
+          <div class="panelDodajPrzystanek__content__form__item"><span class="item">Nazwa przystanku</span>
+            <input placeholder="Podaj nazwę przystanku"/>
+          </div>
+          <div class="panelDodajPrzystanek__content__form__item"><span class="item">Lokalizacja</span>
+            <input placeholder="Podaj lokalizackje"/>
+          </div>
+          <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma biletomat?</span>
+            <select class="js-example-placeholder-single crud">
+              <option value="0">Nie</option>
+              <option value="1">Tak</option>
+            </select>
+          </div>
+          <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma kiosk?</span>
+            <select class="js-example-placeholder-single crud">
+              <option value="0">Nie</option>
+              <option value="1">Tak</option>
+            </select>
+          </div>
+          <div class="panelDodajPrzystanek__content__form__item"><span class="item">Linie</span>
+            <select multiple="multiple" class="js-example-placeholder-multiple linie">
+              <option></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="panelDodajPrzystanek__navigation">
+        <button class="panelDodajPrzystanek__navigation__item green">Dodaj Autobus</button><a href="#" class="panelDodajPrzystanek__navigation__item gray -abort">Anuluj</a>
+      </div>
+    </div><span class="panelDodajPrzystanek__close"><span class="panelDodajPrzystanek__icon fa fa-times"></span></span>
+  </div>
+</div>
