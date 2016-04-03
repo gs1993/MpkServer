@@ -1,21 +1,18 @@
 @charset "UTF-8"
-.panelUsers
-  min-width: 960px
+.panelWyswietlUser
+  min-width: 700px
   +TAB_MAX
     position: relative !important
     width: 100% !important
     margin: 55px auto 0
     //bottom: 0 !important
     top: 0 !important
-
   &.-hidden
     opacity: 0
     z-index: 0
     transform: scale(0.5, 0.5)
     display: none
-  &__list
-    max-width: 920px
-    width: 100% !important
+
   &__wrapper
     position: relative
     padding: 20px
@@ -24,14 +21,19 @@
   &__title
     font-family: Lato, sans-serif
     font-weight: 500
+
     font-size: 15px
+
     text-align: center
+
     background: #3c8dbc
     color: #fff
     padding: 5px
     opacity: 0.9
+
     +PHONE_ONLY
       text-align: center
+
   &__subtitle
     font-family: Lato, sans-serif
     font-weight: 300
@@ -40,6 +42,7 @@
     font-size: 12px
     letter-spacing: 2px
     text-align: left
+
     color: #222
     font-style: italic
     +PHONE_ONLY
@@ -74,45 +77,11 @@
       color: firebrick
     &.-hidden
       display: none
-  //&__form
-    padding: 5px
-    margin: 0 auto
-    text-align: center
-    input
-      box-shadow: none !important
-      outline: none
-      font-weight: 400
-      max-width: 300px
-      width: 100%
-      display: block
-      margin: 5px auto
-      padding: 8px 10px
-      border-radius: 0
-      border-top: 0
-      border-left: 0
-      border-right: 0
-      border-bottom: 2px solid #D2E3E9
-      font-size: 16px
-      &:focus
-        border-bottom: 2px solid #4AAED4
-
-    button
-      text-transform: uppercase
-      background: #008d4c
-      border-color: #008d4c
-      color: white
-      padding: 15px 20px
-      border-radius: 25px
-      max-width: 300px
-      width: 100%
-      &:hover
-        background: #98D3EA
-
   &__navigation
     margin-top: 20px
     margin-bottom: 5px
     display: flex
-    justify-content: flex-start
+    justify-content: flex-end
     flex-direction: row
     +PHONE_ONLY
       justify-content: center
@@ -122,19 +91,25 @@
       flex-shrink: 1
       font-size: 10px
       text-transform: uppercase
-      background: #00a65a
-      border-color: #008d4c
+      background: #4F98C2
       color: white
+      border: none
       padding: 10px 10px
+      //border-radius: 5px
       max-width: 150px
       width: 100%
       margin-right: 5px
       text-decoration: none !important
       text-align: center
       &:hover
-        background: #008d4c
+        background: rgba(60, 141, 188, 1)
+      &.green
+        background: #00a65a
+        &:hover
+          background: #008d4c
 
   &__content
+    //border-top: 2px solid #D2E3E9
     padding-top: 15px
     &__Title
       font-family: Lato, sans-serif
@@ -142,50 +117,62 @@
       line-height: 1.3
       letter-spacing: 1.25px
       text-align: left
-      color: #222
       text-transform: uppercase
+      color: #222
+      padding-bottom: 15px
       +PHONE_ONLY
         text-align: center
-    &__Filtr
+    &__form
       display: flex
-      align-content: center
-      justify-content: flex-start
+      align-content: space-between
       flex-wrap: wrap
+      justify-content: space-between
       &__item
+
         &.check
           flex-basis: auto
           text-align: center
           margin-right: 2px
-        overflow: hidden
-        padding: 10px
-        margin: 5px 0
-        &:first-of-type
-          padding-left: 0
-        &:last-of-type
-          padding-right: 0
 
-        input
-          min-width: 300px
+        overflow: hidden
+        flex-basis: 50%
+        padding: 10px 0
+        margin: 5px 0
+
+        input,input[type="password"]
           height: 40px
+          box-shadow: none !important
           outline: none
+          font-weight: 400
+          max-width: 300px
+          width: 100%
           display: block
+          margin: 5px auto
+          padding: 8px 10px
           border-radius: 0
           border-top: 0
           border-left: 0
           border-right: 0
           border-bottom: 2px solid #D2E3E9
+          font-size: 16px
           &:focus
             border-bottom: 2px solid #4AAED4
         select
-          box-shadow: none !important
           height: 40px
+          box-shadow: none !important
           outline: none
+          font-weight: 400
+          max-width: 300px
+          width: 100%
           display: block
+          margin: 5px auto
+          padding: 8px 10px
           border-radius: 0
           border-top: 0
           border-left: 0
           border-right: 0
           border-bottom: 2px solid #D2E3E9
+          font-size: 16px
           &:focus
             border-bottom: 2px solid #4AAED4
   &__close
@@ -193,12 +180,13 @@
     position: absolute
     top: 5px
     right: 10px
+    //color: #222222
     cursor: pointer
     opacity: 0.8
     color: #fff
     &:hover
       opacity: 1
-    .panelUsers__icon
+    .panelWyswietlUser_icon
       font-size: 1.8em !important
   &__icon
     font-size: 3em

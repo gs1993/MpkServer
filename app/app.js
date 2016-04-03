@@ -64,11 +64,11 @@
                 controller: 'UserController'
             }).
             when('/user/add', {
-                templateUrl: 'panelDodajUsera.html',
+                templateUrl: 'panelDodajUser.html',
                 controller: 'AddUserController'
             }).
             when('/user/show', {
-                templateUrl: 'panelWyswietlUsera.html',
+                templateUrl: 'panelWyswietlUser.html',
                 controller: 'ShowUserController'
             }).
 

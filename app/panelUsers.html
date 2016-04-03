@@ -9,15 +9,15 @@
           <input placeholder="Szukaj użytkownika..."/>
         </div>
         <div class="panelUsers__content__Filtr__item">
-          <select class="js-example-placeholder-single status">
-            <option></option>
+          <select>
+            <option value=""> Status</option>
             <option value="0">Nieaktywny</option>
             <option value="1">Aktywny</option>
           </select>
         </div>
         <div class="panelUsers__content__Filtr__item">
-          <select class="js-example-placeholder-single ranga">
-            <option></option>
+          <select>
+            <option value="">Ranga</option>
             <option value="0">Użytkownik</option>
             <option value="1">Kontroler</option>
             <option value="1">Administrator</option>
@@ -27,16 +27,21 @@
       <div class="panelUsers__contentList">
         <div class="panelList">
           <div class="panelList__header">
-            <div class="panelList__headeritemName">Email</div>
-            <div class="panelList__headeritemRanga">Ranga</div>
-            <div class="panelList__headeritemStatus">Status</div>
-            <div class="panelList__headeritemnavigation">Szczegóły</div>
+            <div class="panelList__headeritem -long">Email</div>
+            <div class="panelList__headeritem -short">Ranga</div>
+            <div class="panelList__headeritem -short">Status</div>
+            <div class="panelList__headeritem -short">Szczegóły</div>
           </div>
           <div id="GetUserList" class="panelUsers__list panelList__content">
             <div class="panelList__item">
-              <div class="panelList__itemName">Przykładowy@dev.com</div>
-              <div class="panelList__itemRanga">Kontroler</div>
-              <div class="panelList__itemStatus">Aktywny</div><a href="#/user/show" class="panelList__navigation">Zobacz</a>
+              <div class="panelList__itemCell">Przykładowy@dev.com</div>
+              <div class="panelList__itemCell">Kontroler</div>
+              <div class="panelList__itemCell">Aktywny</div><a href="#/user/show" class="panelList__itemCell">Zobacz</a>
+            </div>
+            <div class="panelList__item">
+              <div class="panelList__itemCell">Przykładowy@dev.com</div>
+              <div class="panelList__itemCell">Kontroler</div>
+              <div class="panelList__itemCell">Aktywny</div><a href="#/user/show" class="panelList__itemCell">Zobacz</a>
             </div>
           </div>
         </div>
