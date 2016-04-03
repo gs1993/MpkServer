@@ -7380,6 +7380,18 @@ a.tabnav-extra:hover {
   font-size: 12px;
 }
 
+.panelAutobusy__content__Filtr__item select {
+  box-shadow: none !important;
+  outline: none;
+  font-weight: 400;
+  width: 100%;
+  display: block;
+  padding: 8px 10px;
+  border-radius: 0;
+  border: 1px solid #aaa;
+  font-size: 12px;
+}
+
 .panelAutobusy__content__Filtr__item input[type=checkbox] {
   display: none;
 }
@@ -7635,6 +7647,27 @@ a.tabnav-extra:hover {
   border-bottom: 2px solid #4AAED4;
 }
 
+.panelDodajAutobus__form select {
+  box-shadow: none !important;
+  outline: none;
+  font-weight: 400;
+  max-width: 300px;
+  width: 100%;
+  display: block;
+  margin: 5px auto;
+  padding: 8px 10px;
+  border-radius: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 2px solid #D2E3E9;
+  font-size: 16px;
+}
+
+.panelDodajAutobus__form select:focus {
+  border-bottom: 2px solid #4AAED4;
+}
+
 .panelDodajAutobus__form label {
   cursor: pointer;
   margin-left: 0;
@@ -7828,6 +7861,18 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajAutobus__content__form__item input {
+  box-shadow: none !important;
+  outline: none;
+  font-weight: 400;
+  width: 100%;
+  display: block;
+  padding: 8px 10px;
+  border-radius: 0;
+  border: 1px solid #aaa;
+  font-size: 12px;
+}
+
+.panelDodajAutobus__content__form__item select {
   box-shadow: none !important;
   outline: none;
   font-weight: 400;
@@ -8226,6 +8271,18 @@ a.tabnav-extra:hover {
 }
 
 .panelPrzystanki__content__Filtr__item input {
+  box-shadow: none !important;
+  outline: none;
+  font-weight: 400;
+  width: 100%;
+  display: block;
+  padding: 8px 10px;
+  border-radius: 0;
+  border: 1px solid #aaa;
+  font-size: 12px;
+}
+
+.panelPrzystanki__content__Filtr__item select {
   box-shadow: none !important;
   outline: none;
   font-weight: 400;
@@ -8685,6 +8742,18 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajPrzystanek__content__form__item input {
+  box-shadow: none !important;
+  outline: none;
+  font-weight: 400;
+  width: 100%;
+  display: block;
+  padding: 8px 10px;
+  border-radius: 0;
+  border: 1px solid #aaa;
+  font-size: 12px;
+}
+
+.panelDodajPrzystanek__content__form__item select {
   box-shadow: none !important;
   outline: none;
   font-weight: 400;
@@ -9714,6 +9783,18 @@ a.tabnav-extra:hover {
   font-size: 12px;
 }
 
+.panelWyswietlAutobus__content__form__item select {
+  box-shadow: none !important;
+  outline: none;
+  font-weight: 400;
+  width: 100%;
+  display: block;
+  padding: 8px 10px;
+  border-radius: 0;
+  border: 1px solid #aaa;
+  font-size: 12px;
+}
+
 .panelWyswietlAutobus__content__form__item input[type=checkbox] {
   display: none;
 }
@@ -10167,6 +10248,18 @@ a.tabnav-extra:hover {
 }
 
 .panelWyswietlPrzystanek__content__form__item input {
+  box-shadow: none !important;
+  outline: none;
+  font-weight: 400;
+  width: 100%;
+  display: block;
+  padding: 8px 10px;
+  border-radius: 0;
+  border: 1px solid #aaa;
+  font-size: 12px;
+}
+
+.panelWyswietlPrzystanek__content__form__item select {
   box-shadow: none !important;
   outline: none;
   font-weight: 400;
