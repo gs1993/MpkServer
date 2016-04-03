@@ -6,18 +6,20 @@
       .panelWyswietlAutobus__content__form
         .panelWyswietlAutobus__content__form__item
           span.item Numer Rejestracyjny
-          input(placeholder="Podaj Nr. Rejestracyjny")
+          input(value="{{Bus.RegistrationNumber}}")
         .panelWyswietlAutobus__content__form__item
           span.item Numer VIN
-          input(placeholder="Podaj Nr. VIN")
+          input(value="{{Bus.VINNumber}}")
         .panelWyswietlAutobus__content__form__item
           span.item Typ Autobusu
           select
+            option(value="{{Bus.BusType}}") {{Bus.BusTypeName}}
             option(value=0) Normalny
             option(value=1) Przegubowy
         .panelWyswietlAutobus__content__form__item
           span.item Czy ma Biletomat?
           select
+            option(value="{{Bus.GotMachine}}") {{Bus.GotMachineName}}
             option(value=0) Nie
             option(value=1) Tak
         .panelWyswietlAutobus__content__form__item

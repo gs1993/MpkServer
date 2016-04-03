@@ -7587,136 +7587,6 @@ a.tabnav-extra:hover {
   display: none;
 }
 
-.panelDodajAutobus__form {
-  padding: 5px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.panelDodajAutobus__form input {
-  box-shadow: none !important;
-  outline: none;
-  font-weight: 400;
-  max-width: 300px;
-  width: 100%;
-  display: block;
-  margin: 5px auto;
-  padding: 8px 10px;
-  border-radius: 0;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 2px solid #D2E3E9;
-  font-size: 16px;
-}
-
-.panelDodajAutobus__form input:focus {
-  border-bottom: 2px solid #4AAED4;
-}
-
-.panelDodajAutobus__form select {
-  box-shadow: none !important;
-  outline: none;
-  font-weight: 400;
-  max-width: 300px;
-  width: 100%;
-  display: block;
-  margin: 5px auto;
-  padding: 8px 10px;
-  border-radius: 0;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 2px solid #D2E3E9;
-  font-size: 16px;
-}
-
-.panelDodajAutobus__form select:focus {
-  border-bottom: 2px solid #4AAED4;
-}
-
-.panelDodajAutobus__form label {
-  cursor: pointer;
-  margin-left: 0;
-  color: #9C969C;
-  font-weight: 400;
-  max-width: 300px;
-}
-
-.panelDodajAutobus__form label .icon {
-  width: 17px;
-  height: 18px;
-  border-radius: 2px;
-  position: relative;
-  display: inline-block;
-  border: 1px solid;
-}
-
-.panelDodajAutobus__form label .icon:before, .panelDodajAutobus__form label .icon:after {
-  content: '';
-  width: 10px;
-  height: 2px;
-  background: white;
-  position: absolute;
-  transition: all .2s ease-in-out 0s;
-}
-
-.panelDodajAutobus__form label .icon:before {
-  left: 3px;
-  width: 5px;
-  bottom: 6px;
-  -webkit-transform: scale(0) rotate(0);
-      -ms-transform: scale(0) rotate(0);
-          transform: scale(0) rotate(0);
-}
-
-.panelDodajAutobus__form label .icon:after {
-  top: 6px;
-  right: 0;
-  -webkit-transform: scale(0) rotate(0);
-      -ms-transform: scale(0) rotate(0);
-          transform: scale(0) rotate(0);
-}
-
-.panelDodajAutobus__form .check {
-  display: none;
-}
-
-.panelDodajAutobus__form .check:checked + label {
-  color: #4AAED4;
-}
-
-.panelDodajAutobus__form .check:checked + label .icon {
-  background: #4AAED4;
-}
-
-.panelDodajAutobus__form .check:checked + label .icon:before {
-  -webkit-transform: scale(1) rotate(45deg);
-      -ms-transform: scale(1) rotate(45deg);
-          transform: scale(1) rotate(45deg);
-}
-
-.panelDodajAutobus__form .check:checked + label .icon:after {
-  -webkit-transform: scale(1) rotate(-45deg);
-      -ms-transform: scale(1) rotate(-45deg);
-          transform: scale(1) rotate(-45deg);
-}
-
-.panelDodajAutobus__form button {
-  text-transform: uppercase;
-  background: #4AAED4;
-  color: white;
-  border: none;
-  padding: 15px 20px;
-  border-radius: 25px;
-  max-width: 300px;
-  width: 100%;
-}
-
-.panelDodajAutobus__form button:hover {
-  background: #98D3EA;
-}
-
 .panelDodajAutobus__navigation {
   margin-top: 20px;
   margin-bottom: 5px;
@@ -7825,6 +7695,7 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajAutobus__content__form__item input, .panelDodajAutobus__content__form__item input[type="password"] {
+  padding: 0 10px;
   height: 40px;
   box-shadow: none !important;
   outline: none;
@@ -8473,6 +8344,7 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajPrzystanek__content__form__item input, .panelDodajPrzystanek__content__form__item input[type="password"] {
+  padding: 0 10px;
   height: 40px;
   box-shadow: none !important;
   outline: none;
@@ -9020,6 +8892,7 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajUser__content__form__item input, .panelDodajUser__content__form__item input[type="password"] {
+  padding: 0 10px;
   height: 40px;
   box-shadow: none !important;
   outline: none;
@@ -9310,6 +9183,7 @@ a.tabnav-extra:hover {
 }
 
 .panelWyswietlAutobus__content__form__item input {
+  padding: 0 10px;
   height: 40px;
   box-shadow: none !important;
   outline: none;
@@ -9600,6 +9474,7 @@ a.tabnav-extra:hover {
 }
 
 .panelWyswietlPrzystanek__content__form__item input {
+  padding: 0 10px;
   height: 40px;
   box-shadow: none !important;
   outline: none;
@@ -9890,6 +9765,7 @@ a.tabnav-extra:hover {
 }
 
 .panelWyswietlUser__content__form__item input {
+  padding: 0 10px;
   height: 40px;
   box-shadow: none !important;
   outline: none;

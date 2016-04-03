@@ -79,100 +79,6 @@
       color: firebrick
     &.-hidden
       display: none
-  &__form
-    padding: 5px
-    margin: 0 auto
-    text-align: center
-    input
-      box-shadow: none !important
-      outline: none
-      font-weight: 400
-      max-width: 300px
-      width: 100%
-      display: block
-      margin: 5px auto
-      padding: 8px 10px
-      border-radius: 0
-      border-top: 0
-      border-left: 0
-      border-right: 0
-      border-bottom: 2px solid #D2E3E9
-      font-size: 16px
-      &:focus
-        border-bottom: 2px solid #4AAED4
-
-    select
-      box-shadow: none !important
-      outline: none
-      font-weight: 400
-      max-width: 300px
-      width: 100%
-      display: block
-      margin: 5px auto
-      padding: 8px 10px
-      border-radius: 0
-      border-top: 0
-      border-left: 0
-      border-right: 0
-      border-bottom: 2px solid #D2E3E9
-      font-size: 16px
-      &:focus
-        border-bottom: 2px solid #4AAED4
-
-    label
-      cursor: pointer
-      margin-left: 0
-      color: #9C969C
-      font-weight: 400
-      max-width: 300px
-      .icon
-        width: 17px
-        height: 18px
-        border-radius: 2px
-        position: relative
-        display: inline-block
-        border: 1px solid
-      .icon:before,.icon:after
-        content: ''
-        width: 10px
-        height: 2px
-        background: white
-        position: absolute
-        transition: all .2s ease-in-out 0s
-      .icon:before
-        left: 3px
-        width: 5px
-        bottom: 6px
-        transform: scale(0) rotate(0)
-      .icon:after
-        top: 6px
-        right: 0
-        transform: scale(0) rotate(0)
-
-    .check
-      display: none
-    .check:checked + label
-      color: #4AAED4
-      .icon
-        background: #4AAED4
-      .icon:before
-        transform: scale(1) rotate(45deg)
-      .icon:after
-        transform: scale(1) rotate(-45deg)
-
-
-    button
-      text-transform: uppercase
-      background: #4AAED4
-      color: white
-      border: none
-      padding: 15px 20px
-      border-radius: 25px
-      max-width: 300px
-      width: 100%
-      &:hover
-        background: #98D3EA
-
   &__navigation
     margin-top: 20px
     margin-bottom: 5px
@@ -235,6 +141,7 @@
         margin: 5px 0
 
         input,input[type="password"]
+          padding: 0 10px
           height: 40px
           box-shadow: none !important
           outline: none

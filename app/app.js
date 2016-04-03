@@ -9,6 +9,8 @@
     app.config(['$routeProvider',
         function($routeProvider) {
             $routeProvider.
+
+            //STANDARDOWE SCIEZKI
             when('/', {
                 templateUrl: 'home.html',
                 controller: 'HomeController'
@@ -31,6 +33,7 @@
             }).
 
 
+            //AUTOBUS SCIEZKI
             when('/bus', {
                 templateUrl: 'panelAutobusy.html',
                 controller: 'BusController'
@@ -44,7 +47,7 @@
                 controller: 'ShowBusController'
             }).
 
-
+            //PRZYSTANKI SCIEZKI
             when('/busstop', {
                 templateUrl: 'panelPrzystanki.html',
                 controller: 'BusstopController'
@@ -58,7 +61,7 @@
                 controller: 'ShowBusstopController'
             }).
 
-
+            //UZYTKOWNICY SCIEZKI
             when('/user', {
                 templateUrl: 'panelUsers.html',
                 controller: 'UserController'
@@ -76,6 +79,8 @@
                 redirectTo: '/home'
             });
         }]);
+
+    //STANDARDOWE CONTROLLERY
     app.controller('HomeController', function($scope) {
 
         $scope.message = 'This is Add new order screen';
@@ -102,8 +107,8 @@
         $scope.message = 'This is Add new order screen';
 
     });
-    
-    
+
+    //AUTOBUS CONTROLLERY
     app.controller('BusController', function($scope) {
 
         $scope.message = 'This is Add new order screen';
@@ -117,13 +122,21 @@
 
     });
     
-    
     app.controller('ShowBusController', function($scope) {
 
-        $scope.message = 'This is Add new order screen';
+        $scope.Bus = {
+            Id: 0,
+            RegistrationNumber: '12345',
+            VINNumber: '24122345',
+            BusType: 0,
+            GotMachine: true
+        };
+        $scope.Bus.BusTypeName = "Normalny";
+        $scope.Bus.GotMachineName = "Tak";
 
     });
 
+    //PRZYSTANKI CONTROLLERY
     app.controller('BusstopController', function($scope) {
 
         $scope.message = 'This is Add new order screen';
@@ -144,6 +157,7 @@
 
     });
 
+    //USERS CONTROLLERY
     app.controller('UserController', function($scope) {
 
         $scope.message = 'This is Add new order screen';
