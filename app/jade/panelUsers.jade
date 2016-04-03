@@ -7,13 +7,13 @@
         .panelUsers__content__Filtr__item
           input(placeholder="Szukaj użytkownika...")
         .panelUsers__content__Filtr__item
-          select.js-example-placeholder-single.status
-            option
+          select
+            option(value="")  Status
             option(value=0) Nieaktywny
             option(value=1) Aktywny
         .panelUsers__content__Filtr__item
-          select.js-example-placeholder-single.ranga
-            option
+          select
+            option(value="") Ranga
             option(value=0) Użytkownik
             option(value=1) Kontroler
             option(value=1) Administrator
@@ -21,17 +21,21 @@
 
         .panelList
           .panelList__header
-            .panelList__headeritemName Email
-            .panelList__headeritemRanga Ranga
-            .panelList__headeritemStatus Status
-            .panelList__headeritemnavigation Szczegóły
+            .panelList__headeritem.-long Email
+            .panelList__headeritem.-short Ranga
+            .panelList__headeritem.-short Status
+            .panelList__headeritem.-short Szczegóły
           .panelUsers__list.panelList__content#GetUserList
             .panelList__item
-              .panelList__itemName Przykładowy@dev.com
-              .panelList__itemRanga Kontroler
-              .panelList__itemStatus Aktywny
-              a(href="#/user/show").panelList__navigation Zobacz
-
+              .panelList__itemCell Przykładowy@dev.com
+              .panelList__itemCell Kontroler
+              .panelList__itemCell Aktywny
+              a(href="#/user/show").panelList__itemCell Zobacz
+            .panelList__item
+              .panelList__itemCell Przykładowy@dev.com
+              .panelList__itemCell Kontroler
+              .panelList__itemCell Aktywny
+              a(href="#/user/show").panelList__itemCell Zobacz
     .panelUsers__navigation
       a(href="#/user/add").panelUsers__navigation__item Dodaj Użytkownika
   a(href="#/")

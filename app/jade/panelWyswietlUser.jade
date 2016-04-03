@@ -1,0 +1,30 @@
+.panelWyswietlUser.panel
+  .panelWyswietlUser__title Szczegóły Użytkownika
+  .panelWyswietlUser__wrapper
+    .panelWyswietlUser__content
+      .panelWyswietlUser__content__Title Dane Użytkownika
+      .panelWyswietlUser__content__form
+        .panelWyswietlUser__content__form__item
+          span.item E-mail
+          input(placeholder="Podaj adres e-mail")
+        .panelWyswietlUser__content__form__item
+          span.item Hasło
+          input(type='password' placeholder="Podaj hasło")
+        .panelWyswietlUser__content__form__item
+          span.item Ranga
+          select
+            option(value=0) Użytkownik
+            option(value=1) Kontroler
+            option(value=1) Administrator
+        .panelWyswietlUser__content__form__item
+          span.item Status
+          select
+            option(value=0) Nieaktywny
+            option(value=1) Aktywny
+    .panelWyswietlUser__navigation
+      button.panelWyswietlUser__navigation__item.green Edytuj Użytkownika
+      button.panelWyswietlUser__navigation__item.green Usuń Użytkownika
+      a(href="#/user").panelWyswietlUser__navigation__item.-abort Anuluj
+  a(href="#/")
+    span.panelWyswietlUser__close
+      span.panelWyswietlUser_icon.fa.fa-times
