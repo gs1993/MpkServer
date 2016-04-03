@@ -46,14 +46,14 @@
       <div class="header__switcher -hidden">
         <div class="background"></div>
         <ul class="header__panel">
-          <li id="panel-autobusyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
-                <div class="header__buttonIcon fa fa-bus"></div></span>Autobusy</span></li>
-          <li id="panel-przystankiButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
-                <div class="header__buttonIcon fa fa-map-signs"></div></span>Przystanki</span></li>
+          <li id="panel-autobusyButton" class="header__item"><a href="#/bus"><span class="header__button"><span class="header__buttonIconBG">
+                  <div class="header__buttonIcon fa fa-bus"></div></span>Autobusy</span></a></li>
+          <li id="panel-przystankiButton" class="header__item"><a href="#/busstop"><span class="header__button"><span class="header__buttonIconBG">
+                  <div class="header__buttonIcon fa fa-map-signs"></div></span>Przystanki</span></a></li>
           <li id="panel-trasyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
                 <div class="header__buttonIcon fa fa-road"></div></span>Trasy</span></li>
-          <li id="panel-uzytkownicyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
-                <div class="header__buttonIcon fa fa-users"></div></span>Użytkownicy</span></li>
+          <li id="panel-uzytkownicyButton" class="header__item"><a href="#/users"><span class="header__button"><span class="header__buttonIconBG">
+                  <div class="header__buttonIcon fa fa-users"></div></span>Użytkownicy</span></a></li>
           <li id="panel-kontroleButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
                 <div class="header__buttonIcon fa fa-eye"></div></span>Kontrole</span></li>
         </ul>
@@ -69,8 +69,8 @@
                   <div class="headerProfile__buttonIcon fa fa-power-off"></div></span>Logowanie</span></a></li>
           <li id="panel-registerButton" class="headerProfile__item"><a href="#/register"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
                   <div class="headerProfile__buttonIcon fa fa-sign-in"></div></span>Rejestracja</span></a></li>
-          <li id="panel-odzyskajKontoButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
-                <div class="headerProfile__buttonIcon fa fa-key"></div></span>Odzyskaj konto</span></li>
+          <li id="panel-odzyskajKontoButton" class="headerProfile__item"><a href="#/forgot"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                  <div class="headerProfile__buttonIcon fa fa-key"></div></span>Odzyskaj konto</span></a></li>
           <li id="panel-mojeKontoButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
                 <div class="headerProfile__buttonIcon fa fa-user"></div></span>Moje Konto</span></li>
           <li id="panel-InformacjeButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
@@ -80,7 +80,6 @@
         </ul>
       </div>
     </div>
-    <div class="headerUserPanel"><span>Zalogowany: {{vm.user.username}}</span></div>
     <div id="containerDrag">
       <div class="googleMaps">
         <div id="googleMaps" class="googleMaps__API"></div>

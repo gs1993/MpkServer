@@ -33,6 +33,26 @@
                 templateUrl: 'panelRegister.html',
                 controllerAs: 'vm'
             })
+            .when('/forgot', {
+                controller: '',
+                templateUrl: 'panelResetPassword.html',
+                controllerAs: ''
+            })
+            .when('/bus', {
+                controller: '',
+                templateUrl: 'panelAutobusy.html',
+                controllerAs: ''
+            })
+            .when('/busstop', {
+                controller: '',
+                templateUrl: 'panelPrzystanki.html',
+                controllerAs: ''
+            })
+            .when('/users', {
+                controller: '',
+                templateUrl: 'panelUsers.html',
+                controllerAs: ''
+            })
             .when('/welcome', {
                 controller: '',
                 templateUrl: 'panelWelcome.html',
@@ -55,6 +75,7 @@
             var restrictedPage = $.inArray($location.path(), ['/home','/welcome','/login', '/register']) === -1;
             var loggedIn = $rootScope.globals.currentUser;
             if (restrictedPage && !loggedIn) {
+                vm.userLogin = true;
                 $location.path('/welcome');
             }
         });
