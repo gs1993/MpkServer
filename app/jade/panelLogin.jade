@@ -13,30 +13,23 @@
       | Hasło przypisane do tego emailu, jest nie poprawne.
 
 
-    form(name="form" ng-submit="vm.login()" role="form").panelLogin__form
-      .panelLogin__formGroup(ng-class="{ 'has-error': form.Email.$dirty && form.Email.$error.required }")
-        .panelLogin__formwrapper
-          input(placeholder="E-mail" type="text" name="Email" id="Email" ng-model="vm.Email" required )
-          i.fa.fa-envelope-o
-        span.panelLogin__helpBlock(ng-show="form.Email.$dirty && form.Email.$error.required") Email jest wymagany!
-      .panelLogin__formGroup(ng-class="{ 'has-error': form.Password.$dirty && form.Password.$error.required }")
-        .panelLogin__formwrapper
-          input(placeholder="Hasło" type="Password" name="Password" id="Password" ng-model="vm.Password" required)
-          i.fa.fa-lock
-        span.panelLogin__helpBlock(ng-show="form.Password.$dirty && form.Password.$error.required") Hasło jest wymagane!
+    form(method="POST" action="").panelLogin__form
+      .panelLogin__formwrapper
+        input(name="user_email" placeholder="E-mail")
+        i.fa.fa-envelope-o
+      .panelLogin__formwrapper
+        input(name="user_password" type="password" placeholder="Hasło")
+        i.fa.fa-lock
       .remembermebox
         input(type="checkbox" checked).check#check
         label(for="check")
           span.icon
           |  Zapamiętaj mnie
-      button(type="submit" ng-disabled="form.$invalid || vm.dataLoading") Zaloguj się
-      br
-      br
-      img(ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==")
-    a(href="#/home")
+      button(type="submit") Zaloguj się
+    a(href="#/")
       span.panelLogin__close
         span.panelLogin__icon.fa.fa-times
     .panelLogin__navigation Nie masz konta?
       a(href="#/register").panelLogin__ToRegister Zarejestruj się.
-    .panelLogin__navigation Nie pamiętasz hasła?
-      a(href="#/forgot").panelLogin__ToRegister Odzyskaj konto.
+    .panelLogin__navigation Nie pamietasz hasła?
+      a(href="#/forgot").panelLogin__ToRegister Odzyskaj hasło.

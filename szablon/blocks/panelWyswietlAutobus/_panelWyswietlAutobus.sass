@@ -1,7 +1,28 @@
 @charset "UTF-8"
-.panelDodajAutobus
-  min-width: 700px
-
+.panelWyswietlAutobus__dragger
+  position: absolute
+  top: 0
+  margin: 0 auto
+  left: 0
+  right: 0
+.panelWyswietlAutobus
+  transition: transform 0.36s ease
+  position: absolute
+  max-width: 700px
+  width: 100%
+  height: auto
+  top: 0
+  right: 0
+  left: 0
+  z-index: 100
+  opacity: 1
+  margin: 55px 20px 20px 20px
+  background-color: rgba(255, 255, 255,1)
+  //border: 1px solid rgba(255, 255, 255, 1)
+  //border-radius: 5px
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1)
+  overflow: hidden
+  transform: scale(1, 1)
   +TAB_MAX
     position: relative !important
     width: 100% !important
@@ -84,24 +105,6 @@
     margin: 0 auto
     text-align: center
     input
-      box-shadow: none !important
-      outline: none
-      font-weight: 400
-      max-width: 300px
-      width: 100%
-      display: block
-      margin: 5px auto
-      padding: 8px 10px
-      border-radius: 0
-      border-top: 0
-      border-left: 0
-      border-right: 0
-      border-bottom: 2px solid #D2E3E9
-      font-size: 16px
-      &:focus
-        border-bottom: 2px solid #4AAED4
-
-    select
       box-shadow: none !important
       outline: none
       font-weight: 400
@@ -247,17 +250,6 @@
           border-radius: 0
           border: 1px solid #aaa
           font-size: 12px
-        select
-          box-shadow: none !important
-          outline: none
-          font-weight: 400
-          width: 100%
-          display: block
-          //margin: 5px auto
-          padding: 8px 10px
-          border-radius: 0
-          border: 1px solid #aaa
-          font-size: 12px
 
         input[type=checkbox]
           display: none
@@ -346,7 +338,7 @@
     color: #fff
     &:hover
       opacity: 1
-    .panelDodajAutobus__icon
+    .panelWyswietlAutobus__icon
       font-size: 1.8em !important
   &__icon
     font-size: 3em

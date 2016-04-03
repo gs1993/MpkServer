@@ -1,0 +1,35 @@
+.panelWyswietlPrzystanek.panel
+  .panelWyswietlPrzystanek__title Szczegóły przystanku
+  .panelWyswietlPrzystanek__wrapper
+    .panelWyswietlPrzystanek__content
+      .panelWyswietlPrzystanek__content__Title Dane Przystanku
+      .panelWyswietlPrzystanek__content__form
+        .panelWyswietlPrzystanek__content__form__item
+          span.item Nazwa przystanku
+          input(placeholder="Podaj nazwę przystanku")
+        .panelWyswietlPrzystanek__content__form__item
+          span.item Lokalizacja
+          input(placeholder="Podaj lokalizackje")
+        .panelWyswietlPrzystanek__content__form__item
+          span.item Czy ma biletomat?
+          select.js-example-placeholder-single.crud
+            option(value=0) Nie
+            option(value=1) Tak
+        .panelWyswietlPrzystanek__content__form__item
+          span.item Czy ma kiosk?
+          select.js-example-placeholder-single.crud
+            option(value=0) Nie
+            option(value=1) Tak
+        .panelWyswietlPrzystanek__content__form__item
+          span.item Linie
+          select(multiple).js-example-placeholder-multiple.linie
+            option
+            - for (var i=1;i<20;i++)
+            option=i
+    .panelWyswietlPrzystanek__navigation
+      button.panelWyswietlPrzystanek__navigation__item.green Edytuj Przystanek
+      button.panelWyswietlPrzystanek__navigation__item.green Usuń Przystanek
+      a(href="#/busstop").panelWyswietlPrzystanek__navigation__item.gray.-abort Anuluj
+  a(href="#/")
+    span.panelWyswietlPrzystanek__close
+      span.panelWyswietlPrzystanek__icon.fa.fa-times

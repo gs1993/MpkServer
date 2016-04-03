@@ -1,7 +1,6 @@
 @charset "UTF-8"
-.panelDodajAutobus
+.panelWyswietlPrzystanek
   min-width: 700px
-
   +TAB_MAX
     position: relative !important
     width: 100% !important
@@ -22,12 +21,11 @@
   &__title
     font-family: Lato, sans-serif
     font-weight: 500
-    //line-height: 26px
-    //margin: 5px auto 5px
+
     font-size: 15px
-    //letter-spacing: 1px
+
     text-align: center
-    //text-transform: uppercase
+
     background: #3c8dbc
     color: #fff
     padding: 5px
@@ -35,7 +33,7 @@
 
     +PHONE_ONLY
       text-align: center
-      //font-size: 19px
+
   &__subtitle
     font-family: Lato, sans-serif
     font-weight: 300
@@ -44,7 +42,7 @@
     font-size: 12px
     letter-spacing: 2px
     text-align: left
-    //text-transform: uppercase
+
     color: #222
     font-style: italic
     +PHONE_ONLY
@@ -84,24 +82,6 @@
     margin: 0 auto
     text-align: center
     input
-      box-shadow: none !important
-      outline: none
-      font-weight: 400
-      max-width: 300px
-      width: 100%
-      display: block
-      margin: 5px auto
-      padding: 8px 10px
-      border-radius: 0
-      border-top: 0
-      border-left: 0
-      border-right: 0
-      border-bottom: 2px solid #D2E3E9
-      font-size: 16px
-      &:focus
-        border-bottom: 2px solid #4AAED4
-
-    select
       box-shadow: none !important
       outline: none
       font-weight: 400
@@ -270,7 +250,6 @@
             background-color: #3c8dbc
             border: 1px solid #3c8dbc
         label
-
           display: inline-block
           cursor: pointer
           position: relative
@@ -296,6 +275,7 @@
         span.item
           margin-bottom: 5px
           display: block
+
         .select2
           &-container
             .select2-selection
@@ -332,9 +312,6 @@
             &--default.select2-container--focus .select2-selection--multiple
               border: 1px solid #aaa !important
 
-
-
-
   &__close
     transition: opacity 0.36s ease
     position: absolute
@@ -346,7 +323,7 @@
     color: #fff
     &:hover
       opacity: 1
-    .panelDodajAutobus__icon
+    .panelWyswietlPrzystanek__icon
       font-size: 1.8em !important
   &__icon
     font-size: 3em

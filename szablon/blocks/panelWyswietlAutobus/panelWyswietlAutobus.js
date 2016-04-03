@@ -3,15 +3,15 @@
  */
 
 $(document).ready(function () {
-  $('.panelDodajAutobus__close').on("click", function () {
-    $('.panelDodajAutobus').toggleClass('-hidden');
+  $('.panelWyswietlAutobus__close').on("click", function () {
+    $('.panelWyswietlAutobus').toggleClass('-hidden');
   });
 
-  $('#panel-DodajautobusyButton').on("click", function () {
-    $('.panelDodajAutobus').toggleClass('-hidden');
+  $('.WyswietlautobusyButton').on("click", function () {
+    $('.panelWyswietlAutobus').toggleClass('-hidden');
   });
-  $('.panelDodajAutobus__navigation .-abort').on("click", function () {
-    $('.panelDodajAutobus').toggleClass('-hidden');
+  $('.panelWyswietlAutobus__navigation .-abort').on("click", function () {
+    $('.panelWyswietlAutobus').toggleClass('-hidden');
   });
   $(".js-example-placeholder-single.crud").select2({
     placeholder: "Wybierz",

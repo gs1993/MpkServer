@@ -21,32 +21,17 @@
         i.fa.fa-info
         | Informacja!
       | Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
-    form(name="form" ng-submit="vm.register()" role="form").panelRegister__form
-      .panelRegister__formGroup(ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }")
-        .panelRegister__formwrapper
-          input(type="text" name="username" id="username" ng-model="vm.user.username" required placeholder="E-mail")
-          i.fa.fa-envelope-o
-          span.panelRegister____helpBlock(ng-show="form.username.$dirty && form.username.$error.required") Email jest wymagany!
-
-
-      .panelRegister__formGroup(ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }")
-        .panelRegister__formwrapper
-          input(type="password" name="password" id="password" ng-model="vm.user.password" required  placeholder="Hasło")
-          i.fa.fa-lock
-        span.panelRegister____helpBlock(ng-show="form.password.$dirty && form.password.$error.required") Hasło jest wymagane!
-
-
-      .panelRegister__formGroup(ng-class="{ 'has-error': form.passwordagain.$dirty && form.passwordagain.$error.required }")
-        .panelRegister__formwrapper
-          input(type="password" name="passwordagain" id="passwordagain" ng-model="vm.user.passwordagain" required placeholder="Powtórz hasło")
-          i.fa.fa-lock
-        span.panelRegister____helpBlock(ng-show="form.passwordagain.$dirty && form.passwordagain.$error.required") Hasło jest wymagane!
-
-
-      button(type="submit" ng-disabled="form.$invalid || vm.dataLoading" ) Zarajestuj
-      br
-      br
-      <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    form(method="POST" action="").panelRegister__form
+      .panelRegister__formwrapper
+        input(name="user_email" placeholder="E-mail")
+        i.fa.fa-envelope-o
+      .panelRegister__formwrapper
+        input(name="user_password" type="password" placeholder="Hasło")
+        i.fa.fa-lock
+      .panelRegister__formwrapper
+        input(name="user_password_again" type="password" placeholder="Powtórz hasło")
+        i.fa.fa-lock
+      button(type="submit") Zarajestuj
     a(href="#/home")
       span.panelRegister__close
         span.panelRegister__icon.fa.fa-times
