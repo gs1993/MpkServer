@@ -1,8 +1,18 @@
-<!DOCTYPE html><html lang="pl"><head><title>Projekt Zespolow || MPK</title><meta charset="utf-8"><meta name="description" content=""><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="shortcut icon" href="/img/favicon/favicon.ico"><!--/script.document.write('<script src="http://'
-        + (location.host || 'localhost').split(':')[0]
-        + ':35729/livereload.js"></'
-        + 'script>')
---><!-- bower:js -->
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <title>Projekt Zespolow || MPK</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
+    <!--/script.
+    document.write('<script src="http://'
+            + (location.host || 'localhost').split(':')[0]
+            + ':35729/livereload.js"></'
+            + 'script>')
+    
+    --><!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/ev-emitter/ev-emitter.js"></script>
 <script src="bower_components/imagesloaded/imagesloaded.js"></script>
@@ -13,6 +23,557 @@
 <script src="bower_components/jquery-sticky/jquery.sticky.js"></script>
 <script src="bower_components/select2/dist/js/select2.js"></script>
 <!-- endbower -->
-<!-- MAPY GOOGLA --><script src="http://maps.google.com/maps/api/js"></script><script src="https://jquery-xml2json-plugin.googlecode.com/svn/trunk/jquery.xml2json.js"></script><script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script><!-- MAPY GOOGLA --><script src="scripts/vendor.min.js"></script><!-- bower:css -->
+    <!-- MAPY GOOGLA -->
+    <script src="http://maps.google.com/maps/api/js"></script>
+    <script src="https://jquery-xml2json-plugin.googlecode.com/svn/trunk/jquery.xml2json.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script><!-- MAPY GOOGLA -->
+    <script src="scripts/vendor.min.js"></script><!-- bower:css -->
 <link rel="stylesheet" href="bower_components/superfish/dist/css/superfish.css" />
-<!-- endbower --><link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css"><link rel="stylesheet" href="css/main.css"></head><body id="body"><!--Created by salimike on 18.03.16.--><div class="bar"></div><div class="header"><div class="header__corner"><i class="fa fa-bars"></i></div><div class="header__switcher -hidden"><div class="background"></div><ul class="header__panel"><li id="panel-autobusyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG"><div class="header__buttonIcon fa fa-bus"></div></span>Autobusy</span></li><li id="panel-przystankiButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG"><div class="header__buttonIcon fa fa-map-signs"></div></span>Przystanki</span></li><li id="panel-trasyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG"><div class="header__buttonIcon fa fa-road"></div></span>Trasy</span></li><li id="panel-uzytkownicyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG"><div class="header__buttonIcon fa fa-users"></div></span>Użytkownicy</span></li><li id="panel-kontroleButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG"><div class="header__buttonIcon fa fa-eye"></div></span>Kontrole</span></li></ul></div></div><div class="headerLogo"><i class="fa fa-bus"></i><span><b>mpk</b></span></div><div class="headerProfile"><div class="headerProfile__corner"><i class="fa fa-gears"></i></div><div class="headerProfile__switcher -hidden"><div class="background"></div><ul class="headerProfile__panel"><li id="panel-loginButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-power-off"></div></span>Logowanie</span></li><li id="panel-registerButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-sign-in"></div></span>Rejestracja</span></li><li id="panel-odzyskajKontoButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-key"></div></span>Odzyskaj konto</span></li><li id="panel-mojeKontoButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-user"></div></span>Moje Konto</span></li><li id="panel-InformacjeButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-info-circle"></div></span>Informacje</span></li><li id="panel-wylogujButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-sign-out"></div></span>Wyloguj</span></li></ul></div></div><div class="headerUserPanel"><span>Zalogowany: nazwaUzytkownika@cmok.pl</span></div><div id="containerDrag"><div class="googleMaps"><div id="googleMaps" class="googleMaps__API"></div></div><div class="panelWelcome panel"><div class="panelWelcome__wrapper"><span class="panelWelcome__buttonIconBG"><div class="panelWelcome__buttonIcon fa fa-bus"></div></span><div class="panelWelcome__title">Witaj w systemie MPK</div><div class="panelWelcome__text">Projekt zespołowy.</div><span class="panelWelcome__close"><span class="panelWelcome__icon fa fa-times"></span></span></div><div class="panelWelcome__navigation"><!--<a href="#" style="display:block;">Link #01</a>--><a href="#" class="blue">Logowanie</a><a href="#" class="green">Rejestracja</a></div></div><div class="panelLogin panel -hidden"><div class="panelLogin__wrapper"><div class="panelLogin__title">Panel Logowania</div><div class="panelLogin__alert -info hidden"><h3><i class="fa fa-warning"></i>Uwaga!</h3>Konto o takim adresie e-mail nie istnieje.</div><div class="panelLogin__alert -info hidden"><h3><i class="fa fa-warning"></i>Uwaga!</h3>Hasło przypisane do tego emailu, jest nie poprawne.</div><form method="POST" action="" class="panelLogin__form"><div class="panelLogin__formwrapper"><input name="user_email" placeholder="E-mail"><i class="fa fa-envelope-o"></i></div><div class="panelLogin__formwrapper"><input name="user_password" type="password" placeholder="Hasło"><i class="fa fa-lock"></i></div><div class="remembermebox"><input type="checkbox" checked id="check" class="check"><label for="check"><span class="icon"></span> Zapamiętaj mnie</label></div><button type="submit">Zaloguj się</button></form><span class="panelLogin__close"><span class="panelLogin__icon fa fa-times"></span></span><div class="panelLogin__navigation">Nie masz konta?<a href="#" class="panelLogin__ToRegister">Zarejestruj się.</a></div></div></div><div class="panelRegister panel -hidden"><div class="panelRegister__wrapper"><div class="panelRegister__title">Panel Rejestracji</div><div class="panelRegister__alert -info -hidden"><h3><i class="fa fa-warning"></i>Uwaga!</h3>Konto o takim emailu już istnieje.</div><div class="panelRegister__alert -info -hidden"><h3><i class="fa fa-warning"></i>Uwaga!</h3>Wprowadzone dane są nie poprawne.</div><div class="panelRegister__alert -danger -hidden"><h3><i class="fa fa-warning"></i>Błąd!</h3>Hasła nie są takie same.</div><div class="panelRegister__alert -success -hidden"><h3><i class="fa fa-info"></i>Informacja!</h3>Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.</div><form method="POST" action="" class="panelRegister__form"><div class="panelRegister__formwrapper"><input name="user_email" placeholder="E-mail"><i class="fa fa-envelope-o"></i></div><div class="panelRegister__formwrapper"><input name="user_password" type="password" placeholder="Hasło"><i class="fa fa-lock"></i></div><div class="panelRegister__formwrapper"><input name="user_password_again" type="password" placeholder="Powtórz hasło"><i class="fa fa-lock"></i></div><button type="submit">Zarajestuj</button></form><span class="panelRegister__close"><span class="panelRegister__icon fa fa-times"></span></span><div class="panelRegister__navigation">Masz już konto?<a href="#" class="panelRegister__ToLogin">Zaloguj się.</a></div></div></div><div class="panelResetPassword panel -hidden"><div class="panelResetPassword__wrapper"><div class="panelResetPassword__title">Panel Odzyskiwania Hasła</div><div class="panelResetPassword__alert -info -hidden"><h3><i class="fa fa-warning"></i>Uwaga!</h3>Nie ma takiego konta.</div><div class="panelResetPassword__alert -success -hidden"><h3><i class="fa fa-info"></i>Informacja!</h3>Na wskazany email został wysłany link weryfikacyjny.</div><div class="panelResetPassword__alert -success -hidden"><h3><i class="fa fa-info"></i>Informacja!</h3>Nowe hasło zostało ustawione. Możesz się teraz</div><div class="panelResetPassword__alert -info -hidden"><h3><i class="fa fa-warning"></i>Informacja!</h3>Hasła nie są takie same.<a href="#" class="panelResetPassword__ToLogin">zalogować</a>.</div><div class="panelResetPassword__form"><div class="panelResetPassword__formwrapper"><input name="user_email" placeholder="E-mail"><i class="fa fa-envelope-o"></i><button type="submit">Odzyskaj hasło</button></div></div><div class="panelResetPassword__form"><div class="panelResetPassword__formwrapper"><input name="user_password_new" type="password" placeholder="Hasło"><i class="fa fa-lock"></i></div><div class="panelResetPassword__formwrapper"><input name="user_password_again_new" type="password" placeholder="Powtórz hasło"><i class="fa fa-lock"></i></div><button type="submit">Zatwierdz nowe hasło</button></div><span class="panelResetPassword__close"><span class="panelResetPassword__icon fa fa-times"></span></span><div class="panelResetPassword__navigation">Nie masz konta?<a href="#" class="panelResetPassword__ToRegister">Zarejestruj się.</a></div></div></div><div class="panelAutobusy panel -hidden dragger"><div class="panelAutobusy__title">Panel Zarządzania Autobusami</div><div class="panelAutobusy__wrapper"><div class="panelAutobusy__content"><div class="panelAutobusy__content__Title">Lista Autobusów</div><div class="panelAutobusy__content__Filtr"><div class="panelAutobusy__content__Filtr__item"><input placeholder="Szukaj autobusu"></div><div class="panelAutobusy__content__Filtr__item"><select class="js-example-placeholder-single status"><option></option><option value="0">Nieaktywny</option><option value="1">Aktywny</option><option value="2">W trasie</option><option value="2">W trasie</option></select></div><div class="panelAutobusy__content__Filtr__item"><select class="js-example-placeholder-single typ"><option></option><option value="0">Normalny</option><option value="1">Przegubowy</option></select></div><div class="panelAutobusy__content__Filtr__item check"><input type="checkbox" id="czyautobusmabiletomat"><label for="czyautobusmabiletomat"></label><p>Biletomat</p></div></div><div class="panelAutobusy__contentList"><div class="panelList"><div class="panelList__header"><div class="panelList__headeritemType">Typ</div><div class="panelList__headeritemName">Numer Autobusu</div><div class="panelList__headeritemStatus">Status</div><div class="panelList__headeritemBiletomat">Biletomat</div><div class="panelList__headeritemnavigation">Szczegóły</div></div><div id="GetBusList" class="panelAutobusy__list panelList__content"><div class="panelList__item"><div class="panelList__itemType"><div class="fa fa-bus"></div></div><div class="panelList__itemName">Przykładowy</div><div class="panelList__itemStatus">Aktywny</div><div class="panelList__itemBiletomat"><div class="fa fa-times-circle-o"></div></div><div class="panelList__navigation">Zobacz</div></div></div></div></div></div><div class="panelAutobusy__navigation"><a href="#" id="panel-DodajautobusyButton" class="panelAutobusy__navigation__item">Dodaj Autobus</a></div></div><span class="panelAutobusy__close"><span class="panelAutobusy__icon fa fa-times"></span></span></div><div class="panelDodajAutobus__dragger"><div class="panelDodajAutobus panel -hidden dragger"><div class="panelDodajAutobus__title">Dodaj Autobus</div><div class="panelDodajAutobus__wrapper"><div class="panelDodajAutobus__content"><div class="panelDodajAutobus__content__Title">Dane Autobusu</div><div class="panelDodajAutobus__content__form"><div class="panelDodajAutobus__content__form__item"><span class="item">Numer Rejestracyjny</span><input placeholder="Podaj Nr. Rejestracyjny"></div><div class="panelDodajAutobus__content__form__item"><span class="item">Numer VIN</span><input placeholder="Podaj Nr. VIN"></div><div class="panelDodajAutobus__content__form__item"><span class="item">Typ Autobusu</span><select class="js-example-placeholder-single crud"><option value="0">Normalny</option><option value="1">Przegubowy</option></select></div><div class="panelDodajAutobus__content__form__item"><span class="item">Czy ma Biletomat?</span><select class="js-example-placeholder-single crud"><option value="0">Nie</option><option value="1">Tak</option></select></div><div class="panelDodajAutobus__content__form__item"><span class="item">Status</span><select class="js-example-placeholder-single crud"><option value="0">Aktywny</option><option value="1">W zajezdni</option><option value="2">W serwisie</option></select></div><div class="panelDodajAutobus__content__form__item"><span class="item">Numer Autobusu</span><select class="js-example-placeholder-single scrud"><option value="0">100</option><option value="1">103</option><option value="2">104</option></select></div></div></div><div class="panelDodajAutobus__navigation"><button class="green panelDodajAutobus__navigation__item green">Dodaj Autobus</button><a href="#" class="panelDodajAutobus__navigation__item gray -abort">Anuluj</a></div></div><span class="panelDodajAutobus__close"><span class="panelDodajAutobus__icon fa fa-times"></span></span></div></div><div class="panelPrzystanki panel -hidden dragger"><div class="panelPrzystanki__title">Panel Zarządzania Przystankami</div><div class="panelPrzystanki__wrapper"><div class="panelPrzystanki__content"><div class="panelPrzystanki__content__Title">Lista Przystanków</div><div class="panelPrzystanki__content__Filtr"><div class="panelPrzystanki__content__Filtr__item"><input placeholder="Szukaj przystanku"></div><div class="panelPrzystanki__content__Filtr__item"><input placeholder="Szukaj ulicy"></div><div class="panelPrzystanki__content__Filtr__item"><select multiple class="js-example-placeholder-multiple linie"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option></select><!--input(placeholder="Typ autobusu")--></div><div class="panelPrzystanki__content__Filtr__item check"><input type="checkbox" id="czyprzystanekmabiletomat"><label for="czyprzystanekmabiletomat"></label><p>Biletomat</p></div><div class="panelPrzystanki__content__Filtr__item check"><input type="checkbox" id="czyprzystanekmakiosk"><label for="czyprzystanekmakiosk"></label><p>Kiosk</p></div></div><div class="panelPrzystanki__contentList"><div class="panelList"><div class="panelList__header"><div class="panelList__headeritemName">Nazwa przystanku</div><div class="panelList__headeritemUlica">Ulica</div><div class="panelList__headeritemLinie">Linie</div><div class="panelList__headeritemBiletomat">Biletomat</div><div class="panelList__headeritemKiosk">Kiosk</div><div class="panelList__headeritemnavigation">Szczegóły</div></div><div class="panelPrzystanki__list panelList__content"><div class="panelList__item"><div class="panelList__itemName">Lubelska</div><div class="panelList__itemUlica">Poprzeczna</div><div class="panelList__itemLinie">1,2,3</div><div class="panelList__itemBiletomat"><div class="fa fa-times-circle-o"></div></div><div class="panelList__itemKiosk"><div class="fa fa-times-circle-o"></div></div><div class="panelList__navigation">Zobacz</div></div><div class="panelList__item"><div class="panelList__itemName">Dworzec Główny</div><div class="panelList__itemUlica">Dworcowa</div><div class="panelList__itemLinie">1,2,3</div><div class="panelList__itemBiletomat"><div class="fa fa-times-circle-o"></div></div><div class="panelList__itemKiosk"><div class="fa fa-times-circle-o"></div></div><div class="panelList__navigation">Zobacz</div></div><div class="panelList__item"><div class="panelList__itemName">Uniwersytet Stadion</div><div class="panelList__itemUlica">Warszawska</div><div class="panelList__itemLinie">1,2,3</div><div class="panelList__itemBiletomat"><div class="fa fa-times-circle-o"></div></div><div class="panelList__itemKiosk"><div class="fa fa-times-circle-o"></div></div><div class="panelList__navigation">Zobacz</div></div><div class="panelList__item"><div class="panelList__itemName">Uniwersytet Świetlista</div><div class="panelList__itemUlica">Słoneczna</div><div class="panelList__itemLinie">1,2,3</div><div class="panelList__itemBiletomat"><div class="fa fa-times-circle-o"></div></div><div class="panelList__itemKiosk"><div class="fa fa-times-circle-o"></div></div><div class="panelList__navigation">Zobacz</div></div><div class="panelList__item"><div class="panelList__itemName">Partyzantów</div><div class="panelList__itemUlica">Partyzantów</div><div class="panelList__itemLinie">1,2,3</div><div class="panelList__itemBiletomat"><div class="fa fa-times-circle-o"></div></div><div class="panelList__itemKiosk"><div class="fa fa-times-circle-o"></div></div><div class="panelList__navigation">Zobacz</div></div><div class="panelList__item"><div class="panelList__itemName">Uniwersytet-Prawocheńskiego</div><div class="panelList__itemUlica">Warszawska</div><div class="panelList__itemLinie">1,2,3</div><div class="panelList__itemBiletomat"><div class="fa fa-times-circle-o"></div></div><div class="panelList__itemKiosk"><div class="fa fa-times-circle-o"></div></div><div class="panelList__navigation">Zobacz</div></div></div></div></div></div><div class="panelPrzystanki__navigation"><a href="#" id="panel-DodajPrzystanekButton" class="panelPrzystanki__navigation__item">Dodaj Przystanek</a></div></div><span class="panelPrzystanki__close"><span class="panelPrzystanki__icon fa fa-times"></span></span></div><div class="panelDodajPrzystanek__dragger"><div class="panelDodajPrzystanek panel -hidden dragger"><div class="panelDodajPrzystanek__title">Dodaj Przystanek</div><div class="panelDodajPrzystanek__wrapper"><div class="panelDodajPrzystanek__content"><div class="panelDodajPrzystanek__content__Title">Dane Przystanku</div><div class="panelDodajPrzystanek__content__form"><div class="panelDodajPrzystanek__content__form__item"><span class="item">Nazwa przystanku</span><input placeholder="Podaj nazwę przystanku"></div><div class="panelDodajPrzystanek__content__form__item"><span class="item">Lokalizacja</span><input placeholder="Podaj lokalizackje"></div><div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma biletomat?</span><select class="js-example-placeholder-single crud"><option value="0">Nie</option><option value="1">Tak</option></select></div><div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma kiosk?</span><select class="js-example-placeholder-single crud"><option value="0">Nie</option><option value="1">Tak</option></select></div><div class="panelDodajPrzystanek__content__form__item"><span class="item">Linie</span><select multiple class="js-example-placeholder-multiple linie"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option></select></div></div></div><div class="panelDodajPrzystanek__navigation"><button class="panelDodajPrzystanek__navigation__item green">Dodaj Autobus</button><a href="#" class="panelDodajPrzystanek__navigation__item gray -abort">Anuluj</a></div></div><span class="panelDodajPrzystanek__close"><span class="panelDodajPrzystanek__icon fa fa-times"></span></span></div></div><div class="panelUsers panel -hidden dragger"><div class="panelUsers__title">Panel Zarządzania Użytkownikami</div><div class="panelUsers__wrapper"><div class="panelUsers__content"><div class="panelUsers__content__Title">Lista Użytkowników</div><div class="panelUsers__content__Filtr"><div class="panelUsers__content__Filtr__item"><input placeholder="Szukaj użytkownika..."></div><div class="panelUsers__content__Filtr__item"><select class="js-example-placeholder-single status"><option></option><option value="0">Nieaktywny</option><option value="1">Aktywny</option></select></div><div class="panelUsers__content__Filtr__item"><select class="js-example-placeholder-single ranga"><option></option><option value="0">Użytkownik</option><option value="1">Kontroler</option><option value="1">Administrator</option></select></div></div><div class="panelUsers__contentList"><div class="panelList"><div class="panelList__header"><div class="panelList__headeritemName">Email</div><div class="panelList__headeritemRanga">Ranga</div><div class="panelList__headeritemStatus">Status</div><div class="panelList__headeritemnavigation">Szczegóły</div></div><div class="panelUsers__list panelList__content"><div class="panelList__item"><div class="panelList__itemName">kontroler@dev.com</div><div class="panelList__itemRanga">Kontroler</div><div class="panelList__itemStatus">Aktywny</div><div class="panelList__navigation">Zobacz</div></div><div class="panelList__item"><div class="panelList__itemName">bolek@dev.com</div><div class="panelList__itemRanga">Uzytkownik</div><div class="panelList__itemStatus">nieaktywny</div><div class="panelList__navigation">Zobacz</div></div><div class="panelList__item"><div class="panelList__itemName">admin@dev.com</div><div class="panelList__itemRanga">Administrator</div><div class="panelList__itemStatus">Aktywny</div><div class="panelList__navigation">Zobacz</div></div></div></div></div></div><div class="panelUsers__navigation"><a href="#" id="panel-DodajUsersButton" class="panelUsers__navigation__item">Dodaj Użytkownika</a></div></div><span class="panelUsers__close"><span class="panelUsers__icon fa fa-times"></span></span></div><div class="panelDodajUsers__dragger"><div class="panelDodajUsers panel -hidden dragger"><div class="panelDodajUsers__title">Dodaj Użytkownika</div><div class="panelDodajUsers__wrapper"><div class="panelDodajUsers__content"><div class="panelDodajUsers__content__Title">Dane Użytkownika</div><div class="panelDodajUsers__content__form"><div class="panelDodajUsers__content__form__item"><span class="item">E-mail</span><input placeholder="Podaj adres e-mail"></div><div class="panelDodajUsers__content__form__item"><span class="item">Hasło</span><input type="password" placeholder="Podaj hasło"></div><div class="panelDodajUsers__content__form__item"><span class="item">Ranga</span><select class="js-example-placeholder-single crud"><option value="0">Użytkownik</option><option value="1">Kontroler</option><option value="1">Administrator</option></select></div><div class="panelDodajUsers__content__form__item"><span class="item">Status</span><select class="js-example-placeholder-single crud"><option value="0">Nieaktywny</option><option value="1">Aktywny</option></select></div></div></div><div class="panelDodajUsers__navigation"><button class="panelDodajUsers__navigation__item green">Dodaj Użytkownika</button><a href="#" class="panelDodajUsers__navigation__item -abort">Anuluj</a></div></div><span class="panelDodajUsers__close"><span class="panelDodajUsers_icon fa fa-times"></span></span></div></div></div></body></html>
+<!-- endbower -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body id="body">
+    <!--Created by salimike on 18.03.16.
+    -->
+    <div class="bar"></div>
+    <div class="header">
+      <div class="header__corner"><i class="fa fa-bars"></i></div>
+      <div class="header__switcher -hidden">
+        <div class="background"></div>
+        <ul class="header__panel">
+          <li id="panel-autobusyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-bus"></div></span>Autobusy</span></li>
+          <li id="panel-przystankiButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-map-signs"></div></span>Przystanki</span></li>
+          <li id="panel-trasyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-road"></div></span>Trasy</span></li>
+          <li id="panel-uzytkownicyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-users"></div></span>Użytkownicy</span></li>
+          <li id="panel-kontroleButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
+                <div class="header__buttonIcon fa fa-eye"></div></span>Kontrole</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="headerLogo"><i class="fa fa-bus"></i><span><b>mpk</b></span></div>
+    <div class="headerProfile">
+      <div class="headerProfile__corner"><i class="fa fa-gears"></i></div>
+      <div class="headerProfile__switcher -hidden">
+        <div class="background"></div>
+        <ul class="headerProfile__panel">
+          <li id="panel-loginButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-power-off"></div></span>Logowanie</span></li>
+          <li id="panel-registerButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-sign-in"></div></span>Rejestracja</span></li>
+          <li id="panel-odzyskajKontoButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-key"></div></span>Odzyskaj konto</span></li>
+          <li id="panel-mojeKontoButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-user"></div></span>Moje Konto</span></li>
+          <li id="panel-InformacjeButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-info-circle"></div></span>Informacje</span></li>
+          <li id="panel-wylogujButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+                <div class="headerProfile__buttonIcon fa fa-sign-out"></div></span>Wyloguj</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="headerUserPanel"><span>Zalogowany: nazwaUzytkownika@cmok.pl</span></div>
+    <div id="containerDrag">
+      <div class="googleMaps">
+        <div id="googleMaps" class="googleMaps__API"></div>
+      </div>
+      <div class="panelWelcome panel">
+        <div class="panelWelcome__wrapper"><span class="panelWelcome__buttonIconBG">
+            <div class="panelWelcome__buttonIcon fa fa-bus"></div></span>
+          <div class="panelWelcome__title">Witaj w systemie MPK</div>
+          <div class="panelWelcome__text">Projekt zespołowy.</div><span class="panelWelcome__close"><span class="panelWelcome__icon fa fa-times"></span></span>
+        </div>
+        <div class="panelWelcome__navigation">
+          <!--<a href="#" style="display:block;">Link #01</a>--><a href="#" class="blue">Logowanie</a><a href="#" class="green">Rejestracja</a>
+        </div>
+      </div>
+      <div class="panelLogin panel -hidden">
+        <div class="panelLogin__wrapper">
+          <div class="panelLogin__title">Panel Logowania</div>
+          <div class="panelLogin__alert -info hidden">
+            <h3><i class="fa fa-warning"></i>Uwaga!</h3>Konto o takim adresie e-mail nie istnieje.
+          </div>
+          <div class="panelLogin__alert -info hidden">
+            <h3><i class="fa fa-warning"></i>Uwaga!</h3>Hasło przypisane do tego emailu, jest nie poprawne.
+          </div>
+          <form method="POST" action="" class="panelLogin__form">
+            <div class="panelLogin__formwrapper">
+              <input name="user_email" placeholder="E-mail"><i class="fa fa-envelope-o"></i>
+            </div>
+            <div class="panelLogin__formwrapper">
+              <input name="user_password" type="password" placeholder="Hasło"><i class="fa fa-lock"></i>
+            </div>
+            <div class="remembermebox">
+              <input type="checkbox" checked id="check" class="check">
+              <label for="check"><span class="icon"></span> Zapamiętaj mnie</label>
+            </div>
+            <button type="submit">Zaloguj się</button>
+          </form><span class="panelLogin__close"><span class="panelLogin__icon fa fa-times"></span></span>
+          <div class="panelLogin__navigation">Nie masz konta?<a href="#" class="panelLogin__ToRegister">Zarejestruj się.</a></div>
+        </div>
+      </div>
+      <div class="panelRegister panel -hidden">
+        <div class="panelRegister__wrapper">
+          <div class="panelRegister__title">Panel Rejestracji</div>
+          <div class="panelRegister__alert -info -hidden">
+            <h3><i class="fa fa-warning"></i>Uwaga!</h3>Konto o takim emailu już istnieje.
+          </div>
+          <div class="panelRegister__alert -info -hidden">
+            <h3><i class="fa fa-warning"></i>Uwaga!</h3>Wprowadzone dane są nie poprawne.
+          </div>
+          <div class="panelRegister__alert -danger -hidden">
+            <h3><i class="fa fa-warning"></i>Błąd!</h3>Hasła nie są takie same.
+          </div>
+          <div class="panelRegister__alert -success -hidden">
+            <h3><i class="fa fa-info"></i>Informacja!</h3>Konto zostało utworzone, na wskazany adres email został wysłany link aktywacyjny.
+          </div>
+          <form method="POST" action="" class="panelRegister__form">
+            <div class="panelRegister__formwrapper">
+              <input name="user_email" placeholder="E-mail"><i class="fa fa-envelope-o"></i>
+            </div>
+            <div class="panelRegister__formwrapper">
+              <input name="user_password" type="password" placeholder="Hasło"><i class="fa fa-lock"></i>
+            </div>
+            <div class="panelRegister__formwrapper">
+              <input name="user_password_again" type="password" placeholder="Powtórz hasło"><i class="fa fa-lock"></i>
+            </div>
+            <button type="submit">Zarajestuj</button>
+          </form><span class="panelRegister__close"><span class="panelRegister__icon fa fa-times"></span></span>
+          <div class="panelRegister__navigation">Masz już konto?<a href="#" class="panelRegister__ToLogin">Zaloguj się.</a></div>
+        </div>
+      </div>
+      <div class="panelResetPassword panel -hidden">
+        <div class="panelResetPassword__wrapper">
+          <div class="panelResetPassword__title">Panel Odzyskiwania Hasła</div>
+          <div class="panelResetPassword__alert -info -hidden">
+            <h3><i class="fa fa-warning"></i>Uwaga!</h3>Nie ma takiego konta.
+          </div>
+          <div class="panelResetPassword__alert -success -hidden">
+            <h3><i class="fa fa-info"></i>Informacja!</h3>Na wskazany email został wysłany link weryfikacyjny.
+          </div>
+          <div class="panelResetPassword__alert -success -hidden">
+            <h3><i class="fa fa-info"></i>Informacja!</h3>Nowe hasło zostało ustawione. Możesz się teraz
+          </div>
+          <div class="panelResetPassword__alert -info -hidden">
+            <h3><i class="fa fa-warning"></i>Informacja!</h3>Hasła nie są takie same.<a href="#" class="panelResetPassword__ToLogin">zalogować</a>.
+          </div>
+          <div class="panelResetPassword__form">
+            <div class="panelResetPassword__formwrapper">
+              <input name="user_email" placeholder="E-mail"><i class="fa fa-envelope-o"></i>
+              <button type="submit">Odzyskaj hasło</button>
+            </div>
+          </div>
+          <div class="panelResetPassword__form">
+            <div class="panelResetPassword__formwrapper">
+              <input name="user_password_new" type="password" placeholder="Hasło"><i class="fa fa-lock"></i>
+            </div>
+            <div class="panelResetPassword__formwrapper">
+              <input name="user_password_again_new" type="password" placeholder="Powtórz hasło"><i class="fa fa-lock"></i>
+            </div>
+            <button type="submit">Zatwierdz nowe hasło</button>
+          </div><span class="panelResetPassword__close"><span class="panelResetPassword__icon fa fa-times"></span></span>
+          <div class="panelResetPassword__navigation">Nie masz konta?<a href="#" class="panelResetPassword__ToRegister">Zarejestruj się.</a></div>
+        </div>
+      </div>
+      <div class="panelAutobusy panel -hidden dragger">
+        <div class="panelAutobusy__title">Panel Zarządzania Autobusami</div>
+        <div class="panelAutobusy__wrapper">
+          <div class="panelAutobusy__content">
+            <div class="panelAutobusy__content__Title">Lista Autobusów</div>
+            <div class="panelAutobusy__content__Filtr">
+              <div class="panelAutobusy__content__Filtr__item">
+                <input placeholder="Szukaj autobusu">
+              </div>
+              <div class="panelAutobusy__content__Filtr__item">
+                <select class="js-example-placeholder-single status">
+                  <option></option>
+                  <option value="0">Nieaktywny</option>
+                  <option value="1">Aktywny</option>
+                  <option value="2">W trasie</option>
+                  <option value="2">W trasie</option>
+                </select>
+              </div>
+              <div class="panelAutobusy__content__Filtr__item">
+                <select class="js-example-placeholder-single typ">
+                  <option></option>
+                  <option value="0">Normalny</option>
+                  <option value="1">Przegubowy</option>
+                </select>
+              </div>
+              <div class="panelAutobusy__content__Filtr__item check">
+                <input type="checkbox" id="czyautobusmabiletomat">
+                <label for="czyautobusmabiletomat"></label>
+                <p>Biletomat</p>
+              </div>
+            </div>
+            <div class="panelAutobusy__contentList">
+              <div class="panelList">
+                <div class="panelList__header">
+                  <div class="panelList__headeritemType">Typ</div>
+                  <div class="panelList__headeritemName">Numer Autobusu</div>
+                  <div class="panelList__headeritemStatus">Status</div>
+                  <div class="panelList__headeritemBiletomat">Biletomat</div>
+                  <div class="panelList__headeritemnavigation">Szczegóły</div>
+                </div>
+                <div id="GetBusList" class="panelAutobusy__list panelList__content">
+                  <div class="panelList__item">
+                    <div class="panelList__itemType">
+                      <div class="fa fa-bus"></div>
+                    </div>
+                    <div class="panelList__itemName">Przykładowy</div>
+                    <div class="panelList__itemStatus">Aktywny</div>
+                    <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__navigation">Zobacz</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panelAutobusy__navigation"><a href="#" id="panel-DodajautobusyButton" class="panelAutobusy__navigation__item">Dodaj Autobus</a></div>
+        </div><span class="panelAutobusy__close"><span class="panelAutobusy__icon fa fa-times"></span></span>
+      </div>
+      <div class="panelDodajAutobus__dragger">
+        <div class="panelDodajAutobus panel -hidden dragger">
+          <div class="panelDodajAutobus__title">Dodaj Autobus</div>
+          <div class="panelDodajAutobus__wrapper">
+            <div class="panelDodajAutobus__content">
+              <div class="panelDodajAutobus__content__Title">Dane Autobusu</div>
+              <div class="panelDodajAutobus__content__form">
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Numer Rejestracyjny</span>
+                  <input placeholder="Podaj Nr. Rejestracyjny">
+                </div>
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Numer VIN</span>
+                  <input placeholder="Podaj Nr. VIN">
+                </div>
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Typ Autobusu</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Normalny</option>
+                    <option value="1">Przegubowy</option>
+                  </select>
+                </div>
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Czy ma Biletomat?</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Nie</option>
+                    <option value="1">Tak</option>
+                  </select>
+                </div>
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Status</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Aktywny</option>
+                    <option value="1">W zajezdni</option>
+                    <option value="2">W serwisie</option>
+                  </select>
+                </div>
+                <div class="panelDodajAutobus__content__form__item"><span class="item">Numer Autobusu</span>
+                  <select class="js-example-placeholder-single scrud">
+                    <option value="0">100</option>
+                    <option value="1">103</option>
+                    <option value="2">104</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="panelDodajAutobus__navigation">
+              <button class="green panelDodajAutobus__navigation__item green">Dodaj Autobus</button><a href="#" class="panelDodajAutobus__navigation__item gray -abort">Anuluj</a>
+            </div>
+          </div><span class="panelDodajAutobus__close"><span class="panelDodajAutobus__icon fa fa-times"></span></span>
+        </div>
+      </div>
+      <div class="panelPrzystanki panel -hidden dragger">
+        <div class="panelPrzystanki__title">Panel Zarządzania Przystankami</div>
+        <div class="panelPrzystanki__wrapper">
+          <div class="panelPrzystanki__content">
+            <div class="panelPrzystanki__content__Title">Lista Przystanków</div>
+            <div class="panelPrzystanki__content__Filtr">
+              <div class="panelPrzystanki__content__Filtr__item">
+                <input placeholder="Szukaj przystanku">
+              </div>
+              <div class="panelPrzystanki__content__Filtr__item">
+                <input placeholder="Szukaj ulicy">
+              </div>
+              <div class="panelPrzystanki__content__Filtr__item">
+                <select multiple class="js-example-placeholder-multiple linie">
+                  <option></option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                  <option>16</option>
+                  <option>17</option>
+                  <option>18</option>
+                  <option>19</option>
+                </select>
+                <!--input(placeholder="Typ autobusu")-->
+              </div>
+              <div class="panelPrzystanki__content__Filtr__item check">
+                <input type="checkbox" id="czyprzystanekmabiletomat">
+                <label for="czyprzystanekmabiletomat"></label>
+                <p>Biletomat</p>
+              </div>
+              <div class="panelPrzystanki__content__Filtr__item check">
+                <input type="checkbox" id="czyprzystanekmakiosk">
+                <label for="czyprzystanekmakiosk"></label>
+                <p>Kiosk</p>
+              </div>
+            </div>
+            <div class="panelPrzystanki__contentList">
+              <div class="panelList">
+                <div class="panelList__header">
+                  <div class="panelList__headeritemName">Nazwa przystanku</div>
+                  <div class="panelList__headeritemUlica">Ulica</div>
+                  <div class="panelList__headeritemLinie">Linie</div>
+                  <div class="panelList__headeritemBiletomat">Biletomat</div>
+                  <div class="panelList__headeritemKiosk">Kiosk</div>
+                  <div class="panelList__headeritemnavigation">Szczegóły</div>
+                </div>
+                <div class="panelPrzystanki__list panelList__content">
+                  <div class="panelList__item">
+                    <div class="panelList__itemName">Lubelska</div>
+                    <div class="panelList__itemUlica">Poprzeczna</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
+                    <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__itemKiosk">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__navigation">Zobacz</div>
+                  </div>
+                  <div class="panelList__item">
+                    <div class="panelList__itemName">Dworzec Główny</div>
+                    <div class="panelList__itemUlica">Dworcowa</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
+                    <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__itemKiosk">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__navigation">Zobacz</div>
+                  </div>
+                  <div class="panelList__item">
+                    <div class="panelList__itemName">Uniwersytet Stadion</div>
+                    <div class="panelList__itemUlica">Warszawska</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
+                    <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__itemKiosk">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__navigation">Zobacz</div>
+                  </div>
+                  <div class="panelList__item">
+                    <div class="panelList__itemName">Uniwersytet Świetlista</div>
+                    <div class="panelList__itemUlica">Słoneczna</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
+                    <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__itemKiosk">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__navigation">Zobacz</div>
+                  </div>
+                  <div class="panelList__item">
+                    <div class="panelList__itemName">Partyzantów</div>
+                    <div class="panelList__itemUlica">Partyzantów</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
+                    <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__itemKiosk">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__navigation">Zobacz</div>
+                  </div>
+                  <div class="panelList__item">
+                    <div class="panelList__itemName">Uniwersytet-Prawocheńskiego</div>
+                    <div class="panelList__itemUlica">Warszawska</div>
+                    <div class="panelList__itemLinie">1,2,3</div>
+                    <div class="panelList__itemBiletomat">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__itemKiosk">
+                      <div class="fa fa-times-circle-o"></div>
+                    </div>
+                    <div class="panelList__navigation">Zobacz</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panelPrzystanki__navigation"><a href="#" id="panel-DodajPrzystanekButton" class="panelPrzystanki__navigation__item">Dodaj Przystanek</a></div>
+        </div><span class="panelPrzystanki__close"><span class="panelPrzystanki__icon fa fa-times"></span></span>
+      </div>
+      <div class="panelDodajPrzystanek__dragger">
+        <div class="panelDodajPrzystanek panel -hidden dragger">
+          <div class="panelDodajPrzystanek__title">Dodaj Przystanek</div>
+          <div class="panelDodajPrzystanek__wrapper">
+            <div class="panelDodajPrzystanek__content">
+              <div class="panelDodajPrzystanek__content__Title">Dane Przystanku</div>
+              <div class="panelDodajPrzystanek__content__form">
+                <div class="panelDodajPrzystanek__content__form__item"><span class="item">Nazwa przystanku</span>
+                  <input placeholder="Podaj nazwę przystanku">
+                </div>
+                <div class="panelDodajPrzystanek__content__form__item"><span class="item">Lokalizacja</span>
+                  <input placeholder="Podaj lokalizackje">
+                </div>
+                <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma biletomat?</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Nie</option>
+                    <option value="1">Tak</option>
+                  </select>
+                </div>
+                <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma kiosk?</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Nie</option>
+                    <option value="1">Tak</option>
+                  </select>
+                </div>
+                <div class="panelDodajPrzystanek__content__form__item"><span class="item">Linie</span>
+                  <select multiple class="js-example-placeholder-multiple linie">
+                    <option></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="panelDodajPrzystanek__navigation">
+              <button class="panelDodajPrzystanek__navigation__item green">Dodaj Autobus</button><a href="#" class="panelDodajPrzystanek__navigation__item gray -abort">Anuluj</a>
+            </div>
+          </div><span class="panelDodajPrzystanek__close"><span class="panelDodajPrzystanek__icon fa fa-times"></span></span>
+        </div>
+      </div>
+      <div class="panelUsers panel -hidden dragger">
+        <div class="panelUsers__title">Panel Zarządzania Użytkownikami</div>
+        <div class="panelUsers__wrapper">
+          <div class="panelUsers__content">
+            <div class="panelUsers__content__Title">Lista Użytkowników</div>
+            <div class="panelUsers__content__Filtr">
+              <div class="panelUsers__content__Filtr__item">
+                <input placeholder="Szukaj użytkownika...">
+              </div>
+              <div class="panelUsers__content__Filtr__item">
+                <select class="js-example-placeholder-single status">
+                  <option></option>
+                  <option value="0">Nieaktywny</option>
+                  <option value="1">Aktywny</option>
+                </select>
+              </div>
+              <div class="panelUsers__content__Filtr__item">
+                <select class="js-example-placeholder-single ranga">
+                  <option></option>
+                  <option value="0">Użytkownik</option>
+                  <option value="1">Kontroler</option>
+                  <option value="1">Administrator</option>
+                </select>
+              </div>
+            </div>
+            <div class="panelUsers__contentList">
+              <div class="panelList">
+                <div class="panelList__header">
+                  <div class="panelList__headeritemName">Email</div>
+                  <div class="panelList__headeritemRanga">Ranga</div>
+                  <div class="panelList__headeritemStatus">Status</div>
+                  <div class="panelList__headeritemnavigation">Szczegóły</div>
+                </div>
+                <div class="panelUsers__list panelList__content">
+                  <div class="panelList__item">
+                    <div class="panelList__itemName">kontroler@dev.com</div>
+                    <div class="panelList__itemRanga">Kontroler</div>
+                    <div class="panelList__itemStatus">Aktywny</div>
+                    <div class="panelList__navigation">Zobacz</div>
+                  </div>
+                  <div class="panelList__item">
+                    <div class="panelList__itemName">bolek@dev.com</div>
+                    <div class="panelList__itemRanga">Uzytkownik</div>
+                    <div class="panelList__itemStatus">nieaktywny</div>
+                    <div class="panelList__navigation">Zobacz</div>
+                  </div>
+                  <div class="panelList__item">
+                    <div class="panelList__itemName">admin@dev.com</div>
+                    <div class="panelList__itemRanga">Administrator</div>
+                    <div class="panelList__itemStatus">Aktywny</div>
+                    <div class="panelList__navigation">Zobacz</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panelUsers__navigation"><a href="#" id="panel-DodajUsersButton" class="panelUsers__navigation__item">Dodaj Użytkownika</a></div>
+        </div><span class="panelUsers__close"><span class="panelUsers__icon fa fa-times"></span></span>
+      </div>
+      <div class="panelDodajUsers__dragger">
+        <div class="panelDodajUsers panel -hidden dragger">
+          <div class="panelDodajUsers__title">Dodaj Użytkownika</div>
+          <div class="panelDodajUsers__wrapper">
+            <div class="panelDodajUsers__content">
+              <div class="panelDodajUsers__content__Title">Dane Użytkownika</div>
+              <div class="panelDodajUsers__content__form">
+                <div class="panelDodajUsers__content__form__item"><span class="item">E-mail</span>
+                  <input placeholder="Podaj adres e-mail">
+                </div>
+                <div class="panelDodajUsers__content__form__item"><span class="item">Hasło</span>
+                  <input type="password" placeholder="Podaj hasło">
+                </div>
+                <div class="panelDodajUsers__content__form__item"><span class="item">Ranga</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Użytkownik</option>
+                    <option value="1">Kontroler</option>
+                    <option value="1">Administrator</option>
+                  </select>
+                </div>
+                <div class="panelDodajUsers__content__form__item"><span class="item">Status</span>
+                  <select class="js-example-placeholder-single crud">
+                    <option value="0">Nieaktywny</option>
+                    <option value="1">Aktywny</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="panelDodajUsers__navigation">
+              <button class="panelDodajUsers__navigation__item green">Dodaj Użytkownika</button><a href="#" class="panelDodajUsers__navigation__item -abort">Anuluj</a>
+            </div>
+          </div><span class="panelDodajUsers__close"><span class="panelDodajUsers_icon fa fa-times"></span></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
