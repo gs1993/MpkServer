@@ -27,7 +27,7 @@ namespace WebApiServer.Controllers
         {
             using (var db = _db.CreateContext())
             {
-                return db.Buss.Where(b => !b.IsArchive).ToList().Select(b => Revrite(b)).ToList();
+                return db.Buss.Where(b => !b.IsArchive).ToList().Select(b => Rewrite(b)).ToList();
             }
         }
 
@@ -41,14 +41,10 @@ namespace WebApiServer.Controllers
                 {
                     
                 }
-                return Revrite(bus);
+                return Rewrite(bus);
             }
         }
 
-        //public BusDto CreateBus(BusDto bus)
-        //{
-        //    return new BusDto();
-        //}
 
         public BusDeleteConfirmDto DeleteBus(int Id)
         {
@@ -64,8 +60,21 @@ namespace WebApiServer.Controllers
                 return new BusDeleteConfirmDto() { Deleted = result };
             }
         }
+        //public async Task<IHttpActionResult> PostBus(BusDto dto)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+            
 
-        private BusDto Revrite(Bus bus)
+        //    db.Bus.Add(bus);
+        //    await db.SaveChangesAsync();
+
+        //    return CreatedAtRoute("DefaultApi", new { id = bus.Id }, bus);
+        //}
+
+        private BusDto Rewrite(Bus bus)
         {
             return new BusDto()
             {
