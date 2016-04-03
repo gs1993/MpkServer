@@ -1,5 +1,5 @@
 
-<div class="panelUsers panel dragger">
+<div class="panelUsers panel">
   <div class="panelUsers__title">Panel Zarządzania Użytkownikami</div>
   <div class="panelUsers__wrapper">
     <div class="panelUsers__content">
@@ -32,63 +32,16 @@
             <div class="panelList__headeritemStatus">Status</div>
             <div class="panelList__headeritemnavigation">Szczegóły</div>
           </div>
-          <div class="panelUsers__list panelList__content">
+          <div id="GetUserList" class="panelUsers__list panelList__content">
             <div class="panelList__item">
-              <div class="panelList__itemName">kontroler@dev.com</div>
+              <div class="panelList__itemName">Przykładowy@dev.com</div>
               <div class="panelList__itemRanga">Kontroler</div>
-              <div class="panelList__itemStatus">Aktywny</div>
-              <div class="panelList__navigation">Zobacz</div>
-            </div>
-            <div class="panelList__item">
-              <div class="panelList__itemName">bolek@dev.com</div>
-              <div class="panelList__itemRanga">Uzytkownik</div>
-              <div class="panelList__itemStatus">nieaktywny</div>
-              <div class="panelList__navigation">Zobacz</div>
-            </div>
-            <div class="panelList__item">
-              <div class="panelList__itemName">admin@dev.com</div>
-              <div class="panelList__itemRanga">Administrator</div>
-              <div class="panelList__itemStatus">Aktywny</div>
-              <div class="panelList__navigation">Zobacz</div>
+              <div class="panelList__itemStatus">Aktywny</div><a href="#/user/show" class="panelList__navigation">Zobacz</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="panelUsers__navigation"><a href="#" id="panel-DodajUsersButton" class="panelUsers__navigation__item">Dodaj Użytkownika</a></div>
-  </div><a href="#"><span class="panelUsers__close"><span class="panelUsers__icon fa fa-times"></span></span></a>
-</div>
-<div class="panelDodajUsers__dragger">
-  <div class="panelDodajUsers panel -hidden dragger">
-    <div class="panelDodajUsers__title">Dodaj Użytkownika</div>
-    <div class="panelDodajUsers__wrapper">
-      <div class="panelDodajUsers__content">
-        <div class="panelDodajUsers__content__Title">Dane Użytkownika</div>
-        <div class="panelDodajUsers__content__form">
-          <div class="panelDodajUsers__content__form__item"><span class="item">E-mail</span>
-            <input placeholder="Podaj adres e-mail"/>
-          </div>
-          <div class="panelDodajUsers__content__form__item"><span class="item">Hasło</span>
-            <input type="password" placeholder="Podaj hasło"/>
-          </div>
-          <div class="panelDodajUsers__content__form__item"><span class="item">Ranga</span>
-            <select class="js-example-placeholder-single crud">
-              <option value="0">Użytkownik</option>
-              <option value="1">Kontroler</option>
-              <option value="1">Administrator</option>
-            </select>
-          </div>
-          <div class="panelDodajUsers__content__form__item"><span class="item">Status</span>
-            <select class="js-example-placeholder-single crud">
-              <option value="0">Nieaktywny</option>
-              <option value="1">Aktywny</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="panelDodajUsers__navigation">
-        <button class="panelDodajUsers__navigation__item green">Dodaj Użytkownika</button><a href="#" class="panelDodajUsers__navigation__item -abort">Anuluj</a>
-      </div>
-    </div><span class="panelDodajUsers__close"><span class="panelDodajUsers_icon fa fa-times"></span></span>
-  </div>
+    <div class="panelUsers__navigation"><a href="#/user/add" class="panelUsers__navigation__item">Dodaj Użytkownika</a></div>
+  </div><a href="#/"><span class="panelUsers__close"><span class="panelUsers__icon fa fa-times"></span></span></a>
 </div>

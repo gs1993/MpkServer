@@ -1,0 +1,34 @@
+.panelDodajPrzystanek.panel
+  .panelDodajPrzystanek__title Dodaj Przystanek
+  .panelDodajPrzystanek__wrapper
+    .panelDodajPrzystanek__content
+      .panelDodajPrzystanek__content__Title Dane Przystanku
+      .panelDodajPrzystanek__content__form
+        .panelDodajPrzystanek__content__form__item
+          span.item Nazwa przystanku
+          input(placeholder="Podaj nazwę przystanku")
+        .panelDodajPrzystanek__content__form__item
+          span.item Lokalizacja
+          input(placeholder="Podaj lokalizackje")
+        .panelDodajPrzystanek__content__form__item
+          span.item Czy ma biletomat?
+          select.js-example-placeholder-single.crud
+            option(value=0) Nie
+            option(value=1) Tak
+        .panelDodajPrzystanek__content__form__item
+          span.item Czy ma kiosk?
+          select.js-example-placeholder-single.crud
+            option(value=0) Nie
+            option(value=1) Tak
+        .panelDodajPrzystanek__content__form__item
+          span.item Linie
+          select(multiple).js-example-placeholder-multiple.linie
+            option
+            - for (var i=1;i<20;i++)
+              option=i
+    .panelDodajPrzystanek__navigation
+      button.panelDodajPrzystanek__navigation__item.green Dodaj Autobus
+      a(href="#/busstop").panelDodajPrzystanek__navigation__item.gray.-abort Anuluj
+  a(href="#/")
+    span.panelDodajPrzystanek__close
+        span.panelDodajPrzystanek__icon.fa.fa-times

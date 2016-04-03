@@ -4,80 +4,164 @@
 (function () {
     'use strict';
 
-    angular
-        .module('app', ['ngRoute', 'ngCookies'])
-        .config(config)
-        .run(run);
+    var app = angular.module('app', ['ngRoute']);
 
-    config.$inject = ['$routeProvider', '$locationProvider'];
-    function config($routeProvider, $locationProvider) {
-        $routeProvider
-            .when('/', {
-                controller: 'HomeController',
+    app.config(['$routeProvider',
+        function($routeProvider) {
+            $routeProvider.
+            when('/', {
                 templateUrl: 'home.html',
-                controllerAs: 'vm'
-            })
-            .when('/home', {
-                controller: 'HomeController',
+                controller: 'HomeController'
+            }).
+            when('/home', {
                 templateUrl: 'home.html',
-                controllerAs: 'vm'
-            })
-            .when('/login', {
-                controller: 'LoginController',
+                controller: 'HomeController'
+            }).
+            when('/login', {
                 templateUrl: 'panelLogin.html',
-                controllerAs: 'vm'
-            })
-
-            .when('/register', {
-                controller: 'RegisterController',
+                controller: 'LoginController'
+            }).
+            when('/register', {
                 templateUrl: 'panelRegister.html',
-                controllerAs: 'vm'
-            })
-            .when('/forgot', {
-                controller: '',
+                controller: 'RegisterController'
+            }).
+            when('/forgot', {
                 templateUrl: 'panelResetPassword.html',
-                controllerAs: ''
-            })
-            .when('/bus', {
-                controller: '',
+                controller: 'ResetPasswordController'
+            }).
+
+
+            when('/bus', {
                 templateUrl: 'panelAutobusy.html',
-                controllerAs: ''
-            })
-            .when('/busstop', {
-                controller: '',
+                controller: 'BusController'
+            }).
+            when('/bus/add', {
+                templateUrl: 'panelDodajAutobus.html',
+                controller: 'AddBusController'
+            }).
+            when('/bus/show', {
+                templateUrl: 'panelWyswietlAutobus.html',
+                controller: 'ShowBusController'
+            }).
+
+
+            when('/busstop', {
                 templateUrl: 'panelPrzystanki.html',
-                controllerAs: ''
-            })
-            .when('/users', {
-                controller: '',
+                controller: 'BusstopController'
+            }).
+            when('/busstop/add', {
+                templateUrl: 'panelDodajPrzystanek.html',
+                controller: 'AddBusstopController'
+            }).
+            when('/busstop/show', {
+                templateUrl: 'panelWyswietlPrzystanek.html',
+                controller: 'ShowBusstopController'
+            }).
+
+
+            when('/user', {
                 templateUrl: 'panelUsers.html',
-                controllerAs: ''
-            })
-            .when('/welcome', {
-                controller: '',
-                templateUrl: 'panelWelcome.html',
-                controllerAs: ''
-            })
+                controller: 'UserController'
+            }).
+            when('/user/add', {
+                templateUrl: 'panelDodajUsera.html',
+                controller: 'AddUserController'
+            }).
+            when('/user/show', {
+                templateUrl: 'panelWyswietlUsera.html',
+                controller: 'ShowUserController'
+            }).
 
-            .otherwise({ redirectTo: '/home' });
-    }
+            otherwise({
+                redirectTo: '/home'
+            });
+        }]);
+    app.controller('HomeController', function($scope) {
 
-    run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
-    function run($rootScope, $location, $cookieStore, $http) {
-        // keep user logged in after page refresh
-        $rootScope.globals = $cookieStore.get('globals') || {};
-        if ($rootScope.globals.currentUser) {
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-        }
+        $scope.message = 'This is Add new order screen';
 
-        $rootScope.$on('$locationChangeStart', function (event, next, current) {
-            // redirect to login page if not logged in and trying to access a restricted page
-            var restrictedPage = $.inArray($location.path(), ['/', '/home', '/welcome','/login', '/register']) === -1;
-            var loggedIn = $rootScope.globals.currentUser;
-            if (restrictedPage && !loggedIn) {
-                $location.path('/welcome');
-            }
-        });
-    }
+    });
+    
+    
+    app.controller('LoginController', function($scope) {
 
+        $scope.message = 'This is Add new order screen';
+
+    });
+    
+    
+    app.controller('RegisterController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
+    
+    
+    app.controller('ResetPasswordController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
+    
+    
+    app.controller('BusController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
+    
+    
+    app.controller('AddBusController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
+    
+    
+    app.controller('ShowBusController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
+
+    app.controller('BusstopController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
+
+
+    app.controller('AddBusstopController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
+
+
+    app.controller('ShowBusstopController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
+
+    app.controller('UserController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
+
+
+    app.controller('AddUserController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
+
+
+    app.controller('ShowUserController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
+    
 })();
