@@ -8,6 +8,6 @@ namespace Core.Transfer.BusStopHandler
 {
     public class BusStopResultDto
     {
-        public string Test { get; set; }
+        
     }
 }

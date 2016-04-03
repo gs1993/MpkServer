@@ -1,0 +1,79 @@
+.panelUsers.panel.dragger
+  .panelUsers__title Panel Zarządzania Użytkownikami
+  .panelUsers__wrapper
+    .panelUsers__content
+      .panelUsers__content__Title Lista Użytkowników
+      .panelUsers__content__Filtr
+        .panelUsers__content__Filtr__item
+          input(placeholder="Szukaj użytkownika...")
+        .panelUsers__content__Filtr__item
+          select.js-example-placeholder-single.status
+            option
+            option(value=0) Nieaktywny
+            option(value=1) Aktywny
+        .panelUsers__content__Filtr__item
+          select.js-example-placeholder-single.ranga
+            option
+            option(value=0) Użytkownik
+            option(value=1) Kontroler
+            option(value=1) Administrator
+      .panelUsers__contentList
+
+        .panelList
+          .panelList__header
+            .panelList__headeritemName Email
+            .panelList__headeritemRanga Ranga
+            .panelList__headeritemStatus Status
+            .panelList__headeritemnavigation Szczegóły
+          .panelUsers__list.panelList__content
+            .panelList__item
+              .panelList__itemName kontroler@dev.com
+              .panelList__itemRanga Kontroler
+              .panelList__itemStatus Aktywny
+              .panelList__navigation Zobacz
+            .panelList__item
+              .panelList__itemName bolek@dev.com
+              .panelList__itemRanga Uzytkownik
+              .panelList__itemStatus nieaktywny
+              .panelList__navigation Zobacz
+            .panelList__item
+              .panelList__itemName admin@dev.com
+              .panelList__itemRanga Administrator
+              .panelList__itemStatus Aktywny
+              .panelList__navigation Zobacz
+
+    .panelUsers__navigation
+      a(href="#").panelUsers__navigation__item#panel-DodajUsersButton Dodaj Użytkownika
+  a(href="#")
+    span.panelUsers__close
+      span.panelUsers__icon.fa.fa-times
+
+.panelDodajUsers__dragger
+  .panelDodajUsers.panel.-hidden.dragger
+    .panelDodajUsers__title Dodaj Użytkownika
+    .panelDodajUsers__wrapper
+      .panelDodajUsers__content
+        .panelDodajUsers__content__Title Dane Użytkownika
+        .panelDodajUsers__content__form
+          .panelDodajUsers__content__form__item
+            span.item E-mail
+            input(placeholder="Podaj adres e-mail")
+          .panelDodajUsers__content__form__item
+            span.item Hasło
+            input(type='password' placeholder="Podaj hasło")
+          .panelDodajUsers__content__form__item
+            span.item Ranga
+            select.js-example-placeholder-single.crud
+              option(value=0) Użytkownik
+              option(value=1) Kontroler
+              option(value=1) Administrator
+          .panelDodajUsers__content__form__item
+            span.item Status
+            select.js-example-placeholder-single.crud
+              option(value=0) Nieaktywny
+              option(value=1) Aktywny
+      .panelDodajUsers__navigation
+        button.panelDodajUsers__navigation__item.green Dodaj Użytkownika
+        a(href="#").panelDodajUsers__navigation__item.-abort Anuluj
+    span.panelDodajUsers__close
+      span.panelDodajUsers_icon.fa.fa-times

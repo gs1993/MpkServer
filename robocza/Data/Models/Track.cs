@@ -11,13 +11,15 @@ namespace Data.Models
     {
         public int Id { get; set; }
 
-        public string Tracks { get; set; }
+        public string BusStops { get; set; }
+
+        public bool IsArchive { get; set; }
 
         [NotMapped]
-        public int[] TracksId
+        public int[] BusStopsIds
         {
-            get { return Tracks.Split(';').Select(x => Convert.ToInt32(x)).ToArray(); }
-            set { Tracks = String.Join(";", value); }
+            get { return BusStops.Split(';').Select(x => Convert.ToInt32(x)).ToArray(); }
+            set { BusStops = String.Join(";", value); }
         }
     }
 }

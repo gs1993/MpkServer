@@ -108,3 +108,12 @@ obj zwrotki:
 ```
 Tyle, że dostaje się je w JSON'ie.
 Zawartość data przy wysyłaniu i odbieraniu zależna od akcji. Teoretycznie od strony front endu, jedyne co będzie potrzebne to połączenie się z serverem + zautoryzowanie się by dostawać na bierząco eventy aktywności.
+
+# Aktywności #
+Przykład subskrypcji na aktywności jest zawarty w pliku fakeRead.js, należy się zautoryzować danymi użytkownika (funkcja sendAuth). Obiekt zwracany w on msg ma strukturę:
+
+```
+#!javascript
+{Id: 2, Lat: 45.3, Lng: 45.3, Info: "BusStopCheck"}
+
+```

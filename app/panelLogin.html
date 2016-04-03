@@ -1,0 +1,31 @@
+
+<div class="panelLogin panel">
+  <div class="panelLogin__wrapper">
+    <div class="panelLogin__title">Panel Logowania</div>
+    <div class="panelLogin__alert -info hidden">
+      <h3><i class="fa fa-warning"></i>Uwaga!</h3>Konto o takim adresie e-mail nie istnieje.
+    </div>
+    <div class="panelLogin__alert -info hidden">
+      <h3><i class="fa fa-warning"></i>Uwaga!</h3>Hasło przypisane do tego emailu, jest nie poprawne.
+    </div>
+    <form name="form" ng-submit="vm.login()" role="form" class="panelLogin__form">
+      <div ng-class="{ 'has-error': form.username.$dirty &amp;&amp; form.username.$error.required }" class="panelLogin__formGroup">
+        <div class="panelLogin__formwrapper">
+          <input placeholder="E-mail" type="text" name="username" id="username" ng-model="vm.username" required="required"/><i class="fa fa-envelope-o"></i>
+        </div><span ng-show="form.username.$dirty &amp;&amp; form.username.$error.required" class="panelLogin__helpBlock">Email jest wymagany!</span>
+      </div>
+      <div ng-class="{ 'has-error': form.password.$dirty &amp;&amp; form.password.$error.required }" class="panelLogin__formGroup">
+        <div class="panelLogin__formwrapper">
+          <input placeholder="Hasło" type="password" name="password" id="password" ng-model="vm.password" required="required"/><i class="fa fa-lock"></i>
+        </div><span ng-show="form.password.$dirty &amp;&amp; form.password.$error.required" class="panelLogin__helpBlock">Hasło jest wymagane!</span>
+      </div>
+      <div class="remembermebox">
+        <input type="checkbox" checked="checked" id="check" class="check"/>
+        <label for="check"><span class="icon"></span> Zapamiętaj mnie</label>
+      </div>
+      <button type="submit" ng-disabled="form.$invalid || vm.dataLoading">Zaloguj się</button><br/><br/><img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+    </form><a href="#/home"><span class="panelLogin__close"><span class="panelLogin__icon fa fa-times"></span></span></a>
+    <div class="panelLogin__navigation">Nie masz konta?<a href="#/register" class="panelLogin__ToRegister">Zarejestruj się.</a></div>
+    <div class="panelLogin__navigation">Nie pamiętasz hasła?<a href="#/forgot" class="panelLogin__ToRegister">Odzyskaj konto.</a></div>
+  </div>
+</div>

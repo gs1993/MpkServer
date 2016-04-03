@@ -1,0 +1,95 @@
+@charset "UTF-8"
+
+/* Global box-sizing: border-box
+ *==========================================================================
+html
+  box-sizing: border-box
+
+*, *:before, *:after
+  box-sizing: border-box
+
+/* Ipad/Iphone FIX STYLOWANIA
+ *==========================================================================
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="submit"]
+  -webkit-appearance: none
+  border-radius: 0
+
+/* Bodybackground, Header Config, Footer Config, Container
+  *==========================================================================
+body
+  min-width: 320px
+
+.clearfix 
+  +clearfix 
+
+.container
+  +clearfix
+  margin: 0 auto
+  padding: 0 20px
+  width: 100%
+  max-width: 1280px
+  header &
+    display: flex
+    flex-wrap: wrap
+    @media (max-width: $screen-lg)
+      display: block
+
+  .cmsContainer &
+    padding-right: 35px
+    padding-left: 35px
+
+  .cmsContainer.-narrow &, .downloadBox.-wide &
+    padding-right: 25px
+    padding-left: 25px
+
+  footer &
+    display: flex
+    flex-wrap: wrap
+
+header &
+  display: flex
+  flex-wrap: wrap
+  @media (max-width: $screen-lg)
+    display: block
+  
+header
+  transition: all 0.28s linear 0s
+  min-height: 170px
+  background-color: rgba(255,255,255,1)
+  @media (max-width: $screen-lg)
+    background-color: rgba(255,255,255,1)
+    border-bottom: 1px solid gray
+  @media (min-width: $screen-lg)
+    position: absolute
+    width: 100%
+    top: 0
+    &.headerSmall
+      transition: all 0.38s linear 0s
+      background-color: white
+      min-height: 100px
+
+footer
+  display: block
+  background-attachment: scroll
+  background-position: center
+  background-size: cover
+  background-image: url("../img/footer.png")
+
+.flash__info
+  background: #3949ab
+  position: absolute
+  z-index: 999
+  margin: 0 auto
+  text-align: center
+  display: inline-block
+  left: 50px
+  height: 40px
+  top: 5px
+  color: white
+  padding: 0 10px
+  line-height: 40px
+  opacity: 0.9
+  border-radius: 6px

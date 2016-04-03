@@ -5,6 +5,7 @@ using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Http.SelfHost;
 using Core.Logger;
@@ -30,9 +31,10 @@ namespace WebApiServer
                 logger.Log("Init webApi server");
 
                 Config.Filters.Clear();
+                var corsAttr = new EnableCorsAttribute("*", "*", "*");
+                Config.EnableCors(corsAttr);
 
                 var us = container.GetInstance<IUserService>();
-
 
                 Config.Filters.Add(new SimpleAuthFilter(us));
 
@@ -72,7 +74,7 @@ namespace WebApiServer
         {
             Config.EnableCors();
             Config.Routes.MapHttpRoute(
-                   "API Default", "{controller}/{id}",
+                   "API Default", "{controller}/{action}/{id}",
                    new { id = RouteParameter.Optional });
             Config.Formatters.Clear();
             Config.Formatters.Add(new JsonMediaTypeFormatter());

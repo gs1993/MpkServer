@@ -8,8 +8,8 @@ namespace WebSocketServer.MessageResolver.Dto
 {
     public enum ResultState
     {
-        Ok,
-        Event,
-        Error
+        Ok=0,
+        Event=100,
+        Error=400
     }
 }

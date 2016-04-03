@@ -17,7 +17,7 @@ namespace Data.Tests
             MainDbContex db = new MainDbContex();
 
             var track = db.Tracks.First(x => x.Id == 1);
-            CollectionAssert.AreEqual(track.TracksId,new[] {1, 2, 3});
+            CollectionAssert.AreEqual(track.BusStopsIds,new[] {1, 2, 3});
         }
     }
 }
