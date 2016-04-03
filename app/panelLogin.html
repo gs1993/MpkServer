@@ -9,15 +9,15 @@
       <h3><i class="fa fa-warning"></i>Uwaga!</h3>Hasło przypisane do tego emailu, jest nie poprawne.
     </div>
     <form name="form" ng-submit="vm.login()" role="form" class="panelLogin__form">
-      <div ng-class="{ 'has-error': form.username.$dirty &amp;&amp; form.username.$error.required }" class="panelLogin__formGroup">
+      <div ng-class="{ 'has-error': form.Email.$dirty &amp;&amp; form.Email.$error.required }" class="panelLogin__formGroup">
         <div class="panelLogin__formwrapper">
-          <input placeholder="E-mail" type="text" name="username" id="username" ng-model="vm.username" required="required"/><i class="fa fa-envelope-o"></i>
-        </div><span ng-show="form.username.$dirty &amp;&amp; form.username.$error.required" class="panelLogin__helpBlock">Email jest wymagany!</span>
+          <input placeholder="E-mail" type="text" name="Email" id="Email" ng-model="vm.Email" required="required"/><i class="fa fa-envelope-o"></i>
+        </div><span ng-show="form.Email.$dirty &amp;&amp; form.Email.$error.required" class="panelLogin__helpBlock">Email jest wymagany!</span>
       </div>
-      <div ng-class="{ 'has-error': form.password.$dirty &amp;&amp; form.password.$error.required }" class="panelLogin__formGroup">
+      <div ng-class="{ 'has-error': form.Password.$dirty &amp;&amp; form.Password.$error.required }" class="panelLogin__formGroup">
         <div class="panelLogin__formwrapper">
-          <input placeholder="Hasło" type="password" name="password" id="password" ng-model="vm.password" required="required"/><i class="fa fa-lock"></i>
-        </div><span ng-show="form.password.$dirty &amp;&amp; form.password.$error.required" class="panelLogin__helpBlock">Hasło jest wymagane!</span>
+          <input placeholder="Hasło" type="Password" name="Password" id="Password" ng-model="vm.Password" required="required"/><i class="fa fa-lock"></i>
+        </div><span ng-show="form.Password.$dirty &amp;&amp; form.Password.$error.required" class="panelLogin__helpBlock">Hasło jest wymagane!</span>
       </div>
       <div class="remembermebox">
         <input type="checkbox" checked="checked" id="check" class="check"/>

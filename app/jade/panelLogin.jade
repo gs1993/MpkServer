@@ -14,16 +14,16 @@
 
 
     form(name="form" ng-submit="vm.login()" role="form").panelLogin__form
-      .panelLogin__formGroup(ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }")
+      .panelLogin__formGroup(ng-class="{ 'has-error': form.Email.$dirty && form.Email.$error.required }")
         .panelLogin__formwrapper
-          input(placeholder="E-mail" type="text" name="username" id="username" ng-model="vm.username" required )
+          input(placeholder="E-mail" type="text" name="Email" id="Email" ng-model="vm.Email" required )
           i.fa.fa-envelope-o
-        span.panelLogin__helpBlock(ng-show="form.username.$dirty && form.username.$error.required") Email jest wymagany!
-      .panelLogin__formGroup(ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }")
+        span.panelLogin__helpBlock(ng-show="form.Email.$dirty && form.Email.$error.required") Email jest wymagany!
+      .panelLogin__formGroup(ng-class="{ 'has-error': form.Password.$dirty && form.Password.$error.required }")
         .panelLogin__formwrapper
-          input(placeholder="Hasło" type="password" name="password" id="password" ng-model="vm.password" required)
+          input(placeholder="Hasło" type="Password" name="Password" id="Password" ng-model="vm.Password" required)
           i.fa.fa-lock
-        span.panelLogin__helpBlock(ng-show="form.password.$dirty && form.password.$error.required") Hasło jest wymagane!
+        span.panelLogin__helpBlock(ng-show="form.Password.$dirty && form.Password.$error.required") Hasło jest wymagane!
       .remembermebox
         input(type="checkbox" checked).check#check
         label(for="check")
