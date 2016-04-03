@@ -8,12 +8,6 @@
           input(placeholder="Szukaj przystanku")
         .panelPrzystanki__content__Filtr__item
           input(placeholder="Szukaj ulicy")
-        .panelPrzystanki__content__Filtr__item
-          select(multiple).js-example-placeholder-multiple.linie
-
-            option
-            - for (var i=1;i<20;i++)
-              option=i
 
           //input(placeholder="Typ autobusu")
         .panelPrzystanki__content__Filtr__item.check
@@ -28,20 +22,20 @@
 
         .panelList
           .panelList__header
-            .panelList__headeritemName Nazwa przystanku
-            .panelList__headeritemUlica Ulica
-            .panelList__headeritemBiletomat Biletomat
-            .panelList__headeritemKiosk Kiosk
-            .panelList__headeritemnavigation Szczegóły
+            .panelList__headeritem Nazwa przystanku
+            .panelList__headeritem Ulica
+            .panelList__headeritem Biletomat
+            .panelList__headeritem Kiosk
+            .panelList__headeritem Szczegóły
           .panelPrzystanki__list.panelList__content#GetBusstopList
             .panelList__item
-              .panelList__itemName Przykładowa
-              .panelList__itemUlica Przykładowa
-              .panelList__itemBiletomat
+              .panelList__itemCell Przykładowa
+              .panelList__itemCell Przykładowa
+              .panelList__itemCell
                 .fa.fa-times-circle-o
-              .panelList__itemKiosk
+              .panelList__itemCell
                 .fa.fa-times-circle-o
-              a(href="#/bus/show").panelList__navigation Zobacz
+              a(href="#/bus/show").panelList__itemCell Zobacz
 
     .panelPrzystanki__navigation
       a(href="#/busstop/add").panelPrzystanki__navigation__item Dodaj Przystanek

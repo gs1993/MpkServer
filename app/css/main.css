@@ -8823,15 +8823,6 @@ a.tabnav-extra:hover {
   min-width: 960px;
 }
 
-@media (max-width: 1024px) {
-  .panelUsers {
-    position: relative !important;
-    width: 100% !important;
-    margin: 55px auto 0;
-    top: 0 !important;
-  }
-}
-
 .panelUsers.-hidden {
   opacity: 0;
   z-index: 0;
@@ -9041,6 +9032,8 @@ a.tabnav-extra:hover {
 }
 
 .panelUsers__content__Filtr__item input {
+  padding: 0 10px;
+  font-size: 16px;
   min-width: 300px;
   height: 40px;
   outline: none;
@@ -10473,6 +10466,18 @@ a.tabnav-extra:hover {
 
 .panelWyswietlUser__navigation__item.green:hover {
   background: #008d4c;
+}
+
+.panelWyswietlUser__navigation__item.red {
+  background: #a60605;
+  float: left;
+  -webkit-order: 3;
+      -ms-flex-order: 3;
+          order: 3;
+}
+
+.panelWyswietlUser__navigation__item.red:hover {
+  background: #b00a11;
 }
 
 .panelWyswietlUser__content {
