@@ -1,4 +1,4 @@
-.panelPrzystanki.panel.dragger
+.panelPrzystanki.panel
   .panelPrzystanki__title Panel Zarządzania Przystankami
   .panelPrzystanki__wrapper
     .panelPrzystanki__content
@@ -8,12 +8,6 @@
           input(placeholder="Szukaj przystanku")
         .panelPrzystanki__content__Filtr__item
           input(placeholder="Szukaj ulicy")
-        .panelPrzystanki__content__Filtr__item
-          select(multiple).js-example-placeholder-multiple.linie
-
-            option
-            - for (var i=1;i<20;i++)
-              option=i
 
           //input(placeholder="Typ autobusu")
         .panelPrzystanki__content__Filtr__item.check
@@ -28,111 +22,23 @@
 
         .panelList
           .panelList__header
-            .panelList__headeritemName Nazwa przystanku
-            .panelList__headeritemUlica Ulica
-            .panelList__headeritemLinie Linie
-            .panelList__headeritemBiletomat Biletomat
-            .panelList__headeritemKiosk Kiosk
-            .panelList__headeritemnavigation Szczegóły
-          .panelPrzystanki__list.panelList__content
+            .panelList__headeritem Nazwa przystanku
+            .panelList__headeritem Ulica
+            .panelList__headeritem Biletomat
+            .panelList__headeritem Kiosk
+            .panelList__headeritem Szczegóły
+          .panelPrzystanki__list.panelList__content#GetBusstopList
             .panelList__item
-
-              .panelList__itemName Lubelska
-              .panelList__itemUlica Poprzeczna
-              .panelList__itemLinie 1,2,3
-              .panelList__itemBiletomat
+              .panelList__itemCell Przykładowa
+              .panelList__itemCell Przykładowa
+              .panelList__itemCell
                 .fa.fa-times-circle-o
-              .panelList__itemKiosk
+              .panelList__itemCell
                 .fa.fa-times-circle-o
-              .panelList__navigation Zobacz
-            .panelList__item
-
-              .panelList__itemName Dworzec Główny
-              .panelList__itemUlica Dworcowa
-              .panelList__itemLinie 1,2,3
-              .panelList__itemBiletomat
-                .fa.fa-times-circle-o
-              .panelList__itemKiosk
-                .fa.fa-times-circle-o
-              .panelList__navigation Zobacz
-            .panelList__item
-
-              .panelList__itemName Uniwersytet Stadion
-              .panelList__itemUlica Warszawska
-              .panelList__itemLinie 1,2,3
-              .panelList__itemBiletomat
-                .fa.fa-times-circle-o
-              .panelList__itemKiosk
-                .fa.fa-times-circle-o
-              .panelList__navigation Zobacz
-            .panelList__item
-
-              .panelList__itemName Uniwersytet Świetlista
-              .panelList__itemUlica Słoneczna
-              .panelList__itemLinie 1,2,3
-              .panelList__itemBiletomat
-                .fa.fa-times-circle-o
-              .panelList__itemKiosk
-                .fa.fa-times-circle-o
-              .panelList__navigation Zobacz
-            .panelList__item
-
-              .panelList__itemName Partyzantów
-              .panelList__itemUlica Partyzantów
-              .panelList__itemLinie 1,2,3
-              .panelList__itemBiletomat
-                .fa.fa-times-circle-o
-              .panelList__itemKiosk
-                .fa.fa-times-circle-o
-              .panelList__navigation Zobacz
-            .panelList__item
-
-              .panelList__itemName Uniwersytet-Prawocheńskiego
-              .panelList__itemUlica Warszawska
-              .panelList__itemLinie 1,2,3
-              .panelList__itemBiletomat
-                .fa.fa-times-circle-o
-              .panelList__itemKiosk
-                .fa.fa-times-circle-o
-              .panelList__navigation Zobacz
+              a(href="#/busstop/show").panelList__itemCell Zobacz
 
     .panelPrzystanki__navigation
-      a(href="#").panelPrzystanki__navigation__item#panel-DodajPrzystanekButton Dodaj Przystanek
-  a(href="#")
+      a(href="#/busstop/add").panelPrzystanki__navigation__item Dodaj Przystanek
+  a(href="#/")
     span.panelPrzystanki__close
       span.panelPrzystanki__icon.fa.fa-times
-
-.panelDodajPrzystanek__dragger
-  .panelDodajPrzystanek.panel.-hidden.dragger
-    .panelDodajPrzystanek__title Dodaj Przystanek
-    .panelDodajPrzystanek__wrapper
-      .panelDodajPrzystanek__content
-        .panelDodajPrzystanek__content__Title Dane Przystanku
-        .panelDodajPrzystanek__content__form
-          .panelDodajPrzystanek__content__form__item
-            span.item Nazwa przystanku
-            input(placeholder="Podaj nazwę przystanku")
-          .panelDodajPrzystanek__content__form__item
-            span.item Lokalizacja
-            input(placeholder="Podaj lokalizackje")
-          .panelDodajPrzystanek__content__form__item
-            span.item Czy ma biletomat?
-            select.js-example-placeholder-single.crud
-              option(value=0) Nie
-              option(value=1) Tak
-          .panelDodajPrzystanek__content__form__item
-            span.item Czy ma kiosk?
-            select.js-example-placeholder-single.crud
-              option(value=0) Nie
-              option(value=1) Tak
-          .panelDodajPrzystanek__content__form__item
-            span.item Linie
-            select(multiple).js-example-placeholder-multiple.linie
-              option
-              - for (var i=1;i<20;i++)
-                option=i
-      .panelDodajPrzystanek__navigation
-        button.panelDodajPrzystanek__navigation__item.green Dodaj Autobus
-        a(href="#").panelDodajPrzystanek__navigation__item.gray.-abort Anuluj
-    span.panelDodajPrzystanek__close
-        span.panelDodajPrzystanek__icon.fa.fa-times

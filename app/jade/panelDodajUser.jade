@@ -1,0 +1,29 @@
+.panelDodajUser.panel
+  .panelDodajUser__title Dodaj Użytkownika
+  .panelDodajUser__wrapper
+    .panelDodajUser__content
+      .panelDodajUser__content__Title Dane Użytkownika
+      .panelDodajUser__content__form
+        .panelDodajUser__content__form__item
+          span.item E-mail
+          input(placeholder="Podaj adres e-mail")
+        .panelDodajUser__content__form__item
+          span.item Hasło
+          input(type='password' placeholder="Podaj hasło")
+        .panelDodajUser__content__form__item
+          span.item Ranga
+          select
+            option(value=0) Użytkownik
+            option(value=1) Kontroler
+            option(value=1) Administrator
+        .panelDodajUser__content__form__item
+          span.item Status
+          select
+            option(value=0) Nieaktywny
+            option(value=1) Aktywny
+    .panelDodajUser__navigation
+      button.panelDodajUser__navigation__item.green Dodaj Użytkownika
+      a(href="#/user").panelDodajUser__navigation__item.-abort Anuluj
+  a(href="#/")
+    span.panelDodajUser__close
+      span.panelDodajUser_icon.fa.fa-times

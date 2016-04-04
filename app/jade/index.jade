@@ -1,23 +1,13 @@
 doctype html
-html( lang="pl" ng-app="app")
+html(lang="pl" ng-app="app")
   include _head.jade
   body#body
     include _header.jade
     #containerDrag
       .googleMaps
         .googleMaps__API#googleMaps
-      .flash__info(ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message")
-      div(ng-view)
-
-    script(src='app.js')
-    script(src='app-services/authentication.service.js')
-    script(src='app-services/flash.service.js')
-    script(src='app-services/user.service.local-storage.js')
-
-    script(src='app-home/home.controller.js')
-    script(src='app-login/login.controller.js')
-    script(src='app-register/register.controller.js')
-
-
+      .dragger
+        div(ng-view)
+    script(src="app.js")
 
 

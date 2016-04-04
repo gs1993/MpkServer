@@ -1,4 +1,4 @@
-.panelAutobusy.panel.dragger
+.panelAutobusy.panel
   .panelAutobusy__title Panel Zarządzania Autobusami
   .panelAutobusy__wrapper
     .panelAutobusy__content
@@ -7,16 +7,16 @@
         .panelAutobusy__content__Filtr__item
           input(placeholder="Szukaj autobusu")
         .panelAutobusy__content__Filtr__item
-            select.js-example-placeholder-single.status
-              option
+            select
+              option(value="") Status
               option(value=0) Nieaktywny
               option(value=1) Aktywny
               option(value=2) W trasie
               option(value=2) W trasie
         .panelAutobusy__content__Filtr__item
 
-            select.js-example-placeholder-single.typ
-              option
+            select
+              option(value="") Typ
               option(value=0) Normalny
               option(value=1) Przegubowy
         .panelAutobusy__content__Filtr__item.check
@@ -28,65 +28,22 @@
 
         .panelList
           .panelList__header
-            .panelList__headeritemType Typ
-            .panelList__headeritemName Numer Autobusu
-            .panelList__headeritemStatus Status
-            .panelList__headeritemBiletomat Biletomat
-            .panelList__headeritemnavigation Szczegóły
+            .panelList__headeritem Typ
+            .panelList__headeritem Numer Autobusu
+            .panelList__headeritem Status
+            .panelList__headeritem Biletomat
+            .panelList__headeritem Szczegóły
           .panelAutobusy__list.panelList__content#GetBusList
             .panelList__item
-              .panelList__itemType
+              .panelList__itemCell
                 .fa.fa-bus
-              .panelList__itemName Przykładowy
-              .panelList__itemStatus Aktywny
-              .panelList__itemBiletomat
+              .panelList__itemCell Przykładowy
+              .panelList__itemCell Aktywny
+              .panelList__itemCell
                 .fa.fa-times-circle-o
-              .panelList__navigation Zobacz
+              a(href="#/bus/show").panelList__itemCell Zobacz
     .panelAutobusy__navigation
-      a(href="#").panelAutobusy__navigation__item#panel-DodajautobusyButton Dodaj Autobus
-  a(href="#")
+      a(href="#/bus/add").panelAutobusy__navigation__item Dodaj Autobus
+  a(href="#/")
     span.panelAutobusy__close
       span.panelAutobusy__icon.fa.fa-times
-
-.panelDodajAutobus__dragger
-  .panelDodajAutobus.panel.-hidden.dragger
-    .panelDodajAutobus__title Dodaj Autobus
-    .panelDodajAutobus__wrapper
-      .panelDodajAutobus__content
-        .panelDodajAutobus__content__Title Dane Autobusu
-        .panelDodajAutobus__content__form
-          .panelDodajAutobus__content__form__item
-            span.item Numer Rejestracyjny
-            input(placeholder="Podaj Nr. Rejestracyjny")
-          .panelDodajAutobus__content__form__item
-            span.item Numer VIN
-            input(placeholder="Podaj Nr. VIN")
-          .panelDodajAutobus__content__form__item
-            span.item Typ Autobusu
-            select.js-example-placeholder-single.crud
-              option(value=0) Normalny
-              option(value=1) Przegubowy
-          .panelDodajAutobus__content__form__item
-            span.item Czy ma Biletomat?
-            select.js-example-placeholder-single.crud
-              option(value=0) Nie
-              option(value=1) Tak
-          .panelDodajAutobus__content__form__item
-            span.item Status
-            select.js-example-placeholder-single.crud
-              option(value=0) Aktywny
-              option(value=1) W zajezdni
-              option(value=2) W serwisie
-          .panelDodajAutobus__content__form__item
-            span.item Numer Autobusu
-            select.js-example-placeholder-single.scrud
-              option(value=0) 100
-              option(value=1) 103
-              option(value=2) 104
-      .panelDodajAutobus__navigation
-        button.green.panelDodajAutobus__navigation__item.green Dodaj Autobus
-        a(href="#").panelDodajAutobus__navigation__item.gray.-abort Anuluj
-    span.panelDodajAutobus__close
-      span.panelDodajAutobus__icon.fa.fa-times
-
-
