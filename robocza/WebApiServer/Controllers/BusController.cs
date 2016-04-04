@@ -45,6 +45,26 @@ namespace WebApiServer.Controllers
             }
         }
 
+        public BusDto PutBus(BusDto busToUpdateDto)
+        {
+            using (var db = _db.CreateContext())
+            {
+                var bus = db.Buss.FirstOrDefault(b => b.Id == busToUpdateDto.Id);
+                if (bus == null)
+                {
+
+                }
+
+                bus.GotMachine = busToUpdateDto.GotMachine;
+                bus.LastControl = busToUpdateDto.LastControl;
+                bus.RegistrationNumber = busToUpdateDto.RegistrationNumber;
+                bus.BusType = busToUpdateDto.BusType;
+                bus.BusNumber = busToUpdateDto.BusNumber;
+                db.SaveChanges();
+
+                return Rewrite(bus);
+            }
+        }
 
         public BusDeleteConfirmDto DeleteBus(int Id)
         {
@@ -84,6 +104,18 @@ namespace WebApiServer.Controllers
                 LastControl = bus.LastControl,
                 RegistrationNumber = bus.RegistrationNumber,
                 Id = bus.Id
+            };
+        }
+        private Bus Rewrite(BusDto busDto)
+        {
+            return new Bus()
+            {
+                BusNumber = busDto.BusNumber,
+                BusType = busDto.BusType,
+                GotMachine = busDto.GotMachine,
+                LastControl = busDto.LastControl,
+                RegistrationNumber = busDto.RegistrationNumber,
+                Id = busDto.Id
             };
         }
     }
