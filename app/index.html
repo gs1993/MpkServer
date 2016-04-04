@@ -1,18 +1,8 @@
-<!DOCTYPE html>
-<html lang="pl" ng-app="app">
-  <head>
-    <title>Projekt Zespolow || MPK</title>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="shortcut icon" href="/img/favicon/favicon.ico">
-    <!--/script.
-    document.write('<script src="http://'
-            + (location.host || 'localhost').split(':')[0]
-            + ':35729/livereload.js"></'
-            + 'script>')
-    
-    --><!-- bower:js -->
+<!DOCTYPE html><html lang="pl" ng-app="app"><head><title>Projekt Zespolow || MPK</title><meta charset="utf-8"><meta name="description" content=""><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><link rel="shortcut icon" href="/img/favicon/favicon.ico"><!--/script.document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+        + ':35729/livereload.js"></'
+        + 'script>')
+--><!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/ev-emitter/ev-emitter.js"></script>
 <script src="bower_components/imagesloaded/imagesloaded.js"></script>
@@ -23,76 +13,6 @@
 <script src="bower_components/jquery-sticky/jquery.sticky.js"></script>
 <script src="bower_components/select2/dist/js/select2.js"></script>
 <!-- endbower -->
-    <!-- MAPY GOOGLA -->
-    <script src="http://maps.google.com/maps/api/js"></script>
-    <script src="https://jquery-xml2json-plugin.googlecode.com/svn/trunk/jquery.xml2json.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script><!-- MAPY GOOGLA -->
-    <script src="scripts/vendor.min.js"></script><!-- bower:css -->
+<!-- MAPY GOOGLA --><script src="http://maps.google.com/maps/api/js"></script><script src="https://jquery-xml2json-plugin.googlecode.com/svn/trunk/jquery.xml2json.js"></script><script src="bower_components/angular/angular.min.js"></script><script src="bower_components/angular-cookies/angular-cookies.min.js"></script><script src="bower_components/angular-route/angular-route.min.js"></script><script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script><!-- MAPY GOOGLA --><script src="scripts/vendor.min.js"></script><!-- bower:css -->
 <link rel="stylesheet" href="bower_components/superfish/dist/css/superfish.css" />
-<!-- endbower -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
-    <link rel="stylesheet" href="css/main.css">
-  </head>
-  <body id="body">
-    <!--Created by salimike on 18.03.16.
-    -->
-    <div class="bar"></div>
-    <div class="header">
-      <div class="header__corner"><i class="fa fa-bus"></i></div>
-      <div class="header__switcher -hidden">
-        <div class="background"></div>
-        <ul class="header__panel">
-          <li id="panel-autobusyButton" class="header__item"><a href="#/bus"><span class="header__button"><span class="header__buttonIconBG">
-                  <div class="header__buttonIcon fa fa-bus"></div></span>Autobusy</span></a></li>
-          <li id="panel-przystankiButton" class="header__item"><a href="#/busstop"><span class="header__button"><span class="header__buttonIconBG">
-                  <div class="header__buttonIcon fa fa-map-signs"></div></span>Przystanki</span></a></li>
-          <li id="panel-trasyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
-                <div class="header__buttonIcon fa fa-road"></div></span>Trasy</span></li>
-          <li id="panel-uzytkownicyButton" class="header__item"><a href="#/users"><span class="header__button"><span class="header__buttonIconBG">
-                  <div class="header__buttonIcon fa fa-users"></div></span>Użytkownicy</span></a></li>
-          <li id="panel-kontroleButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG">
-                <div class="header__buttonIcon fa fa-eye"></div></span>Kontrole</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="headerLogo"><span>MPK OLSZTYN</span></div>
-    <div class="headerProfile">
-      <div class="headerProfile__corner"><i class="fa fa-gears"></i></div>
-      <div class="headerProfile__switcher -hidden">
-        <div class="background"></div>
-        <ul class="headerProfile__panel">
-          <li id="panel-loginButton" class="headerProfile__item"><a href="#/login"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
-                  <div class="headerProfile__buttonIcon fa fa-power-off"></div></span>Logowanie</span></a></li>
-          <li id="panel-registerButton" class="headerProfile__item"><a href="#/register"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
-                  <div class="headerProfile__buttonIcon fa fa-sign-in"></div></span>Rejestracja</span></a></li>
-          <li id="panel-odzyskajKontoButton" class="headerProfile__item"><a href="#/forgot"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
-                  <div class="headerProfile__buttonIcon fa fa-key"></div></span>Odzyskaj konto</span></a></li>
-          <li id="panel-mojeKontoButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
-                <div class="headerProfile__buttonIcon fa fa-user"></div></span>Moje Konto</span></li>
-          <li id="panel-InformacjeButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
-                <div class="headerProfile__buttonIcon fa fa-info-circle"></div></span>Informacje</span></li>
-          <li id="panel-wylogujButton" class="headerProfile__item"><a href="#/login"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
-                  <div class="headerProfile__buttonIcon fa fa-sign-out"></div></span>Wyloguj</span></a></li>
-        </ul>
-      </div>
-    </div>
-    <div id="containerDrag">
-      <div class="googleMaps">
-        <div id="googleMaps" class="googleMaps__API"></div>
-      </div>
-      <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message" class="flash__info"></div>
-      <div ng-view></div>
-    </div>
-    <script src="app.js"></script>
-    <script src="app-services/authentication.service.js"></script>
-    <script src="app-services/flash.service.js"></script>
-    <script src="app-services/user.service.local-storage.js"></script>
-    <script src="app-home/home.controller.js"></script>
-    <script src="app-login/login.controller.js"></script>
-    <script src="app-register/register.controller.js"></script>
-  </body>
-</html>
+<!-- endbower --><link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css"><link rel="stylesheet" href="css/main.css"></head><body id="body"><!--Created by salimike on 18.03.16.--><div class="bar"></div><div class="header"><div class="header__corner"><i class="fa fa-bus"></i></div><div class="header__switcher -hidden"><div class="background"></div><ul class="header__panel"><li id="panel-autobusyButton" class="header__item"><a href="#/bus"><span class="header__button"><span class="header__buttonIconBG"><div class="header__buttonIcon fa fa-bus"></div></span>Autobusy</span></a></li><li id="panel-przystankiButton" class="header__item"><a href="#/busstop"><span class="header__button"><span class="header__buttonIconBG"><div class="header__buttonIcon fa fa-map-signs"></div></span>Przystanki</span></a></li><li id="panel-trasyButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG"><div class="header__buttonIcon fa fa-road"></div></span>Trasy</span></li><li id="panel-uzytkownicyButton" class="header__item"><a href="#/users"><span class="header__button"><span class="header__buttonIconBG"><div class="header__buttonIcon fa fa-users"></div></span>Użytkownicy</span></a></li><li id="panel-kontroleButton" class="header__item"><span class="header__button"><span class="header__buttonIconBG"><div class="header__buttonIcon fa fa-eye"></div></span>Kontrole</span></li></ul></div></div><div class="headerLogo"><span>MPK OLSZTYN</span></div><div class="headerProfile"><div class="headerProfile__corner"><i class="fa fa-gears"></i></div><div class="headerProfile__switcher -hidden"><div class="background"></div><ul class="headerProfile__panel"><li id="panel-loginButton" class="headerProfile__item"><a href="#/login"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-power-off"></div></span>Logowanie</span></a></li><li id="panel-registerButton" class="headerProfile__item"><a href="#/register"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-sign-in"></div></span>Rejestracja</span></a></li><li id="panel-odzyskajKontoButton" class="headerProfile__item"><a href="#/forgot"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-key"></div></span>Odzyskaj konto</span></a></li><li id="panel-mojeKontoButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-user"></div></span>Moje Konto</span></li><li id="panel-InformacjeButton" class="headerProfile__item"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-info-circle"></div></span>Informacje</span></li><li id="panel-wylogujButton" class="headerProfile__item"><a href="#/login"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG"><div class="headerProfile__buttonIcon fa fa-sign-out"></div></span>Wyloguj</span></a></li></ul></div></div><div id="containerDrag"><div class="googleMaps"><div id="googleMaps" class="googleMaps__API"></div></div><div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message" class="flash__info"></div><div ng-view></div></div><script src="app.js"></script><script src="app-services/authentication.service.js"></script><script src="app-services/flash.service.js"></script><script src="app-services/user.service.local-storage.js"></script><script src="app-home/home.controller.js"></script><script src="app-login/login.controller.js"></script><script src="app-register/register.controller.js"></script></body></html>
