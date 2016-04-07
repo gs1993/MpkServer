@@ -44,39 +44,40 @@ namespace WebApiServer.Controllers
             }
         }
 
-        public BusStopDeleteConfirmDto DeleteBusStop(int Id)
+        public BusStopConfirmed DeleteBusStop(int Id)
         {
             using (var db = _db.CreateContext())
             {
-                bool result = true;
+                bool result = false;
                 var busStop = db.Buss.FirstOrDefault(b => b.Id == Id);
-                if (busStop == null || busStop.IsArchive)
+                if (busStop != null && !busStop.IsArchive)
+                {
+                    busStop.IsArchive = true;
+                    result = true;
+                }
+                return new BusStopConfirmed() { Ok = result };
+            }
+        }
+        
+        public BusStopConfirmed PostBusStop(BusStopDto busStopDto)
+        {
+            using (var db = _db.CreateContext())
+            {
+                bool result = ModelState.IsValid;
+                try
+                {
+                    var busStop = Rewrite(busStopDto);
+                    busStop.IsArchive = false; // chwilowo
+
+                    db.BusStops.Add(busStop);
+                    db.SaveChanges();
+                }
+                catch (Exception)
                 {
                     result = false;
                 }
-                busStop.IsArchive = true;
-                return new BusStopDeleteConfirmDto() { Deleted = result };
-            }
-        }
-
-        public BusStopDto PostBusStop(BusStopDto busStopDto)
-        {
-            using (var db = _db.CreateContext())
-            {
-                if (!ModelState.IsValid)
-                {
-
-                }
-                var busStop = Rewrite(busStopDto);
-                
-                busStop.IsArchive = false; // chwilowo
-
-                db.BusStops.Add(busStop);
-                db.SaveChanges();
-
-                var test = db.Buss.ToList();
-                // !
-                return busStopDto; 
+                           
+                return new BusStopConfirmed() {Ok = result};
             }
         }
 

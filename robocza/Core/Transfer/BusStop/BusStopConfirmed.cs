@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Transfer.Bus
+namespace Core.Transfer.BusStop
 {
-    public class BusDeleteConfirmDto
+    public class BusStopConfirmed
     {
-        public bool Deleted { get; set; }
+        public bool Ok { get; set; }
     }
 }
