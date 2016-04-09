@@ -210,9 +210,18 @@
             }
         });
     }]);
-    app.controller('UpdateBusController', function($scope) {
+    app.controller('UpdateBusController','$routeParams', function($scope,$routeParams) {
 
-        $scope.message = 'This is Add new order screen';
+        //$scope.message = 'This is Add new order screen';
+
+        $scope.saveBus=function(){
+
+            if($scope.BusForm.$invalid)
+            {
+
+
+            }
+        }
 
     });
 

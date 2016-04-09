@@ -1,7 +1,7 @@
 
 <div ng-controller="ShowBusController" class="panelWyswietlAutobus">
   <div class="panelWyswietlAutobus__title">Szczegóły Autobusu</div>
-  <div class="panelWyswietlAutobus__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/bus">Zarządzanie Autobusami</a></span><span class="-active"><a href="/#/bus/show/{{ AutobusID }}">Szczegóły Autobusu</a></span></div>
+  <div class="panelWyswietlAutobus__fastTravel"><span><a href="/"><i class="fa fa-home"></i>Home</a></span><span><a href="/bus">Zarządzanie Autobusami</a></span><span class="-active"><a href="/bus/show/{{ AutobusID }}">Szczegóły Autobusu</a></span></div>
   <div ng-repeat="item in autobus as AktualnyAutobus" class="panelWyswietlAutobus__wrapper">
     <div class="panelWyswietlAutobus__subtitle">Aktualny stan autobusu o numerze {{ item.RegistrationNumber }}</div>
     <div class="panelWyswietlAutobus__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
@@ -30,7 +30,7 @@
     </div>
     <div class="panelWyswietlAutobus__subtitle">Edycja autobusu</div>
     <div class="panelWyswietlAutobus__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <form>
+    <form name="BusForm" ng-controller="UpdateBusController" novalidate="novalidate">
       <div class="panelWyswietlAutobus__content__form">
         <div class="panelWyswietlAutobus__content__form__item"><span class="item">Numer Rejestracyjny</span>
           <input placeholder="Numer Rejestracyjny"/>
@@ -54,7 +54,7 @@
         </div>
       </div>
       <div class="panelWyswietlAutobus__navigation">
-        <button class="green panelWyswietlAutobus__navigation__item green">Aktualizuj Autobus</button><a href="/#/bus/delete/{{ AutobusID }}" ng-hide="item.BusStatus == 0" class="panelWyswietlAutobus__navigation__item red">Dezaktywuj</a><a href="/#/bus/restore/{{ AutobusID }}" ng-show="item.BusStatus == 0" class="panelWyswietlAutobus__navigation__item greenDark">Aktywuj</a><a href="/#/bus" class="panelWyswietlAutobus__navigation__item gray -abort">Anuluj</a>
+        <button class="green panelWyswietlAutobus__navigation__item green">Aktualizuj Autobus</button><a href="/bus/delete/{{ AutobusID }}" ng-hide="item.BusStatus == 0" class="panelWyswietlAutobus__navigation__item red">Dezaktywuj</a><a href="/bus/restore/{{ AutobusID }}" ng-show="item.BusStatus == 0" class="panelWyswietlAutobus__navigation__item greenDark">Aktywuj</a><a href="/bus" class="panelWyswietlAutobus__navigation__item gray -abort">Anuluj</a>
       </div>
     </form>
   </div>
