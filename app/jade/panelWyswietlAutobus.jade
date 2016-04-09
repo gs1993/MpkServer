@@ -1,39 +1,36 @@
-.panelWyswietlAutobus.panel
-  .panelWyswietlAutobus__title Szegóły Autobusu
-  .panelWyswietlAutobus__wrapper
-    .panelWyswietlAutobus__content
-      .panelWyswietlAutobus__content__Title Dane Autobusu
-      .panelWyswietlAutobus__content__form
-        .panelWyswietlAutobus__content__form__item
+.panelDodajAutobus
+  .panelDodajAutobus__title Dodaj Autobus
+  .panelDodajAutobus__fastTravel
+    span
+      a(href="#/")
+        i.fa.fa-home
+        | Home
+    span
+      a(href="#/bus") Zarządzanie Autobusami
+    span.-active
+      a(href="#/bus/add") Dodaj Autobus
+  .panelDodajAutobus__wrapper
+    .panelDodajAutobus__subtitle Dodawanie pojazdu do floty
+    .panelDodajAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+
+    .panelDodajAutobus__content__form
+        .panelDodajAutobus__content__form__item
           span.item Numer Rejestracyjny
-          input(value="{{Bus.RegistrationNumber}}")
-        .panelWyswietlAutobus__content__form__item
+          input(placeholder="Podaj Nr. Rejestracyjny")
+        .panelDodajAutobus__content__form__item
           span.item Numer VIN
-          input(value="{{Bus.VINNumber}}")
-        .panelWyswietlAutobus__content__form__item
+          input(placeholder="Podaj Nr. VIN")
+        .panelDodajAutobus__content__form__item
           span.item Typ Autobusu
           select
-            option(value="{{Bus.BusType}}") {{Bus.BusTypeName}}
             option(value=0) Normalny
             option(value=1) Przegubowy
-        .panelWyswietlAutobus__content__form__item
+        .panelDodajAutobus__content__form__item
           span.item Czy ma Biletomat?
           select
-            option(value="{{Bus.GotMachine}}") {{Bus.GotMachineName}}
             option(value=0) Nie
             option(value=1) Tak
-        .panelWyswietlAutobus__content__form__item
-          span.item Status
-          select
-            option(value=0) Aktywny
-            option(value=1) W zajezdni
-            option(value=2) W serwisie
-    .panelWyswietlAutobus__navigation
-      button.green.panelWyswietlAutobus__navigation__item.green Edytuj Autobus
-      button.green.panelWyswietlAutobus__navigation__item.red Usuń Autobus
-      a(href="#/bus").panelWyswietlAutobus__navigation__item.gray.-abort Anuluj
-  a(href="#/")
-    span.panelWyswietlAutobus__close
-      span.panelWyswietlAutobus__icon.fa.fa-times
-
+    .panelDodajAutobus__navigation
+      button.green.panelDodajAutobus__navigation__item.green Dodaj Autobus
+      a(href="#/bus").panelDodajAutobus__navigation__item.gray.-abort Anuluj
 

@@ -43,7 +43,7 @@
                 templateUrl: 'panelDodajAutobus.html',
                 controller: 'AddBusController'
             }).
-            when('/bus/show', {
+            when('/bus/show/:id', {
                 templateUrl: 'panelWyswietlAutobus.html',
                 controller: 'ShowBusController'
             }).
@@ -81,14 +81,15 @@
             });
         }]);
 
-    //STANDARDOWE CONTROLLERY
+    /* Standardowe Controlery
+     *==========================================================================*/
     app.controller('HomeController', function($scope) {
 
         $scope.message = 'This is Add new order screen';
 
     });
-    
-    
+
+
     app.controller('LoginController', function($scope) {
 
         $scope.message = 'This is Add new order screen';
@@ -109,7 +110,8 @@
 
     });
 
-    //AUTOBUS CONTROLLERY
+    /* Autobusy Controlery
+     *==========================================================================*/
     app.controller('BusController', function($scope) {
 
         $scope.autobusy = [
@@ -161,21 +163,18 @@
 
     });
     
-    app.controller('ShowBusController', function($scope) {
+    app.controller('ShowBusController', ['$scope', '$routeParams', function($scope, $routeParams) {
 
-        $scope.Bus = {
-            Id: 0,
-            RegistrationNumber: '12345',
-            VINNumber: '24122345',
-            BusType: 0,
-            GotMachine: true
-        };
-        $scope.Bus.BusTypeName = "Normalny";
-        $scope.Bus.GotMachineName = "Tak";
+        var currentId = $routeParams.id;
 
-    });
+        $scope.TestID = currentId;
 
-    //PRZYSTANKI CONTROLLERY
+        $scope.autobus = [{ Id: 0, RegistrationNumber: '123456', BusStatus: 0, GotMachine: false, BusType: 1, DataTime: '1'}];
+
+    }]);
+
+    /* Przystanki Controlery
+     *==========================================================================*/
     app.controller('BusstopController', function($scope) {
 
         $scope.message = 'This is Add new order screen';
@@ -190,13 +189,14 @@
     });
 
 
-    app.controller('ShowBusstopController', function($scope) {
+    app.controller('ShowBusstopController', function($scope, ID) {
 
         $scope.message = 'This is Add new order screen';
 
     });
 
-    //USERS CONTROLLERY
+    /* Użytkownicy Controlery
+     *==========================================================================*/
     app.controller('UserController', function($scope) {
 
         $scope.message = 'This is Add new order screen';
