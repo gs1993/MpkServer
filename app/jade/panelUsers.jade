@@ -15,41 +15,57 @@
     .panelUsers__filtrs
       .panelUsers__filtr
         label Email
-        input(placeholder="Szukaj Użytkownika...")
+        input(placeholder="Szukaj Użytkownika..." ng-model="userFilter.Email")
       .panelUsers__filtr
         label Ranga
-        select
+        select(ng-model="userFilter.Rank")
           option(value="") Ranga
-          option(value=0) Kontroler
-          option(value=1) Administrator
+          option(value=0) Użytkownik
+          option(value=1) Kontroler
+          option(value=2) Administrator
       .panelUsers__filtr
         label Status
-        select
+        select(ng-model="userFilter.Status")
           option(value="") Status
           option(value=0) Nieaktywny
           option(value=1) Aktywny
       .panelUsers__table
-        table.responsive(wt-responsive-table)
+        table.responsive(wt-responsive-table ng-controller="UserController")
           tr
             th Email
             th Ranga
             th Status
             th Zarządzanie
-          tr
-            td 123456789
-            td Normalny
-            td Aktywny
+          tr(ng-repeat="user in users | filter:userFilter | filter:{ Status: '!0'} as filtrowaneUsers")
+            td {{ user.Email }}
+            td {{ user.RankName }}
+            td {{ user.StatusName }}
             td
-              a(href="/#").navigation
-                i.ionicons.ion-edit
-              a(href="/#").navigation
-                i.ionicons.ion-android-delete.-red
-
-          tr
-            td ..
-            td ..
-            td ..
-            td ..
-
+              a(href="/#/user/show/{{ user.Id }}").navigation
+                i.ionicons.ion-settings
+              a(href="/#/user/delete/{{ user.Id }}").navigation
+                i.ionicons.ion-android-cancel.-red
+          tr(ng-hide="filtrowaneUsers.length")
+            td(colspan="4").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
+    .panelUsers__subtitle Nieaktywni Użytkownicy
+    .panelUsers__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelUsers__table
+      table.responsive(wt-responsive-table ng-controller="UserController")
+        tr
+          th Email
+          th Ranga
+          th Status
+          th Zarządzanie
+        tr(ng-repeat="user in users | filter:userFilter | filter:{ Status: '0'} as filtrowaneUsersNieaktywni")
+          td {{ user.Email }}
+          td {{ user.RankName }}
+          td {{ user.StatusName }}
+          td
+            a(href="/#/user/show/{{ user.Id }}").navigation
+              i.ionicons.ion-settings
+            a(href="/#/user/delete/{{ user.Id }}").navigation
+              i.ionicons.ion-android-cancel.-red
+        tr(ng-hide="filtrowaneUsersNieaktywni.length")
+          td(colspan="4").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
 
 

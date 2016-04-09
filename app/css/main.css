@@ -12278,6 +12278,7 @@ a.tabnav-extra:hover {
   font-size: 1.5em;
   line-height: 1.6em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
 }
 
 .panelUsers__text {
@@ -12385,6 +12386,11 @@ a.tabnav-extra:hover {
 .panelUsers__table td {
   text-align: center;
   padding: 5px;
+}
+
+.panelUsers__table td.-alert {
+  color: #2196F3;
+  padding: 15px 0;
 }
 
 .panelUsers__table .navigation {

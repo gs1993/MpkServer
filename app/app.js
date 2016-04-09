@@ -260,7 +260,7 @@
             }
             else
             {
-                przystanek.BusStopStatusName = "W trasie"
+                przystanek.BusStopStatusName = "Aktywny"
             }
         });
 
@@ -320,7 +320,7 @@
             }
             else
             {
-                item.BusStopStatusName = "W trasie"
+                item.BusStopStatusName = "Aktywny"
             }
         });
     }]);
@@ -329,7 +329,34 @@
      *==========================================================================*/
     app.controller('UserController', function($scope) {
 
-        $scope.message = 'This is Add new order screen';
+        $scope.users = [
+            { Id: 0, Email: 'dev@wp.pl', Rank: 0, Status: 0, Details: "Opis...?"},
+            { Id: 1, Email: 'dev2@wp.pl', Rank: 1, Status: 1, Details: "Opis...?"},
+            { Id: 1, Email: 'dev2@wp.pl', Rank: 1, Status: 1, Details: "Opis...?"},
+            { Id: 2, Email: 'dev3@wp.pl', Rank: 2, Status: 0, Details: "Opis...?"}
+        ];
+        angular.forEach($scope.users, function (user) {
+            if(user.Rank == 0)
+            {
+                user.RankName = "Użytkownik";
+            }
+            else if(user.Rank == 1)
+            {
+                user.RankName = "Kontroler";
+            }
+            else if(user.Rank == 2)
+            {
+                user.RankName = "Administrator";
+            }
+            if(user.Status == 0)
+            {
+                user.StatusName = "Nieaktywny"
+            }
+            else
+            {
+                user.StatusName = "Aktywny"
+            }
+        });
 
     });
 
