@@ -1,6 +1,6 @@
-.panelDodajAutobus
-  .panelDodajAutobus__title Dodaj Autobus
-  .panelDodajAutobus__fastTravel
+.panelWyswietlAutobus(ng-controller="ShowBusController")
+  .panelWyswietlAutobus__title Szczegóły Autobusu
+  .panelWyswietlAutobus__fastTravel
     span
       a(href="#/")
         i.fa.fa-home
@@ -8,29 +8,53 @@
     span
       a(href="#/bus") Zarządzanie Autobusami
     span.-active
-      a(href="#/bus/add") Dodaj Autobus
-  .panelDodajAutobus__wrapper
-    .panelDodajAutobus__subtitle Dodawanie pojazdu do floty
-    .panelDodajAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+      a(href="#/bus/show/{{ AutobusID }}") Szczegóły Autobusu
+  .panelWyswietlAutobus__wrapper(ng-repeat="item in autobus")
+    .panelWyswietlAutobus__subtitle Aktualny stan autobusu o numerze {{ item.RegistrationNumber }}
+    .panelWyswietlAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelWyswietlAutobus__content__form
+      .panelWyswietlAutobus__content__form__item
+        span.itemHeader Numer Rejestracyjny
+        p {{ item.RegistrationNumber }}
+      .panelWyswietlAutobus__content__form__item
+        span.itemHeader Numer VIN
+        p {{ item.BusNumber }}
+      .panelWyswietlAutobus__content__form__item
+        span.itemHeader Typ Autobusu
+        p {{ item.BusTypeName }}
+      .panelWyswietlAutobus__content__form__item
+        span.itemHeader Biletomat
+        p {{ item.GotMachineName }}
+      .panelWyswietlAutobus__content__form__item
+        span.itemHeader Aktualny status
+        p {{ item.BusStatusName }}
+      .panelWyswietlAutobus__content__form__item
+        span.itemHeader Ostatnia kontrola
+        p {{ item.LastControl }}
+      .panelWyswietlAutobus__content__form__item
+        span.itemHeader Ostatnia lokalizacja
+        p X Y
+    .panelWyswietlAutobus__subtitle Aktualny stan autobusu
+    .panelWyswietlAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
 
-    .panelDodajAutobus__content__form
-        .panelDodajAutobus__content__form__item
+    .panelWyswietlAutobus__content__form
+        .panelWyswietlAutobus__content__form__item
           span.item Numer Rejestracyjny
-          input(placeholder="Podaj Nr. Rejestracyjny")
-        .panelDodajAutobus__content__form__item
+          input(placeholder="Podaj Nr. VIN")
+        .panelWyswietlAutobus__content__form__item
           span.item Numer VIN
           input(placeholder="Podaj Nr. VIN")
-        .panelDodajAutobus__content__form__item
+        .panelWyswietlAutobus__content__form__item
           span.item Typ Autobusu
           select
             option(value=0) Normalny
             option(value=1) Przegubowy
-        .panelDodajAutobus__content__form__item
-          span.item Czy ma Biletomat?
+        .panelWyswietlAutobus__content__form__item
+          span.item Biletomat
           select
             option(value=0) Nie
             option(value=1) Tak
-    .panelDodajAutobus__navigation
-      button.green.panelDodajAutobus__navigation__item.green Dodaj Autobus
-      a(href="#/bus").panelDodajAutobus__navigation__item.gray.-abort Anuluj
+    .panelWyswietlAutobus__navigation
+      button.green.panelWyswietlAutobus__navigation__item.green Dodaj Autobus
+      a(href="#/bus").panelWyswietlAutobus__navigation__item.gray.-abort Anuluj
 

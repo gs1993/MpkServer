@@ -14,8 +14,11 @@
       a(href="#/bus/add").panelAutobusy__navigation__item Dodaj Autobus
     .panelAutobusy__filtrs
       .panelAutobusy__filtr
+        label Numer Rejestracyjny
+        input(type="text" ng-model="autobusFilter.BusNumber" placeholder="Szukaj Autobusu...")
+      .panelAutobusy__filtr
         label Numer VIN
-        input(type="text" ng-model="autobusFilter.RegistrationNumber" placeholder="Szukaj Autobusu...")
+        input(type="text" ng-model="autobusFilter.RegistrationNumber" placeholder="VIN Autobusu...")
       .panelAutobusy__filtr
         label Typ autobusu
         select(ng-model="autobusFilter.BusType")
@@ -35,15 +38,19 @@
           option(value="") Biletomat
           option(value=0) Nie
           option(value=1) Tak
-      .panelAutobusy__table
-        table.responsive(wt-responsive-table ng-controller="BusController")
+    .panelAutobusy__table
+      table.responsive(wt-responsive-table ng-controller="BusController")
+        thead
           tr
+            th Numer Rejestracyjny
             th Numer VIN
             th Typ Autobusu
             th Status
             th Biletomat
             th Zarządzanie
+        tbody
           tr(ng-repeat="autobus in autobusy | filter:autobusFilter")
+            td {{ autobus.BusNumber}}
             td {{ autobus.RegistrationNumber }}
             td {{ autobus.BusTypeName }}
             td {{ autobus.BusStatusName }}

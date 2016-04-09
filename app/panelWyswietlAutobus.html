@@ -1,32 +1,57 @@
 
-<div class="panelDodajAutobus">
-  <div class="panelDodajAutobus__title">Dodaj Autobus</div>
-  <div class="panelDodajAutobus__fastTravel"><span><a href="#/"><i class="fa fa-home"></i>Home</a></span><span><a href="#/bus">Zarządzanie Autobusami</a></span><span class="-active"><a href="#/bus/add">Dodaj Autobus</a></span></div>
-  <div class="panelDodajAutobus__wrapper">
-    <div class="panelDodajAutobus__subtitle">Dodawanie pojazdu do floty</div>
-    <div class="panelDodajAutobus__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <div class="panelDodajAutobus__content__form">
-      <div class="panelDodajAutobus__content__form__item"><span class="item">Numer Rejestracyjny</span>
-        <input placeholder="Podaj Nr. Rejestracyjny"/>
+<div ng-controller="ShowBusController" class="panelWyswietlAutobus">
+  <div class="panelWyswietlAutobus__title">Szczegóły Autobusu</div>
+  <div class="panelWyswietlAutobus__fastTravel"><span><a href="#/"><i class="fa fa-home"></i>Home</a></span><span><a href="#/bus">Zarządzanie Autobusami</a></span><span class="-active"><a href="#/bus/show/{{ AutobusID }}">Szczegóły Autobusu</a></span></div>
+  <div ng-repeat="item in autobus" class="panelWyswietlAutobus__wrapper">
+    <div class="panelWyswietlAutobus__subtitle">Aktualny stan autobusu o numerze {{ item.RegistrationNumber }}</div>
+    <div class="panelWyswietlAutobus__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div class="panelWyswietlAutobus__content__form">
+      <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Numer Rejestracyjny</span>
+        <p>{{ item.RegistrationNumber }}</p>
       </div>
-      <div class="panelDodajAutobus__content__form__item"><span class="item">Numer VIN</span>
+      <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Numer VIN</span>
+        <p>{{ item.BusNumber }}</p>
+      </div>
+      <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Typ Autobusu</span>
+        <p>{{ item.BusTypeName }}</p>
+      </div>
+      <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Biletomat</span>
+        <p>{{ item.GotMachineName }}</p>
+      </div>
+      <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Aktualny status</span>
+        <p>{{ item.BusStatusName }}</p>
+      </div>
+      <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Ostatnia kontrola</span>
+        <p>{{ item.LastControl }}</p>
+      </div>
+      <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Ostatnia lokalizacja</span>
+        <p>X Y</p>
+      </div>
+    </div>
+    <div class="panelWyswietlAutobus__subtitle">Aktualny stan autobusu</div>
+    <div class="panelWyswietlAutobus__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div class="panelWyswietlAutobus__content__form">
+      <div class="panelWyswietlAutobus__content__form__item"><span class="item">Numer Rejestracyjny</span>
         <input placeholder="Podaj Nr. VIN"/>
       </div>
-      <div class="panelDodajAutobus__content__form__item"><span class="item">Typ Autobusu</span>
+      <div class="panelWyswietlAutobus__content__form__item"><span class="item">Numer VIN</span>
+        <input placeholder="Podaj Nr. VIN"/>
+      </div>
+      <div class="panelWyswietlAutobus__content__form__item"><span class="item">Typ Autobusu</span>
         <select>
           <option value="0">Normalny</option>
           <option value="1">Przegubowy</option>
         </select>
       </div>
-      <div class="panelDodajAutobus__content__form__item"><span class="item">Czy ma Biletomat?</span>
+      <div class="panelWyswietlAutobus__content__form__item"><span class="item">Biletomat</span>
         <select>
           <option value="0">Nie</option>
           <option value="1">Tak</option>
         </select>
       </div>
     </div>
-    <div class="panelDodajAutobus__navigation">
-      <button class="green panelDodajAutobus__navigation__item green">Dodaj Autobus</button><a href="#/bus" class="panelDodajAutobus__navigation__item gray -abort">Anuluj</a>
+    <div class="panelWyswietlAutobus__navigation">
+      <button class="green panelWyswietlAutobus__navigation__item green">Dodaj Autobus</button><a href="#/bus" class="panelWyswietlAutobus__navigation__item gray -abort">Anuluj</a>
     </div>
   </div>
 </div>

@@ -8,8 +8,12 @@
     <div class="panelAutobusy__navigation"><a href="#/bus/add" class="panelAutobusy__navigation__item">Dodaj Autobus</a></div>
     <div class="panelAutobusy__filtrs">
       <div class="panelAutobusy__filtr">
+        <label>Numer Rejestracyjny</label>
+        <input type="text" ng-model="autobusFilter.BusNumber" placeholder="Szukaj Autobusu..."/>
+      </div>
+      <div class="panelAutobusy__filtr">
         <label>Numer VIN</label>
-        <input type="text" ng-model="autobusFilter.RegistrationNumber" placeholder="Szukaj Autobusu..."/>
+        <input type="text" ng-model="autobusFilter.RegistrationNumber" placeholder="VIN Autobusu..."/>
       </div>
       <div class="panelAutobusy__filtr">
         <label>Typ autobusu</label>
@@ -36,24 +40,30 @@
           <option value="1">Tak</option>
         </select>
       </div>
-      <div class="panelAutobusy__table">
-        <table wt-responsive-table="wt-responsive-table" ng-controller="BusController" class="responsive">
+    </div>
+    <div class="panelAutobusy__table">
+      <table wt-responsive-table="wt-responsive-table" ng-controller="BusController" class="responsive">
+        <thead>
           <tr>
+            <th>Numer Rejestracyjny</th>
             <th>Numer VIN</th>
             <th>Typ Autobusu</th>
             <th>Status</th>
             <th>Biletomat</th>
             <th>Zarządzanie</th>
           </tr>
+        </thead>
+        <tbody>
           <tr ng-repeat="autobus in autobusy | filter:autobusFilter">
+            <td>{{ autobus.BusNumber}}</td>
             <td>{{ autobus.RegistrationNumber }}</td>
             <td>{{ autobus.BusTypeName }}</td>
             <td>{{ autobus.BusStatusName }}</td>
             <td>{{ autobus.GotMachineName }}</td>
             <td><a href="#" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-edit"></i></a><a href="#/bus/delete/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-delete -red"></i></a></td>
           </tr>
-        </table>
-      </div>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

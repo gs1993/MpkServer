@@ -9949,6 +9949,7 @@ a.tabnav-extra:hover {
 .panels {
   width: 40%;
   position: relative;
+  height: 100vh;
 }
 
 @media (max-width: 1024px) {
@@ -11316,13 +11317,13 @@ a.tabnav-extra:hover {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .panelAutobusy__filtr {
-  width: 25%;
+  width: 33%;
   padding: 6px;
 }
 
@@ -11392,6 +11393,7 @@ a.tabnav-extra:hover {
 .panelAutobusy__table table {
   background-color: rgba(136, 136, 136, 0.1);
   border-radius: 6px;
+  border-collapse: collapse;
 }
 
 .panelAutobusy__table tr {
@@ -12669,17 +12671,53 @@ a.tabnav-extra:hover {
   font-size: 3em;
 }
 
-.panelWyswietlAutobus {
-  min-width: 700px;
+.panelWyswietlAutobus__title {
+  padding: 0 40px;
+  background-color: #2196F3;
+  height: 40px;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.3em;
+  cursor: default;
+  font-family: Roboto, sans-serif;
 }
 
-@media (max-width: 1024px) {
-  .panelWyswietlAutobus {
-    position: relative !important;
-    width: 100% !important;
-    margin: 55px auto 0;
-    top: 0 !important;
-  }
+.panelWyswietlAutobus__fastTravel {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-family: Roboto, sans-serif;
+  font-size: 0.7em;
+}
+
+.panelWyswietlAutobus__fastTravel span:after {
+  content: '\f054';
+  font-family: FontAwesome;
+  margin: 0 5px;
+  font-size: 0.8em;
+  vertical-align: text-bottom;
+}
+
+.panelWyswietlAutobus__fastTravel span:last-of-type:after {
+  content: '';
+}
+
+.panelWyswietlAutobus__fastTravel span a {
+  color: #222;
+  text-decoration: none;
+}
+
+.panelWyswietlAutobus__fastTravel span a i {
+  margin-right: 3px;
+}
+
+.panelWyswietlAutobus__fastTravel span:hover a {
+  color: #2196F3;
+}
+
+.panelWyswietlAutobus__fastTravel span.-active a {
+  color: #208de6;
+  font-weight: 500;
 }
 
 .panelWyswietlAutobus.-hidden {
@@ -12702,53 +12740,19 @@ a.tabnav-extra:hover {
   }
 }
 
-.panelWyswietlAutobus__title {
-  font-family: Lato, sans-serif;
-  font-weight: 500;
-  font-size: 15px;
-  text-align: center;
-  background: #3c8dbc;
-  color: #fff;
-  padding: 5px;
-  opacity: 0.9;
-}
-
-@media (max-width: 767px) {
-  .panelWyswietlAutobus__title {
-    text-align: center;
-  }
-}
-
 .panelWyswietlAutobus__subtitle {
-  font-family: Lato, sans-serif;
-  font-weight: 300;
-  line-height: 26px;
-  margin-left: 3px;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-align: left;
-  color: #222;
-  font-style: italic;
-}
-
-@media (max-width: 767px) {
-  .panelWyswietlAutobus__subtitle {
-    text-align: center;
-    font-size: 12px;
-    font-style: normal;
-  }
+  font-family: Roboto, sans-serif;
+  color: #22282B;
+  font-size: 1.5em;
+  line-height: 1.6em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: default;
 }
 
 .panelWyswietlAutobus__text {
-  font-family: Lato, sans-serif;
-  font-weight: 700;
-  max-width: 350px;
-  margin: 0 auto;
-  font-size: 16px;
-  line-height: 1.3;
-  letter-spacing: 1.25px;
-  text-align: center;
-  color: #999;
+  color: #88969F;
+  padding: 5px;
+  cursor: default;
 }
 
 .panelWyswietlAutobus__alert {
@@ -12836,17 +12840,6 @@ a.tabnav-extra:hover {
   background: #008d4c;
 }
 
-.panelWyswietlAutobus__navigation__item.red {
-  background: #a60605;
-  -webkit-order: 3;
-      -ms-flex-order: 3;
-          order: 3;
-}
-
-.panelWyswietlAutobus__navigation__item.red:hover {
-  background: #b00a11;
-}
-
 .panelWyswietlAutobus__content {
   padding-top: 15px;
 }
@@ -12860,6 +12853,7 @@ a.tabnav-extra:hover {
   text-transform: uppercase;
   color: #222;
   padding-bottom: 15px;
+  cursor: default;
 }
 
 @media (max-width: 767px) {
@@ -12897,45 +12891,30 @@ a.tabnav-extra:hover {
   margin-right: 2px;
 }
 
-.panelWyswietlAutobus__content__form__item input {
-  padding: 0 10px;
-  height: 40px;
-  box-shadow: none !important;
-  outline: none;
-  font-weight: 400;
-  max-width: 300px;
-  width: 100%;
+.panelWyswietlAutobus__content__form__item .itemHeader {
+  font-weight: 500;
   display: block;
-  border-radius: 0;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 2px solid #D2E3E9;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: default;
+}
+
+.panelWyswietlAutobus__content__form__item p {
+  margin: 0;
+  padding: 10px 5px;
   font-size: 16px;
+  cursor: default;
 }
 
-.panelWyswietlAutobus__content__form__item input:focus {
-  border-bottom: 2px solid #4AAED4;
-}
-
-.panelWyswietlAutobus__content__form__item select {
-  height: 40px;
-  box-shadow: none !important;
-  outline: none;
-  font-weight: 400;
-  max-width: 300px;
+.panelWyswietlAutobus__content__form input, .panelWyswietlAutobus__content__form select {
   width: 100%;
-  display: block;
-  border-radius: 0;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 2px solid #D2E3E9;
-  font-size: 16px;
-}
-
-.panelWyswietlAutobus__content__form__item select:focus {
-  border-bottom: 2px solid #4AAED4;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.6);
+  outline: none;
+  padding: 8px;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .panelWyswietlAutobus__close {
@@ -12952,7 +12931,7 @@ a.tabnav-extra:hover {
   opacity: 1;
 }
 
-.panelWyswietlAutobus__close .panelWyswietlAutobus__icon {
+.panelWyswietlAutobus__close .panelDodajAutobus__icon {
   font-size: 1.8em !important;
 }
 

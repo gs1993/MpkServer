@@ -115,10 +115,11 @@
     app.controller('BusController', function($scope) {
 
         $scope.autobusy = [
-            { Id: 0, RegistrationNumber: '123456', BusStatus: 0, GotMachine: false, BusType: 1, DataTime: '1'},
-            { Id: 1, RegistrationNumber: '234567', BusStatus: 1, GotMachine: true, BusType: 0, DataTime: '1'},
-            { Id: 2, RegistrationNumber: '434354', BusStatus: 2, GotMachine: true, BusType: 1, DataTime: '1'},
-            { Id: 3, RegistrationNumber: '1354543', BusStatus: 3, GotMachine: true, BusType: 0, DataTime: '1'}
+            { Id: 0, RegistrationNumber: 'NO123456', BusNumber:'123213', BusStatus: 0, GotMachine: false, BusType: 1, LastControl: '1'},
+            { Id: 1, RegistrationNumber: 'NO234567', BusNumber:'1231123', BusStatus: 1, GotMachine: true, BusType: 0, LastControl: '1'},
+            { Id: 2, RegistrationNumber: 'NKE434354', BusNumber:'1234243',BusStatus: 2, GotMachine: true, BusType: 1, LastControl: '1'},
+            { Id: 2, RegistrationNumber: 'NMR434354', BusNumber:'14232234',BusStatus: 2, GotMachine: true, BusType: 1, LastControl: '1'},
+            { Id: 3, RegistrationNumber: 'NO1354543', BusNumber:'1234342',BusStatus: 3, GotMachine: true, BusType: 0, LastControl: '1'}
         ];
         angular.forEach($scope.autobusy, function (autobus) {
             if(autobus.GotMachine == true)
@@ -165,12 +166,47 @@
     
     app.controller('ShowBusController', ['$scope', '$routeParams', function($scope, $routeParams) {
 
-        var currentId = $routeParams.id;
+        var WybraneId = $routeParams.id;
 
-        $scope.TestID = currentId;
+        //WYSYLANY ID
+        $scope.AutobusID = WybraneId;
 
-        $scope.autobus = [{ Id: 0, RegistrationNumber: '123456', BusStatus: 0, GotMachine: false, BusType: 1, DataTime: '1'}];
 
+        //ZWROTKA
+        $scope.autobus = [{ Id: 0, RegistrationNumber: 'NO123456', BusNumber:'1231123', BusStatus: 0, GotMachine: false, BusType: 1, LastControl: '1'}];
+        angular.forEach($scope.autobus, function (item) {
+            if(item.GotMachine == true)
+            {
+                item.GotMachineName = "Tak";
+                item.GotMachineValue = 1
+            }
+            else
+            {
+                item.GotMachineName = "Nie";
+                item.GotMachineValue = 0
+            }
+
+            if(item.BusType == 0)
+            {
+                item.BusTypeName = "Normalny"
+            }
+            else
+            {
+                item.BusTypeName = "Przegubowy"
+            }
+            if(item.BusStatus == 0)
+            {
+                item.BusStatusName = "Nieaktywny"
+            }
+            else if(item.BusStatus == 1)
+            {
+                item.BusStatusName = "W zajezdni"
+            }
+            else
+            {
+                item.BusStatusName = "W trasie"
+            }
+        });
     }]);
 
     /* Przystanki Controlery
