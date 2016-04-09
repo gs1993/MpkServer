@@ -2,16 +2,16 @@
   .panelAutobusy__title Zarządzanie autobusami
   .panelAutobusy__fastTravel
     span
-      a(href="/")
+      a(href="/#/")
         i.fa.fa-home
         | Home
     span.-active
-      a(href="/bus") Zarządzanie Autobusami
+      a(href="/#/bus") Zarządzanie Autobusami
   .panelAutobusy__wrapper
     .panelAutobusy__subtitle Flota Autobusów
     .panelAutobusy__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelAutobusy__navigation
-      a(href="/bus/add").panelAutobusy__navigation__item Dodaj Autobus
+      a(href="/#/bus/add").panelAutobusy__navigation__item Dodaj Autobus
     .panelAutobusy__filtrs
       .panelAutobusy__filtr
         label Numer Rejestracyjny
@@ -56,11 +56,11 @@
             td {{ autobus.BusStatusName }}
             td {{ autobus.GotMachineName }}
             td
-              a(href="/").navigation
+              a(href="/#/").navigation
                 i.ionicons.ion-ios-location
-              a(href="/bus/show/{{ autobus.Id }}").navigation
+              a(href="/#/bus/show/{{ autobus.Id }}").navigation
                 i.ionicons.ion-settings
-              a(href="/bus/delete/{{ autobus.Id }}").navigation
+              a(href="/#/bus/delete/{{ autobus.Id }}").navigation
                 i.ionicons.ion-android-cancel.-red
           tr(ng-hide="filtrowaneAutobusy.length")
             td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
@@ -84,11 +84,11 @@
             td {{ autobus.BusStatusName }}
             td {{ autobus.GotMachineName }}
             td
-              a(href="/").navigation
+              a(href="/#/").navigation
                 i.ionicons.ion-ios-location
-              a(href="/bus/show/{{ autobus.Id }}").navigation
+              a(href="/#/bus/show/{{ autobus.Id }}").navigation
                 i.ionicons.ion-settings
-              a(href="/bus/restore/{{ autobus.Id }}").navigation
+              a(href="/#/bus/restore/{{ autobus.Id }}").navigation
                 i.ionicons.ion-android-add-circle.-green
           tr(ng-hide="filtrowaneAutobusyNieaktywne.length")
             td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.

@@ -1,49 +1,58 @@
 
-<div ng-controller="ShowBusController" class="panelWyswietlPrzystanek">
-  <div class="panelWyswietlPrzystanek__title">Szczegóły Autobusu</div>
-  <div class="panelWyswietlPrzystanek__fastTravel"><span><a href="/"><i class="fa fa-home"></i>Home</a></span><span><a href="/bus">Zarządzanie Autobusami</a></span><span class="-active"><a href="/bus/show/{{ AutobusID }}">Szczegóły Autobusu</a></span></div>
-  <div ng-repeat="item in autobus as AktualnyAutobus" class="panelWyswietlPrzystanek__wrapper">
-    <div class="panelWyswietlPrzystanek__subtitle">Aktualny stan autobusu o numerze {{ item.RegistrationNumber }}</div>
+<div ng-controller="ShowBusstopController" class="panelWyswietlPrzystanek">
+  <div class="panelWyswietlPrzystanek__title">Szczegóły Przystanku</div>
+  <div class="panelWyswietlPrzystanek__fastTravel"><span><a href="/"><i class="fa fa-home"></i>Home</a></span><span><a href="/busstop">Zarządzanie Przystankiem</a></span><span class="-active"><a href="/busstop/show/{{ PrzystanekID }}">Szczegóły Przystaku</a></span></div>
+  <div ng-repeat="item in przystanek as AktualnyPrzystanek" class="panelWyswietlPrzystanek__wrapper">
+    <div class="panelWyswietlPrzystanek__subtitle">Aktualne dane przystanku {{ item.Name }}</div>
     <div class="panelWyswietlPrzystanek__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
     <div class="panelWyswietlPrzystanek__content__form">
-      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Numer Rejestracyjny</span>
-        <p>{{ item.RegistrationNumber }}</p>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Nazwa przystanku</span>
+        <p>{{ item.Name }}</p>
       </div>
-      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Numer VIN</span>
-        <p>{{ item.BusNumber }}</p>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Ulica</span>
+        <p>{{ item.LocalizationString }}</p>
       </div>
-      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Typ Autobusu</span>
-        <p>{{ item.BusTypeName }}</p>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Lokalizacja</span>
+        <p>{{ item.Lat }}, {{ item.Lng }}</p>
+      </div>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Typ Przystanku</span>
+        <p>{{ item.BusStopTypeName }}</p>
       </div>
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Biletomat</span>
         <p>{{ item.GotMachineName }}</p>
       </div>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Kiosk</span>
+        <p>{{ item.GotKioskName }}</p>
+      </div>
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Aktualny status</span>
-        <p>{{ item.BusStatusName }}</p>
+        <p>{{ item.BusStopStatusName }}</p>
       </div>
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Ostatnia kontrola</span>
         <p>{{ item.LastControl }}</p>
       </div>
-      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Ostatnia lokalizacja</span>
-        <p>X Y</p>
-      </div>
     </div>
-    <div class="panelWyswietlPrzystanek__subtitle">Edycja autobusu</div>
+    <div class="panelWyswietlPrzystanek__subtitle">Edycja przystanku</div>
     <div class="panelWyswietlPrzystanek__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
     <form>
       <div class="panelWyswietlPrzystanek__content__form">
-        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Numer Rejestracyjny</span>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Nazwa przystanku</span>
           <input placeholder="Numer Rejestracyjny"/>
         </div>
-        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Numer VIN</span>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Ulica przystanku</span>
           <input placeholder="Numer VIN"/>
         </div>
-        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Typ Autobusu</span>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Typ Przystanku</span>
           <select>
             <option value="">Typ Autobusu</option>
             <option value="0">Normalny</option>
-            <option value="1">Przegubowy</option>
+            <option value="1">Zabudowany</option>
           </select>
+        </div>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Koordynat Lat</span>
+          <input placeholder="Lat"/>
+        </div>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Koordynat Lng</span>
+          <input placeholder="Lng"/>
         </div>
         <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Biletomat</span>
           <select>
@@ -52,9 +61,16 @@
             <option value="1">Tak</option>
           </select>
         </div>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Kiosk</span>
+          <select>
+            <option value="">Kiosk</option>
+            <option value="0">Nie</option>
+            <option value="1">Tak</option>
+          </select>
+        </div>
       </div>
       <div class="panelWyswietlPrzystanek__navigation">
-        <button class="green panelWyswietlPrzystanek__navigation__item green">Aktualizuj Autobus</button><a href="/bus/delete/{{ AutobusID }}" ng-hide="item.BusStatus == 0" class="panelWyswietlPrzystanek__navigation__item red">Dezaktywuj</a><a href="/bus/restore/{{ AutobusID }}" ng-show="item.BusStatus == 0" class="panelWyswietlPrzystanek__navigation__item greenDark">Aktywuj</a><a href="/bus" class="panelWyswietlPrzystanek__navigation__item gray -abort">Anuluj</a>
+        <button class="green panelWyswietlPrzystanek__navigation__item green">Aktualizuj Przystanek</button><a href="/#/busstop/delete/{{ PrzystanekID }}" ng-hide="item.BusStopStatus == 0" class="panelWyswietlPrzystanek__navigation__item red">Dezaktywuj</a><a href="/#/busstop/restore/{{ PrzystanekID }}" ng-show="item.BusStopStatus == 0" class="panelWyswietlPrzystanek__navigation__item greenDark">Aktywuj</a><a href="/#/busstop" class="panelWyswietlPrzystanek__navigation__item gray -abort">Anuluj</a>
       </div>
     </form>
   </div>

@@ -1,64 +1,79 @@
-.panelWyswietlPrzystanek(ng-controller="ShowBusController")
-  .panelWyswietlPrzystanek__title Szczegóły Autobusu
+.panelWyswietlPrzystanek(ng-controller="ShowBusstopController")
+  .panelWyswietlPrzystanek__title Szczegóły Przystanku
   .panelWyswietlPrzystanek__fastTravel
     span
       a(href="/")
         i.fa.fa-home
         | Home
     span
-      a(href="/bus") Zarządzanie Autobusami
+      a(href="/busstop") Zarządzanie Przystankiem
     span.-active
-      a(href="/bus/show/{{ AutobusID }}") Szczegóły Autobusu
-  .panelWyswietlPrzystanek__wrapper(ng-repeat="item in autobus as AktualnyAutobus")
-    .panelWyswietlPrzystanek__subtitle Aktualny stan autobusu o numerze {{ item.RegistrationNumber }}
+      a(href="/busstop/show/{{ PrzystanekID }}") Szczegóły Przystaku
+  .panelWyswietlPrzystanek__wrapper(ng-repeat="item in przystanek as AktualnyPrzystanek")
+    .panelWyswietlPrzystanek__subtitle Aktualne dane przystanku {{ item.Name }}
     .panelWyswietlPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelWyswietlPrzystanek__content__form
       .panelWyswietlPrzystanek__content__form__item
-        span.itemHeader Numer Rejestracyjny
-        p {{ item.RegistrationNumber }}
+        span.itemHeader Nazwa przystanku
+        p {{ item.Name }}
       .panelWyswietlPrzystanek__content__form__item
-        span.itemHeader Numer VIN
-        p {{ item.BusNumber }}
+        span.itemHeader Ulica
+        p {{ item.LocalizationString }}
       .panelWyswietlPrzystanek__content__form__item
-        span.itemHeader Typ Autobusu
-        p {{ item.BusTypeName }}
+        span.itemHeader Lokalizacja
+        p {{ item.Lat }}, {{ item.Lng }}
+      .panelWyswietlPrzystanek__content__form__item
+        span.itemHeader Typ Przystanku
+        p {{ item.BusStopTypeName }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Biletomat
         p {{ item.GotMachineName }}
       .panelWyswietlPrzystanek__content__form__item
+        span.itemHeader Kiosk
+        p {{ item.GotKioskName }}
+      .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Aktualny status
-        p {{ item.BusStatusName }}
+        p {{ item.BusStopStatusName }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Ostatnia kontrola
         p {{ item.LastControl }}
-      .panelWyswietlPrzystanek__content__form__item
-        span.itemHeader Ostatnia lokalizacja
-        p X Y
-    .panelWyswietlPrzystanek__subtitle Edycja autobusu
+    .panelWyswietlPrzystanek__subtitle Edycja przystanku
     .panelWyswietlPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     form()
       .panelWyswietlPrzystanek__content__form
           .panelWyswietlPrzystanek__content__form__item
-            span.item Numer Rejestracyjny
+            span.item Nazwa przystanku
             input(placeholder="Numer Rejestracyjny")
           .panelWyswietlPrzystanek__content__form__item
-            span.item Numer VIN
+            span.item Ulica przystanku
             input(placeholder="Numer VIN")
           .panelWyswietlPrzystanek__content__form__item
-            span.item Typ Autobusu
+            span.item Typ Przystanku
             select
               option(value='') Typ Autobusu
               option(value=0) Normalny
-              option(value=1) Przegubowy
+              option(value=1) Zabudowany
+          .panelWyswietlPrzystanek__content__form__item
+            span.item Koordynat Lat
+            input(placeholder="Lat")
+          .panelWyswietlPrzystanek__content__form__item
+            span.item Koordynat Lng
+            input(placeholder="Lng")
           .panelWyswietlPrzystanek__content__form__item
             span.item Biletomat
             select
               option(value='') Biletomat
               option(value=0) Nie
               option(value=1) Tak
+          .panelWyswietlPrzystanek__content__form__item
+            span.item Kiosk
+            select
+              option(value='') Kiosk
+              option(value=0) Nie
+              option(value=1) Tak
       .panelWyswietlPrzystanek__navigation
-        button.green.panelWyswietlPrzystanek__navigation__item.green Aktualizuj Autobus
-        a(href="/bus/delete/{{ AutobusID }}" ng-hide="item.BusStatus == 0").panelWyswietlPrzystanek__navigation__item.red Dezaktywuj
-        a(href="/bus/restore/{{ AutobusID }}" ng-show="item.BusStatus == 0").panelWyswietlPrzystanek__navigation__item.greenDark Aktywuj
-        a(href="/bus").panelWyswietlPrzystanek__navigation__item.gray.-abort Anuluj
+        button.green.panelWyswietlPrzystanek__navigation__item.green Aktualizuj Przystanek
+        a(href="/#/busstop/delete/{{ PrzystanekID }}" ng-hide="item.BusStopStatus == 0").panelWyswietlPrzystanek__navigation__item.red Dezaktywuj
+        a(href="/#/busstop/restore/{{ PrzystanekID }}" ng-show="item.BusStopStatus == 0").panelWyswietlPrzystanek__navigation__item.greenDark Aktywuj
+        a(href="/#/busstop").panelWyswietlPrzystanek__navigation__item.gray.-abort Anuluj
 

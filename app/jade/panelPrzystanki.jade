@@ -2,11 +2,11 @@
   .panelPrzystanki__title Zarządzanie przystankami
   .panelPrzystanki__fastTravel
     span
-      a(href="/")
+      a(href="/#/")
         i.fa.fa-home
         | Home
     span.-active
-      a(href="/busstop") Zarządzanie Przystankami
+      a(href="/#/busstop") Zarządzanie Przystankami
   .panelPrzystanki__wrapper
     .panelPrzystanki__subtitle Przystanki floty
     .panelPrzystanki__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
@@ -53,11 +53,11 @@
             td {{przystanek.GotMachineName}}
             td {{przystanek.GotKioskName}}
             td
-              a(href="/").navigation
+              a(href="/#/").navigation
                 i.ionicons.ion-ios-location
-              a(href="/busstop/show/{{ przystanek.Id }}").navigation
+              a(href="/#/busstop/show/{{ przystanek.Id }}").navigation
                 i.ionicons.ion-settings
-              a(href="/busstop/delete/{{ przystanek.Id }}").navigation
+              a(href="/#/busstop/delete/{{ przystanek.Id }}").navigation
                 i.ionicons.ion-android-cancel.-red
           tr(ng-hide="filtrowanePrzystanku.length")
             td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
@@ -79,12 +79,12 @@
           td {{przystanek.GotMachineName}}
           td {{przystanek.GotKioskName}}
           td
-            a(href="/").navigation
+            a(href="/#/").navigation
               i.ionicons.ion-ios-location
-            a(href="/busstop/show/{{ przystanek.Id }}").navigation
+            a(href="/#/busstop/show/{{ przystanek.Id }}").navigation
               i.ionicons.ion-settings
-            a(href="/busstop/delete/{{ przystanek.Id }}").navigation
-              i.ionicons.ion-android-cancel.-red
+            a(href="/#/busstop/restore/{{ przystanek.Id }}").navigation
+              i.ionicons.ion-android-add-circle.-green
         tr(ng-hide="filtrowanePrzystankuNieaktywe.length")
           td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
 

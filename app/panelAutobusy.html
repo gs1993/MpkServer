@@ -1,11 +1,11 @@
 
 <div class="panelAutobusy">
   <div class="panelAutobusy__title">Zarządzanie autobusami</div>
-  <div class="panelAutobusy__fastTravel"><span><a href="/"><i class="fa fa-home"></i>Home</a></span><span class="-active"><a href="/bus">Zarządzanie Autobusami</a></span></div>
+  <div class="panelAutobusy__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span class="-active"><a href="/#/bus">Zarządzanie Autobusami</a></span></div>
   <div class="panelAutobusy__wrapper">
     <div class="panelAutobusy__subtitle">Flota Autobusów</div>
     <div class="panelAutobusy__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <div class="panelAutobusy__navigation"><a href="/bus/add" class="panelAutobusy__navigation__item">Dodaj Autobus</a></div>
+    <div class="panelAutobusy__navigation"><a href="/#/bus/add" class="panelAutobusy__navigation__item">Dodaj Autobus</a></div>
     <div class="panelAutobusy__filtrs">
       <div class="panelAutobusy__filtr">
         <label>Numer Rejestracyjny</label>
@@ -60,7 +60,7 @@
             <td>{{ autobus.BusTypeName }}</td>
             <td>{{ autobus.BusStatusName }}</td>
             <td>{{ autobus.GotMachineName }}</td>
-            <td><a href="/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/bus/delete/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
+            <td><a href="/#/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/bus/delete/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
           </tr>
           <tr ng-hide="filtrowaneAutobusy.length">
             <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
@@ -89,7 +89,7 @@
             <td>{{ autobus.BusTypeName }}</td>
             <td>{{ autobus.BusStatusName }}</td>
             <td>{{ autobus.GotMachineName }}</td>
-            <td><a href="/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/bus/restore/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a></td>
+            <td><a href="/#/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/bus/restore/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a></td>
           </tr>
           <tr ng-hide="filtrowaneAutobusyNieaktywne.length">
             <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>

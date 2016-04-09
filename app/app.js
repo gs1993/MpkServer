@@ -78,9 +78,6 @@
             otherwise({
                 redirectTo: '/home'
             });
-
-            $locationProvider
-                .html5Mode(true);
         }]);
 
     /* Standardowe Controlery
@@ -277,11 +274,56 @@
     });
 
 
-    app.controller('ShowBusstopController', function($scope, ID) {
+    app.controller('ShowBusstopController', ['$scope', '$routeParams', function($scope, $routeParams) {
 
-        $scope.message = 'This is Add new order screen';
+        var WybraneId = $routeParams.id;
 
-    });
+        //WYSYLANY ID
+        $scope.PrzystanekID = WybraneId;
+
+
+        //ZWROTKA
+        $scope.przystanek = [{ Id: 0, Name: 'Słoneczna', Lat: 12.58, Lng: 50.23, LocalizationString: "ul. Warszawska", GotMachine: false, GotKiosk: false, BusStopType: 0, BusStopStatus: 0, LastControl: '1'}];
+        angular.forEach($scope.przystanek, function (item) {
+            if(item.GotMachine == true)
+            {
+                item.GotMachineName = "Tak";
+                item.GotMachineValue = 1
+            }
+            else
+            {
+                item.GotMachineName = "Nie";
+                item.GotMachineValue = 0
+            }
+            if(item.GotKiosk == true)
+            {
+                item.GotKioskName = "Tak";
+                item.GotKioskValue = 1
+            }
+            else
+            {
+                item.GotKioskName = "Nie";
+                item.GotKioskValue = 0
+            }
+
+            if(item.BusStopType == 0)
+            {
+                item.BusStopTypeName = "Normalny"
+            }
+            else
+            {
+                item.BusStopTypeName = "Zabudowany"
+            }
+            if(item.BusStopStatus == 0)
+            {
+                item.BusStopStatusName = "Nieaktywny"
+            }
+            else
+            {
+                item.BusStopStatusName = "W trasie"
+            }
+        });
+    }]);
 
     /* Użytkownicy Controlery
      *==========================================================================*/
