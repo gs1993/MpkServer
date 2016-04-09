@@ -1,33 +1,29 @@
 
-<div class="panelDodajUser panel">
+<div class="panelDodajUser">
   <div class="panelDodajUser__title">Dodaj Użytkownika</div>
+  <div class="panelDodajUser__fastTravel"><span><a href="#/"><i class="fa fa-home"></i>Home</a></span><span><a href="#/user">Zarządzanie Użytkownikami</a></span><span class="-active"><a href="#/user/add">Dodaj Użytkownika</a></span></div>
   <div class="panelDodajUser__wrapper">
-    <div class="panelDodajUser__content">
-      <div class="panelDodajUser__content__Title">Dane Użytkownika</div>
-      <div class="panelDodajUser__content__form">
-        <div class="panelDodajUser__content__form__item"><span class="item">E-mail</span>
-          <input placeholder="Podaj adres e-mail"/>
-        </div>
-        <div class="panelDodajUser__content__form__item"><span class="item">Hasło</span>
-          <input type="password" placeholder="Podaj hasło"/>
-        </div>
-        <div class="panelDodajUser__content__form__item"><span class="item">Ranga</span>
-          <select>
-            <option value="0">Użytkownik</option>
-            <option value="1">Kontroler</option>
-            <option value="1">Administrator</option>
-          </select>
-        </div>
-        <div class="panelDodajUser__content__form__item"><span class="item">Status</span>
-          <select>
-            <option value="0">Nieaktywny</option>
-            <option value="1">Aktywny</option>
-          </select>
-        </div>
+    <div class="panelDodajUser__subtitle">Dodawanie użytkownika</div>
+    <div class="panelDodajUser__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div class="panelDodajUser__content__form">
+      <div class="panelDodajUser__content__form__item"><span class="item">Email</span>
+        <input placeholder="Podaj email użytkownika"/>
+      </div>
+      <div class="panelDodajUser__content__form__item"><span class="item">Ranga użytkownika</span>
+        <select>
+          <option value="0">Kontroler</option>
+          <option value="1">Administrator</option>
+        </select>
+      </div>
+      <div class="panelDodajUser__content__form__item"><span class="item">Status</span>
+        <select>
+          <option value="0">Nieaktywny</option>
+          <option value="1">Aktywny</option>
+        </select>
       </div>
     </div>
     <div class="panelDodajUser__navigation">
-      <button class="panelDodajUser__navigation__item green">Dodaj Użytkownika</button><a href="#/user" class="panelDodajUser__navigation__item -abort">Anuluj</a>
+      <button class="green panelDodajUser__navigation__item green">Dodaj Użytkownika</button><a href="#/user" class="panelDodajUser__navigation__item gray -abort">Anuluj</a>
     </div>
-  </div><a href="#/"><span class="panelDodajUser__close"><span class="panelDodajUser_icon fa fa-times"></span></span></a>
+  </div>
 </div>

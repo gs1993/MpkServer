@@ -1,43 +1,55 @@
-.panelUsers.panel
-  .panelUsers__title Panel Zarządzania Użytkownikami
+.panelUsers
+  .panelUsers__title Zarządzanie Użytkownikami
+  .panelUsers__fastTravel
+    span
+      a(href="#/")
+        i.fa.fa-home
+        | Home
+    span.-active
+      a(href="#/user") Zarządzanie Użytkownikami
   .panelUsers__wrapper
-    .panelUsers__content
-      .panelUsers__content__Title Lista Użytkowników
-      .panelUsers__content__Filtr
-        .panelUsers__content__Filtr__item
-          input(placeholder="Szukaj użytkownika...")
-        .panelUsers__content__Filtr__item
-          select
-            option(value="")  Status
-            option(value=0) Nieaktywny
-            option(value=1) Aktywny
-        .panelUsers__content__Filtr__item
-          select
-            option(value="") Ranga
-            option(value=0) Użytkownik
-            option(value=1) Kontroler
-            option(value=1) Administrator
-      .panelUsers__contentList
-
-        .panelList
-          .panelList__header
-            .panelList__headeritem.-long Email
-            .panelList__headeritem.-short Ranga
-            .panelList__headeritem.-short Status
-            .panelList__headeritem.-short Szczegóły
-          .panelUsers__list.panelList__content#GetUserList
-            .panelList__item
-              .panelList__itemCell Przykładowy@dev.com
-              .panelList__itemCell Kontroler
-              .panelList__itemCell Aktywny
-              a(href="#/user/show").panelList__itemCell Zobacz
-            .panelList__item
-              .panelList__itemCell Przykładowy@dev.com
-              .panelList__itemCell Kontroler
-              .panelList__itemCell Aktywny
-              a(href="#/user/show").panelList__itemCell Zobacz
+    .panelUsers__subtitle Użytkownicy Systemu
+    .panelUsers__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelUsers__navigation
       a(href="#/user/add").panelUsers__navigation__item Dodaj Użytkownika
-  a(href="#/")
-    span.panelUsers__close
-      span.panelUsers__icon.fa.fa-times
+    .panelUsers__filtrs
+      .panelUsers__filtr
+        label Email
+        input(placeholder="Szukaj Użytkownika...")
+      .panelUsers__filtr
+        label Ranga
+        select
+          option(value="") Ranga
+          option(value=0) Kontroler
+          option(value=1) Administrator
+      .panelUsers__filtr
+        label Status
+        select
+          option(value="") Status
+          option(value=0) Nieaktywny
+          option(value=1) Aktywny
+      .panelUsers__table
+        table.responsive(wt-responsive-table)
+          tr
+            th Email
+            th Ranga
+            th Status
+            th Zarządzanie
+          tr
+            td 123456789
+            td Normalny
+            td Aktywny
+            td
+              a(href="#").navigation
+                i.ionicons.ion-edit
+              a(href="#").navigation
+                i.ionicons.ion-android-delete.-red
+
+          tr
+            td ..
+            td ..
+            td ..
+            td ..
+
+
+

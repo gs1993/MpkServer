@@ -1,52 +1,54 @@
 
-<div class="panelUsers panel">
-  <div class="panelUsers__title">Panel Zarządzania Użytkownikami</div>
+<div class="panelUsers">
+  <div class="panelUsers__title">Zarządzanie Użytkownikami</div>
+  <div class="panelUsers__fastTravel"><span><a href="#/"><i class="fa fa-home"></i>Home</a></span><span class="-active"><a href="#/user">Zarządzanie Użytkownikami</a></span></div>
   <div class="panelUsers__wrapper">
-    <div class="panelUsers__content">
-      <div class="panelUsers__content__Title">Lista Użytkowników</div>
-      <div class="panelUsers__content__Filtr">
-        <div class="panelUsers__content__Filtr__item">
-          <input placeholder="Szukaj użytkownika..."/>
-        </div>
-        <div class="panelUsers__content__Filtr__item">
-          <select>
-            <option value=""> Status</option>
-            <option value="0">Nieaktywny</option>
-            <option value="1">Aktywny</option>
-          </select>
-        </div>
-        <div class="panelUsers__content__Filtr__item">
-          <select>
-            <option value="">Ranga</option>
-            <option value="0">Użytkownik</option>
-            <option value="1">Kontroler</option>
-            <option value="1">Administrator</option>
-          </select>
-        </div>
+    <div class="panelUsers__subtitle">Użytkownicy Systemu</div>
+    <div class="panelUsers__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div class="panelUsers__navigation"><a href="#/user/add" class="panelUsers__navigation__item">Dodaj Użytkownika</a></div>
+    <div class="panelUsers__filtrs">
+      <div class="panelUsers__filtr">
+        <label>Email</label>
+        <input placeholder="Szukaj Użytkownika..."/>
       </div>
-      <div class="panelUsers__contentList">
-        <div class="panelList">
-          <div class="panelList__header">
-            <div class="panelList__headeritem -long">Email</div>
-            <div class="panelList__headeritem -short">Ranga</div>
-            <div class="panelList__headeritem -short">Status</div>
-            <div class="panelList__headeritem -short">Szczegóły</div>
-          </div>
-          <div id="GetUserList" class="panelUsers__list panelList__content">
-            <div class="panelList__item">
-              <div class="panelList__itemCell">Przykładowy@dev.com</div>
-              <div class="panelList__itemCell">Kontroler</div>
-              <div class="panelList__itemCell">Aktywny</div><a href="#/user/show" class="panelList__itemCell">Zobacz</a>
-            </div>
-            <div class="panelList__item">
-              <div class="panelList__itemCell">Przykładowy@dev.com</div>
-              <div class="panelList__itemCell">Kontroler</div>
-              <div class="panelList__itemCell">Aktywny</div><a href="#/user/show" class="panelList__itemCell">Zobacz</a>
-            </div>
-          </div>
-        </div>
+      <div class="panelUsers__filtr">
+        <label>Ranga</label>
+        <select>
+          <option value="">Ranga</option>
+          <option value="0">Kontroler</option>
+          <option value="1">Administrator</option>
+        </select>
+      </div>
+      <div class="panelUsers__filtr">
+        <label>Status</label>
+        <select>
+          <option value="">Status</option>
+          <option value="0">Nieaktywny</option>
+          <option value="1">Aktywny</option>
+        </select>
+      </div>
+      <div class="panelUsers__table">
+        <table wt-responsive-table="wt-responsive-table" class="responsive">
+          <tr>
+            <th>Email</th>
+            <th>Ranga</th>
+            <th>Status</th>
+            <th>Zarządzanie</th>
+          </tr>
+          <tr>
+            <td>123456789</td>
+            <td>Normalny</td>
+            <td>Aktywny</td>
+            <td><a href="#" class="navigation"><i class="ionicons ion-edit"></i></a><a href="#" class="navigation"><i class="ionicons ion-android-delete -red"></i></a></td>
+          </tr>
+          <tr>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+          </tr>
+        </table>
       </div>
     </div>
-    <div class="panelUsers__navigation"><a href="#/user/add" class="panelUsers__navigation__item">Dodaj Użytkownika</a></div>
-  </div><a href="#/"><span class="panelUsers__close"><span class="panelUsers__icon fa fa-times"></span></span></a>
+  </div>
 </div>

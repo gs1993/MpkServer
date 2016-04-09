@@ -1,20 +1,26 @@
-.panelDodajUser.panel
+.panelDodajUser
   .panelDodajUser__title Dodaj Użytkownika
+  .panelDodajUser__fastTravel
+    span
+      a(href="#/")
+        i.fa.fa-home
+        | Home
+    span
+      a(href="#/user") Zarządzanie Użytkownikami
+    span.-active
+      a(href="#/user/add") Dodaj Użytkownika
   .panelDodajUser__wrapper
-    .panelDodajUser__content
-      .panelDodajUser__content__Title Dane Użytkownika
-      .panelDodajUser__content__form
+    .panelDodajUser__subtitle Dodawanie użytkownika
+    .panelDodajUser__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+
+    .panelDodajUser__content__form
         .panelDodajUser__content__form__item
-          span.item E-mail
-          input(placeholder="Podaj adres e-mail")
+          span.item Email
+          input(placeholder="Podaj email użytkownika")
         .panelDodajUser__content__form__item
-          span.item Hasło
-          input(type='password' placeholder="Podaj hasło")
-        .panelDodajUser__content__form__item
-          span.item Ranga
+          span.item Ranga użytkownika
           select
-            option(value=0) Użytkownik
-            option(value=1) Kontroler
+            option(value=0) Kontroler
             option(value=1) Administrator
         .panelDodajUser__content__form__item
           span.item Status
@@ -22,8 +28,6 @@
             option(value=0) Nieaktywny
             option(value=1) Aktywny
     .panelDodajUser__navigation
-      button.panelDodajUser__navigation__item.green Dodaj Użytkownika
-      a(href="#/user").panelDodajUser__navigation__item.-abort Anuluj
-  a(href="#/")
-    span.panelDodajUser__close
-      span.panelDodajUser_icon.fa.fa-times
+      button.green.panelDodajUser__navigation__item.green Dodaj Użytkownika
+      a(href="#/user").panelDodajUser__navigation__item.gray.-abort Anuluj
+

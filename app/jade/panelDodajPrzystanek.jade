@@ -1,15 +1,31 @@
-.panelDodajPrzystanek.panel
+.panelDodajPrzystanek
   .panelDodajPrzystanek__title Dodaj Przystanek
+  .panelDodajPrzystanek__fastTravel
+    span
+      a(href="#/")
+        i.fa.fa-home
+        | Home
+    span
+      a(href="#/busstop") Zarządzanie Autobusami
+    span.-active
+      a(href="#/busstop/add") Dodaj Przystanek
   .panelDodajPrzystanek__wrapper
-    .panelDodajPrzystanek__content
-      .panelDodajPrzystanek__content__Title Dane Przystanku
-      .panelDodajPrzystanek__content__form
+    .panelDodajPrzystanek__subtitle Dodawanie przystankow floty
+    .panelDodajPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+
+    .panelDodajPrzystanek__content__form
         .panelDodajPrzystanek__content__form__item
           span.item Nazwa przystanku
-          input(placeholder="Podaj nazwę przystanku")
+          input(placeholder="Podaj nazwe przystanku")
         .panelDodajPrzystanek__content__form__item
           span.item Lokalizacja
-          input(placeholder="Podaj lokalizackje")
+          input(placeholder="Podaj ulice")
+        .panelDodajPrzystanek__content__form__item
+          span.item Współrzędne X
+          input(placeholder="Podaj koordynat X")
+        .panelDodajPrzystanek__content__form__item
+          span.item Współrzędne Y
+          input(placeholder="Podaj koordynat Y")
         .panelDodajPrzystanek__content__form__item
           span.item Czy ma biletomat?
           select
@@ -20,10 +36,7 @@
           select
             option(value=0) Nie
             option(value=1) Tak
-
     .panelDodajPrzystanek__navigation
-      button.panelDodajPrzystanek__navigation__item.green Dodaj Autobus
+      button.green.panelDodajPrzystanek__navigation__item.green Dodaj Autobus
       a(href="#/busstop").panelDodajPrzystanek__navigation__item.gray.-abort Anuluj
-  a(href="#/")
-    span.panelDodajPrzystanek__close
-        span.panelDodajPrzystanek__icon.fa.fa-times
+
