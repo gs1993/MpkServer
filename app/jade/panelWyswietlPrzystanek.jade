@@ -2,19 +2,19 @@
   .panelWyswietlPrzystanek__title Szczegóły Przystanku
   .panelWyswietlPrzystanek__fastTravel
     span
-      a(href="/")
+      a(href="/#/")
         i.fa.fa-home
         | Home
     span
-      a(href="/busstop") Zarządzanie Przystankiem
+      a(href="/#/busstop") Zarządzanie Przystankiem
     span.-active
-      a(href="/busstop/show/{{ PrzystanekID }}") Szczegóły Przystaku
+      a(href="/#/busstop/show/{{ PrzystanekID }}") Szczegóły Przystaku
   .panelWyswietlPrzystanek__wrapper(ng-repeat="item in przystanek as AktualnyPrzystanek")
     .panelWyswietlPrzystanek__subtitle Aktualne dane przystanku {{ item.Name }}
     .panelWyswietlPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelWyswietlPrzystanek__content__form
       .panelWyswietlPrzystanek__content__form__item
-        span.itemHeader Nazwa przystanku
+        span.itemHeader Nazwa Przystanku
         p {{ item.Name }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Ulica
@@ -42,15 +42,15 @@
     form()
       .panelWyswietlPrzystanek__content__form
           .panelWyswietlPrzystanek__content__form__item
-            span.item Nazwa przystanku
-            input(placeholder="Numer Rejestracyjny")
+            span.item Nazwa Przystanku
+            input(placeholder="Nazwa Przystanku")
           .panelWyswietlPrzystanek__content__form__item
-            span.item Ulica przystanku
-            input(placeholder="Numer VIN")
+            span.item Ulica
+            input(placeholder="Ulica")
           .panelWyswietlPrzystanek__content__form__item
             span.item Typ Przystanku
             select
-              option(value='') Typ Autobusu
+              option(value='') Typ Przystanku
               option(value=0) Normalny
               option(value=1) Zabudowany
           .panelWyswietlPrzystanek__content__form__item

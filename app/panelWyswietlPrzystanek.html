@@ -1,12 +1,12 @@
 
 <div ng-controller="ShowBusstopController" class="panelWyswietlPrzystanek">
   <div class="panelWyswietlPrzystanek__title">Szczegóły Przystanku</div>
-  <div class="panelWyswietlPrzystanek__fastTravel"><span><a href="/"><i class="fa fa-home"></i>Home</a></span><span><a href="/busstop">Zarządzanie Przystankiem</a></span><span class="-active"><a href="/busstop/show/{{ PrzystanekID }}">Szczegóły Przystaku</a></span></div>
+  <div class="panelWyswietlPrzystanek__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/busstop">Zarządzanie Przystankiem</a></span><span class="-active"><a href="/#/busstop/show/{{ PrzystanekID }}">Szczegóły Przystaku</a></span></div>
   <div ng-repeat="item in przystanek as AktualnyPrzystanek" class="panelWyswietlPrzystanek__wrapper">
     <div class="panelWyswietlPrzystanek__subtitle">Aktualne dane przystanku {{ item.Name }}</div>
     <div class="panelWyswietlPrzystanek__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
     <div class="panelWyswietlPrzystanek__content__form">
-      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Nazwa przystanku</span>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Nazwa Przystanku</span>
         <p>{{ item.Name }}</p>
       </div>
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Ulica</span>
@@ -35,15 +35,15 @@
     <div class="panelWyswietlPrzystanek__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
     <form>
       <div class="panelWyswietlPrzystanek__content__form">
-        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Nazwa przystanku</span>
-          <input placeholder="Numer Rejestracyjny"/>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Nazwa Przystanku</span>
+          <input placeholder="Nazwa Przystanku"/>
         </div>
-        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Ulica przystanku</span>
-          <input placeholder="Numer VIN"/>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Ulica</span>
+          <input placeholder="Ulica"/>
         </div>
         <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Typ Przystanku</span>
           <select>
-            <option value="">Typ Autobusu</option>
+            <option value="">Typ Przystanku</option>
             <option value="0">Normalny</option>
             <option value="1">Zabudowany</option>
           </select>

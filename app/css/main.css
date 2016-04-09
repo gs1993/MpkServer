@@ -11907,6 +11907,11 @@ a.tabnav-extra:hover {
   padding: 5px;
 }
 
+.panelPrzystanki__table td.-alert {
+  color: #2196F3;
+  padding: 15px 0;
+}
+
 .panelPrzystanki__table .navigation {
   margin: 3px 5px;
   cursor: pointer;
