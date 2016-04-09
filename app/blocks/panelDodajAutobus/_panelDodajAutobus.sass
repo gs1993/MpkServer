@@ -1,5 +1,6 @@
 @charset "UTF-8"
 .panelDodajAutobus
+  position: relative
   &__title
     padding: 0 40px
     background-color: #2196F3
@@ -14,6 +15,10 @@
     text-transform: uppercase
     +Roboto
     font-size: 0.7em
+    background-color: white
+    position: absolute
+    z-index: 1
+    width: 100%
     span
       &:after
         content: '\f054'
@@ -43,11 +48,14 @@
     display: none
 
   &__wrapper
-    position: relative
-    padding: 20px
-    +TAB_MAX
-      overflow: scroll
+    padding: 15px
+    overflow-x: scroll
+    position: absolute
+    bottom: 0
+    top: 50px
+    height: 80vh
   &__subtitle
+    margin-top: 20px
     +Roboto
     color: #22282B
     font-size: 1.5em
@@ -82,6 +90,7 @@
     flex-direction: row
     +PHONE_ONLY
       justify-content: center
+      flex-wrap: wrap
     &__item
       flex-basis: 50%
       flex-grow: 1
@@ -98,6 +107,11 @@
       margin-right: 5px
       text-decoration: none !important
       text-align: center
+      +PHONE_ONLY
+        flex-basis: 100%
+        max-width: 100%
+        margin: 10px 0
+        height: 40px
       &:hover
         background: rgba(60, 141, 188, 1)
       &.green
@@ -134,6 +148,8 @@
         flex-basis: 33%
         padding: 10px
         margin: 5px 0
+        +PHONE_ONLY
+          flex-basis: 100%
 
       input, select
         width: 100%

@@ -9976,6 +9976,7 @@ a.tabnav-extra:hover {
   cursor: pointer;
   -webkit-animation: MoveLeftLink ease 1s infinite;
           animation: MoveLeftLink ease 1s infinite;
+  z-index: 2;
 }
 
 @media (max-width: 767px) {
@@ -11245,6 +11246,10 @@ a.tabnav-extra:hover {
   }
 }
 
+.panelAutobusy {
+  position: relative;
+}
+
 .panelAutobusy__title {
   padding: 0 40px;
   background-color: #2196F3;
@@ -11259,8 +11264,12 @@ a.tabnav-extra:hover {
 .panelAutobusy__fastTravel {
   padding: 10px 15px;
   text-transform: uppercase;
+  background-color: white;
   font-family: Roboto, sans-serif;
   font-size: 0.7em;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
 }
 
 .panelAutobusy__fastTravel span:after {
@@ -11295,6 +11304,11 @@ a.tabnav-extra:hover {
 
 .panelAutobusy__wrapper {
   padding: 15px;
+  overflow-x: scroll;
+  position: absolute;
+  bottom: 0;
+  top: 50px;
+  height: 80vh;
 }
 
 .panelAutobusy__subtitle {
@@ -11489,6 +11503,10 @@ a.tabnav-extra:hover {
   width: 100%;
 }
 
+.panelDodajAutobus {
+  position: relative;
+}
+
 .panelDodajAutobus__title {
   padding: 0 40px;
   background-color: #2196F3;
@@ -11505,6 +11523,10 @@ a.tabnav-extra:hover {
   text-transform: uppercase;
   font-family: Roboto, sans-serif;
   font-size: 0.7em;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
 }
 
 .panelDodajAutobus__fastTravel span:after {
@@ -11547,17 +11569,16 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajAutobus__wrapper {
-  position: relative;
-  padding: 20px;
-}
-
-@media (max-width: 1024px) {
-  .panelDodajAutobus__wrapper {
-    overflow: scroll;
-  }
+  padding: 15px;
+  overflow-x: scroll;
+  position: absolute;
+  bottom: 0;
+  top: 50px;
+  height: 80vh;
 }
 
 .panelDodajAutobus__subtitle {
+  margin-top: 20px;
   font-family: Roboto, sans-serif;
   color: #22282B;
   font-size: 1.5em;
@@ -11617,6 +11638,9 @@ a.tabnav-extra:hover {
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
   }
 }
 
@@ -11641,6 +11665,17 @@ a.tabnav-extra:hover {
   margin-right: 5px;
   text-decoration: none !important;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .panelDodajAutobus__navigation__item {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    max-width: 100%;
+    margin: 10px 0;
+    height: 40px;
+  }
 }
 
 .panelDodajAutobus__navigation__item:hover {
@@ -11705,6 +11740,14 @@ a.tabnav-extra:hover {
   margin-right: 2px;
 }
 
+@media (max-width: 767px) {
+  .panelDodajAutobus__content__form__item {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+  }
+}
+
 .panelDodajAutobus__content__form input, .panelDodajAutobus__content__form select {
   width: 100%;
   height: 40px;
@@ -11739,6 +11782,10 @@ a.tabnav-extra:hover {
   font-size: 3em;
 }
 
+.panelPrzystanki {
+  position: relative;
+}
+
 .panelPrzystanki__title {
   padding: 0 40px;
   background-color: #2196F3;
@@ -11755,6 +11802,10 @@ a.tabnav-extra:hover {
   text-transform: uppercase;
   font-family: Roboto, sans-serif;
   font-size: 0.7em;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
 }
 
 .panelPrzystanki__fastTravel span:after {
@@ -11789,6 +11840,11 @@ a.tabnav-extra:hover {
 
 .panelPrzystanki__wrapper {
   padding: 15px;
+  overflow-x: scroll;
+  position: absolute;
+  bottom: 0;
+  top: 50px;
+  height: 80vh;
 }
 
 .panelPrzystanki__subtitle {
@@ -11986,6 +12042,10 @@ a.tabnav-extra:hover {
   text-transform: uppercase;
   font-family: Roboto, sans-serif;
   font-size: 0.7em;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
 }
 
 .panelDodajPrzystanek__fastTravel span:after {
@@ -12028,17 +12088,16 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajPrzystanek__wrapper {
-  position: relative;
-  padding: 20px;
-}
-
-@media (max-width: 1024px) {
-  .panelDodajPrzystanek__wrapper {
-    overflow: scroll;
-  }
+  padding: 15px;
+  overflow-x: scroll;
+  position: absolute;
+  bottom: 0;
+  top: 50px;
+  height: 80vh;
 }
 
 .panelDodajPrzystanek__subtitle {
+  margin-top: 20px;
   font-family: Roboto, sans-serif;
   color: #22282B;
   font-size: 1.5em;
@@ -12098,6 +12157,9 @@ a.tabnav-extra:hover {
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
   }
 }
 
@@ -12122,6 +12184,17 @@ a.tabnav-extra:hover {
   margin-right: 5px;
   text-decoration: none !important;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .panelDodajPrzystanek__navigation__item {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    max-width: 100%;
+    margin: 10px 0;
+    height: 40px;
+  }
 }
 
 .panelDodajPrzystanek__navigation__item:hover {
@@ -12178,6 +12251,14 @@ a.tabnav-extra:hover {
   margin: 5px 0;
 }
 
+@media (max-width: 767px) {
+  .panelDodajPrzystanek__content__form__item {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+  }
+}
+
 .panelDodajPrzystanek__content__form__item.check {
   -webkit-flex-basis: auto;
       -ms-flex-preferred-size: auto;
@@ -12220,6 +12301,10 @@ a.tabnav-extra:hover {
   font-size: 3em;
 }
 
+.panelUsers {
+  position: relative;
+}
+
 .panelUsers__title {
   padding: 0 40px;
   background-color: #2196F3;
@@ -12236,6 +12321,10 @@ a.tabnav-extra:hover {
   text-transform: uppercase;
   font-family: Roboto, sans-serif;
   font-size: 0.7em;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
 }
 
 .panelUsers__fastTravel span:after {
@@ -12270,6 +12359,11 @@ a.tabnav-extra:hover {
 
 .panelUsers__wrapper {
   padding: 15px;
+  overflow-x: scroll;
+  position: absolute;
+  bottom: 0;
+  top: 50px;
+  height: 80vh;
 }
 
 .panelUsers__subtitle {
@@ -12467,6 +12561,10 @@ a.tabnav-extra:hover {
   text-transform: uppercase;
   font-family: Roboto, sans-serif;
   font-size: 0.7em;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
 }
 
 .panelDodajUser__fastTravel span:after {
@@ -12509,18 +12607,17 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajUser__wrapper {
-  position: relative;
-  padding: 20px;
-}
-
-@media (max-width: 1024px) {
-  .panelDodajUser__wrapper {
-    overflow: scroll;
-  }
+  padding: 15px;
+  overflow-x: scroll;
+  position: absolute;
+  bottom: 0;
+  top: 50px;
+  height: 80vh;
 }
 
 .panelDodajUser__subtitle {
   font-family: Roboto, sans-serif;
+  margin-top: 20px;
   color: #22282B;
   font-size: 1.5em;
   line-height: 1.6em;
@@ -12579,6 +12676,9 @@ a.tabnav-extra:hover {
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
   }
 }
 
@@ -12603,6 +12703,17 @@ a.tabnav-extra:hover {
   margin-right: 5px;
   text-decoration: none !important;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .panelDodajUser__navigation__item {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    max-width: 100%;
+    margin: 10px 0;
+    height: 40px;
+  }
 }
 
 .panelDodajUser__navigation__item:hover {
@@ -12657,6 +12768,14 @@ a.tabnav-extra:hover {
           flex-basis: 33%;
   padding: 10px;
   margin: 5px 0;
+}
+
+@media (max-width: 767px) {
+  .panelDodajUser__content__form__item {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+  }
 }
 
 .panelDodajUser__content__form__item.check {
@@ -12718,6 +12837,10 @@ a.tabnav-extra:hover {
   text-transform: uppercase;
   font-family: Roboto, sans-serif;
   font-size: 0.7em;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
 }
 
 .panelWyswietlAutobus__fastTravel span:after {
@@ -12760,18 +12883,17 @@ a.tabnav-extra:hover {
 }
 
 .panelWyswietlAutobus__wrapper {
-  position: relative;
-  padding: 20px;
-}
-
-@media (max-width: 1024px) {
-  .panelWyswietlAutobus__wrapper {
-    overflow: scroll;
-  }
+  padding: 15px;
+  overflow-x: scroll;
+  position: absolute;
+  bottom: 0;
+  top: 50px;
+  height: 80vh;
 }
 
 .panelWyswietlAutobus__subtitle {
   font-family: Roboto, sans-serif;
+  margin-top: 20px;
   color: #22282B;
   font-size: 1.5em;
   line-height: 1.6em;
@@ -12832,6 +12954,9 @@ a.tabnav-extra:hover {
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
   }
 }
 
@@ -12856,6 +12981,17 @@ a.tabnav-extra:hover {
   margin-right: 5px;
   text-decoration: none !important;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .panelWyswietlAutobus__navigation__item {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    max-width: 100%;
+    margin: 10px 0;
+    height: 40px;
+  }
 }
 
 .panelWyswietlAutobus__navigation__item:hover {
@@ -12937,6 +13073,14 @@ a.tabnav-extra:hover {
   margin-right: 2px;
 }
 
+@media (max-width: 767px) {
+  .panelWyswietlAutobus__content__form__item {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+  }
+}
+
 .panelWyswietlAutobus__content__form__item .itemHeader {
   font-weight: 500;
   display: block;
@@ -12980,6 +13124,10 @@ a.tabnav-extra:hover {
   text-transform: uppercase;
   font-family: Roboto, sans-serif;
   font-size: 0.7em;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
 }
 
 .panelWyswietlPrzystanek__fastTravel span:after {
@@ -13022,14 +13170,12 @@ a.tabnav-extra:hover {
 }
 
 .panelWyswietlPrzystanek__wrapper {
-  position: relative;
-  padding: 20px;
-}
-
-@media (max-width: 1024px) {
-  .panelWyswietlPrzystanek__wrapper {
-    overflow: scroll;
-  }
+  padding: 15px;
+  overflow-x: scroll;
+  position: absolute;
+  bottom: 0;
+  top: 50px;
+  height: 80vh;
 }
 
 .panelWyswietlPrzystanek__subtitle {
@@ -13094,6 +13240,9 @@ a.tabnav-extra:hover {
     -webkit-justify-content: center;
         -ms-flex-pack: center;
             justify-content: center;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
   }
 }
 
@@ -13118,6 +13267,17 @@ a.tabnav-extra:hover {
   margin-right: 5px;
   text-decoration: none !important;
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  .panelWyswietlPrzystanek__navigation__item {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+    max-width: 100%;
+    margin: 10px 0;
+    height: 40px;
+  }
 }
 
 .panelWyswietlPrzystanek__navigation__item:hover {
@@ -13189,6 +13349,14 @@ a.tabnav-extra:hover {
           flex-basis: 33%;
   padding: 10px;
   margin: 5px 0;
+}
+
+@media (max-width: 767px) {
+  .panelWyswietlPrzystanek__content__form__item {
+    -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+  }
 }
 
 .panelWyswietlPrzystanek__content__form__item.check {

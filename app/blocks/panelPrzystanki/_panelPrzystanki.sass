@@ -1,5 +1,6 @@
 @charset "UTF-8"
 .panelPrzystanki
+  position: relative
   &__title
     padding: 0 40px
     background-color: #2196F3
@@ -14,6 +15,10 @@
     text-transform: uppercase
     +Roboto
     font-size: 0.7em
+    background-color: white
+    position: absolute
+    z-index: 1
+    width: 100%
     span
       &:after
         content: '\f054'
@@ -38,6 +43,11 @@
           font-weight: 500
   &__wrapper
     padding: 15px
+    overflow-x: scroll
+    position: absolute
+    bottom: 0
+    top: 50px
+    height: 80vh
   &__subtitle
     +Roboto
     color: #22282B

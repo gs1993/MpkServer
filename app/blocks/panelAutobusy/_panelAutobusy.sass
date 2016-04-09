@@ -1,5 +1,6 @@
 @charset "UTF-8"
 .panelAutobusy
+  position: relative
   &__title
     padding: 0 40px
     background-color: #2196F3
@@ -12,8 +13,12 @@
   &__fastTravel
     padding: 10px 15px
     text-transform: uppercase
+    background-color: white
     +Roboto
     font-size: 0.7em
+    position: absolute
+    z-index: 1
+    width: 100%
     span
       &:after
         content: '\f054'
@@ -38,6 +43,11 @@
           font-weight: 500
   &__wrapper
     padding: 15px
+    overflow-x: scroll
+    position: absolute
+    bottom: 0
+    top: 50px
+    height: 80vh
   &__subtitle
     +Roboto
     color: #22282B
