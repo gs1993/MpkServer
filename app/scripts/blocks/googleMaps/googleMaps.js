@@ -60,4 +60,7 @@ $(document).ready(function () {
   if ($('#googleMaps').length > 0) {
     initGoogleMaps();
   }
+  $(window).resize(function(){
+    initGoogleMaps();
+  });
 });

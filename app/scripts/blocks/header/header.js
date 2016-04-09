@@ -33,4 +33,9 @@ $(document).ready(function () {
     $('.headerProfile__corner').addClass('-open');
     $('.headerLogo').addClass('-hidden');
   });
+  $(window).resize(function(){
+    $('.wrapper').removeClass('-open');
+    $('.header__corner').removeClass('-open');
+    $('.headerProfile__corner').removeClass('-open');
+  });
 });
