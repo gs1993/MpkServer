@@ -5,25 +5,28 @@
   <div class="panelDodajUser__wrapper">
     <div class="panelDodajUser__subtitle">Dodawanie użytkownika</div>
     <div class="panelDodajUser__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <div class="panelDodajUser__content__form">
-      <div class="panelDodajUser__content__form__item"><span class="item">Email</span>
-        <input placeholder="Podaj email użytkownika"/>
+    <form>
+      <div class="panelDodajUser__content__form">
+        <div class="panelDodajUser__content__form__item"><span class="item">Email Użytkownika</span>
+          <input placeholder="Email Użytkownika"/>
+        </div>
+        <div class="panelDodajUser__content__form__item"><span class="item">Ranga Użytkownika</span>
+          <select>
+            <option value="0">Użytkownik</option>
+            <option value="1">Kontroler</option>
+            <option value="2">Administrator</option>
+          </select>
+        </div>
+        <div class="panelDodajUser__content__form__item"><span class="item">Hasło</span>
+          <input placeholder="Hasło"/>
+        </div>
+        <div class="panelDodajUser__content__form__item"><span class="item">Ponowne Hasło</span>
+          <input placeholder="Ponowne Hasło"/>
+        </div>
       </div>
-      <div class="panelDodajUser__content__form__item"><span class="item">Ranga użytkownika</span>
-        <select>
-          <option value="0">Kontroler</option>
-          <option value="1">Administrator</option>
-        </select>
+      <div class="panelDodajUser__navigation">
+        <button class="green panelDodajUser__navigation__item green">Dodaj Użytkownika</button><a href="/#/user" class="panelDodajUser__navigation__item gray -abort">Anuluj</a>
       </div>
-      <div class="panelDodajUser__content__form__item"><span class="item">Status</span>
-        <select>
-          <option value="0">Nieaktywny</option>
-          <option value="1">Aktywny</option>
-        </select>
-      </div>
-    </div>
-    <div class="panelDodajUser__navigation">
-      <button class="green panelDodajUser__navigation__item green">Dodaj Użytkownika</button><a href="/#/user" class="panelDodajUser__navigation__item gray -abort">Anuluj</a>
-    </div>
+    </form>
   </div>
 </div>

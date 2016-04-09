@@ -70,7 +70,7 @@
                 templateUrl: 'panelDodajUser.html',
                 controller: 'AddUserController'
             }).
-            when('/user/show', {
+            when('/user/show/:id', {
                 templateUrl: 'panelWyswietlUser.html',
                 controller: 'ShowUserController'
             }).
@@ -368,10 +368,38 @@
     });
 
 
-    app.controller('ShowUserController', function($scope) {
+    app.controller('ShowUserController', ['$scope', '$routeParams', function($scope, $routeParams) {
 
-        $scope.message = 'This is Add new order screen';
+        var WybraneId = $routeParams.id;
 
-    });
+        //WYSYLANY ID
+        $scope.UserID = WybraneId;
+
+
+        //ZWROTKA
+        $scope.user = [{ Id: 0, Email: 'dev@wp.pl', Imie:'Michal', Nazwisko:'Nazwisko', Rank: 0, Status: 0, Details: 'Jakis Opis'}];
+        angular.forEach($scope.user, function (item) {
+            if(item.Rank == 0)
+            {
+                item.RankName = "Użytkownik";
+            }
+            else if(item.Rank == 1)
+            {
+                item.RankName = "Kontroler";
+            }
+            else if(item.Rank == 2)
+            {
+                item.RankName = "Administrator";
+            }
+            if(item.Status == 0)
+            {
+                item.StatusName = "Nieaktywny"
+            }
+            else
+            {
+                item.StatusName = "Aktywny"
+            }
+        });
+    }]);
     
 })();

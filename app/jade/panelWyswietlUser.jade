@@ -1,30 +1,65 @@
-.panelWyswietlUser.panel
+.panelWyswietlUser(ng-controller="ShowUserController")
   .panelWyswietlUser__title Szczegóły Użytkownika
-  .panelWyswietlUser__wrapper
-    .panelWyswietlUser__content
-      .panelWyswietlUser__content__Title Dane Użytkownika
+  .panelWyswietlUser__fastTravel
+    span
+      a(href="/#/")
+        i.fa.fa-home
+        | Home
+    span
+      a(href="/#/user") Zarządzanie Użytkownikiem
+    span.-active
+      a(href="/#/user/show/{{ UserID }}") Szczegóły Użytkownika
+  .panelWyswietlUser__wrapper(ng-repeat="item in user as AktualnyUser")
+    .panelWyswietlUser__subtitle Aktualne dane użytkownika {{ item.Email }}
+    .panelWyswietlUser__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelWyswietlUser__content__form
+      .panelWyswietlUser__content__form__item
+        span.itemHeader Email Użytkownika
+        p {{ item.Email }}
+      .panelWyswietlUser__content__form__item
+        span.itemHeader Imie
+        p {{ item.Imie }}
+      .panelWyswietlUser__content__form__item
+        span.itemHeader Nazwisko
+        p {{ item.Nazwisko }}
+      .panelWyswietlUser__content__form__item
+        span.itemHeader Ranga
+        p {{ item.RankName }}
+      .panelWyswietlUser__content__form__item
+        span.itemHeader Status
+        p {{ item.StatusName }}
+      .panelWyswietlUser__content__form__item
+        span.itemHeader Szczegóły
+        p {{ item.Details }}
+    .panelWyswietlUser__subtitle Edycja użytkownika
+    .panelWyswietlUser__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    form()
       .panelWyswietlUser__content__form
         .panelWyswietlUser__content__form__item
-          span.item E-mail
-          input(placeholder="Podaj adres e-mail")
+          span.item Email Użytkownika
+          input(placeholder="Email Użytkownika")
         .panelWyswietlUser__content__form__item
-          span.item Hasło
-          input(type='password' placeholder="Podaj hasło")
+          span.item Imie
+          input(placeholder="Imie")
+        .panelWyswietlUser__content__form__item
+          span.item Nazwisko
+          input(placeholder="Nazwisko")
         .panelWyswietlUser__content__form__item
           span.item Ranga
           select
+            option(value='') Ranga
             option(value=0) Użytkownik
             option(value=1) Kontroler
-            option(value=1) Administrator
+            option(value=0) Administrator
         .panelWyswietlUser__content__form__item
-          span.item Status
-          select
-            option(value=0) Nieaktywny
-            option(value=1) Aktywny
-    .panelWyswietlUser__navigation
-      button.panelWyswietlUser__navigation__item.green Edytuj Użytkownika
-      button.panelWyswietlUser__navigation__item.red Usuń Użytkownika
-      a(href="/#/user").panelWyswietlUser__navigation__item.-abort Anuluj
-  a(href="/#/")
-    span.panelWyswietlUser__close
-      span.panelWyswietlUser_icon.fa.fa-times
+          span.item Hasło
+          input(placeholder="Hasło")
+        .panelWyswietlUser__content__form__item
+          span.item Powtórz Hasło
+          input(placeholder="Hasło")
+      .panelWyswietlUser__navigation
+        button.green.panelWyswietlUser__navigation__item.green Aktualizuj Użytkownika
+        a(href="/#/user/delete/{{ UserID }}" ng-hide="item.Status == 0").panelWyswietlUser__navigation__item.red Dezaktywuj
+        a(href="/#/user/restore/{{ UserID }}" ng-show="item.Status == 0").panelWyswietlUser__navigation__item.greenDark Aktywuj
+        a(href="/#/user").panelWyswietlUser__navigation__item.gray.-abort Anuluj
+

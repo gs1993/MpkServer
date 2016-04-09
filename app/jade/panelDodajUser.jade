@@ -12,22 +12,24 @@
   .panelDodajUser__wrapper
     .panelDodajUser__subtitle Dodawanie użytkownika
     .panelDodajUser__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-
-    .panelDodajUser__content__form
-        .panelDodajUser__content__form__item
-          span.item Email
-          input(placeholder="Podaj email użytkownika")
-        .panelDodajUser__content__form__item
-          span.item Ranga użytkownika
-          select
-            option(value=0) Kontroler
-            option(value=1) Administrator
-        .panelDodajUser__content__form__item
-          span.item Status
-          select
-            option(value=0) Nieaktywny
-            option(value=1) Aktywny
-    .panelDodajUser__navigation
-      button.green.panelDodajUser__navigation__item.green Dodaj Użytkownika
-      a(href="/#/user").panelDodajUser__navigation__item.gray.-abort Anuluj
+    form()
+      .panelDodajUser__content__form
+          .panelDodajUser__content__form__item
+            span.item Email Użytkownika
+            input(placeholder="Email Użytkownika")
+          .panelDodajUser__content__form__item
+            span.item Ranga Użytkownika
+            select
+              option(value=0) Użytkownik
+              option(value=1) Kontroler
+              option(value=2) Administrator
+          .panelDodajUser__content__form__item
+            span.item Hasło
+            input(placeholder="Hasło")
+          .panelDodajUser__content__form__item
+            span.item Ponowne Hasło
+            input(placeholder="Ponowne Hasło")
+      .panelDodajUser__navigation
+        button.green.panelDodajUser__navigation__item.green Dodaj Użytkownika
+        a(href="/#/user").panelDodajUser__navigation__item.gray.-abort Anuluj
 

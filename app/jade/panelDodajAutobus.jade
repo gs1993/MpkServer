@@ -12,25 +12,25 @@
   .panelDodajAutobus__wrapper
     .panelDodajAutobus__subtitle Dodawanie pojazdu do floty
     .panelDodajAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-
-    .panelDodajAutobus__content__form
-        .panelDodajAutobus__content__form__item
-          span.item Numer Rejestracyjny
-          input(placeholder="Numer Rejestracyjny")
-        .panelDodajAutobus__content__form__item
-          span.item Numer VIN
-          input(placeholder="Numer VIN")
-        .panelDodajAutobus__content__form__item
-          span.item Typ Autobusu
-          select
-            option(value=0) Normalny
-            option(value=1) Przegubowy
-        .panelDodajAutobus__content__form__item
-          span.item Czy ma Biletomat?
-          select
-            option(value=0) Nie
-            option(value=1) Tak
-    .panelDodajAutobus__navigation
-      button.green.panelDodajAutobus__navigation__item.green Dodaj Autobus
-      a(href="/#/bus").panelDodajAutobus__navigation__item.gray.-abort Anuluj
+    form()
+      .panelDodajAutobus__content__form
+          .panelDodajAutobus__content__form__item
+            span.item Numer Rejestracyjny
+            input(placeholder="Numer Rejestracyjny")
+          .panelDodajAutobus__content__form__item
+            span.item Numer VIN
+            input(placeholder="Numer VIN")
+          .panelDodajAutobus__content__form__item
+            span.item Typ Autobusu
+            select
+              option(value=0) Normalny
+              option(value=1) Przegubowy
+          .panelDodajAutobus__content__form__item
+            span.item Czy ma Biletomat?
+            select
+              option(value=0) Nie
+              option(value=1) Tak
+      .panelDodajAutobus__navigation
+        button.green.panelDodajAutobus__navigation__item.green Dodaj Autobus
+        a(href="/#/bus").panelDodajAutobus__navigation__item.gray.-abort Anuluj
 
