@@ -11303,6 +11303,7 @@ a.tabnav-extra:hover {
   font-size: 1.5em;
   line-height: 1.6em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-top: 15px;
 }
 
 .panelAutobusy__text {
@@ -11394,6 +11395,7 @@ a.tabnav-extra:hover {
   background-color: rgba(136, 136, 136, 0.1);
   border-radius: 6px;
   border-collapse: collapse;
+  margin-bottom: 10px;
 }
 
 .panelAutobusy__table tr {
@@ -11413,6 +11415,11 @@ a.tabnav-extra:hover {
   padding: 5px;
 }
 
+.panelAutobusy__table td.-alert {
+  color: #2196F3;
+  padding: 15px 0;
+}
+
 .panelAutobusy__table .navigation {
   margin: 3px 5px;
   cursor: pointer;
@@ -11430,6 +11437,10 @@ a.tabnav-extra:hover {
 
 .panelAutobusy__table .navigation:hover i.-red {
   color: red;
+}
+
+.panelAutobusy__table .navigation:hover i.-green {
+  color: green;
 }
 
 .panelAutobusy__navigation {
@@ -11469,6 +11480,13 @@ a.tabnav-extra:hover {
 
 .panelAutobusy__navigation__item:hover {
   background: #008d4c;
+}
+
+.panelAutobusy__alertFiltracji {
+  color: #2196F3;
+  text-align: center;
+  display: block;
+  width: 100%;
 }
 
 .panelDodajAutobus__title {

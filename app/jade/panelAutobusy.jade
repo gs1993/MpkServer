@@ -49,7 +49,7 @@
             th Biletomat
             th Zarządzanie
         tbody
-          tr(ng-repeat="autobus in autobusy | filter:autobusFilter")
+          tr(ng-repeat="autobus in autobusy | filter:autobusFilter | filter:{ BusStatus: '!0'} as filtrowaneAutobusy")
             td {{ autobus.BusNumber}}
             td {{ autobus.RegistrationNumber }}
             td {{ autobus.BusTypeName }}
@@ -59,9 +59,39 @@
               a(href="#").navigation
                 i.ionicons.ion-ios-location
               a(href="#/bus/show/{{ autobus.Id }}").navigation
-                i.ionicons.ion-edit
+                i.ionicons.ion-settings
               a(href="#/bus/delete/{{ autobus.Id }}").navigation
-                i.ionicons.ion-android-delete.-red
+                i.ionicons.ion-android-cancel.-red
+          tr(ng-hide="filtrowaneAutobusy.length")
+            td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
+    .panelAutobusy__subtitle Nieaktywne Autobusy
+    .panelAutobusy__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelAutobusy__table
+      table.responsive(wt-responsive-table ng-controller="BusController")
+        thead
+          tr
+            th Numer Rejestracyjny
+            th Numer VIN
+            th Typ Autobusu
+            th Status
+            th Biletomat
+            th Zarządzanie
+        tbody
+          tr(ng-repeat="autobus in autobusy | filter:autobusFilter | filter:{ BusStatus: 0 } as filtrowaneAutobusyNieaktywne")
+            td {{ autobus.BusNumber}}
+            td {{ autobus.RegistrationNumber }}
+            td {{ autobus.BusTypeName }}
+            td {{ autobus.BusStatusName }}
+            td {{ autobus.GotMachineName }}
+            td
+              a(href="#").navigation
+                i.ionicons.ion-ios-location
+              a(href="#/bus/show/{{ autobus.Id }}").navigation
+                i.ionicons.ion-settings
+              a(href="#/bus/restore/{{ autobus.Id }}").navigation
+                i.ionicons.ion-android-add-circle.-green
+          tr(ng-hide="filtrowaneAutobusyNieaktywne.length")
+            td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
 
 
 

@@ -54,13 +54,45 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="autobus in autobusy | filter:autobusFilter">
+          <tr ng-repeat="autobus in autobusy | filter:autobusFilter | filter:{ BusStatus: '!0'} as filtrowaneAutobusy">
             <td>{{ autobus.BusNumber}}</td>
             <td>{{ autobus.RegistrationNumber }}</td>
             <td>{{ autobus.BusTypeName }}</td>
             <td>{{ autobus.BusStatusName }}</td>
             <td>{{ autobus.GotMachineName }}</td>
-            <td><a href="#" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-edit"></i></a><a href="#/bus/delete/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-delete -red"></i></a></td>
+            <td><a href="#" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="#/bus/delete/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
+          </tr>
+          <tr ng-hide="filtrowaneAutobusy.length">
+            <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="panelAutobusy__subtitle">Nieaktywne Autobusy</div>
+    <div class="panelAutobusy__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div class="panelAutobusy__table">
+      <table wt-responsive-table="wt-responsive-table" ng-controller="BusController" class="responsive">
+        <thead>
+          <tr>
+            <th>Numer Rejestracyjny</th>
+            <th>Numer VIN</th>
+            <th>Typ Autobusu</th>
+            <th>Status</th>
+            <th>Biletomat</th>
+            <th>Zarządzanie</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="autobus in autobusy | filter:autobusFilter | filter:{ BusStatus: 0 } as filtrowaneAutobusyNieaktywne">
+            <td>{{ autobus.BusNumber}}</td>
+            <td>{{ autobus.RegistrationNumber }}</td>
+            <td>{{ autobus.BusTypeName }}</td>
+            <td>{{ autobus.BusStatusName }}</td>
+            <td>{{ autobus.GotMachineName }}</td>
+            <td><a href="#" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="#/bus/restore/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a></td>
+          </tr>
+          <tr ng-hide="filtrowaneAutobusyNieaktywne.length">
+            <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
           </tr>
         </tbody>
       </table>

@@ -47,7 +47,6 @@
                 templateUrl: 'panelWyswietlAutobus.html',
                 controller: 'ShowBusController'
             }).
-
             //PRZYSTANKI SCIEZKI
             when('/busstop', {
                 templateUrl: 'panelPrzystanki.html',
@@ -208,6 +207,11 @@
             }
         });
     }]);
+    app.controller('UpdateBusController', function($scope) {
+
+        $scope.message = 'This is Add new order screen';
+
+    });
 
     /* Przystanki Controlery
      *==========================================================================*/
