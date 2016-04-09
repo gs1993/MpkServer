@@ -11304,7 +11304,7 @@ a.tabnav-extra:hover {
 
 .panelAutobusy__wrapper {
   padding: 15px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: absolute;
   bottom: 0;
   top: 50px;
@@ -11570,7 +11570,7 @@ a.tabnav-extra:hover {
 
 .panelDodajAutobus__wrapper {
   padding: 15px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: absolute;
   bottom: 0;
   top: 50px;
@@ -11840,7 +11840,7 @@ a.tabnav-extra:hover {
 
 .panelPrzystanki__wrapper {
   padding: 15px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: absolute;
   bottom: 0;
   top: 50px;
@@ -12089,7 +12089,7 @@ a.tabnav-extra:hover {
 
 .panelDodajPrzystanek__wrapper {
   padding: 15px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: absolute;
   bottom: 0;
   top: 50px;
@@ -12359,7 +12359,7 @@ a.tabnav-extra:hover {
 
 .panelUsers__wrapper {
   padding: 15px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: absolute;
   bottom: 0;
   top: 50px;
@@ -12608,7 +12608,7 @@ a.tabnav-extra:hover {
 
 .panelDodajUser__wrapper {
   padding: 15px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: absolute;
   bottom: 0;
   top: 50px;
@@ -12884,7 +12884,7 @@ a.tabnav-extra:hover {
 
 .panelWyswietlAutobus__wrapper {
   padding: 15px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: absolute;
   bottom: 0;
   top: 50px;
