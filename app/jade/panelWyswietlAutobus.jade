@@ -9,7 +9,7 @@
       a(href="#/bus") Zarządzanie Autobusami
     span.-active
       a(href="#/bus/show/{{ AutobusID }}") Szczegóły Autobusu
-  .panelWyswietlAutobus__wrapper(ng-repeat="item in autobus")
+  .panelWyswietlAutobus__wrapper(ng-repeat="item in autobus as AktualnyAutobus")
     .panelWyswietlAutobus__subtitle Aktualny stan autobusu o numerze {{ item.RegistrationNumber }}
     .panelWyswietlAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelWyswietlAutobus__content__form
@@ -40,21 +40,25 @@
     .panelWyswietlAutobus__content__form
         .panelWyswietlAutobus__content__form__item
           span.item Numer Rejestracyjny
-          input(placeholder="Podaj Nr. VIN")
+          input(placeholder="Numer Rejestracyjny")
         .panelWyswietlAutobus__content__form__item
           span.item Numer VIN
-          input(placeholder="Podaj Nr. VIN")
+          input(placeholder="Numer VIN")
         .panelWyswietlAutobus__content__form__item
           span.item Typ Autobusu
           select
+            option(value='') Typ Autobusu
             option(value=0) Normalny
             option(value=1) Przegubowy
         .panelWyswietlAutobus__content__form__item
           span.item Biletomat
           select
+            option(value='') Biletomat
             option(value=0) Nie
             option(value=1) Tak
     .panelWyswietlAutobus__navigation
-      button.green.panelWyswietlAutobus__navigation__item.green Dodaj Autobus
+      button.green.panelWyswietlAutobus__navigation__item.green Aktualizuj Autobus
       a(href="#/bus").panelWyswietlAutobus__navigation__item.gray.-abort Anuluj
+      a(href="#/bus/delete/{{ AutobusID }}" ng-hide="item.BusStatus == 0").panelWyswietlAutobus__navigation__item.red Dezaktywuj
+      a(href="#/bus/delete/{{ AutobusID }}" ng-show="item.BusStatus == 0").panelWyswietlAutobus__navigation__item.greenDark Aktywuj
 
