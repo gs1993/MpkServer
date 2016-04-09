@@ -207,7 +207,7 @@
             }
         });
     }]);
-    app.controller('UpdateBusController', function($scope) {
+    app.controller('Updatei na BusController', function($scope) {
 
         $scope.message = 'This is Add new order screen';
 
