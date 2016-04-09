@@ -9,11 +9,11 @@
     <div class="panelAutobusy__filtrs">
       <div class="panelAutobusy__filtr">
         <label>Numer VIN</label>
-        <input placeholder="Szukaj Autobusu..."/>
+        <input type="text" ng-model="autobusFilter.RegistrationNumber" placeholder="Szukaj Autobusu..."/>
       </div>
       <div class="panelAutobusy__filtr">
         <label>Typ autobusu</label>
-        <select>
+        <select ng-model="autobusFilter.BusType">
           <option value="">Typ</option>
           <option value="0">Normalny</option>
           <option value="1">Przegubowy</option>
@@ -21,21 +21,23 @@
       </div>
       <div class="panelAutobusy__filtr">
         <label>Status</label>
-        <select>
+        <select ng-model="autobusFilter.BusStatus">
           <option value="">Status</option>
           <option value="0">Nieaktywny</option>
-          <option value="1">Aktywny</option>
-          <option value="2">W trasie</option>
+          <option value="1">W zajezdni</option>
           <option value="2">W trasie</option>
         </select>
       </div>
       <div class="panelAutobusy__filtr">
         <label>Biletomat</label>
-        <input type="checkbox" id="czyBiletomat"/>
-        <label for="czyBiletomat" class="-biletomat"></label>
+        <select ng-model="autobusFilter.GotMachineValue">
+          <option value="">Biletomat</option>
+          <option value="0">Nie</option>
+          <option value="1">Tak</option>
+        </select>
       </div>
       <div class="panelAutobusy__table">
-        <table wt-responsive-table="wt-responsive-table" class="responsive">
+        <table wt-responsive-table="wt-responsive-table" ng-controller="BusController" class="responsive">
           <tr>
             <th>Numer VIN</th>
             <th>Typ Autobusu</th>
@@ -43,19 +45,12 @@
             <th>Biletomat</th>
             <th>Zarządzanie</th>
           </tr>
-          <tr>
-            <td>123456789</td>
-            <td>Normalny</td>
-            <td>Aktywny</td>
-            <td>Tak</td>
-            <td><a href="#" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="#" class="navigation"><i class="ionicons ion-edit"></i></a><a href="#" class="navigation"><i class="ionicons ion-android-delete -red"></i></a></td>
-          </tr>
-          <tr>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
+          <tr ng-repeat="autobus in autobusy | filter:autobusFilter">
+            <td>{{ autobus.RegistrationNumber }}</td>
+            <td>{{ autobus.BusTypeName }}</td>
+            <td>{{ autobus.BusStatusName }}</td>
+            <td>{{ autobus.GotMachineName }}</td>
+            <td><a href="#" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-edit"></i></a><a href="#/bus/delete/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-delete -red"></i></a></td>
           </tr>
         </table>
       </div>

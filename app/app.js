@@ -112,7 +112,45 @@
     //AUTOBUS CONTROLLERY
     app.controller('BusController', function($scope) {
 
-        $scope.message = 'This is Add new order screen';
+        $scope.autobusy = [
+            { Id: 0, RegistrationNumber: '123456', BusStatus: 0, GotMachine: false, BusType: 1, DataTime: '1'},
+            { Id: 1, RegistrationNumber: '234567', BusStatus: 1, GotMachine: true, BusType: 0, DataTime: '1'},
+            { Id: 2, RegistrationNumber: '434354', BusStatus: 2, GotMachine: true, BusType: 1, DataTime: '1'},
+            { Id: 3, RegistrationNumber: '1354543', BusStatus: 3, GotMachine: true, BusType: 0, DataTime: '1'}
+        ];
+        angular.forEach($scope.autobusy, function (autobus) {
+            if(autobus.GotMachine == true)
+            {
+                autobus.GotMachineName = "Tak";
+                autobus.GotMachineValue = 1
+            }
+            else
+            {
+                autobus.GotMachineName = "Nie";
+                autobus.GotMachineValue = 0
+            }
+
+            if(autobus.BusType == 0)
+            {
+                autobus.BusTypeName = "Normalny"
+            }
+            else
+            {
+                autobus.BusTypeName = "Przegubowy"
+            }
+            if(autobus.BusStatus == 0)
+            {
+                autobus.BusStatusName = "Nieaktywny"
+            }
+            else if(autobus.BusStatus == 1)
+            {
+                autobus.BusStatusName = "W zajezdni"
+            }
+            else
+            {
+                autobus.BusStatusName = "W trasie"
+            }
+        });
 
     });
     

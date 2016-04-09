@@ -15,52 +15,46 @@
     .panelAutobusy__filtrs
       .panelAutobusy__filtr
         label Numer VIN
-        input(placeholder="Szukaj Autobusu...")
+        input(type="text" ng-model="autobusFilter.RegistrationNumber" placeholder="Szukaj Autobusu...")
       .panelAutobusy__filtr
         label Typ autobusu
-        select
+        select(ng-model="autobusFilter.BusType")
           option(value="") Typ
           option(value=0) Normalny
           option(value=1) Przegubowy
       .panelAutobusy__filtr
         label Status
-        select
+        select(ng-model="autobusFilter.BusStatus")
           option(value="") Status
           option(value=0) Nieaktywny
-          option(value=1) Aktywny
-          option(value=2) W trasie
+          option(value=1) W zajezdni
           option(value=2) W trasie
       .panelAutobusy__filtr
         label Biletomat
-        input(type="checkbox")#czyBiletomat
-        label(for="czyBiletomat").-biletomat
+        select(ng-model="autobusFilter.GotMachineValue")
+          option(value="") Biletomat
+          option(value=0) Nie
+          option(value=1) Tak
       .panelAutobusy__table
-        table.responsive(wt-responsive-table)
+        table.responsive(wt-responsive-table ng-controller="BusController")
           tr
             th Numer VIN
             th Typ Autobusu
             th Status
             th Biletomat
             th Zarządzanie
-          tr
-            td 123456789
-            td Normalny
-            td Aktywny
-            td Tak
+          tr(ng-repeat="autobus in autobusy | filter:autobusFilter")
+            td {{ autobus.RegistrationNumber }}
+            td {{ autobus.BusTypeName }}
+            td {{ autobus.BusStatusName }}
+            td {{ autobus.GotMachineName }}
             td
               a(href="#").navigation
                 i.ionicons.ion-ios-location
-              a(href="#").navigation
+              a(href="#/bus/show/{{ autobus.Id }}").navigation
                 i.ionicons.ion-edit
-              a(href="#").navigation
+              a(href="#/bus/delete/{{ autobus.Id }}").navigation
                 i.ionicons.ion-android-delete.-red
-
-          tr
-            td ..
-            td ..
-            td ..
-            td ..
-            td ..
 
 
 
