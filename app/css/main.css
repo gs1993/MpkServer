@@ -12858,6 +12858,22 @@ a.tabnav-extra:hover {
   background: #008d4c;
 }
 
+.panelWyswietlAutobus__navigation__item.greenDark {
+  background: #009149;
+}
+
+.panelWyswietlAutobus__navigation__item.greenDark:hover {
+  background: #00783c;
+}
+
+.panelWyswietlAutobus__navigation__item.red {
+  background: #be0000;
+}
+
+.panelWyswietlAutobus__navigation__item.red:hover {
+  background: #a50000;
+}
+
 .panelWyswietlAutobus__content {
   padding-top: 15px;
 }
