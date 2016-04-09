@@ -49,9 +49,9 @@
     <Compile Include="Transfer\Base\EmptyDto.cs" />
     <Compile Include="Transfer\BusStopHandler\BusStopActivityDto.cs" />
     <Compile Include="Transfer\BusStopHandler\BusStopResultDto.cs" />
-    <Compile Include="Transfer\BusStop\BusStopDeleteConfirmDto.cs" />
+    <Compile Include="Transfer\BusStop\BusStopConfirmed.cs" />
     <Compile Include="Transfer\BusStop\BusStopDto.cs" />
-    <Compile Include="Transfer\Bus\BusDeleteConfirmDto.cs" />
+    <Compile Include="Transfer\Bus\BusConfirmed.cs" />
     <Compile Include="Transfer\Bus\BusDto.cs" />
     <Compile Include="Transfer\Bus\GetBusDto.cs" />
     <Compile Include="Transfer\Emit\EventDto.cs" />

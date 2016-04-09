@@ -16,7 +16,7 @@ namespace WebApiServer.Controllers
     [Authorize]
     public class BusController : ApiController
     {
-        private IDatabaseService _db;
+        private readonly IDatabaseService _db;
 
         public BusController(IDatabaseService db)
         {
@@ -36,7 +36,7 @@ namespace WebApiServer.Controllers
         {
             using (var db = _db.CreateContext())
             {
-                var bus = db.Buss.FirstOrDefault(b => b.Id == Id);//BusId.Id);
+                var bus = db.Buss.FirstOrDefault(b => b.Id == Id);//BusId.id);
                 if (bus == null && bus.IsArchive)
                 {
                     
@@ -45,8 +45,53 @@ namespace WebApiServer.Controllers
             }
         }
 
+        public BusConfirmed PutBus(BusDto busToUpdateDto)
+        {
+            using (var db = _db.CreateContext())
+            {
+                bool result = true;
+                var bus = db.Buss.FirstOrDefault(b => b.Id == busToUpdateDto.Id);
+                try
+                {
+                    bus.GotMachine = busToUpdateDto.GotMachine;
+                    bus.LastControl = busToUpdateDto.LastControl;
+                    bus.RegistrationNumber = busToUpdateDto.RegistrationNumber;
+                    bus.BusType = busToUpdateDto.BusType;
+                    bus.BusNumber = busToUpdateDto.BusNumber;
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    result = false;
+                }
+                return new BusConfirmed() {Ok = result};
+            }
+        }
 
-        public BusDeleteConfirmDto DeleteBus(int Id)
+        public BusConfirmed PostBus(BusDto busDto)
+        {
+            using (var db = _db.CreateContext())
+            {
+                bool result = ModelState.IsValid;
+                try
+                {
+                    var bus = Rewrite(busDto);
+                    bus.IsArchive = false; // chwilowo
+
+                    db.Buss.Add(bus);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    result = false;
+                }
+                
+                return new BusConfirmed() {Ok = result};
+            }
+        }
+
+
+        public BusConfirmed DeleteBus(int Id)
         {
             using (var db = _db.CreateContext())
             {
@@ -57,7 +102,7 @@ namespace WebApiServer.Controllers
                     result = false;
                 }
                 bus.IsArchive = true;
-                return new BusDeleteConfirmDto() { Deleted = result };
+                return new BusConfirmed() { Ok = result };
             }
         }
         //public async Task<IHttpActionResult> PostBus(BusDto dto)
@@ -71,7 +116,7 @@ namespace WebApiServer.Controllers
         //    db.Bus.Add(bus);
         //    await db.SaveChangesAsync();
 
-        //    return CreatedAtRoute("DefaultApi", new { id = bus.Id }, bus);
+        //    return CreatedAtRoute("DefaultApi", new { id = bus.id }, bus);
         //}
 
         private BusDto Rewrite(Bus bus)
@@ -84,6 +129,18 @@ namespace WebApiServer.Controllers
                 LastControl = bus.LastControl,
                 RegistrationNumber = bus.RegistrationNumber,
                 Id = bus.Id
+            };
+        }
+        private Bus Rewrite(BusDto busDto)
+        {
+            return new Bus()
+            {
+                BusNumber = busDto.BusNumber,
+                BusType = busDto.BusType,
+                GotMachine = busDto.GotMachine,
+                LastControl = busDto.LastControl,
+                RegistrationNumber = busDto.RegistrationNumber,
+                Id = busDto.Id
             };
         }
     }
