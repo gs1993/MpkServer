@@ -29,7 +29,10 @@
     "ajax": "^1.0.10",
     "angular-route": "^1.5.3",
     "angular-cookies": "^1.5.3",
-    "angular": "^1.5.3"
+    "angular": "^1.5.3",
+    "angular-responsive-tables": "^0.1.3",
+    "responsive-tables-js": "^1.0.6",
+    "Ionicons": "ionicons#^2.0.1"
   },
   "dependencies": {
     "imagesloaded": "latest",

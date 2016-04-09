@@ -1,59 +1,64 @@
 
-<div class="panelAutobusy panel">
-  <div class="panelAutobusy__title">Panel Zarządzania Autobusami</div>
+<div class="panelAutobusy">
+  <div class="panelAutobusy__title">Zarządzanie autobusami</div>
+  <div class="panelAutobusy__fastTravel"><span><a href="#/"><i class="fa fa-home"></i>Home</a></span><span class="-active"><a href="#/home/">Zarządzanie Autobusami</a></span></div>
   <div class="panelAutobusy__wrapper">
-    <div class="panelAutobusy__content">
-      <div class="panelAutobusy__content__Title">Lista Autobusów</div>
-      <div class="panelAutobusy__content__Filtr">
-        <div class="panelAutobusy__content__Filtr__item">
-          <input placeholder="Szukaj autobusu"/>
-        </div>
-        <div class="panelAutobusy__content__Filtr__item">
-          <select>
-            <option value="">Status</option>
-            <option value="0">Nieaktywny</option>
-            <option value="1">Aktywny</option>
-            <option value="2">W trasie</option>
-            <option value="2">W trasie</option>
-          </select>
-        </div>
-        <div class="panelAutobusy__content__Filtr__item">
-          <select>
-            <option value="">Typ</option>
-            <option value="0">Normalny</option>
-            <option value="1">Przegubowy</option>
-          </select>
-        </div>
-        <div class="panelAutobusy__content__Filtr__item check">
-          <input type="checkbox" id="czyautobusmabiletomat"/>
-          <label for="czyautobusmabiletomat"></label>
-          <p>Biletomat</p>
-        </div>
+    <div class="panelAutobusy__subtitle">Flota Autobusów</div>
+    <div class="panelAutobusy__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div class="panelAutobusy__navigation"><a href="#/bus/add" class="panelAutobusy__navigation__item">Dodaj Autobus</a></div>
+    <div class="panelAutobusy__filtrs">
+      <div class="panelAutobusy__filtr">
+        <label>Numer VIN</label>
+        <input placeholder="Szukaj Autobusu..."/>
       </div>
-      <div class="panelAutobusy__contentList">
-        <div class="panelList">
-          <div class="panelList__header">
-            <div class="panelList__headeritem">Typ</div>
-            <div class="panelList__headeritem">Numer Autobusu</div>
-            <div class="panelList__headeritem">Status</div>
-            <div class="panelList__headeritem">Biletomat</div>
-            <div class="panelList__headeritem">Szczegóły</div>
-          </div>
-          <div id="GetBusList" class="panelAutobusy__list panelList__content">
-            <div class="panelList__item">
-              <div class="panelList__itemCell">
-                <div class="fa fa-bus"></div>
-              </div>
-              <div class="panelList__itemCell">Przykładowy</div>
-              <div class="panelList__itemCell">Aktywny</div>
-              <div class="panelList__itemCell">
-                <div class="fa fa-times-circle-o"></div>
-              </div><a href="#/bus/show" class="panelList__itemCell">Zobacz</a>
-            </div>
-          </div>
-        </div>
+      <div class="panelAutobusy__filtr">
+        <label>Typ autobusu</label>
+        <select>
+          <option value="">Typ</option>
+          <option value="0">Normalny</option>
+          <option value="1">Przegubowy</option>
+        </select>
+      </div>
+      <div class="panelAutobusy__filtr">
+        <label>Status</label>
+        <select>
+          <option value="">Status</option>
+          <option value="0">Nieaktywny</option>
+          <option value="1">Aktywny</option>
+          <option value="2">W trasie</option>
+          <option value="2">W trasie</option>
+        </select>
+      </div>
+      <div class="panelAutobusy__filtr">
+        <label>Biletomat</label>
+        <input type="checkbox" id="czyBiletomat"/>
+        <label for="czyBiletomat" class="-biletomat"></label>
+      </div>
+      <div class="panelAutobusy__table">
+        <table wt-responsive-table="wt-responsive-table" class="responsive">
+          <tr>
+            <th>Numer VIN</th>
+            <th>Typ Autobusu</th>
+            <th>Status</th>
+            <th>Biletomat</th>
+            <th>Zarządzanie</th>
+          </tr>
+          <tr>
+            <td>123456789</td>
+            <td>Normalny</td>
+            <td>Aktywny</td>
+            <td>Tak</td>
+            <td><a href="#" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="#" class="navigation"><i class="ionicons ion-edit"></i></a><a href="#" class="navigation"><i class="ionicons ion-android-delete -red"></i></a></td>
+          </tr>
+          <tr>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+            <td>..</td>
+          </tr>
+        </table>
       </div>
     </div>
-    <div class="panelAutobusy__navigation"><a href="#/bus/add" class="panelAutobusy__navigation__item">Dodaj Autobus</a></div>
-  </div><a href="#/"><span class="panelAutobusy__close"><span class="panelAutobusy__icon fa fa-times"></span></span></a>
+  </div>
 </div>

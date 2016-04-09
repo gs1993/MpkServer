@@ -8,33 +8,42 @@
 
 .header
   &__corner
-    border-radius: 6px
+    transition: all 0.36s linear
     position: absolute
+    border-bottom-right-radius: 3px
+    left: 0
+    top: 0
     width: 40px
     height: 40px
-    top: 5px
-    left: 5px
-    //left: 0
+    line-height: 40px
     z-index: 103
     margin: 0 auto
-    //background-image: url(../blocks/header/src/headerLogo.png)
-    //background-size: 100% 100%
     opacity: 0.9
     cursor: pointer
-    background: #3949ab
+    background: #2196F3
     text-align: center
-    line-height: 40px
-    &:hover
-      transition: opacity 0.36s ease
-      opacity: 1
-      background: #367fa9
+    box-shadow: 0 2px 5px rgba(0,0,0,0.26)
     +PHONE_ONLY
       left: 0
-      right: 100%
+      top: 0
+      width: 40px
+      height: 40px
+      line-height: 40px
+      border-radius: 0
+      border-bottom-right-radius: 10px
+
     i
       font-size: 1.5em
-      color: #fff
+      color: white
       vertical-align: sub
+      cursor: pointer
+
+    &:hover
+      opacity: 1
+      background: #218feb
+    &.-open
+      box-shadow: none
+      background: rgba(0,0,0,0.2)
 
   &__switcher
     transition: transform 0.36s ease, background 0.8s ease
@@ -51,6 +60,7 @@
     opacity: 1
     +PHONE_ONLY
       overflow-y: scroll
+
     &.-hidden
       opacity: 0
       transform: scale(2, 2)
@@ -61,14 +71,13 @@
     margin-top: 30px
     cursor: default
     text-align: center
+
   &__button
     display: block
     font-size: 10px
     font-weight: 300
+
   &__item
-    a
-      color: white
-      text-decoration: none
     list-style-type: none
     text-align: center
     display: inline-block
@@ -76,46 +85,67 @@
     line-height: 2
     color: white
     cursor: pointer
-    &:hover
-      .header__buttonIconBG
-        background: #495aff
-        transform: scale(1)
+
+    a
+      color: white
+      text-decoration: none
+
   &__buttonIconBG
     transition: transform 0.36s ease
     width: 80px
     height: 80px
     display: block
-    background: #3949ab
+    background: #2196F3
     border-radius: 6px
     margin: 0 auto
     transform: scale(0.9)
+
+    .header__item:hover &
+        background: #2193f0
+        transform: scale(1)
+
   &__buttonIcon
     font-size: 3em
     line-height: 80px
 
 .headerProfile
   &__corner
+    transition: all 0.36s linear
     position: absolute
+    border-bottom-left-radius: 3px
+    right: 0
+    top: 0
     width: 40px
     height: 40px
-    top: 5px
-    right: 5px
+    line-height: 40px
     z-index: 103
     margin: 0 auto
-    //background-image: url(../blocks/header/src/headerGear.png)
-    //background-size: 100% 100%
     opacity: 0.9
     cursor: pointer
-    background: #3949ab
-    border-radius: 6px
-    &:hover
-      transition: opacity 0.36s ease
-      opacity: 1
-      background: #367fa9
+    background: #2196F3
+    text-align: center
+    box-shadow: 0 2px 5px rgba(0,0,0,0.26)
+    +PHONE_ONLY
+      right: 0
+      top: 0
+      width: 40px
+      height: 40px
+      line-height: 40px
+      border-radius: 0
+      border-bottom-left-radius: 10px
+
     i
-      font-size: 20px
-      padding: 10px
-      color: #fff
+      font-size: 1.5em
+      color: white
+      vertical-align: sub
+      cursor: pointer
+
+    &:hover
+      opacity: 1
+      background: #218feb
+    &.-open
+      box-shadow: none
+      background: rgba(0,0,0,0.2)
 
 
   &__switcher
@@ -133,19 +163,23 @@
     opacity: 1
     +PHONE_ONLY
       overflow-y: scroll
+
     &.-hidden
       opacity: 0
       transform: scale(2, 2)
       z-index: 0
       background: transparent
+
   &__panel
     margin-top: 30px
     cursor: default
     text-align: center
+
   &__button
     display: block
     font-size: 10px
     font-weight: 300
+
   &__item
     list-style-type: none
     text-align: center
@@ -154,22 +188,25 @@
     line-height: 2
     color: white
     cursor: pointer
+
     a
       color: white
       text-decoration: none
-    &:hover
-      .headerProfile__buttonIconBG
-        background: #495aff
-        transform: scale(1)
+
   &__buttonIconBG
     transition: transform 0.36s ease
     width: 80px
     height: 80px
     display: block
-    background: #3949ab
+    background: #2196F3
     border-radius: 6px
     margin: 0 auto
     transform: scale(0.9)
+
+    .headerProfile__item:hover &
+      background: #2193f0
+      transform: scale(1)
+
   &__buttonIcon
     font-size: 3em
     line-height: 80px
@@ -207,26 +244,29 @@
     max-width: 200px
     span
       font-size: 9px
+
 .headerLogo
+  z-index: 103
   border-bottom-right-radius: 20px
   border-bottom-left-radius: 20px
   width: 140px
   height: 20px
   position: absolute
-  z-index: 101
   color: #fff
   display: inline-block
   margin: 0 auto
   text-align: center
   left: 0
   right: 0
-  background: #3949ab
+  background: #2196F3
   opacity: 0.9
+  cursor: default
   i
     font-size: 25px
+  &.-hidden
+    +TAB_MAX
+      display: none
 
-  +PHONE_ONLY
-    display: none
 .headerUserPanel
   background: #3949ab
   opacity: 0.9

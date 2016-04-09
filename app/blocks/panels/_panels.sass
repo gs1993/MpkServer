@@ -1,0 +1,52 @@
+@charset "UTF-8"
+.panels
+  width: 40%
+  position: relative
+  +TAB_MAX
+    width: 90%
+  +PHONE_ONLY
+    width: 100%
+  &__close
+    transition: color 0.36s ease
+    position: absolute
+    top: 0
+    right: 0
+    width: 40px
+    height: 40px
+    text-align: center
+    line-height: 40px
+    cursor: pointer
+    animation: MoveLeftLink ease 1s infinite
+    +PHONE_ONLY
+      top: 40px
+      a
+        i
+          color: #777 !important
+
+    a
+      display: block
+      width: 40px
+      height: 40px
+
+    i
+      font-size: 2em
+      vertical-align: sub
+      color: white
+      cursor: pointer
+    &:hover
+      i
+        color: #f0f0f0
+
+.wrapper
+  transition: left 0.8s ease
+  position: absolute
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+  &.-open
+    left: 40%
+    +TAB_MAX
+      left: 90%
+    +PHONE_ONLY
+      left: 100%

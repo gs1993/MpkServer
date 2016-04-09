@@ -1,9 +1,19 @@
-.panelDodajAutobus.panel
+.panelDodajAutobus
   .panelDodajAutobus__title Dodaj Autobus
+  .panelDodajAutobus__fastTravel
+    span
+      a(href="#/")
+        i.fa.fa-home
+        | Home
+    span
+      a(href="#/home/") Zarządzanie Autobusami
+    span.-active
+      a(href="#/home/add") Dodaj Autobus
   .panelDodajAutobus__wrapper
-    .panelDodajAutobus__content
-      .panelDodajAutobus__content__Title Dane Autobusu
-      .panelDodajAutobus__content__form
+    .panelDodajAutobus__subtitle Dodawanie pojazdu do floty
+    .panelDodajAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+
+    .panelDodajAutobus__content__form
         .panelDodajAutobus__content__form__item
           span.item Numer Rejestracyjny
           input(placeholder="Podaj Nr. Rejestracyjny")
@@ -29,7 +39,4 @@
     .panelDodajAutobus__navigation
       button.green.panelDodajAutobus__navigation__item.green Dodaj Autobus
       a(href="#/bus").panelDodajAutobus__navigation__item.gray.-abort Anuluj
-  a(href="#/")
-    span.panelDodajAutobus__close
-      span.panelDodajAutobus__icon.fa.fa-times
 

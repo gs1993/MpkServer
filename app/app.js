@@ -36,7 +36,8 @@
             //AUTOBUS SCIEZKI
             when('/bus', {
                 templateUrl: 'panelAutobusy.html',
-                controller: 'BusController'
+                controller: 'BusController',
+                activetab: 'bus'
             }).
             when('/bus/add', {
                 templateUrl: 'panelDodajAutobus.html',
