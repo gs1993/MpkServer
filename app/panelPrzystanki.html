@@ -1,7 +1,7 @@
 
 <div class="panelPrzystanki">
   <div class="panelPrzystanki__title">Zarządzanie przystankami</div>
-  <div class="panelPrzystanki__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span class="-active"><a href="#/busstop">Zarządzanie Przystankami</a></span></div>
+  <div class="panelPrzystanki__fastTravel"><span><a href="/"><i class="fa fa-home"></i>Home</a></span><span class="-active"><a href="/busstop">Zarządzanie Przystankami</a></span></div>
   <div class="panelPrzystanki__wrapper">
     <div class="panelPrzystanki__subtitle">Przystanki floty</div>
     <div class="panelPrzystanki__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
@@ -9,47 +9,84 @@
     <div class="panelPrzystanki__filtrs">
       <div class="panelPrzystanki__filtr">
         <label>Nazwa przystanku</label>
-        <input placeholder="Szukaj Przystanek..."/>
+        <input placeholder="Szukaj Przystanek..." ng-model="przystanekFilter.Name"/>
       </div>
       <div class="panelPrzystanki__filtr">
         <label>Ulica</label>
-        <input placeholder="Ulica..."/>
+        <input placeholder="Ulica..." ng-model="przystanekFilter.LocalizationString"/>
+      </div>
+      <div class="panelAutobusy__filtr">
+        <label>Typ przystanku</label>
+        <select ng-model="przystanekFilter.BusStopType">
+          <option value="">Typ</option>
+          <option value="0">Normalny</option>
+          <option value="1">Zabudowany</option>
+        </select>
       </div>
       <div class="panelPrzystanki__filtr">
         <label>Biletomat</label>
-        <input type="checkbox" id="czyBiletomat"/>
-        <label for="czyBiletomat" class="-biletomat"></label>
+        <select ng-model="przystanekFilter.GotMachineValue">
+          <option value="">Biletomat</option>
+          <option value="0">Nie</option>
+          <option value="1">Tak</option>
+        </select>
       </div>
       <div class="panelPrzystanki__filtr">
         <label>Kiosk</label>
-        <input type="checkbox" id="czyKiosk"/>
-        <label for="czyKiosk" class="-biletomat"></label>
+        <select ng-model="przystanekFilter.GotKioskValue">
+          <option value="">Kiosk</option>
+          <option value="0">Nie</option>
+          <option value="1">Tak</option>
+        </select>
       </div>
       <div class="panelPrzystanki__table">
-        <table wt-responsive-table="wt-responsive-table" class="responsive">
+        <table wt-responsive-table="wt-responsive-table" ng-controller="BusstopController" class="responsive">
           <tr>
             <th>Nazwa przystanku</th>
             <th>Ulica</th>
+            <th>Typ Przystanku</th>
             <th>Biletomat</th>
             <th>Kiosk</th>
             <th>Zarządzanie</th>
           </tr>
-          <tr>
-            <td>123456789</td>
-            <td>Normalny</td>
-            <td>Tak</td>
-            <td>Tak</td>
-            <td><a href="/#" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#" class="navigation"><i class="ionicons ion-edit"></i></a><a href="/#" class="navigation"><i class="ionicons ion-android-delete -red"></i></a></td>
+          <tr ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '!0'} as filtrowanePrzystanku">
+            <td>{{przystanek.Name}}</td>
+            <td>{{przystanek.LocalizationString}}</td>
+            <td>{{przystanek.BusStopTypeName}}</td>
+            <td>{{przystanek.GotMachineName}}</td>
+            <td>{{przystanek.GotKioskName}}</td>
+            <td><a href="/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/busstop/delete/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
           </tr>
-          <tr>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
+          <tr ng-hide="filtrowanePrzystanku.length">
+            <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
           </tr>
         </table>
       </div>
+    </div>
+    <div class="panelPrzystanki__subtitle">Nieaktywne przystanki</div>
+    <div class="panelPrzystanki__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div class="panelPrzystanki__table">
+      <table wt-responsive-table="wt-responsive-table" ng-controller="BusstopController" class="responsive">
+        <tr>
+          <th>Nazwa przystanku</th>
+          <th>Ulica</th>
+          <th>Typ Przystanku</th>
+          <th>Biletomat</th>
+          <th>Kiosk</th>
+          <th>Zarządzanie</th>
+        </tr>
+        <tr ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '0'} as filtrowanePrzystankuNieaktywe">
+          <td>{{przystanek.Name}}</td>
+          <td>{{przystanek.LocalizationString}}</td>
+          <td>{{przystanek.BusStopTypeName}}</td>
+          <td>{{przystanek.GotMachineName}}</td>
+          <td>{{przystanek.GotKioskName}}</td>
+          <td><a href="/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/busstop/delete/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
+        </tr>
+        <tr ng-hide="filtrowanePrzystankuNieaktywe.length">
+          <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

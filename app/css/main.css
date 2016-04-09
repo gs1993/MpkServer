@@ -11797,6 +11797,7 @@ a.tabnav-extra:hover {
   font-size: 1.5em;
   line-height: 1.6em;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
 }
 
 .panelPrzystanki__text {
@@ -11811,13 +11812,13 @@ a.tabnav-extra:hover {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .panelPrzystanki__filtr {
-  width: 25%;
+  width: 33%;
   padding: 6px;
 }
 
@@ -12951,39 +12952,53 @@ a.tabnav-extra:hover {
   box-shadow: none;
 }
 
-.panelWyswietlAutobus__close {
-  transition: opacity 0.36s ease;
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  cursor: pointer;
-  opacity: 0.8;
-  color: #fff;
+.panelWyswietlPrzystanek__title {
+  padding: 0 40px;
+  background-color: #2196F3;
+  height: 40px;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.3em;
+  cursor: default;
+  font-family: Roboto, sans-serif;
 }
 
-.panelWyswietlAutobus__close:hover {
-  opacity: 1;
+.panelWyswietlPrzystanek__fastTravel {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-family: Roboto, sans-serif;
+  font-size: 0.7em;
 }
 
-.panelWyswietlAutobus__close .panelDodajAutobus__icon {
-  font-size: 1.8em !important;
+.panelWyswietlPrzystanek__fastTravel span:after {
+  content: '\f054';
+  font-family: FontAwesome;
+  margin: 0 5px;
+  font-size: 0.8em;
+  vertical-align: text-bottom;
 }
 
-.panelWyswietlAutobus__icon {
-  font-size: 3em;
+.panelWyswietlPrzystanek__fastTravel span:last-of-type:after {
+  content: '';
 }
 
-.panelWyswietlPrzystanek {
-  min-width: 700px;
+.panelWyswietlPrzystanek__fastTravel span a {
+  color: #222;
+  text-decoration: none;
 }
 
-@media (max-width: 1024px) {
-  .panelWyswietlPrzystanek {
-    position: relative !important;
-    width: 100% !important;
-    margin: 55px auto 0;
-    top: 0 !important;
-  }
+.panelWyswietlPrzystanek__fastTravel span a i {
+  margin-right: 3px;
+}
+
+.panelWyswietlPrzystanek__fastTravel span:hover a {
+  color: #2196F3;
+}
+
+.panelWyswietlPrzystanek__fastTravel span.-active a {
+  color: #208de6;
+  font-weight: 500;
 }
 
 .panelWyswietlPrzystanek.-hidden {
@@ -13006,53 +13021,19 @@ a.tabnav-extra:hover {
   }
 }
 
-.panelWyswietlPrzystanek__title {
-  font-family: Lato, sans-serif;
-  font-weight: 500;
-  font-size: 15px;
-  text-align: center;
-  background: #3c8dbc;
-  color: #fff;
-  padding: 5px;
-  opacity: 0.9;
-}
-
-@media (max-width: 767px) {
-  .panelWyswietlPrzystanek__title {
-    text-align: center;
-  }
-}
-
 .panelWyswietlPrzystanek__subtitle {
-  font-family: Lato, sans-serif;
-  font-weight: 300;
-  line-height: 26px;
-  margin-left: 3px;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-align: left;
-  color: #222;
-  font-style: italic;
-}
-
-@media (max-width: 767px) {
-  .panelWyswietlPrzystanek__subtitle {
-    text-align: center;
-    font-size: 12px;
-    font-style: normal;
-  }
+  font-family: Roboto, sans-serif;
+  color: #22282B;
+  font-size: 1.5em;
+  line-height: 1.6em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: default;
 }
 
 .panelWyswietlPrzystanek__text {
-  font-family: Lato, sans-serif;
-  font-weight: 700;
-  max-width: 350px;
-  margin: 0 auto;
-  font-size: 16px;
-  line-height: 1.3;
-  letter-spacing: 1.25px;
-  text-align: center;
-  color: #999;
+  color: #88969F;
+  padding: 5px;
+  cursor: default;
 }
 
 .panelWyswietlPrzystanek__alert {
@@ -13140,15 +13121,20 @@ a.tabnav-extra:hover {
   background: #008d4c;
 }
 
+.panelWyswietlPrzystanek__navigation__item.greenDark {
+  background: #009149;
+}
+
+.panelWyswietlPrzystanek__navigation__item.greenDark:hover {
+  background: #00783c;
+}
+
 .panelWyswietlPrzystanek__navigation__item.red {
-  background: #a60605;
-  -webkit-order: 3;
-      -ms-flex-order: 3;
-          order: 3;
+  background: #be0000;
 }
 
 .panelWyswietlPrzystanek__navigation__item.red:hover {
-  background: #b00a11;
+  background: #a50000;
 }
 
 .panelWyswietlPrzystanek__content {
@@ -13164,6 +13150,7 @@ a.tabnav-extra:hover {
   text-transform: uppercase;
   color: #222;
   padding-bottom: 15px;
+  cursor: default;
 }
 
 @media (max-width: 767px) {
@@ -13201,67 +13188,30 @@ a.tabnav-extra:hover {
   margin-right: 2px;
 }
 
-.panelWyswietlPrzystanek__content__form__item input {
-  padding: 0 10px;
-  height: 40px;
-  box-shadow: none !important;
-  outline: none;
-  font-weight: 400;
-  max-width: 300px;
-  width: 100%;
+.panelWyswietlPrzystanek__content__form__item .itemHeader {
+  font-weight: 500;
   display: block;
-  border-radius: 0;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 2px solid #D2E3E9;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: default;
+}
+
+.panelWyswietlPrzystanek__content__form__item p {
+  margin: 0;
+  padding: 10px 5px;
   font-size: 16px;
+  cursor: default;
 }
 
-.panelWyswietlPrzystanek__content__form__item input:focus {
-  border-bottom: 2px solid #4AAED4;
-}
-
-.panelWyswietlPrzystanek__content__form__item select {
-  height: 40px;
-  box-shadow: none !important;
-  outline: none;
-  font-weight: 400;
-  max-width: 300px;
+.panelWyswietlPrzystanek__content__form input, .panelWyswietlPrzystanek__content__form select {
   width: 100%;
-  display: block;
-  border-radius: 0;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 2px solid #D2E3E9;
-  font-size: 16px;
-}
-
-.panelWyswietlPrzystanek__content__form__item select:focus {
-  border-bottom: 2px solid #4AAED4;
-}
-
-.panelWyswietlPrzystanek__close {
-  transition: opacity 0.36s ease;
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  cursor: pointer;
-  opacity: 0.8;
-  color: #fff;
-}
-
-.panelWyswietlPrzystanek__close:hover {
-  opacity: 1;
-}
-
-.panelWyswietlPrzystanek__close .panelWyswietlPrzystanek__icon {
-  font-size: 1.8em !important;
-}
-
-.panelWyswietlPrzystanek__icon {
-  font-size: 3em;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.6);
+  outline: none;
+  padding: 8px;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .panelWyswietlUser {

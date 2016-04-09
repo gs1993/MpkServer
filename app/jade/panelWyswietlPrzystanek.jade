@@ -1,29 +1,64 @@
-.panelWyswietlPrzystanek.panel
-  .panelWyswietlPrzystanek__title Szczegóły przystanku
-  .panelWyswietlPrzystanek__wrapper
-    .panelWyswietlPrzystanek__content
-      .panelWyswietlPrzystanek__content__Title Dane Przystanku
+.panelWyswietlPrzystanek(ng-controller="ShowBusController")
+  .panelWyswietlPrzystanek__title Szczegóły Autobusu
+  .panelWyswietlPrzystanek__fastTravel
+    span
+      a(href="/")
+        i.fa.fa-home
+        | Home
+    span
+      a(href="/bus") Zarządzanie Autobusami
+    span.-active
+      a(href="/bus/show/{{ AutobusID }}") Szczegóły Autobusu
+  .panelWyswietlPrzystanek__wrapper(ng-repeat="item in autobus as AktualnyAutobus")
+    .panelWyswietlPrzystanek__subtitle Aktualny stan autobusu o numerze {{ item.RegistrationNumber }}
+    .panelWyswietlPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelWyswietlPrzystanek__content__form
+      .panelWyswietlPrzystanek__content__form__item
+        span.itemHeader Numer Rejestracyjny
+        p {{ item.RegistrationNumber }}
+      .panelWyswietlPrzystanek__content__form__item
+        span.itemHeader Numer VIN
+        p {{ item.BusNumber }}
+      .panelWyswietlPrzystanek__content__form__item
+        span.itemHeader Typ Autobusu
+        p {{ item.BusTypeName }}
+      .panelWyswietlPrzystanek__content__form__item
+        span.itemHeader Biletomat
+        p {{ item.GotMachineName }}
+      .panelWyswietlPrzystanek__content__form__item
+        span.itemHeader Aktualny status
+        p {{ item.BusStatusName }}
+      .panelWyswietlPrzystanek__content__form__item
+        span.itemHeader Ostatnia kontrola
+        p {{ item.LastControl }}
+      .panelWyswietlPrzystanek__content__form__item
+        span.itemHeader Ostatnia lokalizacja
+        p X Y
+    .panelWyswietlPrzystanek__subtitle Edycja autobusu
+    .panelWyswietlPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    form()
       .panelWyswietlPrzystanek__content__form
-        .panelWyswietlPrzystanek__content__form__item
-          span.item Nazwa przystanku
-          input(placeholder="Podaj nazwę przystanku")
-        .panelWyswietlPrzystanek__content__form__item
-          span.item Lokalizacja
-          input(placeholder="Podaj lokalizackje")
-        .panelWyswietlPrzystanek__content__form__item
-          span.item Czy ma biletomat?
-          select
-            option(value=0) Nie
-            option(value=1) Tak
-        .panelWyswietlPrzystanek__content__form__item
-          span.item Czy ma kiosk?
-          select
-            option(value=0) Nie
-            option(value=1) Tak
-    .panelWyswietlPrzystanek__navigation
-      button.panelWyswietlPrzystanek__navigation__item.green Edytuj Przystanek
-      button.panelWyswietlPrzystanek__navigation__item.red Usuń Przystanek
-      a(href="/#/busstop").panelWyswietlPrzystanek__navigation__item.gray.-abort Anuluj
-  a(href="/#/")
-    span.panelWyswietlPrzystanek__close
-      span.panelWyswietlPrzystanek__icon.fa.fa-times
+          .panelWyswietlPrzystanek__content__form__item
+            span.item Numer Rejestracyjny
+            input(placeholder="Numer Rejestracyjny")
+          .panelWyswietlPrzystanek__content__form__item
+            span.item Numer VIN
+            input(placeholder="Numer VIN")
+          .panelWyswietlPrzystanek__content__form__item
+            span.item Typ Autobusu
+            select
+              option(value='') Typ Autobusu
+              option(value=0) Normalny
+              option(value=1) Przegubowy
+          .panelWyswietlPrzystanek__content__form__item
+            span.item Biletomat
+            select
+              option(value='') Biletomat
+              option(value=0) Nie
+              option(value=1) Tak
+      .panelWyswietlPrzystanek__navigation
+        button.green.panelWyswietlPrzystanek__navigation__item.green Aktualizuj Autobus
+        a(href="/bus/delete/{{ AutobusID }}" ng-hide="item.BusStatus == 0").panelWyswietlPrzystanek__navigation__item.red Dezaktywuj
+        a(href="/bus/restore/{{ AutobusID }}" ng-show="item.BusStatus == 0").panelWyswietlPrzystanek__navigation__item.greenDark Aktywuj
+        a(href="/bus").panelWyswietlPrzystanek__navigation__item.gray.-abort Anuluj
+

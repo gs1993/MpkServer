@@ -2,11 +2,11 @@
   .panelPrzystanki__title Zarządzanie przystankami
   .panelPrzystanki__fastTravel
     span
-      a(href="/#/")
+      a(href="/")
         i.fa.fa-home
         | Home
     span.-active
-      a(href="#/busstop") Zarządzanie Przystankami
+      a(href="/busstop") Zarządzanie Przystankami
   .panelPrzystanki__wrapper
     .panelPrzystanki__subtitle Przystanki floty
     .panelPrzystanki__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
@@ -15,45 +15,77 @@
     .panelPrzystanki__filtrs
       .panelPrzystanki__filtr
         label Nazwa przystanku
-        input(placeholder="Szukaj Przystanek...")
+        input(placeholder="Szukaj Przystanek..." ng-model="przystanekFilter.Name")
       .panelPrzystanki__filtr
         label Ulica
-        input(placeholder="Ulica...")
+        input(placeholder="Ulica..." ng-model="przystanekFilter.LocalizationString")
+      .panelAutobusy__filtr
+        label Typ przystanku
+        select(ng-model="przystanekFilter.BusStopType")
+          option(value="") Typ
+          option(value=0) Normalny
+          option(value=1) Zabudowany
       .panelPrzystanki__filtr
         label Biletomat
-        input(type="checkbox")#czyBiletomat
-        label(for="czyBiletomat").-biletomat
+        select(ng-model="przystanekFilter.GotMachineValue")
+          option(value="") Biletomat
+          option(value=0) Nie
+          option(value=1) Tak
       .panelPrzystanki__filtr
         label Kiosk
-        input(type="checkbox")#czyKiosk
-        label(for="czyKiosk").-biletomat
+        select(ng-model="przystanekFilter.GotKioskValue")
+          option(value="") Kiosk
+          option(value=0) Nie
+          option(value=1) Tak
       .panelPrzystanki__table
-        table.responsive(wt-responsive-table)
+        table.responsive(wt-responsive-table ng-controller="BusstopController")
           tr
             th Nazwa przystanku
             th Ulica
+            th Typ Przystanku
             th Biletomat
             th Kiosk
             th Zarządzanie
-          tr
-            td 123456789
-            td Normalny
-            td Tak
-            td Tak
+          tr(ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '!0'} as filtrowanePrzystanku")
+            td {{przystanek.Name}}
+            td {{przystanek.LocalizationString}}
+            td {{przystanek.BusStopTypeName}}
+            td {{przystanek.GotMachineName}}
+            td {{przystanek.GotKioskName}}
             td
-              a(href="/#").navigation
+              a(href="/").navigation
                 i.ionicons.ion-ios-location
-              a(href="/#").navigation
-                i.ionicons.ion-edit
-              a(href="/#").navigation
-                i.ionicons.ion-android-delete.-red
-
-          tr
-            td ..
-            td ..
-            td ..
-            td ..
-            td ..
-
+              a(href="/busstop/show/{{ przystanek.Id }}").navigation
+                i.ionicons.ion-settings
+              a(href="/busstop/delete/{{ przystanek.Id }}").navigation
+                i.ionicons.ion-android-cancel.-red
+          tr(ng-hide="filtrowanePrzystanku.length")
+            td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
+    .panelPrzystanki__subtitle Nieaktywne przystanki
+    .panelPrzystanki__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelPrzystanki__table
+      table.responsive(wt-responsive-table ng-controller="BusstopController")
+        tr
+          th Nazwa przystanku
+          th Ulica
+          th Typ Przystanku
+          th Biletomat
+          th Kiosk
+          th Zarządzanie
+        tr(ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '0'} as filtrowanePrzystankuNieaktywe")
+          td {{przystanek.Name}}
+          td {{przystanek.LocalizationString}}
+          td {{przystanek.BusStopTypeName}}
+          td {{przystanek.GotMachineName}}
+          td {{przystanek.GotKioskName}}
+          td
+            a(href="/").navigation
+              i.ionicons.ion-ios-location
+            a(href="/busstop/show/{{ przystanek.Id }}").navigation
+              i.ionicons.ion-settings
+            a(href="/busstop/delete/{{ przystanek.Id }}").navigation
+              i.ionicons.ion-android-cancel.-red
+        tr(ng-hide="filtrowanePrzystankuNieaktywe.length")
+          td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
 
 

@@ -56,7 +56,7 @@
                 templateUrl: 'panelDodajPrzystanek.html',
                 controller: 'AddBusstopController'
             }).
-            when('/busstop/show', {
+            when('/busstop/show/:id', {
                 templateUrl: 'panelWyswietlPrzystanek.html',
                 controller: 'ShowBusstopController'
             }).
@@ -210,7 +210,7 @@
             }
         });
     }]);
-    app.controller('Updatei na BusController', function($scope) {
+    app.controller('UpdateBusController', function($scope) {
 
         $scope.message = 'This is Add new order screen';
 
@@ -220,7 +220,52 @@
      *==========================================================================*/
     app.controller('BusstopController', function($scope) {
 
-        $scope.message = 'This is Add new order screen';
+        $scope.przystanki = [
+            { Id: 0, Name: 'Słoneczna', Lat: 12.58, Lng: 50.23, LocalizationString: "ul. Warszawska", GotMachine: false, GotKiosk: false, BusStopType: 0, BusStopStatus: 0, LastControl: '1'},
+            { Id: 1, Name: 'Świetlista', Lat: 12.58, Lng: 50.23, LocalizationString: "ul. Świetlista 54", GotMachine: true, GotKiosk: false, BusStopType: 0, BusStopStatus: 1, LastControl: '1'},
+            { Id: 2, Name: 'Dworcowa', Lat: 12.58, Lng: 50.23, LocalizationString: "ul. Dworcowa 23", GotMachine: false, GotKiosk: true, BusStopType: 1, BusStopStatus: 0, LastControl: '1'},
+            { Id: 3, Name: 'Stomil', Lat: 12.58, Lng: 50.23, LocalizationString: "ul. Nie wiem gdzie", GotMachine: true, GotKiosk: true, BusStopType: 1, BusStopStatus: 1, LastControl: '1'},
+            { Id: 4, Name: 'Wysoka Brama', Lat: 12.58, Lng: 50.23, LocalizationString: "ul. Wysoka", GotMachine: false, GotKiosk: false, BusStopType: 1, BusStopStatus: 1, LastControl: '1'}
+        ];
+        angular.forEach($scope.przystanki, function (przystanek) {
+            if(przystanek.GotMachine == true)
+            {
+                przystanek.GotMachineName = "Tak";
+                przystanek.GotMachineValue = 1
+            }
+            else
+            {
+                przystanek.GotMachineName = "Nie";
+                przystanek.GotMachineValue = 0
+            }
+            if(przystanek.GotKiosk == true)
+            {
+                przystanek.GotKioskName = "Tak";
+                przystanek.GotKioskValue = 1
+            }
+            else
+            {
+                przystanek.GotKioskName = "Nie";
+                przystanek.GotKioskValue = 0
+            }
+
+            if(przystanek.BusStopType == 0)
+            {
+                przystanek.BusStopTypeName = "Normalny"
+            }
+            else
+            {
+                przystanek.BusStopTypeName = "Zabudowany"
+            }
+            if(przystanek.BusStopStatus == 0)
+            {
+                przystanek.BusStopStatusName = "Nieaktywny"
+            }
+            else
+            {
+                przystanek.BusStopStatusName = "W trasie"
+            }
+        });
 
     });
 

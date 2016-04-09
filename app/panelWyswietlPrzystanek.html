@@ -1,33 +1,61 @@
 
-<div class="panelWyswietlPrzystanek panel">
-  <div class="panelWyswietlPrzystanek__title">Szczegóły przystanku</div>
-  <div class="panelWyswietlPrzystanek__wrapper">
-    <div class="panelWyswietlPrzystanek__content">
-      <div class="panelWyswietlPrzystanek__content__Title">Dane Przystanku</div>
+<div ng-controller="ShowBusController" class="panelWyswietlPrzystanek">
+  <div class="panelWyswietlPrzystanek__title">Szczegóły Autobusu</div>
+  <div class="panelWyswietlPrzystanek__fastTravel"><span><a href="/"><i class="fa fa-home"></i>Home</a></span><span><a href="/bus">Zarządzanie Autobusami</a></span><span class="-active"><a href="/bus/show/{{ AutobusID }}">Szczegóły Autobusu</a></span></div>
+  <div ng-repeat="item in autobus as AktualnyAutobus" class="panelWyswietlPrzystanek__wrapper">
+    <div class="panelWyswietlPrzystanek__subtitle">Aktualny stan autobusu o numerze {{ item.RegistrationNumber }}</div>
+    <div class="panelWyswietlPrzystanek__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div class="panelWyswietlPrzystanek__content__form">
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Numer Rejestracyjny</span>
+        <p>{{ item.RegistrationNumber }}</p>
+      </div>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Numer VIN</span>
+        <p>{{ item.BusNumber }}</p>
+      </div>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Typ Autobusu</span>
+        <p>{{ item.BusTypeName }}</p>
+      </div>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Biletomat</span>
+        <p>{{ item.GotMachineName }}</p>
+      </div>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Aktualny status</span>
+        <p>{{ item.BusStatusName }}</p>
+      </div>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Ostatnia kontrola</span>
+        <p>{{ item.LastControl }}</p>
+      </div>
+      <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Ostatnia lokalizacja</span>
+        <p>X Y</p>
+      </div>
+    </div>
+    <div class="panelWyswietlPrzystanek__subtitle">Edycja autobusu</div>
+    <div class="panelWyswietlPrzystanek__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <form>
       <div class="panelWyswietlPrzystanek__content__form">
-        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Nazwa przystanku</span>
-          <input placeholder="Podaj nazwę przystanku"/>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Numer Rejestracyjny</span>
+          <input placeholder="Numer Rejestracyjny"/>
         </div>
-        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Lokalizacja</span>
-          <input placeholder="Podaj lokalizackje"/>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Numer VIN</span>
+          <input placeholder="Numer VIN"/>
         </div>
-        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Czy ma biletomat?</span>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Typ Autobusu</span>
           <select>
-            <option value="0">Nie</option>
-            <option value="1">Tak</option>
+            <option value="">Typ Autobusu</option>
+            <option value="0">Normalny</option>
+            <option value="1">Przegubowy</option>
           </select>
         </div>
-        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Czy ma kiosk?</span>
+        <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Biletomat</span>
           <select>
+            <option value="">Biletomat</option>
             <option value="0">Nie</option>
             <option value="1">Tak</option>
           </select>
         </div>
       </div>
-    </div>
-    <div class="panelWyswietlPrzystanek__navigation">
-      <button class="panelWyswietlPrzystanek__navigation__item green">Edytuj Przystanek</button>
-      <button class="panelWyswietlPrzystanek__navigation__item red">Usuń Przystanek</button><a href="/#/busstop" class="panelWyswietlPrzystanek__navigation__item gray -abort">Anuluj</a>
-    </div>
-  </div><a href="/#/"><span class="panelWyswietlPrzystanek__close"><span class="panelWyswietlPrzystanek__icon fa fa-times"></span></span></a>
+      <div class="panelWyswietlPrzystanek__navigation">
+        <button class="green panelWyswietlPrzystanek__navigation__item green">Aktualizuj Autobus</button><a href="/bus/delete/{{ AutobusID }}" ng-hide="item.BusStatus == 0" class="panelWyswietlPrzystanek__navigation__item red">Dezaktywuj</a><a href="/bus/restore/{{ AutobusID }}" ng-show="item.BusStatus == 0" class="panelWyswietlPrzystanek__navigation__item greenDark">Aktywuj</a><a href="/bus" class="panelWyswietlPrzystanek__navigation__item gray -abort">Anuluj</a>
+      </div>
+    </form>
+  </div>
 </div>
