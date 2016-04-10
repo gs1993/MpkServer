@@ -33,27 +33,27 @@
         p {{ item.Details }}
     .panelWyswietlUser__subtitle Edycja użytkownika
     .panelWyswietlUser__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-    form()
+    form(ng-controller="UpdateUserController" ng-submit="updateUser()")
       .panelWyswietlUser__content__form
         .panelWyswietlUser__content__form__item
           span.item Email Użytkownika
-          input(placeholder="Email Użytkownika")
+          input(placeholder="Email Użytkownika" ng-model="userToUpdate[0].Email")
         .panelWyswietlUser__content__form__item
           span.item Imie
-          input(placeholder="Imie")
+          input(placeholder="Imie" ng-model="userToUpdate[0].Imie")
         .panelWyswietlUser__content__form__item
           span.item Nazwisko
-          input(placeholder="Nazwisko")
+          input(placeholder="Nazwisko" ng-model="userToUpdate[0].Nazwisko")
         .panelWyswietlUser__content__form__item
           span.item Ranga
-          select
+          select(ng-model="userToUpdate[0].Rank")
             option(value='') Ranga
             option(value=0) Użytkownik
             option(value=1) Kontroler
             option(value=2) Administrator
         .panelWyswietlUser__content__form__item
           span.item Hasło
-          input(placeholder="Hasło")
+          input(placeholder="Hasło" type="Password" ng-model="userToUpdate[0].Password")
         .panelWyswietlUser__content__form__item
           span.item Powtórz Hasło
           input(placeholder="Hasło")

@@ -12,23 +12,23 @@
   .panelDodajUser__wrapper
     .panelDodajUser__subtitle Dodawanie użytkownika
     .panelDodajUser__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-    form()
+    form(ng-controller="AddUserController" ng-submit="createUser()")
       .panelDodajUser__content__form
           .panelDodajUser__content__form__item
             span.item Email Użytkownika
-            input(placeholder="Email Użytkownika")
+            input(placeholder="Email Użytkownika" ng-model="userToCreate[0].Email")
           .panelDodajUser__content__form__item
             span.item Ranga Użytkownika
-            select
+            select(ng-model="userToCreate[0].Rank")
               option(value=0) Użytkownik
               option(value=1) Kontroler
               option(value=2) Administrator
           .panelDodajUser__content__form__item
             span.item Hasło
-            input(placeholder="Hasło")
+            input(placeholder="Hasło" type="password" ng-model="userToCreate[0].Password")
           .panelDodajUser__content__form__item
             span.item Ponowne Hasło
-            input(placeholder="Ponowne Hasło")
+            input(placeholder="Ponowne Hasło" type="password")
       .panelDodajUser__navigation
         button.green.panelDodajUser__navigation__item.green Dodaj Użytkownika
         a(href="/#/user").panelDodajUser__navigation__item.gray.-abort Anuluj
