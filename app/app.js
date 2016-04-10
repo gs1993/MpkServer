@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('app', ['ngRoute']);
+    var app = angular.module('app', ['ngRoute', 'ngMap']);
 
     app.config(['$routeProvider','$locationProvider',
         function($routeProvider,$locationProvider) {
@@ -401,5 +401,9 @@
             }
         });
     }]);
-    
+    app.controller('MapController', function(NgMap) {
+        NgMap.getMap().then(function(map) {
+
+        });
+    });
 })();
