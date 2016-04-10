@@ -12,7 +12,7 @@
   .panelDodajAutobus__wrapper
     .panelDodajAutobus__subtitle Dodawanie pojazdu do floty
     .panelDodajAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-    form(ng-controller="AddBusController" ng-submit="createBus()")
+    form(ng-controller="AddBusController")
       .panelDodajAutobus__content__form
           .panelDodajAutobus__content__form__item
             span.item Numer Rejestracyjny
@@ -31,6 +31,6 @@
               option(value=0) Nie
               option(value=1) Tak
       .panelDodajAutobus__navigation
-        button.green.panelDodajAutobus__navigation__item.green Dodaj Autobus
+        button(ng-click="createBus()").green.panelDodajAutobus__navigation__item.green Dodaj Autobus
         a(href="/#/bus").panelDodajAutobus__navigation__item.gray.-abort Anuluj
 

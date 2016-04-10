@@ -1,4 +1,3 @@
-var modRewrite = require('connect-modrewrite');
 module.exports = function(grunt) {
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -122,31 +121,12 @@ module.exports = function(grunt) {
       }
     },
     connect: {
-      server: {
+      all: {
         options:{
           port: 9000,
-          base: '',
-          logger: 'dev',
-          hostname: "*",
-          open: true,
+          hostname: "0.0.0.0",
           keepalive: true,
           livereload: true
-        },
-        livereload: {
-          options: {
-            open: true,
-            middleware: function (connect) {
-              return [
-                modRewrite(['^[^\\.]*$ /index.html [L]']),
-                connect.static('.tmp'),
-                connect().use(
-                    '/bower_components',
-                    connect.static('./bower_components')
-                ),
-                connect.static(appConfig.app)
-              ];
-            }
-          }
         }
       }
     },
