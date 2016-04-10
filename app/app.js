@@ -247,9 +247,7 @@
             BusType: 1,
             LastControl: '1'
         }];
-
-        $http.get('http://localhost:50000/bus/getBus/', {
-                params: {Id: WybraneId},
+        $http.get('http://localhost:50000/bus/getBus/' + WybraneId, {
                 headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
             }
         ).success(function (data, status, headers, config) {
@@ -550,8 +548,7 @@
             LastControl: '1'
         }];
 
-        $http.get('http://localhost:50000/busstop/getBusstop/', {
-                params: {Id: WybraneId},
+        $http.get('http://localhost:50000/busstop/getBusstop/' + WybraneId, {
                 headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
             }
         ).success(function (data, status, headers, config) {
@@ -789,8 +786,7 @@
             Details: 'Jakis Opis'
         }];
 
-        $http.get('http://localhost:50000/user/getUser/', {
-                params: {Id: WybraneId},
+        $http.get('http://localhost:50000/user/getUser/' + WybraneId, {
                 headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
             }
         ).success(function (data, status, headers, config) {
