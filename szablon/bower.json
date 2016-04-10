@@ -29,7 +29,8 @@
     "ajax": "^1.0.10",
     "angular-route": "^1.5.3",
     "angular-cookies": "^1.5.3",
-    "angular": "^1.5.3"
+    "angular": "^1.5.3",
+    "ngmap": "latest"
   },
   "dependencies": {
     "imagesloaded": "latest",
