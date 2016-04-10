@@ -12,22 +12,22 @@
   .panelDodajAutobus__wrapper
     .panelDodajAutobus__subtitle Dodawanie pojazdu do floty
     .panelDodajAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-    form()
+    form(ng-controller="AddBusController" ng-submit="createBus()")
       .panelDodajAutobus__content__form
           .panelDodajAutobus__content__form__item
             span.item Numer Rejestracyjny
-            input(placeholder="Numer Rejestracyjny")
+            input(placeholder="Numer Rejestracyjny" ng-model="busToCreate[0].RegistrationNumber")
           .panelDodajAutobus__content__form__item
             span.item Numer VIN
-            input(placeholder="Numer VIN")
+            input(placeholder="Numer VIN" ng-model="busToCreate[0].BusNumber")
           .panelDodajAutobus__content__form__item
             span.item Typ Autobusu
-            select
+            select(ng-model="busToCreate[0].BusType")
               option(value=0) Normalny
               option(value=1) Przegubowy
           .panelDodajAutobus__content__form__item
             span.item Czy ma Biletomat?
-            select
+            select(ng-model="busToCreate[0].GotMachine")
               option(value=0) Nie
               option(value=1) Tak
       .panelDodajAutobus__navigation

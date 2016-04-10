@@ -5,34 +5,34 @@
   <div class="panelDodajPrzystanek__wrapper">
     <div class="panelDodajPrzystanek__subtitle">Dodawanie przystanku floty</div>
     <div class="panelDodajPrzystanek__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <form>
+    <form ng-controller="AddBusstopController" ng-submit="createBusstop()">
       <div class="panelDodajPrzystanek__content__form">
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Nazwa Przystanku</span>
-          <input placeholder="Nazwa Przystanku"/>
+          <input placeholder="Nazwa Przystanku" ng-model="busstopToCreate[0].Name"/>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Ulica</span>
-          <input placeholder="Ulica"/>
+          <input placeholder="Ulica" ng-model="busstopToCreate[0].LocalizationString"/>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Typ Przystanku</span>
-          <select>
+          <select ng-model="busstopToCreate[0].BusStopType">
             <option value="0">Normalny</option>
             <option value="1">Zabudowany</option>
           </select>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Koordynat Lat</span>
-          <input placeholder="Lat"/>
+          <input placeholder="Lat" ng-model="busstopToCreate[0].Lat"/>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Koordynat Lng</span>
-          <input placeholder="Lng"/>
+          <input placeholder="Lng" ng-model="busstopToCreate[0].Lng"/>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma biletomat?</span>
-          <select>
+          <select ng-model="busstopToCreate[0].GotMachine">
             <option value="0">Nie</option>
             <option value="1">Tak</option>
           </select>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma kiosk?</span>
-          <select>
+          <select ng-model="busstopToCreate[0].GotKiosk">
             <option value="0">Nie</option>
             <option value="1">Tak</option>
           </select>

@@ -36,23 +36,23 @@
         p X Y
     .panelWyswietlAutobus__subtitle Edycja autobusu
     .panelWyswietlAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-    form(name="BusForm" ng-controller="UpdateBusController" novalidate)
+    form(name="BusForm" ng-controller="UpdateBusController" ng-submit="updateBus()" novalidate)
       .panelWyswietlAutobus__content__form
           .panelWyswietlAutobus__content__form__item
             span.item Numer Rejestracyjny
-            input(placeholder="Numer Rejestracyjny")
+            input(placeholder="Numer Rejestracyjny" ng-model="busToUpdate[0].RegistrationNumber")
           .panelWyswietlAutobus__content__form__item
             span.item Numer VIN
-            input(placeholder="Numer VIN")
+            input(placeholder="Numer VIN" ng-model="busToUpdate[0].BusNumber")
           .panelWyswietlAutobus__content__form__item
             span.item Typ Autobusu
-            select
+            select(ng-model="busToUpdate[0].BusType")
               option(value='') Typ Autobusu
               option(value=0) Normalny
               option(value=1) Przegubowy
           .panelWyswietlAutobus__content__form__item
             span.item Biletomat
-            select
+            select(ng-model="busToUpdate[0].GotMachine")
               option(value='') Biletomat
               option(value=0) Nie
               option(value=1) Tak

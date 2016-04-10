@@ -39,35 +39,35 @@
         p {{ item.LastControl }}
     .panelWyswietlPrzystanek__subtitle Edycja przystanku
     .panelWyswietlPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-    form()
+    form(ng-controller="UpdateBustopController" ng-submit="updateBusstop()")
       .panelWyswietlPrzystanek__content__form
           .panelWyswietlPrzystanek__content__form__item
             span.item Nazwa Przystanku
-            input(placeholder="Nazwa Przystanku")
+            input(placeholder="Nazwa Przystanku" ng-model="busstopToUpdate[0].Name")
           .panelWyswietlPrzystanek__content__form__item
             span.item Ulica
-            input(placeholder="Ulica")
+            input(placeholder="Ulica" ng-model="busstopToUpdate[0].LocalizationString")
           .panelWyswietlPrzystanek__content__form__item
             span.item Typ Przystanku
-            select
+            select(ng-model="busstopToUpdate[0].BusStopType")
               option(value='') Typ Przystanku
               option(value=0) Normalny
               option(value=1) Zabudowany
           .panelWyswietlPrzystanek__content__form__item
             span.item Koordynat Lat
-            input(placeholder="Lat")
+            input(placeholder="Lat" ng-model="busstopToUpdate[0].Lat")
           .panelWyswietlPrzystanek__content__form__item
             span.item Koordynat Lng
-            input(placeholder="Lng")
+            input(placeholder="Lng" ng-model="busstopToUpdate[0].Lng")
           .panelWyswietlPrzystanek__content__form__item
             span.item Biletomat
-            select
+            select(ng-model="busstopToUpdate[0].GotMachine")
               option(value='') Biletomat
               option(value=0) Nie
               option(value=1) Tak
           .panelWyswietlPrzystanek__content__form__item
             span.item Kiosk
-            select
+            select(ng-model="busstopToUpdate[0].GotKiosk")
               option(value='') Kiosk
               option(value=0) Nie
               option(value=1) Tak

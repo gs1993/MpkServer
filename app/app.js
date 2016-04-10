@@ -159,7 +159,42 @@
     
     app.controller('AddBusController', function($scope) {
 
-        $scope.message = 'This is Add new order screen';
+        //$scope.message = 'This is Add new order screen';
+
+        $scope.busToCreate=[{}];
+
+        $scope.createBus=function() {
+            angular.forEach($scope.busToCreate, function (item) {
+
+                    //Zamiana wartosci
+
+                    if(item.BusType == "1")
+                    {
+                        item.BusType = 1;
+                    }
+                    else
+                    {
+                        item.BusType = 0;
+                    }
+                    if(item.GotMachine == "1")
+                    {
+                        item.GotMachine = true;
+                    }
+                    else
+                    {
+                        item.GotMachine = false;
+                    }
+                    //czy przy tworzeniu powinnen być status???
+                    item.BusStatus = 0
+
+                });
+
+
+            console.log($scope.busToCreate);
+
+
+        };
+
 
     });
     
@@ -209,7 +244,65 @@
     }]);
     app.controller('UpdateBusController', function($scope) {
 
-        $scope.message = 'This is Add new order screen';
+        $scope.busToUpdate=[{}];
+
+        $scope.updateBus=function() {
+            angular.forEach($scope.busToUpdate, function (item) {
+                angular.forEach($scope.autobus, function (item2) {
+                    //Dopisywanie pustych z rodzica
+
+                    if(item.Id==null)
+                    {
+                        item.Id=item2.Id;
+                    }
+                    if(item.RegistrationNumber==null)
+                    {
+                        item.RegistrationNumber=item2.RegistrationNumber;
+                    }
+                    if(item.BusNumber==null)
+                    {
+                        item.BusNumber=item2.BusNumber;
+                    }
+
+                    item.BusStatus=item2.BusStatus
+
+                    if(item.BusType==null)
+                    {
+                        item.BusType=item2.BusType;
+                    }
+                    if(item.GotMachine==null)
+                    {
+                        item.GotMachine=item2.GotMachine;
+                    }
+
+                    item.LastControl=item2.LastControl;
+
+                    //Zamiana wartosci
+
+                    if(item.BusType == "1")
+                    {
+                        item.BusType = 1;
+                    }
+                    else
+                    {
+                        item.BusType = 0;
+                    }
+                    if(item.GotMachine == 1)
+                    {
+                        item.GotMachine = true;
+                    }
+                    else
+                    {
+                        item.GotMachine = false;
+                    }
+
+                });
+            });
+
+            console.log($scope.busToUpdate);
+            console.log($scope.autobus);
+
+        };
 
     });
 
@@ -269,7 +362,60 @@
 
     app.controller('AddBusstopController', function($scope) {
 
-        $scope.message = 'This is Add new order screen';
+        //$scope.message = 'This is Add new order screen';
+        $scope.busstopToCreate=[{}];
+
+        $scope.createBusstop=function() {
+            angular.forEach($scope.busstopToCreate, function (item) {
+
+                item.Lat=parseFloat(item.Lat);
+                item.Lng=parseFloat(item.Lng);
+                //Zamiana wartosci
+                if(item.GotMachine == 1)
+                {
+                    item.GotMachine = true;
+                }
+                else
+                {
+                    item.GotMachine = false;
+                }
+
+                if(item.GotMachine == 1)
+                {
+                    item.GotMachine = true;
+                }
+                else
+                {
+                    item.GotMachine = false;
+                }
+                if(item.GotKiosk == 1)
+                {
+                    item.GotKiosk = true;
+                }
+                else
+                {
+                    item.GotKiosk = false;
+                }
+
+                if(item.BusStopType == "0")
+                {
+                    item.BusStopType = 0
+                }
+                else
+                {
+                    item.BusStopType = 1
+                }
+                //czy przy tworzeniu powinnen być status???
+                item.BusStopStatus = 0
+
+
+            });
+
+
+            console.log($scope.busstopToCreate);
+
+
+        };
 
     });
 
@@ -325,6 +471,107 @@
         });
     }]);
 
+
+    app.controller('UpdateBustopController', function($scope) {
+
+        //$scope.message = 'This is Add new order screen';
+        $scope.busstopToUpdate=[{}];
+
+        $scope.updateBusstop=function() {
+            angular.forEach($scope.busstopToUpdate, function (item) {
+                angular.forEach($scope.przystanek, function (item2) {
+
+                    if(item.Id==null)
+                    {
+                        item.Id=item2.Id;
+                    }
+                    if(item.Name==null)
+                    {
+                        item.Name=item2.Name;
+                    }
+                    if(item.Lat==null)
+                    {
+                        item.Lat=item2.Lat;
+                    }
+
+                    if(item.Lng==null)
+                    {
+                        item.Lng=item2.Lng;
+                    }
+                    if(item.LocalizationString==null)
+                    {
+                        item.LocalizationString=item2.LocalizationString;
+                    }
+                    if(item.GotMachine==null)
+                    {
+                        item.GotMachine=item2.GotMachine;
+                    }
+                    if(item.GotKiosk==null)
+                    {
+                        item.GotKiosk=item2.GotKiosk;
+                    }
+                    if(item.BusStopType==null)
+                    {
+                        item.BusStopType=item2.BusStopType;
+                    }
+                    item.BusStopStatus=item2.BusStopStatus;
+                    item.LastControl=item2.LastControl;
+
+                    //Zamiana wartosci
+
+                    item.Lat=parseFloat(item.Lat);
+                    item.Lng=parseFloat(item.Lng);
+
+                    if(item.GotMachine == 1)
+                    {
+                        item.GotMachine = true;
+                    }
+                    else
+                    {
+                        item.GotMachine = false;
+                    }
+
+                    if(item.GotMachine == 1)
+                    {
+                        item.GotMachine = true;
+                    }
+                    else
+                    {
+                        item.GotMachine = false;
+                    }
+                    if(item.GotKiosk == 1)
+                    {
+                        item.GotKiosk = true;
+                    }
+                    else
+                    {
+                        item.GotKiosk = false;
+                    }
+
+                    if(item.BusStopType == "0")
+                    {
+                        item.BusStopType = 0
+                    }
+                    else
+                    {
+                        item.BusStopType = 1
+                    }
+                    //czy przy tworzeniu powinnen być status???
+
+
+                });
+            });
+
+
+            console.log($scope.busstopToUpdate);
+
+
+        };
+
+    });
+
+
+
     /* Użytkownicy Controlery
      *==========================================================================*/
     app.controller('UserController', function($scope) {
@@ -363,7 +610,38 @@
 
     app.controller('AddUserController', function($scope) {
 
-        $scope.message = 'This is Add new order screen';
+        //$scope.message = 'This is Add new order screen';
+        $scope.userToCreate=[{}];
+
+        $scope.createUser=function() {
+            angular.forEach($scope.userToCreate, function (item) {
+
+                //Zamiana wartosci
+
+                if(item.Rank == "0")
+                {
+                    item.Rank = 0;
+                }
+                else if(item.Rank == "1")
+                {
+                    item.Rank= 1;
+                }
+                else if(item.Rank == "2")
+                {
+                    item.Rank = 2;
+                }
+
+                //czy przy tworzeniu powinnen być status???
+                item.Status = 0
+
+
+            });
+
+
+            console.log($scope.userToCreate);
+
+
+        };
 
     });
 
@@ -401,5 +679,61 @@
             }
         });
     }]);
+
+    app.controller('UpdateUserController', function($scope) {
+
+        //$scope.message = 'This is Add new order screen';
+        $scope.userToUpdate=[{}];
+        $scope.updateUser=function() {
+            angular.forEach($scope.userToUpdate, function (item) {
+                angular.forEach($scope.user, function (item2) {
+                    if(item.Id==null)
+                    {
+                        item.Id=item2.Id;
+                    }
+                    if(item.Email==null)
+                    {
+                        item.Email=item2.Email;
+                    }
+                    if(item.Imie==null)
+                    {
+                        item.Imie=item2.Imie;
+                    }
+                    if(item.Nazwisko==null)
+                    {
+                        item.Nazwisko=item2.Nazwisko;
+                    }
+                    if(item.Rank==null)
+                    {
+                        item.Rank=item2.Rank;
+                    }
+                    if(item.Details==null)
+                    {
+                        item.Details=item2.Details;
+                    }
+                    item.Status=item2.Status;
+
+                    //Zamiana wartosci
+
+                    if(item.Rank == "0")
+                    {
+                        item.Rank = 0;
+                    }
+                    else if(item.Rank == "1")
+                    {
+                        item.Rank= 1;
+                    }
+                    else if(item.Rank == "2")
+                    {
+                        item.Rank = 2;
+                    }
+                });
+            });
+            console.log($scope.userToUpdate);
+
+
+        };
+
+    });
     
 })();

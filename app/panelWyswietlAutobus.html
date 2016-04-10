@@ -30,23 +30,23 @@
     </div>
     <div class="panelWyswietlAutobus__subtitle">Edycja autobusu</div>
     <div class="panelWyswietlAutobus__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <form name="BusForm" ng-controller="UpdateBusController" novalidate="novalidate">
+    <form name="BusForm" ng-controller="UpdateBusController" ng-submit="updateBus()" novalidate="novalidate">
       <div class="panelWyswietlAutobus__content__form">
         <div class="panelWyswietlAutobus__content__form__item"><span class="item">Numer Rejestracyjny</span>
-          <input placeholder="Numer Rejestracyjny"/>
+          <input placeholder="Numer Rejestracyjny" ng-model="busToUpdate[0].RegistrationNumber"/>
         </div>
         <div class="panelWyswietlAutobus__content__form__item"><span class="item">Numer VIN</span>
-          <input placeholder="Numer VIN"/>
+          <input placeholder="Numer VIN" ng-model="busToUpdate[0].BusNumber"/>
         </div>
         <div class="panelWyswietlAutobus__content__form__item"><span class="item">Typ Autobusu</span>
-          <select>
+          <select ng-model="busToUpdate[0].BusType">
             <option value="">Typ Autobusu</option>
             <option value="0">Normalny</option>
             <option value="1">Przegubowy</option>
           </select>
         </div>
         <div class="panelWyswietlAutobus__content__form__item"><span class="item">Biletomat</span>
-          <select>
+          <select ng-model="busToUpdate[0].GotMachine">
             <option value="">Biletomat</option>
             <option value="0">Nie</option>
             <option value="1">Tak</option>

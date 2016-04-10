@@ -12,33 +12,33 @@
   .panelDodajPrzystanek__wrapper
     .panelDodajPrzystanek__subtitle Dodawanie przystanku floty
     .panelDodajPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-    form()
+    form(ng-controller="AddBusstopController" ng-submit="createBusstop()")
       .panelDodajPrzystanek__content__form
           .panelDodajPrzystanek__content__form__item
             span.item Nazwa Przystanku
-            input(placeholder="Nazwa Przystanku")
+            input(placeholder="Nazwa Przystanku" ng-model="busstopToCreate[0].Name")
           .panelDodajPrzystanek__content__form__item
             span.item Ulica
-            input(placeholder="Ulica")
+            input(placeholder="Ulica" ng-model="busstopToCreate[0].LocalizationString")
           .panelDodajPrzystanek__content__form__item
             span.item Typ Przystanku
-            select
+            select(ng-model="busstopToCreate[0].BusStopType")
               option(value=0) Normalny
               option(value=1) Zabudowany
           .panelDodajPrzystanek__content__form__item
             span.item Koordynat Lat
-            input(placeholder="Lat")
+            input(placeholder="Lat" ng-model="busstopToCreate[0].Lat")
           .panelDodajPrzystanek__content__form__item
             span.item Koordynat Lng
-            input(placeholder="Lng")
+            input(placeholder="Lng" ng-model="busstopToCreate[0].Lng")
           .panelDodajPrzystanek__content__form__item
             span.item Czy ma biletomat?
-            select
+            select(ng-model="busstopToCreate[0].GotMachine")
               option(value=0) Nie
               option(value=1) Tak
           .panelDodajPrzystanek__content__form__item
             span.item Czy ma kiosk?
-            select
+            select(ng-model="busstopToCreate[0].GotKiosk")
               option(value=0) Nie
               option(value=1) Tak
       .panelDodajPrzystanek__navigation

@@ -5,23 +5,23 @@
   <div class="panelDodajUser__wrapper">
     <div class="panelDodajUser__subtitle">Dodawanie użytkownika</div>
     <div class="panelDodajUser__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <form>
+    <form ng-controller="AddUserController" ng-submit="createUser()">
       <div class="panelDodajUser__content__form">
         <div class="panelDodajUser__content__form__item"><span class="item">Email Użytkownika</span>
-          <input placeholder="Email Użytkownika"/>
+          <input placeholder="Email Użytkownika" ng-model="userToCreate[0].Email"/>
         </div>
         <div class="panelDodajUser__content__form__item"><span class="item">Ranga Użytkownika</span>
-          <select>
+          <select ng-model="userToCreate[0].Rank">
             <option value="0">Użytkownik</option>
             <option value="1">Kontroler</option>
             <option value="2">Administrator</option>
           </select>
         </div>
         <div class="panelDodajUser__content__form__item"><span class="item">Hasło</span>
-          <input placeholder="Hasło"/>
+          <input placeholder="Hasło" type="password" ng-model="userToCreate[0].Password"/>
         </div>
         <div class="panelDodajUser__content__form__item"><span class="item">Ponowne Hasło</span>
-          <input placeholder="Ponowne Hasło"/>
+          <input placeholder="Ponowne Hasło" type="password"/>
         </div>
       </div>
       <div class="panelDodajUser__navigation">
