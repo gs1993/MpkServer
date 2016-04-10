@@ -6,30 +6,41 @@
         i.fa.fa-home
         | Home
     span
-      a(href="/bus") Zarządzanie Autobusami
+      a(href="/#/bus") Zarządzanie Autobusami
     span.-active
       a(href="/#/bus/add") Dodaj Autobus
   .panelDodajAutobus__wrapper
     .panelDodajAutobus__subtitle Dodawanie pojazdu do floty
     .panelDodajAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-    form(ng-controller="AddBusController" ng-submit="createBus()")
+    form(name="form" ng-controller="AddBusController" ng-submit="form.$valid && createBus()" novalidate )
       .panelDodajAutobus__content__form
           .panelDodajAutobus__content__form__item
             span.item Numer Rejestracyjny
-            input(placeholder="Numer Rejestracyjny" ng-model="busToCreate[0].RegistrationNumber")
+            input(placeholder="Numer Rejestracyjny" ng-model="busToCreate[0].RegistrationNumber" required name="uNumer")
+            .row(ng-show="form.$submitted || form.uNumer.$touched")
+              span(ng-show="form.uNumer.$error.required").error-info Podaj numer rejestracyjny!
           .panelDodajAutobus__content__form__item
             span.item Numer VIN
-            input(placeholder="Numer VIN" ng-model="busToCreate[0].BusNumber")
+            input(placeholder="Numer VIN" ng-model="busToCreate[0].BusNumber" pattern="" required name="uNumerVIN")
+            .row(ng-show="form.$submitted || form.uNumerVIN.$touched")
+              span(ng-show="form.uNumerVIN.$error.required").error-info Podaj Numer VIN!
+              span(ng-show="form.uNumerVIN.$error.pattern").error-info Numer VIN składa się z 17 znaków
           .panelDodajAutobus__content__form__item
             span.item Typ Autobusu
-            select(ng-model="busToCreate[0].BusType")
+            select(ng-model="busToCreate[0].BusType" required name="uTyp")
+              option(value="" ng-selected="selected") Wybierz typ autobusu!
               option(value=0) Normalny
               option(value=1) Przegubowy
+            .row(ng-show="form.$submitted || form.uTyp.$touched")
+              span(ng-show="form.uTyp.$error.required").error-info Wybierz typ autobusu!!!
           .panelDodajAutobus__content__form__item
             span.item Czy ma Biletomat?
-            select(ng-model="busToCreate[0].GotMachine")
+            select(ng-model="busToCreate[0].GotMachine" required name="uBiletomat")
+              option(value="" ng-selected="selected") Wybierz opcję!
               option(value=0) Nie
               option(value=1) Tak
+            .row(ng-show="form.$submitted || form.uBiletomat.$touched")
+              span(ng-show="form.uBiletomat.$error.required").error-info Musisz wybrać!!!
       .panelDodajAutobus__navigation
         button.green.panelDodajAutobus__navigation__item.green Dodaj Autobus
         a(href="/#/bus").panelDodajAutobus__navigation__item.gray.-abort Anuluj

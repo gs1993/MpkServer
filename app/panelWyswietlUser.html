@@ -27,7 +27,7 @@
     </div>
     <div class="panelWyswietlUser__subtitle">Edycja użytkownika</div>
     <div class="panelWyswietlUser__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <form ng-controller="UpdateUserController" ng-submit="updateUser()">
+    <form ng-controller="UpdateUserController">
       <div class="panelWyswietlUser__content__form">
         <div class="panelWyswietlUser__content__form__item"><span class="item">Email Użytkownika</span>
           <input placeholder="Email Użytkownika" ng-model="userToUpdate[0].Email"/>
@@ -54,7 +54,7 @@
         </div>
       </div>
       <div class="panelWyswietlUser__navigation">
-        <button class="green panelWyswietlUser__navigation__item green">Aktualizuj Użytkownika</button><a href="/#/user/delete/{{ UserID }}" ng-hide="item.Status == 0" class="panelWyswietlUser__navigation__item red">Dezaktywuj</a><a href="/#/user/restore/{{ UserID }}" ng-show="item.Status == 0" class="panelWyswietlUser__navigation__item greenDark">Aktywuj</a><a href="/#/user" class="panelWyswietlUser__navigation__item gray -abort">Anuluj</a>
+        <button ng-click="updateUser()" class="green panelWyswietlUser__navigation__item green">Aktualizuj Użytkownika</button><a href="/#/user/delete/{{ UserID }}" ng-hide="item.Status == 0" class="panelWyswietlUser__navigation__item red">Dezaktywuj</a><a href="/#/user/restore/{{ UserID }}" ng-show="item.Status == 0" class="panelWyswietlUser__navigation__item greenDark">Aktywuj</a><a href="/#/user" class="panelWyswietlUser__navigation__item gray -abort">Anuluj</a>
       </div>
     </form>
   </div>

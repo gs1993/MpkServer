@@ -6,8 +6,8 @@
 
     var app = angular.module('app', ['ngRoute', 'ngMap']);
 
-    app.config(['$routeProvider','$locationProvider',
-        function($routeProvider,$locationProvider) {
+    app.config(['$routeProvider',
+        function($routeProvider) {
             $routeProvider.
 
             //STANDARDOWE SCIEZKI

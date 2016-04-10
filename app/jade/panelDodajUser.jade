@@ -12,23 +12,33 @@
   .panelDodajUser__wrapper
     .panelDodajUser__subtitle Dodawanie użytkownika
     .panelDodajUser__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-    form(ng-controller="AddUserController" ng-submit="createUser()")
+    form(name="form" ng-controller="AddUserController" ng-submit="form.$valid && createUser()" novalidate)
       .panelDodajUser__content__form
           .panelDodajUser__content__form__item
             span.item Email Użytkownika
-            input(placeholder="Email Użytkownika" ng-model="userToCreate[0].Email")
+            input(placeholder="Email Użytkownika" type="email" ng-model="userToCreate[0].Email" name="uEmail" required)
+            .row(ng-show="form.$submitted || form.uEmail.$touched")
+              span(ng-show="form.uEmail.$error.required").error-info Podaj adres email!
+              span(ng-show="form.uEmail.$error.email").error-info Nie poprawny format!
           .panelDodajUser__content__form__item
             span.item Ranga Użytkownika
-            select(ng-model="userToCreate[0].Rank")
+            select(ng-model="userToCreate[0].Rank" name="uRanga" required)
+              option(value="" ng-selected="selected") Wybierz range!
               option(value=0) Użytkownik
               option(value=1) Kontroler
               option(value=2) Administrator
+            .row(ng-show="form.$submitted || form.uRanga.$touched")
+              span(ng-show="form.uRanga.$error.required").error-info Wybierz range!
           .panelDodajUser__content__form__item
             span.item Hasło
-            input(placeholder="Hasło" type="password" ng-model="userToCreate[0].Password")
+            input(placeholder="Hasło" type="password" ng-model="userToCreate[0].Password" name="uHaslo" required)
+            .row(ng-show="form.$submitted || form.uHaslo.$touched")
+              span(ng-show="form.uHaslo.$error.required").error-info Podaj hasło!
           .panelDodajUser__content__form__item
             span.item Ponowne Hasło
-            input(placeholder="Ponowne Hasło" type="password")
+            input(placeholder="Ponowne Hasło" type="password" name="uHasloPonownie" required ng-model="userToCreate[0].PasswordAgain")
+            .row(ng-show="form.$submitted || form.uHasloPonownie.$touched")
+              span(ng-show="form.uHasloPonownie.$error.required").error-info Podaj pownownie hasło!
       .panelDodajUser__navigation
         button.green.panelDodajUser__navigation__item.green Dodaj Użytkownika
         a(href="/#/user").panelDodajUser__navigation__item.gray.-abort Anuluj

@@ -5,23 +5,28 @@
   <div class="panelDodajUser__wrapper">
     <div class="panelDodajUser__subtitle">Dodawanie użytkownika</div>
     <div class="panelDodajUser__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <form ng-controller="AddUserController" ng-submit="createUser()">
+    <form name="form" ng-controller="AddUserController" ng-submit="form.$valid &amp;&amp; createUser()" novalidate="novalidate">
       <div class="panelDodajUser__content__form">
         <div class="panelDodajUser__content__form__item"><span class="item">Email Użytkownika</span>
-          <input placeholder="Email Użytkownika" ng-model="userToCreate[0].Email"/>
+          <input placeholder="Email Użytkownika" type="email" ng-model="userToCreate[0].Email" name="uEmail" required="required"/>
+          <div ng-show="form.$submitted || form.uEmail.$touched" class="row"><span ng-show="form.uEmail.$error.required" class="error-info">Podaj adres email!</span><span ng-show="form.uEmail.$error.email" class="error-info">Nie poprawny format!</span></div>
         </div>
         <div class="panelDodajUser__content__form__item"><span class="item">Ranga Użytkownika</span>
-          <select ng-model="userToCreate[0].Rank">
+          <select ng-model="userToCreate[0].Rank" name="uRanga" required="required">
+            <option value="" ng-selected="selected">Wybierz range!</option>
             <option value="0">Użytkownik</option>
             <option value="1">Kontroler</option>
             <option value="2">Administrator</option>
           </select>
+          <div ng-show="form.$submitted || form.uRanga.$touched" class="row"><span ng-show="form.uRanga.$error.required" class="error-info">Wybierz range!</span></div>
         </div>
         <div class="panelDodajUser__content__form__item"><span class="item">Hasło</span>
-          <input placeholder="Hasło" type="password" ng-model="userToCreate[0].Password"/>
+          <input placeholder="Hasło" type="password" ng-model="userToCreate[0].Password" name="uHaslo" required="required"/>
+          <div ng-show="form.$submitted || form.uHaslo.$touched" class="row"><span ng-show="form.uHaslo.$error.required" class="error-info">Podaj hasło!</span></div>
         </div>
         <div class="panelDodajUser__content__form__item"><span class="item">Ponowne Hasło</span>
-          <input placeholder="Ponowne Hasło" type="password"/>
+          <input placeholder="Ponowne Hasło" type="password" name="uHasloPonownie" required="required" ng-model="userToCreate[0].PasswordAgain"/>
+          <div ng-show="form.$submitted || form.uHasloPonownie.$touched" class="row"><span ng-show="form.uHasloPonownie.$error.required" class="error-info">Podaj pownownie hasło!</span></div>
         </div>
       </div>
       <div class="panelDodajUser__navigation">

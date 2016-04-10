@@ -33,7 +33,7 @@
         p {{ item.Details }}
     .panelWyswietlUser__subtitle Edycja użytkownika
     .panelWyswietlUser__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-    form(ng-controller="UpdateUserController" ng-submit="updateUser()")
+    form(ng-controller="UpdateUserController" )
       .panelWyswietlUser__content__form
         .panelWyswietlUser__content__form__item
           span.item Email Użytkownika
@@ -58,7 +58,7 @@
           span.item Powtórz Hasło
           input(placeholder="Hasło")
       .panelWyswietlUser__navigation
-        button.green.panelWyswietlUser__navigation__item.green Aktualizuj Użytkownika
+        button(ng-click="updateUser()").green.panelWyswietlUser__navigation__item.green Aktualizuj Użytkownika
         a(href="/#/user/delete/{{ UserID }}" ng-hide="item.Status == 0").panelWyswietlUser__navigation__item.red Dezaktywuj
         a(href="/#/user/restore/{{ UserID }}" ng-show="item.Status == 0").panelWyswietlUser__navigation__item.greenDark Aktywuj
         a(href="/#/user").panelWyswietlUser__navigation__item.gray.-abort Anuluj
