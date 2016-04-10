@@ -11600,6 +11600,7 @@ a.tabnav-extra:hover {
 .panelDodajAutobus__text {
   color: #88969F;
   padding: 5px;
+  margin-bottom: 15px;
 }
 
 .panelDodajAutobus__alert {
@@ -12184,6 +12185,7 @@ a.tabnav-extra:hover {
 .panelDodajPrzystanek__text {
   color: #88969F;
   padding: 5px;
+  margin-bottom: 15px;
 }
 
 .panelDodajPrzystanek__alert {
@@ -12410,21 +12412,6 @@ a.tabnav-extra:hover {
 
 .panelDodajPrzystanek__icon {
   font-size: 3em;
-}
-
-.panelDodajPrzystanek__dataLoader__svg {
-  height: 200px;
-  width: 200px;
-  margin: 0 auto;
-}
-
-.panelDodajPrzystanek__dataLoader__text {
-  display: block;
-  text-align: center;
-}
-
-.panelDodajPrzystanek__dataLoader__text p {
-  margin-bottom: 30px;
 }
 
 .panelUsers {
@@ -12755,6 +12742,7 @@ a.tabnav-extra:hover {
 .panelDodajUser__text {
   color: #88969F;
   padding: 5px;
+  margin-bottom: 15px;
 }
 
 .panelDodajUser__alert {

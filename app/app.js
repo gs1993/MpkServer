@@ -340,7 +340,12 @@
         };
 
     });
+    app.controller('RestoreBusController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
 
+    }]);
+    app.controller('DeleteBusController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+
+    }]);
 
     /* Przystanki Controlery
      *==========================================================================*/
@@ -669,7 +674,12 @@
         };
 
     });
+    app.controller('RestoreBusstopController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
 
+    }]);
+    app.controller('DeleteBusstopController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+
+    }]);
 
     /* Użytkownicy Controlery
      *==========================================================================*/
@@ -760,7 +770,7 @@
             }
         };
     });
-    app.controller('ShowUserController', ['$scope', '$routeParams', function ($scope, $routeParams) {
+    app.controller('ShowUserController', ['$scope', '$routeParams','$http', function ($scope, $routeParams, $http) {
 
         var WybraneId = $routeParams.id;
 
@@ -855,7 +865,12 @@
         };
 
     });
+    app.controller('RestoreUserController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
 
+    }]);
+    app.controller('DeleteUserController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+
+    }]);
     /* Map Controler
      *==========================================================================*/
     app.controller('MapController', function (NgMap) {
