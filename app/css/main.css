@@ -12981,6 +12981,21 @@ a.tabnav-extra:hover {
   font-size: 3em;
 }
 
+.panelDodajUser__dataLoader__svg {
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.panelDodajUser__dataLoader__text {
+  display: block;
+  text-align: center;
+}
+
+.panelDodajUser__dataLoader__text p {
+  margin-bottom: 30px;
+}
+
 .panelWyswietlAutobus__title {
   padding: 0 40px;
   background-color: #2196F3;

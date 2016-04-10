@@ -3,7 +3,6 @@
  */
 (function () {
     'use strict';
-
     var app = angular.module('app', ['ngRoute', 'ngMap']);
 
     app.config(['$routeProvider',
@@ -486,8 +485,6 @@
             else {
                 $scope.BusStopType = 1
             }
-            //czy przy tworzeniu powinnen być status???
-            $scope.BusStopStatus = 0;
 
             var data = $.param({
                 Name: $scope.Name,
@@ -713,38 +710,55 @@
         });
 
     });
-    app.controller('AddUserController', function ($scope, $http) {
-
-        //$scope.message = 'This is Add new order screen';
-        $scope.userToCreate = [{}];
+    app.controller('AddUserController', function ($scope, $http, $timeout) {
+        $scope.sendForm = false;
 
         $scope.createUser = function () {
+            $scope.sendForm = true;
+            //Zamiana wartosci
+            if ($scope.Rank == "0") {
+                $scope.Rank = 0;
+            }
+            else if (item.Rank == "1") {
+                $scope.Rank = 1;
+            }
+            else if (item.Rank == "2") {
+                $scope.Rank = 2;
+            }
 
-
-            angular.forEach($scope.userToCreate, function (item) {
-
-                //Zamiana wartosci
-
-                if (item.Rank == "0") {
-                    item.Rank = 0;
-                }
-                else if (item.Rank == "1") {
-                    item.Rank = 1;
-                }
-                else if (item.Rank == "2") {
-                    item.Rank = 2;
-                }
-
-                //czy przy tworzeniu powinnen być status???
-                item.Status = 0
-
-
+            var data = $.param({
+                Email: $scope.Email,
+                Rank: $scope.Rank,
+                Details: $scope.Details,
+                Status: 0
+                //TODO PASSWORD??
             });
+            var config = {
+                headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+            };
 
-
-            console.log($scope.userToCreate);
+            if ($scope.sendForm) {
+                $scope.message = "Szykujemy nowe biurko...";
+                $timeout(function () {
+                    $http.post('http://localhost:50000/user/addUser', data, config)
+                        .success(function (data, status, headers, config) {
+                            $scope.PostDataResponse = data;
+                            console.log($scope.PostDataResponse);
+                            $scope.CallbackServeraPositive = true;
+                            $scope.CallbackServera = true;
+                        })
+                        .error(function (data, status, header, config) {
+                            $scope.ResponseDetails = "Data: " + data +
+                                "<hr />status: " + status +
+                                "<hr />headers: " + header +
+                                "<hr />config: " + config;
+                            console.log($scope.ResponseDetails);
+                            $scope.CallbackServeraNegative = true;
+                            $scope.CallbackServera = true;
+                        });
+                }, 2500);
+            }
         };
-
     });
     app.controller('ShowUserController', ['$scope', '$routeParams', function ($scope, $routeParams) {
 
@@ -849,4 +863,27 @@
 
         });
     });
+
+    /* Derektywy
+     *==========================================================================*/
+    var compareTo = function() {
+        return {
+            require: "ngModel",
+            scope: {
+                otherModelValue: "=compareTo"
+            },
+            link: function(scope, element, attributes, ngModel) {
+
+                ngModel.$validators.compareTo = function(modelValue) {
+                    return modelValue == scope.otherModelValue;
+                };
+
+                scope.$watch("otherModelValue", function() {
+                    ngModel.$validate();
+                });
+            }
+        };
+    };
+    app.directive("compareTo", compareTo);
 })();
+

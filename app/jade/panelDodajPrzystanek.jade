@@ -16,17 +16,17 @@
       .panelDodajPrzystanek__content__form(ng-hide="sendForm")
           .panelDodajPrzystanek__content__form__item
             span.item Nazwa Przystanku
-            input(placeholder="Nazwa Przystanku" ng-model="busstopToCreate[0].Name" required name="uNazwa")
+            input(placeholder="Nazwa Przystanku" ng-model="Name" required name="uNazwa")
             .row(ng-show="form.$submitted || form.uNazwa.$touched")
               span(ng-show="form.uNazwa.$error.required").error-info Proszę podać nazwe przystanku
           .panelDodajPrzystanek__content__form__item
             span.item Ulica
-            input(placeholder="Ulica" ng-model="busstopToCreate[0].LocalizationString" required name="uUlica")
+            input(placeholder="Ulica" ng-model="LocalizationString" required name="uUlica")
             .row(ng-show="form.$submitted || form.uUlica.$touched" )
               span(ng-show="form.uUlica.$error.required").error-info Proszę podać nazwe ulicy
           .panelDodajPrzystanek__content__form__item
             span.item Typ Przystanku
-            select(ng-model="busstopToCreate[0].BusStopType" required name="uTypPrzystanku")
+            select(ng-model="BusStopType" required name="uTypPrzystanku")
               option(value="" ng-selected="selected") Wybierz typ przystanku!
               option(value=0) Normalny
               option(value=1) Zabudowany
@@ -34,17 +34,17 @@
               span(ng-show="form.uTypPrzystanku.$error.required").error-info Prosze wybrać odpowiedni typ przystanku
           .panelDodajPrzystanek__content__form__item
             span.item Koordynat Lat
-            input(placeholder="Lat" ng-model="busstopToCreate[0].Lat" required name="uLat")
+            input(placeholder="Lat" ng-model="Lat" required name="uLat")
             .row(ng-show="form.$submitted || form.uLat.$touched")
               span(ng-show="form.uLat.$error.required").error-info Prosze podać współrzędne!
           .panelDodajPrzystanek__content__form__item
             span.item Koordynat Lng
-            input(placeholder="Lng" type="number" ng-model="busstopToCreate[0].Lng" required name="uLng")
+            input(placeholder="Lng" type="number" ng-model="Lng" required name="uLng")
             .row(ng-show="form.$submitted || form.uLng.$touched")
               span(ng-show="form.uLng.$error.required").error-info Prosze podać współrzędne!
           .panelDodajPrzystanek__content__form__item
             span.item Czy ma biletomat?
-            select(ng-model="busstopToCreate[0].GotMachine" required name="uBiletomat")
+            select(ng-model="GotMachine" required name="uBiletomat")
               option(value="" ng-selected="selected") Wybierz
               option(value=0) Nie
               option(value=1) Tak
@@ -52,7 +52,7 @@
               span(ng-show="form.uBiletomat.$error.required").error-info Proszę wybrać odpowiednią opcje
           .panelDodajPrzystanek__content__form__item
             span.item Czy ma kiosk?
-            select(ng-model="busstopToCreate[0].GotKiosk" required name="uKiosk")
+            select(ng-model="GotKiosk" required name="uKiosk")
               option(value="" ng-selected="selected") Wybierz
               option(value=0) Nie
               option(value=1) Tak
