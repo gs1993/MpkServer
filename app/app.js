@@ -158,9 +158,7 @@
     
     
     app.controller('AddBusController', function($scope) {
-
-        //$scope.message = 'This is Add new order screen';
-
+        $scope.sendForm = false;
         $scope.busToCreate=[{}];
 
         $scope.createBus=function() {
@@ -185,18 +183,14 @@
                         item.GotMachine = false;
                     }
                     //czy przy tworzeniu powinnen być status???
-                    item.BusStatus = 0
-
+                    item.BusStatus = 0;
+                    $scope.sendForm = true;
                 });
-
-
-
-            ///Serwis
-
-
-            $location.path("/panelAutobusy.html");
-
-
+            if($scope.sendForm)
+            {
+                $scope.message = "Przygotowywanie autobusu do drogi...";
+                // Miejsce na kod laczenia sie z serwerem
+            }
             console.log($scope.busToCreate);
 
 
@@ -369,7 +363,7 @@
 
     app.controller('AddBusstopController', function($scope) {
 
-        //$scope.message = 'This is Add new order screen';
+        $scope.sendForm = false;
         $scope.busstopToCreate=[{}];
 
         $scope.createBusstop=function() {
@@ -414,11 +408,15 @@
                 }
                 //czy przy tworzeniu powinnen być status???
                 item.BusStopStatus = 0
-
+                $scope.sendForm = true;
 
             });
 
-
+            if($scope.sendForm)
+            {
+                $scope.message = "Przygotowywanie przystanku...";
+                // Miejsce na kod laczenia sie z serwerem
+            }
             console.log($scope.busstopToCreate);
 
 
