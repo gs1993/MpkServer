@@ -16,18 +16,18 @@
       .panelDodajAutobus__content__form(ng-hide="sendForm")
           .panelDodajAutobus__content__form__item
             span.item Numer Rejestracyjny
-            input(placeholder="Numer Rejestracyjny" ng-model="busToCreate[0].RegistrationNumber" required name="uNumer")
+            input(placeholder="Numer Rejestracyjny" ng-model="RegistrationNumber" required name="uNumer")
             .row(ng-show="form.$submitted || form.uNumer.$touched")
               span(ng-show="form.uNumer.$error.required").error-info Błąd: Proszę podać numer rejestracyjny
           .panelDodajAutobus__content__form__item
             span.item Numer VIN
-            input(placeholder="Numer VIN" ng-model="busToCreate[0].BusNumber" pattern="" required name="uNumerVIN")
+            input(placeholder="Numer VIN" ng-model="BusNumber" pattern="" required name="uNumerVIN")
             .row(ng-show="form.$submitted || form.uNumerVIN.$touched")
               span(ng-show="form.uNumerVIN.$error.required").error-info Błąd: Proszę podać numer VIN
               span(ng-show="form.uNumerVIN.$error.pattern").error-info Numer VIN powinnien składać się z 17 znaków
           .panelDodajAutobus__content__form__item
             span.item Typ Autobusu
-            select(ng-model="busToCreate[0].BusType" required name="uTyp")
+            select(ng-model="BusType" required name="uTyp")
               option(value="" ng-selected="selected") Wybierz
               option(value=0) Normalny
               option(value=1) Przegubowy
@@ -35,7 +35,7 @@
               span(ng-show="form.uTyp.$error.required").error-info Błąd: Prosze wybrać typ pojazdu.
           .panelDodajAutobus__content__form__item
             span.item Czy ma Biletomat?
-            select(ng-model="busToCreate[0].GotMachine" required name="uBiletomat")
+            select(ng-model="GotMachine" required name="uBiletomat")
               option(value="" ng-selected="selected") Wybierz
               option(value=0) Nie
               option(value=1) Tak
@@ -46,7 +46,7 @@
         a(href="/#/bus").panelDodajAutobus__navigation__item.gray.-abort Anuluj
 
       .panelDodajAutobus__dataLoader(ng-show="sendForm")
-        .panelDodajAutobus__dataLoader__svg
+        .panelDodajAutobus__dataLoader__svg(ng-hide="CallbackServera")
           svg(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 80 80', xml:space='preserve')
             path(fill='#00aef0', d='M10,40c0,0,0-0.4,0-1.1c0-0.3,0-0.8,0-1.3c0-0.3,0-0.5,0-0.8c0-0.3,0.1-0.6,0.1-0.9c0.1-0.6,0.1-1.4,0.2-2.1\
                 c0.2-0.8,0.3-1.6,0.5-2.5c0.2-0.9,0.6-1.8,0.8-2.8c0.3-1,0.8-1.9,1.2-3c0.5-1,1.1-2,1.7-3.1c0.7-1,1.4-2.1,2.2-3.1\
@@ -63,6 +63,7 @@
                 c-0.1,0.3-0.1,0.6-0.2,0.9c0,0.3-0.1,0.6-0.1,0.8c0,0.5-0.1,0.9-0.1,1.3C10,39.6,10,40,10,40z')
               animatetransform(attributetype='xml', attributename='transform', type='rotate', from='0 40 40', to='360 40 40', dur='0.6s', repeatcount='indefinite')
         .panelDodajAutobus__dataLoader__text
-          p {{ message }}
-          a(href="/#/bus").panelDodajAutobus__navigation__item.green Autobus został dodany pomyślnie!
+          p(ng-hide="CallbackServera") {{ message }}
+          a(href="/#/bus" ng-show="CallbackServeraPositive").panelDodajAutobus__navigation__item.green Autobus został dodany pomyślnie!
+          a(href="/#/bus/add" ng-show="CallbackServeraNegative").panelDodajAutobus__navigation__item.red Coś poszło nie tak...
 
