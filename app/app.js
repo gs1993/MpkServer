@@ -736,4 +736,9 @@
 
     });
     
+    app.controller('MapController', function(NgMap) {
+        NgMap.getMap().then(function(map) {
+
+        });
+    });
 })();
