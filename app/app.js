@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('app', ['ngRoute']);
+    var app = angular.module('app', ['ngRoute', 'ngMap']);
 
     app.config(['$routeProvider',
         function($routeProvider) {
