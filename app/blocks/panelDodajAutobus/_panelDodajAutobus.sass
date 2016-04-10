@@ -181,9 +181,21 @@
           border-color: rgba(128, 128, 128, 0.6)
 
       span.error-info
-        line-height: 30px
+        padding: 8px 5px
+        line-height: 1.2em
         color: rgba(128, 0, 2, 1)
-
+        display: block
+        font-size: 10px
+        margin: 5px
+        text-align: justify
+      span.alert-info
+        padding: 8px 5px
+        line-height: 1.2em
+        color: #2196F3
+        display: block
+        font-size: 10px
+        margin: 5px
+        text-align: justify
   form.ng-submitted
     input,select
       &.ng-invalid
@@ -206,4 +218,14 @@
       font-size: 1.8em !important
   &__icon
     font-size: 3em
+  &__dataLoader
+    &__svg
+      height: 200px
+      width: 200px
+      margin: 0 auto
+    &__text
+      display: block
+      text-align: center
+      p
+        margin-bottom: 30px
 

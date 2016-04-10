@@ -11792,8 +11792,23 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajAutobus__content__form span.error-info {
-  line-height: 30px;
+  padding: 8px 5px;
+  line-height: 1.2em;
   color: #800002;
+  display: block;
+  font-size: 10px;
+  margin: 5px;
+  text-align: justify;
+}
+
+.panelDodajAutobus__content__form span.alert-info {
+  padding: 8px 5px;
+  line-height: 1.2em;
+  color: #2196F3;
+  display: block;
+  font-size: 10px;
+  margin: 5px;
+  text-align: justify;
 }
 
 .panelDodajAutobus form.ng-submitted input.ng-invalid, .panelDodajAutobus form.ng-submitted select.ng-invalid {
@@ -11824,6 +11839,21 @@ a.tabnav-extra:hover {
 
 .panelDodajAutobus__icon {
   font-size: 3em;
+}
+
+.panelDodajAutobus__dataLoader__svg {
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.panelDodajAutobus__dataLoader__text {
+  display: block;
+  text-align: center;
+}
+
+.panelDodajAutobus__dataLoader__text p {
+  margin-bottom: 30px;
 }
 
 .panelPrzystanki {
@@ -12346,8 +12376,10 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajPrzystanek__content__form span.error-info {
-  line-height: 30px;
+  padding: 8px 0;
+  line-height: 1.2em;
   color: #800002;
+  display: block;
 }
 
 .panelDodajPrzystanek form.ng-submitted input.ng-invalid, .panelDodajPrzystanek form.ng-submitted select.ng-invalid {
@@ -12378,6 +12410,21 @@ a.tabnav-extra:hover {
 
 .panelDodajPrzystanek__icon {
   font-size: 3em;
+}
+
+.panelDodajPrzystanek__dataLoader__svg {
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.panelDodajPrzystanek__dataLoader__text {
+  display: block;
+  text-align: center;
+}
+
+.panelDodajPrzystanek__dataLoader__text p {
+  margin-bottom: 30px;
 }
 
 .panelUsers {
