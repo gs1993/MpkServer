@@ -34,7 +34,7 @@
               span(ng-show="form.uTypPrzystanku.$error.required").error-info Wybierz typ przystanku!
           .panelDodajPrzystanek__content__form__item
             span.item Koordynat Lat
-            input(placeholder="Lat" ng-model="busstopToCreate[0].Lat" required name="uLat" pattern="-?\d{1,3}\.\d+")
+            input(placeholder="Lat" ng-model="busstopToCreate[0].Lat" required name="uLat")
             .row(ng-show="form.$submitted || form.uLat.$touched")
               span(ng-show="form.uLat.$error.required").error-info Podaj współrzędne!
           .panelDodajPrzystanek__content__form__item

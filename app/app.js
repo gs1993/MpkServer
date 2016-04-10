@@ -190,6 +190,13 @@
                 });
 
 
+
+            ///Serwis
+
+
+            $location.path("/panelAutobusy.html");
+
+
             console.log($scope.busToCreate);
 
 
