@@ -12,35 +12,52 @@
   .panelDodajPrzystanek__wrapper
     .panelDodajPrzystanek__subtitle Dodawanie przystanku floty
     .panelDodajPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
-    form(ng-controller="AddBusstopController" ng-submit="createBusstop()")
+    form(name="form" ng-controller="AddBusstopController" ng-submit="form.$valid && createBusstop()" novalidate)
       .panelDodajPrzystanek__content__form
           .panelDodajPrzystanek__content__form__item
             span.item Nazwa Przystanku
-            input(placeholder="Nazwa Przystanku" ng-model="busstopToCreate[0].Name")
+            input(placeholder="Nazwa Przystanku" ng-model="busstopToCreate[0].Name" required name="uNazwa")
+            .row(ng-show="form.$submitted || form.uNazwa.$touched")
+              span(ng-show="form.uNazwa.$error.required").error-info Podaj nazwe przystanku!
           .panelDodajPrzystanek__content__form__item
             span.item Ulica
-            input(placeholder="Ulica" ng-model="busstopToCreate[0].LocalizationString")
+            input(placeholder="Ulica" ng-model="busstopToCreate[0].LocalizationString" required name="uUlica")
+            .row(ng-show="form.$submitted || form.uUlica.$touched" )
+              span(ng-show="form.uUlica.$error.required").error-info Podaj nazwe ulicy!
           .panelDodajPrzystanek__content__form__item
             span.item Typ Przystanku
-            select(ng-model="busstopToCreate[0].BusStopType")
+            select(ng-model="busstopToCreate[0].BusStopType" required name="uTypPrzystanku")
+              option(value="" ng-selected="selected") Wybierz typ przystanku!
               option(value=0) Normalny
               option(value=1) Zabudowany
+            .row(ng-show="form.$submitted || form.uTypPrzystanku.$touched")
+              span(ng-show="form.uTypPrzystanku.$error.required").error-info Wybierz typ przystanku!
           .panelDodajPrzystanek__content__form__item
             span.item Koordynat Lat
-            input(placeholder="Lat" ng-model="busstopToCreate[0].Lat")
+            input(placeholder="Lat" ng-model="busstopToCreate[0].Lat" required name="uLat" pattern="-?\d{1,3}\.\d+")
+            .row(ng-show="form.$submitted || form.uLat.$touched")
+              span(ng-show="form.uLat.$error.required").error-info Podaj współrzędne!
           .panelDodajPrzystanek__content__form__item
             span.item Koordynat Lng
-            input(placeholder="Lng" ng-model="busstopToCreate[0].Lng")
+            input(placeholder="Lng" type="number" ng-model="busstopToCreate[0].Lng" required name="uLng")
+            .row(ng-show="form.$submitted || form.uLng.$touched")
+              span(ng-show="form.uLng.$error.required").error-info Podaj współrzędne!
           .panelDodajPrzystanek__content__form__item
             span.item Czy ma biletomat?
-            select(ng-model="busstopToCreate[0].GotMachine")
+            select(ng-model="busstopToCreate[0].GotMachine" required name="uBiletomat")
+              option(value="" ng-selected="selected") Wybierz opcję!
               option(value=0) Nie
               option(value=1) Tak
+            .row(ng-show="form.$submitted || form.uBiletomat.$touched")
+              span(ng-show="form.uBiletomat.$error.required").error-info Musisz wybrać!
           .panelDodajPrzystanek__content__form__item
             span.item Czy ma kiosk?
-            select(ng-model="busstopToCreate[0].GotKiosk")
+            select(ng-model="busstopToCreate[0].GotKiosk" required name="uKiosk")
+              option(value="" ng-selected="selected") Wybierz opcję!
               option(value=0) Nie
               option(value=1) Tak
+            .row(ng-show="form.$submitted || form.uKiosk.$touched")
+              span(ng-show="form.uKiosk.$error.required").error-info Musisz wybrać!
       .panelDodajPrzystanek__navigation
         button.green.panelDodajPrzystanek__navigation__item.green Dodaj Autobus
         a(href="/#/busstop").panelDodajPrzystanek__navigation__item.gray.-abort Anuluj

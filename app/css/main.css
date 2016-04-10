@@ -11771,6 +11771,39 @@ a.tabnav-extra:hover {
   box-shadow: none;
 }
 
+.panelDodajAutobus__content__form input.ng-touched.ng-invalid, .panelDodajAutobus__content__form select.ng-touched.ng-invalid {
+  border-color: #800002;
+}
+
+.panelDodajAutobus__content__form input:focus, .panelDodajAutobus__content__form select:focus {
+  border-color: #2196F3;
+}
+
+.panelDodajAutobus__content__form input.ng-invalid, .panelDodajAutobus__content__form select.ng-invalid {
+  border-color: #800002;
+}
+
+.panelDodajAutobus__content__form input.ng-valid, .panelDodajAutobus__content__form select.ng-valid {
+  border-color: #0e8000;
+}
+
+.panelDodajAutobus__content__form input.ng-pristine, .panelDodajAutobus__content__form select.ng-pristine {
+  border-color: rgba(128, 128, 128, 0.6);
+}
+
+.panelDodajAutobus__content__form span.error-info {
+  line-height: 30px;
+  color: #800002;
+}
+
+.panelDodajAutobus form.ng-submitted input.ng-invalid, .panelDodajAutobus form.ng-submitted select.ng-invalid {
+  border-color: #800002;
+}
+
+.panelDodajAutobus form.ng-submitted input.ng-valid, .panelDodajAutobus form.ng-submitted select.ng-valid {
+  border-color: #0e8000;
+}
+
 .panelDodajAutobus__close {
   transition: opacity 0.36s ease;
   position: absolute;
@@ -12292,6 +12325,39 @@ a.tabnav-extra:hover {
   box-shadow: none;
 }
 
+.panelDodajPrzystanek__content__form input.ng-touched.ng-invalid, .panelDodajPrzystanek__content__form select.ng-touched.ng-invalid {
+  border-color: #800002;
+}
+
+.panelDodajPrzystanek__content__form input:focus, .panelDodajPrzystanek__content__form select:focus {
+  border-color: #2196F3;
+}
+
+.panelDodajPrzystanek__content__form input.ng-invalid, .panelDodajPrzystanek__content__form select.ng-invalid {
+  border-color: #800002;
+}
+
+.panelDodajPrzystanek__content__form input.ng-valid, .panelDodajPrzystanek__content__form select.ng-valid {
+  border-color: #0e8000;
+}
+
+.panelDodajPrzystanek__content__form input.ng-pristine, .panelDodajPrzystanek__content__form select.ng-pristine {
+  border-color: rgba(128, 128, 128, 0.6);
+}
+
+.panelDodajPrzystanek__content__form span.error-info {
+  line-height: 30px;
+  color: #800002;
+}
+
+.panelDodajPrzystanek form.ng-submitted input.ng-invalid, .panelDodajPrzystanek form.ng-submitted select.ng-invalid {
+  border-color: #800002;
+}
+
+.panelDodajPrzystanek form.ng-submitted input.ng-valid, .panelDodajPrzystanek form.ng-submitted select.ng-valid {
+  border-color: #0e8000;
+}
+
 .panelDodajPrzystanek__close {
   transition: opacity 0.36s ease;
   position: absolute;
@@ -12811,6 +12877,39 @@ a.tabnav-extra:hover {
   padding: 8px;
   background-color: transparent;
   box-shadow: none;
+}
+
+.panelDodajUser__content__form input.ng-touched.ng-invalid, .panelDodajUser__content__form select.ng-touched.ng-invalid {
+  border-color: #800002;
+}
+
+.panelDodajUser__content__form input:focus, .panelDodajUser__content__form select:focus {
+  border-color: #2196F3;
+}
+
+.panelDodajUser__content__form input.ng-invalid, .panelDodajUser__content__form select.ng-invalid {
+  border-color: #800002;
+}
+
+.panelDodajUser__content__form input.ng-valid, .panelDodajUser__content__form select.ng-valid {
+  border-color: #0e8000;
+}
+
+.panelDodajUser__content__form input.ng-pristine, .panelDodajUser__content__form select.ng-pristine {
+  border-color: rgba(128, 128, 128, 0.6);
+}
+
+.panelDodajUser__content__form span.error-info {
+  line-height: 30px;
+  color: #800002;
+}
+
+.panelDodajUser form.ng-submitted input.ng-invalid, .panelDodajUser form.ng-submitted select.ng-invalid {
+  border-color: #800002;
+}
+
+.panelDodajUser form.ng-submitted input.ng-valid, .panelDodajUser form.ng-submitted select.ng-valid {
+  border-color: #0e8000;
 }
 
 .panelDodajUser__close {

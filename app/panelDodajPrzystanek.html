@@ -5,37 +5,47 @@
   <div class="panelDodajPrzystanek__wrapper">
     <div class="panelDodajPrzystanek__subtitle">Dodawanie przystanku floty</div>
     <div class="panelDodajPrzystanek__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <form ng-controller="AddBusstopController" ng-submit="createBusstop()">
+    <form name="form" ng-controller="AddBusstopController" ng-submit="form.$valid &amp;&amp; createBusstop()" novalidate="novalidate">
       <div class="panelDodajPrzystanek__content__form">
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Nazwa Przystanku</span>
-          <input placeholder="Nazwa Przystanku" ng-model="busstopToCreate[0].Name"/>
+          <input placeholder="Nazwa Przystanku" ng-model="busstopToCreate[0].Name" required="required" name="uNazwa"/>
+          <div ng-show="form.$submitted || form.uNazwa.$touched" class="row"><span ng-show="form.uNazwa.$error.required" class="error-info">Podaj nazwe przystanku!</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Ulica</span>
-          <input placeholder="Ulica" ng-model="busstopToCreate[0].LocalizationString"/>
+          <input placeholder="Ulica" ng-model="busstopToCreate[0].LocalizationString" required="required" name="uUlica"/>
+          <div ng-show="form.$submitted || form.uUlica.$touched" class="row"><span ng-show="form.uUlica.$error.required" class="error-info">Podaj nazwe ulicy!</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Typ Przystanku</span>
-          <select ng-model="busstopToCreate[0].BusStopType">
+          <select ng-model="busstopToCreate[0].BusStopType" required="required" name="uTypPrzystanku">
+            <option value="" ng-selected="selected">Wybierz typ przystanku!</option>
             <option value="0">Normalny</option>
             <option value="1">Zabudowany</option>
           </select>
+          <div ng-show="form.$submitted || form.uTypPrzystanku.$touched" class="row"><span ng-show="form.uTypPrzystanku.$error.required" class="error-info">Wybierz typ przystanku!</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Koordynat Lat</span>
-          <input placeholder="Lat" ng-model="busstopToCreate[0].Lat"/>
+          <input placeholder="Lat" ng-model="busstopToCreate[0].Lat" required="required" name="uLat" pattern="-?d{1,3}.d+"/>
+          <div ng-show="form.$submitted || form.uLat.$touched" class="row"><span ng-show="form.uLat.$error.required" class="error-info">Podaj współrzędne!</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Koordynat Lng</span>
-          <input placeholder="Lng" ng-model="busstopToCreate[0].Lng"/>
+          <input placeholder="Lng" type="number" ng-model="busstopToCreate[0].Lng" required="required" name="uLng"/>
+          <div ng-show="form.$submitted || form.uLng.$touched" class="row"><span ng-show="form.uLng.$error.required" class="error-info">Podaj współrzędne!</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma biletomat?</span>
-          <select ng-model="busstopToCreate[0].GotMachine">
+          <select ng-model="busstopToCreate[0].GotMachine" required="required" name="uBiletomat">
+            <option value="" ng-selected="selected">Wybierz opcję!</option>
             <option value="0">Nie</option>
             <option value="1">Tak</option>
           </select>
+          <div ng-show="form.$submitted || form.uBiletomat.$touched" class="row"><span ng-show="form.uBiletomat.$error.required" class="error-info">Musisz wybrać!</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma kiosk?</span>
-          <select ng-model="busstopToCreate[0].GotKiosk">
+          <select ng-model="busstopToCreate[0].GotKiosk" required="required" name="uKiosk">
+            <option value="" ng-selected="selected">Wybierz opcję!</option>
             <option value="0">Nie</option>
             <option value="1">Tak</option>
           </select>
+          <div ng-show="form.$submitted || form.uKiosk.$touched" class="row"><span ng-show="form.uKiosk.$error.required" class="error-info">Musisz wybrać!</span></div>
         </div>
       </div>
       <div class="panelDodajPrzystanek__navigation">

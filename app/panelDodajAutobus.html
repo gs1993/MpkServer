@@ -1,33 +1,39 @@
 
 <div class="panelDodajAutobus">
   <div class="panelDodajAutobus__title">Dodaj Autobus</div>
-  <div class="panelDodajAutobus__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/bus">Zarządzanie Autobusami</a></span><span class="-active"><a href="/#/bus/add">Dodaj Autobus</a></span></div>
+  <div class="panelDodajAutobus__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/bus">Zarządzanie Autobusami</a></span><span class="-active"><a href="/#/bus/add">Dodaj Autobus</a></span></div>
   <div class="panelDodajAutobus__wrapper">
     <div class="panelDodajAutobus__subtitle">Dodawanie pojazdu do floty</div>
     <div class="panelDodajAutobus__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <form ng-controller="AddBusController">
+    <form name="form" ng-controller="AddBusController" ng-submit="form.$valid &amp;&amp; createBus()" novalidate="novalidate">
       <div class="panelDodajAutobus__content__form">
         <div class="panelDodajAutobus__content__form__item"><span class="item">Numer Rejestracyjny</span>
-          <input placeholder="Numer Rejestracyjny" ng-model="busToCreate[0].RegistrationNumber"/>
+          <input placeholder="Numer Rejestracyjny" ng-model="busToCreate[0].RegistrationNumber" required="required" name="uNumer"/>
+          <div ng-show="form.$submitted || form.uNumer.$touched" class="row"><span ng-show="form.uNumer.$error.required" class="error-info">Podaj numer rejestracyjny!</span></div>
         </div>
         <div class="panelDodajAutobus__content__form__item"><span class="item">Numer VIN</span>
-          <input placeholder="Numer VIN" ng-model="busToCreate[0].BusNumber"/>
+          <input placeholder="Numer VIN" ng-model="busToCreate[0].BusNumber" pattern="" required="required" name="uNumerVIN"/>
+          <div ng-show="form.$submitted || form.uNumerVIN.$touched" class="row"><span ng-show="form.uNumerVIN.$error.required" class="error-info">Podaj Numer VIN!</span><span ng-show="form.uNumerVIN.$error.pattern" class="error-info">Numer VIN składa się z 17 znaków</span></div>
         </div>
         <div class="panelDodajAutobus__content__form__item"><span class="item">Typ Autobusu</span>
-          <select ng-model="busToCreate[0].BusType">
+          <select ng-model="busToCreate[0].BusType" required="required" name="uTyp">
+            <option value="" ng-selected="selected">Wybierz typ autobusu!</option>
             <option value="0">Normalny</option>
             <option value="1">Przegubowy</option>
           </select>
+          <div ng-show="form.$submitted || form.uTyp.$touched" class="row"><span ng-show="form.uTyp.$error.required" class="error-info">Wybierz typ autobusu!!!</span></div>
         </div>
         <div class="panelDodajAutobus__content__form__item"><span class="item">Czy ma Biletomat?</span>
-          <select ng-model="busToCreate[0].GotMachine">
+          <select ng-model="busToCreate[0].GotMachine" required="required" name="uBiletomat">
+            <option value="" ng-selected="selected">Wybierz opcję!</option>
             <option value="0">Nie</option>
             <option value="1">Tak</option>
           </select>
+          <div ng-show="form.$submitted || form.uBiletomat.$touched" class="row"><span ng-show="form.uBiletomat.$error.required" class="error-info">Musisz wybrać!!!</span></div>
         </div>
       </div>
       <div class="panelDodajAutobus__navigation">
-        <button ng-click="createBus()" class="green panelDodajAutobus__navigation__item green">Dodaj Autobus</button><a href="/#/bus" class="panelDodajAutobus__navigation__item gray -abort">Anuluj</a>
+        <button class="green panelDodajAutobus__navigation__item green">Dodaj Autobus</button><a href="/#/bus" class="panelDodajAutobus__navigation__item gray -abort">Anuluj</a>
       </div>
     </form>
   </div>

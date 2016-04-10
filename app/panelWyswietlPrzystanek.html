@@ -33,7 +33,7 @@
     </div>
     <div class="panelWyswietlPrzystanek__subtitle">Edycja przystanku</div>
     <div class="panelWyswietlPrzystanek__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <form ng-controller="UpdateBustopController" ng-submit="updateBusstop()">
+    <form ng-controller="UpdateBustopController">
       <div class="panelWyswietlPrzystanek__content__form">
         <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Nazwa Przystanku</span>
           <input placeholder="Nazwa Przystanku" ng-model="busstopToUpdate[0].Name"/>
@@ -70,7 +70,7 @@
         </div>
       </div>
       <div class="panelWyswietlPrzystanek__navigation">
-        <button class="green panelWyswietlPrzystanek__navigation__item green">Aktualizuj Przystanek</button><a href="/#/busstop/delete/{{ PrzystanekID }}" ng-hide="item.BusStopStatus == 0" class="panelWyswietlPrzystanek__navigation__item red">Dezaktywuj</a><a href="/#/busstop/restore/{{ PrzystanekID }}" ng-show="item.BusStopStatus == 0" class="panelWyswietlPrzystanek__navigation__item greenDark">Aktywuj</a><a href="/#/busstop" class="panelWyswietlPrzystanek__navigation__item gray -abort">Anuluj</a>
+        <button ng-click="updateBusstop()" class="green panelWyswietlPrzystanek__navigation__item green">Aktualizuj Przystanek</button><a href="/#/busstop/delete/{{ PrzystanekID }}" ng-hide="item.BusStopStatus == 0" class="panelWyswietlPrzystanek__navigation__item red">Dezaktywuj</a><a href="/#/busstop/restore/{{ PrzystanekID }}" ng-show="item.BusStopStatus == 0" class="panelWyswietlPrzystanek__navigation__item greenDark">Aktywuj</a><a href="/#/busstop" class="panelWyswietlPrzystanek__navigation__item gray -abort">Anuluj</a>
       </div>
     </form>
   </div>

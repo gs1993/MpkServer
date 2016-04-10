@@ -121,6 +121,7 @@
         &:hover
           background: #008d4c
 
+
   &__content
     //border-top: 2px solid #D2E3E9
     padding-top: 15px
@@ -135,6 +136,10 @@
       padding-bottom: 15px
       +PHONE_ONLY
         text-align: center
+
+
+
+
     &__form
       display: flex
       flex-wrap: wrap
@@ -164,8 +169,27 @@
         background-color: transparent
         box-shadow: none
 
+        &.ng-touched.ng-invalid
+          border-color: rgba(128, 0, 2, 1)
+        &:focus
+          border-color: #2196F3
+        &.ng-invalid
+          border-color: rgba(128, 0, 2, 1)
+        &.ng-valid
+          border-color: rgba(14, 128, 0, 1)
+        &.ng-pristine
+          border-color: rgba(128, 128, 128, 0.6)
 
+      span.error-info
+        line-height: 30px
+        color: rgba(128, 0, 2, 1)
 
+  form.ng-submitted
+    input,select
+      &.ng-invalid
+        border-color: rgba(128, 0, 2, 1)
+      &.ng-valid
+        border-color: rgba(14, 128, 0, 1)
 
   &__close
     transition: opacity 0.36s ease
@@ -182,3 +206,4 @@
       font-size: 1.8em !important
   &__icon
     font-size: 3em
+
