@@ -178,11 +178,8 @@
         });
 
     });
-
-
-    app.controller('AddBusController', function ($scope, $http) {
+    app.controller('AddBusController', function ($scope, $http, $timeout) {
         $scope.sendForm = false;
-
 
         $scope.createBus = function () {
             $scope.sendForm = true;
@@ -192,7 +189,6 @@
             else {
                 $scope.BusType = 0;
             }
-
             if ($scope.GotMachine == "1") {
                 $scope.GotMachine = true;
             }
@@ -208,32 +204,33 @@
                 //LastControl: ''
             });
             var config = {
-                headers : {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+                headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
             };
 
             if ($scope.sendForm) {
                 $scope.message = "Przygotowywanie autobusu do drogi...";
-                
-                $http.post('http://localhost:50000/bus/addBus', data, config)
-                    .success(function (data, status, headers, config) {
-                        $scope.PostDataResponse = data;
-                        console.log($scope.PostDataResponse);
-                        $scope.CallbackServera = true;
-                    })
-                    .error(function (data, status, header, config) {
-                        $scope.ResponseDetails = "Data: " + data +
-                            "<hr />status: " + status +
-                            "<hr />headers: " + header +
-                            "<hr />config: " + config;
-                        console.log($scope.ResponseDetails);
-                    });
+
+                $timeout(function () {
+                    $http.post('http://localhost:50000/bus/addBus', data, config)
+                        .success(function (data, status, headers, config) {
+                            $scope.CallbackServera = true;
+                            $scope.CallbackServeraPositive = true;
+                            $scope.PostDataResponse = data;
+                            console.log($scope.PostDataResponse);
+                        })
+                        .error(function (data, status, header, config) {
+                            $scope.ResponseDetails = "Data: " + data +
+                                "<hr />status: " + status +
+                                "<hr />headers: " + header +
+                                "<hr />config: " + config;
+                            console.log($scope.ResponseDetails);
+                            $scope.CallbackServera = true;
+                            $scope.CallbackServeraNegative = true;
+                        });
+                }, 2500);
             }
-
         };
-
-
     });
-
     app.controller('ShowBusController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
 
         var WybraneId = $routeParams.id;
@@ -345,6 +342,7 @@
 
     });
 
+
     /* Przystanki Controlery
      *==========================================================================*/
     app.controller('BusstopController', function ($scope, $http) {
@@ -454,63 +452,81 @@
         });
 
     });
-
-
-    app.controller('AddBusstopController', function ($scope) {
-
+    app.controller('AddBusstopController', function ($scope, $http, $timeout) {
         $scope.sendForm = false;
-        $scope.busstopToCreate = [{}];
 
         $scope.createBusstop = function () {
-            angular.forEach($scope.busstopToCreate, function (item) {
+            $scope.sendForm = true;
+            $scope.Lat = parseFloat($scope.Lat);
+            $scope.Lng = parseFloat($scope.Lng);
+            //Zamiana wartosci
+            if ($scope.GotMachine == 1) {
+                $scope.GotMachine = true;
+            }
+            else {
+                $scope.GotMachine = false;
+            }
 
-                item.Lat = parseFloat(item.Lat);
-                item.Lng = parseFloat(item.Lng);
-                //Zamiana wartosci
-                if (item.GotMachine == 1) {
-                    item.GotMachine = true;
-                }
-                else {
-                    item.GotMachine = false;
-                }
+            if ($scope.GotMachine == 1) {
+                $scope.GotMachine = true;
+            }
+            else {
+                $scope.GotMachine = false;
+            }
+            if ($scope.GotKiosk == 1) {
+                $scope.GotKiosk = true;
+            }
+            else {
+                $scope.GotKiosk = false;
+            }
 
-                if (item.GotMachine == 1) {
-                    item.GotMachine = true;
-                }
-                else {
-                    item.GotMachine = false;
-                }
-                if (item.GotKiosk == 1) {
-                    item.GotKiosk = true;
-                }
-                else {
-                    item.GotKiosk = false;
-                }
+            if ($scope.BusStopType == "0") {
+                $scope.BusStopType = 0
+            }
+            else {
+                $scope.BusStopType = 1
+            }
+            //czy przy tworzeniu powinnen być status???
+            $scope.BusStopStatus = 0;
 
-                if (item.BusStopType == "0") {
-                    item.BusStopType = 0
-                }
-                else {
-                    item.BusStopType = 1
-                }
-                //czy przy tworzeniu powinnen być status???
-                item.BusStopStatus = 0
-                $scope.sendForm = true;
-
+            var data = $.param({
+                Name: $scope.Name,
+                Lat: $scope.Lat,
+                Lng: $scope.Lng,
+                LocalizationString: $scope.LocalizationString,
+                GotMachine: $scope.GotMachine,
+                GotKiosk: $scope.GotKiosk,
+                BusStopType: $scope.BusStopType,
+                BusStopStatus: 0
+                //LastControl: ''
             });
+            var config = {
+                headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+            };
 
             if ($scope.sendForm) {
                 $scope.message = "Przygotowywanie przystanku...";
-                // Miejsce na kod laczenia sie z serwerem
+                $timeout(function () {
+                    $http.post('http://localhost:50000/bus/addBusstop', data, config)
+                        .success(function (data, status, headers, config) {
+                            $scope.PostDataResponse = data;
+                            console.log($scope.PostDataResponse);
+                            $scope.CallbackServeraPositive = true;
+                            $scope.CallbackServera = true;
+                        })
+                        .error(function (data, status, header, config) {
+                            $scope.ResponseDetails = "Data: " + data +
+                                "<hr />status: " + status +
+                                "<hr />headers: " + header +
+                                "<hr />config: " + config;
+                            console.log($scope.ResponseDetails);
+                            $scope.CallbackServeraNegative = true;
+                            $scope.CallbackServera = true;
+                        });
+                }, 2500);
             }
-            console.log($scope.busstopToCreate);
-
-
         };
-
     });
-
-
     app.controller('ShowBusstopController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
 
         var WybraneId = $routeParams.id;
@@ -575,8 +591,6 @@
             }
         });
     }]);
-
-
     app.controller('UpdateBustopController', function ($scope) {
 
         //$scope.message = 'This is Add new order screen';
@@ -699,8 +713,6 @@
         });
 
     });
-
-
     app.controller('AddUserController', function ($scope, $http) {
 
         //$scope.message = 'This is Add new order screen';
@@ -734,8 +746,6 @@
         };
 
     });
-
-
     app.controller('ShowUserController', ['$scope', '$routeParams', function ($scope, $routeParams) {
 
         var WybraneId = $routeParams.id;
@@ -785,7 +795,6 @@
             }
         });
     }]);
-
     app.controller('UpdateUserController', function ($scope) {
 
         //$scope.message = 'This is Add new order screen';
@@ -833,6 +842,8 @@
 
     });
 
+    /* Map Controler
+     *==========================================================================*/
     app.controller('MapController', function (NgMap) {
         NgMap.getMap().then(function (map) {
 

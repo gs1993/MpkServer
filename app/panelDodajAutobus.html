@@ -44,7 +44,7 @@
           </svg>
         </div>
         <div class="panelDodajAutobus__dataLoader__text">
-          <p ng-hide="CallbackServera">{{ message }}</p><a href="/#/bus" ng-show="CallbackServera" class="panelDodajAutobus__navigation__item green">Autobus został dodany pomyślnie!</a>
+          <p ng-hide="CallbackServera">{{ message }}</p><a href="/#/bus" ng-show="CallbackServeraPositive" class="panelDodajAutobus__navigation__item green">Autobus został dodany pomyślnie!</a><a href="/#/bus/add" ng-show="CallbackServeraNegative" class="panelDodajAutobus__navigation__item red">Coś poszło nie tak...</a>
         </div>
       </div>
     </form>
