@@ -6,6 +6,7 @@
     "grunt-autoprefixer": "latest",
     "grunt-cli": "^0.1.13",
     "grunt-concurrent": "latest",
+    "grunt-connect-pushstate": "^0.2.0",
     "grunt-contrib-connect": "latest",
     "grunt-contrib-copy": "latest",
     "grunt-contrib-cssmin": "latest",

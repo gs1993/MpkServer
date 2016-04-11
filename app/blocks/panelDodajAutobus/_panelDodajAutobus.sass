@@ -1,13 +1,46 @@
 @charset "UTF-8"
 .panelDodajAutobus
-  min-width: 700px
-
-  +TAB_MAX
-    position: relative !important
-    width: 100% !important
-    margin: 55px auto 0
-    //bottom: 0 !important
-    top: 0 !important
+  position: relative
+  &__title
+    padding: 0 40px
+    background-color: #2196F3
+    height: 40px
+    color: white
+    text-align: center
+    line-height: 40px
+    font-size: 1.3em
+    +Roboto
+  &__fastTravel
+    padding: 10px 15px
+    text-transform: uppercase
+    +Roboto
+    font-size: 0.7em
+    background-color: white
+    position: absolute
+    z-index: 1
+    width: 100%
+    span
+      &:after
+        content: '\f054'
+        font-family: FontAwesome
+        margin: 0 5px
+        font-size: 0.8em
+        vertical-align: text-bottom
+      &:last-of-type
+        &:after
+          content: ''
+      a
+        color: #222
+        text-decoration: none
+        i
+          margin-right: 3px
+      &:hover
+        a
+          color: #2196F3
+      &.-active
+        a
+          color: #208de6
+          font-weight: 500
   &.-hidden
     opacity: 0
     z-index: 0
@@ -15,52 +48,25 @@
     display: none
 
   &__wrapper
-    position: relative
-    padding: 20px
-    +TAB_MAX
-      overflow: scroll
-  &__title
-    font-family: Lato, sans-serif
-    font-weight: 500
-    //line-height: 26px
-    //margin: 5px auto 5px
-    font-size: 15px
-    //letter-spacing: 1px
-    text-align: center
-    //text-transform: uppercase
-    background: #3c8dbc
-    color: #fff
-    padding: 5px
-    opacity: 0.9
+    padding: 15px
+    overflow-y: auto
+    position: absolute
+    bottom: 0
+    top: 50px
+    height: 80vh
 
-    +PHONE_ONLY
-      text-align: center
-      //font-size: 19px
+    width: 100%
   &__subtitle
-    font-family: Lato, sans-serif
-    font-weight: 300
-    line-height: 26px
-    margin-left: 3px
-    font-size: 12px
-    letter-spacing: 2px
-    text-align: left
-    //text-transform: uppercase
-    color: #222
-    font-style: italic
-    +PHONE_ONLY
-      text-align: center
-      font-size: 12px
-      font-style: normal
+    margin-top: 20px
+    +Roboto
+    color: #22282B
+    font-size: 1.5em
+    line-height: 1.6em
+    border-bottom: 1px solid rgba(0,0,0,0.3)
   &__text
-    font-family: Lato, sans-serif
-    font-weight: 700
-    max-width: 350px
-    margin: 0 auto
-    font-size: 16px
-    line-height: 1.3
-    letter-spacing: 1.25px
-    text-align: center
-    color: #999
+    color: #88969F
+    padding: 5px
+    margin-bottom: 15px
   &__alert
     font-family: Lato, sans-serif
     font-weight: 400
@@ -87,6 +93,7 @@
     flex-direction: row
     +PHONE_ONLY
       justify-content: center
+      flex-wrap: wrap
     &__item
       flex-basis: 50%
       flex-grow: 1
@@ -103,12 +110,18 @@
       margin-right: 5px
       text-decoration: none !important
       text-align: center
+      +PHONE_ONLY
+        flex-basis: 100%
+        max-width: 100%
+        margin: 10px 0
+        height: 40px
       &:hover
         background: rgba(60, 141, 188, 1)
       &.green
         background: #00a65a
         &:hover
           background: #008d4c
+
 
   &__content
     //border-top: 2px solid #D2E3E9
@@ -124,6 +137,10 @@
       padding-bottom: 15px
       +PHONE_ONLY
         text-align: center
+
+
+
+
     &__form
       display: flex
       flex-wrap: wrap
@@ -139,43 +156,53 @@
         flex-basis: 33%
         padding: 10px
         margin: 5px 0
+        +PHONE_ONLY
+          flex-basis: 100%
 
-        input,input[type="password"]
-          padding: 0 10px
-          height: 40px
-          box-shadow: none !important
-          outline: none
-          font-weight: 400
-          max-width: 300px
-          width: 100%
-          display: block
-          border-radius: 0
-          border-top: 0
-          border-left: 0
-          border-right: 0
-          border-bottom: 2px solid #D2E3E9
-          font-size: 16px
-          &:focus
-            border-bottom: 2px solid #4AAED4
-        select
-          height: 40px
-          box-shadow: none !important
-          outline: none
-          font-weight: 400
-          max-width: 300px
-          width: 100%
-          display: block
-          border-radius: 0
-          border-top: 0
-          border-left: 0
-          border-right: 0
-          border-bottom: 2px solid #D2E3E9
-          font-size: 16px
-          &:focus
-            border-bottom: 2px solid #4AAED4
+      input, select
+        width: 100%
+        height: 40px
+        border-radius: 4px
+        border: none
+        border-bottom: 1px solid rgba(128, 128, 128, 0.6)
+        outline: none
+        padding: 8px
+        background-color: transparent
+        box-shadow: none
 
+        &.ng-touched.ng-invalid
+          border-color: rgba(128, 0, 2, 1)
+        &:focus
+          border-color: #2196F3
+        &.ng-invalid
+          border-color: rgba(128, 0, 2, 1)
+        &.ng-valid
+          border-color: rgba(14, 128, 0, 1)
+        &.ng-pristine
+          border-color: rgba(128, 128, 128, 0.6)
 
-
+      span.error-info
+        padding: 8px 5px
+        line-height: 1.2em
+        color: rgba(128, 0, 2, 1)
+        display: block
+        font-size: 10px
+        margin: 5px
+        text-align: justify
+      span.alert-info
+        padding: 8px 5px
+        line-height: 1.2em
+        color: #2196F3
+        display: block
+        font-size: 10px
+        margin: 5px
+        text-align: justify
+  form.ng-submitted
+    input,select
+      &.ng-invalid
+        border-color: rgba(128, 0, 2, 1)
+      &.ng-valid
+        border-color: rgba(14, 128, 0, 1)
 
   &__close
     transition: opacity 0.36s ease
@@ -192,3 +219,14 @@
       font-size: 1.8em !important
   &__icon
     font-size: 3em
+  &__dataLoader
+    &__svg
+      height: 200px
+      width: 200px
+      margin: 0 auto
+    &__text
+      display: block
+      text-align: center
+      p
+        margin-bottom: 30px
+

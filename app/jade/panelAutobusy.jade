@@ -1,49 +1,97 @@
-.panelAutobusy.panel
-  .panelAutobusy__title Panel Zarządzania Autobusami
+.panelAutobusy
+  .panelAutobusy__title Zarządzanie Autobusami
+  .panelAutobusy__fastTravel
+    span
+      a(href="/#/")
+        i.fa.fa-home
+        | Home
+    span.-active
+      a(href="/#/bus") Zarządzanie Autobusami
   .panelAutobusy__wrapper
-    .panelAutobusy__content
-      .panelAutobusy__content__Title Lista Autobusów
-      .panelAutobusy__content__Filtr
-        .panelAutobusy__content__Filtr__item
-          input(placeholder="Szukaj autobusu")
-        .panelAutobusy__content__Filtr__item
-            select
-              option(value="") Status
-              option(value=0) Nieaktywny
-              option(value=1) Aktywny
-              option(value=2) W trasie
-              option(value=2) W trasie
-        .panelAutobusy__content__Filtr__item
-
-            select
-              option(value="") Typ
-              option(value=0) Normalny
-              option(value=1) Przegubowy
-        .panelAutobusy__content__Filtr__item.check
-
-              input(type="checkbox")#czyautobusmabiletomat
-              label(for="czyautobusmabiletomat")
-              p Biletomat
-      .panelAutobusy__contentList
-
-        .panelList
-          .panelList__header
-            .panelList__headeritem Typ
-            .panelList__headeritem Numer Autobusu
-            .panelList__headeritem Status
-            .panelList__headeritem Biletomat
-            .panelList__headeritem Szczegóły
-          .panelAutobusy__list.panelList__content#GetBusList
-            .panelList__item
-              .panelList__itemCell
-                .fa.fa-bus
-              .panelList__itemCell Przykładowy
-              .panelList__itemCell Aktywny
-              .panelList__itemCell
-                .fa.fa-times-circle-o
-              a(href="#/bus/show").panelList__itemCell Zobacz
+    .panelAutobusy__subtitle Flota Autobusów
+    .panelAutobusy__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelAutobusy__navigation
-      a(href="#/bus/add").panelAutobusy__navigation__item Dodaj Autobus
-  a(href="#/")
-    span.panelAutobusy__close
-      span.panelAutobusy__icon.fa.fa-times
+      a(href="/#/bus/add").panelAutobusy__navigation__item Dodaj Autobus
+    .panelAutobusy__filtrs
+      .panelAutobusy__filtr
+        label Numer Rejestracyjny
+        input(type="text" ng-model="autobusFilter.BusNumber" placeholder="Szukaj Autobusu...")
+      .panelAutobusy__filtr
+        label Numer VIN
+        input(type="text" ng-model="autobusFilter.RegistrationNumber" placeholder="VIN Autobusu...")
+      .panelAutobusy__filtr
+        label Typ autobusu
+        select(ng-model="autobusFilter.BusType")
+          option(value="") Typ
+          option(value=0) Normalny
+          option(value=1) Przegubowy
+      .panelAutobusy__filtr
+        label Status
+        select(ng-model="autobusFilter.BusStatus")
+          option(value="") Status
+          option(value=0) Nieaktywny
+          option(value=1) W zajezdni
+          option(value=2) W trasie
+      .panelAutobusy__filtr
+        label Biletomat
+        select(ng-model="autobusFilter.GotMachineValue")
+          option(value="") Biletomat
+          option(value=0) Nie
+          option(value=1) Tak
+    .panelAutobusy__table
+      table.responsive(wt-responsive-table ng-controller="BusController")
+        thead
+          tr
+            th Numer Rejestracyjny
+            th Numer VIN
+            th Typ Autobusu
+            th Status
+            th Biletomat
+            th Zarządzanie
+        tbody
+          tr(ng-repeat="autobus in autobusy | filter:autobusFilter | filter:{ BusStatus: '!0'} as filtrowaneAutobusy")
+            td {{ autobus.BusNumber}}
+            td {{ autobus.RegistrationNumber }}
+            td {{ autobus.BusTypeName }}
+            td {{ autobus.BusStatusName }}
+            td {{ autobus.GotMachineName }}
+            td
+              a(href="/#/").navigation
+                i.ionicons.ion-ios-location
+              a(href="/#/bus/show/{{ autobus.Id }}").navigation
+                i.ionicons.ion-settings
+              a(href="/#/bus/delete/{{ autobus.Id }}").navigation
+                i.ionicons.ion-android-cancel.-red
+          tr(ng-hide="filtrowaneAutobusy.length")
+            td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
+    .panelAutobusy__subtitle Nieaktywne Autobusy
+    .panelAutobusy__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelAutobusy__table
+      table.responsive(wt-responsive-table ng-controller="BusController")
+        thead
+          tr
+            th Numer Rejestracyjny
+            th Numer VIN
+            th Typ Autobusu
+            th Status
+            th Biletomat
+            th Zarządzanie
+        tbody
+          tr(ng-repeat="autobus in autobusy | filter:autobusFilter | filter:{ BusStatus: 0 } as filtrowaneAutobusyNieaktywne")
+            td {{ autobus.BusNumber}}
+            td {{ autobus.RegistrationNumber }}
+            td {{ autobus.BusTypeName }}
+            td {{ autobus.BusStatusName }}
+            td {{ autobus.GotMachineName }}
+            td
+              a(href="/#/").navigation
+                i.ionicons.ion-ios-location
+              a(href="/#/bus/show/{{ autobus.Id }}").navigation
+                i.ionicons.ion-settings
+              a(href="/#/bus/restore/{{ autobus.Id }}").navigation
+                i.ionicons.ion-android-add-circle.-green
+          tr(ng-hide="filtrowaneAutobusyNieaktywne.length")
+            td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
+
+
+

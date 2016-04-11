@@ -59,8 +59,7 @@ namespace Data.Migrations
                LastControl = DateTime.Now,
                RegistrationNumber = "12211NLI",
                IsArchive = false,
-               BusNumber = "0892",
-                Driver = context.Users.First(x => x.UserName == "driver1")
+               BusNumber = "0892"
             });
             context.Buss.AddOrUpdate(new Bus()
             {
@@ -70,8 +69,7 @@ namespace Data.Migrations
                 LastControl = new DateTime(2015, 01, 02),
                 RegistrationNumber = "1DDNLD",
                 IsArchive = true,
-                BusNumber = "0784",
-                Driver = context.Users.First(x => x.UserName == "driver1")
+                BusNumber = "0784"
             });
             context.Buss.AddOrUpdate(new Bus()
             {
@@ -81,8 +79,7 @@ namespace Data.Migrations
                 LastControl = new DateTime(2015, 01, 02),
                 RegistrationNumber = "TREWQ3",
                 IsArchive = false,
-                BusNumber = "0584",
-                Driver = context.Users.First(x => x.UserName == "driver1")
+                BusNumber = "0584"
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {

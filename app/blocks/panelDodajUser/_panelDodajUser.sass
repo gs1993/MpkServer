@@ -1,5 +1,5 @@
 @charset "UTF-8"
-.panelDodajPrzystanek
+.panelDodajUser
   &__title
     padding: 0 40px
     background-color: #2196F3
@@ -56,8 +56,8 @@
 
     width: 100%
   &__subtitle
-    margin-top: 20px
     +Roboto
+    margin-top: 20px
     color: #22282B
     font-size: 1.5em
     line-height: 1.6em
@@ -173,12 +173,10 @@
           border-color: rgba(14, 128, 0, 1)
         &.ng-pristine
           border-color: rgba(128, 128, 128, 0.6)
-      span.error-info
-        padding: 8px 0
-        line-height: 1.2em
-        color: rgba(128, 0, 2, 1)
-        display: block
 
+      span.error-info
+        line-height: 30px
+        color: rgba(128, 0, 2, 1)
 
   form.ng-submitted
     input,select
@@ -186,6 +184,8 @@
         border-color: rgba(128, 0, 2, 1)
       &.ng-valid
         border-color: rgba(14, 128, 0, 1)
+
+
 
   &__close
     transition: opacity 0.36s ease
@@ -202,3 +202,13 @@
       font-size: 1.8em !important
   &__icon
     font-size: 3em
+  &__dataLoader
+    &__svg
+      height: 200px
+      width: 200px
+      margin: 0 auto
+    &__text
+      display: block
+      text-align: center
+      p
+        margin-bottom: 30px

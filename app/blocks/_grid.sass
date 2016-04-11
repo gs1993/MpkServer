@@ -21,7 +21,6 @@ input[type="submit"]
   *==========================================================================
 body
   min-width: 320px
-
 .clearfix 
   +clearfix 
 
@@ -73,11 +72,17 @@ header
 
 footer
   display: block
-  background-attachment: scroll
-  background-position: center
-  background-size: cover
-  background-image: url("../img/footer.png")
-
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  text-align: right
+  padding: 10px
+  color: #666
+  opacity: 0.4
+  img
+    width: 40px
+    vertical-align: middle
 .flash__info
   background: #3949ab
   position: absolute
