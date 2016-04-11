@@ -199,8 +199,8 @@
                 BusNumber: $scope.BusNumber,
                 BusType: $scope.BusType,
                 GotMachine: $scope.GotMachine,
-                BusStatus: 0
-                //LastControl: ''
+                BusStatus: 0,
+                LastControl: new Date()
             });
             var config = {
                 headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
@@ -494,8 +494,8 @@
                 GotMachine: $scope.GotMachine,
                 GotKiosk: $scope.GotKiosk,
                 BusStopType: $scope.BusStopType,
-                BusStopStatus: 0
-                //LastControl: ''
+                BusStopStatus: 0,
+                LastControl: new Date()
             });
             var config = {
                 headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
