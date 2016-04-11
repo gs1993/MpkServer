@@ -9,28 +9,28 @@
       a(href="/#/bus") Zarządzanie Autobusami
     span.-active
       a(href="/#/bus/show/{{ AutobusID }}") Szczegóły Autobusu
-  .panelWyswietlAutobus__wrapper(ng-repeat="item in autobus as AktualnyAutobus")
+  .panelWyswietlAutobus__wrapper()
     .panelWyswietlAutobus__subtitle Aktualny stan autobusu o numerze {{ item.RegistrationNumber }}
     .panelWyswietlAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelWyswietlAutobus__content__form
       .panelWyswietlAutobus__content__form__item
         span.itemHeader Numer Rejestracyjny
-        p {{ item.RegistrationNumber }}
+        p {{ autobus.RegistrationNumber }}
       .panelWyswietlAutobus__content__form__item
         span.itemHeader Numer VIN
-        p {{ item.BusNumber }}
+        p {{ autobus.BusNumber }}
       .panelWyswietlAutobus__content__form__item
         span.itemHeader Typ Autobusu
-        p {{ item.BusTypeName }}
+        p {{ autobus.BusTypeName }}
       .panelWyswietlAutobus__content__form__item
         span.itemHeader Biletomat
-        p {{ item.GotMachineName }}
+        p {{ autobus.GotMachineName }}
       .panelWyswietlAutobus__content__form__item
         span.itemHeader Aktualny status
-        p {{ item.BusStatusName }}
+        p {{ autobus.BusStatusName }}
       .panelWyswietlAutobus__content__form__item
         span.itemHeader Ostatnia kontrola
-        p {{ item.LastControl }}
+        p {{ autobus.LastControl }}
       .panelWyswietlAutobus__content__form__item
         span.itemHeader Ostatnia lokalizacja
         p X Y

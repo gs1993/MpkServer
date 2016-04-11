@@ -9,34 +9,34 @@
       a(href="/#/busstop") Zarządzanie Przystankiem
     span.-active
       a(href="/#/busstop/show/{{ PrzystanekID }}") Szczegóły Przystaku
-  .panelWyswietlPrzystanek__wrapper(ng-repeat="item in przystanek as AktualnyPrzystanek")
+  .panelWyswietlPrzystanek__wrapper
     .panelWyswietlPrzystanek__subtitle Aktualne dane przystanku {{ item.Name }}
     .panelWyswietlPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelWyswietlPrzystanek__content__form
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Nazwa Przystanku
-        p {{ item.Name }}
+        p {{ autobus.Name }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Ulica
-        p {{ item.LocalizationString }}
+        p {{ autobus.LocalizationString }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Lokalizacja
-        p {{ item.Lat }}, {{ item.Lng }}
+        p {{ autobus.Lat }}, {{ autobus.Lng }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Typ Przystanku
-        p {{ item.BusStopTypeName }}
+        p {{ autobus.BusStopTypeName }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Biletomat
-        p {{ item.GotMachineName }}
+        p {{ autobus.GotMachineName }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Kiosk
-        p {{ item.GotKioskName }}
+        p {{ autobus.GotKioskName }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Aktualny status
-        p {{ item.BusStopStatusName }}
+        p {{ autobus.BusStopStatusName }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Ostatnia kontrola
-        p {{ item.LastControl }}
+        p {{ autobus.LastControl }}
     .panelWyswietlPrzystanek__subtitle Edycja przystanku
     .panelWyswietlPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     form(ng-controller="UpdateBustopController")
