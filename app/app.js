@@ -790,7 +790,7 @@
                 headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
             }
         ).success(function (data, status, headers, config) {
-            $scope.autobus = data;
+            $scope.user = data;
             console.log("Pobrano usera.")
         }).error(function (data, status, headers, config) {
             console.log("Błąd pobrania usera.")
@@ -865,6 +865,31 @@
 
     }]);
     app.controller('DeleteUserController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+
+        var WybraneId = $routeParams.id;
+
+        //WYSYLANY ID
+        $scope.UserID = WybraneId;
+
+
+        $http.get('http://localhost:50000/user/getUser/' + WybraneId, {
+                headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+            }
+        ).success(function (data, status, headers, config) {
+            $scope.user = data;
+            console.log("Pobrano usera.")
+        }).error(function (data, status, headers, config) {
+            console.log("Błąd pobrania usera.")
+        });
+
+        angular.forEach($scope.user, function (item) {
+            if (item.Status == 1) {
+                item.Status = 0;
+            }
+        });
+
+
+
 
     }]);
     /* Map Controler
