@@ -92,88 +92,88 @@
      *==========================================================================*/
     app.controller('BusController', function ($scope, $http) {
 
-        $scope.autobusy = [
-            {
-                Id: 0,
-                RegistrationNumber: 'NO123456',
-                BusNumber: '123213',
-                BusStatus: 0,
-                GotMachine: false,
-                BusType: 1,
-                LastControl: '1'
-            },
-            {
-                Id: 1,
-                RegistrationNumber: 'NO234567',
-                BusNumber: '1231123',
-                BusStatus: 1,
-                GotMachine: true,
-                BusType: 0,
-                LastControl: '1'
-            },
-            {
-                Id: 2,
-                RegistrationNumber: 'NKE434354',
-                BusNumber: '1234243',
-                BusStatus: 2,
-                GotMachine: true,
-                BusType: 1,
-                LastControl: '1'
-            },
-            {
-                Id: 2,
-                RegistrationNumber: 'NMR434354',
-                BusNumber: '14232234',
-                BusStatus: 2,
-                GotMachine: true,
-                BusType: 1,
-                LastControl: '1'
-            },
-            {
-                Id: 3,
-                RegistrationNumber: 'NO1354543',
-                BusNumber: '1234342',
-                BusStatus: 3,
-                GotMachine: true,
-                BusType: 0,
-                LastControl: '1'
-            }
-        ];
+        /*$scope.autobusy = [
+         {
+         Id: 0,
+         RegistrationNumber: 'NO123456',
+         BusNumber: '123213',
+         BusStatus: 0,
+         GotMachine: false,
+         BusType: 1,
+         LastControl: '1'
+         },
+         {
+         Id: 1,
+         RegistrationNumber: 'NO234567',
+         BusNumber: '1231123',
+         BusStatus: 1,
+         GotMachine: true,
+         BusType: 0,
+         LastControl: '1'
+         },
+         {
+         Id: 2,
+         RegistrationNumber: 'NKE434354',
+         BusNumber: '1234243',
+         BusStatus: 2,
+         GotMachine: true,
+         BusType: 1,
+         LastControl: '1'
+         },
+         {
+         Id: 2,
+         RegistrationNumber: 'NMR434354',
+         BusNumber: '14232234',
+         BusStatus: 2,
+         GotMachine: true,
+         BusType: 1,
+         LastControl: '1'
+         },
+         {
+         Id: 3,
+         RegistrationNumber: 'NO1354543',
+         BusNumber: '1234342',
+         BusStatus: 3,
+         GotMachine: true,
+         BusType: 0,
+         LastControl: '1'
+         }
+         ];*/
 
-        $http.get('http://localhost:50000/bus/GetBusList', {
-            headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+        $http.get('http://localhost:50000/Bus/GetBusList/', {
+            headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
         }).success(function (data, status, headers, config) {
             $scope.autobusy = data;
             console.log("Pobrano liste autobusów.")
+            angular.forEach($scope.autobusy, function (autobus) {
+                console.log(autobus);
+                if (autobus.GotMachine == true) {
+                    autobus.GotMachineName = "Tak";
+                    autobus.GotMachineValue = 1
+                }
+                else {
+                    autobus.GotMachineName = "Nie";
+                    autobus.GotMachineValue = 0
+                }
+
+                if (autobus.BusType == 0) {
+                    autobus.BusTypeName = "Normalny"
+                }
+                else {
+                    autobus.BusTypeName = "Przegubowy"
+                }
+                if (autobus.BusStatus == 0) {
+                    autobus.BusStatusName = "Nieaktywny"
+                }
+                else if (autobus.BusStatus == 1) {
+                    autobus.BusStatusName = "W zajezdni"
+                }
+                else {
+                    autobus.BusStatusName = "W trasie"
+                }
+            });
         }).error(function (data, status, headers, config) {
             console.log("Błąd pobrania Autobusów.")
-        });
-
-        angular.forEach($scope.autobusy, function (autobus) {
-            if (autobus.GotMachine == true) {
-                autobus.GotMachineName = "Tak";
-                autobus.GotMachineValue = 1
-            }
-            else {
-                autobus.GotMachineName = "Nie";
-                autobus.GotMachineValue = 0
-            }
-
-            if (autobus.BusType == 0) {
-                autobus.BusTypeName = "Normalny"
-            }
-            else {
-                autobus.BusTypeName = "Przegubowy"
-            }
-            if (autobus.BusStatus == 0) {
-                autobus.BusStatusName = "Nieaktywny"
-            }
-            else if (autobus.BusStatus == 1) {
-                autobus.BusStatusName = "W zajezdni"
-            }
-            else {
-                autobus.BusStatusName = "W trasie"
-            }
         });
 
     });
@@ -194,7 +194,7 @@
             else {
                 $scope.GotMachine = false;
             }
-            var data = $.param({
+            var data = JSON.stringify({
                 RegistrationNumber: $scope.RegistrationNumber,
                 BusNumber: $scope.BusNumber,
                 BusType: $scope.BusType,
@@ -203,14 +203,14 @@
                 //LastControl: ''
             });
             var config = {
-                headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+                headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
             };
 
             if ($scope.sendForm) {
                 $scope.message = "Przygotowywanie autobusu do drogi...";
-
+                console.log(data);
                 $timeout(function () {
-                    $http.post('http://localhost:50000/bus/addBus', data, config)
+                    $http.post('http://localhost:50000/Bus/PostBus', data, config)
                         .success(function (data, status, headers, config) {
                             $scope.CallbackServera = true;
                             $scope.CallbackServeraPositive = true;
@@ -238,50 +238,48 @@
         $scope.AutobusID = WybraneId;
 
         //ZWROTKA
-        $scope.autobus = [{
-            Id: 0,
-            RegistrationNumber: 'NO123456',
-            BusNumber: '1231123',
-            BusStatus: 0,
-            GotMachine: false,
-            BusType: 1,
-            LastControl: '1'
-        }];
-        $http.get('http://localhost:50000/bus/getBus/' + WybraneId, {
-                headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+        /*$scope.autobus = [{
+         Id: 0,
+         RegistrationNumber: 'NO123456',
+         BusNumber: '1231123',
+         BusStatus: 0,
+         GotMachine: false,
+         BusType: 1,
+         LastControl: '1'
+         }];*/
+        $http.get('http://localhost:50000/Bus/GetBus/' + WybraneId, {
+                headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
             }
         ).success(function (data, status, headers, config) {
             $scope.autobus = data;
-            console.log("Pobrano autobus.")
+            console.log($scope.autobus);
+            console.log("Pobrano autobus.");
+            if ($scope.autobus.GotMachine == true) {
+                $scope.autobus.GotMachineName = "Tak";
+                $scope.autobus.GotMachineValue = 1
+            }
+            else {
+                $scope.autobus.GotMachineName = "Nie";
+                $scope.autobus.GotMachineValue = 0
+            }
+
+            if ($scope.autobus.BusType == 0) {
+                $scope.autobus.BusTypeName = "Normalny"
+            }
+            else {
+                $scope.autobus.BusTypeName = "Przegubowy"
+            }
+            if ($scope.autobus.BusStatus == 0) {
+                $scope.autobus.BusStatusName = "Nieaktywny"
+            }
+            else if ($scope.autobus.BusStatus == 1) {
+                $scope.autobus.BusStatusName = "W zajezdni"
+            }
+            else {
+                $scope.autobus.BusStatusName = "W trasie"
+            }
         }).error(function (data, status, headers, config) {
             console.log("Błąd pobrania autobusu.")
-        });
-
-        angular.forEach($scope.autobus, function (item) {
-            if (item.GotMachine == true) {
-                item.GotMachineName = "Tak";
-                item.GotMachineValue = 1
-            }
-            else {
-                item.GotMachineName = "Nie";
-                item.GotMachineValue = 0
-            }
-
-            if (item.BusType == 0) {
-                item.BusTypeName = "Normalny"
-            }
-            else {
-                item.BusTypeName = "Przegubowy"
-            }
-            if (item.BusStatus == 0) {
-                item.BusStatusName = "Nieaktywny"
-            }
-            else if (item.BusStatus == 1) {
-                item.BusStatusName = "W zajezdni"
-            }
-            else {
-                item.BusStatusName = "W trasie"
-            }
         });
     }]);
     app.controller('UpdateBusController', function ($scope) {
@@ -349,7 +347,7 @@
      *==========================================================================*/
     app.controller('BusstopController', function ($scope, $http) {
 
-        $scope.przystanki = [
+        /*$scope.przystanki = [
             {
                 Id: 0,
                 Name: 'Słoneczna',
@@ -410,49 +408,48 @@
                 BusStopStatus: 1,
                 LastControl: '1'
             }
-        ];
+        ];*/
 
-        $http.get('http://localhost:50000/busstop/GetBusstopList', {
-            headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+        $http.get('http://localhost:50000/Busstop/GetBusstopList/', {
+            headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
         }).success(function (data, status, headers, config) {
             $scope.przystanki = data;
-            console.log("Pobrano liste przystanków.")
+            console.log($scope.przystanki);
+            console.log("Pobrano liste przystanków.");
+            angular.forEach($scope.przystanki, function (przystanek) {
+                if (przystanek.GotMachine == true) {
+                    przystanek.GotMachineName = "Tak";
+                    przystanek.GotMachineValue = 1
+                }
+                else {
+                    przystanek.GotMachineName = "Nie";
+                    przystanek.GotMachineValue = 0
+                }
+                if (przystanek.GotKiosk == true) {
+                    przystanek.GotKioskName = "Tak";
+                    przystanek.GotKioskValue = 1
+                }
+                else {
+                    przystanek.GotKioskName = "Nie";
+                    przystanek.GotKioskValue = 0
+                }
+
+                if (przystanek.BusStopType == 0) {
+                    przystanek.BusStopTypeName = "Normalny"
+                }
+                else {
+                    przystanek.BusStopTypeName = "Zabudowany"
+                }
+                if (przystanek.BusStopStatus == 0) {
+                    przystanek.BusStopStatusName = "Nieaktywny"
+                }
+                else {
+                    przystanek.BusStopStatusName = "Aktywny"
+                }
+            });
         }).error(function (data, status, headers, config) {
             console.log("Błąd pobrania przystanków.")
         });
-
-        angular.forEach($scope.przystanki, function (przystanek) {
-            if (przystanek.GotMachine == true) {
-                przystanek.GotMachineName = "Tak";
-                przystanek.GotMachineValue = 1
-            }
-            else {
-                przystanek.GotMachineName = "Nie";
-                przystanek.GotMachineValue = 0
-            }
-            if (przystanek.GotKiosk == true) {
-                przystanek.GotKioskName = "Tak";
-                przystanek.GotKioskValue = 1
-            }
-            else {
-                przystanek.GotKioskName = "Nie";
-                przystanek.GotKioskValue = 0
-            }
-
-            if (przystanek.BusStopType == 0) {
-                przystanek.BusStopTypeName = "Normalny"
-            }
-            else {
-                przystanek.BusStopTypeName = "Zabudowany"
-            }
-            if (przystanek.BusStopStatus == 0) {
-                przystanek.BusStopStatusName = "Nieaktywny"
-            }
-            else {
-                przystanek.BusStopStatusName = "Aktywny"
-            }
-        });
-
     });
     app.controller('AddBusstopController', function ($scope, $http, $timeout) {
         $scope.sendForm = false;
@@ -489,7 +486,7 @@
                 $scope.BusStopType = 1
             }
 
-            var data = $.param({
+            var data =  JSON.stringify({
                 Name: $scope.Name,
                 Lat: $scope.Lat,
                 Lng: $scope.Lng,
@@ -501,13 +498,13 @@
                 //LastControl: ''
             });
             var config = {
-                headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+                headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
             };
 
             if ($scope.sendForm) {
                 $scope.message = "Przygotowywanie przystanku...";
                 $timeout(function () {
-                    $http.post('http://localhost:50000/bus/addBusstop', data, config)
+                    $http.post('http://localhost:50000/Busstop/PostBusstop', data, config)
                         .success(function (data, status, headers, config) {
                             $scope.PostDataResponse = data;
                             console.log($scope.PostDataResponse);
@@ -535,7 +532,7 @@
         $scope.PrzystanekID = WybraneId;
 
         //ZWROTKA
-        $scope.przystanek = [{
+        /*$scope.autobus = [{
             Id: 0,
             Name: 'Słoneczna',
             Lat: 12.58,
@@ -546,48 +543,45 @@
             BusStopType: 0,
             BusStopStatus: 0,
             LastControl: '1'
-        }];
+        }];*/
 
-        $http.get('http://localhost:50000/busstop/getBusstop/' + WybraneId, {
-                headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+        $http.get('http://localhost:50000/Busstop/GetBusstop/' + WybraneId, {
+                headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
             }
         ).success(function (data, status, headers, config) {
             $scope.autobus = data;
             console.log("Pobrano przystanek.")
+            if ($scope.autobus.GotMachine == true) {
+                $scope.autobus.GotMachineName = "Tak";
+                $scope.autobus.GotMachineValue = 1
+            }
+            else {
+                $scope.autobus.GotMachineName = "Nie";
+                $scope.autobus.GotMachineValue = 0
+            }
+            if ($scope.autobus.GotKiosk == true) {
+                $scope.autobus.GotKioskName = "Tak";
+                $scope.autobus.GotKioskValue = 1
+            }
+            else {
+                $scope.autobus.GotKioskName = "Nie";
+                $scope.autobus.GotKioskValue = 0
+            }
+
+            if ($scope.autobus.BusStopType == 0) {
+                $scope.autobus.BusStopTypeName = "Normalny"
+            }
+            else {
+                $scope.autobus.BusStopTypeName = "Zabudowany"
+            }
+            if ($scope.autobus.BusStopStatus == 0) {
+                $scope.autobus.BusStopStatusName = "Nieaktywny"
+            }
+            else {
+                $scope.autobus.BusStopStatusName = "Aktywny"
+            }
         }).error(function (data, status, headers, config) {
             console.log("Błąd pobrania przystanku.")
-        });
-
-        angular.forEach($scope.przystanek, function (item) {
-            if (item.GotMachine == true) {
-                item.GotMachineName = "Tak";
-                item.GotMachineValue = 1
-            }
-            else {
-                item.GotMachineName = "Nie";
-                item.GotMachineValue = 0
-            }
-            if (item.GotKiosk == true) {
-                item.GotKioskName = "Tak";
-                item.GotKioskValue = 1
-            }
-            else {
-                item.GotKioskName = "Nie";
-                item.GotKioskValue = 0
-            }
-
-            if (item.BusStopType == 0) {
-                item.BusStopTypeName = "Normalny"
-            }
-            else {
-                item.BusStopTypeName = "Zabudowany"
-            }
-            if (item.BusStopStatus == 0) {
-                item.BusStopStatusName = "Nieaktywny"
-            }
-            else {
-                item.BusStopStatusName = "Aktywny"
-            }
         });
     }]);
     app.controller('UpdateBustopController', function ($scope) {
@@ -682,38 +676,37 @@
      *==========================================================================*/
     app.controller('UserController', function ($scope, $http) {
 
-        $scope.users = [
+        /*$scope.users = [
             {Id: 0, Email: 'dev@wp.pl', Rank: 0, Status: 0, Details: "Opis...?"},
             {Id: 1, Email: 'dev2@wp.pl', Rank: 1, Status: 1, Details: "Opis...?"},
             {Id: 1, Email: 'dev2@wp.pl', Rank: 1, Status: 1, Details: "Opis...?"},
             {Id: 2, Email: 'dev3@wp.pl', Rank: 2, Status: 0, Details: "Opis...?"}
-        ];
+        ];*/
 
         $http.get('http://localhost:50000/user/GetUserList', {
-            headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+            headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
         }).success(function (data, status, headers, config) {
             $scope.users = data;
-            console.log("Pobrano liste userów.")
+            console.log("Pobrano liste userów.");
+            angular.forEach($scope.users, function (user) {
+                if (user.Rank == 0) {
+                    user.RankName = "Użytkownik";
+                }
+                else if (user.Rank == 1) {
+                    user.RankName = "Kontroler";
+                }
+                else if (user.Rank == 2) {
+                    user.RankName = "Administrator";
+                }
+                if (user.Status == 0) {
+                    user.StatusName = "Nieaktywny"
+                }
+                else {
+                    user.StatusName = "Aktywny"
+                }
+            });
         }).error(function (data, status, headers, config) {
             console.log("Błąd pobrania userów.")
-        });
-
-        angular.forEach($scope.users, function (user) {
-            if (user.Rank == 0) {
-                user.RankName = "Użytkownik";
-            }
-            else if (user.Rank == 1) {
-                user.RankName = "Kontroler";
-            }
-            else if (user.Rank == 2) {
-                user.RankName = "Administrator";
-            }
-            if (user.Status == 0) {
-                user.StatusName = "Nieaktywny"
-            }
-            else {
-                user.StatusName = "Aktywny"
-            }
         });
 
     });
@@ -733,21 +726,21 @@
                 $scope.Rank = 2;
             }
 
-            var data = $.param({
+            var data = JSON.stringify({
                 Email: $scope.Email,
                 Rank: $scope.Rank,
                 Details: $scope.Details,
-                Status: 0
-                //TODO PASSWORD??
+                Status: 0,
+                Password: $scope.Password
             });
             var config = {
-                headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
+                headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
             };
 
             if ($scope.sendForm) {
                 $scope.message = "Szykujemy nowe biurko...";
                 $timeout(function () {
-                    $http.post('http://localhost:50000/user/addUser', data, config)
+                    $http.post('http://localhost:50000/user/SelfRegister', data, config)
                         .success(function (data, status, headers, config) {
                             $scope.PostDataResponse = data;
                             console.log($scope.PostDataResponse);
@@ -767,7 +760,7 @@
             }
         };
     });
-    app.controller('ShowUserController', ['$scope', '$routeParams','$http', function ($scope, $routeParams, $http) {
+    app.controller('ShowUserController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
 
         var WybraneId = $routeParams.id;
 
@@ -775,7 +768,7 @@
         $scope.UserID = WybraneId;
 
 
-        //ZWROTKA
+        /*//ZWROTKA
         $scope.user = [{
             Id: 0,
             Email: 'dev@wp.pl',
@@ -784,7 +777,7 @@
             Rank: 0,
             Status: 0,
             Details: 'Jakis Opis'
-        }];
+        }];*/
 
         $http.get('http://localhost:50000/user/getUser/' + WybraneId, {
                 headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
@@ -877,19 +870,19 @@
 
     /* Derektywy
      *==========================================================================*/
-    var compareTo = function() {
+    var compareTo = function () {
         return {
             require: "ngModel",
             scope: {
                 otherModelValue: "=compareTo"
             },
-            link: function(scope, element, attributes, ngModel) {
+            link: function (scope, element, attributes, ngModel) {
 
-                ngModel.$validators.compareTo = function(modelValue) {
+                ngModel.$validators.compareTo = function (modelValue) {
                     return modelValue == scope.otherModelValue;
                 };
 
-                scope.$watch("otherModelValue", function() {
+                scope.$watch("otherModelValue", function () {
                     ngModel.$validate();
                 });
             }

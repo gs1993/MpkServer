@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 /* AWESOME FONTS
  *========================================================================== */
 /*!
@@ -12412,6 +12412,21 @@ a.tabnav-extra:hover {
 
 .panelDodajPrzystanek__icon {
   font-size: 3em;
+}
+
+.panelDodajPrzystanek__dataLoader__svg {
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.panelDodajPrzystanek__dataLoader__text {
+  display: block;
+  text-align: center;
+}
+
+.panelDodajPrzystanek__dataLoader__text p {
+  margin-bottom: 30px;
 }
 
 .panelUsers {
