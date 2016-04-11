@@ -2,27 +2,27 @@
 <div ng-controller="ShowBusController" class="panelWyswietlAutobus">
   <div class="panelWyswietlAutobus__title">Szczegóły Autobusu</div>
   <div class="panelWyswietlAutobus__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/bus">Zarządzanie Autobusami</a></span><span class="-active"><a href="/#/bus/show/{{ AutobusID }}">Szczegóły Autobusu</a></span></div>
-  <div ng-repeat="item in autobus as AktualnyAutobus" class="panelWyswietlAutobus__wrapper">
+  <div class="panelWyswietlAutobus__wrapper">
     <div class="panelWyswietlAutobus__subtitle">Aktualny stan autobusu o numerze {{ item.RegistrationNumber }}</div>
     <div class="panelWyswietlAutobus__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
     <div class="panelWyswietlAutobus__content__form">
       <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Numer Rejestracyjny</span>
-        <p>{{ item.RegistrationNumber }}</p>
+        <p>{{ autobus.RegistrationNumber }}</p>
       </div>
       <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Numer VIN</span>
-        <p>{{ item.BusNumber }}</p>
+        <p>{{ autobus.BusNumber }}</p>
       </div>
       <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Typ Autobusu</span>
-        <p>{{ item.BusTypeName }}</p>
+        <p>{{ autobus.BusTypeName }}</p>
       </div>
       <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Biletomat</span>
-        <p>{{ item.GotMachineName }}</p>
+        <p>{{ autobus.GotMachineName }}</p>
       </div>
       <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Aktualny status</span>
-        <p>{{ item.BusStatusName }}</p>
+        <p>{{ autobus.BusStatusName }}</p>
       </div>
       <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Ostatnia kontrola</span>
-        <p>{{ item.LastControl }}</p>
+        <p>{{ autobus.LastControl }}</p>
       </div>
       <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Ostatnia lokalizacja</span>
         <p>X Y</p>
