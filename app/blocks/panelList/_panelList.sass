@@ -6,6 +6,7 @@
     border: 1px solid transparent
     overflow: hidden
     margin-right: 15px
+    justify-content: space-between
     +PHONE_ONLY
       margin-right: 0
   &__content
@@ -24,6 +25,7 @@
     line-height: 40px
     display: flex
     cursor: pointer
+    justify-content: space-between
     &:nth-of-type(odd)
       //background-color: rgba(74, 174, 212, 0.1)
       background-color: #f9f9f9
@@ -32,10 +34,10 @@
       background-color: #ededed
       .panelList__navigation
         opacity: 1
-  &__itemType
+  &__itemCell
     height: 40px
     line-height: 40px
-    flex-basis: 40px
+    flex-basis: 20%
     //background: red
     text-align: center
     font-size: 10px
@@ -45,10 +47,10 @@
     .fa
       font-size: 2em !important
       line-height: 40px
-  &__headeritemType
+  &__headeritem
     height: 20px
     line-height: 20px
-    flex-basis: 40px
+    flex-basis: 20%
     //background: red
     text-align: center
     font-size: 10px

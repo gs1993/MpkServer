@@ -27,7 +27,7 @@ namespace WebApiServer.Controllers
         {
             using (var db = _db.CreateContext())
             {
-                return db.Buss.Where(b => !b.IsArchive).ToList().Select(b => Revrite(b)).ToList();
+                return db.Buss.Where(b => !b.IsArchive).ToList().Select(b => Rewrite(b)).ToList();
             }
         }
 
@@ -41,14 +41,30 @@ namespace WebApiServer.Controllers
                 {
                     
                 }
-                return Revrite(bus);
+                return Rewrite(bus);
             }
         }
 
-        //public BusDto CreateBus(BusDto bus)
-        //{
-        //    return new BusDto();
-        //}
+        public BusDto PutBus(BusDto busToUpdateDto)
+        {
+            using (var db = _db.CreateContext())
+            {
+                var bus = db.Buss.FirstOrDefault(b => b.Id == busToUpdateDto.Id);
+                if (bus == null)
+                {
+
+                }
+
+                bus.GotMachine = busToUpdateDto.GotMachine;
+                bus.LastControl = busToUpdateDto.LastControl;
+                bus.RegistrationNumber = busToUpdateDto.RegistrationNumber;
+                bus.BusType = busToUpdateDto.BusType;
+                bus.BusNumber = busToUpdateDto.BusNumber;
+                db.SaveChanges();
+
+                return Rewrite(bus);
+            }
+        }
 
         public BusDeleteConfirmDto DeleteBus(int Id)
         {
@@ -64,8 +80,21 @@ namespace WebApiServer.Controllers
                 return new BusDeleteConfirmDto() { Deleted = result };
             }
         }
+        //public async Task<IHttpActionResult> PostBus(BusDto dto)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+            
 
-        private BusDto Revrite(Bus bus)
+        //    db.Bus.Add(bus);
+        //    await db.SaveChangesAsync();
+
+        //    return CreatedAtRoute("DefaultApi", new { id = bus.Id }, bus);
+        //}
+
+        private BusDto Rewrite(Bus bus)
         {
             return new BusDto()
             {
@@ -75,6 +104,18 @@ namespace WebApiServer.Controllers
                 LastControl = bus.LastControl,
                 RegistrationNumber = bus.RegistrationNumber,
                 Id = bus.Id
+            };
+        }
+        private Bus Rewrite(BusDto busDto)
+        {
+            return new Bus()
+            {
+                BusNumber = busDto.BusNumber,
+                BusType = busDto.BusType,
+                GotMachine = busDto.GotMachine,
+                LastControl = busDto.LastControl,
+                RegistrationNumber = busDto.RegistrationNumber,
+                Id = busDto.Id
             };
         }
     }

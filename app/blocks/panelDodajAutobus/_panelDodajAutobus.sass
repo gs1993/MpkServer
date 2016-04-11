@@ -1,28 +1,7 @@
 @charset "UTF-8"
-.panelDodajAutobus__dragger
-  position: absolute
-  top: 0
-  margin: 0 auto
-  left: 0
-  right: 0
 .panelDodajAutobus
-  transition: transform 0.36s ease
-  position: absolute
-  max-width: 700px
-  width: 100%
-  height: auto
-  top: 0
-  right: 0
-  left: 0
-  z-index: 100
-  opacity: 1
-  margin: 55px 20px 20px 20px
-  background-color: rgba(255, 255, 255,1)
-  //border: 1px solid rgba(255, 255, 255, 1)
-  //border-radius: 5px
-  box-shadow: 0 1px 1px rgba(0,0,0,0.1)
-  overflow: hidden
-  transform: scale(1, 1)
+  min-width: 700px
+
   +TAB_MAX
     position: relative !important
     width: 100% !important
@@ -100,82 +79,6 @@
       color: firebrick
     &.-hidden
       display: none
-  &__form
-    padding: 5px
-    margin: 0 auto
-    text-align: center
-    input
-      box-shadow: none !important
-      outline: none
-      font-weight: 400
-      max-width: 300px
-      width: 100%
-      display: block
-      margin: 5px auto
-      padding: 8px 10px
-      border-radius: 0
-      border-top: 0
-      border-left: 0
-      border-right: 0
-      border-bottom: 2px solid #D2E3E9
-      font-size: 16px
-      &:focus
-        border-bottom: 2px solid #4AAED4
-
-    label
-      cursor: pointer
-      margin-left: 0
-      color: #9C969C
-      font-weight: 400
-      max-width: 300px
-      .icon
-        width: 17px
-        height: 18px
-        border-radius: 2px
-        position: relative
-        display: inline-block
-        border: 1px solid
-      .icon:before,.icon:after
-        content: ''
-        width: 10px
-        height: 2px
-        background: white
-        position: absolute
-        transition: all .2s ease-in-out 0s
-      .icon:before
-        left: 3px
-        width: 5px
-        bottom: 6px
-        transform: scale(0) rotate(0)
-      .icon:after
-        top: 6px
-        right: 0
-        transform: scale(0) rotate(0)
-
-    .check
-      display: none
-    .check:checked + label
-      color: #4AAED4
-      .icon
-        background: #4AAED4
-      .icon:before
-        transform: scale(1) rotate(45deg)
-      .icon:after
-        transform: scale(1) rotate(-45deg)
-
-
-    button
-      text-transform: uppercase
-      background: #4AAED4
-      color: white
-      border: none
-      padding: 15px 20px
-      border-radius: 25px
-      max-width: 300px
-      width: 100%
-      &:hover
-        background: #98D3EA
-
   &__navigation
     margin-top: 20px
     margin-bottom: 5px
@@ -223,9 +126,8 @@
         text-align: center
     &__form
       display: flex
-      align-content: space-between
       flex-wrap: wrap
-      justify-content: space-between
+      justify-content: flex-start
       &__item
 
         &.check
@@ -234,95 +136,43 @@
           margin-right: 2px
 
         overflow: hidden
-        flex-basis: 30%
-        padding: 10px 0
+        flex-basis: 33%
+        padding: 10px
         margin: 5px 0
 
-        input
-
+        input,input[type="password"]
+          padding: 0 10px
+          height: 40px
           box-shadow: none !important
           outline: none
           font-weight: 400
+          max-width: 300px
           width: 100%
           display: block
-          //margin: 5px auto
-          padding: 8px 10px
           border-radius: 0
-          border: 1px solid #aaa
-          font-size: 12px
-
-        input[type=checkbox]
-          display: none
-          &:checked + label:before
-            content: "\2713"
-            //font-size: 22px
-            color: #fff
-            text-align: center
-            line-height: 25px
-            background-color: #3c8dbc
-            border: 1px solid #3c8dbc
-        label
-
-          display: inline-block
-          cursor: pointer
-          position: relative
-          height: 22px
-          width: 22px
-          &:before
-            border-radius: 66px
-            border: 1px solid #aaa
-            content: ""
-            display: inline-block
-            width: 25px
-            height: 25px
-            position: absolute
-            left: 0
-        //bottom: 1px
-        +PHONE_ONLY
-          flex-basis: 100%
-          padding: 0
-        p
-          font-size: 10px
-          line-height: 10px
-          letter-spacing: 1px
-        span.item
-          margin-bottom: 5px
+          border-top: 0
+          border-left: 0
+          border-right: 0
+          border-bottom: 2px solid #D2E3E9
+          font-size: 16px
+          &:focus
+            border-bottom: 2px solid #4AAED4
+        select
+          height: 40px
+          box-shadow: none !important
+          outline: none
+          font-weight: 400
+          max-width: 300px
+          width: 100%
           display: block
-        .select2
-          &-container
-            .select2-selection
-              &--single
-                outline: none
-                border-radius: 0
-                height: 34px
-                .select2-selection
-                  &__rendered
-                    line-height: 34px
-                  &__arrow
-                    height: 34px
-              &--multiple
-                outline: none
-                border-radius: 0
-                min-height: 34px
-                .select2-selection
-                  &__rendered
-                    line-height: 22px
-                  &__choice
-                    background-color: #3c8dbc
-                    border: none
-                    border-radius: 4px
-                    color: #fff
-                    &__remove
-                      opacity: 0.8
-                      color: #fff
-                      margin-right: 2px
-                      &:hover
-                        opacity: 1
-            .select2-search--inline
-              .select2-search__field
-                margin-top: 7px
-            &--default.select2-container--focus .select2-selection--multiple
-              border: 1px solid #aaa !important
+          border-radius: 0
+          border-top: 0
+          border-left: 0
+          border-right: 0
+          border-bottom: 2px solid #D2E3E9
+          font-size: 16px
+          &:focus
+            border-bottom: 2px solid #4AAED4
 
 
 

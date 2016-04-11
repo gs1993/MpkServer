@@ -27,7 +27,7 @@ namespace WebApiServer.Controllers
         {
             using (var db = _db.CreateContext())
             {
-                return db.BusStops.Where(b => !b.IsArchive).ToList().Select(b => Revrite(b)).ToList();
+                return db.BusStops.Where(b => !b.IsArchive).ToList().Select(b => Rewrite(b)).ToList();
             }
         }
 
@@ -40,7 +40,7 @@ namespace WebApiServer.Controllers
                 {
 
                 }
-                return Revrite(busStop);
+                return Rewrite(busStop);
             }
         }
 
@@ -59,20 +59,57 @@ namespace WebApiServer.Controllers
             }
         }
 
+        public BusStopDto PostBusStop(BusStopDto busStopDto)
+        {
+            using (var db = _db.CreateContext())
+            {
+                if (!ModelState.IsValid)
+                {
 
-        private BusStopDto Revrite(BusStop bs)
+                }
+                var busStop = Rewrite(busStopDto);
+                
+                busStop.IsArchive = false; // chwilowo
+
+                db.BusStops.Add(busStop);
+                db.SaveChanges();
+
+                var test = db.Buss.ToList();
+                // !
+                return busStopDto; 
+            }
+        }
+
+       
+
+        private BusStopDto Rewrite(BusStop busStop)
         {
             return new BusStopDto()
             {
-                BusStopType = bs.BusStopType,
-                GotKiosk = bs.GotKiosk,
-                GotMachine = bs.GotMachine,
-                Id = bs.Id,
-                LastControl = bs.LastControl,
-                Lat = bs.Lat,
-                Lng = bs.Lng,
-                LocalizationString = bs.LocalizationString,
-                Name = bs.Name
+                BusStopType = busStop.BusStopType,
+                GotKiosk = busStop.GotKiosk,
+                GotMachine = busStop.GotMachine,
+                Id = busStop.Id,
+                LastControl = busStop.LastControl,
+                Lat = busStop.Lat,
+                Lng = busStop.Lng,
+                LocalizationString = busStop.LocalizationString,
+                Name = busStop.Name
+            };
+        }
+        private BusStop Rewrite(BusStopDto dto)
+        {
+            return new BusStop()
+            {
+                BusStopType = dto.BusStopType,
+                GotKiosk = dto.GotKiosk,
+                GotMachine = dto.GotMachine,
+                Id = dto.Id,
+                LastControl = dto.LastControl,
+                Lat = dto.Lat,
+                Lng = dto.Lng,
+                LocalizationString = dto.LocalizationString,
+                Name = dto.Name
             };
         }
     }
