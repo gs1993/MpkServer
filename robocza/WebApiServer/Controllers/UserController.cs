@@ -66,7 +66,7 @@ namespace WebApiServer.Controllers
                 User = user
             });
  
-            um.SendEmail(user.Id,"Rejestracja do systemu mpk",token);
+           // um.SendEmail(user.Id,"Rejestracja do systemu mpk",token);
 
 
             return new UserDto()
