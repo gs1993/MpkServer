@@ -22,6 +22,8 @@ namespace Core.Transfer.BusStop
 
         public bool GotMachine { get; set; }
 
+        public Status BusStopStatus { get; set; }
+
         public bool GotKiosk { get; set; }
 
         public BusStopType BusStopType { get; set; }

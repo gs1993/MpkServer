@@ -9,6 +9,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using WebApiServer.Services;
 using Core.Transfer.BusStop;
+using Data.Enums;
 
 namespace WebApiServer.Controllers
 {
@@ -27,7 +28,7 @@ namespace WebApiServer.Controllers
         {
             using (var db = _db.CreateContext())
             {
-                return db.BusStops.Where(b => !b.IsArchive).ToList().Select(b => Rewrite(b)).ToList();
+                return db.BusStops.ToList().Select(b => Rewrite(b)).ToList();
             }
         }
 
@@ -36,7 +37,7 @@ namespace WebApiServer.Controllers
             using (var db = _db.CreateContext())
             {
                 var busStop = db.BusStops.FirstOrDefault(b => b.Id == Id);//BusId.Id);
-                if (busStop == null && busStop.IsArchive)
+                if (busStop == null)
                 {
 
                 }
@@ -48,17 +49,43 @@ namespace WebApiServer.Controllers
         {
             using (var db = _db.CreateContext())
             {
-                bool result = false;
-                var busStop = db.Buss.FirstOrDefault(b => b.Id == Id);
-                if (busStop != null && !busStop.IsArchive)
+                bool result = true;
+                var busStop = db.BusStops.FirstOrDefault(b => b.Id == Id);
+                try
                 {
-                    busStop.IsArchive = true;
-                    result = true;
+                    busStop.BusStopStatus = Status.InActive;
+                    db.SaveChanges();
                 }
+                catch (Exception)
+                {
+                    result = false;
+                }
+
+
                 return new BusStopConfirmed() { Ok = result };
             }
         }
-        
+
+        public BusStopConfirmed PutRestore(int Id)
+        {
+            using (var db = _db.CreateContext())
+            {
+                bool result = true;
+                var busStop = db.BusStops.FirstOrDefault(bs => bs.Id == Id);
+
+                try
+                {
+                    busStop.BusStopStatus = Status.Active;
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    result = false;
+                }
+                return new BusStopConfirmed() {Ok = result};
+            }
+        }
+
         public BusStopConfirmed PostBusStop(BusStopDto busStopDto)
         {
             using (var db = _db.CreateContext())
@@ -67,7 +94,7 @@ namespace WebApiServer.Controllers
                 try
                 {
                     var busStop = Rewrite(busStopDto);
-                    busStop.IsArchive = false; // chwilowo
+                    busStop.BusStopStatus = Status.Active; // chwilowo
 
                     db.BusStops.Add(busStop);
                     db.SaveChanges();
@@ -81,7 +108,24 @@ namespace WebApiServer.Controllers
             }
         }
 
-       
+        public BusStopConfirmed PutBus(BusStopDto busStopToUpdateDto)
+        {
+            using (var db = _db.CreateContext())
+            {
+                bool result = true;
+                var busStop = db.BusStops.FirstOrDefault(b => b.Id == busStopToUpdateDto.Id);
+                try
+                {
+                    busStop = Rewrite(busStopToUpdateDto);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    result = false;
+                }
+                return new BusStopConfirmed() { Ok = result };
+            }
+        }
 
         private BusStopDto Rewrite(BusStop busStop)
         {
@@ -95,7 +139,8 @@ namespace WebApiServer.Controllers
                 Lat = busStop.Lat,
                 Lng = busStop.Lng,
                 LocalizationString = busStop.LocalizationString,
-                Name = busStop.Name
+                Name = busStop.Name,
+                BusStopStatus = busStop.BusStopStatus
             };
         }
         private BusStop Rewrite(BusStopDto dto)
@@ -110,7 +155,8 @@ namespace WebApiServer.Controllers
                 Lat = dto.Lat,
                 Lng = dto.Lng,
                 LocalizationString = dto.LocalizationString,
-                Name = dto.Name
+                Name = dto.Name,
+                BusStopStatus = dto.BusStopStatus
             };
         }
     }

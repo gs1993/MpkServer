@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using Data.Enums;
 using WebApiServer.Services;
 
 namespace WebApiServer.Controllers
@@ -27,7 +28,7 @@ namespace WebApiServer.Controllers
         {
             using (var db = _db.CreateContext())
             {
-                return db.Buss.Where(b => !b.IsArchive).ToList().Select(b => Rewrite(b)).ToList();
+                return db.Buss.ToList().Select(b => Rewrite(b)).ToList();
             }
         }
 
@@ -37,7 +38,7 @@ namespace WebApiServer.Controllers
             using (var db = _db.CreateContext())
             {
                 var bus = db.Buss.FirstOrDefault(b => b.Id == Id);//BusId.id);
-                if (bus == null && bus.IsArchive)
+                if (bus == null)
                 {
                     
                 }
@@ -53,11 +54,7 @@ namespace WebApiServer.Controllers
                 var bus = db.Buss.FirstOrDefault(b => b.Id == busToUpdateDto.Id);
                 try
                 {
-                    bus.GotMachine = busToUpdateDto.GotMachine;
-                    bus.LastControl = busToUpdateDto.LastControl;
-                    bus.RegistrationNumber = busToUpdateDto.RegistrationNumber;
-                    bus.BusType = busToUpdateDto.BusType;
-                    bus.BusNumber = busToUpdateDto.BusNumber;
+                    bus = Rewrite(busToUpdateDto);
                     db.SaveChanges();
                 }
                 catch (Exception)
@@ -76,7 +73,7 @@ namespace WebApiServer.Controllers
                 try
                 {
                     var bus = Rewrite(busDto);
-                    bus.IsArchive = false; // chwilowo
+                    bus.BusStatus = Status.Active; // chwilowo
 
                     db.Buss.Add(bus);
                     db.SaveChanges();
@@ -91,34 +88,41 @@ namespace WebApiServer.Controllers
         }
 
 
-        public BusConfirmed DeleteBus(int Id)
+        public BusConfirmed Delete(int Id)
         {
             using (var db = _db.CreateContext())
             {
                 bool result = true;
                 var bus = db.Buss.FirstOrDefault(b => b.Id == Id);
-                if (bus == null || bus.IsArchive)
+                if (bus == null)
                 {
                     result = false;
                 }
-                bus.IsArchive = true;
+                bus.BusStatus = Status.InActive;
                 return new BusConfirmed() { Ok = result };
             }
         }
-        //public async Task<IHttpActionResult> PostBus(BusDto dto)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-            
 
-        //    db.Bus.Add(bus);
-        //    await db.SaveChangesAsync();
+        public BusConfirmed PutRestore(int Id)
+        {
+            using (var db = _db.CreateContext())
+            {
+                bool result = true;
+                var bus = db.Buss.FirstOrDefault(b => b.Id == Id);
 
-        //    return CreatedAtRoute("DefaultApi", new { id = bus.id }, bus);
-        //}
-
+                try
+                {
+                    bus.BusStatus = Status.Active;
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    result = false;
+                }
+                return new BusConfirmed() { Ok = result };
+            }
+        }
+       
         private BusDto Rewrite(Bus bus)
         {
             return new BusDto()
@@ -128,7 +132,8 @@ namespace WebApiServer.Controllers
                 GotMachine = bus.GotMachine,
                 LastControl = bus.LastControl,
                 RegistrationNumber = bus.RegistrationNumber,
-                Id = bus.Id
+                Id = bus.Id,
+                BusStatus = bus.BusStatus
             };
         }
         private Bus Rewrite(BusDto busDto)
@@ -140,7 +145,8 @@ namespace WebApiServer.Controllers
                 GotMachine = busDto.GotMachine,
                 LastControl = busDto.LastControl,
                 RegistrationNumber = busDto.RegistrationNumber,
-                Id = busDto.Id
+                Id = busDto.Id,
+                BusStatus = busDto.BusStatus
             };
         }
     }

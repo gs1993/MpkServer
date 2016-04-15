@@ -21,7 +21,7 @@ namespace Data.Models
 
         public DateTime LastControl { get; set; }
 
-        public bool IsArchive { get; set; }
+        public Status BusStatus { get; set; }
 
         public ApiUser Driver { get; set; }
     }

@@ -63,11 +63,20 @@
     <Compile Include="Enums\ActivityType.cs" />
     <Compile Include="Enums\BusStopType.cs" />
     <Compile Include="Enums\BusType.cs" />
+    <Compile Include="Enums\Status.cs" />
     <Compile Include="Enums\UserRank.cs" />
     <Compile Include="MainDbContext.cs" />
     <Compile Include="Migrations\201604030319029_test.cs" />
     <Compile Include="Migrations\201604030319029_test.Designer.cs">
       <DependentUpon>201604030319029_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604151338169_AddStatus.cs" />
+    <Compile Include="Migrations\201604151338169_AddStatus.Designer.cs">
+      <DependentUpon>201604151338169_AddStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604151350363_StatusFix.cs" />
+    <Compile Include="Migrations\201604151350363_StatusFix.Designer.cs">
+      <DependentUpon>201604151350363_StatusFix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -92,6 +101,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201604030319029_test.resx">
       <DependentUpon>201604030319029_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604151338169_AddStatus.resx">
+      <DependentUpon>201604151338169_AddStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604151350363_StatusFix.resx">
+      <DependentUpon>201604151350363_StatusFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
