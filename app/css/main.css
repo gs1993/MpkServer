@@ -9956,7 +9956,7 @@ a.tabnav-extra:hover {
 }
 
 .panels {
-  width: 40%;
+  width: 45%;
   position: relative;
   height: 100vh;
 }
@@ -10024,7 +10024,7 @@ a.tabnav-extra:hover {
 }
 
 .wrapper.-open {
-  left: 40%;
+  left: 45%;
 }
 
 @media (max-width: 1024px) {
@@ -12412,6 +12412,21 @@ a.tabnav-extra:hover {
 
 .panelDodajPrzystanek__icon {
   font-size: 3em;
+}
+
+.panelDodajPrzystanek__dataLoader__svg {
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.panelDodajPrzystanek__dataLoader__text {
+  display: block;
+  text-align: center;
+}
+
+.panelDodajPrzystanek__dataLoader__text p {
+  margin-bottom: 30px;
 }
 
 .panelUsers {
