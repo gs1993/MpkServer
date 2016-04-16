@@ -58,7 +58,7 @@ namespace Data.Migrations
                Id = 1,
                LastControl = DateTime.Now,
                RegistrationNumber = "12211NLI",
-               IsArchive = false,
+               BusStatus = Status.Active,
                BusNumber = "0892"
             });
             context.Buss.AddOrUpdate(new Bus()
@@ -68,7 +68,7 @@ namespace Data.Migrations
                 Id = 2,
                 LastControl = new DateTime(2015, 01, 02),
                 RegistrationNumber = "1DDNLD",
-                IsArchive = true,
+                BusStatus = Status.Active,
                 BusNumber = "0784"
             });
             context.Buss.AddOrUpdate(new Bus()
@@ -78,9 +78,11 @@ namespace Data.Migrations
                 Id = 3,
                 LastControl = new DateTime(2015, 01, 02),
                 RegistrationNumber = "TREWQ3",
-                IsArchive = false,
+                BusStatus = Status.InActive,
                 BusNumber = "0584"
             });
+
+
             context.BusStops.AddOrUpdate(new BusStop()
             {
                 GotMachine = false,
@@ -92,7 +94,7 @@ namespace Data.Migrations
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska Polskiego",
                 Name = "Przystanek kołobrzeska",
-                IsArchive = false
+                BusStopStatus = Status.Active
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -105,7 +107,7 @@ namespace Data.Migrations
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska niepolskiego",
                 Name = "Przystanek dwa",
-                IsArchive = true
+                BusStopStatus = Status.Active
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -118,7 +120,7 @@ namespace Data.Migrations
                 Lng = 45.3,
                 LocalizationString = "Ulica Wojska tymczasowego",
                 Name = "Przystanek trzy",
-                IsArchive = false
+                BusStopStatus = Status.Active
             });
             context.BusStops.AddOrUpdate(new BusStop()
             {
@@ -131,7 +133,7 @@ namespace Data.Migrations
                 Lng = 45.3,
                 LocalizationString = "Ulica Pacyfistyczna",
                 Name = "Przystanek cztery",
-                IsArchive = false
+                BusStopStatus = Status.Active
             });
             context.Tracks.AddOrUpdate(new Track()
             {

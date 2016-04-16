@@ -14,6 +14,7 @@ namespace Core.Transfer.Bus
         public string BusNumber { get; set; }
         public bool GotMachine { get; set; }  //(Czy ma biletomat)
         public BusType BusType { get; set; }
+        public Status BusStatus { get; set; }
         public DateTime LastControl { get; set; }
     }
 }

@@ -15,12 +15,14 @@ using SimpleInjector.Extensions.ExecutionContextScoping;
 using SimpleInjector.Integration.WebApi;
 using WebApiServer.Misc;
 using WebApiServer.Services;
+using WebApiServer.Services.Services;
 
 namespace WebApiServer
 {
     class Program
     {
-        public static HttpSelfHostConfiguration Config = new HttpSelfHostConfiguration("http://localhost:50000");
+        private static string host = "http://localhost:50000";
+        public static HttpSelfHostConfiguration Config = new HttpSelfHostConfiguration(host);
         static void Main(string[] args)
         {
 
@@ -28,15 +30,16 @@ namespace WebApiServer
             {
 
                 ILogger logger = container.GetInstance<ILogger>();
-                logger.Log("Init webApi server");
+                logger.Log($"Init webApi server at {host}");
 
                 Config.Filters.Clear();
                 var corsAttr = new EnableCorsAttribute("*", "*", "*");
                 Config.EnableCors(corsAttr);
 
                 var us = container.GetInstance<IUserService>();
+                var ss = container.GetInstance<ISessionService>();
 
-                Config.Filters.Add(new SimpleAuthFilter(us));
+                Config.Filters.Add(new SimpleAuthFilter(ss,us));
 
                 using (HttpSelfHostServer server = new HttpSelfHostServer(Config))
                 {
@@ -57,6 +60,8 @@ namespace WebApiServer
             container.Register<ILogger, ConsoleLogger>(Lifestyle.Singleton);
             container.Register<IDatabaseService,DatabaseService>(Lifestyle.Singleton);
             container.Register<IUserService,UserService>(Lifestyle.Singleton);
+            container.Register<IEmailService,GmailEmailService>(Lifestyle.Singleton);
+            container.Register<ISessionService,SessionService>(Lifestyle.Singleton);
 
             //WebApi config
             WebApiConfig();

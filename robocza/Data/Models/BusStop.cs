@@ -27,6 +27,6 @@ namespace Data.Models
 
         public DateTime LastControl { get; set; }
 
-        public bool IsArchive { get; set; }
+        public Status BusStopStatus { get; set; }
     }
 }

@@ -15,8 +15,9 @@ namespace WebApiServer.Services
     public interface IUserService
     {
         UserManager<ApiUser> GetUserManager();
-        RoleManager<IdentityRole> GetRoleManager();
-        DbSet<RegisterTokens> Tokens { get; }
         Principal GetPrincipal(string id);
+        bool ActivateUser(ApiUser user, string token);
+        RegisterToken GenerateToken(ApiUser user);
+        void SaveChanges();
     }
 }

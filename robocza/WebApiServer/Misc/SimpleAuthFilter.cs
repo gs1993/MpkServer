@@ -21,64 +21,45 @@ namespace WebApiServer.Misc
 {
     public class SimpleAuthFilter:IAuthenticationFilter
     {
-        private const string AuthenticationScheme = "Basic";
+        private const string AuthenticationScheme = "Session";
+
+        private ISessionService _sessionService;
 
         private IUserService _userService;
 
 
-        public SimpleAuthFilter(IUserService database)
+        public SimpleAuthFilter(ISessionService sessionService, IUserService userService)
         {
-            _userService = database;
+            _sessionService = sessionService;
+            _userService = userService;
         }
 
         public async Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)
         {
             HttpRequestMessage request = context.Request;
-            AuthenticationHeaderValue authorization = request.Headers.Authorization;
+            var sessionheader = request.Headers.Any(x=>x.Key=="Session");
+            
 
-            if (authorization == null) return;
+            if (sessionheader == false) return;
 
-            if (authorization.Scheme != AuthenticationScheme) return;
+            var sessionToken = request.Headers.GetValues("Session").First();
 
-            if (string.IsNullOrEmpty(authorization.Parameter))
+            if (string.IsNullOrEmpty(sessionToken))
             {
                 context.ErrorResult = new AuthenticationFailureResult("Missing credentials",request);
             }
 
-            var um = _userService.GetUserManager();
+            var user = _sessionService.SessionCheck(sessionToken);
 
-            Tuple<string, string> userNameAndPasword = await ExtractUserNameAndPassword(authorization.Parameter);
-            
-            var user = await um.FindByNameAsync(userNameAndPasword.Item1);
-
-            var result = um.CheckPassword(user, userNameAndPasword.Item2);
-
-            if (user == null || result == false)
+            if (user == null )
             {
-                context.ErrorResult = new AuthenticationFailureResult("Invalid username or password", request);
+                context.ErrorResult = new AuthenticationFailureResult("Invalid session", request);
             }
             else
             {
                 context.Principal = _userService.GetPrincipal(user.Id);
             }
         }
-
-        //Chwilowo header autoryzacji base:login;hasło do zmiany w przyszłości
-        private Task<Tuple<string, string>> ExtractUserNameAndPassword(string parameter)
-        {
-            var task = Task.Run(() =>
-            {
-                    var encoder = new Base64TextEncoder();
-                
-                var result = Encoding.UTF8.GetString(encoder.Decode(parameter));
-                var values = result.Split(';');
-                if (values.Count() > 1)return new Tuple<string, string>(values[0], values[1]);
-                else return new Tuple<string, string>(values[0],"");
-                
-            });
-            return task;
-        }
-
         public Task ChallengeAsync(HttpAuthenticationChallengeContext context, CancellationToken cancellationToken)
         {
             var challenge = new AuthenticationHeaderValue("Basic");

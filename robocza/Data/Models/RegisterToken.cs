@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Models
 {
-    public class RegisterTokens
+    public class RegisterToken
     {
         public int Id { get; set; }
         public ApiUser User { get; set; }

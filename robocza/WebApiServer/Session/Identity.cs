@@ -21,7 +21,7 @@ namespace WebApiServer.Session
             UserRoles = userRoles;
         }
 
-        public string Name => User.UserName;
+        public string Name => User.Email;
 
         public string AuthenticationType => "basic";
 

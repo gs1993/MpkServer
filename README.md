@@ -12,30 +12,99 @@ System monitorowania i zarządzania flotą autobusów obejmie cały tabor zarzą
 * Łukasz Zimnoch
 * Rafał Kopryk
 
-# Autoryzacja #
-Tymczasowo(?) autoryzacja do serwisu restowego(webApi) jest na zasadzie nagłówka Authorization: Basic.
-Przy każdym zapytaniu do kontrolera w nagłówkach musi się znajdować nagłówek:
+# Postman Api #
+
+Dodałem kontroler z api dla postmana, wystarczy dla postmana wskazac adres do importu: "http://localhost:50000/Postman/Get".
+
+# Rejestracja(POST): #
+http://localhost:50000/User/SelfRegister
 
 ```
-#!
-Authorization: Basic (base64)loginUzytkownika+haslo
+#!Json
+
+{
+    "Email":"lukraik97@gmail.com",
+    "Password":"test123"
+}
 ```
-w innym przypadku zwracany jest błąd autoryzacji
-w przyszłości można pomyśleć o czymś innym ^^
-# Nagłówek cors #
+
+# Zwrotka: #
 
 ```
-#!c#
+#!Json
 
-[EnableCors("*","*","*")]
+{
+  "Email": "lukraik97@gmail.com",
+  "Rank": 0,
+  "Activated": false,
+  "Details": null
+}
 ```
-Jak sama nazwa mówi pozwala na CORS, przydawało mi się do testowania przy pomocy konsoli na innych stronach. W przyszłości do wyrzucenia.
 
 
-# Entity framework #
-w razie problemów z bazą danych
-na solucji Data należy uruchomić console nuget i wpisać
-update-database
+Przychodzi email z tokenem
+
+# Potwierdzenie rejestracji(POST): #
+http://localhost:50000/User/ActivateUser
+
+```
+#!Json
+
+{
+    "Token":"691080c4-8fa6-47fa-b382-75dfae8d4c81",
+    "Email":"lukraik97@gmail.com",
+    "Password":"test123"
+}
+```
+
+# Zwrotka #
+
+```
+#!Json
+
+{ "Activated":"true" }
+
+```
+
+# Logowanie(POST): #
+http://localhost:50000/User/Login
+
+```
+#!Json
+
+{
+    "Email":"lukraik94@gmail.com",
+    "Password":"test123"
+}
+```
+
+# Zwrotka #
+
+```
+#!Json
+
+{
+  "Result": true,
+  "Token": "cb0cd250-7f63-4b80-bf06-b7ead283d8e1"
+}
+```
+
+
+Potem autoryzacja po nagłówki Session, przykład:
+GET /Bus/GetBusList 
+HTTP/1.1
+
+Host: localhost:50000
+Session: cb0cd250-7f63-4b80-bf06-b7ead283d8e1
+
+Cache-Control: no-cache
+
+
+# Wylogowywanie(POST): #
+http://localhost:50000/User/Logout
+Bez treści
+Zwrotka pusta
+
 
 
 # WebApi #

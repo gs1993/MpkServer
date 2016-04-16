@@ -143,13 +143,19 @@
   <ItemGroup>
     <Compile Include="Controllers\BusController.cs" />
     <Compile Include="Controllers\BusStopController.cs" />
+    <Compile Include="Controllers\PostmanController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Misc\SimpleAuthFilter.cs" />
+    <Compile Include="Postman\PostmanCollection.cs" />
+    <Compile Include="Postman\PostmanRequest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\IEmailService.cs" />
+    <Compile Include="Services\ISessionService.cs" />
     <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\SessionService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Session\Identity.cs" />
     <Compile Include="Session\Principal.cs" />
