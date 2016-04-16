@@ -12,6 +12,10 @@ System monitorowania i zarządzania flotą autobusów obejmie cały tabor zarzą
 * Łukasz Zimnoch
 * Rafał Kopryk
 
+# Postman Api #
+
+Dodałem kontroler z api dla postmana, wystarczy dla postmana wskazac adres do importu: "http://localhost:50000/Postman/Get" niestety nie ma informacji na temat tego jaki typ obiektu JSON chce dostać kontroler ale może coś jeszcze znajdę :)
+
 # Rejestracja(POST): #
 http://localhost:50000/User/SelfRegister
 
