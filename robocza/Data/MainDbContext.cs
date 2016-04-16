@@ -22,7 +22,7 @@ namespace Data
 
         public DbSet<Track> Tracks { get; set; }
         
-        public DbSet<RegisterTokens> Tokens { get; set; }
+        public DbSet<RegisterToken> Tokens { get; set; }
 
         public DbSet<Course> Courses { get; set; }
 

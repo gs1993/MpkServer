@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Logger;
 using Data;
 using Data.Models;
 using Data.Service;
@@ -17,28 +18,28 @@ namespace WebApiServer.Services
     public class UserService : IUserService
     {
         private readonly IDatabaseService _db;
+        private readonly IEmailService _tokenEmailService;
+        private readonly ILogger _logger;
+
         private readonly MainDbContex _userContext;
         private readonly UserManager<ApiUser> _um;
-        private readonly RoleManager<IdentityRole> _rm;
 
 
-        public UserService(IDatabaseService db)
+        public UserService(IDatabaseService db,IEmailService email,ILogger logger)
         {
             _db = db;
+            _tokenEmailService = email;
+            _logger = logger;
+            _logger.Log("Init userService");
             _userContext = _db.CreateContext();
-            Tokens = _userContext.Tokens;
-                _um = new UserManager<ApiUser>(new UserStore<ApiUser>(_userContext));
-                _rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_userContext));
-                _um.EmailService = new SendGridEmailService();
+            _um = new UserManager<ApiUser>(new UserStore<ApiUser>(_userContext));
         }
-
         public Principal GetPrincipal(string id)
         {
             using (var db = _db.CreateContext())
             {
                 var user = _um.FindById(id);
-                var userRoles = db.Roles.Where(role => user.Roles.Any(userRole => userRole.RoleId == role.Id)).ToList();
-
+                var userRoles = new List<IdentityRole>();
                 var identity = new Identity(user, userRoles);
                 var principal = new Principal(identity);
                 
@@ -47,16 +48,55 @@ namespace WebApiServer.Services
             
         }
 
-        public UserManager<ApiUser> GetUserManager()
+        public RegisterToken GenerateToken(ApiUser user)
         {
-            return _um;
+            using (var db = _db.CreateContext())
+            {
+                var token =
+                    db.Tokens
+                        .FirstOrDefault(x => x.User.Id == user.Id && x.ExpireDate < DateTime.Now);
+                if (token==null)
+                {
+                    var contextUser = db.Users.Find(user.Id);
+                    var tokenObj = db.Tokens.Add(new RegisterToken()
+                    {
+                        ExpireDate = DateTime.Now.AddMinutes(20),
+                        Token = Guid.NewGuid().ToString(),
+                        User = contextUser
+                    });
+                    token = tokenObj;
+                }
+                db.SaveChanges();
+
+                _logger.Log($"Send email to:{user.Email}");
+                _tokenEmailService.Send(user.Email,"Rejestracja do systemu MPK",$"Twój token do aktywacji to :{token.Token}");
+
+                return token;
+            }
         }
 
-        public RoleManager<IdentityRole> GetRoleManager()
+        public void SaveChanges()
         {
-            return _rm;
+            _userContext.SaveChanges();
         }
 
-        public DbSet<RegisterTokens> Tokens { get; }
+        public bool ActivateUser(ApiUser user, string token)
+        {
+            using (var db = _db.CreateContext())
+            {
+                var tokenObj = db.Tokens
+                    .FirstOrDefault(x => x.Token == token && x.User.Id == user.Id && x.ExpireDate > DateTime.Now);
+                if (tokenObj == null) return false;
+
+                var userObj = db.Users.First(x => x.Id == user.Id);
+                userObj.Activated = true;
+
+                db.SaveChanges();
+                return true;
+
+            }
+        }
+
+        public UserManager<ApiUser> GetUserManager() => _um;
     }
 }

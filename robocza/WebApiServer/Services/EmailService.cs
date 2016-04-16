@@ -15,15 +15,12 @@ namespace WebApiServer.Services
 
     namespace Services
     {
-        public class SendGridEmailService : IIdentityMessageService
+        public class GmailEmailService : IEmailService
         {
-            public Task SendAsync(IdentityMessage message)
+            public void Send(string email, string subject, string body)
             {
                 var fromAddress = new MailAddress("mpkemailtest123@gmail.com", "mpkemailtest123@gmail.com");
-                var toAddress = new MailAddress(message.Destination,message.Destination);
-                string fromPassword = "WmiiUwmRok3";
-                string subject = message.Subject;
-                string body = message.Body;
+                var toAddress = new MailAddress(email, email);
 
                 var smtp = new SmtpClient
                 {
@@ -32,7 +29,7 @@ namespace WebApiServer.Services
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                    Credentials = new NetworkCredential(fromAddress.Address, "WmiiUwmRok3") //Hasło poczty
                 };
                 using (var msg = new MailMessage(fromAddress, toAddress)
                 {
@@ -43,7 +40,11 @@ namespace WebApiServer.Services
                     smtp.Send(msg);
                 }
 
-                return null;
+            }
+
+            public Task SendAsync(string email,string sub, string body)
+            {
+                return Task.Run(() => Send(email, sub, body));
             }
         }
     }

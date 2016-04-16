@@ -17,6 +17,5 @@ namespace Data.Models
         public bool Activated { get; set; }
 
         public UserRank Rank { get; set; }
-
     }
 }
