@@ -25,7 +25,7 @@ POST
 }
 ```
 
-Zwrotka:
+# Zwrotka: #
 
 ```
 #!Json
@@ -41,7 +41,7 @@ Zwrotka:
 
 Przychodzi email z tokenem
 
-Potwierdzenie rejestracji:
+# Potwierdzenie rejestracji: #
 http://localhost:50000/User/ActivateUser
 Post
 
@@ -55,7 +55,7 @@ Post
 }
 ```
 
-Zwrotka
+# Zwrotka #
 
 ```
 #!Json
@@ -64,7 +64,7 @@ Zwrotka
 
 ```
 
-Logowanie:
+# Logowanie: #
 POST http://localhost:50000/User/Login
 
 ```
@@ -76,7 +76,7 @@ POST http://localhost:50000/User/Login
 }
 ```
 
-Zwrotka
+# Zwrotka #
 
 ```
 #!Json
