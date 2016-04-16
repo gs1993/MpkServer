@@ -12,9 +12,8 @@ System monitorowania i zarządzania flotą autobusów obejmie cały tabor zarzą
 * Łukasz Zimnoch
 * Rafał Kopryk
 
-# Rejestracja: #
+# Rejestracja(POST): #
 http://localhost:50000/User/SelfRegister
-POST
 
 ```
 #!Json
@@ -41,9 +40,8 @@ POST
 
 Przychodzi email z tokenem
 
-# Potwierdzenie rejestracji: #
+# Potwierdzenie rejestracji(POST): #
 http://localhost:50000/User/ActivateUser
-Post
 
 ```
 #!Json
@@ -64,8 +62,8 @@ Post
 
 ```
 
-# Logowanie: #
-POST http://localhost:50000/User/Login
+# Logowanie(POST): #
+http://localhost:50000/User/Login
 
 ```
 #!Json
@@ -98,8 +96,8 @@ Session: cb0cd250-7f63-4b80-bf06-b7ead283d8e1
 Cache-Control: no-cache
 
 
-Wylogowywanie:
-POST http://localhost:50000/User/Logout
+# Wylogowywanie(POST): #
+http://localhost:50000/User/Logout
 Bez treści
 Zwrotka pusta
 
