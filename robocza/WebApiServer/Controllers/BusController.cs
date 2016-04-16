@@ -98,7 +98,17 @@ namespace WebApiServer.Controllers
                 {
                     result = false;
                 }
-                bus.BusStatus = Status.InActive;
+                try
+                {
+                    bus.BusStatus = Status.InActive;
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    result = false;
+                }
+                
+
                 return new BusConfirmed() { Ok = result };
             }
         }
