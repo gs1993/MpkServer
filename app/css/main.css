@@ -12102,6 +12102,35 @@ a.tabnav-extra:hover {
   background: #008d4c;
 }
 
+.panelPrzystanki__dataLoader__svg {
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.panelPrzystanki__dataLoader__text {
+  padding: 10px;
+  display: block;
+  text-align: center;
+  font-size: 15px;
+}
+
+.panelPrzystanki__dataLoader__text .success {
+  color: #00a65a;
+}
+
+.panelPrzystanki__dataLoader__text .error {
+  color: red;
+}
+
+.panelPrzystanki__dataLoader__text .fa {
+  font-size: 120px;
+}
+
+.panelPrzystanki__dataLoader__text p {
+  margin-bottom: 30px;
+}
+
 .panelDodajPrzystanek__title {
   padding: 0 40px;
   background-color: #2196F3;

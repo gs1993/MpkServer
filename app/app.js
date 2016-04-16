@@ -44,7 +44,14 @@
             }).when('/busstop/show/:id', {
                 templateUrl: 'panelWyswietlPrzystanek.html',
                 controller: 'ShowBusstopController'
+            }).when('/busstop/delete/:id', {
+                templateUrl: 'panelPrzystanki.html',
+                controller: 'DeleteBusstopController'
+            }).when('/busstop/restore/:id', {
+                templateUrl: 'panelPrzystanki.html',
+                controller: 'RestoreBusstopController'
             }).//UZYTKOWNICY SCIEZKI
+
             when('/user', {
                 templateUrl: 'panelUsers.html',
                 controller: 'UserController'
@@ -339,8 +346,18 @@
     app.controller('RestoreBusController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
 
     }]);
-    app.controller('DeleteBusController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+    app.controller('DeleteBusController', ['$scope', '$routeParams', '$http','$location', function ($scope, $routeParams, $http,$location) {
+        var WybraneId = $routeParams.id;
 
+
+            $http.delete('http://localhost:50000/Bus/DeleteBus/'+WybraneId)
+                .success()
+                $location.path('/#/bus');
+
+            //$http.delete('http://localhost:50000/Bus/DeleteBus/'+WybraneId)
+            //    .success(success);
+            //
+            //        $location.path('/#/bus');
     }]);
 
     /* Przystanki Controlery
@@ -665,10 +682,70 @@
         };
 
     });
-    app.controller('RestoreBusstopController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+    app.controller('RestoreBusstopController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams,$http) {
+
+        var WybraneId = $routeParams.id;
+        $scope.sendForm = true;
+        var config = {
+            headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
+        };
+
+        if ($scope.sendForm) {
+            $scope.message = "Przygotowywanie przystanku...";
+
+
+            $http.put('http://localhost:50000/BusStop/PutRestore/'+WybraneId, config)
+                .success(function (status, headers, config) {
+                    $scope.CallbackServera = true;
+                    $scope.CallbackServeraPositive = true;
+                    $scope.komunikat= "Przystanek został aktywowany pomyślnie!"
+                })
+                .error(function ( status, header, config) {
+                    $scope.ResponseDetails =
+                        "<hr />status: " + status +
+                        "<hr />headers: " + header +
+                        "<hr />config: " + config;
+                    $scope.CallbackServera = true;
+                    $scope.CallbackServeraNegative = true;
+                });
+
+
+        }
+
 
     }]);
-    app.controller('DeleteBusstopController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+    app.controller('DeleteBusstopController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams,$http) {
+
+        var WybraneId = $routeParams.id;
+
+        $scope.sendForm = true;
+        var config = {
+            headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
+        };
+
+        if ($scope.sendForm) {
+            $scope.message = "Dezaktywowanie przystanku...";
+
+
+                $http.delete('http://localhost:50000/BusStop/DeleteBusStop/'+WybraneId, config)
+                    .success(function (status, headers, config) {
+                        $scope.CallbackServera = true;
+                        $scope.CallbackServeraPositive = true;
+                        $scope.komunikat= "Przystanek został dezaktywowany pomyślnie!"
+                    })
+                    .error(function (status, header, config) {
+                        $scope.ResponseDetails =
+                            "<hr />status: " + status +
+                            "<hr />headers: " + header +
+                            "<hr />config: " + config;
+                        console.log($scope.ResponseDetails);
+                        $scope.CallbackServera = true;
+                        $scope.CallbackServeraNegative = true;
+                    });
+
+
+        }
+
 
     }]);
 
@@ -861,25 +938,6 @@
 
         var WybraneId = $routeParams.id;
 
-        //WYSYLANY ID
-        $scope.UserID = WybraneId;
-
-
-        $http.get('http://localhost:50000/user/getUser/' + WybraneId, {
-                headers: {'Authorization': 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=='}
-            }
-        ).success(function (data, status, headers, config) {
-            $scope.user = data;
-            console.log("Pobrano usera.")
-        }).error(function (data, status, headers, config) {
-            console.log("Błąd pobrania usera.")
-        });
-
-        angular.forEach($scope.user, function (item) {
-            if (item.Status == 1) {
-                item.Status = 0;
-            }
-        });
 
 
 

@@ -1,1 +1,61 @@
-<div ng-controller="ShowUserController" class="panelWyswietlUser"><div class="panelWyswietlUser__title">Szczegóły Użytkownika</div><div class="panelWyswietlUser__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/user">Zarządzanie Użytkownikiem</a></span><span class="-active"><a href="/#/user/show/{{ UserID }}">Szczegóły Użytkownika</a></span></div><div ng-repeat="item in user as AktualnyUser" class="panelWyswietlUser__wrapper"><div class="panelWyswietlUser__subtitle">Aktualne dane użytkownika {{ item.Email }}</div><div class="panelWyswietlUser__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div><div class="panelWyswietlUser__content__form"><div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Email Użytkownika</span><p>{{ item.Email }}</p></div><div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Imie</span><p>{{ item.Imie }}</p></div><div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Nazwisko</span><p>{{ item.Nazwisko }}</p></div><div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Ranga</span><p>{{ item.RankName }}</p></div><div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Status</span><p>{{ item.StatusName }}</p></div><div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Szczegóły</span><p>{{ item.Details }}</p></div></div><div class="panelWyswietlUser__subtitle">Edycja użytkownika</div><div class="panelWyswietlUser__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div><form ng-controller="UpdateUserController"><div class="panelWyswietlUser__content__form"><div class="panelWyswietlUser__content__form__item"><span class="item">Email Użytkownika</span><input placeholder="Email Użytkownika" ng-model="userToUpdate[0].Email"/></div><div class="panelWyswietlUser__content__form__item"><span class="item">Imie</span><input placeholder="Imie" ng-model="userToUpdate[0].Imie"/></div><div class="panelWyswietlUser__content__form__item"><span class="item">Nazwisko</span><input placeholder="Nazwisko" ng-model="userToUpdate[0].Nazwisko"/></div><div class="panelWyswietlUser__content__form__item"><span class="item">Ranga</span><select ng-model="userToUpdate[0].Rank"><option value="">Ranga</option><option value="0">Użytkownik</option><option value="1">Kontroler</option><option value="2">Administrator</option></select></div><div class="panelWyswietlUser__content__form__item"><span class="item">Hasło</span><input placeholder="Hasło" type="Password" ng-model="userToUpdate[0].Password"/></div><div class="panelWyswietlUser__content__form__item"><span class="item">Powtórz Hasło</span><input placeholder="Hasło"/></div></div><div class="panelWyswietlUser__navigation"><button ng-click="updateUser()" class="green panelWyswietlUser__navigation__item green">Aktualizuj Użytkownika</button><a href="/#/user/delete/{{ UserID }}" ng-hide="item.Status == 0" class="panelWyswietlUser__navigation__item red">Dezaktywuj</a><a href="/#/user/restore/{{ UserID }}" ng-show="item.Status == 0" class="panelWyswietlUser__navigation__item greenDark">Aktywuj</a><a href="/#/user" class="panelWyswietlUser__navigation__item gray -abort">Anuluj</a></div></form></div></div>
+
+<div ng-controller="ShowUserController" class="panelWyswietlUser">
+  <div class="panelWyswietlUser__title">Szczegóły Użytkownika</div>
+  <div class="panelWyswietlUser__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/user">Zarządzanie Użytkownikiem</a></span><span class="-active"><a href="/#/user/show/{{ UserID }}">Szczegóły Użytkownika</a></span></div>
+  <div ng-repeat="item in user as AktualnyUser" class="panelWyswietlUser__wrapper">
+    <div class="panelWyswietlUser__subtitle">Aktualne dane użytkownika {{ item.Email }}</div>
+    <div class="panelWyswietlUser__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div class="panelWyswietlUser__content__form">
+      <div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Email Użytkownika</span>
+        <p>{{ item.Email }}</p>
+      </div>
+      <div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Imie</span>
+        <p>{{ item.Imie }}</p>
+      </div>
+      <div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Nazwisko</span>
+        <p>{{ item.Nazwisko }}</p>
+      </div>
+      <div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Ranga</span>
+        <p>{{ item.RankName }}</p>
+      </div>
+      <div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Status</span>
+        <p>{{ item.StatusName }}</p>
+      </div>
+      <div class="panelWyswietlUser__content__form__item"><span class="itemHeader">Szczegóły</span>
+        <p>{{ item.Details }}</p>
+      </div>
+    </div>
+    <div class="panelWyswietlUser__subtitle">Edycja użytkownika</div>
+    <div class="panelWyswietlUser__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <form ng-controller="UpdateUserController">
+      <div class="panelWyswietlUser__content__form">
+        <div class="panelWyswietlUser__content__form__item"><span class="item">Email Użytkownika</span>
+          <input placeholder="Email Użytkownika" ng-model="userToUpdate[0].Email"/>
+        </div>
+        <div class="panelWyswietlUser__content__form__item"><span class="item">Imie</span>
+          <input placeholder="Imie" ng-model="userToUpdate[0].Imie"/>
+        </div>
+        <div class="panelWyswietlUser__content__form__item"><span class="item">Nazwisko</span>
+          <input placeholder="Nazwisko" ng-model="userToUpdate[0].Nazwisko"/>
+        </div>
+        <div class="panelWyswietlUser__content__form__item"><span class="item">Ranga</span>
+          <select ng-model="userToUpdate[0].Rank">
+            <option value="">Ranga</option>
+            <option value="0">Użytkownik</option>
+            <option value="1">Kontroler</option>
+            <option value="2">Administrator</option>
+          </select>
+        </div>
+        <div class="panelWyswietlUser__content__form__item"><span class="item">Hasło</span>
+          <input placeholder="Hasło" type="Password" ng-model="userToUpdate[0].Password"/>
+        </div>
+        <div class="panelWyswietlUser__content__form__item"><span class="item">Powtórz Hasło</span>
+          <input placeholder="Hasło"/>
+        </div>
+      </div>
+      <div class="panelWyswietlUser__navigation">
+        <button ng-click="updateUser()" class="green panelWyswietlUser__navigation__item green">Aktualizuj Użytkownika</button><a href="/#/user/delete/{{ UserID }}" ng-hide="item.Status == 0" class="panelWyswietlUser__navigation__item red">Dezaktywuj</a><a href="/#/user/restore/{{ UserID }}" ng-show="item.Status == 0" class="panelWyswietlUser__navigation__item greenDark">Aktywuj</a><a href="/#/user" class="panelWyswietlUser__navigation__item gray -abort">Anuluj</a>
+      </div>
+    </form>
+  </div>
+</div>
