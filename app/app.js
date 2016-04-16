@@ -34,6 +34,12 @@
             }).when('/bus/show/:id', {
                 templateUrl: 'panelWyswietlAutobus.html',
                 controller: 'ShowBusController'
+            }).when('/bus/delete/:id', {
+                templateUrl: 'panelAutobusy.html',
+                controller: 'DeleteBusController'
+            }).when('/bus/restore/:id', {
+                templateUrl: 'panelAutobusy.html',
+                controller: 'RestoreBusController'
             }).//PRZYSTANKI SCIEZKI
             when('/busstop', {
                 templateUrl: 'panelPrzystanki.html',
@@ -344,20 +350,64 @@
 
     });
     app.controller('RestoreBusController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+        var WybraneId = $routeParams.id;
+        $scope.sendForm = true;
+        var config = {
+            headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
+        };
 
+        if ($scope.sendForm) {
+            $scope.message = "Przygotowywanie autobusu...";
+
+
+            $http.put('http://localhost:50000/Bus/PutRestore/'+WybraneId, config)
+                .success(function (status, headers, config) {
+                    $scope.CallbackServera = true;
+                    $scope.CallbackServeraPositive = true;
+                    $scope.komunikat= "Autobus został aktywowany pomyślnie!"
+                })
+                .error(function ( status, header, config) {
+                    $scope.ResponseDetails =
+                        "<hr />status: " + status +
+                        "<hr />headers: " + header +
+                        "<hr />config: " + config;
+                    $scope.CallbackServera = true;
+                    $scope.CallbackServeraNegative = true;
+                });
+
+
+        }
     }]);
-    app.controller('DeleteBusController', ['$scope', '$routeParams', '$http','$location', function ($scope, $routeParams, $http,$location) {
+    app.controller('DeleteBusController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http){
         var WybraneId = $routeParams.id;
 
+        $scope.sendForm = true;
+        var config = {
+            headers: {'Authorization': 'Basic dGVzdDtQYXNzd29yZEAxMjM='}
+        };
 
-            $http.delete('http://localhost:50000/Bus/DeleteBus/'+WybraneId)
-                .success()
-                $location.path('/#/bus');
+        if ($scope.sendForm) {
+            $scope.message = "Dezaktywowanie autobusu...";
 
-            //$http.delete('http://localhost:50000/Bus/DeleteBus/'+WybraneId)
-            //    .success(success);
-            //
-            //        $location.path('/#/bus');
+
+            $http.delete('http://localhost:50000/Bus/delete/'+WybraneId, config)
+                .success(function (status, headers, config) {
+                    $scope.CallbackServera = true;
+                    $scope.CallbackServeraPositive = true;
+                    $scope.komunikat= "Autobus został dezaktywowany pomyślnie!"
+                })
+                .error(function (status, header, config) {
+                    $scope.ResponseDetails =
+                        "<hr />status: " + status +
+                        "<hr />headers: " + header +
+                        "<hr />config: " + config;
+                    console.log($scope.ResponseDetails);
+                    $scope.CallbackServera = true;
+                    $scope.CallbackServeraNegative = true;
+                });
+
+
+        }
     }]);
 
     /* Przystanki Controlery
