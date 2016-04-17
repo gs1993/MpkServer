@@ -77,7 +77,8 @@
    *==========================================================================*/
   app.controller('HomeController', function ($scope, $http, $timeout, $cookieStore, $rootScope) {
   });
-  app.controller('LoginController', function ($scope, $http, $cookieStore, $rootScope, $timeout, $location) {
+  
+  app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope, $timeout, $location) {
     $rootScope.globals = {};
     $cookieStore.remove('globals');
     $http.defaults.headers.common.Authorization = 'Session';
@@ -287,99 +288,97 @@
     });
 
 
+  }]);
+  app.controller('UpdateBusController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
 
 
-    }]);
-    app.controller('UpdateBusController', ['$scope', '$routeParams', '$http','$timeout', function ($scope, $routeParams, $http,$timeout) {
+    var WybraneId = $routeParams.id;
 
+    $scope.updateBus = function () {
+      $scope.sendForm = true;
+      if ($scope.BusType == "1") {
+        $scope.BusType = 1;
+      }
+      else if ($scope.BusType == "0") {
+        $scope.BusType = 0;
+      }
 
-        var WybraneId = $routeParams.id;
+      else if ($scope.GotMachine == "1") {
+        $scope.GotMachine = true;
+      }
+      else if ($scope.GotMachine == "0") {
+        $scope.GotMachine = false;
+      }
+      var data = JSON.stringify({
+        Id: WybraneId,
+        RegistrationNumber: $scope.RegistrationNumber,
+        BusNumber: $scope.BusNumber,
+        BusType: $scope.BusType,
+        GotMachine: $scope.GotMachine,
+        //BusStatus: 0,
+        //LastControl: new Date()
+      });
+      var config = {
+        headers: {'Session': ''}
+      };
 
-        $scope.updateBus = function () {
-            $scope.sendForm = true;
-            if ($scope.BusType == "1") {
-                $scope.BusType = 1;
-            }
-            else if ($scope.BusType == "0") {
-                $scope.BusType = 0;
-            }
-
-            else if ($scope.GotMachine == "1") {
-                $scope.GotMachine = true;
-            }
-            else if ($scope.GotMachine == "0") {
-                $scope.GotMachine = false;
-            }
-            var data = JSON.stringify({
-                Id:WybraneId,
-                RegistrationNumber: $scope.RegistrationNumber,
-                BusNumber: $scope.BusNumber,
-                BusType: $scope.BusType,
-                GotMachine: $scope.GotMachine,
-                //BusStatus: 0,
-                //LastControl: new Date()
+      if ($scope.sendForm) {
+        $scope.message = "Trwa Aktualizacja Autobusu...";
+        console.log(data);
+        $timeout(function () {
+          $http.put('http://localhost:50000/Bus/PutBus', data, config)
+            .success(function (data, status, headers, config) {
+              $scope.CallbackServera = true;
+              $scope.CallbackServeraPositive = true;
+              $scope.PostDataResponse = data;
+              console.log($scope.PostDataResponse);
+            })
+            .error(function (data, status, header, config) {
+              $scope.ResponseDetails = "Data: " + data +
+                "<hr />status: " + status +
+                "<hr />headers: " + header +
+                "<hr />config: " + config;
+              console.log($scope.ResponseDetails);
+              $scope.CallbackServera = true;
+              $scope.CallbackServeraNegative = true;
             });
-            var config = {
-                headers: {'Session': ''}
-            };
-
-            if ($scope.sendForm) {
-                $scope.message = "Trwa Aktualizacja Autobusu...";
-                console.log(data);
-                $timeout(function () {
-                    $http.put('http://localhost:50000/Bus/PutBus', data, config)
-                        .success(function (data, status, headers, config) {
-                            $scope.CallbackServera = true;
-                            $scope.CallbackServeraPositive = true;
-                            $scope.PostDataResponse = data;
-                            console.log($scope.PostDataResponse);
-                        })
-                        .error(function (data, status, header, config) {
-                            $scope.ResponseDetails = "Data: " + data +
-                                "<hr />status: " + status +
-                                "<hr />headers: " + header +
-                                "<hr />config: " + config;
-                            console.log($scope.ResponseDetails);
-                            $scope.CallbackServera = true;
-                            $scope.CallbackServeraNegative = true;
-                        });
-                }, 2500);
-            }
-        };
+        }, 2500);
+      }
+    };
 
 
-    }]);
-    app.controller('RestoreBusController', ['$scope', '$routeParams', '$http','$timeout', function ($scope, $routeParams, $http,$timeout) {
-        var WybraneId = $routeParams.id;
-        $scope.sendForm = true;
-        var config = {
-            headers: {'Session': ''}
-        };
+  }]);
+  app.controller('RestoreBusController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
+    var WybraneId = $routeParams.id;
+    $scope.sendForm = true;
+    var config = {
+      headers: {'Session': ''}
+    };
 
-        if ($scope.sendForm) {
-            $scope.message = "Przygotowywanie autobusu...";
-            $timeout(function () {
+    if ($scope.sendForm) {
+      $scope.message = "Przygotowywanie autobusu...";
+      $timeout(function () {
 
-                $http.put('http://localhost:50000/Bus/PutRestore/' + WybraneId, config)
-                    .success(function (status, headers, config) {
-                        $scope.CallbackServera = true;
-                        $scope.CallbackServeraPositive = true;
-                        $scope.komunikat = "Autobus został aktywowany pomyślnie!"
-                    })
-                    .error(function (status, header, config) {
-                        $scope.ResponseDetails =
-                            "<hr />status: " + status +
-                            "<hr />headers: " + header +
-                            "<hr />config: " + config;
-                        $scope.CallbackServera = true;
-                        $scope.CallbackServeraNegative = true;
-                    });
+        $http.put('http://localhost:50000/Bus/PutRestore/' + WybraneId, config)
+          .success(function (status, headers, config) {
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraPositive = true;
+            $scope.komunikat = "Autobus został aktywowany pomyślnie!"
+          })
+          .error(function (status, header, config) {
+            $scope.ResponseDetails =
+              "<hr />status: " + status +
+              "<hr />headers: " + header +
+              "<hr />config: " + config;
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraNegative = true;
+          });
 
-            }, 2500);
-        }
-    }]);
-    app.controller('DeleteBusController', ['$scope', '$routeParams', '$http','$timeout', function ($scope, $routeParams, $http,$timeout){
-        var WybraneId = $routeParams.id;
+      }, 2500);
+    }
+  }]);
+  app.controller('DeleteBusController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
+    var WybraneId = $routeParams.id;
 
     $scope.sendForm = true;
     var config = {
@@ -389,26 +388,26 @@
     if ($scope.sendForm) {
       $scope.message = "Dezaktywowanie autobusu...";
 
-            $timeout(function () {
-                $http.delete('http://localhost:50000/Bus/delete/' + WybraneId, config)
-                    .success(function (status, headers, config) {
-                        $scope.CallbackServera = true;
-                        $scope.CallbackServeraPositive = true;
-                        $scope.komunikat = "Autobus został dezaktywowany pomyślnie!"
-                    })
-                    .error(function (status, header, config) {
-                        $scope.ResponseDetails =
-                            "<hr />status: " + status +
-                            "<hr />headers: " + header +
-                            "<hr />config: " + config;
-                        console.log($scope.ResponseDetails);
-                        $scope.CallbackServera = true;
-                        $scope.CallbackServeraNegative = true;
-                    });
+      $timeout(function () {
+        $http.delete('http://localhost:50000/Bus/delete/' + WybraneId, config)
+          .success(function (status, headers, config) {
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraPositive = true;
+            $scope.komunikat = "Autobus został dezaktywowany pomyślnie!"
+          })
+          .error(function (status, header, config) {
+            $scope.ResponseDetails =
+              "<hr />status: " + status +
+              "<hr />headers: " + header +
+              "<hr />config: " + config;
+            console.log($scope.ResponseDetails);
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraNegative = true;
+          });
 
-            }, 2500);
-        }
-    }]);
+      }, 2500);
+    }
+  }]);
 
   /* Przystanki Controlery
    *==========================================================================*/
@@ -573,112 +572,107 @@
         $scope.autobus.GotKioskValue = 0
       }
 
-            if ($scope.autobus.BusStopType == 0) {
-                $scope.autobus.BusStopTypeName = "Normalny"
-            }
-            else {
-                $scope.autobus.BusStopTypeName = "Zabudowany"
-            }
-            if ($scope.autobus.BusStopStatus == 0) {
-                $scope.autobus.BusStopStatusName = "Nieaktywny"
-            }
-            else {
-                $scope.autobus.BusStopStatusName = "Aktywny"
-            }
-        }).error(function (data, status, headers, config) {
-            console.log("Błąd pobrania przystanku.")
-        });
-    }]);
-    app.controller('UpdateBustopController', ['$scope', '$routeParams', '$http','$timeout', function ($scope, $routeParams, $http,$timeout) {
+      if ($scope.autobus.BusStopType == 0) {
+        $scope.autobus.BusStopTypeName = "Normalny"
+      }
+      else {
+        $scope.autobus.BusStopTypeName = "Zabudowany"
+      }
+      if ($scope.autobus.BusStopStatus == 0) {
+        $scope.autobus.BusStopStatusName = "Nieaktywny"
+      }
+      else {
+        $scope.autobus.BusStopStatusName = "Aktywny"
+      }
+    }).error(function (data, status, headers, config) {
+      console.log("Błąd pobrania przystanku.")
+    });
+  }]);
+  app.controller('UpdateBustopController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
 
-        $scope.sendForm = false;
-        var WybraneId = $routeParams.id;
+    $scope.sendForm = false;
+    var WybraneId = $routeParams.id;
 
-        $scope.updateBusstop = function () {
-            $scope.sendForm = true;
-
-
-
-            //Zamiana wartosci
-            if ($scope.GotMachine == 1) {
-                $scope.GotMachine = true;
-            }
-            else if($scope.Lat!=null)
-            {
-                $scope.Lat = parseFloat($scope.Lat);
-            }
-            else if($scope.Lng!=null)
-            {
-                $scope.Lng = parseFloat($scope.Lng);
-            }
-            else if($scope.GotMachine == 0){
-                $scope.GotMachine = false;
-            }
-            else if($scope.GotMachine == 1) {
-                $scope.GotMachine = true;
-            }
-            else if ($scope.GotMachine == 0){
-                $scope.GotMachine = false;
-            }
-            else if ($scope.GotKiosk == 1){
-                $scope.GotKiosk = true;
-            }
-            else if($scope.GotKiosk == 0){
-                $scope.GotKiosk = false;
-            }
-            else if ($scope.BusStopType == "0") {
-                $scope.BusStopType = 0
-            }
-            else if($scope.BusStopType == "1"){
-                $scope.BusStopType = 1
-            }
+    $scope.updateBusstop = function () {
+      $scope.sendForm = true;
 
 
-            var data =  JSON.stringify({
-                Id:WybraneId,
-                Name: $scope.Name,
-                Lat: $scope.Lat,
-                Lng: $scope.Lng,
-                LocalizationString: $scope.LocalizationString,
-                GotMachine: $scope.GotMachine,
-                GotKiosk: $scope.GotKiosk,
-                BusStopType: $scope.BusStopType,
-                //BusStopStatus: 0,
-                //LastControl: new Date()
+      //Zamiana wartosci
+      if ($scope.GotMachine == 1) {
+        $scope.GotMachine = true;
+      }
+      else if ($scope.Lat != null) {
+        $scope.Lat = parseFloat($scope.Lat);
+      }
+      else if ($scope.Lng != null) {
+        $scope.Lng = parseFloat($scope.Lng);
+      }
+      else if ($scope.GotMachine == 0) {
+        $scope.GotMachine = false;
+      }
+      else if ($scope.GotMachine == 1) {
+        $scope.GotMachine = true;
+      }
+      else if ($scope.GotMachine == 0) {
+        $scope.GotMachine = false;
+      }
+      else if ($scope.GotKiosk == 1) {
+        $scope.GotKiosk = true;
+      }
+      else if ($scope.GotKiosk == 0) {
+        $scope.GotKiosk = false;
+      }
+      else if ($scope.BusStopType == "0") {
+        $scope.BusStopType = 0
+      }
+      else if ($scope.BusStopType == "1") {
+        $scope.BusStopType = 1
+      }
+
+
+      var data = JSON.stringify({
+        Id: WybraneId,
+        Name: $scope.Name,
+        Lat: $scope.Lat,
+        Lng: $scope.Lng,
+        LocalizationString: $scope.LocalizationString,
+        GotMachine: $scope.GotMachine,
+        GotKiosk: $scope.GotKiosk,
+        BusStopType: $scope.BusStopType,
+        //BusStopStatus: 0,
+        //LastControl: new Date()
+      });
+      var config = {
+        headers: {'Session': ''}
+      };
+
+      if ($scope.sendForm) {
+        $scope.message = "Trwa Aktualizacja Autobusu...";
+        console.log(data);
+        $timeout(function () {
+          $http.put('http://localhost:50000/BusStop/PutBus', data, config)
+            .success(function (data, status, headers, config) {
+              $scope.CallbackServera = true;
+              $scope.CallbackServeraPositive = true;
+              $scope.PostDataResponse = data;
+              console.log($scope.PostDataResponse);
+            })
+            .error(function (data, status, header, config) {
+              $scope.ResponseDetails = "Data: " + data +
+                "<hr />status: " + status +
+                "<hr />headers: " + header +
+                "<hr />config: " + config;
+              console.log($scope.ResponseDetails);
+              $scope.CallbackServera = true;
+              $scope.CallbackServeraNegative = true;
             });
-            var config = {
-                headers: {'Session': ''}
-            };
-
-            if ($scope.sendForm) {
-                $scope.message = "Trwa Aktualizacja Autobusu...";
-                console.log(data);
-                $timeout(function () {
-                    $http.put('http://localhost:50000/BusStop/PutBus', data, config)
-                        .success(function (data, status, headers, config) {
-                            $scope.CallbackServera = true;
-                            $scope.CallbackServeraPositive = true;
-                            $scope.PostDataResponse = data;
-                            console.log($scope.PostDataResponse);
-                        })
-                        .error(function (data, status, header, config) {
-                            $scope.ResponseDetails = "Data: " + data +
-                                "<hr />status: " + status +
-                                "<hr />headers: " + header +
-                                "<hr />config: " + config;
-                            console.log($scope.ResponseDetails);
-                            $scope.CallbackServera = true;
-                            $scope.CallbackServeraNegative = true;
-                        });
-                }, 2500);
-            }
-        };
+        }, 2500);
+      }
+    };
 
 
-
-
-    }]);
-    app.controller('RestoreBusstopController', ['$scope', '$routeParams', '$http','$timeout', function ($scope, $routeParams,$http,$timeout) {
+  }]);
+  app.controller('RestoreBusstopController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
 
     var WybraneId = $routeParams.id;
     $scope.sendForm = true;
@@ -686,31 +680,31 @@
       headers: {'Session': ''}
     };
 
-        if ($scope.sendForm) {
-            $scope.message = "Przygotowywanie przystanku...";
-            $timeout(function () {
+    if ($scope.sendForm) {
+      $scope.message = "Przygotowywanie przystanku...";
+      $timeout(function () {
 
-                $http.put('http://localhost:50000/BusStop/PutRestore/' + WybraneId, config)
-                    .success(function (status, headers, config) {
-                        $scope.CallbackServera = true;
-                        $scope.CallbackServeraPositive = true;
-                        $scope.komunikat = "Przystanek został aktywowany pomyślnie!"
-                    })
-                    .error(function (status, header, config) {
-                        $scope.ResponseDetails =
-                            "<hr />status: " + status +
-                            "<hr />headers: " + header +
-                            "<hr />config: " + config;
-                        $scope.CallbackServera = true;
-                        $scope.CallbackServeraNegative = true;
-                    });
-            }, 2500);
+        $http.put('http://localhost:50000/BusStop/PutRestore/' + WybraneId, config)
+          .success(function (status, headers, config) {
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraPositive = true;
+            $scope.komunikat = "Przystanek został aktywowany pomyślnie!"
+          })
+          .error(function (status, header, config) {
+            $scope.ResponseDetails =
+              "<hr />status: " + status +
+              "<hr />headers: " + header +
+              "<hr />config: " + config;
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraNegative = true;
+          });
+      }, 2500);
 
     }
 
 
-    }]);
-    app.controller('DeleteBusstopController', ['$scope', '$routeParams', '$http','$timeout', function ($scope, $routeParams,$http,$timeout) {
+  }]);
+  app.controller('DeleteBusstopController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
 
     var WybraneId = $routeParams.id;
 
@@ -719,26 +713,26 @@
       headers: {'Session': ''}
     };
 
-        if ($scope.sendForm) {
-            $scope.message = "Dezaktywowanie przystanku...";
-            $timeout(function () {
+    if ($scope.sendForm) {
+      $scope.message = "Dezaktywowanie przystanku...";
+      $timeout(function () {
 
-                $http.delete('http://localhost:50000/BusStop/DeleteBusStop/' + WybraneId, config)
-                    .success(function (status, headers, config) {
-                        $scope.CallbackServera = true;
-                        $scope.CallbackServeraPositive = true;
-                        $scope.komunikat = "Przystanek został dezaktywowany pomyślnie!"
-                    })
-                    .error(function (status, header, config) {
-                        $scope.ResponseDetails =
-                            "<hr />status: " + status +
-                            "<hr />headers: " + header +
-                            "<hr />config: " + config;
-                        console.log($scope.ResponseDetails);
-                        $scope.CallbackServera = true;
-                        $scope.CallbackServeraNegative = true;
-                    });
-            }, 2500);
+        $http.delete('http://localhost:50000/BusStop/DeleteBusStop/' + WybraneId, config)
+          .success(function (status, headers, config) {
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraPositive = true;
+            $scope.komunikat = "Przystanek został dezaktywowany pomyślnie!"
+          })
+          .error(function (status, header, config) {
+            $scope.ResponseDetails =
+              "<hr />status: " + status +
+              "<hr />headers: " + header +
+              "<hr />config: " + config;
+            console.log($scope.ResponseDetails);
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraNegative = true;
+          });
+      }, 2500);
 
     }
 
