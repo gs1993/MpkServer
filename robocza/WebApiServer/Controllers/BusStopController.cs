@@ -2,6 +2,7 @@
 using Data.Service;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -127,21 +128,18 @@ namespace WebApiServer.Controllers
                 return new BusStopConfirmed() {Ok = result};
             }
         }
-
-        public BusStopConfirmed PutBusStop(BusStopDto busStopToUpdateDto)
+        
+        public BusStopConfirmed PutBusStop(BusStop busStopToUpdate)
         {
             using (var db = _db.CreateContext())
             {
-                bool result = true;
-                var busStop = db.BusStops.FirstOrDefault(b => b.Id == busStopToUpdateDto.Id);
-                try
+                bool result = false;
+
+                if (ModelState.IsValid)
                 {
-                    busStop = Rewrite(busStopToUpdateDto);
+                    db.Entry(busStopToUpdate).State = EntityState.Modified;
                     db.SaveChanges();
-                }
-                catch (Exception)
-                {
-                    result = false;
+                    result = true;
                 }
                 return new BusStopConfirmed() { Ok = result };
             }
