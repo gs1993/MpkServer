@@ -92,8 +92,8 @@
                 i.ionicons.ion-android-add-circle.-green
           tr(ng-hide="filtrowaneAutobusyNieaktywne.length")
             td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
-    .panelDodajPrzystanek__dataLoader(ng-show="sendForm")
-      .panelDodajPrzystanek__dataLoader__svg(ng-hide="CallbackServera")
+    .panelAutobusy__dataLoader(ng-show="sendForm")
+      .panelAutobusy__dataLoader__svg(ng-hide="CallbackServera")
         svg(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 80 80', xml:space='preserve')
           path(fill='#00aef0', d='M10,40c0,0,0-0.4,0-1.1c0-0.3,0-0.8,0-1.3c0-0.3,0-0.5,0-0.8c0-0.3,0.1-0.6,0.1-0.9c0.1-0.6,0.1-1.4,0.2-2.1\
                         c0.2-0.8,0.3-1.6,0.5-2.5c0.2-0.9,0.6-1.8,0.8-2.8c0.3-1,0.8-1.9,1.2-3c0.5-1,1.1-2,1.7-3.1c0.7-1,1.4-2.1,2.2-3.1\
@@ -109,14 +109,14 @@
                         c-0.7,0.9-1.3,1.9-1.9,2.8c-0.5,1-1,1.9-1.4,2.8c-0.4,0.9-0.8,1.8-1,2.6c-0.3,0.9-0.5,1.6-0.7,2.4c-0.2,0.7-0.3,1.4-0.4,2.1\
                         c-0.1,0.3-0.1,0.6-0.2,0.9c0,0.3-0.1,0.6-0.1,0.8c0,0.5-0.1,0.9-0.1,1.3C10,39.6,10,40,10,40z')
             animatetransform(attributetype='xml', attributename='transform', type='rotate', from='0 40 40', to='360 40 40', dur='0.6s', repeatcount='indefinite')
-      .panelPrzystanki__dataLoader__text
+      .panelAutobusy__dataLoader__text
         p(ng-hide="CallbackServera") {{ message }}
         a(href="/#/bus" ng-show="CallbackServeraPositive").panelPrzystanki__text.success
-          .panelPrzystanki.success__text__icon
+          .panelAutobusy.success__text__icon
             i.fa.fa-smile-o
           | {{komunikat}}
         a(href="/#/bus" ng-show="CallbackServeraNegative").panelPrzystanki__text.error
-          .panelPrzystanki.success__text__icon
+          .panelAutobusy.success__text__icon
             i.fa.fa-frown-o
           | Coś poszło nie tak...
 

@@ -8,19 +8,19 @@
     <div class="panelLogin__alert -info hidden">
       <h3><i class="fa fa-warning"></i>Uwaga!</h3>Hasło przypisane do tego emailu, jest nie poprawne.
     </div>
-    <form method="POST" action="" class="panelLogin__form">
+    <form name="form" ng-controller="LoginController" ng-submit="form.$valid &amp;&amp; Login()" novalidate="novalidate" class="panelLogin__form">
       <div class="panelLogin__formwrapper">
-        <input name="user_email" placeholder="E-mail"/><i class="fa fa-envelope-o"></i>
+        <input placeholder="E-mail" ng-model="Email" required="required" name="uEmail"/><i class="fa fa-envelope-o"></i>
       </div>
       <div class="panelLogin__formwrapper">
-        <input name="user_password" type="password" placeholder="Hasło"/><i class="fa fa-lock"></i>
+        <input placeholder="Hasło" ng-model="Password" required="required" name="uPassword" type="password"/><i class="fa fa-lock"></i>
       </div>
       <div class="remembermebox">
         <input type="checkbox" checked="checked" id="check" class="check"/>
         <label for="check"><span class="icon"></span> Zapamiętaj mnie</label>
       </div>
       <button type="submit">Zaloguj się</button>
-    </form><a href="/#/"><span class="panelLogin__close"><span class="panelLogin__icon fa fa-times"></span></span></a>
+    </form>
     <div class="panelLogin__navigation">Nie masz konta?<a href="/#/register" class="panelLogin__ToRegister">Zarejestruj się.</a></div>
     <div class="panelLogin__navigation">Nie pamietasz hasła?<a href="/#/forgot" class="panelLogin__ToRegister">Odzyskaj hasło.</a></div>
   </div>
