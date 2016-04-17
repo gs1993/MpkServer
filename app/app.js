@@ -119,7 +119,7 @@
               $http.defaults.headers.common['Session'] = authdata; // jshint ignore:line
               console.log("Ustawienie Cookies");
               $cookieStore.put('globals', $rootScope.globals);
-              $location.path('/');
+              //$location.path('/');
             })
             .error(function (data, status, header, config) {
               $scope.ResponseDetails = "Data: " + data +
