@@ -253,13 +253,14 @@
             if ($scope.BusType == "1") {
                 $scope.BusType = 1;
             }
-            else {
+            else if ($scope.BusType == "0") {
                 $scope.BusType = 0;
             }
-            if ($scope.GotMachine == "1") {
+
+            else if ($scope.GotMachine == "1") {
                 $scope.GotMachine = true;
             }
-            else {
+            else if ($scope.GotMachine == "0") {
                 $scope.GotMachine = false;
             }
             var data = JSON.stringify({
@@ -268,8 +269,8 @@
                 BusNumber: $scope.BusNumber,
                 BusType: $scope.BusType,
                 GotMachine: $scope.GotMachine,
-                BusStatus: 0,
-                LastControl: new Date()
+                //BusStatus: 0,
+                //LastControl: new Date()
             });
             var config = {
                 headers: {'Session': ''}
@@ -549,35 +550,43 @@
 
         $scope.updateBusstop = function () {
             $scope.sendForm = true;
-            $scope.Lat = parseFloat($scope.Lat);
-            $scope.Lng = parseFloat($scope.Lng);
+
+
+
             //Zamiana wartosci
             if ($scope.GotMachine == 1) {
                 $scope.GotMachine = true;
             }
-            else {
+            else if($scope.Lat!=null)
+            {
+                $scope.Lat = parseFloat($scope.Lat);
+            }
+            else if($scope.Lng!=null)
+            {
+                $scope.Lng = parseFloat($scope.Lng);
+            }
+            else if($scope.GotMachine == 0){
                 $scope.GotMachine = false;
             }
-
-            if ($scope.GotMachine == 1) {
+            else if($scope.GotMachine == 1) {
                 $scope.GotMachine = true;
             }
-            else {
+            else if ($scope.GotMachine == 0){
                 $scope.GotMachine = false;
             }
-            if ($scope.GotKiosk == 1) {
+            else if ($scope.GotKiosk == 1){
                 $scope.GotKiosk = true;
             }
-            else {
+            else if($scope.GotKiosk == 0){
                 $scope.GotKiosk = false;
             }
-
-            if ($scope.BusStopType == "0") {
+            else if ($scope.BusStopType == "0") {
                 $scope.BusStopType = 0
             }
-            else {
+            else if($scope.BusStopType == "1"){
                 $scope.BusStopType = 1
             }
+
 
             var data =  JSON.stringify({
                 Id:WybraneId,
@@ -588,8 +597,8 @@
                 GotMachine: $scope.GotMachine,
                 GotKiosk: $scope.GotKiosk,
                 BusStopType: $scope.BusStopType,
-                BusStopStatus: 0,
-                LastControl: new Date()
+                //BusStopStatus: 0,
+                //LastControl: new Date()
             });
             var config = {
                 headers: {'Session': ''}
