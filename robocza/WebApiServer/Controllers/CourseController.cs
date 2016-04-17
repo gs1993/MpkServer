@@ -42,5 +42,19 @@ namespace WebApiServer.Controllers
             }
         }
 
+        public List<CourseDto> GetList()
+        {
+            using (var db = _databaseService.CreateContext())
+            {
+                return db.Courses.Include(x => x.Activities)
+                    .Include(x => x.Bus)
+                    .Include(x => x.Track)
+                    .Include(x => x.Activities.Select(y => y.BusStop))
+                    .Include(x => x.Activities.Select(y => y.Bus))
+                    .Include(x => x.Activities.Select(y => y.Bus))
+                    .Include(x => x.Bus.Driver).ToArray().Select(x=>x.MapToDto()).ToList();
+            }
+        } 
+
     }
 }
