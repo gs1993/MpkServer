@@ -91,6 +91,10 @@ http://localhost:50000/User/Login
 
 
 Potem autoryzacja po nagłówki Session, przykład:
+
+```
+#!http
+
 GET /Bus/GetBusList 
 HTTP/1.1
 
@@ -98,6 +102,8 @@ Host: localhost:50000
 Session: cb0cd250-7f63-4b80-bf06-b7ead283d8e1
 
 Cache-Control: no-cache
+```
+
 
 
 # Wylogowywanie(POST): #
