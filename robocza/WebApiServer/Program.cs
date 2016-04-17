@@ -9,6 +9,7 @@ using System.Web.Http.Cors;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Http.SelfHost;
 using Core.Logger;
+using Data;
 using Data.Service;
 using SimpleInjector;
 using SimpleInjector.Extensions.ExecutionContextScoping;
@@ -25,6 +26,7 @@ namespace WebApiServer
         public static HttpSelfHostConfiguration Config = new HttpSelfHostConfiguration(host);
         static void Main(string[] args)
         {
+
 
             using (var container = GetContainer())
             {

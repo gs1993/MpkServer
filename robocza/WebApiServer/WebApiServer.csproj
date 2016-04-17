@@ -151,9 +151,17 @@
   <ItemGroup>
     <Compile Include="Controllers\BusController.cs" />
     <Compile Include="Controllers\BusStopController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\PostmanController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Converters\ActivityExpressions.cs" />
+    <Compile Include="Converters\BusExpressions.cs" />
+    <Compile Include="Converters\BusStopExpressions.cs" />
+    <Compile Include="Converters\CourseExpressions.cs" />
+    <Compile Include="Converters\TrackExpressions.cs" />
+    <Compile Include="Converters\UserExpressions.cs" />
     <Compile Include="Misc\SimpleAuthFilter.cs" />
     <Compile Include="Postman\PostmanCollection.cs" />
     <Compile Include="Postman\PostmanRequest.cs" />
