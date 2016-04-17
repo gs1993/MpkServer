@@ -73,7 +73,7 @@ namespace WebApiServer.Controllers
                 try
                 {
                     var bus = Rewrite(busDto);
-                    bus.BusStatus = Status.Active; // chwilowo
+                    bus.BusStatus = Status.InActive; // chwilowo
 
                     db.Buss.Add(bus);
                     db.SaveChanges();
@@ -107,12 +107,36 @@ namespace WebApiServer.Controllers
                 {
                     result = false;
                 }
-                
+
 
                 return new BusConfirmed() { Ok = result };
             }
         }
 
+        public BusConfirmed DeleteFromDb(int Id)
+        {
+            using (var db = _db.CreateContext())
+            {
+                bool result = true;
+                var bus = db.Buss.FirstOrDefault(b => b.Id == Id);
+                if (bus == null)
+                {
+                    result = false;
+                }
+                try
+                {
+                    db.Buss.Remove(bus);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    result = false;
+                }
+
+
+                return new BusConfirmed() { Ok = result };
+            }
+        }
         public BusConfirmed PutRestore(int Id)
         {
             using (var db = _db.CreateContext())

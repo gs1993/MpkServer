@@ -66,6 +66,26 @@ namespace WebApiServer.Controllers
             }
         }
 
+        public BusStopConfirmed DeleteFromDb(int Id)
+        {
+            using (var db = _db.CreateContext())
+            {
+                bool result = true;
+                var busStop = db.BusStops.FirstOrDefault(b => b.Id == Id);
+                try
+                {
+                    db.BusStops.Remove(busStop);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    result = false;
+                }
+
+
+                return new BusStopConfirmed() { Ok = result };
+            }
+        }
         public BusStopConfirmed PutRestore(int Id)
         {
             using (var db = _db.CreateContext())
@@ -94,7 +114,7 @@ namespace WebApiServer.Controllers
                 try
                 {
                     var busStop = Rewrite(busStopDto);
-                    busStop.BusStopStatus = Status.Active; // chwilowo
+                    busStop.BusStopStatus = Status.InActive; // chwilowo
 
                     db.BusStops.Add(busStop);
                     db.SaveChanges();
@@ -108,7 +128,7 @@ namespace WebApiServer.Controllers
             }
         }
 
-        public BusStopConfirmed PutBus(BusStopDto busStopToUpdateDto)
+        public BusStopConfirmed PutBusStop(BusStopDto busStopToUpdateDto)
         {
             using (var db = _db.CreateContext())
             {
