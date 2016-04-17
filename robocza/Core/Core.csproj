@@ -44,6 +44,7 @@
     <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="Logger\LogType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transfer\ActivityController\ActivityDto.cs" />
     <Compile Include="Transfer\Attributes\MessageAttribute.cs" />
     <Compile Include="Transfer\Authhandler\AuthDto.cs" />
     <Compile Include="Transfer\Base\EmptyDto.cs" />
@@ -54,8 +55,10 @@
     <Compile Include="Transfer\Bus\BusConfirmed.cs" />
     <Compile Include="Transfer\Bus\BusDto.cs" />
     <Compile Include="Transfer\Bus\GetBusDto.cs" />
+    <Compile Include="Transfer\CourseController\CourseDto.cs" />
     <Compile Include="Transfer\Emit\EventDto.cs" />
     <Compile Include="Transfer\TestTransfer\TestObj.cs" />
+    <Compile Include="Transfer\TrackController\TrackDto.cs" />
     <Compile Include="Transfer\User\Login\UserLoginDto.cs" />
     <Compile Include="Transfer\User\Login\UserLoginResultDto.cs" />
     <Compile Include="Transfer\User\UserActivateDto.cs" />
