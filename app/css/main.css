@@ -11513,6 +11513,35 @@ a.tabnav-extra:hover {
   width: 100%;
 }
 
+.panelAutobusy__dataLoader__svg {
+  height: 200px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.panelAutobusy__dataLoader__text {
+  padding: 10px;
+  display: block;
+  text-align: center;
+  font-size: 15px;
+}
+
+.panelAutobusy__dataLoader__text .success {
+  color: green;
+}
+
+.panelAutobusy__dataLoader__text .error {
+  color: red;
+}
+
+.panelAutobusy__dataLoader__text .fa {
+  font-size: 120px;
+}
+
+.panelAutobusy__dataLoader__text p {
+  margin-bottom: 30px;
+}
+
 .panelDodajAutobus {
   position: relative;
 }
@@ -12063,6 +12092,10 @@ a.tabnav-extra:hover {
   color: red;
 }
 
+.panelPrzystanki__table .navigation:hover i.-green {
+  color: green;
+}
+
 .panelPrzystanki__navigation {
   margin-bottom: 5px;
   display: -webkit-flex;
@@ -12116,7 +12149,7 @@ a.tabnav-extra:hover {
 }
 
 .panelPrzystanki__dataLoader__text .success {
-  color: #00a65a;
+  color: green;
 }
 
 .panelPrzystanki__dataLoader__text .error {
