@@ -75,16 +75,17 @@
 
   /* Standardowe Controlery
    *==========================================================================*/
-  app.controller('HomeController', function ($scope, $http, $timeout, $cookieStore, $rootScope) {
+  app.controller('HomeController', function ($scope) {
+    $scope.message = "Test";
   });
-  
+
   app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope, $timeout, $location) {
     $rootScope.globals = {};
     $cookieStore.remove('globals');
     $http.defaults.headers.common.Authorization = 'Session';
   });
 
-  app.controller('LoginController', function ($scope, $http, $cookieStore, $rootScope, $timeout, $location) {
+  /*app.controller('LoginController', ['$scope', '$routeParams', '$cookieStore', '$http' , '$rootScope', '$timeout', '$location', function ($scope, $http, $cookieStore, $rootScope, $timeout, $location) {
     $scope.sendForm = false;
     $rootScope.globals = {};
     $cookieStore.remove('globals');
@@ -134,12 +135,71 @@
         }, 2500);
       }
     };
-  });
+  }]);*/
 
 
-  app.controller('RegisterController', function ($scope) {
+  app.controller('RegisterController' , function ($scope, $http, $timeout) {
 
-    $scope.message = 'This is Add new order screen';
+    // Pierwszy formularz
+    $scope.sendFormStepOne = false;
+    $scope.GoToStepTwo = false;
+    // URUCHOMIENIE DURGIEGO FORMULARZA
+    $scope.sendFormStepTwo = false;
+
+    $scope.Register = function () {
+      $scope.sendFormStepOne = true;
+      var data = JSON.stringify({
+        Email: $scope.Email,
+        Password: $scope.Password
+      });
+      if ($scope.sendFormStepOne) {
+        $scope.message = "Jeszcze chwilka...";
+        console.log(data);
+        $timeout(function () {
+          $http.post('http://localhost:50000/User/SelfRegister', data)
+            .success(function (data, status) {
+              $scope.CallbackServera = true;
+              $scope.PostDataResponse = data;
+              console.log($scope.PostDataResponse);
+              $scope.GoToStepTwo = true;
+            })
+            .error(function (data, status) {
+              $scope.ResponseDetails = "Data: " + data +
+                "<hr />status: " + status;
+              console.log($scope.ResponseDetails);
+              $scope.CallbackServera = true;
+            });
+        }, 2500);
+      }
+    };
+    $scope.RegisterToken = function () {
+      $scope.sendFormStepTwo = true;
+      var data = JSON.stringify({
+        Email: $scope.Email,
+        Password: $scope.Password,
+        Token: $scope.Token
+      });
+      if ($scope.sendFormStepTwo) {
+        $scope.message = "Szykujemy stanowisko...";
+        console.log(data);
+        $timeout(function () {
+          $http.post('http://localhost:50000/User/ActivateUser', data)
+            .success(function (data, status) {
+              $scope.CallbackServeraTwo = true;
+              $scope.CallbackServeraPositive = true;
+              $scope.PostDataResponse = data;
+              console.log($scope.PostDataResponse);
+            })
+            .error(function (data, status, header, config) {
+              $scope.ResponseDetails = "Data: " + data +
+                "<hr />status: " + status;
+              console.log($scope.ResponseDetails);
+              $scope.CallbackServeraTwo = true;
+              $scope.CallbackServeraNegative = true;
+            });
+        }, 2500);
+      }
+    };
 
   });
 
