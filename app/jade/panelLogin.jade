@@ -13,12 +13,12 @@
       | Hasło przypisane do tego emailu, jest nie poprawne.
 
 
-    form(method="POST" action="").panelLogin__form
+    form(name="form" ng-controller="LoginController" ng-submit="form.$valid && Login()" novalidate ).panelLogin__form
       .panelLogin__formwrapper
-        input(name="user_email" placeholder="E-mail")
+        input(placeholder="E-mail" ng-model="Email" required name="uEmail")
         i.fa.fa-envelope-o
       .panelLogin__formwrapper
-        input(name="user_password" type="password" placeholder="Hasło")
+        input(placeholder="Hasło" ng-model="Password" required name="uPassword" type="password")
         i.fa.fa-lock
       .remembermebox
         input(type="checkbox" checked).check#check
