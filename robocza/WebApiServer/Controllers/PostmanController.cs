@@ -21,6 +21,7 @@ namespace WebApiServer.Controllers
         {
             logger.Log("init Postman Api Controller");
             logger.Log("Postman api at http://localhost:50000/Postman/Get see postman for more info");
+            _logger = logger;
         }
         [AllowAnonymous]
         public HttpResponseMessage Get()
