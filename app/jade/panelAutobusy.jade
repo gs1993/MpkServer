@@ -50,8 +50,8 @@
             th Zarządzanie
         tbody
           tr(ng-repeat="autobus in autobusy | filter:autobusFilter | filter:{ BusStatus: '!0'} as filtrowaneAutobusy")
-            td {{ autobus.BusNumber}}
             td {{ autobus.RegistrationNumber }}
+            td {{ autobus.BusNumber}}
             td {{ autobus.BusTypeName }}
             td {{ autobus.BusStatusName }}
             td {{ autobus.GotMachineName }}
@@ -78,8 +78,8 @@
             th Zarządzanie
         tbody
           tr(ng-repeat="autobus in autobusy | filter:autobusFilter | filter:{ BusStatus: 0 } as filtrowaneAutobusyNieaktywne")
-            td {{ autobus.BusNumber}}
             td {{ autobus.RegistrationNumber }}
+            td {{ autobus.BusNumber}}
             td {{ autobus.BusTypeName }}
             td {{ autobus.BusStatusName }}
             td {{ autobus.GotMachineName }}

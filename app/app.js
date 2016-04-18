@@ -296,6 +296,25 @@
 
     $scope.updateBus = function () {
       $scope.sendForm = true;
+
+
+
+
+      if ($scope.RegistrationNumber == null || $scope.RegistrationNumber == "") {
+        $scope.RegistrationNumber = $scope.autobus.RegistrationNumber;
+      }
+      if ($scope.BusNumber == null || $scope.BusNumber == "") {
+        $scope.BusNumber = $scope.autobus.BusNumber;
+      }
+      if ($scope.BusType == null || $scope.BusType == "") {
+        $scope.BusType = $scope.autobus.BusType;
+      }
+      if ($scope.GotMachine == null || $scope.GotMachine == "") {
+        $scope.GotMachine = $scope.autobus.GotMachine;
+      }
+
+
+      /////////////////////////
       if ($scope.BusType == "1") {
         $scope.BusType = 1;
       }
@@ -303,20 +322,22 @@
         $scope.BusType = 0;
       }
 
-      else if ($scope.GotMachine == "1") {
+      if ($scope.GotMachine == "1") {
         $scope.GotMachine = true;
       }
       else if ($scope.GotMachine == "0") {
         $scope.GotMachine = false;
       }
+
+
       var data = JSON.stringify({
         Id: WybraneId,
         RegistrationNumber: $scope.RegistrationNumber,
         BusNumber: $scope.BusNumber,
         BusType: $scope.BusType,
         GotMachine: $scope.GotMachine,
-        //BusStatus: 0,
-        //LastControl: new Date()
+        BusStatus:  $scope.autobus.BusStatus,
+        LastControl: $scope.autobus.LastControl
       });
       var config = {
         headers: {'Session': ''}
@@ -597,36 +618,67 @@
       $scope.sendForm = true;
 
 
-      //Zamiana wartosci
+
+
+
+
+      ///////////////////////////////////////////////
+
+      if ($scope.Name == null || $scope.Name == "") {
+        $scope.Name = $scope.autobus.Name;
+      }
+
+
+      if ($scope.LocalizationString == null || $scope.LocalizationString == "") {
+        $scope.LocalizationString = $scope.autobus.LocalizationString;
+      }
+
       if ($scope.GotMachine == 1) {
         $scope.GotMachine = true;
       }
-      else if ($scope.Lat != null) {
+
+      else if ($scope.GotMachine == 0) {
+        $scope.GotMachine = false;
+      }
+
+      if ($scope.Lat != null) {
         $scope.Lat = parseFloat($scope.Lat);
       }
+
       else if ($scope.Lng != null) {
         $scope.Lng = parseFloat($scope.Lng);
       }
-      else if ($scope.GotMachine == 0) {
-        $scope.GotMachine = false;
-      }
-      else if ($scope.GotMachine == 1) {
-        $scope.GotMachine = true;
-      }
-      else if ($scope.GotMachine == 0) {
-        $scope.GotMachine = false;
-      }
-      else if ($scope.GotKiosk == 1) {
+
+      if ($scope.GotKiosk == 1) {
         $scope.GotKiosk = true;
       }
       else if ($scope.GotKiosk == 0) {
         $scope.GotKiosk = false;
       }
-      else if ($scope.BusStopType == "0") {
+
+      if ($scope.BusStopType == "0") {
         $scope.BusStopType = 0
       }
       else if ($scope.BusStopType == "1") {
         $scope.BusStopType = 1
+      }
+
+
+
+      if ($scope.Lat == null || $scope.Lat == "") {
+        $scope.Lat = $scope.autobus.Lat;
+      }
+      if ($scope.Lng == null || $scope.Lng == "") {
+        $scope.Lng = $scope.autobus.Lng;
+      }
+      if ($scope.GotMachine == null || $scope.GotMachine == "") {
+        $scope.GotMachine = $scope.autobus.GotMachine;
+      }
+      if ($scope.GotKiosk == null || $scope.GotKiosk == "") {
+        $scope.GotKiosk = $scope.autobus.GotKiosk;
+      }
+      if ($scope.BusStopType == null || $scope.BusStopType == "") {
+        $scope.BusStopType = $scope.autobus.BusStopType;
       }
 
 
@@ -639,8 +691,8 @@
         GotMachine: $scope.GotMachine,
         GotKiosk: $scope.GotKiosk,
         BusStopType: $scope.BusStopType,
-        //BusStopStatus: 0,
-        //LastControl: new Date()
+        BusStopStatus: $scope.autobus.BusStopStatus,
+        LastControl: $scope.autobus.LastControl
       });
       var config = {
         headers: {'Session': ''}
@@ -650,7 +702,7 @@
         $scope.message = "Trwa Aktualizacja Autobusu...";
         console.log(data);
         $timeout(function () {
-          $http.put('http://localhost:50000/BusStop/PutBus', data, config)
+          $http.put('http://localhost:50000/BusStop/PutBusStop', data, config)
             .success(function (data, status, headers, config) {
               $scope.CallbackServera = true;
               $scope.CallbackServeraPositive = true;
