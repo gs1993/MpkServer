@@ -75,20 +75,21 @@
 
   /* Standardowe Controlery
    *==========================================================================*/
-  app.controller('HomeController', function ($scope, $http, $timeout, $cookieStore, $rootScope) {
-  });
-  
-  app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope, $timeout, $location) {
-    $rootScope.globals = {};
-    $cookieStore.remove('globals');
-    $http.defaults.headers.common.Authorization = 'Session';
+  app.controller('HomeController', function ($scope) {
+    $scope.message = "Test";
   });
 
-  app.controller('LoginController', function ($scope, $http, $cookieStore, $rootScope, $timeout, $location) {
-    $scope.sendForm = false;
+  /*app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope, $timeout, $location) {
     $rootScope.globals = {};
     $cookieStore.remove('globals');
     $http.defaults.headers.common.Authorization = 'Session';
+  });*/
+
+  app.controller('LoginController' , function ($scope, $http, $timeout) {
+    $scope.sendForm = false;
+    //$rootScope.globals = {};
+    //$cookieStore.remove('globals');
+    //$http.defaults.headers.common.Authorization = 'Session';
 
     $scope.Login = function () {
       $scope.sendForm = true;
@@ -110,16 +111,16 @@
               var authdata = $scope.PostDataResponse.Token;
               console.log("Klucz autoryzacji");
               console.log(authdata);
-              $rootScope.globals = {
+              /*$rootScope.globals = {
                 currentUser: {
                   Email: $scope.Email,
                   authdata: authdata
                 }
-              };
-              console.log("Ustawienie Nagłówa");
+              };*/
+              //console.log("Ustawienie Nagłówa");
               $http.defaults.headers.common['Session'] = authdata; // jshint ignore:line
-              console.log("Ustawienie Cookies");
-              $cookieStore.put('globals', $rootScope.globals);
+              //console.log("Ustawienie Cookies");
+              /*$cookieStore.put('globals', $rootScope.globals);*/
               //$location.path('/');
             })
             .error(function (data, status, header, config) {
@@ -135,14 +136,79 @@
       }
     };
   });
-
-
-  app.controller('RegisterController', function ($scope) {
-
-    $scope.message = 'This is Add new order screen';
-
+  app.controller('RegisterController' , function ($scope, $http, $timeout) {
+    $scope.RegisterSteps = {};
+    $scope.RegisterSteps.GoToSecondForm = false;
   });
 
+  app.controller('RegisterStepOneController' , function ($scope, $http, $timeout) {
+
+    // Pierwszy formularz
+    $scope.sendForm = false;
+
+    $scope.Register = function () {
+      $scope.sendForm = true;
+      var data = JSON.stringify({
+        Email: $scope.Email,
+        Password: $scope.Password
+      });
+      if ($scope.sendForm) {
+        $scope.message = "Jeszcze chwilka...";
+        console.log(data);
+        $timeout(function () {
+          $http.post('http://localhost:50000/User/SelfRegister', data)
+            .success(function (data, status) {
+              $scope.CallbackServera = true;
+              $scope.PostDataResponse = data;
+              console.log($scope.PostDataResponse);
+              $scope.messageToken = "Na twój email został wysłany link aktywacyjny...";
+              $scope.RegisterSteps.GoToSecondForm = true;
+            })
+            .error(function (data, status) {
+              $scope.ResponseDetails = "Data: " + data +
+                "<hr />status: " + status;
+              console.log($scope.ResponseDetails);
+              $scope.CallbackServera = true;
+              $scope.messageTokenError = "Coś poszło nie tak, spóbuj jeszcze raz.";
+            });
+        }, 2500);
+      }
+    };
+  });
+  app.controller('RegisterStepTwoController' , function ($scope, $http, $timeout) {
+
+    // Pierwszy formularz
+    $scope.sendForm = false;
+
+    $scope.RegisterToken = function () {
+      $scope.sendForm = true;
+      var data = JSON.stringify({
+        Email: $scope.Email,
+        Password: $scope.Password,
+        Token: $scope.Token
+      });
+      if ($scope.sendForm) {
+        $scope.message = "Jeszcze chwilka...";
+        console.log(data);
+        $timeout(function () {
+          $http.post('http://localhost:50000/User/ActivateUser', data)
+            .success(function (data, status) {
+              $scope.CallbackServera = true;
+              $scope.PostDataResponse = data;
+              console.log($scope.PostDataResponse);
+              $scope.messageToken = "Twoje konto zostało aktywowane. Możesz się teraz zalogować.";
+            })
+            .error(function (data, status) {
+              $scope.ResponseDetails = "Data: " + data +
+                "<hr />status: " + status;
+              console.log($scope.ResponseDetails);
+              $scope.CallbackServera = true;
+              $scope.messageTokenError = "Coś poszło nie tak, spóbuj jeszcze raz.";
+            });
+        }, 2500);
+      }
+    };
+  });
 
   app.controller('ResetPasswordController', function ($scope) {
 
