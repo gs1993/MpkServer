@@ -25,7 +25,7 @@
           option(value=2) Administrator
       .panelUsers__filtr
         label Status
-        select(ng-model="userFilter.Status")
+        select(ng-model="userFilter.Activated")
           option(value="") Status
           option(value=0) Nieaktywny
           option(value=1) Aktywny
@@ -36,7 +36,7 @@
             th Ranga
             th Status
             th Zarządzanie
-          tr(ng-repeat="user in users | filter:userFilter | filter:{ Status: '!0'} as filtrowaneUsers")
+          tr(ng-repeat="user in users | filter:userFilter | filter:{ Activated: '!false'} as filtrowaneUsers")
             td {{ user.Email }}
             td {{ user.RankName }}
             td {{ user.StatusName }}
@@ -56,7 +56,7 @@
           th Ranga
           th Status
           th Zarządzanie
-        tr(ng-repeat="user in users | filter:userFilter | filter:{ Status: '0'} as filtrowaneUsersNieaktywni")
+        tr(ng-repeat="user in users | filter:userFilter | filter:{ Activated: 'false'} as filtrowaneUsersNieaktywni")
           td {{ user.Email }}
           td {{ user.RankName }}
           td {{ user.StatusName }}

@@ -873,6 +873,7 @@
     }).success(function (data, status, headers, config) {
       $scope.users = data;
       console.log("Pobrano liste userów.");
+      console.log(data);
       angular.forEach($scope.users, function (user) {
         if (user.Rank == 0) {
           user.RankName = "Użytkownik";
@@ -883,7 +884,7 @@
         else if (user.Rank == 2) {
           user.RankName = "Administrator";
         }
-        if (user.Status == 0) {
+        if (user.Activated == false) {
           user.StatusName = "Nieaktywny"
         }
         else {
