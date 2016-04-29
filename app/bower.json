@@ -43,6 +43,7 @@
     "superfish": "latest",
     "font-awesome": "latest",
     "jquery-sticky": "latest",
-    "select2": "latest"
+    "select2": "latest",
+    "angular-responsive-tables": "^0.1.3"
   }
 }
