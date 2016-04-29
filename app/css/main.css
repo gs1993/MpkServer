@@ -22,7 +22,7 @@
 
 .fa {
   display: inline-block;
-  font: normal normal normal 14px / 1 FontAwesome;
+  font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -3102,21 +3102,6 @@ footer .container {
           flex-wrap: wrap;
 }
 
-header & {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-}
-
-@media (max-width: 1023px) {
-  header & {
-    display: block;
-  }
-}
-
 header {
   transition: all 0.28s linear 0s;
   min-height: 170px;
@@ -3958,11 +3943,11 @@ input,
 select,
 textarea,
 button {
-  font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 body {
-  font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: #333;
   background-color: #fff;
 }
@@ -4672,7 +4657,7 @@ input::-webkit-inner-spin-button {
 }
 
 .status-indicator {
-  font: normal normal 16px / 1 "octicons";
+  font: normal normal 16px/1 "octicons";
   display: inline-block;
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
@@ -10214,6 +10199,7 @@ a.tabnav-extra:hover {
 
 .panelLogin {
   min-width: 560px;
+  background: red;
 }
 
 .panelLogin.-hidden {
@@ -11430,8 +11416,7 @@ a.tabnav-extra:hover {
 .panelAutobusy__table th {
   background-color: #2196F3;
   color: white;
-  line-height: 30px;
-  padding: 0 5px;
+  padding: 7px 5px;
 }
 
 .panelAutobusy__table td {
@@ -12059,8 +12044,7 @@ a.tabnav-extra:hover {
 .panelPrzystanki__table th {
   background-color: #2196F3;
   color: white;
-  line-height: 30px;
-  padding: 0 5px;
+  padding: 7px 5px;
 }
 
 .panelPrzystanki__table td {
@@ -12664,8 +12648,7 @@ a.tabnav-extra:hover {
 .panelUsers__table th {
   background-color: #2196F3;
   color: white;
-  line-height: 30px;
-  padding: 0 5px;
+  padding: 7px 5px;
 }
 
 .panelUsers__table td {

@@ -41,6 +41,37 @@
       </div>
       <div class="panelPrzystanki__table">
         <table wt-responsive-table="wt-responsive-table" ng-controller="BusstopController" class="responsive">
+          <thead>
+            <tr>
+              <th>Nazwa przystanku</th>
+              <th>Ulica</th>
+              <th>Typ Przystanku</th>
+              <th>Biletomat</th>
+              <th>Kiosk</th>
+              <th>Zarządzanie</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '!0'} as filtrowanePrzystanku">
+              <td>{{przystanek.Name}}</td>
+              <td>{{przystanek.LocalizationString}}</td>
+              <td>{{przystanek.BusStopTypeName}}</td>
+              <td>{{przystanek.GotMachineName}}</td>
+              <td>{{przystanek.GotKioskName}}</td>
+              <td><a href="/#/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/delete/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
+            </tr>
+            <tr ng-hide="filtrowanePrzystanku.length">
+              <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div ng-hide="sendForm" class="panelPrzystanki__subtitle">Nieaktywne przystanki</div>
+    <div ng-hide="sendForm" class="panelPrzystanki__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div ng-hide="sendForm" class="panelPrzystanki__table">
+      <table wt-responsive-table="wt-responsive-table" ng-controller="BusstopController" class="responsive">
+        <thead>
           <tr>
             <th>Nazwa przystanku</th>
             <th>Ulica</th>
@@ -49,43 +80,20 @@
             <th>Kiosk</th>
             <th>Zarządzanie</th>
           </tr>
-          <tr ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '!0'} as filtrowanePrzystanku">
+        </thead>
+        <tbody>
+          <tr ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '0'} as filtrowanePrzystankuNieaktywe">
             <td>{{przystanek.Name}}</td>
             <td>{{przystanek.LocalizationString}}</td>
             <td>{{przystanek.BusStopTypeName}}</td>
             <td>{{przystanek.GotMachineName}}</td>
             <td>{{przystanek.GotKioskName}}</td>
-            <td><a href="/#/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/delete/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
+            <td><a href="/#/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/restore/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a></td>
           </tr>
-          <tr ng-hide="filtrowanePrzystanku.length">
+          <tr ng-hide="filtrowanePrzystankuNieaktywe.length">
             <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
           </tr>
-        </table>
-      </div>
-    </div>
-    <div ng-hide="sendForm" class="panelPrzystanki__subtitle">Nieaktywne przystanki</div>
-    <div ng-hide="sendForm" class="panelPrzystanki__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
-    <div ng-hide="sendForm" class="panelPrzystanki__table">
-      <table wt-responsive-table="wt-responsive-table" ng-controller="BusstopController" class="responsive">
-        <tr>
-          <th>Nazwa przystanku</th>
-          <th>Ulica</th>
-          <th>Typ Przystanku</th>
-          <th>Biletomat</th>
-          <th>Kiosk</th>
-          <th>Zarządzanie</th>
-        </tr>
-        <tr ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '0'} as filtrowanePrzystankuNieaktywe">
-          <td>{{przystanek.Name}}</td>
-          <td>{{przystanek.LocalizationString}}</td>
-          <td>{{przystanek.BusStopTypeName}}</td>
-          <td>{{przystanek.GotMachineName}}</td>
-          <td>{{przystanek.GotKioskName}}</td>
-          <td><a href="/#/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/restore/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a></td>
-        </tr>
-        <tr ng-hide="filtrowanePrzystankuNieaktywe.length">
-          <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
-        </tr>
+        </tbody>
       </table>
     </div>
     <div ng-show="sendForm" class="panelPrzystanki__dataLoader">
