@@ -54,8 +54,8 @@
               td {{przystanek.BusStopTypeName}}
               td {{przystanek.GotMachineName}}
               td {{przystanek.GotKioskName}}
-              td
-                a(href="/#/").navigation
+              td(ng-controller="MapController")
+                a(href="" ng-click="showBusstopOnMap(przystanek.Id)").navigation
                   i.ionicons.ion-ios-location
                 a(href="/#/busstop/show/{{ przystanek.Id }}").navigation
                   i.ionicons.ion-settings
@@ -82,8 +82,8 @@
             td {{przystanek.BusStopTypeName}}
             td {{przystanek.GotMachineName}}
             td {{przystanek.GotKioskName}}
-            td
-              a(href="/#/").navigation
+            td(ng-controller="MapController")
+              a(href="" ng-click="showBusstopOnMap(przystanek.Id)").navigation
                 i.ionicons.ion-ios-location
               a(href="/#/busstop/show/{{ przystanek.Id }}").navigation
                 i.ionicons.ion-settings

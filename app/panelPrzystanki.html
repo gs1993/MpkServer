@@ -58,7 +58,7 @@
               <td>{{przystanek.BusStopTypeName}}</td>
               <td>{{przystanek.GotMachineName}}</td>
               <td>{{przystanek.GotKioskName}}</td>
-              <td><a href="/#/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/delete/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
+              <td ng-controller="MapController"><a href="" ng-click="showBusstopOnMap(przystanek.Id)" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/delete/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
             </tr>
             <tr ng-hide="filtrowanePrzystanku.length">
               <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
@@ -88,7 +88,7 @@
             <td>{{przystanek.BusStopTypeName}}</td>
             <td>{{przystanek.GotMachineName}}</td>
             <td>{{przystanek.GotKioskName}}</td>
-            <td><a href="/#/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/restore/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a></td>
+            <td ng-controller="MapController"><a href="" ng-click="showBusstopOnMap(przystanek.Id)" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/restore/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a></td>
           </tr>
           <tr ng-hide="filtrowanePrzystankuNieaktywe.length">
             <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>

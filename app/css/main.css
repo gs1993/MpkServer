@@ -9583,6 +9583,10 @@ a.tabnav-extra:hover {
   height: 100%;
 }
 
+.googleMaps ng-map {
+  height: 100% !important;
+}
+
 .bar {
   height: 40px;
   width: 100%;

@@ -541,6 +541,11 @@
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania przystanków.")
     });
+
+
+
+    
+
   });
   app.controller('AddBusstopController', function ($scope, $http, $timeout) {
     $scope.sendForm = false;
@@ -1051,11 +1056,106 @@
   }]);
   /* Map Controler
    *==========================================================================*/
-  app.controller('MapController', function (NgMap) {
+  app.controller('MapController', function ($http,$scope,NgMap) {
     NgMap.getMap().then(function (map) {
 
+
+      $scope.showBusstopOnMap = function (id) {
+
+
+        //Serwis do pobrania danych przystanku
+        $http.get('http://localhost:50000/Busstop/GetBusstop/' + id, {
+              headers: {'Session': ''}
+            }
+        ).success(function (data, status, headers, config) {
+          $scope.busstop = data;
+          console.log("Pobrano przystanek.");
+
+          if ($scope.busstop.GotMachine == true) {
+            $scope.busstop.GotMachineName = "Tak";
+          }
+          else {
+            $scope.busstop.GotMachineName = "Nie";
+          }
+          if ($scope.busstop.GotKiosk == true) {
+            $scope.busstop.GotKioskName = "Tak";
+          }
+          else {
+            $scope.busstop.GotKioskName = "Nie";
+          }
+
+          if ($scope.busstop.BusStopType == 0) {
+            $scope.busstop.BusStopTypeName = "Normalny"
+          }
+          else {
+            $scope.busstop.BusStopTypeName = "Zabudowany"
+          }
+
+          var marker;
+          marker = new google.maps.Marker({
+            title: "Busstop"+$scope.busstop.Id,
+            animation: google.maps.Animation.DROP
+          });
+
+          var contentString = '<h4>'+$scope.busstop.Name+'</h4>'+
+              'Ulica: '+$scope.busstop.LocalizationString +
+              '<br>Typ Przystanku: '+$scope.busstop.BusStopTypeName +
+              '<br>Biletomat: '+$scope.busstop.GotMachineName +
+              '<br>Kiosk: '+$scope.busstop.GotKioskName;
+
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+
+          var lat = $scope.busstop.Lat;
+          var lng = $scope.busstop.Lng;
+          var loc = new google.maps.LatLng(lat, lng);
+          marker.setPosition(loc);
+          marker.setMap(map);
+
+
+        }).error(function (data, status, headers, config) {
+          console.log("Błąd pobrania przystanku.")
+        });
+
+
+
+
+      };
+
+
+
     });
+
+    // $scope.showBusstopOnMap = function (id) {
+    //   $http.get('http://localhost:50000/Busstop/GetBusstop/' + id, {
+    //         headers: {'Session': ''}
+    //       }
+    //   ).success(function (data, status, headers, config) {
+    //     $scope.busstop = data;
+    //     console.log("Pobrano przystanek.");
+    //     //console.log($scope.busstop)
+    //
+    //   }).error(function (data, status, headers, config) {
+    //     console.log("Błąd pobrania przystanku.")
+    //   });
+    //   console.log($scope.busstop)
+    //   $scope.lat = 53.798586;
+    //   $scope.lng = 20.481982;
+    //
+    // };
+
+
+
   });
+
+
+
+
 
   /* Derektywy
    *==========================================================================*/
