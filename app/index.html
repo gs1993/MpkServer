@@ -71,11 +71,11 @@
         <div class="headerProfile__switcher -hidden">
           <div class="background"></div>
           <ul class="headerProfile__panel">
-            <li class="headerProfile__item"><a href="/#/login"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+            <li ng-hide="globals.UserIsLogin" class="headerProfile__item"><a href="/#/login"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
                     <div class="headerProfile__buttonIcon fa fa-power-off"></div></span>Logowanie</span></a></li>
-            <li class="headerProfile__item"><a href="/#/register"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+            <li ng-hide="globals.UserIsLogin" class="headerProfile__item"><a href="/#/register"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
                     <div class="headerProfile__buttonIcon fa fa-sign-in"></div></span>Rejestracja</span></a></li>
-            <li class="headerProfile__item"><a href="/#/forgot"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
+            <li ng-hide="globals.UserIsLogin" class="headerProfile__item"><a href="/#/forgot"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
                     <div class="headerProfile__buttonIcon fa fa-key"></div></span>Odzyskaj konto</span></a></li>
             <li ng-hide="globals.HeaderToHide" class="headerProfile__item"><a href="/#/myaccount"><span class="headerProfile__button"><span class="headerProfile__buttonIconBG">
                     <div class="headerProfile__buttonIcon fa fa-user"></div></span>Moje Konto</span></a></li>

@@ -1,4 +1,4 @@
-.panelAutobusy
+.panelAutobusy(ng-controller="HomeController")
   .panelAutobusy__title HOME
   .panelAutobusy__fastTravel
     span.-active
@@ -6,7 +6,9 @@
         i.fa.fa-home
         | Home
   .panelAutobusy__wrapper
-    .panelAutobusy__subtitle Witaj w naszym systemie!
+    .panelAutobusy__subtitle Witaj w naszym systemie &nbsp;
+      span(ng-show="globals.UserIsLogin") {{userName}}
+      span(ng-hide="globals.UserIsLogin") &nbsp {{userName}} Jestes nie zalogowany, lepiej zrób to jak najszybciej.
 
 
 
