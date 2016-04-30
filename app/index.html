@@ -22,6 +22,8 @@
 <script src="bower_components/superfish/dist/js/hoverIntent.js"></script>
 <script src="bower_components/jquery-sticky/jquery.sticky.js"></script>
 <script src="bower_components/select2/dist/js/select2.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-responsive-tables/release/angular-responsive-tables.js"></script>
 <!-- endbower -->
     <script src="scripts/vendor.min.js"></script>
     <script src="http://maps.google.com/maps/api/js"></script>
@@ -35,6 +37,7 @@
     <!--script(src="//code.jquery.com/ui/1.11.4/jquery-ui.js")-->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/superfish/dist/css/superfish.css" />
+    <link rel="stylesheet" href="bower_components/angular-responsive-tables/release/angular-responsive-tables.css" />
     <!-- endbower -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
@@ -93,7 +96,14 @@
     </div>
     <div class="wrapper">
       <div ng-controller="MapController" class="googleMaps">
-        <div id="googleMaps" ng-map="" center="[53.77842200000001, 20.48011930000007]" zoom="14" styles="[{featureType:'landscape',stylers:[{saturation: -100},{lightness: 65},{visibility: 'on'}]},{featureType: 'poi',stylers: [{saturation: -100},{lightness: 51},{visibility: 'simplified'}]},{featureType: 'road.highway',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'road.arterial',stylers: [{saturation: -100},{lightness: 30},{visibility: 'on'}]},{featureType: 'road.local',stylers: [{saturation: -100},{lightness: 40},{visibility: 'on'}]},{featureType: 'transit',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'administrative.province',stylers: [{visibility: 'off'}]},{featureType: 'water',elementType: 'labels',stylers: [{visibility: 'on'},{lightness: -25},{saturation: -100}]},{featureType: 'water',elementType: 'geometry',stylers: [{hue: '#ffff00'},{lightness: -25},{saturation: -97}]}]" pan-control="false" map-type-control="true" map-type-control-options="{style:'HORIZONTAL_BAR', position:'RIGHT_BOTTOM'}" zoom-control="true" zoom-control-options="{style:'LARGE', position:'RIGHT_CENTER'}" street-view-control="false" scale-control="false" class="googleMaps__API"></div>
+        <div id="googleMaps" class="googleMaps__API">
+          <ng-map center="[53.77842200000001, 20.48011930000007]" zoom="14" styles="[{featureType:'landscape',stylers:[{saturation: -100},{lightness: 65},{visibility: 'on'}]},{featureType: 'poi',stylers: [{saturation: -100},{lightness: 51},{visibility: 'simplified'}]},{featureType: 'road.highway',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'road.arterial',stylers: [{saturation: -100},{lightness: 30},{visibility: 'on'}]},{featureType: 'road.local',stylers: [{saturation: -100},{lightness: 40},{visibility: 'on'}]},{featureType: 'transit',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'administrative.province',stylers: [{visibility: 'off'}]},{featureType: 'water',elementType: 'labels',stylers: [{visibility: 'on'},{lightness: -25},{saturation: -100}]},{featureType: 'water',elementType: 'geometry',stylers: [{hue: '#ffff00'},{lightness: -25},{saturation: -97}]}]" pan-control="false" map-type-control="true" map-type-control-options="{style:'HORIZONTAL_BAR', position:'RIGHT_BOTTOM'}" zoom-control="true" zoom-control-options="{style:'LARGE', position:'RIGHT_CENTER'}" street-view-control="false" scale-control="false">
+            <!--marker(id='busstop{{busstop.Id}}', position="{{lat}}, {{lng}}")-->
+            
+            
+            
+          </ng-map>
+        </div>
       </div>
     </div>
     <script src="app.js"></script>

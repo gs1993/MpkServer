@@ -22,7 +22,7 @@
       </div>
       <div class="panelUsers__filtr">
         <label>Status</label>
-        <select ng-model="userFilter.Status">
+        <select ng-model="userFilter.Activated">
           <option value="">Status</option>
           <option value="0">Nieaktywny</option>
           <option value="1">Aktywny</option>
@@ -36,7 +36,7 @@
             <th>Status</th>
             <th>Zarządzanie</th>
           </tr>
-          <tr ng-repeat="user in users | filter:userFilter | filter:{ Status: '!0'} as filtrowaneUsers">
+          <tr ng-repeat="user in users | filter:userFilter | filter:{ Activated: '!false'} as filtrowaneUsers">
             <td>{{ user.Email }}</td>
             <td>{{ user.RankName }}</td>
             <td>{{ user.StatusName }}</td>
@@ -58,7 +58,7 @@
           <th>Status</th>
           <th>Zarządzanie</th>
         </tr>
-        <tr ng-repeat="user in users | filter:userFilter | filter:{ Status: '0'} as filtrowaneUsersNieaktywni">
+        <tr ng-repeat="user in users | filter:userFilter | filter:{ Activated: 'false'} as filtrowaneUsersNieaktywni">
           <td>{{ user.Email }}</td>
           <td>{{ user.RankName }}</td>
           <td>{{ user.StatusName }}</td>

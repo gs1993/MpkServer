@@ -54,8 +54,8 @@
         </thead>
         <tbody>
           <tr ng-repeat="autobus in autobusy | filter:autobusFilter | filter:{ BusStatus: '!0'} as filtrowaneAutobusy">
-            <td>{{ autobus.BusNumber}}</td>
             <td>{{ autobus.RegistrationNumber }}</td>
+            <td>{{ autobus.BusNumber}}</td>
             <td>{{ autobus.BusTypeName }}</td>
             <td>{{ autobus.BusStatusName }}</td>
             <td>{{ autobus.GotMachineName }}</td>
@@ -82,8 +82,8 @@
         </thead>
         <tbody>
           <tr ng-repeat="autobus in autobusy | filter:autobusFilter | filter:{ BusStatus: 0 } as filtrowaneAutobusyNieaktywne">
-            <td>{{ autobus.BusNumber}}</td>
             <td>{{ autobus.RegistrationNumber }}</td>
+            <td>{{ autobus.BusNumber}}</td>
             <td>{{ autobus.BusTypeName }}</td>
             <td>{{ autobus.BusStatusName }}</td>
             <td>{{ autobus.GotMachineName }}</td>
