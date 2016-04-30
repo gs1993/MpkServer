@@ -3,8 +3,8 @@
   <div class="panelDodajAutobus__title">Dodaj Autobus</div>
   <div class="panelDodajAutobus__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/bus">Zarządzanie Autobusami</a></span><span class="-active"><a href="/#/bus/add">Dodaj Autobus</a></span></div>
   <div class="panelDodajAutobus__wrapper">
-    <div class="panelDodajAutobus__subtitle">Dodawanie pojazdu do floty</div>
-    <div class="panelDodajAutobus__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div class="panelDodajAutobus__subtitle">Dodawanie autobusu do systemu</div>
+    <div class="panelDodajAutobus__text">Tutaj możesz dodać autobus do systemu. Uzupełnij wszystkie poniższe pola.</div>
     <form name="form" ng-controller="AddBusController" ng-submit="form.$valid &amp;&amp; createBus()" novalidate="novalidate">
       <div ng-hide="sendForm" class="panelDodajAutobus__content__form">
         <div class="panelDodajAutobus__content__form__item"><span class="item">Numer Rejestracyjny</span>
@@ -44,7 +44,7 @@
           </svg>
         </div>
         <div class="panelDodajAutobus__dataLoader__text">
-          <p ng-hide="CallbackServera">{{ message }}</p><a href="/#/bus" ng-show="CallbackServeraPositive" class="panelDodajAutobus__navigation__item green">Autobus został dodany pomyślnie!</a><a href="/#/bus/add" ng-show="CallbackServeraNegative" class="panelDodajAutobus__navigation__item red">Coś poszło nie tak...</a>
+          <p ng-hide="CallbackServera">{{ message }}</p><a href="#/bus" ng-show="CallbackServeraPositive" class="panelDodajAutobus__navigation__item green"><i class="fa fa-check"></i>&nbsp;Autobus został dodany pomyślnie!</a><a href="#/bus" ng-show="CallbackServeraNegative" class="panelDodajAutobus__navigation__item red"><i class="fa fa-reply"></i>&nbsp;Coś poszło nie tak...</a>
         </div>
       </div>
     </form>

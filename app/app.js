@@ -3,10 +3,10 @@
  */
 (function () {
   'use strict';
-  var app = angular.module('app', ['ngRoute', 'ngMap']);
+  var app = angular.module('app', ['ngRoute', 'ngMap', 'ngCookies']);
 
-  app.config(['$routeProvider',
-    function ($routeProvider) {
+  app.config(['$routeProvider', '$locationProvider',
+    function ($routeProvider, $locationProvider) {
       $routeProvider.//STANDARDOWE SCIEZKI
       when('/', {
         templateUrl: 'home.html',
@@ -34,7 +34,6 @@
       }).when('/bus/show/:id', {
         templateUrl: 'panelWyswietlAutobus.html',
         controller: 'ShowBusController'
-
       }).when('/bus/delete/:id', {
         templateUrl: 'panelAutobusy.html',
         controller: 'DeleteBusController'
@@ -72,7 +71,27 @@
         redirectTo: '/home'
       });
     }]);
+  app.run(['$rootScope', '$location', '$cookieStore', '$http',
+    function ($rootScope, $location, $cookieStore, $http) {
+      // keep user logged in after page refresh
+      $rootScope.globals = $cookieStore.get('globals') || {};
+      if ($rootScope.globals.currentUser) {
+        $http.defaults.headers.common['Session'] = $rootScope.globals.currentUser.authdata; // jshint ignore:line
+      }
+      else {
+        //HIDE HEADER
+        $rootScope.globals.HeaderToHide = true;
+      }
 
+      $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        // redirect to login page if not logged in and trying to access a restricted page
+        var restrictedPage = $.inArray($location.path(), ['/login', '/register', '/home', '/forgot', '/info']) === -1;
+        var loggedIn = $rootScope.globals.currentUser;
+        if (restrictedPage && !loggedIn) {
+          $location.path('/');
+        }
+      });
+    }]);
   /* Standardowe Controlery
    *==========================================================================*/
   app.controller('HomeController', function ($scope) {
@@ -80,19 +99,57 @@
   });
 
   /*app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope, $timeout, $location) {
-    $rootScope.globals = {};
-    $cookieStore.remove('globals');
-    $http.defaults.headers.common.Authorization = 'Session';
-  });*/
+   $rootScope.globals = {};
+   $cookieStore.remove('globals');
+   $http.defaults.headers.common.Authorization = 'Session';
+   });*/
+  app.controller('AuthenticationService', ['$http', '$cookieStore', '$rootScope', '$timeout', function ($http, $cookieStore, $rootScope, $timeout) {
+    var service = {};
 
-  app.controller('LoginController' , function ($scope, $http, $timeout) {
-    $scope.sendForm = false;
-    //$rootScope.globals = {};
-    //$cookieStore.remove('globals');
-    //$http.defaults.headers.common.Authorization = 'Session';
+    service.Login = Login;
+    service.SetCredentials = SetCredentials;
+    service.ClearCredentials = ClearCredentials;
 
+    return service;
+
+    function Login(username, password, callback) {
+      /* Use this for real authentication
+       ----------------------------------------------*/
+      $http.post('/api/authenticate', { Email: username, Password: password })
+          .success(function (response) {
+              $scope.authdata = response.Token;
+              callback(response);
+          });
+    }
+
+    function SetCredentials(username, password) {
+      var authdata = $scope.authdata;
+
+      $rootScope.globals = {
+        currentUser: {
+          Email: username,
+          authdata: authdata
+        }
+      };
+      $rootScope.globals.HeaderToHide = false;
+      $http.defaults.headers.common['Session'] = '' + authdata; // jshint ignore:line
+      $cookieStore.put('globals', $rootScope.globals);
+    }
+
+    function ClearCredentials() {
+      $rootScope.globals = {};
+      $cookieStore.remove('globals');
+      $http.defaults.headers.common.Authorization = 'Session';
+    }
+}]);
+
+  app.controller('LoginController', ['$location', 'AuthenticationService', function ($scope, $http, $timeout, $location, AuthenticationService) {
     $scope.Login = function () {
       $scope.sendForm = true;
+      (function initController() {
+        // reset login status
+        AuthenticationService.ClearCredentials();
+      })();
       var data = JSON.stringify({
         Email: $scope.Email,
         Password: $scope.Password
@@ -102,46 +159,22 @@
         $scope.message = "Logowanie do systemu...";
         console.log(data);
         $timeout(function () {
-          $http.post('http://localhost:50000/User/Login', data)
-            .success(function (data, status) {
-              $scope.CallbackServera = true;
-              $scope.CallbackServeraPositive = true;
-              $scope.PostDataResponse = data;
-              console.log($scope.PostDataResponse);
-              var authdata = $scope.PostDataResponse.Token;
-              console.log("Klucz autoryzacji");
-              console.log(authdata);
-              /*$rootScope.globals = {
-                currentUser: {
-                  Email: $scope.Email,
-                  authdata: authdata
-                }
-              };*/
-              //console.log("Ustawienie Nagłówa");
-              $http.defaults.headers.common['Session'] = authdata; // jshint ignore:line
-              //console.log("Ustawienie Cookies");
-              /*$cookieStore.put('globals', $rootScope.globals);*/
-              //$location.path('/');
-            })
-            .error(function (data, status, header, config) {
-              $scope.ResponseDetails = "Data: " + data +
-                "<hr />status: " + status +
-                "<hr />headers: " + header +
-                "<hr />config: " + config;
-              console.log($scope.ResponseDetails);
-              $scope.CallbackServera = true;
-              $scope.CallbackServeraNegative = true;
-            });
+          AuthenticationService.Login($scope.Email, $scope.Password, function (response) {
+            if (response.success) {
+              AuthenticationService.SetCredentials($scope.Email, $scope.Password);
+              $location.path('/');
+            }
+          });
         }, 2500);
       }
     };
-  });
-  app.controller('RegisterController' , function ($scope, $http, $timeout) {
+  }]);
+  app.controller('RegisterController', function ($scope, $http, $timeout) {
     $scope.RegisterSteps = {};
     $scope.RegisterSteps.GoToSecondForm = false;
   });
 
-  app.controller('RegisterStepOneController' , function ($scope, $http, $timeout) {
+  app.controller('RegisterStepOneController', function ($scope, $http, $timeout) {
 
     // Pierwszy formularz
     $scope.sendForm = false;
@@ -175,7 +208,7 @@
       }
     };
   });
-  app.controller('RegisterStepTwoController' , function ($scope, $http, $timeout) {
+  app.controller('RegisterStepTwoController', function ($scope, $http, $timeout) {
 
     // Pierwszy formularz
     $scope.sendForm = false;

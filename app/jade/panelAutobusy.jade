@@ -2,16 +2,14 @@
   .panelAutobusy__title Zarządzanie Autobusami
   .panelAutobusy__fastTravel
     span
-      a(href="/#/")
+      a(href="#/")
         i.fa.fa-home
         | Home
     span.-active
-      a(href="/#/bus") Zarządzanie Autobusami
+      a(href="#/bus") Zarządzanie Autobusami
   .panelAutobusy__wrapper
-    .panelAutobusy__subtitle Flota Autobusów
-    .panelAutobusy__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelAutobusy__navigation(ng-hide="sendForm")
-      a(href="/#/bus/add").panelAutobusy__navigation__item Dodaj Autobus
+      a(href="#/bus/add").panelAutobusy__navigation__item Dodaj Autobus
     .panelAutobusy__filtrs(ng-hide="sendForm")
       .panelAutobusy__filtr
         label Numer Rejestracyjny
@@ -38,6 +36,7 @@
           option(value="") Biletomat
           option(value=0) Nie
           option(value=1) Tak
+    .panelAutobusy__subtitle(ng-hide="sendForm") Aktualna flota autobusów
     .panelAutobusy__table(ng-hide="sendForm")
       table.responsive(wt-responsive-table ng-controller="BusController")
         thead
@@ -56,16 +55,15 @@
             td {{ autobus.BusStatusName }}
             td {{ autobus.GotMachineName }}
             td
-              a(href="/#/").navigation
+              a(href="#/").navigation
                 i.ionicons.ion-ios-location
-              a(href="/#/bus/show/{{ autobus.Id }}").navigation
+              a(href="#/bus/show/{{ autobus.Id }}").navigation
                 i.ionicons.ion-settings
-              a(href="/#/bus/delete/{{ autobus.Id }}").navigation
+              a(href="#/bus/delete/{{ autobus.Id }}").navigation
                 i.ionicons.ion-android-cancel.-red
           tr(ng-hide="filtrowaneAutobusy.length")
             td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
-    .panelAutobusy__subtitle(ng-hide="sendForm") Nieaktywne Autobusy
-    .panelAutobusy__text(ng-hide="sendForm") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelAutobusy__subtitle(ng-hide="sendForm") Autobusy nie wprowadzone do służby
     .panelAutobusy__table(ng-hide="sendForm")
       table.responsive(wt-responsive-table ng-controller="BusController")
         thead
@@ -84,11 +82,11 @@
             td {{ autobus.BusStatusName }}
             td {{ autobus.GotMachineName }}
             td
-              a(href="/#/").navigation
+              a(href="#/").navigation
                 i.ionicons.ion-ios-location
-              a(href="/#/bus/show/{{ autobus.Id }}").navigation
+              a(href="#/bus/show/{{ autobus.Id }}").navigation
                 i.ionicons.ion-settings
-              a(href="/#/bus/restore/{{ autobus.Id }}").navigation
+              a(href="#/bus/restore/{{ autobus.Id }}").navigation
                 i.ionicons.ion-android-add-circle.-green
           tr(ng-hide="filtrowaneAutobusyNieaktywne.length")
             td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
@@ -111,11 +109,11 @@
             animatetransform(attributetype='xml', attributename='transform', type='rotate', from='0 40 40', to='360 40 40', dur='0.6s', repeatcount='indefinite')
       .panelAutobusy__dataLoader__text
         p(ng-hide="CallbackServera") {{ message }}
-        a(href="/#/bus" ng-show="CallbackServeraPositive").panelPrzystanki__text.success
+        a(href="#/bus" ng-show="CallbackServeraPositive").panelPrzystanki__text.success
           .panelAutobusy.success__text__icon
             i.fa.fa-smile-o
           | {{komunikat}}
-        a(href="/#/bus" ng-show="CallbackServeraNegative").panelPrzystanki__text.error
+        a(href="#/bus" ng-show="CallbackServeraNegative").panelPrzystanki__text.error
           .panelAutobusy.success__text__icon
             i.fa.fa-frown-o
           | Coś poszło nie tak...

@@ -11271,12 +11271,12 @@ a.tabnav-extra:hover {
 }
 
 .panelAutobusy__fastTravel {
-  padding: 10px 15px;
+  padding: 10px 20px;
   text-transform: uppercase;
   background-color: white;
   font-family: Roboto, sans-serif;
   font-size: 0.7em;
-  position: absolute;
+  position: relative;
   z-index: 1;
   width: 100%;
 }
@@ -11312,12 +11312,12 @@ a.tabnav-extra:hover {
 }
 
 .panelAutobusy__wrapper {
-  padding: 15px;
+  padding: 0 20px 0 20px;
   overflow-y: auto;
-  position: absolute;
+  position: relative;
   bottom: 0;
-  top: 50px;
-  height: 80vh;
+  top: 0;
+  height: 85vh;
   width: 100%;
 }
 
@@ -11333,6 +11333,8 @@ a.tabnav-extra:hover {
 .panelAutobusy__text {
   color: #88969F;
   padding: 5px;
+  line-height: 1.2em;
+  margin-top: 5px;
 }
 
 .panelAutobusy__filtrs {
@@ -11349,7 +11351,7 @@ a.tabnav-extra:hover {
 
 .panelAutobusy__filtr {
   width: 33%;
-  padding: 6px;
+  padding: 3px 6px;
 }
 
 @media (max-width: 767px) {
@@ -11361,7 +11363,9 @@ a.tabnav-extra:hover {
 .panelAutobusy__filtr label {
   display: block;
   width: 100%;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
+  font-size: 12px;
+  line-height: 1.2em;
 }
 
 .panelAutobusy__filtr input, .panelAutobusy__filtr select {
@@ -11374,6 +11378,8 @@ a.tabnav-extra:hover {
   padding: 8px;
   background-color: transparent;
   box-shadow: none;
+  transition: color ease .3s,box-shadow ease-in-out .15s,border-color ease-in-out .15s;
+  font-size: 12px;
 }
 
 .panelAutobusy__filtr input[type=checkbox] {

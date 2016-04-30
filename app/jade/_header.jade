@@ -1,37 +1,37 @@
 //
    Created by salimike on 18.03.16.
-.header
+.header(ng-hide="globals.HeaderToHide")
   .header__corner
     i.fa.fa-bus
   .header__switcher.-hidden
     .background
     ul.header__panel
       li.header__item
-        a(href="/#/bus")
+        a(href="#/bus")
           span.header__button
             span.header__buttonIconBG
               .header__buttonIcon.fa.fa-bus
             | Autobusy
       li.header__item
-        a(href="/#/busstop")
+        a(href="#/busstop")
           span.header__button
             span.header__buttonIconBG
               .header__buttonIcon.fa.fa-map-signs
             | Przystanki
       li.header__item
-        a(href="/#/roads")
+        a(href="#/roads")
           span.header__button
             span.header__buttonIconBG
               .header__buttonIcon.fa.fa-road
             | Trasy
       li.header__item
-        a(href="/#/user")
+        a(href="#/user")
           span.header__button
             span.header__buttonIconBG
               .header__buttonIcon.fa.fa-users
             | Użytkownicy
       li.header__item
-        a(href="/#/controls")
+        a(href="#/controls")
           span.header__button
             span.header__buttonIconBG
               .header__buttonIcon.fa.fa-eye
@@ -62,7 +62,7 @@
             span.headerProfile__buttonIconBG
               .headerProfile__buttonIcon.fa.fa-key
             | Odzyskaj konto
-      li.headerProfile__item
+      li.headerProfile__item(ng-hide="globals.HeaderToHide")
         a(href="/#/myaccount")
           span.headerProfile__button
             span.headerProfile__buttonIconBG
@@ -74,8 +74,8 @@
             span.headerProfile__buttonIconBG
               .headerProfile__buttonIcon.fa.fa-info-circle
             | Informacje
-      li.headerProfile__item
-        a(href="/#/login")
+      li.headerProfile__item(ng-hide="globals.HeaderToHide")
+        a(href="/#/logout")
           span.headerProfile__button
             span.headerProfile__buttonIconBG
               .headerProfile__buttonIcon.fa.fa-sign-out

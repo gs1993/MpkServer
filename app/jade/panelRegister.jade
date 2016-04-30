@@ -7,13 +7,19 @@
           .panelRegister__formwrapper
             input(placeholder="E-mail" ng-model="Email" required name="uEmail" type="email")
             i.fa.fa-envelope-o
+          .row(ng-show="form.$submitted || form.uEmail.$touched")
+            span(ng-show="form.uEmail.$error.required").error-info Proszę podać email.
           .panelRegister__formwrapper
-            input(placeholder="Hasło" ng-model="Password" required name="uPassword" type="password")
+            input(placeholder="Hasło" ng-model="Password" required name="Password" type="password")
             i.fa.fa-lock
+          .row(ng-show="form.$submitted || form.Password.$touched")
+            span(ng-show="form.Password.$error.required").error-info Proszę podać hasło.
           .panelRegister__formwrapper
-            input(placeholder="Powtórz hasło" ng-model="PasswordAgain" required name="uPasswordAgain" type="password")
-            i.fa.fa-lock
-          button Zarajestuj
+            input(placeholder="Powtórz hasło" ng-model="PasswordAgain" required name="PasswordAgain" type="password" compare-to="Password")
+          span(ng-show="form.PasswordAgain.$error.compareTo && form.PasswordAgain.$touched").error-info Hasła nie są takie same
+          .row(ng-show="form.$submitted || form.PasswordAgain.$touched")
+            span(ng-show="form.PasswordAgain.$error.required").error-info Proszę podać ponownie hasło
+          button Zarejestuj
         .panelRegister__navigation(ng-hide="sendForm") Masz już konto?
           a(href="/#/login").panelRegister__ToLogin Zaloguj się.
         .panelDodajAutobus__dataLoader(ng-show="sendForm")
@@ -36,7 +42,7 @@
         .panelDodajAutobus__dataLoader__text
           p(ng-hide="CallbackServera") {{ message }}
           p(ng-show="messageToken") {{ messageToken }}
-          a(href="/#/register" ng-show="messageTokenError").panelDodajAutobus__navigation__item.red {{ messageTokenError }}
+          a(href="#/register" ng-show="messageTokenError").panelDodajAutobus__navigation__item.red {{ messageTokenError }}
     .panelRegister__stepTwo(ng-show="RegisterSteps.GoToSecondForm")
       form(name="form" ng-controller="RegisterStepTwoController" ng-submit="form.$valid && RegisterToken()" novalidate).panelRegister__form
         .panelRegister__formwraps(ng-hide="sendForm")

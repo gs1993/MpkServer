@@ -1,4 +1,4 @@
-.panelLogin.panel
+.panelLogin
   .panelLogin__wrapper
     .panelLogin__title Panel Logowania
     .panelLogin__alert.-info.hidden
@@ -15,18 +15,22 @@
 
     form(name="form" ng-controller="LoginController" ng-submit="form.$valid && Login()" novalidate ).panelLogin__form
       .panelLogin__formwrapper
-        input(placeholder="E-mail" ng-model="Email" required name="uEmail")
+        input(placeholder="E-mail" ng-model="Email" required name="Email" type="email")
         i.fa.fa-envelope-o
+      .row(ng-show="form.$submitted || form.Email.$touched")
+        span(ng-show="form.Email.$error.required").error-info Proszę podać email.
       .panelLogin__formwrapper
-        input(placeholder="Hasło" ng-model="Password" required name="uPassword" type="password")
+        input(placeholder="Hasło" ng-model="Password" required name="Password" type="password")
         i.fa.fa-lock
+      .row(ng-show="form.$submitted || form.Password.$touched")
+        span(ng-show="form.Password.$error.required").error-info Proszę podać hasło.
       .remembermebox
         input(type="checkbox" checked).check#check
         label(for="check")
           span.icon
           |  Zapamiętaj mnie
       button Zaloguj się
-    .panelLogin__navigation Nie masz konta?
-      a(href="/#/register").panelLogin__ToRegister Zarejestruj się.
-    .panelLogin__navigation Nie pamietasz hasła?
-      a(href="/#/forgot").panelLogin__ToRegister Odzyskaj hasło.
+      .panelLogin__navigation Nie masz konta?
+        a(href="/#/register").panelLogin__ToRegister Zarejestruj się.
+      .panelLogin__navigation Nie pamietasz hasła?
+        a(href="/#/forgot").panelLogin__ToRegister Odzyskaj hasło.
