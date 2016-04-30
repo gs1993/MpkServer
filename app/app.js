@@ -100,9 +100,18 @@
     }]);
   /* Standardowe Controlery
    *==========================================================================*/
-  app.controller('HomeController', function ($scope) {
-    $scope.message = "Test";
-  });
+  HomeController.$inject = ['$scope', '$http', '$rootScope', '$timeout'];
+  function HomeController($scope, $http, $rootScope, $timeout) {
+    if($rootScope.globals.currentUser){
+      console.log( $rootScope.globals);
+      console.log( $rootScope.globals.currentUser.Email);
+      $scope.userName = $rootScope.globals.currentUser.Email;
+    }
+    else{
+      $scope.userName = 'nieznajomy'
+    }
+  }
+  app.controller('HomeController', HomeController);
 
   app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope) {
    $rootScope.globals = {HeaderToHide: true, UserIsLogin: false};
