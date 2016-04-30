@@ -3,7 +3,7 @@
  */
 (function () {
   'use strict';
-  var app = angular.module('app', ['ngRoute', 'ngMap','wt.responsive', 'ngCookies']);
+  var app = angular.module('app', ['ngRoute', 'ngMap','wt.responsive', 'ngCookies']).factory('AuthenticationService', AuthenticationService);
 
   app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
@@ -23,8 +23,13 @@
       }).when('/forgot', {
         templateUrl: 'panelResetPassword.html',
         controller: 'ResetPasswordController'
-      }).//AUTOBUS SCIEZKI
-      when('/bus', {
+      })
+        .when('/logout', {
+          templateUrl: 'panelLogin.html',
+          controller: 'LogoutController'
+        })
+      //AUTOBUS SCIEZKI
+        .when('/bus', {
         templateUrl: 'panelAutobusy.html',
         controller: 'BusController',
         activetab: 'bus'
@@ -85,7 +90,7 @@
 
       $rootScope.$on('$locationChangeStart', function (event, next, current) {
         // redirect to login page if not logged in and trying to access a restricted page
-        var restrictedPage = $.inArray($location.path(), ['/login', '/register', '/home', '/forgot', '/info']) === -1;
+        var restrictedPage = $.inArray($location.path(), ['/login', '/register', '/home', '/forgot', '/info', '/auth', '/logout']) === -1;
         var loggedIn = $rootScope.globals.currentUser;
         if (restrictedPage && !loggedIn) {
           $location.path('/');
@@ -98,12 +103,15 @@
     $scope.message = "Test";
   });
 
-  /*app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope, $timeout, $location) {
+  app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope) {
    $rootScope.globals = {};
+   $rootScope.globals.HeaderToHide = true;
    $cookieStore.remove('globals');
+    $cookieStore.put('globals', $rootScope.globals);
    $http.defaults.headers.common.Authorization = 'Session';
-   });*/
-  app.controller('AuthenticationService', ['$http', '$cookieStore', '$rootScope', '$timeout', function ($http, $cookieStore, $rootScope, $timeout) {
+   });
+  AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$timeout'];
+  function AuthenticationService($http, $cookieStore, $rootScope, $timeout) {
     var service = {};
 
     service.Login = Login;
@@ -115,16 +123,18 @@
     function Login(username, password, callback) {
       /* Use this for real authentication
        ----------------------------------------------*/
-      $http.post('/api/authenticate', { Email: username, Password: password })
+      $http.post('http://localhost:50000/User/Login', { Email: username, Password: password })
           .success(function (response) {
-              $scope.authdata = response.Token;
+              $rootScope.authdata = response.Token;
+            console.log("Pobranie tokenu");
+            console.log($rootScope.authdata);
               callback(response);
           });
     }
 
     function SetCredentials(username, password) {
-      var authdata = $scope.authdata;
-
+      var authdata = $rootScope.authdata;
+      console.log("Zmienna Globalna przypisna");
       $rootScope.globals = {
         currentUser: {
           Email: username,
@@ -134,6 +144,7 @@
       $rootScope.globals.HeaderToHide = false;
       $http.defaults.headers.common['Session'] = '' + authdata; // jshint ignore:line
       $cookieStore.put('globals', $rootScope.globals);
+      console.log("Cookies ustawione");
     }
 
     function ClearCredentials() {
@@ -141,10 +152,13 @@
       $cookieStore.remove('globals');
       $http.defaults.headers.common.Authorization = 'Session';
     }
-}]);
-
-  app.controller('LoginController', ['$location', 'AuthenticationService', function ($scope, $http, $timeout, $location, AuthenticationService) {
+}
+  LoginController.$inject = ['$location', 'AuthenticationService', '$scope'];
+  function LoginController($location, AuthenticationService, $scope) {
+    $scope.sendForm = false;
+    console.log("loaded1");
     $scope.Login = function () {
+      console.log("loaded2");
       $scope.sendForm = true;
       (function initController() {
         // reset login status
@@ -158,22 +172,23 @@
       if ($scope.sendForm) {
         $scope.message = "Logowanie do systemu...";
         console.log(data);
-        $timeout(function () {
-          AuthenticationService.Login($scope.Email, $scope.Password, function (response) {
-            if (response.success) {
-              AuthenticationService.SetCredentials($scope.Email, $scope.Password);
-              $location.path('/');
-            }
-          });
-        }, 2500);
+        AuthenticationService.Login($scope.Email, $scope.Password, function (response) {
+          console.log("Sukces pobrania sprawdzenie");
+          console.log(response.Result);
+          if (response.Result) {
+            console.log("Sukces pobrania tokenu do ustawienia zmiennej globalnej");
+            AuthenticationService.SetCredentials($scope.Email, $scope.Password);
+            $location.path('/');
+          }
+        });
       }
-    };
-  }]);
+    }
+  }
+  app.controller('LoginController', LoginController);
   app.controller('RegisterController', function ($scope, $http, $timeout) {
     $scope.RegisterSteps = {};
     $scope.RegisterSteps.GoToSecondForm = false;
   });
-
   app.controller('RegisterStepOneController', function ($scope, $http, $timeout) {
 
     // Pierwszy formularz
@@ -255,7 +270,7 @@
 
 
     $http.get('http://localhost:50000/Bus/GetBusList/', {
-      headers: {'Session': ''}
+      //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.autobusy = data;
       console.log("Pobrano liste autobusów.")
@@ -317,7 +332,7 @@
         LastControl: new Date()
       });
       var config = {
-        headers: {'Session': ''}
+        //headers: {'Session': ''}
       };
 
       if ($scope.sendForm) {
@@ -352,7 +367,7 @@
     $scope.AutobusID = WybraneId;
 
     $http.get('http://localhost:50000/Bus/GetBus/' + WybraneId, {
-        headers: {'Session': ''}
+        //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
       $scope.autobus = data;
@@ -420,7 +435,7 @@
         LastControl: $scope.autobus.LastControl
       });
       var config = {
-        headers: {'Session': ''}
+        //headers: {'Session': ''}
       };
 
       if ($scope.sendForm) {
@@ -453,7 +468,7 @@
     var WybraneId = $routeParams.id;
     $scope.sendForm = true;
     var config = {
-      headers: {'Session': ''}
+      //headers: {'Session': ''}
     };
 
     if ($scope.sendForm) {
@@ -483,7 +498,7 @@
 
     $scope.sendForm = true;
     var config = {
-      headers: {'Session': ''}
+      //headers: {'Session': ''}
     };
 
     if ($scope.sendForm) {
@@ -516,7 +531,7 @@
 
 
     $http.get('http://localhost:50000/Busstop/GetBusstopList/', {
-      headers: {'Session': ''}
+      //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.przystanki = data;
       console.log($scope.przystanki);
@@ -608,7 +623,7 @@
         LastControl: new Date()
       });
       var config = {
-        headers: {'Session': ''}
+        //headers: {'Session': ''}
       };
 
       if ($scope.sendForm) {
@@ -656,7 +671,7 @@
      }];*/
 
     $http.get('http://localhost:50000/Busstop/GetBusstop/' + WybraneId, {
-        headers: {'Session': ''}
+        //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
       $scope.autobus = data;
@@ -780,7 +795,7 @@
         LastControl: $scope.autobus.LastControl
       });
       var config = {
-        headers: {'Session': ''}
+        //headers: {'Session': ''}
       };
 
       if ($scope.sendForm) {
@@ -814,7 +829,7 @@
     var WybraneId = $routeParams.id;
     $scope.sendForm = true;
     var config = {
-      headers: {'Session': ''}
+      //headers: {'Session': ''}
     };
 
     if ($scope.sendForm) {
@@ -847,7 +862,7 @@
 
     $scope.sendForm = true;
     var config = {
-      headers: {'Session': ''}
+      //headers: {'Session': ''}
     };
 
     if ($scope.sendForm) {
@@ -888,7 +903,7 @@
      ];*/
 
     $http.get('http://localhost:50000/user/GetUserList', {
-      headers: {'Session': ''}
+      //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.users = data;
       console.log("Pobrano liste userów.");
@@ -939,7 +954,7 @@
         Password: $scope.Password
       });
       var config = {
-        headers: {'Session': ''}
+        //headers: {'Session': ''}
       };
 
       if ($scope.sendForm) {
@@ -985,7 +1000,7 @@
      }];*/
 
     $http.get('http://localhost:50000/user/getUser/' + WybraneId, {
-        headers: {'Session': ''}
+        //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
       $scope.user = data;
@@ -1079,7 +1094,7 @@
 
         //Serwis do pobrania danych przystanku
         $http.get('http://localhost:50000/Busstop/GetBusstop/' + id, {
-              headers: {'Session': ''}
+              //headers: {'Session': ''}
             }
         ).success(function (data, status, headers, config) {
           $scope.busstop = data;
