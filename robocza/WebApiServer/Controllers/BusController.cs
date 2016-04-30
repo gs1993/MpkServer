@@ -85,7 +85,6 @@ namespace WebApiServer.Controllers
             }
         }
 
-
         public BusConfirmed Delete(int Id)
         {
             using (var db = _db.CreateContext())
@@ -135,6 +134,7 @@ namespace WebApiServer.Controllers
                 return new BusConfirmed() { Ok = result };
             }
         }
+
         public BusConfirmed PutRestore(int Id)
         {
             using (var db = _db.CreateContext())

@@ -52,8 +52,10 @@
     <Compile Include="Transfer\BusStopHandler\BusStopResultDto.cs" />
     <Compile Include="Transfer\BusStop\BusStopConfirmed.cs" />
     <Compile Include="Transfer\BusStop\BusStopDto.cs" />
+    <Compile Include="Transfer\BusStop\BusStopLocalizationDto.cs" />
     <Compile Include="Transfer\Bus\BusConfirmed.cs" />
     <Compile Include="Transfer\Bus\BusDto.cs" />
+    <Compile Include="Transfer\Bus\BusLocalizationDto.cs" />
     <Compile Include="Transfer\Bus\GetBusDto.cs" />
     <Compile Include="Transfer\CourseController\CourseDto.cs" />
     <Compile Include="Transfer\Emit\EventDto.cs" />

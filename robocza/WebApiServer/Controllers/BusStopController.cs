@@ -46,6 +46,51 @@ namespace WebApiServer.Controllers
             }
         }
 
+        public BusStopLocalizationDto BusStopLocalization(int Id)
+        {
+            using (var db = _db.CreateContext())
+            {
+                var busStop = db.BusStops.FirstOrDefault(b => b.Id == Id);
+                var busStopLocalization = new BusStopLocalizationDto();
+                try {
+                    busStopLocalization.Id = busStop.Id;
+                    busStopLocalization.Name = busStop.Name;
+                    busStopLocalization.Lat = busStop.Lat;
+                    busStopLocalization.Lng = busStop.Lng;
+                }
+                catch (Exception)
+                {
+                }
+
+
+                return busStopLocalization;
+            }
+        }
+
+        public List<BusStopLocalizationDto> BusStopLocalizationList()
+        {
+            using (var db = _db.CreateContext()) {
+                var busStops = db.BusStops.ToList();
+                var busStopLocalizations = new List<BusStopLocalizationDto>();
+                try
+                {
+                    foreach (var busStop in busStops) {
+                        busStopLocalizations.Add(new BusStopLocalizationDto() {
+                            Id = busStop.Id,
+                            Name = busStop.Name,
+                            Lat = busStop.Lat,
+                            Lng = busStop.Lng
+                        });                    }
+                    
+                }
+                catch (Exception)
+                {
+                }
+
+                return busStopLocalizations;
+            }
+        }
+
         public BusStopConfirmed DeleteBusStop(int Id)
         {
             using (var db = _db.CreateContext())
@@ -87,6 +132,7 @@ namespace WebApiServer.Controllers
                 return new BusStopConfirmed() { Ok = result };
             }
         }
+
         public BusStopConfirmed PutRestore(int Id)
         {
             using (var db = _db.CreateContext())
