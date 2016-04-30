@@ -44,19 +44,19 @@
   .headerProfile__switcher.-hidden
     .background
     ul.headerProfile__panel
-      li.headerProfile__item
+      li.headerProfile__item(ng-hide="globals.UserIsLogin")
         a(href="/#/login")
           span.headerProfile__button
             span.headerProfile__buttonIconBG
               .headerProfile__buttonIcon.fa.fa-power-off
             | Logowanie
-      li.headerProfile__item
+      li.headerProfile__item(ng-hide="globals.UserIsLogin")
         a(href="/#/register")
           span.headerProfile__button
             span.headerProfile__buttonIconBG
               .headerProfile__buttonIcon.fa.fa-sign-in
             | Rejestracja
-      li.headerProfile__item
+      li.headerProfile__item(ng-hide="globals.UserIsLogin")
         a(href="/#/forgot")
           span.headerProfile__button
             span.headerProfile__buttonIconBG

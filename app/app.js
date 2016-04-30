@@ -86,6 +86,7 @@
       else {
         //HIDE HEADER
         $rootScope.globals.HeaderToHide = true;
+        $rootScope.globals.UserIsLogin = false;
       }
 
       $rootScope.$on('$locationChangeStart', function (event, next, current) {
@@ -104,10 +105,8 @@
   });
 
   app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope) {
-   $rootScope.globals = {};
-   $rootScope.globals.HeaderToHide = true;
+   $rootScope.globals = {HeaderToHide: true, UserIsLogin: false};
    $cookieStore.remove('globals');
-    $cookieStore.put('globals', $rootScope.globals);
    $http.defaults.headers.common.Authorization = 'Session';
    });
   AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$timeout'];
@@ -139,16 +138,17 @@
         currentUser: {
           Email: username,
           authdata: authdata
-        }
+        },
+        HeaderToHide: false,
+        UserIsLogin: true
       };
-      $rootScope.globals.HeaderToHide = false;
       $http.defaults.headers.common['Session'] = '' + authdata; // jshint ignore:line
       $cookieStore.put('globals', $rootScope.globals);
       console.log("Cookies ustawione");
     }
 
     function ClearCredentials() {
-      $rootScope.globals = {};
+      $rootScope.globals = {HeaderToHide: true, UserIsLogin: false};
       $cookieStore.remove('globals');
       $http.defaults.headers.common.Authorization = 'Session';
     }
