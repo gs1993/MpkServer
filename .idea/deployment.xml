@@ -5,11 +5,8 @@
       <paths name="192.168.0.105">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$/app" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="node_modules" />
-          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

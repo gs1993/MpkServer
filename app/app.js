@@ -300,6 +300,9 @@
         else {
           autobus.BusStatusName = "W trasie"
         }
+
+
+
       });
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania Autobusów.")
@@ -1089,97 +1092,94 @@
     NgMap.getMap().then(function (map) {
 
 
-      $scope.showBusstopOnMap = function (id) {
+    });
+  });
 
 
-        //Serwis do pobrania danych przystanku
-        $http.get('http://localhost:50000/Busstop/GetBusstop/' + id, {
-              //headers: {'Session': ''}
-            }
-        ).success(function (data, status, headers, config) {
-          $scope.busstop = data;
-          console.log("Pobrano przystanek.");
+  app.controller('ShowBusstopMarkers',function ($http,$scope,NgMap) {
+    NgMap.getMap().then(function (map) {
 
-          if ($scope.busstop.GotMachine == true) {
-            $scope.busstop.GotMachineName = "Tak";
+
+      $http.get('http://localhost:50000/Busstop/GetBusstopList/', {
+        //headers: {'Session': ''}
+      }).success(function (data, status, headers, config) {
+        $scope.przystanki = data;
+        console.log($scope.przystanki);
+        console.log("Pobrano liste przystanków.");
+        angular.forEach($scope.przystanki, function (przystanek) {
+          if (przystanek.GotMachine == true) {
+            przystanek.GotMachineName = "Tak";
           }
           else {
-            $scope.busstop.GotMachineName = "Nie";
+            przystanek.GotMachineName = "Nie";
           }
-          if ($scope.busstop.GotKiosk == true) {
-            $scope.busstop.GotKioskName = "Tak";
-          }
-          else {
-            $scope.busstop.GotKioskName = "Nie";
-          }
-
-          if ($scope.busstop.BusStopType == 0) {
-            $scope.busstop.BusStopTypeName = "Normalny"
+          if (przystanek.GotKiosk == true) {
+            przystanek.GotKioskName = "Tak";
           }
           else {
-            $scope.busstop.BusStopTypeName = "Zabudowany"
+            przystanek.GotKioskName = "Nie";
           }
 
-          var marker;
-          marker = new google.maps.Marker({
-            title: "Busstop"+$scope.busstop.Id,
-            animation: google.maps.Animation.DROP
-          });
-
-          var contentString = '<h4>'+$scope.busstop.Name+'</h4>'+
-              'Ulica: '+$scope.busstop.LocalizationString +
-              '<br>Typ Przystanku: '+$scope.busstop.BusStopTypeName +
-              '<br>Biletomat: '+$scope.busstop.GotMachineName +
-              '<br>Kiosk: '+$scope.busstop.GotKioskName;
-
-          var infowindow = new google.maps.InfoWindow({
-            content: contentString
-          });
-
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
-
-          var lat = $scope.busstop.Lat;
-          var lng = $scope.busstop.Lng;
-          var loc = new google.maps.LatLng(lat, lng);
-          marker.setPosition(loc);
-          marker.setMap(map);
+          if (przystanek.BusStopType == 0) {
+            przystanek.BusStopTypeName = "Normalny"
+          }
+          else {
+            przystanek.BusStopTypeName = "Zabudowany"
+          }
+        });
+      }).error(function (data, status, headers, config) {
+        console.log("Błąd pobrania przystanków.")
+      });
 
 
-        }).error(function (data, status, headers, config) {
-          console.log("Błąd pobrania przystanku.")
+      console.log("------------------")
+      console.log($scope.przystanki);
+      console.log("------------------")
+
+
+      //var markers = [];
+      $scope.markers=[];
+      angular.forEach($scope.przystanki, function (przystanek) {
+      if(przystanek.BusStopStatus==1)
+      {
+        //var marker;
+        marker = new google.maps.Marker({
+          title: "Busstop"+przystanek.Id,
+          animation: google.maps.Animation.DROP
+        });
+        var contentString = '<h4>'+przystanek.Name+'</h4>'+
+            'Ulica: '+przystanek.LocalizationString +
+            '<br>Typ Przystanku: '+przystanek.BusStopTypeName +
+            '<br>Biletomat: '+przystanek.GotMachineName +
+            '<br>Kiosk: '+przystanek.GotKioskName;
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
         });
 
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
 
+        var lat = przystanek.Lat;
+        var lng = przystanek.Lng;
+        var loc = new google.maps.LatLng(lat, lng);
+        marker.setPosition(loc);
+        //marker.setMap(map)
+        $scope.markers.push(marker);
+        console.log($scope.markers);
 
+      }
 
-      };
+      });
+      // angular.forEach(markers, function (marker) {
+      //   marker.setMap(null);
+      //   marker=null;
+      // });
 
 
 
     });
-
-    // $scope.showBusstopOnMap = function (id) {
-    //   $http.get('http://localhost:50000/Busstop/GetBusstop/' + id, {
-    //         headers: {'Session': ''}
-    //       }
-    //   ).success(function (data, status, headers, config) {
-    //     $scope.busstop = data;
-    //     console.log("Pobrano przystanek.");
-    //     //console.log($scope.busstop)
-    //
-    //   }).error(function (data, status, headers, config) {
-    //     console.log("Błąd pobrania przystanku.")
-    //   });
-    //   console.log($scope.busstop)
-    //   $scope.lat = 53.798586;
-    //   $scope.lng = 20.481982;
-    //
-    // };
-
-
-
   });
 
 

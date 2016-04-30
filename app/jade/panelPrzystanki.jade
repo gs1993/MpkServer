@@ -1,4 +1,4 @@
-.panelPrzystanki
+.panelPrzystanki(ng-controller="ShowBusstopMarkers")
   .panelPrzystanki__title Zarządzanie Przystankami
   .panelPrzystanki__fastTravel
     span
@@ -54,8 +54,8 @@
               td {{przystanek.BusStopTypeName}}
               td {{przystanek.GotMachineName}}
               td {{przystanek.GotKioskName}}
-              td(ng-controller="MapController")
-                a(href="" ng-click="showBusstopOnMap(przystanek.Id)").navigation
+              td
+                a(href="" ng-click="clearMarkers()").navigation
                   i.ionicons.ion-ios-location
                 a(href="/#/busstop/show/{{ przystanek.Id }}").navigation
                   i.ionicons.ion-settings
@@ -82,8 +82,8 @@
             td {{przystanek.BusStopTypeName}}
             td {{przystanek.GotMachineName}}
             td {{przystanek.GotKioskName}}
-            td(ng-controller="MapController")
-              a(href="" ng-click="showBusstopOnMap(przystanek.Id)").navigation
+            td
+              a(href="").navigation
                 i.ionicons.ion-ios-location
               a(href="/#/busstop/show/{{ przystanek.Id }}").navigation
                 i.ionicons.ion-settings
@@ -91,6 +91,8 @@
                 i.ionicons.ion-android-add-circle.-green
           tr(ng-hide="filtrowanePrzystankuNieaktywe.length")
             td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
+
+
     .panelPrzystanki__dataLoader(ng-show="sendForm")
       .panelPrzystanki__dataLoader__svg(ng-hide="CallbackServera")
         svg(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewbox='0 0 80 80', xml:space='preserve')
