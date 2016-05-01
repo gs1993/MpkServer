@@ -19,5 +19,14 @@ namespace WebApiServer.Converters
                 Id = track.Id
             };
         }
+
+        public static TrackDetailsDto MapToDetailsDto(this Track track)
+        {
+            return new TrackDetailsDto()
+            {
+                Id = track.Id,
+                IsArchive = track.IsArchive
+            };
+        }
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="Transfer\CourseController\CourseDto.cs" />
     <Compile Include="Transfer\Emit\EventDto.cs" />
     <Compile Include="Transfer\TestTransfer\TestObj.cs" />
+    <Compile Include="Transfer\TrackController\TrackDetailsDto.cs" />
     <Compile Include="Transfer\TrackController\TrackDto.cs" />
     <Compile Include="Transfer\User\Login\UserLoginDto.cs" />
     <Compile Include="Transfer\User\Login\UserLoginResultDto.cs" />

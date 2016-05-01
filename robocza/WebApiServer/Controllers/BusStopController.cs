@@ -51,17 +51,15 @@ namespace WebApiServer.Controllers
             using (var db = _db.CreateContext())
             {
                 var busStop = db.BusStops.FirstOrDefault(b => b.Id == Id);
+
                 var busStopLocalization = new BusStopLocalizationDto();
-                try {
+                if (busStop != null)
+                {
                     busStopLocalization.Id = busStop.Id;
                     busStopLocalization.Name = busStop.Name;
                     busStopLocalization.Lat = busStop.Lat;
                     busStopLocalization.Lng = busStop.Lng;
                 }
-                catch (Exception)
-                {
-                }
-
 
                 return busStopLocalization;
             }
@@ -69,23 +67,15 @@ namespace WebApiServer.Controllers
 
         public List<BusStopLocalizationDto> BusStopLocalizationList()
         {
-            using (var db = _db.CreateContext()) {
-                var busStops = db.BusStops.ToList();
-                var busStopLocalizations = new List<BusStopLocalizationDto>();
-                try
+            using (var db = _db.CreateContext())
+            {
+                var busStopLocalizations = db.BusStops.ToArray().Select(x => new BusStopLocalizationDto()
                 {
-                    foreach (var busStop in busStops) {
-                        busStopLocalizations.Add(new BusStopLocalizationDto() {
-                            Id = busStop.Id,
-                            Name = busStop.Name,
-                            Lat = busStop.Lat,
-                            Lng = busStop.Lng
-                        });                    }
-                    
-                }
-                catch (Exception)
-                {
-                }
+                    Id = x.Id,
+                    Name = x.Name,
+                    Lat = x.Lat,
+                    Lng = x.Lng
+                }).ToList();
 
                 return busStopLocalizations;
             }
