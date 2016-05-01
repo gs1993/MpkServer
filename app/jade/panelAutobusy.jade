@@ -1,4 +1,4 @@
-.panelAutobusy
+.panelAutobusy(ng-init="initBuss()")
   .panelAutobusy__title Zarządzanie Autobusami
   .panelAutobusy__fastTravel
     span
@@ -7,6 +7,7 @@
         | Home
     span.-active
       a(href="#/bus") Zarządzanie Autobusami
+
   .panelAutobusy__wrapper
     .panelAutobusy__navigation(ng-hide="sendForm")
       a(href="#/bus/add").panelAutobusy__navigation__item Dodaj Autobus
