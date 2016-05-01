@@ -1161,7 +1161,9 @@
           else {
             przystanek.BusStopTypeName = "Zabudowany"
           }
-          $scope.busstopMarker.push({
+          if(przystanek.BusStopStatus==1)
+          {
+            $scope.busstopMarker.push({
               Id: przystanek.Id,
               Name: przystanek.Name,
               LocalizationString: przystanek.LocalizationString,
@@ -1169,7 +1171,11 @@
               GotKioskName: przystanek.GotKioskName,
               BusStopTypeName: przystanek.BusStopTypeName,
               Position: [przystanek.Lat, przystanek.Lng]
-          });
+            });
+          }
+
+
+
 
         });
       }).error(function (data, status, headers, config) {
@@ -1189,7 +1195,7 @@
       //$scope.showBussMarkers();
     };
 
-    
+
 
   });
 
