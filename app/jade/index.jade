@@ -27,9 +27,9 @@ html(lang="pl" ng-app="app")
             )
 
             info-window(id="myInfoWindow")
-              .row(ng-non-bindable)
+              .googleMaps__API__infoWindow(ng-non-bindable)
                 h4 {{selectedBusstop.Name}}
-                table.flex-table
+                table
                   tr
                     td Ulica
                     td {{selectedBusstop.LocalizationString}}
