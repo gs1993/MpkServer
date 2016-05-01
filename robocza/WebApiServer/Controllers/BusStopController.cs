@@ -46,6 +46,41 @@ namespace WebApiServer.Controllers
             }
         }
 
+        public BusStopLocalizationDto BusStopLocalization(int Id)
+        {
+            using (var db = _db.CreateContext())
+            {
+                var busStop = db.BusStops.FirstOrDefault(b => b.Id == Id);
+
+                var busStopLocalization = new BusStopLocalizationDto();
+                if (busStop != null)
+                {
+                    busStopLocalization.Id = busStop.Id;
+                    busStopLocalization.Name = busStop.Name;
+                    busStopLocalization.Lat = busStop.Lat;
+                    busStopLocalization.Lng = busStop.Lng;
+                }
+
+                return busStopLocalization;
+            }
+        }
+
+        public List<BusStopLocalizationDto> BusStopLocalizationList()
+        {
+            using (var db = _db.CreateContext())
+            {
+                var busStopLocalizations = db.BusStops.ToArray().Select(x => new BusStopLocalizationDto()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Lat = x.Lat,
+                    Lng = x.Lng
+                }).ToList();
+
+                return busStopLocalizations;
+            }
+        }
+
         public BusStopConfirmed DeleteBusStop(int Id)
         {
             using (var db = _db.CreateContext())
@@ -87,6 +122,7 @@ namespace WebApiServer.Controllers
                 return new BusStopConfirmed() { Ok = result };
             }
         }
+
         public BusStopConfirmed PutRestore(int Id)
         {
             using (var db = _db.CreateContext())

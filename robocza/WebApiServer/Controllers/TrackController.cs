@@ -30,17 +30,21 @@ namespace WebApiServer.Controllers
         {
             using (var db = _databaseService.CreateContext())
             {
-                return db.Tracks.ToList().Select(x => x.MapToDto()).ToList();
+                return db.Tracks.ToArray().Select(x => x.MapToDto()).ToList();
             }
         }
 
-        public TrackDto Get(int id)
+        public TrackDetailsDto Get(int id)
         {
             using (var db = _databaseService.CreateContext())
             {
                 var track = db.Tracks.FirstOrDefault(x => x.Id == id);
 
-                return track?.MapToDto();
+                var trackDto = track.MapToDetailsDto();
+                trackDto.BusStops =
+                    db.BusStops.Where(x => track.BusStopsIds.Contains(x.Id)).ToArray().Select(x => x.MapToDto()).ToList();
+
+                return trackDto;
             }
         }
 
