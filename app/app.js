@@ -932,6 +932,24 @@
   /* Trasy Controlery
    *==========================================================================*/
   app.controller('TrackController', function ($scope, $http) {
+
+    $http.get('http://localhost:50000/Track/GetList', {
+      //headers: {'Session': ''}
+    }).success(function (data, status, headers, config) {
+      $scope.tracks = data;
+      console.log("Pobrano liste tras.");
+      console.log(data);
+      angular.forEach($scope.tracks, function (track) {
+        if (track.IsArchive == false) {
+          track.StatusName = "Nieaktywny"
+        }
+        else {
+          track.StatusName = "Aktywny"
+        }
+      });
+    }).error(function (data, status, headers, config) {
+      console.log("Błąd pobrania tras.")
+    });
   });
 
   /* Użytkownicy Controlery

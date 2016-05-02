@@ -49,8 +49,8 @@
               th Zarządzanie
           tbody
             tr(ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '!0'} as filtrowanePrzystanku")
-              td {{przystanek.Name}}
-              td {{przystanek.LocalizationString}}
+              td.text-left {{przystanek.Name}}
+              td.text-left {{przystanek.LocalizationString}}
               td {{przystanek.BusStopTypeName}}
               td {{przystanek.GotMachineName}}
               td {{przystanek.GotKioskName}}
@@ -78,8 +78,8 @@
             th Zarządzanie
         tbody
           tr(ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '0'} as filtrowanePrzystankuNieaktywe")
-            td {{przystanek.Name}}
-            td {{przystanek.LocalizationString}}
+            td.text-left {{przystanek.Name}}
+            td.text-left {{przystanek.LocalizationString}}
             td {{przystanek.BusStopTypeName}}
             td {{przystanek.GotMachineName}}
             td {{przystanek.GotKioskName}}
