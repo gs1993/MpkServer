@@ -87,10 +87,8 @@
         </div>
       </div>
     </div>
-    <div class="panels">
-      <div ng-view>
-        <div ng-init="initMarkers()" class="row"></div>
-      </div>
+    <div ng-init="initMarkers()" class="panels">
+      <div ng-view></div>
       <div class="panels__close"><a href="/"><i class="fa fa-angle-double-left"></i></a></div>
       <footer>
         <p>Zespół Coffee <br> Like?<img src="img/coffee-cup.png" alt="Team"></p>
@@ -124,7 +122,7 @@
               </div>
             </info-window>
             <!--Markery przystanków-->
-            <marker ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" icon="/blocks/googleMaps/src/busstopMarker.png"></marker>
+            <marker ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" animation="DROP" icon="/blocks/googleMaps/src/busstopMarker.png"></marker>
           </ng-map>
         </div>
       </div>
