@@ -77,7 +77,7 @@
         templateUrl: 'panelWyswietlUser.html',
         controller: 'ShowUserController'
       }).otherwise({
-        redirectTo: '/home'
+        redirectTo: '/'
       });
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
@@ -1105,8 +1105,8 @@
   }]);
   /* Map Controler
    *==========================================================================*/
-  app.controller('MapController', function (NgMap,$scope,$http) {
-
+  app.controller('MapController', function (NgMap,$scope,$http, $timeout) {
+    var wrapper = $('.wrapper');
 
     $scope.lat = 53.77842200000001;
     $scope.lng = 20.48011930000007;
