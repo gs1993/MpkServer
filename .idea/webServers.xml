@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="d8b5aaa3-4b68-4558-b875-2babf670608b" name="192.168.0.105" url="http://192.168.0.105">
-        <fileTransfer host="192.168.0.105" port="21" username="mpk">
+      <webServer id="d8b5aaa3-4b68-4558-b875-2babf670608b" name="192.168.0.105" url="http://192.168.0.106">
+        <fileTransfer host="192.168.0.106" port="21" username="mpk">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

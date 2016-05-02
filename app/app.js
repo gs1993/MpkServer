@@ -61,7 +61,11 @@
       }).when('/busstop/restore/:id', {
         templateUrl: 'panelPrzystanki.html',
         controller: 'RestoreBusstopController'
-      }).//UZYTKOWNICY SCIEZKI
+      }).//Trasy SCIEZKI
+        when('/track', {
+          templateUrl: 'panelTrasy.html',
+          controller: 'TrackController'
+        }).//UZYTKOWNICY SCIEZKI
 
       when('/user', {
         templateUrl: 'panelUsers.html',
@@ -902,6 +906,10 @@
 
 
   }]);
+  /* Trasy Controlery
+   *==========================================================================*/
+  app.controller('TrackController', function ($scope, $http) {
+  });
 
   /* Użytkownicy Controlery
    *==========================================================================*/

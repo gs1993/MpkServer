@@ -44,7 +44,7 @@ html(lang="pl" ng-app="app")
                     td {{selectedBusstop.GotKioskName}}
 
             //Markery przystanków
-            marker(ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" animation="DROP" on-click="showBusstop(event, b)" icon="/img/favicon/bus-marker.png")
+            marker(ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" animation="DROP" on-click="showBusstop(event, b)" icon="blocks/googleMaps/src/busstopMarker.png")
 
 
 
