@@ -1137,6 +1137,8 @@
 
     $scope.showBusstopMarkers = function() {
 
+      $scope.busstopMarkers=[];
+
       $http.get('http://localhost:50000/Busstop/GetBusstopList/'
       ).success(function (data, status, headers, config) {
         $scope.busstop = data;
@@ -1163,7 +1165,7 @@
           }
           if(przystanek.BusStopStatus==1)
           {
-            $scope.busstopMarker.push({
+            $scope.busstopMarkers.push({
               Id: przystanek.Id,
               Name: przystanek.Name,
               LocalizationString: przystanek.LocalizationString,
@@ -1181,19 +1183,22 @@
       }).error(function (data, status, headers, config) {
         console.log("Błąd pobrania przystanków.")
       });
+
+      $scope.busstopMarker=$scope.busstopMarkers;
+
     };
 
     ////////////////////////////////////////////////////////////////////////
 
-    $scope.initBusstop=function () {
-      $scope.deleteMarkers();
+    $scope.initMarkers=function () {
+      //$scope.deleteMarkers();
       $scope.showBusstopMarkers();
     };
 
-    $scope.initBuss=function () {
-      $scope.deleteMarkers();
-      //$scope.showBussMarkers();
-    };
+    // $scope.initBuss=function () {
+    //   $scope.deleteMarkers();
+    //   //$scope.showBussMarkers();
+    // };
 
 
 

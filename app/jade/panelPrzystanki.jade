@@ -1,4 +1,4 @@
-.panelPrzystanki(ng-init="initBusstop()")
+.panelPrzystanki
   .panelPrzystanki__title Zarządzanie Przystankami
   .panelPrzystanki__fastTravel
     span
@@ -84,8 +84,8 @@
             td {{przystanek.GotMachineName}}
             td {{przystanek.GotKioskName}}
             td
-              a(href="").navigation
-                i.ionicons.ion-ios-location
+              //a(href="").navigation
+              //  i.ionicons.ion-ios-location
               a(href="/#/busstop/show/{{ przystanek.Id }}").navigation
                 i.ionicons.ion-settings
               a(href="/#/busstop/restore/{{ przystanek.Id }}").navigation

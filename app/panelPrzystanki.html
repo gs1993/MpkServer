@@ -1,5 +1,5 @@
 
-<div ng-init="initBusstop()" class="panelPrzystanki">
+<div class="panelPrzystanki">
   <div class="panelPrzystanki__title">Zarządzanie Przystankami</div>
   <div class="panelPrzystanki__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span class="-active"><a href="/#/busstop">Zarządzanie Przystankami</a></span></div>
   <div class="panelPrzystanki__wrapper">
@@ -88,7 +88,10 @@
             <td>{{przystanek.BusStopTypeName}}</td>
             <td>{{przystanek.GotMachineName}}</td>
             <td>{{przystanek.GotKioskName}}</td>
-            <td><a href="" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/restore/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a></td>
+            <td>
+              <!--a(href="").navigation-->
+              <!--  i.ionicons.ion-ios-location--><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/restore/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a>
+            </td>
           </tr>
           <tr ng-hide="filtrowanePrzystankuNieaktywe.length">
             <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
