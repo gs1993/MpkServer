@@ -5,9 +5,8 @@ html(lang="pl" ng-app="app")
 
     .headerholder
       include _header.jade
-    .panels
+    .panels(ng-init="initMarkers()")
       div(ng-view)
-        .row(ng-init="initMarkers()")
       .panels__close
         a(href="/")
           i.fa.fa-angle-double-left
@@ -46,7 +45,7 @@ html(lang="pl" ng-app="app")
                     td {{selectedBusstop.GotKioskName}}
 
             //Markery przystanków
-            marker(ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" icon="blocks/googleMaps/src/busstopMarker.png")
+            marker(ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" animation="DROP" icon="blocks/googleMaps/src/busstopMarker.png")
 
 
 

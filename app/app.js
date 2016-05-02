@@ -121,6 +121,8 @@
    $rootScope.globals = {HeaderToHide: true, UserIsLogin: false};
    $cookieStore.remove('globals');
    $http.defaults.headers.common.Authorization = 'Session';
+
+    $scope.deleteMarkers();
    });
   AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$timeout'];
   function AuthenticationService($http, $cookieStore, $rootScope, $timeout) {
@@ -192,6 +194,8 @@
             console.log("Sukces pobrania tokenu do ustawienia zmiennej globalnej");
             AuthenticationService.SetCredentials($scope.Email, $scope.Password);
             $location.path('/');
+
+            $scope.initMarkers();
           }
         });
       }
@@ -361,6 +365,9 @@
               $scope.CallbackServeraPositive = true;
               $scope.PostDataResponse = data;
               console.log($scope.PostDataResponse);
+
+              $scope.initMarkers();
+
             })
             .error(function (data, status, header, config) {
               $scope.ResponseDetails = "Data: " + data +
@@ -464,6 +471,8 @@
               $scope.CallbackServeraPositive = true;
               $scope.PostDataResponse = data;
               console.log($scope.PostDataResponse);
+
+              $scope.initMarkers();
             })
             .error(function (data, status, header, config) {
               $scope.ResponseDetails = "Data: " + data +
@@ -496,6 +505,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Autobus został aktywowany pomyślnie!"
+
+            $scope.initMarkers();
           })
           .error(function (status, header, config) {
             $scope.ResponseDetails =
@@ -526,6 +537,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Autobus został dezaktywowany pomyślnie!"
+
+            $scope.initMarkers();
           })
           .error(function (status, header, config) {
             $scope.ResponseDetails =
@@ -535,6 +548,8 @@
             console.log($scope.ResponseDetails);
             $scope.CallbackServera = true;
             $scope.CallbackServeraNegative = true;
+
+            $scope.initMarkers();
           });
 
       }, 2500);
@@ -651,6 +666,8 @@
               console.log($scope.PostDataResponse);
               $scope.CallbackServeraPositive = true;
               $scope.CallbackServera = true;
+
+              $scope.initMarkers();
             })
             .error(function (data, status, header, config) {
               $scope.ResponseDetails = "Data: " + data +
@@ -824,6 +841,8 @@
               $scope.CallbackServeraPositive = true;
               $scope.PostDataResponse = data;
               console.log($scope.PostDataResponse);
+
+              $scope.initMarkers();
             })
             .error(function (data, status, header, config) {
               $scope.ResponseDetails = "Data: " + data +
@@ -857,6 +876,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Przystanek został aktywowany pomyślnie!"
+
+            $scope.initMarkers();
           })
           .error(function (status, header, config) {
             $scope.ResponseDetails =
@@ -890,6 +911,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Przystanek został dezaktywowany pomyślnie!"
+
+            $scope.initMarkers();
           })
           .error(function (status, header, config) {
             $scope.ResponseDetails =
@@ -986,6 +1009,8 @@
               console.log($scope.PostDataResponse);
               $scope.CallbackServeraPositive = true;
               $scope.CallbackServera = true;
+
+              $scope.initMarkers();
             })
             .error(function (data, status, header, config) {
               $scope.ResponseDetails = "Data: " + data +
