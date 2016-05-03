@@ -14,27 +14,20 @@
     .panelAutobusy__filtrs
       .panelAutobusy__filtr
         label Numer Trasy
-        input(type="text" placeholder="Szukaj trasy...")
+        input(type="text" placeholder="Szukaj trasy..." ng-model="trasaFilter.Id")
     .panelAutobusy__subtitle Aktywne trasy w systemie
-    .panelAutobusy__table
+    .panelAutobusy__table(ng-controller="TrackController")
       .panelTrasy
-       a(href="#").panelTrasy__item
-         .panelTrasy__number 103
-        a(href="#").panelTrasy__item
-         .panelTrasy__number 104
-        a(href="#").panelTrasy__item
-         .panelTrasy__number 104
-        a(href="#").panelTrasy__item
-         .panelTrasy__number 104
-        a(href="#").panelTrasy__item
-         .panelTrasy__number 104
+        .panelTrasy__itemHolder(ng-repeat="trasa in tracks | filter:trasaFilter | filter:{ StatusValue: '1'} as filtrowanetrasy")
+          a(href="/#/Track/Get/{{ trasa.Id }}").panelTrasy__item
+           .panelTrasy__number {{trasa.Id}}
+      .-alert(ng-hide="filtrowanetrasy.length") Brak wpisów, proszę zmienić kryteria wyszukiwania.
 
     .panelAutobusy__subtitle Nieaktywne trasy
     .panelAutobusy__table
       .panelTrasy
-        a(href="#").panelTrasy__item
-          .panelTrasy__number 103
-        a(href="#").panelTrasy__item
-          .panelTrasy__number 104
-
+        .panelTrasy__itemHolder(ng-repeat="trasa in tracks | filter:trasaFilter | filter:{ StatusValue: '0'} as filtrowanetrasy")
+          a(href="/#/Track/Get/{{ trasa.Id }}").panelTrasy__item
+            .panelTrasy__number {{trasa.Id}}
+      .-alert(ng-hide="filtrowanetrasy.length") Brak wpisów, proszę zmienić kryteria wyszukiwania.
 

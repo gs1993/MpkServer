@@ -1,1 +1,29 @@
-<div class="panelLogin"><div class="panelLogin__wrapper"><div class="panelLogin__title">Panel Logowania</div><div class="panelLogin__alert -info hidden"><h3><i class="fa fa-warning"></i>Uwaga!</h3>Konto o takim adresie e-mail nie istnieje.</div><div class="panelLogin__alert -info hidden"><h3><i class="fa fa-warning"></i>Uwaga!</h3>Hasło przypisane do tego emailu, jest nie poprawne.</div><form name="form" ng-controller="LoginController" ng-submit="form.$valid &amp;&amp; Login()" novalidate="novalidate" class="panelLogin__form"><div class="panelLogin__formwrapper"><input placeholder="E-mail" ng-model="Email" required="required" name="Email" type="email"/><i class="fa fa-envelope-o"></i></div><div ng-show="form.$submitted || form.Email.$touched" class="row"><span ng-show="form.Email.$error.required" class="error-info">Proszę podać email.</span></div><div class="panelLogin__formwrapper"><input placeholder="Hasło" ng-model="Password" required="required" name="Password" type="password"/><i class="fa fa-lock"></i></div><div ng-show="form.$submitted || form.Password.$touched" class="row"><span ng-show="form.Password.$error.required" class="error-info">Proszę podać hasło.</span></div><div class="remembermebox"><input type="checkbox" checked="checked" id="check" class="check"/><label for="check"><span class="icon"></span> Zapamiętaj mnie</label></div><button type="submit">Zaloguj się</button><div class="panelLogin__navigation">Nie masz konta?<a href="/#/register" class="panelLogin__ToRegister">Zarejestruj się.</a></div><div class="panelLogin__navigation">Nie pamietasz hasła?<a href="/#/forgot" class="panelLogin__ToRegister">Odzyskaj hasło.</a></div></form></div></div>
+
+<div class="panelLogin">
+  <div class="panelLogin__wrapper">
+    <div class="panelLogin__title">Panel Logowania</div>
+    <div class="panelLogin__alert -info hidden">
+      <h3><i class="fa fa-warning"></i>Uwaga!</h3>Konto o takim adresie e-mail nie istnieje.
+    </div>
+    <div class="panelLogin__alert -info hidden">
+      <h3><i class="fa fa-warning"></i>Uwaga!</h3>Hasło przypisane do tego emailu, jest nie poprawne.
+    </div>
+    <form name="form" ng-controller="LoginController" ng-submit="form.$valid &amp;&amp; Login()" novalidate="novalidate" class="panelLogin__form">
+      <div class="panelLogin__formwrapper">
+        <input placeholder="E-mail" ng-model="Email" required="required" name="Email" type="email"/><i class="fa fa-envelope-o"></i>
+      </div>
+      <div ng-show="form.$submitted || form.Email.$touched" class="row"><span ng-show="form.Email.$error.required" class="error-info">Proszę podać email.</span></div>
+      <div class="panelLogin__formwrapper">
+        <input placeholder="Hasło" ng-model="Password" required="required" name="Password" type="password"/><i class="fa fa-lock"></i>
+      </div>
+      <div ng-show="form.$submitted || form.Password.$touched" class="row"><span ng-show="form.Password.$error.required" class="error-info">Proszę podać hasło.</span></div>
+      <div class="remembermebox">
+        <input type="checkbox" checked="checked" id="check" class="check"/>
+        <label for="check"><span class="icon"></span> Zapamiętaj mnie</label>
+      </div>
+      <button type="submit">Zaloguj się</button>
+      <div class="panelLogin__navigation">Nie masz konta?<a href="/#/register" class="panelLogin__ToRegister">Zarejestruj się.</a></div>
+      <div class="panelLogin__navigation">Nie pamietasz hasła?<a href="/#/forgot" class="panelLogin__ToRegister">Odzyskaj hasło.</a></div>
+    </form>
+  </div>
+</div>

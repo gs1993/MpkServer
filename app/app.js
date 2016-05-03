@@ -941,10 +941,12 @@
       console.log(data);
       angular.forEach($scope.tracks, function (track) {
         if (track.IsArchive == false) {
-          track.StatusName = "Nieaktywny"
+          track.StatusName = "Nieaktywny";
+          track.StatusValue = 0;
         }
         else {
-          track.StatusName = "Aktywny"
+          track.StatusName = "Aktywny";
+          track.StatusValue = 1;
         }
       });
     }).error(function (data, status, headers, config) {

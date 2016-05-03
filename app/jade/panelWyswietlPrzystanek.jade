@@ -72,7 +72,7 @@
               option(value=0) Nie
               option(value=1) Tak
       .panelWyswietlPrzystanek__navigation(ng-hide="sendForm")
-        button(ng-click="updateBusstop()").green.panelWyswietlPrzystanek__navigation__item.green Aktualizuj Przystanek
+        button(ng-click="updateBusstop()").green.panelWyswietlPrzystanek__navigation__item.green Aktualizuj
         a(href="/#/busstop/delete/{{ PrzystanekID }}" ng-hide="item.BusStopStatus == 0").panelWyswietlPrzystanek__navigation__item.red Dezaktywuj
         a(href="/#/busstop/restore/{{ PrzystanekID }}" ng-show="item.BusStopStatus == 0").panelWyswietlPrzystanek__navigation__item.greenDark Aktywuj
         a(href="/#/busstop").panelWyswietlPrzystanek__navigation__item.gray.-abort Anuluj
