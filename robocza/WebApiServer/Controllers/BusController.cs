@@ -47,7 +47,7 @@ namespace WebApiServer.Controllers
             }
         }
 
-        public BusConfirmed PutBusStop(BusStop busToUpdate)
+        public BusConfirmed PutBus(Bus busToUpdate)
         {
             using (var db = _db.CreateContext())
             {
