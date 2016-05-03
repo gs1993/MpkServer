@@ -944,7 +944,7 @@
       console.log("Pobrano liste tras.");
       console.log(data);
       angular.forEach($scope.tracks, function (track) {
-        if (track.IsArchive == false) {
+        if (track.IsArchive == true) {
           track.StatusName = "Nieaktywny";
           track.StatusValue = 0;
         }
@@ -958,6 +958,7 @@
     });
   });
   app.controller('AddTrackController', function ($scope, $http, $timeout) {
+    $scope.DodanoTrase = false;
     $http.get('http://localhost:50000/Busstop/GetBusstopList/', {
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
@@ -1011,8 +1012,15 @@
       }
     }
     $scope.zapiszTrase = function (){
+      console.log("Zapisywanie przystanków");
+      $scope.tablicaWybranychPrzystankow = [];
+      for(var i=0; i< $scope.przystankiWybrane.length; i++){
+        $scope.tablicaWybranychPrzystankow.push($scope.przystankiWybrane[i].Id)
+      }
       var data = JSON.stringify({
-        BusStops: $scope.przystankiWybrane
+        Id: 1,
+        BusStops: $scope.tablicaWybranychPrzystankow,
+        "IsArchive": true
       });
       var config = {
         //headers: {'Session': ''}
@@ -1023,6 +1031,7 @@
           $scope.CallbackServeraPositive = true;
           $scope.PostDataResponse = data;
           console.log($scope.PostDataResponse);
+          $scope.DodanoTrase = true;
 
         })
         .error(function (data, status, header, config) {
