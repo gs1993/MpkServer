@@ -65,7 +65,11 @@
         when('/track', {
           templateUrl: 'panelTrasy.html',
           controller: 'TrackController'
-        }).//UZYTKOWNICY SCIEZKI
+        }).
+      when('/track/add', {
+        templateUrl: 'panelDodajTrase.html',
+        controller: 'AddTrackController'
+      }).//UZYTKOWNICY SCIEZKI
 
       when('/user', {
         templateUrl: 'panelUsers.html',
@@ -953,7 +957,139 @@
       console.log("Błąd pobrania tras.")
     });
   });
+  app.controller('AddTrackController', function ($scope, $http, $timeout) {
+    $http.get('http://localhost:50000/Busstop/GetBusstopList/', {
+      //headers: {'Session': ''}
+    }).success(function (data, status, headers, config) {
+      $scope.przystanki = data;
+      console.log($scope.przystanki);
+      console.log("Pobrano liste przystanków.");
+      $scope.przystankiDoTras = $scope.przystanki;
+      console.log("Clonowanie przystankow");
+      console.log($scope.przystankiDoTras);
+      angular.forEach($scope.przystanki, function (przystanek) {
+        if (przystanek.GotMachine == true) {
+          przystanek.GotMachineName = "Tak";
+          przystanek.GotMachineValue = 1
+        }
+        else {
+          przystanek.GotMachineName = "Nie";
+          przystanek.GotMachineValue = 0
+        }
+        if (przystanek.GotKiosk == true) {
+          przystanek.GotKioskName = "Tak";
+          przystanek.GotKioskValue = 1
+        }
+        else {
+          przystanek.GotKioskName = "Nie";
+          przystanek.GotKioskValue = 0
+        }
 
+        if (przystanek.BusStopType == 0) {
+          przystanek.BusStopTypeName = "Normalny"
+        }
+        else {
+          przystanek.BusStopTypeName = "Zabudowany"
+        }
+        if (przystanek.BusStopStatus == 0) {
+          przystanek.BusStopStatusName = "Nieaktywny"
+        }
+        else {
+          przystanek.BusStopStatusName = "Aktywny"
+        }
+      });
+    }).error(function (data, status, headers, config) {
+      console.log("Błąd pobrania przystanków.")
+    });
+    $scope.count = 0;
+    $scope.przystankiWybrane = [];
+    $scope.saPrzystanki = false;
+    $scope.usunieciePrzystanku = function (index){
+      $scope.przystankiWybrane.splice(-1,1);
+      if($scope.przystankiWybrane.length <= 0){
+        $scope.saPrzystanki = false;
+      }
+    }
+    $scope.zapiszTrase = function (){
+      var data = JSON.stringify({
+        BusStops: $scope.przystankiWybrane
+      });
+      var config = {
+        //headers: {'Session': ''}
+      };
+      $http.post('http://localhost:50000/Track/Create', data, config)
+        .success(function (data, status, headers, config) {
+          $scope.CallbackServera = true;
+          $scope.CallbackServeraPositive = true;
+          $scope.PostDataResponse = data;
+          console.log($scope.PostDataResponse);
+
+        })
+        .error(function (data, status, header, config) {
+          $scope.ResponseDetails = "Data: " + data +
+            "<hr />status: " + status +
+            "<hr />headers: " + header +
+            "<hr />config: " + config;
+          console.log($scope.ResponseDetails);
+          $scope.CallbackServera = true;
+          $scope.CallbackServeraNegative = true;
+        });
+    }
+
+    $scope.wybraniePrzystanku = function (index){
+      $http.get('http://localhost:50000/Busstop/GetBusstop/' + index, {
+          //headers: {'Session': ''}
+        }
+      ).success(function (data, status, headers, config) {
+        $scope.autobus = data;
+        console.log("Pobrano przystanek.");
+        console.log($scope.autobus);
+        var przystanekDodany = false;
+        for (var i=0; i<$scope.przystankiWybrane.length; i++) {
+          if ($scope.autobus.Id == $scope.przystankiWybrane[i].Id){
+           // var przystanekDodany = true;
+          }
+        }
+        if(przystanekDodany == false){
+          $scope.count++;
+          $scope.przystankiWybrane.push($scope.autobus);
+          console.log($scope.przystankiDoTras);
+          $scope.saPrzystanki = true;
+        }
+        if ($scope.autobus.GotMachine == true) {
+          $scope.autobus.GotMachineName = "Tak";
+          $scope.autobus.GotMachineValue = 1
+        }
+        else {
+          $scope.autobus.GotMachineName = "Nie";
+          $scope.autobus.GotMachineValue = 0
+        }
+        if ($scope.autobus.GotKiosk == true) {
+          $scope.autobus.GotKioskName = "Tak";
+          $scope.autobus.GotKioskValue = 1
+        }
+        else {
+          $scope.autobus.GotKioskName = "Nie";
+          $scope.autobus.GotKioskValue = 0
+        }
+
+        if ($scope.autobus.BusStopType == 0) {
+          $scope.autobus.BusStopTypeName = "Normalny"
+        }
+        else {
+          $scope.autobus.BusStopTypeName = "Zabudowany"
+        }
+        if ($scope.autobus.BusStopStatus == 0) {
+          $scope.autobus.BusStopStatusName = "Nieaktywny"
+        }
+        else {
+          $scope.autobus.BusStopStatusName = "Aktywny"
+        }
+      }).error(function (data, status, headers, config) {
+        console.log("Błąd pobrania przystanku.")
+      });
+    }
+  });
   /* Użytkownicy Controlery
    *==========================================================================*/
   app.controller('UserController', function ($scope, $http) {

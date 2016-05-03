@@ -13943,13 +13943,12 @@ a.tabnav-extra:hover {
 }
 
 .panelTrasy__itemHolder {
-  width: 25%;
   padding: 4px;
-  min-height: 100px;
 }
 
 .panelTrasy__item {
-  min-height: 100px;
+  height: 50px;
+  width: 50px;
   border-radius: 7px;
   border: none;
   background-color: #3c8dbc;
@@ -13978,4 +13977,79 @@ a.tabnav-extra:hover {
 
 .panelTrasy__number {
   margin: 0 auto;
+}
+
+.panelDodajTrase__columns {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.panelDodajTrase__column {
+  width: 50%;
+  padding: 5px;
+}
+
+.panelDodajTrase__title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.panelDodajTrase__przystanek {
+  margin: 3px 0;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #00b3ee;
+  color: white;
+  cursor: default;
+}
+
+.panelDodajTrase__przystanek.-mainBusstop {
+  cursor: pointer;
+}
+
+.panelDodajTrase__przystanek.-mainBusstop:hover {
+  background-color: #00a65a;
+}
+
+.panelDodajTrase__button {
+  width: 100%;
+  display: block;
+  background-color: darkred;
+  border-radius: 4px;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px 5px;
+  max-width: 150px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.panelDodajTrase__button:hover {
+  background-color: red;
+}
+
+.panelDodajTrase__buttonToSave {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px 5px;
+  max-width: 150px;
+  margin: 0 auto;
+  background: #00a65a;
+  cursor: pointer;
+}
+
+.panelDodajTrase__buttonToSave:hover {
+  background: #008d4c;
 }

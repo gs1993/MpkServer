@@ -1,0 +1,33 @@
+
+<div class="panelDodajAutobus">
+  <div class="panelDodajAutobus__title">Dodaj Trase</div>
+  <div class="panelDodajAutobus__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/track">Zarządzanie Trasami</a></span><span class="-active"><a href="/#/track/add">Dodaj Trase</a></span></div>
+  <div class="panelDodajAutobus__wrapper">
+    <div class="panelDodajAutobus__subtitle">Dodawanie trasy do systemu</div>
+    <div class="panelDodajAutobus__text">Tutaj możesz dodać trase do systemu. Uzupełnij wszystkie poniższe pola.</div>
+    <div ng-controller="AddTrackController" class="panelDodajTrase">
+      <div class="panelDodajTrase__columns">
+        <div class="panelDodajTrase__column">
+          <div class="panelDodajTrase__title">Dostępne przystanki</div>
+          <div class="panelDodajTrase__content">
+            <div ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '!0'} as filtrowanePrzystanku" class="panelDodajTrase__przystanekHolder">
+              <div ng-click="wybraniePrzystanku(przystanek.Id)" data="{{przystanek.Id}}" class="panelDodajTrase__przystanek -mainBusstop">
+                <div class="panelDodajTrase__przystanekNazwa">{{przystanek.Name}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panelDodajTrase__column">
+          <div class="panelDodajTrase__title">Wygenerowana trasa</div>
+          <div class="panelDodajTrase__content">
+            <div ng-repeat="przystanek in przystankiWybrane" class="panelDodajTrase__przystanek">
+              <div class="panelDodajTrase__przystanekNazwa">{{$index + 1}}. {{przystanek.Name}}</div>
+            </div>
+            <div ng-click="usunieciePrzystanku(przystanek.Id)" data="{{przystanek.Id}}" ng-show="saPrzystanki" class="panelDodajTrase__button">Usuń przystanek</div>
+          </div>
+        </div>
+      </div>
+      <div ng-click="zapiszTrase()" class="panelDodajTrase__buttonToSave">Zapisz trase</div>
+    </div>
+  </div>
+</div>

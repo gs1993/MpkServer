@@ -1,0 +1,30 @@
+
+<div class="panelAutobusy">
+  <div class="panelAutobusy__title">Zarządzanie Trasami</div>
+  <div class="panelAutobusy__fastTravel"><span><a href="#/"><i class="fa fa-home"></i>Home</a></span><span class="-active"><a href="#/track">Zarządzanie Trasami</a></span></div>
+  <div class="panelAutobusy__wrapper">
+    <div class="panelAutobusy__navigation"><a href="#/track/add" class="panelAutobusy__navigation__item">Dodaj trase</a></div>
+    <div class="panelAutobusy__filtrs">
+      <div class="panelAutobusy__filtr">
+        <label>Numer Trasy</label>
+        <input type="text" placeholder="Szukaj trasy..." ng-model="trasaFilter.Id"/>
+      </div>
+    </div>
+    <div class="panelAutobusy__subtitle">Aktywne trasy w systemie</div>
+    <div ng-controller="TrackController" class="panelAutobusy__table">
+      <div class="panelTrasy">
+        <div ng-repeat="trasa in tracks | filter:trasaFilter | filter:{ StatusValue: '1'} as filtrowanetrasy" class="panelTrasy__itemHolder"><a href="/#/Track/Get/{{ trasa.Id }}" class="panelTrasy__item">
+            <div class="panelTrasy__number">{{trasa.Id}}</div></a></div>
+      </div>
+      <div ng-hide="filtrowanetrasy.length" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</div>
+    </div>
+    <div class="panelAutobusy__subtitle">Nieaktywne trasy</div>
+    <div class="panelAutobusy__table">
+      <div class="panelTrasy">
+        <div ng-repeat="trasa in tracks | filter:trasaFilter | filter:{ StatusValue: '0'} as filtrowanetrasy" class="panelTrasy__itemHolder"><a href="/#/Track/Get/{{ trasa.Id }}" class="panelTrasy__item">
+            <div class="panelTrasy__number">{{trasa.Id}}</div></a></div>
+      </div>
+      <div ng-hide="filtrowanetrasy.length" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</div>
+    </div>
+  </div>
+</div>
