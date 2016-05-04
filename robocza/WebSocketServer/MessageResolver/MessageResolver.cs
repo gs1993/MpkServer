@@ -59,7 +59,7 @@ namespace WebSocketServer.MessageResolver
                 var handler = _container.GetInstance(getHandlerType(messageDto.Action));
                 var methodInfo = handlerType.GetMethod("Handle", new[] {genericTypes.First(),typeof(IConnection)});
                 var dto = JsonConvert.DeserializeObject(messageDto.Data, genericTypes[0]);
-                var handlerResult = await (dynamic)methodInfo.Invoke(handler, new[] {dto, connection });
+                var handlerResult = await (dynamic) methodInfo.Invoke(handler, new[] {dto, connection});
 
                 result.State=ResultState.Ok;
 
