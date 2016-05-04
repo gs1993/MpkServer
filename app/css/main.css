@@ -3162,6 +3162,10 @@ footer img {
   border-radius: 6px;
 }
 
+.text-left {
+  text-align: left !important;
+}
+
 /* WEBSITE FONTS/STYLIST
  *========================================================================== */
 /* WEBSITE TYPEBASE
@@ -9583,8 +9587,12 @@ a.tabnav-extra:hover {
   height: 100%;
 }
 
-.googleMaps ng-map {
+.googleMaps__API ng-map {
   height: 100% !important;
+}
+
+.googleMaps__API__infoWindow table tr td:first-child {
+  padding-right: 15px;
 }
 
 .bar {
@@ -11420,6 +11428,7 @@ a.tabnav-extra:hover {
 .panelAutobusy__table tr {
   min-height: 30px;
   text-align: center;
+  border-bottom: 1px solid white;
 }
 
 .panelAutobusy__table th {
@@ -11444,7 +11453,7 @@ a.tabnav-extra:hover {
 }
 
 .panelAutobusy__table .navigation i {
-  font-size: 1.2em;
+  font-size: 1.4em;
   color: #444;
   cursor: pointer;
 }
@@ -12052,6 +12061,7 @@ a.tabnav-extra:hover {
 .panelPrzystanki__table tr {
   min-height: 30px;
   text-align: center;
+  border-bottom: 1px solid white;
 }
 
 .panelPrzystanki__table th {
@@ -12073,10 +12083,11 @@ a.tabnav-extra:hover {
 .panelPrzystanki__table .navigation {
   margin: 3px 5px;
   cursor: pointer;
+  display: inline-block;
 }
 
 .panelPrzystanki__table .navigation i {
-  font-size: 1.2em;
+  font-size: 1.4em;
   color: #444;
   cursor: pointer;
 }
@@ -13917,4 +13928,135 @@ a.tabnav-extra:hover {
   padding: 8px;
   background-color: transparent;
   box-shadow: none;
+}
+
+.panelTrasy {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.panelTrasy__itemHolder {
+  padding: 4px;
+}
+
+.panelTrasy__item {
+  height: 50px;
+  width: 50px;
+  border-radius: 7px;
+  border: none;
+  background-color: #3c8dbc;
+  text-align: center;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-align-content: center;
+      -ms-flex-line-pack: center;
+          align-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none !important;
+}
+
+.panelTrasy__item:hover {
+  background-color: #367ba5;
+}
+
+.panelTrasy__number {
+  margin: 0 auto;
+}
+
+.panelDodajTrase__columns {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.panelDodajTrase__column {
+  width: 50%;
+  padding: 5px;
+}
+
+.panelDodajTrase__title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.panelDodajTrase__przystanek {
+  margin: 3px 0;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #00b3ee;
+  color: white;
+  cursor: default;
+}
+
+.panelDodajTrase__przystanek.-mainBusstop {
+  cursor: pointer;
+}
+
+.panelDodajTrase__przystanek.-mainBusstop:hover {
+  background-color: #00a65a;
+}
+
+.panelDodajTrase__button {
+  width: 100%;
+  display: block;
+  background-color: darkred;
+  border-radius: 4px;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px 5px;
+  max-width: 150px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.panelDodajTrase__button:hover {
+  background-color: red;
+}
+
+.panelDodajTrase__buttonToSave {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px 5px;
+  max-width: 150px;
+  margin: 0 auto;
+  background: #00a65a;
+  cursor: pointer;
+}
+
+.panelDodajTrase__buttonToSave:hover {
+  background: #008d4c;
+}
+
+.panelDodajTrase__alert {
+  text-align: center;
+  padding: 5px 20px 20px;
+  font-weight: 400;
+  color: #00b3ee;
 }

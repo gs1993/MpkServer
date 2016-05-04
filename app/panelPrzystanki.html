@@ -15,7 +15,7 @@
         <label>Ulica</label>
         <input placeholder="Ulica..." ng-model="przystanekFilter.LocalizationString"/>
       </div>
-      <div class="panelAutobusy__filtr">
+      <div class="panelPrzystanki__filtr">
         <label>Typ przystanku</label>
         <select ng-model="przystanekFilter.BusStopType">
           <option value="">Typ</option>
@@ -53,12 +53,12 @@
           </thead>
           <tbody>
             <tr ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '!0'} as filtrowanePrzystanku">
-              <td>{{przystanek.Name}}</td>
-              <td>{{przystanek.LocalizationString}}</td>
+              <td class="text-left">{{przystanek.Name}}</td>
+              <td class="text-left">{{przystanek.LocalizationString}}</td>
               <td>{{przystanek.BusStopTypeName}}</td>
               <td>{{przystanek.GotMachineName}}</td>
               <td>{{przystanek.GotKioskName}}</td>
-              <td ng-controller="MapController"><a href="" ng-click="showBusstopOnMap(przystanek.Id)" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/delete/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
+              <td><a href="" ng-click="setPostitionBusstop(przystanek.Id)" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/delete/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
             </tr>
             <tr ng-hide="filtrowanePrzystanku.length">
               <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
@@ -83,12 +83,15 @@
         </thead>
         <tbody>
           <tr ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '0'} as filtrowanePrzystankuNieaktywe">
-            <td>{{przystanek.Name}}</td>
-            <td>{{przystanek.LocalizationString}}</td>
+            <td class="text-left">{{przystanek.Name}}</td>
+            <td class="text-left">{{przystanek.LocalizationString}}</td>
             <td>{{przystanek.BusStopTypeName}}</td>
             <td>{{przystanek.GotMachineName}}</td>
             <td>{{przystanek.GotKioskName}}</td>
-            <td ng-controller="MapController"><a href="" ng-click="showBusstopOnMap(przystanek.Id)" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/restore/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a></td>
+            <td>
+              <!--a(href="").navigation-->
+              <!--  i.ionicons.ion-ios-location--><a href="/#/busstop/show/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="/#/busstop/restore/{{ przystanek.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a>
+            </td>
           </tr>
           <tr ng-hide="filtrowanePrzystankuNieaktywe.length">
             <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>

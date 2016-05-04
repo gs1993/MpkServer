@@ -54,7 +54,7 @@
         </div>
       </div>
       <div ng-hide="sendForm" class="panelWyswietlAutobus__navigation">
-        <button ng-click="updateBus()" class="green panelWyswietlAutobus__navigation__item green">Aktualizuj Autobus</button><a href="/#/bus/delete/{{ AutobusID }}" ng-hide="item.BusStatus == 0" class="panelWyswietlAutobus__navigation__item red">Dezaktywuj</a><a href="/#/bus/restore/{{ AutobusID }}" ng-show="item.BusStatus == 0" class="panelWyswietlAutobus__navigation__item greenDark">Aktywuj</a><a href="/#/bus" class="panelWyswietlAutobus__navigation__item gray -abort">Anuluj</a>
+        <button ng-click="updateBus()" class="green panelWyswietlAutobus__navigation__item green">Aktualizuj</button><a href="/#/bus/delete/{{ AutobusID }}" ng-hide="item.BusStatus == 0" class="panelWyswietlAutobus__navigation__item red">Dezaktywuj</a><a href="/#/bus/restore/{{ AutobusID }}" ng-show="item.BusStatus == 0" class="panelWyswietlAutobus__navigation__item greenDark">Aktywuj</a><a href="/#/bus" class="panelWyswietlAutobus__navigation__item gray -abort">Anuluj</a>
       </div>
       <div ng-show="sendForm" class="panelDodajAutobus__dataLoader">
         <div ng-hide="CallbackServera" class="panelDodajAutobus__dataLoader__svg">

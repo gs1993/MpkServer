@@ -19,7 +19,7 @@
       .panelPrzystanki__filtr
         label Ulica
         input(placeholder="Ulica..." ng-model="przystanekFilter.LocalizationString")
-      .panelAutobusy__filtr
+      .panelPrzystanki__filtr
         label Typ przystanku
         select(ng-model="przystanekFilter.BusStopType")
           option(value="") Typ
@@ -49,13 +49,13 @@
               th Zarządzanie
           tbody
             tr(ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '!0'} as filtrowanePrzystanku")
-              td {{przystanek.Name}}
-              td {{przystanek.LocalizationString}}
+              td.text-left {{przystanek.Name}}
+              td.text-left {{przystanek.LocalizationString}}
               td {{przystanek.BusStopTypeName}}
               td {{przystanek.GotMachineName}}
               td {{przystanek.GotKioskName}}
-              td(ng-controller="MapController")
-                a(href="" ng-click="showBusstopOnMap(przystanek.Id)").navigation
+              td
+                a(href="" ng-click="setPostitionBusstop(przystanek.Id)").navigation
                   i.ionicons.ion-ios-location
                 a(href="/#/busstop/show/{{ przystanek.Id }}").navigation
                   i.ionicons.ion-settings
@@ -63,6 +63,7 @@
                   i.ionicons.ion-android-cancel.-red
             tr(ng-hide="filtrowanePrzystanku.length")
               td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
+
     .panelPrzystanki__subtitle(ng-hide="sendForm") Nieaktywne przystanki
     .panelPrzystanki__text(ng-hide="sendForm") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelPrzystanki__table(ng-hide="sendForm")
@@ -77,14 +78,14 @@
             th Zarządzanie
         tbody
           tr(ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '0'} as filtrowanePrzystankuNieaktywe")
-            td {{przystanek.Name}}
-            td {{przystanek.LocalizationString}}
+            td.text-left {{przystanek.Name}}
+            td.text-left {{przystanek.LocalizationString}}
             td {{przystanek.BusStopTypeName}}
             td {{przystanek.GotMachineName}}
             td {{przystanek.GotKioskName}}
-            td(ng-controller="MapController")
-              a(href="" ng-click="showBusstopOnMap(przystanek.Id)").navigation
-                i.ionicons.ion-ios-location
+            td
+              //a(href="").navigation
+              //  i.ionicons.ion-ios-location
               a(href="/#/busstop/show/{{ przystanek.Id }}").navigation
                 i.ionicons.ion-settings
               a(href="/#/busstop/restore/{{ przystanek.Id }}").navigation

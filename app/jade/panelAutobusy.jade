@@ -7,6 +7,7 @@
         | Home
     span.-active
       a(href="#/bus") Zarządzanie Autobusami
+
   .panelAutobusy__wrapper
     .panelAutobusy__navigation(ng-hide="sendForm")
       a(href="#/bus/add").panelAutobusy__navigation__item Dodaj Autobus
@@ -82,8 +83,8 @@
             td {{ autobus.BusStatusName }}
             td {{ autobus.GotMachineName }}
             td
-              a(href="#/").navigation
-                i.ionicons.ion-ios-location
+              //a(href="#/").navigation
+              //  i.ionicons.ion-ios-location
               a(href="#/bus/show/{{ autobus.Id }}").navigation
                 i.ionicons.ion-settings
               a(href="#/bus/restore/{{ autobus.Id }}").navigation

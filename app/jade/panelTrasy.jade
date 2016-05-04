@@ -1,0 +1,33 @@
+.panelAutobusy
+  .panelAutobusy__title Zarządzanie Trasami
+  .panelAutobusy__fastTravel
+    span
+      a(href="#/")
+        i.fa.fa-home
+        | Home
+    span.-active
+      a(href="#/track") Zarządzanie Trasami
+
+  .panelAutobusy__wrapper
+    .panelAutobusy__navigation
+      a(href="#/track/add").panelAutobusy__navigation__item Dodaj trase
+    .panelAutobusy__filtrs
+      .panelAutobusy__filtr
+        label Numer Trasy
+        input(type="text" placeholder="Szukaj trasy..." ng-model="trasaFilter.Id")
+    .panelAutobusy__subtitle Aktywne trasy w systemie
+    .panelAutobusy__table(ng-controller="TrackController")
+      .panelTrasy
+        .panelTrasy__itemHolder(ng-repeat="trasa in tracks | filter:trasaFilter | filter:{ StatusValue: '1'} as filtrowanetrasy")
+          a(href="/#/Track/Get/{{ trasa.Id }}").panelTrasy__item
+           .panelTrasy__number {{trasa.Id}}
+      .-alert(ng-hide="filtrowanetrasy.length") Brak wpisów, proszę zmienić kryteria wyszukiwania.
+
+    .panelAutobusy__subtitle Nieaktywne trasy
+    .panelAutobusy__table
+      .panelTrasy
+        .panelTrasy__itemHolder(ng-repeat="trasa in tracks | filter:trasaFilter | filter:{ StatusValue: '0'} as filtrowanetrasy")
+          a(href="/#/Track/Get/{{ trasa.Id }}").panelTrasy__item
+            .panelTrasy__number {{trasa.Id}}
+      .-alert(ng-hide="filtrowanetrasy.length") Brak wpisów, proszę zmienić kryteria wyszukiwania.
+

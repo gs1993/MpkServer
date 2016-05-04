@@ -61,6 +61,14 @@
       }).when('/busstop/restore/:id', {
         templateUrl: 'panelPrzystanki.html',
         controller: 'RestoreBusstopController'
+      }).//Trasy SCIEZKI
+        when('/track', {
+          templateUrl: 'panelTrasy.html',
+          controller: 'TrackController'
+        }).
+      when('/track/add', {
+        templateUrl: 'panelDodajTrase.html',
+        controller: 'AddTrackController'
       }).//UZYTKOWNICY SCIEZKI
 
       when('/user', {
@@ -73,7 +81,7 @@
         templateUrl: 'panelWyswietlUser.html',
         controller: 'ShowUserController'
       }).otherwise({
-        redirectTo: '/home'
+        redirectTo: '/'
       });
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
@@ -117,6 +125,8 @@
    $rootScope.globals = {HeaderToHide: true, UserIsLogin: false};
    $cookieStore.remove('globals');
    $http.defaults.headers.common.Authorization = 'Session';
+
+    $scope.deleteMarkers();
    });
   AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$timeout'];
   function AuthenticationService($http, $cookieStore, $rootScope, $timeout) {
@@ -188,6 +198,8 @@
             console.log("Sukces pobrania tokenu do ustawienia zmiennej globalnej");
             AuthenticationService.SetCredentials($scope.Email, $scope.Password);
             $location.path('/');
+
+            $scope.initMarkers();
           }
         });
       }
@@ -309,6 +321,9 @@
         else {
           autobus.BusStatusName = "W trasie"
         }
+
+
+
       });
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania Autobusów.")
@@ -354,6 +369,9 @@
               $scope.CallbackServeraPositive = true;
               $scope.PostDataResponse = data;
               console.log($scope.PostDataResponse);
+
+              $scope.initMarkers();
+
             })
             .error(function (data, status, header, config) {
               $scope.ResponseDetails = "Data: " + data +
@@ -457,6 +475,8 @@
               $scope.CallbackServeraPositive = true;
               $scope.PostDataResponse = data;
               console.log($scope.PostDataResponse);
+
+              $scope.initMarkers();
             })
             .error(function (data, status, header, config) {
               $scope.ResponseDetails = "Data: " + data +
@@ -489,6 +509,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Autobus został aktywowany pomyślnie!"
+
+            $scope.initMarkers();
           })
           .error(function (status, header, config) {
             $scope.ResponseDetails =
@@ -519,6 +541,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Autobus został dezaktywowany pomyślnie!"
+
+            $scope.initMarkers();
           })
           .error(function (status, header, config) {
             $scope.ResponseDetails =
@@ -528,6 +552,8 @@
             console.log($scope.ResponseDetails);
             $scope.CallbackServera = true;
             $scope.CallbackServeraNegative = true;
+
+            $scope.initMarkers();
           });
 
       }, 2500);
@@ -644,6 +670,8 @@
               console.log($scope.PostDataResponse);
               $scope.CallbackServeraPositive = true;
               $scope.CallbackServera = true;
+
+              $scope.initMarkers();
             })
             .error(function (data, status, header, config) {
               $scope.ResponseDetails = "Data: " + data +
@@ -817,6 +845,8 @@
               $scope.CallbackServeraPositive = true;
               $scope.PostDataResponse = data;
               console.log($scope.PostDataResponse);
+
+              $scope.initMarkers();
             })
             .error(function (data, status, header, config) {
               $scope.ResponseDetails = "Data: " + data +
@@ -850,6 +880,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Przystanek został aktywowany pomyślnie!"
+
+            $scope.initMarkers();
           })
           .error(function (status, header, config) {
             $scope.ResponseDetails =
@@ -883,6 +915,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Przystanek został dezaktywowany pomyślnie!"
+
+            $scope.initMarkers();
           })
           .error(function (status, header, config) {
             $scope.ResponseDetails =
@@ -899,7 +933,172 @@
 
 
   }]);
+  /* Trasy Controlery
+   *==========================================================================*/
+  app.controller('TrackController', function ($scope, $http) {
 
+    $http.get('http://localhost:50000/Track/GetList', {
+      //headers: {'Session': ''}
+    }).success(function (data, status, headers, config) {
+      $scope.tracks = data;
+      console.log("Pobrano liste tras.");
+      console.log(data);
+      angular.forEach($scope.tracks, function (track) {
+        if (track.IsArchive == true) {
+          track.StatusName = "Nieaktywny";
+          track.StatusValue = 0;
+        }
+        else {
+          track.StatusName = "Aktywny";
+          track.StatusValue = 1;
+        }
+      });
+    }).error(function (data, status, headers, config) {
+      console.log("Błąd pobrania tras.")
+    });
+  });
+  app.controller('AddTrackController', function ($scope, $http, $timeout) {
+    $scope.DodanoTrase = false;
+    $http.get('http://localhost:50000/Busstop/GetBusstopList/', {
+      //headers: {'Session': ''}
+    }).success(function (data, status, headers, config) {
+      $scope.przystanki = data;
+      console.log($scope.przystanki);
+      console.log("Pobrano liste przystanków.");
+      $scope.przystankiDoTras = $scope.przystanki;
+      console.log("Clonowanie przystankow");
+      console.log($scope.przystankiDoTras);
+      angular.forEach($scope.przystanki, function (przystanek) {
+        if (przystanek.GotMachine == true) {
+          przystanek.GotMachineName = "Tak";
+          przystanek.GotMachineValue = 1
+        }
+        else {
+          przystanek.GotMachineName = "Nie";
+          przystanek.GotMachineValue = 0
+        }
+        if (przystanek.GotKiosk == true) {
+          przystanek.GotKioskName = "Tak";
+          przystanek.GotKioskValue = 1
+        }
+        else {
+          przystanek.GotKioskName = "Nie";
+          przystanek.GotKioskValue = 0
+        }
+
+        if (przystanek.BusStopType == 0) {
+          przystanek.BusStopTypeName = "Normalny"
+        }
+        else {
+          przystanek.BusStopTypeName = "Zabudowany"
+        }
+        if (przystanek.BusStopStatus == 0) {
+          przystanek.BusStopStatusName = "Nieaktywny"
+        }
+        else {
+          przystanek.BusStopStatusName = "Aktywny"
+        }
+      });
+    }).error(function (data, status, headers, config) {
+      console.log("Błąd pobrania przystanków.")
+    });
+    $scope.count = 0;
+    $scope.przystankiWybrane = [];
+    $scope.saPrzystanki = false;
+    $scope.usunieciePrzystanku = function (index){
+      $scope.przystankiWybrane.splice(-1,1);
+      if($scope.przystankiWybrane.length <= 0){
+        $scope.saPrzystanki = false;
+      }
+    }
+    $scope.zapiszTrase = function (){
+      console.log("Zapisywanie przystanków");
+      $scope.tablicaWybranychPrzystankow = [];
+      for(var i=0; i< $scope.przystankiWybrane.length; i++){
+        $scope.tablicaWybranychPrzystankow.push($scope.przystankiWybrane[i].Id)
+      }
+      var data = JSON.stringify({
+        Id: 1,
+        BusStops: $scope.tablicaWybranychPrzystankow,
+        "IsArchive": true
+      });
+      var config = {
+        //headers: {'Session': ''}
+      };
+      $http.post('http://localhost:50000/Track/Create', data, config)
+        .success(function (data, status, headers, config) {
+          $scope.CallbackServera = true;
+          $scope.CallbackServeraPositive = true;
+          $scope.PostDataResponse = data;
+          console.log($scope.PostDataResponse);
+          $scope.DodanoTrase = true;
+
+        })
+        .error(function (data, status, header, config) {
+          $scope.ResponseDetails = "Data: " + data +
+            "<hr />status: " + status +
+            "<hr />headers: " + header +
+            "<hr />config: " + config;
+          console.log($scope.ResponseDetails);
+          $scope.CallbackServera = true;
+          $scope.CallbackServeraNegative = true;
+        });
+    }
+
+    $scope.wybraniePrzystanku = function (index){
+      $http.get('http://localhost:50000/Busstop/GetBusstop/' + index, {
+          //headers: {'Session': ''}
+        }
+      ).success(function (data, status, headers, config) {
+        $scope.autobus = data;
+        console.log("Pobrano przystanek.");
+        console.log($scope.autobus);
+        var przystanekDodany = false;
+        for (var i=0; i<$scope.przystankiWybrane.length; i++) {
+          if ($scope.autobus.Id == $scope.przystankiWybrane[i].Id){
+           // var przystanekDodany = true;
+          }
+        }
+        if(przystanekDodany == false){
+          $scope.count++;
+          $scope.przystankiWybrane.push($scope.autobus);
+          console.log($scope.przystankiDoTras);
+          $scope.saPrzystanki = true;
+        }
+        if ($scope.autobus.GotMachine == true) {
+          $scope.autobus.GotMachineName = "Tak";
+          $scope.autobus.GotMachineValue = 1
+        }
+        else {
+          $scope.autobus.GotMachineName = "Nie";
+          $scope.autobus.GotMachineValue = 0
+        }
+        if ($scope.autobus.GotKiosk == true) {
+          $scope.autobus.GotKioskName = "Tak";
+          $scope.autobus.GotKioskValue = 1
+        }
+        else {
+          $scope.autobus.GotKioskName = "Nie";
+          $scope.autobus.GotKioskValue = 0
+        }
+
+        if ($scope.autobus.BusStopType == 0) {
+          $scope.autobus.BusStopTypeName = "Normalny"
+        }
+        else {
+          $scope.autobus.BusStopTypeName = "Zabudowany"
+        }
+        if ($scope.autobus.BusStopStatus == 0) {
+          $scope.autobus.BusStopStatusName = "Nieaktywny"
+        }
+        else {
+          $scope.autobus.BusStopStatusName = "Aktywny"
+        }
+      }).error(function (data, status, headers, config) {
+        console.log("Błąd pobrania przystanku.")
+      });
+    }
+  });
   /* Użytkownicy Controlery
    *==========================================================================*/
   app.controller('UserController', function ($scope, $http) {
@@ -975,6 +1174,8 @@
               console.log($scope.PostDataResponse);
               $scope.CallbackServeraPositive = true;
               $scope.CallbackServera = true;
+
+              $scope.initMarkers();
             })
             .error(function (data, status, header, config) {
               $scope.ResponseDetails = "Data: " + data +
@@ -1094,102 +1295,116 @@
   }]);
   /* Map Controler
    *==========================================================================*/
-  app.controller('MapController', function ($http,$scope,NgMap) {
-    NgMap.getMap().then(function (map) {
+  app.controller('MapController', function (NgMap,$scope,$http, $timeout) {
+    var wrapper = $('.wrapper');
 
+    $scope.lat = 53.77842200000001;
+    $scope.lng = 20.48011930000007;
 
-      $scope.showBusstopOnMap = function (id) {
+    $scope.setPostitionBusstop = function (id) {
+      $http.get('http://localhost:50000/Busstop/GetBusstop/' + id
+      ).success(function (data, status, headers, config) {
+        $scope.busstop = data;
+        $scope.lat=$scope.busstop.Lat;
+        $scope.lng=$scope.busstop.Lng;
+      }).error(function (data, status, headers, config) {
+        console.log("Błąd pobrania przystanku.")
+      });
+    };
 
+    ///////////////////////////////////////////////////////////////
 
-        //Serwis do pobrania danych przystanku
-        $http.get('http://localhost:50000/Busstop/GetBusstop/' + id, {
-              //headers: {'Session': ''}
-            }
-        ).success(function (data, status, headers, config) {
-          $scope.busstop = data;
-          console.log("Pobrano przystanek.");
-
-          if ($scope.busstop.GotMachine == true) {
-            $scope.busstop.GotMachineName = "Tak";
-          }
-          else {
-            $scope.busstop.GotMachineName = "Nie";
-          }
-          if ($scope.busstop.GotKiosk == true) {
-            $scope.busstop.GotKioskName = "Tak";
-          }
-          else {
-            $scope.busstop.GotKioskName = "Nie";
-          }
-
-          if ($scope.busstop.BusStopType == 0) {
-            $scope.busstop.BusStopTypeName = "Normalny"
-          }
-          else {
-            $scope.busstop.BusStopTypeName = "Zabudowany"
-          }
-
-          var marker;
-          marker = new google.maps.Marker({
-            title: "Busstop"+$scope.busstop.Id,
-            animation: google.maps.Animation.DROP
-          });
-
-          var contentString = '<h4>'+$scope.busstop.Name+'</h4>'+
-              'Ulica: '+$scope.busstop.LocalizationString +
-              '<br>Typ Przystanku: '+$scope.busstop.BusStopTypeName +
-              '<br>Biletomat: '+$scope.busstop.GotMachineName +
-              '<br>Kiosk: '+$scope.busstop.GotKioskName;
-
-          var infowindow = new google.maps.InfoWindow({
-            content: contentString
-          });
-
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
-          });
-
-          var lat = $scope.busstop.Lat;
-          var lng = $scope.busstop.Lng;
-          var loc = new google.maps.LatLng(lat, lng);
-          marker.setPosition(loc);
-          marker.setMap(map);
-
-
-        }).error(function (data, status, headers, config) {
-          console.log("Błąd pobrania przystanku.")
-        });
-
-
-
-
-      };
-
-
-
+    NgMap.getMap().then(function(map) {
+      $scope.map = map;
     });
 
-    // $scope.showBusstopOnMap = function (id) {
-    //   $http.get('http://localhost:50000/Busstop/GetBusstop/' + id, {
-    //         headers: {'Session': ''}
-    //       }
-    //   ).success(function (data, status, headers, config) {
-    //     $scope.busstop = data;
-    //     console.log("Pobrano przystanek.");
-    //     //console.log($scope.busstop)
-    //
-    //   }).error(function (data, status, headers, config) {
-    //     console.log("Błąd pobrania przystanku.")
-    //   });
-    //   console.log($scope.busstop)
-    //   $scope.lat = 53.798586;
-    //   $scope.lng = 20.481982;
-    //
+    $scope.busstopMarker = [];
+    $scope.bussMarker = [];
+
+
+    $scope.deleteMarkers = function() {
+      $scope.busstopMarker = [];
+      $scope.bussMarker = [];
+    };
+
+    $scope.showBusstop = function(event, busstop) {
+      $scope.selectedBusstop = busstop;
+      $scope.map.showInfoWindow('myInfoWindow', this);
+    };
+
+
+    $scope.showBusstopMarkers = function() {
+
+      $scope.busstopMarkers=[];
+
+      $http.get('http://localhost:50000/Busstop/GetBusstopList/'
+      ).success(function (data, status, headers, config) {
+        $scope.busstop = data;
+        console.log($scope.przystanki);
+        console.log("Pobrano liste przystanków.");
+        angular.forEach($scope.busstop, function (przystanek) {
+          if (przystanek.GotMachine == true) {
+            przystanek.GotMachineName = "Tak";
+          }
+          else {
+            przystanek.GotMachineName = "Nie";
+          }
+          if (przystanek.GotKiosk == true) {
+            przystanek.GotKioskName = "Tak";
+          }
+          else {
+            przystanek.GotKioskName = "Nie";
+          }
+          if (przystanek.BusStopType == 0) {
+            przystanek.BusStopTypeName = "Normalny"
+          }
+          else {
+            przystanek.BusStopTypeName = "Zabudowany"
+          }
+          if(przystanek.BusStopStatus==1)
+          {
+            $scope.busstopMarkers.push({
+              Id: przystanek.Id,
+              Name: przystanek.Name,
+              LocalizationString: przystanek.LocalizationString,
+              GotMachineName:  przystanek.GotMachineName,
+              GotKioskName: przystanek.GotKioskName,
+              BusStopTypeName: przystanek.BusStopTypeName,
+              Position: [przystanek.Lat, przystanek.Lng]
+            });
+          }
+
+
+
+
+        });
+      }).error(function (data, status, headers, config) {
+        console.log("Błąd pobrania przystanków.")
+      });
+
+      $scope.busstopMarker=$scope.busstopMarkers;
+
+    };
+
+    ////////////////////////////////////////////////////////////////////////
+
+    $scope.initMarkers=function () {
+      //$scope.deleteMarkers();
+      $scope.showBusstopMarkers();
+    };
+
+    // $scope.initBuss=function () {
+    //   $scope.deleteMarkers();
+    //   //$scope.showBussMarkers();
     // };
 
 
 
   });
+
+
+
+
 
 
 

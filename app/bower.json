@@ -33,7 +33,8 @@
     "angular-responsive-tables": "^0.1.3",
     "responsive-tables-js": "^1.0.6",
     "Ionicons": "ionicons#^2.0.1",
-    "ngmap": "^1.17.3"
+    "ngmap": "^1.17.3",
+    "javascript-detect-element-resize": "^0.5.3"
   },
   "dependencies": {
     "imagesloaded": "latest",

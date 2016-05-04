@@ -1,0 +1,34 @@
+.panelDodajAutobus
+  .panelDodajAutobus__title Dodaj Trase
+  .panelDodajAutobus__fastTravel
+    span
+      a(href="/#/")
+        i.fa.fa-home
+        | Home
+    span
+      a(href="/#/track") Zarządzanie Trasami
+    span.-active
+      a(href="/#/track/add") Dodaj Trase
+  .panelDodajAutobus__wrapper
+    .panelDodajAutobus__subtitle Dodawanie trasy do systemu
+    .panelDodajAutobus__text Tutaj możesz dodać trase do systemu. Uzupełnij wszystkie poniższe pola.
+    .panelDodajTrase(ng-controller="AddTrackController")
+      .panelDodajTrase__columns(ng-hide="DodanoTrase")
+        .panelDodajTrase__column
+          .panelDodajTrase__title Dostępne przystanki
+          .panelDodajTrase__content
+            .panelDodajTrase__przystanekHolder(ng-repeat="przystanek in przystanki | filter:przystanekFilter | filter:{ BusStopStatus: '!0'} as filtrowanePrzystanku")
+              .panelDodajTrase__przystanek.-mainBusstop(ng-click="wybraniePrzystanku(przystanek.Id)" data="{{przystanek.Id}}")
+                .panelDodajTrase__przystanekNazwa {{przystanek.Name}}
+        .panelDodajTrase__column
+          .panelDodajTrase__title Wygenerowana trasa
+          .panelDodajTrase__content
+            .panelDodajTrase__przystanek(ng-repeat="przystanek in przystankiWybrane")
+              .panelDodajTrase__przystanekNazwa {{$index + 1}}. {{przystanek.Name}}
+            .panelDodajTrase__button(ng-click="usunieciePrzystanku(przystanek.Id)" data="{{przystanek.Id}}" ng-show="saPrzystanki") Usuń przystanek
+      .panelDodajTrase__buttonToSave(ng-click="zapiszTrase()" ng-hide="DodanoTrase") Zapisz trase
+      .panelDodajTrase__alert(ng-show="DodanoTrase") Przystanek został dodany pomyślnie!
+      a.panelDodajTrase__buttonToSave(ng-show="DodanoTrase" href="#/track/") Wróć do przystanków
+
+
+
