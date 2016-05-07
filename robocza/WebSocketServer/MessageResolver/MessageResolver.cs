@@ -4,6 +4,7 @@ using System.Data.Entity.Migrations.Sql;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Helpers;
 using Core.Transfer.Attributes;
 using Newtonsoft.Json;
 using SimpleInjector;
@@ -54,22 +55,30 @@ namespace WebSocketServer.MessageResolver
             try
             {
                 var messageDto = JsonConvert.DeserializeObject<MessageDto>(msg);
+
                 var genericTypes = getGenericTypes(messageDto.Action);
+
                 var handlerType = getHandlerType(messageDto.Action);
+
                 var handler = _container.GetInstance(getHandlerType(messageDto.Action));
+
                 var methodInfo = handlerType.GetMethod("Handle", new[] {genericTypes.First(),typeof(IConnection)});
+
                 var dto = JsonConvert.DeserializeObject(messageDto.Data, genericTypes[0]);
+
+                ValidationHelper.Validate(dto);
+
                 var handlerResult = await (dynamic) methodInfo.Invoke(handler, new[] {dto, connection});
 
                 result.State=ResultState.Ok;
 
                 result.Data = JsonConvert.SerializeObject(handlerResult);
-
             }
-            catch (HandlingException exception)
+            catch (Exception exception)
             {
-                result.State = exception.State;
-                result.Data = JsonConvert.SerializeObject(new {msg = exception.Msg});
+                result.State = ResultState.Error;
+
+                result.Data = JsonConvert.SerializeObject(new {msg = exception.Message});
             }
 
             return JsonConvert.SerializeObject(result);
