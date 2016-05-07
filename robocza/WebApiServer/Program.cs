@@ -38,6 +38,8 @@ namespace WebApiServer
                 var corsAttr = new EnableCorsAttribute("*", "*", "*");
                 Config.EnableCors(corsAttr);
 
+                Config.Filters.Add(new ExceptionFilter());
+
                 var us = container.GetInstance<IUserService>();
                 var ss = container.GetInstance<ISessionService>();
 

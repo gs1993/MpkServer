@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -68,6 +69,11 @@ namespace WebApiServer.Controllers
         {
             using (var db = _databaseService.CreateContext())
             {
+                ValidationContext context = new ValidationContext(dto);
+
+    
+                Validator.ValidateObject(dto, context);
+
                 var track = new Track()
                 {
                     Id = dto.Id,
