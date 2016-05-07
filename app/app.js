@@ -1010,42 +1010,51 @@
       if($scope.przystankiWybrane.length <= 0){
         $scope.saPrzystanki = false;
       }
-    }
+    };
     $scope.zapiszTrase = function (){
       console.log("Zapisywanie przystanków");
       $scope.tablicaWybranychPrzystankow = [];
-      for(var i=0; i< $scope.przystankiWybrane.length; i++){
-        $scope.tablicaWybranychPrzystankow.push($scope.przystankiWybrane[i].Id)
-      }
-      var data = JSON.stringify({
-        Id: 1,
-        BusStops: $scope.tablicaWybranychPrzystankow,
-        "IsArchive": true
-      });
-      var config = {
-        //headers: {'Session': ''}
-      };
-      $http.post('http://localhost:50000/Track/Create', data, config)
-        .success(function (data, status, headers, config) {
-          $scope.CallbackServera = true;
-          $scope.CallbackServeraPositive = true;
-          $scope.PostDataResponse = data;
-          console.log($scope.PostDataResponse);
-          $scope.DodanoTrase = true;
-
-        })
-        .error(function (data, status, header, config) {
-          $scope.ResponseDetails = "Data: " + data +
-            "<hr />status: " + status +
-            "<hr />headers: " + header +
-            "<hr />config: " + config;
-          console.log($scope.ResponseDetails);
-          $scope.CallbackServera = true;
-          $scope.CallbackServeraNegative = true;
+      console.log("Wybrane Przystanki:");
+      console.log($scope.przystankiWybrane.length);
+      console.log("Wybrane Przystanki END");
+      if($scope.przystankiWybrane.length > 0) {
+        for (var i = 0; i < $scope.przystankiWybrane.length; i++) {
+          $scope.tablicaWybranychPrzystankow.push($scope.przystankiWybrane[i].Id)
+        }
+        var data = JSON.stringify({
+          Id: 1,
+          BusStops: $scope.tablicaWybranychPrzystankow,
+          "IsArchive": true
         });
+        var config = {
+          //headers: {'Session': ''}
+        };
+        $http.post('http://localhost:50000/Track/Create', data, config)
+          .success(function (data, status, headers, config) {
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraPositive = true;
+            $scope.PostDataResponse = data;
+            console.log($scope.PostDataResponse);
+            $scope.DodanoTrase = true;
+
+          })
+          .error(function (data, status, header, config) {
+            $scope.ResponseDetails = "Data: " + data +
+              "<hr />status: " + status +
+              "<hr />headers: " + header +
+              "<hr />config: " + config;
+            console.log($scope.ResponseDetails);
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraNegative = true;
+          });
+      }
+      else{
+        $scope.BrakPrzystankow = true
+      }
     }
 
     $scope.wybraniePrzystanku = function (index){
+      $scope.BrakPrzystankow = false
       $http.get('http://localhost:50000/Busstop/GetBusstop/' + index, {
           //headers: {'Session': ''}
         }
@@ -1056,7 +1065,7 @@
         var przystanekDodany = false;
         for (var i=0; i<$scope.przystankiWybrane.length; i++) {
           if ($scope.autobus.Id == $scope.przystankiWybrane[i].Id){
-           // var przystanekDodany = true;
+            przystanekDodany = true;
           }
         }
         if(przystanekDodany == false){

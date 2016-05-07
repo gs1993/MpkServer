@@ -8,8 +8,6 @@
     span.-active
       a(href="/#/busstop") Zarządzanie Przystankami
   .panelPrzystanki__wrapper
-    .panelPrzystanki__subtitle Przystanki floty
-    .panelPrzystanki__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelPrzystanki__navigation(ng-hide="sendForm")
       a(href="/#/busstop/add").panelPrzystanki__navigation__item Dodaj Przystanek
     .panelPrzystanki__filtrs(ng-hide="sendForm")
@@ -37,6 +35,7 @@
           option(value="") Kiosk
           option(value=0) Nie
           option(value=1) Tak
+      .panelPrzystanki__subtitle Przystanki floty
       .panelPrzystanki__table
         table.responsive(wt-responsive-table ng-controller="BusstopController")
           thead
@@ -65,7 +64,6 @@
               td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
 
     .panelPrzystanki__subtitle(ng-hide="sendForm") Nieaktywne przystanki
-    .panelPrzystanki__text(ng-hide="sendForm") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
     .panelPrzystanki__table(ng-hide="sendForm")
       table.responsive(wt-responsive-table ng-controller="BusstopController")
         thead

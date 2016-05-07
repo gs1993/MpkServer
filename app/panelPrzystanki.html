@@ -3,8 +3,6 @@
   <div class="panelPrzystanki__title">Zarządzanie Przystankami</div>
   <div class="panelPrzystanki__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span class="-active"><a href="/#/busstop">Zarządzanie Przystankami</a></span></div>
   <div class="panelPrzystanki__wrapper">
-    <div class="panelPrzystanki__subtitle">Przystanki floty</div>
-    <div class="panelPrzystanki__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
     <div ng-hide="sendForm" class="panelPrzystanki__navigation"><a href="/#/busstop/add" class="panelPrzystanki__navigation__item">Dodaj Przystanek</a></div>
     <div ng-hide="sendForm" class="panelPrzystanki__filtrs">
       <div class="panelPrzystanki__filtr">
@@ -39,6 +37,7 @@
           <option value="1">Tak</option>
         </select>
       </div>
+      <div class="panelPrzystanki__subtitle">Przystanki floty</div>
       <div class="panelPrzystanki__table">
         <table wt-responsive-table="wt-responsive-table" ng-controller="BusstopController" class="responsive">
           <thead>
@@ -68,7 +67,6 @@
       </div>
     </div>
     <div ng-hide="sendForm" class="panelPrzystanki__subtitle">Nieaktywne przystanki</div>
-    <div ng-hide="sendForm" class="panelPrzystanki__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
     <div ng-hide="sendForm" class="panelPrzystanki__table">
       <table wt-responsive-table="wt-responsive-table" ng-controller="BusstopController" class="responsive">
         <thead>
