@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,6 @@ namespace WebSocketServer.Handlers.Action
         {
             using (var db = _db.CreateContext())
             {
-
                 var user = db.Users.First(x => x.Id == connection.User.Id);
 
                 var bus = db.Buss.FirstOrDefault(x => x.Id == dto.BusId);
@@ -56,6 +56,7 @@ namespace WebSocketServer.Handlers.Action
                         Ended = false
                     });
                 }
+
                 var activity = db.Activities.Add(new Activity()
                 {
                     BusStop = busstop,
@@ -69,7 +70,13 @@ namespace WebSocketServer.Handlers.Action
                 });
 
                 course.Activities.Add(activity);
-                var trackString = course.Activities.Select(a => a.Id.ToString()).Aggregate((y, z) => y + ";" + z);
+                var trackString = db.Activities
+                    .Include(x=>x.BusStop)
+                    .Include(x=>x.Course)
+                    .Where(x=>x.Course.Id==course.Id)
+                    .Select(a => a.BusStop.Id.ToString())
+                    .ToArray()
+                    .Aggregate((y, z) => y + ";" + z);
                 var track = db.Tracks.FirstOrDefault(x => x.BusStops == trackString );
                 if (track!=null)
                 {
@@ -84,7 +91,7 @@ namespace WebSocketServer.Handlers.Action
                    Lng = busstop.Lng,
                    Lat = busstop.Lng,
                    Info = activity.ActivityType.ToString()
-                });
+                },EventType.BusMove,bus.Id);
 
             }
             return Task.FromResult(new EmptyDto());

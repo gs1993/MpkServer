@@ -41,7 +41,6 @@ namespace WebSocketServer.Handlers.Action
                     switch (user.Rank)
                     {
                         case UserRank.User:
-                            _emitter.Subscribe(connection);
                             break;
                         case UserRank.Device:
                             break;

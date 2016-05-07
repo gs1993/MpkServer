@@ -79,10 +79,12 @@
     <Compile Include="Connection\WSState.cs" />
     <Compile Include="Events\EmitMsg.cs" />
     <Compile Include="Events\EventEmitter.cs" />
+    <Compile Include="Events\EventType.cs" />
     <Compile Include="Events\IEmitMsg.cs" />
     <Compile Include="Events\IEventEmitter.cs" />
     <Compile Include="Handlers\Action\AuthHandler.cs" />
     <Compile Include="Handlers\Action\BusStopHandler.cs" />
+    <Compile Include="Handlers\Action\SubscribeHandler.cs" />
     <Compile Include="Handlers\IMessageHandler.cs" />
     <Compile Include="Handlers\TaskHelper.cs" />
     <Compile Include="MessageResolver\Dto\MessageDto.cs" />

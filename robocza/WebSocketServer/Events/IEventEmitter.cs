@@ -9,8 +9,8 @@ namespace WebSocketServer.Events
 {
     public interface IEventEmitter
     {
-        void Emit<T>(T obj);
-        void Subscribe(IConnection connection);
-        void UnSubscribe(IConnection connection);
+        void Emit<T>(T obj,EventType type,int id);
+        void Subscribe(IConnection connection,EventType type,int id);
+        void UnSubscribe(IConnection connection, EventType type, int id);
     }
 }

@@ -23,8 +23,9 @@ namespace Data.Migrations
         {
 
             var passwordHash = new PasswordHasher();
+
             string password = passwordHash.HashPassword("Password@123");
-            context.Users.AddOrUpdate(u => u.UserName,
+            context.Users.AddOrUpdate(u => u.Email,
                 new ApiUser()
                 {
                     UserName = "lukraiktest2",
@@ -34,7 +35,7 @@ namespace Data.Migrations
                     Activated = true
 
                 });
-            context.Users.AddOrUpdate(u => u.UserName,
+            context.Users.AddOrUpdate(u => u.Email,
                 new ApiUser()
                 {
                     UserName = "test",
@@ -44,7 +45,7 @@ namespace Data.Migrations
                     Rank = UserRank.Device,
                     Activated = true
                 });
-            context.Users.AddOrUpdate(u => u.UserName, new ApiUser()
+            context.Users.AddOrUpdate(u => u.Email, new ApiUser()
             {
                 UserName = "driver1",
                 Email = "driver1",

@@ -10,26 +10,32 @@ namespace WebSocketServer.Events
 {
     public class EventEmitter:IEventEmitter
     {
-        private readonly List<IConnection> _cons = new List<IConnection>(); 
+        private readonly Dictionary<EventType, Dictionary<int, List<IConnection>>> _connections = new Dictionary<EventType, Dictionary<int, List<IConnection>>>();
 
-
-        public void Emit<T>(T obj)
+        public void Emit<T>(T obj, EventType type, int id)
         {
-            var sendData = new EmitMsg {Data = JsonConvert.SerializeObject(obj)};
-            foreach (var con in _cons)
+            var sendData = new EmitMsg { Data = JsonConvert.SerializeObject(obj) };
+            if (!_connections.ContainsKey(type)) _connections[type] = new Dictionary<int, List<IConnection>>();
+            if (!_connections[type].ContainsKey(id)) _connections[type][id] = new List<IConnection>();
+            foreach (var connection in _connections[type][id])
             {
-                if(con.State==WSState.Authorized)con.Send(sendData);
+                if (connection.State == WSState.Authorized)
+                {
+                    connection.Send(sendData);
+                }
             }
         }
 
-        public void Subscribe(IConnection connection)
+        public void Subscribe(IConnection connection, EventType type, int id)
         {
-            _cons.Add(connection);
+            if (!_connections.ContainsKey(type)) _connections[type] = new Dictionary<int, List<IConnection>>();
+            if (!_connections[type].ContainsKey(id)) _connections[type][id] = new List<IConnection>();
+            _connections[type][id].Add(connection);
         }
 
-        public void UnSubscribe(IConnection connection)
+        public void UnSubscribe(IConnection connection, EventType type, int id)
         {
-            _cons.Remove(connection);
+            _connections[type][id].Remove(connection);
         }
     }
 }
