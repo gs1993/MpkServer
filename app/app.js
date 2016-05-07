@@ -940,6 +940,8 @@
    *==========================================================================*/
   app.controller('TrackController', function ($scope, $http) {
 
+    
+
     $http.get('http://localhost:50000/Track/GetList', {
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
@@ -1133,6 +1135,7 @@
         $scope.track.IsArchiveName = "Aktywna";
         $scope.track.IsArchiveVar = false
       }
+      $scope.initTrack($scope.track);
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania trasy.")
     });
@@ -1359,6 +1362,11 @@
       $scope.map = map;
     });
 
+
+
+
+
+
     $scope.busstopMarker = [];
     $scope.bussMarker = [];
 
@@ -1428,24 +1436,70 @@
     };
 
     /////////////////////////////////////////////////////////////////////////
-    $scope.wayPoints=[
-      {location: {lat:53.775929,lng: 20.48991}},
-      {location: {lat:53.775929, lng: 20.48991}}
-    ];
-    $scope.origin={location: {lat:53.780071, lng: 20.506392}};
-    $scope.destination={location: {lat:53.777934, lng: 20.482494}};
+    $scope.wayPoints=[];
+    $scope.origin;
+    $scope.destination;
 
-    $scope.initTrack=function () {
+    $scope.initTrack=function (track) {
+      $scope.map.directionsRenderers.d1.setMap($scope.map);
+      $scope.busstopMarkers=[];
+      $scope.wayPoint=[];
 
-    }
+      angular.forEach(track.BusStops, function (przystanek) {
+        if (przystanek.GotMachine == true) {
+          przystanek.GotMachineName = "Tak";
+        }
+        else {
+          przystanek.GotMachineName = "Nie";
+        }
+        if (przystanek.GotKiosk == true) {
+          przystanek.GotKioskName = "Tak";
+        }
+        else {
+          przystanek.GotKioskName = "Nie";
+        }
+        if (przystanek.BusStopType == 0) {
+          przystanek.BusStopTypeName = "Normalny"
+        }
+        else {
+          przystanek.BusStopTypeName = "Zabudowany"
+        }
+        if(przystanek.BusStopStatus==1)
+        {
+          $scope.busstopMarkers.push({
+            Id: przystanek.Id,
+            Name: przystanek.Name,
+            LocalizationString: przystanek.LocalizationString,
+            GotMachineName:  przystanek.GotMachineName,
+            GotKioskName: przystanek.GotKioskName,
+            BusStopTypeName: przystanek.BusStopTypeName,
+            Position: [przystanek.Lat, przystanek.Lng]
+          });
+          $scope.wayPoint.push({location: {lat:przystanek.Lat,lng: przystanek.Lng}});
+        }
+      });
+      $scope.busstopMarker=$scope.busstopMarkers;
+      $scope.wayPoints=$scope.wayPoint;
+
+      $scope.origin=$scope.wayPoints[0];
+      console.log("Start");
+      console.log($scope.origin);
+      $scope.destination=$scope.wayPoints[$scope.wayPoints.length-1];
+      console.log("End");
+      console.log($scope.destination);
+
+
+    };
 
 
 
     ////////////////////////////////////////////////////////////////////////
 
     $scope.initMarkers=function () {
-      //$scope.deleteMarkers();
+
+
       $scope.showBusstopMarkers();
+      $scope.map.directionsRenderers.d1.setMap(null);
     };
 
     // $scope.initBuss=function () {

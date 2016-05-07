@@ -122,7 +122,7 @@
                 </table>
               </div>
             </info-window>
-            <directions draggable="true" travel-mode="DRIVING" waypoints="{{wayPoints}}" origin="{{origin}}" destination="{{destination}}" suppress-markers="true"></directions>
+            <directions id="d1" draggable="true" travel-mode="DRIVING" waypoints="{{wayPoints}}" origin="{{origin}}" destination="{{destination}}" suppress-markers="true"></directions>
             <!--Markery przystanków-->
             <marker ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" icon="{{markerIcon}}"></marker>
           </ng-map>
