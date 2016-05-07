@@ -1383,7 +1383,7 @@
 
 
     $scope.showBusstopMarkers = function() {
-
+      $scope.markerIcon="blocks/googleMaps/src/busstopMarker.png";
       $scope.busstopMarkers=[];
 
       $http.get('http://localhost:50000/Busstop/GetBusstopList/'
@@ -1444,7 +1444,7 @@
       $scope.map.directionsRenderers.d1.setMap($scope.map);
       $scope.busstopMarkers=[];
       $scope.wayPoint=[];
-
+      $scope.markerIcon="blocks/googleMaps/src/busstopMarkerGreen.png";
       angular.forEach(track.BusStops, function (przystanek) {
         if (przystanek.GotMachine == true) {
           przystanek.GotMachineName = "Tak";
