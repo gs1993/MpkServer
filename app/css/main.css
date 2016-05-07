@@ -13979,6 +13979,13 @@ a.tabnav-extra:hover {
   margin: 0 auto;
 }
 
+.panelTrasy__alert {
+  text-align: center;
+  padding: 5px 20px 20px;
+  font-weight: 400;
+  color: #00b3ee;
+}
+
 .panelDodajTrase__columns {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -14059,4 +14066,45 @@ a.tabnav-extra:hover {
   padding: 5px 20px 20px;
   font-weight: 400;
   color: #00b3ee;
+}
+
+.panelWyswietlTrase__columns {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media (max-width: 1024px) {
+  .panelWyswietlTrase__columns {
+    display: block;
+  }
+}
+
+.panelWyswietlTrase__column {
+  width: 50%;
+  padding: 5px;
+}
+
+@media (max-width: 1024px) {
+  .panelWyswietlTrase__column {
+    width: 100%;
+  }
+}
+
+.panelWyswietlTrase__title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.panelWyswietlTrase__alert {
+  font-size: 16px;
+  font-weight: 700;
+  color: darkred;
+  padding: 15px 5px;
 }

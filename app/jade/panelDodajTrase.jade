@@ -13,6 +13,7 @@
     .panelDodajAutobus__subtitle Dodawanie trasy do systemu
     .panelDodajAutobus__text Tutaj możesz dodać trase do systemu. Uzupełnij wszystkie poniższe pola.
     .panelDodajTrase(ng-controller="AddTrackController")
+      .panelDodajTrase__alert(ng-show="BrakPrzystankow") Prosze wybrac jakis przystanek!
       .panelDodajTrase__columns(ng-hide="DodanoTrase")
         .panelDodajTrase__column
           .panelDodajTrase__title Dostępne przystanki

@@ -6,6 +6,7 @@
     <div class="panelDodajAutobus__subtitle">Dodawanie trasy do systemu</div>
     <div class="panelDodajAutobus__text">Tutaj możesz dodać trase do systemu. Uzupełnij wszystkie poniższe pola.</div>
     <div ng-controller="AddTrackController" class="panelDodajTrase">
+      <div ng-show="BrakPrzystankow" class="panelDodajTrase__alert">Prosze wybrac jakis przystanek!</div>
       <div ng-hide="DodanoTrase" class="panelDodajTrase__columns">
         <div class="panelDodajTrase__column">
           <div class="panelDodajTrase__title">Dostępne przystanki</div>

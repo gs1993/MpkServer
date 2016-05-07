@@ -162,6 +162,7 @@
     <Compile Include="Converters\CourseExpressions.cs" />
     <Compile Include="Converters\TrackExpressions.cs" />
     <Compile Include="Converters\UserExpressions.cs" />
+    <Compile Include="Misc\ExceptionFilter.cs" />
     <Compile Include="Misc\SimpleAuthFilter.cs" />
     <Compile Include="Postman\PostmanCollection.cs" />
     <Compile Include="Postman\PostmanRequest.cs" />

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Core.Helpers;
 using Core.Logger;
 using Core.Transfer.TrackController;
 using Data.Models;
@@ -68,6 +70,8 @@ namespace WebApiServer.Controllers
         {
             using (var db = _databaseService.CreateContext())
             {
+                ValidationHelper.Validate(dto);
+
                 var track = new Track()
                 {
                     Id = dto.Id,
