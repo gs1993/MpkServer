@@ -70,7 +70,7 @@
         </div>
       </div>
       <div ng-hide="sendForm" class="panelWyswietlPrzystanek__navigation">
-        <button ng-click="updateBusstop()" class="green panelWyswietlPrzystanek__navigation__item green">Aktualizuj</button><a href="/#/busstop/delete/{{ PrzystanekID }}" ng-hide="item.BusStopStatus == 0" class="panelWyswietlPrzystanek__navigation__item red">Dezaktywuj</a><a href="/#/busstop/restore/{{ PrzystanekID }}" ng-show="item.BusStopStatus == 0" class="panelWyswietlPrzystanek__navigation__item greenDark">Aktywuj</a><a href="/#/busstop" class="panelWyswietlPrzystanek__navigation__item gray -abort">Anuluj</a>
+        <button ng-click="updateBusstop()" class="green panelWyswietlPrzystanek__navigation__item green">Aktualizuj</button><a href="/#/busstop/delete/{{ PrzystanekID }}" ng-hide="autobus.BusStopStatus == 0" class="panelWyswietlPrzystanek__navigation__item red">Dezaktywuj</a><a href="/#/busstop/restore/{{ PrzystanekID }}" ng-show="autobus.BusStopStatus == 0" class="panelWyswietlPrzystanek__navigation__item greenDark">Aktywuj</a><a href="/#/busstop" class="panelWyswietlPrzystanek__navigation__item gray -abort">Anuluj</a>
       </div>
       <div ng-show="sendForm" class="panelDodajAutobus__dataLoader">
         <div ng-hide="CallbackServera" class="panelDodajAutobus__dataLoader__svg">

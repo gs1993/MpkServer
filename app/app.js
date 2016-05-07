@@ -69,6 +69,9 @@
       when('/track/add', {
         templateUrl: 'panelDodajTrase.html',
         controller: 'AddTrackController'
+      }).when('/track/show/:id', {
+        templateUrl: 'panelWyswietlTrase.html',
+        controller: 'ShowTrackController'
       }).//UZYTKOWNICY SCIEZKI
 
       when('/user', {
@@ -1012,7 +1015,7 @@
       }
     };
     $scope.zapiszTrase = function (){
-      console.log("Zapisywanie przystanków");
+      console.log("Zapisywanie przystankeeeee");
       $scope.tablicaWybranychPrzystankow = [];
       console.log("Wybrane Przystanki:");
       console.log($scope.przystankiWybrane.length);
@@ -1108,6 +1111,34 @@
       });
     }
   });
+  app.controller('ShowTrackController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+
+    var WybraneId = $routeParams.id;
+    $scope.sendForm = false;
+    //WYSYLANY ID
+    $scope.TrackID = WybraneId;
+
+    $http.get('http://localhost:50000/Track/Get/' + WybraneId, {
+        //headers: {'Session': ''}
+      }
+    ).success(function (data, status, headers, config) {
+      $scope.track = data;
+      console.log($scope.track);
+      console.log("Pobrano trase.");
+      if ($scope.track.IsArchive == 1) {
+        $scope.track.IsArchiveName = "Nieaktywna";
+        $scope.track.IsArchiveVar = true
+      }
+      else{
+        $scope.track.IsArchiveName = "Aktywna";
+        $scope.track.IsArchiveVar = false
+      }
+    }).error(function (data, status, headers, config) {
+      console.log("Błąd pobrania trasy.")
+    });
+
+
+  }]);
   /* Użytkownicy Controlery
    *==========================================================================*/
   app.controller('UserController', function ($scope, $http) {
