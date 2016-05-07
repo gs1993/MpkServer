@@ -1300,7 +1300,8 @@
 
     $scope.lat = 53.77842200000001;
     $scope.lng = 20.48011930000007;
-
+    $scope.markerIcon="blocks/googleMaps/src/busstopMarker.png";
+    
     $scope.setPostitionBusstop = function (id) {
       $http.get('http://localhost:50000/Busstop/GetBusstop/' + id
       ).success(function (data, status, headers, config) {
@@ -1385,6 +1386,20 @@
       $scope.busstopMarker=$scope.busstopMarkers;
 
     };
+
+    /////////////////////////////////////////////////////////////////////////
+    $scope.wayPoints=[
+      {location: {lat:53.775929,lng: 20.48991}},
+      {location: {lat:53.775929, lng: 20.48991}}
+    ];
+    $scope.origin={location: {lat:53.780071, lng: 20.506392}};
+    $scope.destination={location: {lat:53.777934, lng: 20.482494}};
+
+    $scope.initTrack=function () {
+
+    }
+
+
 
     ////////////////////////////////////////////////////////////////////////
 
