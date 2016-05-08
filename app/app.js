@@ -1382,7 +1382,7 @@
 
     $scope.lat = 53.77842200000001;
     $scope.lng = 20.48011930000007;
-    $scope.zoom="14";
+    
     $scope.markerIcon="blocks/googleMaps/src/busstopMarker.png";
     
     $scope.setPostitionBusstop = function (id) {
@@ -1538,10 +1538,10 @@
 
     $scope.initMarkers=function () {
 
-
+      $scope.wayPoints=[];
       $scope.showBusstopMarkers();
       $scope.map.directionsRenderers.d1.setMap(null);
-      $scope.zoom="14";
+     
     };
 
     // $scope.initBuss=function () {
