@@ -204,6 +204,11 @@
 
             $scope.initMarkers();
           }
+          else 
+          {
+            $scope.KomunikatVal = true
+            $scope.Komunikat = "Wprowadzone dane sa nie poprawne!"
+          }
         });
       }
     }
@@ -1113,7 +1118,7 @@
       });
     }
   });
-  app.controller('ShowTrackController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+  app.controller('ShowTrackController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
 
     var WybraneId = $routeParams.id;
     $scope.sendForm = false;
@@ -1127,6 +1132,9 @@
       $scope.track = data;
       console.log($scope.track);
       console.log("Pobrano trase.");
+      $scope.przystankiTrasy = $scope.track.BusStops;
+      console.log("Przystanki trasy:")
+      console.log($scope.przystankiTrasy)
       if ($scope.track.IsArchive == 1) {
         $scope.track.IsArchiveName = "Nieaktywna";
         $scope.track.IsArchiveVar = true
@@ -1140,7 +1148,38 @@
       console.log("Błąd pobrania trasy.")
     });
 
+    $scope.UsuniecieTrasy = function(index){
+      var WybraneId = index;
 
+      $scope.sendForm = true;
+      var config = {
+        //headers: {'Session': ''}
+      };
+
+      if ($scope.sendForm) {
+        $scope.message = "Dezaktywowanie trasy...";
+
+          $http.delete('http://localhost:50000/Track/Delete/' + WybraneId, config)
+            .success(function (status, headers, config) {
+              $scope.CallbackServera = true;
+              $scope.CallbackServeraPositive = true;
+              $scope.komunikat = "Trasa został dezaktywowana pomyślnie!";
+
+              $scope.initMarkers();
+            })
+            .error(function (status, header, config) {
+              $scope.ResponseDetails =
+                "<hr />status: " + status +
+                "<hr />headers: " + header +
+                "<hr />config: " + config;
+              console.log($scope.ResponseDetails);
+              $scope.CallbackServera = true;
+              $scope.CallbackServeraNegative = true;
+              $scope.komunikat = "Coś poszło nie tak!";
+            });
+
+      }
+    }
   }]);
   /* Użytkownicy Controlery
    *==========================================================================*/

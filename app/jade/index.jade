@@ -14,6 +14,17 @@ html(lang="pl" ng-app="app")
         p Zespół Coffee <br> Like?
           img(src="img/coffee-cup.png" alt="Team")
     .wrapper
+      .panelWelcome__holder(ng-hide="globals.UserIsLogin")
+        .panelWelcome.panel
+          .panelWelcome__wrapper
+            span.panelWelcome__buttonIconBG
+              .panelWelcome__buttonIcon.fa.fa-bus
+            .panelWelcome__title Witaj w systemie MPK
+            .panelWelcome__text Projekt zespołowy.
+          .panelWelcome__navigation
+            //<a href="#" style="display:block;">Link #01</a>
+            a(href="#/login").WelcomeClick.blue Logowanie
+            a(href="#/register").WelcomeClick.green Rejestracja
       .googleMaps
         .googleMaps__API#googleMaps
 
@@ -48,7 +59,7 @@ html(lang="pl" ng-app="app")
 
             directions(
               id="d1"
-              draggable="true"
+              draggable="false"
               travel-mode="DRIVING"
               waypoints="{{wayPoints}}"
               origin="{{origin}}"

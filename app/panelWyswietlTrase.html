@@ -10,18 +10,29 @@
       <div class="panelWyswietlTrase__columns">
         <div class="panelWyswietlTrase__column">
           <div class="panelWyswietlTrase__title">Przystanki wybranej trasy</div>
-          <div class="panelWyswietlTrase__content">
-            <div class="panelWyswietlTrase__item">Przstanek taki i taki</div>
+          <div ng-repeat="przystanek in przystankiTrasy" class="panelWyswietlTrase__content">
+            <div class="panelWyswietlTrase__itemBox">
+              <div class="panelWyswietlTrase__item">
+                <div class="panelWyswietlTrase__itemTitle"><i class="fa fa-map-signs"></i> {{ przystanek.Name }}</div>
+                <div class="panelWyswietlTrase__itemSubtitle">{{ przystanek.LocalizationString }}</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="panelWyswietlTrase__column">
           <div class="panelWyswietlTrase__title">Aktualne kursy</div>
           <div class="panelWyswietlTrase__content">
-            <div class="panelWyswietlTrase__item">Autobus nr 1</div>
+            <div class="panelWyswietlTrase__itemBox">
+              <div class="panelWyswietlTrase__item">
+                <div class="panelWyswietlTrase__itemTitle"><i class="fa fa-bus"></i> Autobus nr 1</div>
+                <div class="panelWyswietlTrase__itemSubtitle">Opis</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="panelWyswietlAutobus__navigation"><a href="/#/track/delete/{{ TrackID }}" ng-hide="track.IsArchive == 1" class="panelWyswietlAutobus__navigation__item red">Dezaktywuj</a><a href="/#/track/restore/{{ TrackID }}" ng-show="track.IsArchive == 1" class="panelWyswietlAutobus__navigation__item greenDark">Aktywuj</a><a href="/#/track" class="panelWyswietlAutobus__navigation__item gray -abort">Wróć</a></div>
+      <div class="panelWyswietlAutobus__navigation"><span ng-click="UsuniecieTrasy(TrackID)" ng-hide="track.IsArchive == 1" class="panelWyswietlAutobus__navigation__item red">Dezaktywuj</span><span href="/#/track/restore/{{ TrackID }}" ng-show="track.IsArchive == 1" class="panelWyswietlAutobus__navigation__item greenDark">Aktywuj</span><a href="/#/track" class="panelWyswietlAutobus__navigation__item gray -abort">Wróć</a></div>
+      <div ng-show="komunikat" class="panelWyswietlTrase__alert">{{ komunikat }}</div>
     </div>
   </div>
 </div>
