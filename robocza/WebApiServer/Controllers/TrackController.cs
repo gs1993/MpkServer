@@ -59,7 +59,7 @@ namespace WebApiServer.Controllers
                 var track = db.Tracks.FirstOrDefault(x => x.Id == id);
                 if (track != null)
                 {
-                    track.IsArchive = false;
+                    track.IsArchive = true;
                     db.Entry(track).State=EntityState.Modified;
                     db.SaveChanges();
                     _logger.Log($"Archive track {id}");
@@ -76,7 +76,7 @@ namespace WebApiServer.Controllers
                 var track = db.Tracks.FirstOrDefault(x => x.Id == id);
                 if (track != null)
                 {
-                    track.IsArchive = true;
+                    track.IsArchive = false;
 
                     TryCreateTrack(db, track.LineNumber);
 
