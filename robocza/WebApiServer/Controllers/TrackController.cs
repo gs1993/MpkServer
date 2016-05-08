@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -57,9 +58,27 @@ namespace WebApiServer.Controllers
                 var track = db.Tracks.FirstOrDefault(x => x.Id == id);
                 if (track != null)
                 {
-                    db.Tracks.Remove(track);
+                    track.IsArchive = false;
+                    db.Entry(track).State=EntityState.Modified;
                     db.SaveChanges();
-                    _logger.Log($"Deleted track {id}");
+                    _logger.Log($"Archive track {id}");
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool Restore(int id)
+        {
+            using (var db = _databaseService.CreateContext())
+            {
+                var track = db.Tracks.FirstOrDefault(x => x.Id == id);
+                if (track != null)
+                {
+                    track.IsArchive = true;
+                    db.Entry(track).State = EntityState.Modified;
+                    db.SaveChanges();
+                    _logger.Log($"Restore track {id}");
                     return true;
                 }
                 return false;
@@ -74,30 +93,33 @@ namespace WebApiServer.Controllers
 
                 var track = new Track()
                 {
-                    Id = dto.Id,
-                    IsArchive = dto.IsArchive,
+                    LineNumber = dto.LineNumber,
+                    IsArchive = false,
                     BusStopsIds = dto.BusStops.ToArray()
                 };
-                if (dto.Id == 0) return null;
+                if (dto.LineNumber == 0) return null;
 
                 
                 db.Tracks.Add(track);
                 db.SaveChanges();
-                _logger.Log($"Created track{dto.Id}");
+                _logger.Log($"Created track {dto.LineNumber}");
 
                 return track.MapToDto();
             }
         }
 
-        public TrackDto Update(TrackDto dto)
+        public TrackDto Update(EditableTrackDto dto)
         {
             using (var db = _databaseService.CreateContext())
             {
+                ValidationHelper.Validate(dto);
+
                 if (dto.Id != 0)
                 {
                     db.Tracks.AddOrUpdate(new Track()
                     {
                         Id = dto.Id,
+                        LineNumber = dto.LineNumber,
                         IsArchive = dto.IsArchive,
                         BusStopsIds = dto.BusStops.ToArray()
                     });

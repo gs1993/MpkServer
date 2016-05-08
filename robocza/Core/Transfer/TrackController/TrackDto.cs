@@ -10,8 +10,10 @@ namespace Core.Transfer.TrackController
 {
     public class TrackDto:IValidatableObject
     {
-        [Required]
         public int Id { get; set; }
+
+        [Required]
+        public int LineNumber { get; set; }
 
         [Required]
         public ICollection<int> BusStops { get; set; }

@@ -16,7 +16,8 @@ namespace WebApiServer.Converters
             {
                 BusStops = track.BusStopsIds,
                 IsArchive = track.IsArchive,
-                Id = track.Id
+                LineNumber = track.LineNumber,
+                Id = track.Id,
             };
         }
 
@@ -25,7 +26,9 @@ namespace WebApiServer.Converters
             return new TrackDetailsDto()
             {
                 Id = track.Id,
-                IsArchive = track.IsArchive
+                IsArchive = track.IsArchive,
+                LineNumber = track.LineNumber
+
             };
         }
     }
