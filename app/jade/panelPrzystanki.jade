@@ -35,8 +35,8 @@
           option(value="") Kiosk
           option(value=0) Nie
           option(value=1) Tak
-    .panelPrzystanki__subtitle Przystanki floty
-    .panelPrzystanki__table
+    .panelPrzystanki__subtitle(ng-hide="sendForm") Przystanki floty
+    .panelPrzystanki__table(ng-hide="sendForm")
       table.responsive(wt-responsive-table ng-controller="BusstopController")
         thead
           tr

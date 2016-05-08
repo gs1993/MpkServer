@@ -10209,6 +10209,16 @@ a.tabnav-extra:hover {
   background: #367fa9;
 }
 
+.panelWelcome__holder {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
 .panelLogin {
   min-width: 560px;
 }
@@ -10472,6 +10482,14 @@ a.tabnav-extra:hover {
 
 .panelLogin__icon {
   font-size: 3em;
+}
+
+.panelLogin__Loginalert {
+  color: red;
+  text-align: center;
+  display: block;
+  font-weight: 700;
+  padding: 5px;
 }
 
 .panelRegister {
@@ -13225,6 +13243,7 @@ a.tabnav-extra:hover {
   color: white;
   border: none;
   padding: 10px 10px;
+  cursor: pointer;
   max-width: 150px;
   width: 100%;
   margin-right: 5px;
@@ -14107,4 +14126,26 @@ a.tabnav-extra:hover {
   font-weight: 700;
   color: darkred;
   padding: 15px 5px;
+}
+
+.panelWyswietlTrase__itemBox {
+  padding: 5px;
+}
+
+.panelWyswietlTrase__item {
+  background-color: #2196F3;
+  border-radius: 4px;
+  padding: 5px 8px;
+}
+
+.panelWyswietlTrase__itemTitle {
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: default;
+}
+
+.panelWyswietlTrase__itemSubtitle {
+  color: whitesmoke;
+  cursor: default;
 }

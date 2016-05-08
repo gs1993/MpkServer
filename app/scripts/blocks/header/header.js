@@ -33,6 +33,11 @@ $(document).ready(function () {
     $('.headerProfile__corner').addClass('-open');
     $('.headerLogo').addClass('-hidden');
   });
+  $('.WelcomeClick').on("click", function () {
+    $('.wrapper').addClass('-open');
+    $('.headerProfile__corner').addClass('-open');
+    $('.headerLogo').addClass('-hidden');
+  });
   //$(window).resize(function(){
    // $('.wrapper').removeClass('-open');
    // $('.header__corner').removeClass('-open');

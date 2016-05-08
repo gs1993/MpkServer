@@ -22,6 +22,7 @@
         <label for="check"><span class="icon"></span> Zapamiętaj mnie</label>
       </div>
       <button type="submit">Zaloguj się</button>
+      <div ng-show="KomunikatVal" class="panelLogin__Loginalert">{{ Komunikat }}</div>
       <div class="panelLogin__navigation">Nie masz konta?<a href="/#/register" class="panelLogin__ToRegister">Zarejestruj się.</a></div>
       <div class="panelLogin__navigation">Nie pamietasz hasła?<a href="/#/forgot" class="panelLogin__ToRegister">Odzyskaj hasło.</a></div>
     </form>

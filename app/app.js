@@ -204,6 +204,11 @@
 
             $scope.initMarkers();
           }
+          else 
+          {
+            $scope.KomunikatVal = true
+            $scope.Komunikat = "Wprowadzone dane sa nie poprawne!"
+          }
         });
       }
     }
@@ -940,6 +945,8 @@
    *==========================================================================*/
   app.controller('TrackController', function ($scope, $http) {
 
+    
+
     $http.get('http://localhost:50000/Track/GetList', {
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
@@ -1111,7 +1118,7 @@
       });
     }
   });
-  app.controller('ShowTrackController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+  app.controller('ShowTrackController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
 
     var WybraneId = $routeParams.id;
     $scope.sendForm = false;
@@ -1125,6 +1132,9 @@
       $scope.track = data;
       console.log($scope.track);
       console.log("Pobrano trase.");
+      $scope.przystankiTrasy = $scope.track.BusStops;
+      console.log("Przystanki trasy:")
+      console.log($scope.przystankiTrasy)
       if ($scope.track.IsArchive == 1) {
         $scope.track.IsArchiveName = "Nieaktywna";
         $scope.track.IsArchiveVar = true
@@ -1133,11 +1143,43 @@
         $scope.track.IsArchiveName = "Aktywna";
         $scope.track.IsArchiveVar = false
       }
+      $scope.initTrack($scope.track);
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania trasy.")
     });
 
+    $scope.UsuniecieTrasy = function(index){
+      var WybraneId = index;
 
+      $scope.sendForm = true;
+      var config = {
+        //headers: {'Session': ''}
+      };
+
+      if ($scope.sendForm) {
+        $scope.message = "Dezaktywowanie trasy...";
+
+          $http.delete('http://localhost:50000/Track/Delete/' + WybraneId, config)
+            .success(function (status, headers, config) {
+              $scope.CallbackServera = true;
+              $scope.CallbackServeraPositive = true;
+              $scope.komunikat = "Trasa został dezaktywowana pomyślnie!";
+
+              $scope.initMarkers();
+            })
+            .error(function (status, header, config) {
+              $scope.ResponseDetails =
+                "<hr />status: " + status +
+                "<hr />headers: " + header +
+                "<hr />config: " + config;
+              console.log($scope.ResponseDetails);
+              $scope.CallbackServera = true;
+              $scope.CallbackServeraNegative = true;
+              $scope.komunikat = "Coś poszło nie tak!";
+            });
+
+      }
+    }
   }]);
   /* Użytkownicy Controlery
    *==========================================================================*/
@@ -1340,7 +1382,8 @@
 
     $scope.lat = 53.77842200000001;
     $scope.lng = 20.48011930000007;
-
+    $scope.markerIcon="blocks/googleMaps/src/busstopMarker.png";
+    
     $scope.setPostitionBusstop = function (id) {
       $http.get('http://localhost:50000/Busstop/GetBusstop/' + id
       ).success(function (data, status, headers, config) {
@@ -1358,6 +1401,11 @@
       $scope.map = map;
     });
 
+
+
+
+
+
     $scope.busstopMarker = [];
     $scope.bussMarker = [];
 
@@ -1374,7 +1422,7 @@
 
 
     $scope.showBusstopMarkers = function() {
-
+      $scope.markerIcon="blocks/googleMaps/src/busstopMarker.png";
       $scope.busstopMarkers=[];
 
       $http.get('http://localhost:50000/Busstop/GetBusstopList/'
@@ -1426,11 +1474,71 @@
 
     };
 
+    /////////////////////////////////////////////////////////////////////////
+    $scope.wayPoints=[];
+    $scope.origin;
+    $scope.destination;
+
+    $scope.initTrack=function (track) {
+      $scope.map.directionsRenderers.d1.setMap($scope.map);
+      $scope.busstopMarkers=[];
+      $scope.wayPoint=[];
+      $scope.markerIcon="blocks/googleMaps/src/busstopMarkerGreen.png";
+      angular.forEach(track.BusStops, function (przystanek) {
+        if (przystanek.GotMachine == true) {
+          przystanek.GotMachineName = "Tak";
+        }
+        else {
+          przystanek.GotMachineName = "Nie";
+        }
+        if (przystanek.GotKiosk == true) {
+          przystanek.GotKioskName = "Tak";
+        }
+        else {
+          przystanek.GotKioskName = "Nie";
+        }
+        if (przystanek.BusStopType == 0) {
+          przystanek.BusStopTypeName = "Normalny"
+        }
+        else {
+          przystanek.BusStopTypeName = "Zabudowany"
+        }
+        if(przystanek.BusStopStatus==1)
+        {
+          $scope.busstopMarkers.push({
+            Id: przystanek.Id,
+            Name: przystanek.Name,
+            LocalizationString: przystanek.LocalizationString,
+            GotMachineName:  przystanek.GotMachineName,
+            GotKioskName: przystanek.GotKioskName,
+            BusStopTypeName: przystanek.BusStopTypeName,
+            Position: [przystanek.Lat, przystanek.Lng]
+          });
+          $scope.wayPoint.push({location: {lat:przystanek.Lat,lng: przystanek.Lng}});
+        }
+      });
+      $scope.busstopMarker=$scope.busstopMarkers;
+      $scope.wayPoints=$scope.wayPoint;
+
+      $scope.origin=$scope.wayPoints[0];
+      console.log("Start");
+      console.log($scope.origin);
+      $scope.destination=$scope.wayPoints[$scope.wayPoints.length-1];
+      console.log("End");
+      console.log($scope.destination);
+
+
+    };
+
+
+
     ////////////////////////////////////////////////////////////////////////
 
     $scope.initMarkers=function () {
-      //$scope.deleteMarkers();
+
+
       $scope.showBusstopMarkers();
+      $scope.map.directionsRenderers.d1.setMap(null);
     };
 
     // $scope.initBuss=function () {
