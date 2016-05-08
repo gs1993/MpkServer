@@ -1517,11 +1517,10 @@
     $scope.destination;
 
     $scope.initTrack=function (track) {
-      $scope.initMap();
-      $scope.map.directionsRenderers.d1.setMap(null);
-      $scope.map.directionsRenderers.d1.setMap($scope.map);
+
+      $scope.busstopMarker=[];
       $scope.busstopMarkers=[];
-      $scope.wayPoint=[];
+      $scope.punkty=[];
       $scope.markerIcon="blocks/googleMaps/src/busstopMarkerGreen.png";
       angular.forEach(track.BusStops, function (przystanek) {
         if (przystanek.GotMachine == true) {
@@ -1553,18 +1552,34 @@
             BusStopTypeName: przystanek.BusStopTypeName,
             Position: [przystanek.Lat, przystanek.Lng]
           });
-          $scope.wayPoint.push({location: {lat:przystanek.Lat,lng: przystanek.Lng}});
+          $scope.punkty.push({location: {lat:przystanek.Lat,lng: przystanek.Lng}});
         }
       });
-      $scope.busstopMarker=$scope.busstopMarkers;
-      $scope.wayPoints=$scope.wayPoint;
 
-      $scope.origin=$scope.wayPoints[0];
+      var start = $scope.punkty[0];
+      var end = $scope.punkty[$scope.punkty.length-1]
+      $scope.punkty.splice(0,1);
+      $scope.punkty.splice($scope.punkty.length-1,1);
+
+      $scope.wayPoints=$scope.punkty;
+      console.log("Punkty");
+      console.log($scope.wayPoints);
+      $scope.origin=start;
       console.log("Start");
       console.log($scope.origin);
-      $scope.destination=$scope.wayPoints[$scope.wayPoints.length-1];
-      console.log("End");
+      $scope.destination=end;
+      console.log("end");
       console.log($scope.destination);
+
+      $scope.initMap();
+      $scope.map.directionsRenderers.d1.setMap($scope.map);
+      $scope.busstopMarker=$scope.busstopMarkers;
+
+
+
+
+
+
 
 
     };
@@ -1576,8 +1591,8 @@
     $scope.initMarkers=function () {
       $scope.wayPoints=[];
       $scope.showBusstopMarkers();
-      $scope.initMap();
       $scope.map.directionsRenderers.d1.setMap(null);
+
      
     };
 
@@ -1586,15 +1601,11 @@
     //   //$scope.showBussMarkers();
     // };
     $scope.initMap = function() {
-      console.log(' $sctret$scope.map');
       google.maps.event.trigger( $scope.map, 'resize');
-      console.log(' $scope.map 2',  $scope.map)
-    }
+    };
     $scope.initMapTimeout = function() {
       $timeout(function () {
-      console.log(' $sctret$scope.map');
       google.maps.event.trigger( $scope.map, 'resize');
-      console.log(' $scope.map 2',  $scope.map)
       }, 500);
     }
 
