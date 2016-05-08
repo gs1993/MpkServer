@@ -20,7 +20,7 @@
       .panelTrasy
         .panelTrasy__itemHolder(ng-repeat="trasa in tracks | filter:trasaFilter | filter:{ StatusValue: '1'} as filtrowanetrasy")
           a(href="/#/track/show/{{ trasa.Id }}").panelTrasy__item
-           .panelTrasy__number {{trasa.Id}}
+           .panelTrasy__number {{ trasa.LineNumber }}
       .panelTrasy__alert(ng-hide="filtrowanetrasy.length") Brak wpisów, proszę zmienić kryteria wyszukiwania.
 
     .panelAutobusy__subtitle Nieaktywne trasy
@@ -28,6 +28,6 @@
       .panelTrasy
         .panelTrasy__itemHolder(ng-repeat="trasa in tracks | filter:trasaFilter | filter:{ StatusValue: '0'} as filtrowanetrasy")
           a(href="/#/track/show/{{ trasa.Id }}").panelTrasy__item
-            .panelTrasy__number {{trasa.Id}}
+            .panelTrasy__number {{ trasa.LineNumber }}
       .panelTrasy__alert(ng-hide="filtrowanetrasy.length") Brak wpisów, proszę zmienić kryteria wyszukiwania!
 

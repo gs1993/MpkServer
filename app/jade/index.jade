@@ -7,7 +7,7 @@ html(lang="pl" ng-app="app")
       include _header.jade
     .panels(ng-init="initMarkers()")
       div(ng-view)
-      .panels__close
+      .panels__close(ng-click="initMapTimeout()")
         a(href="/")
           i.fa.fa-angle-double-left
       footer
@@ -28,7 +28,7 @@ html(lang="pl" ng-app="app")
       .googleMaps
         .googleMaps__API#googleMaps
 
-          ng-map(center="[{{lat}}, {{lng}}]" zoom="14" styles="[{featureType:'landscape',stylers:[{saturation: -100},{lightness: 65},{visibility: 'on'}]},{featureType: 'poi',stylers: [{saturation: -100},{lightness: 51},{visibility: 'simplified'}]},{featureType: 'road.highway',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'road.arterial',stylers: [{saturation: -100},{lightness: 30},{visibility: 'on'}]},{featureType: 'road.local',stylers: [{saturation: -100},{lightness: 40},{visibility: 'on'}]},{featureType: 'transit',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'administrative.province',stylers: [{visibility: 'off'}]},{featureType: 'water',elementType: 'labels',stylers: [{visibility: 'on'},{lightness: -25},{saturation: -100}]},{featureType: 'water',elementType: 'geometry',stylers: [{hue: '#ffff00'},{lightness: -25},{saturation: -97}]}]"
+          ng-map( center="[{{lat}}, {{lng}}]" zoom="14" refresh="true" styles="[{featureType:'landscape',stylers:[{saturation: -100},{lightness: 65},{visibility: 'on'}]},{featureType: 'poi',stylers: [{saturation: -100},{lightness: 51},{visibility: 'simplified'}]},{featureType: 'road.highway',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'road.arterial',stylers: [{saturation: -100},{lightness: 30},{visibility: 'on'}]},{featureType: 'road.local',stylers: [{saturation: -100},{lightness: 40},{visibility: 'on'}]},{featureType: 'transit',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'administrative.province',stylers: [{visibility: 'off'}]},{featureType: 'water',elementType: 'labels',stylers: [{visibility: 'on'},{lightness: -25},{saturation: -100}]},{featureType: 'water',elementType: 'geometry',stylers: [{hue: '#ffff00'},{lightness: -25},{saturation: -97}]}]"
             pan-control="false"
             map-type-control="true"
             map-type-control-options="{style:'HORIZONTAL_BAR', position:'RIGHT_BOTTOM'}"
@@ -36,7 +36,8 @@ html(lang="pl" ng-app="app")
             zoom-control-options="{style:'LARGE', position:'RIGHT_CENTER'}"
             street-view-control="false"
             scale-control="false"
-            )
+            tilt="45"
+            )#foo
 
             info-window(id="myInfoWindow")
               .googleMaps__API__infoWindow(ng-non-bindable)
@@ -70,8 +71,6 @@ html(lang="pl" ng-app="app")
 
             //Markery przystanków
             marker(ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" icon="{{markerIcon}}")
-
-
 
 
 

@@ -22,7 +22,7 @@
 
 .fa {
   display: inline-block;
-  font: normal normal normal 14px / 1 FontAwesome;
+  font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -3947,11 +3947,11 @@ input,
 select,
 textarea,
 button {
-  font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 body {
-  font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: #333;
   background-color: #fff;
 }
@@ -4661,7 +4661,7 @@ input::-webkit-inner-spin-button {
 }
 
 .status-indicator {
-  font: normal normal 16px / 1 "octicons";
+  font: normal normal 16px/1 "octicons";
   display: inline-block;
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
@@ -11894,6 +11894,10 @@ a.tabnav-extra:hover {
 
 .panelDodajAutobus__icon {
   font-size: 3em;
+}
+
+.panelDodajAutobus__dataLoader {
+  padding: 20px 0;
 }
 
 .panelDodajAutobus__dataLoader__svg {

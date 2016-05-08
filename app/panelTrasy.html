@@ -14,7 +14,7 @@
     <div ng-controller="TrackController" class="panelAutobusy__table">
       <div class="panelTrasy">
         <div ng-repeat="trasa in tracks | filter:trasaFilter | filter:{ StatusValue: '1'} as filtrowanetrasy" class="panelTrasy__itemHolder"><a href="/#/track/show/{{ trasa.Id }}" class="panelTrasy__item">
-            <div class="panelTrasy__number">{{trasa.Id}}</div></a></div>
+            <div class="panelTrasy__number">{{ trasa.LineNumber }}</div></a></div>
       </div>
       <div ng-hide="filtrowanetrasy.length" class="panelTrasy__alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</div>
     </div>
@@ -22,7 +22,7 @@
     <div class="panelAutobusy__table">
       <div class="panelTrasy">
         <div ng-repeat="trasa in tracks | filter:trasaFilter | filter:{ StatusValue: '0'} as filtrowanetrasy" class="panelTrasy__itemHolder"><a href="/#/track/show/{{ trasa.Id }}" class="panelTrasy__item">
-            <div class="panelTrasy__number">{{trasa.Id}}</div></a></div>
+            <div class="panelTrasy__number">{{ trasa.LineNumber }}</div></a></div>
       </div>
       <div ng-hide="filtrowanetrasy.length" class="panelTrasy__alert">Brak wpisów, proszę zmienić kryteria wyszukiwania!</div>
     </div>
