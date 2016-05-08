@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -10,6 +11,7 @@ using System.Web.Http;
 using Core.Helpers;
 using Core.Logger;
 using Core.Transfer.TrackController;
+using Data;
 using Data.Models;
 using Data.Service;
 using WebApiServer.Converters;
@@ -57,9 +59,30 @@ namespace WebApiServer.Controllers
                 var track = db.Tracks.FirstOrDefault(x => x.Id == id);
                 if (track != null)
                 {
-                    db.Tracks.Remove(track);
+                    track.IsArchive = false;
+                    db.Entry(track).State=EntityState.Modified;
                     db.SaveChanges();
-                    _logger.Log($"Deleted track {id}");
+                    _logger.Log($"Archive track {id}");
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public bool Restore(int id)
+        {
+            using (var db = _databaseService.CreateContext())
+            {
+                var track = db.Tracks.FirstOrDefault(x => x.Id == id);
+                if (track != null)
+                {
+                    track.IsArchive = true;
+
+                    TryCreateTrack(db, track.LineNumber);
+
+                    db.Entry(track).State = EntityState.Modified;
+                    db.SaveChanges();
+                    _logger.Log($"Restore track {id}");
                     return true;
                 }
                 return false;
@@ -74,39 +97,55 @@ namespace WebApiServer.Controllers
 
                 var track = new Track()
                 {
-                    Id = dto.Id,
-                    IsArchive = dto.IsArchive,
+                    LineNumber = dto.LineNumber,
+                    IsArchive = false,
                     BusStopsIds = dto.BusStops.ToArray()
                 };
-                if (dto.Id == 0) return null;
-
-                
+                if (dto.LineNumber == 0) return null;
                 db.Tracks.Add(track);
+
+                TryCreateTrack(db, dto.LineNumber);
+
                 db.SaveChanges();
-                _logger.Log($"Created track{dto.Id}");
+                _logger.Log($"Created track {dto.LineNumber}");
 
                 return track.MapToDto();
             }
         }
 
-        public TrackDto Update(TrackDto dto)
+        public TrackDto Update(EditableTrackDto dto)
         {
             using (var db = _databaseService.CreateContext())
             {
+                ValidationHelper.Validate(dto);
+
                 if (dto.Id != 0)
                 {
                     db.Tracks.AddOrUpdate(new Track()
                     {
-                        Id = dto.Id,
-                        IsArchive = dto.IsArchive,
+                        Id = dto.Id.Value,
+                        LineNumber = dto.LineNumber.Value,
                         BusStopsIds = dto.BusStops.ToArray()
                     });
+
+                    TryCreateTrack(db,dto.LineNumber.Value);
+
                     db.SaveChanges();
-                    return dto;
+                    return db.Tracks.First(x=>x.Id==dto.Id).MapToDto();
                 }
                 return null;
 
             }
+        }
+
+        private void TryCreateTrack(MainDbContex db,int line)
+        {
+            var count = db.Tracks.Local.Count(x => x.IsArchive == true && x.LineNumber == line);
+
+            var count2 = db.Tracks.Count(x => x.IsArchive == true && x.LineNumber == line);;
+
+
+            if (count+count2>1) throw new Exception("Nie można posiadać dwóch aktywnych tras o takim samym numerze lini");
         }
     }
 }

@@ -143,12 +143,14 @@ namespace Data.Migrations
             context.Tracks.AddOrUpdate(new Track()
             {
                 Id = 1,
+                LineNumber = 132,
                 BusStops = "1;2;3",
                 IsArchive = false
             });
             context.Tracks.AddOrUpdate(new Track()
             {
                 Id = 1,
+                LineNumber = 137,
                 BusStops = "3;2;1",
                 IsArchive = true
             });
@@ -208,6 +210,7 @@ namespace Data.Migrations
             var track = new Track()
             {
                 Id = 900,
+                LineNumber = 142,
                 IsArchive = false,
                 BusStops = "1;2;3"
             };

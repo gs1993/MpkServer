@@ -11,6 +11,8 @@ namespace Core.Transfer.TrackController
     {
         public int Id { get; set; }
 
+        public int LineNumber { get; set; }
+
         public ICollection<BusStopDto> BusStops { get; set; }
 
         public bool IsArchive { get; set; }

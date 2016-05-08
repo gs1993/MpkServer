@@ -571,8 +571,6 @@
   /* Przystanki Controlery
    *==========================================================================*/
   app.controller('BusstopController', function ($scope, $http) {
-
-
     $http.get('http://localhost:50000/Busstop/GetBusstopList/', {
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
@@ -969,6 +967,7 @@
   });
   app.controller('AddTrackController', function ($scope, $http, $timeout) {
     $scope.DodanoTrase = false;
+
     $http.get('http://localhost:50000/Busstop/GetBusstopList/', {
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
@@ -1034,7 +1033,8 @@
         var data = JSON.stringify({
           Id: 1,
           BusStops: $scope.tablicaWybranychPrzystankow,
-          "IsArchive": true
+          LineNumber: $scope.LineNumber,
+          IsArchive: true
         });
         var config = {
           //headers: {'Session': ''}
@@ -1150,7 +1150,8 @@
 
     $scope.UsuniecieTrasy = function(index){
       var WybraneId = index;
-
+      console.log("WybraneID");
+      console.log(WybraneId);
       $scope.sendForm = true;
       var config = {
         //headers: {'Session': ''}
@@ -1163,7 +1164,7 @@
             .success(function (status, headers, config) {
               $scope.CallbackServera = true;
               $scope.CallbackServeraPositive = true;
-              $scope.komunikat = "Trasa został dezaktywowana pomyślnie!";
+              $scope.komunikat = "Trasa została dezaktywowana pomyślnie!";
 
               $scope.initMarkers();
             })
@@ -1172,6 +1173,39 @@
                 "<hr />status: " + status +
                 "<hr />headers: " + header +
                 "<hr />config: " + config;
+              console.log($scope.ResponseDetails);
+              $scope.CallbackServera = true;
+              $scope.CallbackServeraNegative = true;
+              $scope.komunikat = "Coś poszło nie tak!";
+            });
+
+      }
+    }
+    $scope.AktywujTrasy = function(index){
+      var WybraneId = index;
+      console.log("WybraneID");
+      console.log(WybraneId);
+      $scope.sendForm = true;
+      var config = {
+        //headers: {'Session': ''}
+      };
+
+      if ($scope.sendForm) {
+        $scope.message = "Dezaktywowanie trasy...";
+
+        $http.post('http://localhost:50000/Track/Restore/' + WybraneId, config)
+            .success(function (status, headers, config) {
+              $scope.CallbackServera = true;
+              $scope.CallbackServeraPositive = true;
+              $scope.komunikat = "Trasa został aktywowana pomyślnie!";
+
+              $scope.initMarkers();
+            })
+            .error(function (status, header, config) {
+              $scope.ResponseDetails =
+                  "<hr />status: " + status +
+                  "<hr />headers: " + header +
+                  "<hr />config: " + config;
               console.log($scope.ResponseDetails);
               $scope.CallbackServera = true;
               $scope.CallbackServeraNegative = true;
@@ -1391,6 +1425,7 @@
         $scope.busstop = data;
         $scope.lat=$scope.busstop.Lat;
         $scope.lng=$scope.busstop.Lng;
+        $scope.initMap()
       }).error(function (data, status, headers, config) {
         console.log("Błąd pobrania przystanku.")
       });
@@ -1482,6 +1517,8 @@
     $scope.destination;
 
     $scope.initTrack=function (track) {
+      $scope.initMap();
+      $scope.map.directionsRenderers.d1.setMap(null);
       $scope.map.directionsRenderers.d1.setMap($scope.map);
       $scope.busstopMarkers=[];
       $scope.wayPoint=[];
@@ -1537,9 +1574,9 @@
     ////////////////////////////////////////////////////////////////////////
 
     $scope.initMarkers=function () {
-
       $scope.wayPoints=[];
       $scope.showBusstopMarkers();
+      $scope.initMap();
       $scope.map.directionsRenderers.d1.setMap(null);
      
     };
@@ -1548,7 +1585,18 @@
     //   $scope.deleteMarkers();
     //   //$scope.showBussMarkers();
     // };
-
+    $scope.initMap = function() {
+      console.log(' $sctret$scope.map');
+      google.maps.event.trigger( $scope.map, 'resize');
+      console.log(' $scope.map 2',  $scope.map)
+    }
+    $scope.initMapTimeout = function() {
+      $timeout(function () {
+      console.log(' $sctret$scope.map');
+      google.maps.event.trigger( $scope.map, 'resize');
+      console.log(' $scope.map 2',  $scope.map)
+      }, 500);
+    }
 
 
   });

@@ -10,7 +10,7 @@
     span.-active
       a(href="/#/track/Get/{{ TrackID }}") Szczegóły Trasy
   .panelWyswietlAutobus__wrapper
-    .panelWyswietlAutobus__subtitle Trasa o numerze {{ TrackID }}
+    .panelWyswietlAutobus__subtitle Trasa o numerze {{ track.LineNumber }}
     .panelWyswietlAutobus__text Parametry aktualnie wybranej trasy
     .panelWyswietlTrase
       .panelWyswietlTrase__alert(ng-show="track.IsArchiveVar") Trasa jest nieaktywna!
@@ -31,6 +31,6 @@
                 .panelWyswietlTrase__itemSubtitle Opis
       .panelWyswietlAutobus__navigation
         span(ng-click="UsuniecieTrasy(TrackID)" ng-hide="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.red Dezaktywuj
-        span(href="/#/track/restore/{{ TrackID }}" ng-show="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.greenDark Aktywuj
+        span(ng-click="AktywujTrasy(TrackID)" ng-show="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.greenDark Aktywuj
         a(href="/#/track").panelWyswietlAutobus__navigation__item.gray.-abort Wróć
       .panelWyswietlTrase__alert(ng-show="komunikat") {{ komunikat }}

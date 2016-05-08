@@ -65,6 +65,7 @@
     <Compile Include="Transfer\SubscribeHandler\SubscribeDto.cs" />
     <Compile Include="Transfer\SubscribeHandler\UnSubscribeDto.cs" />
     <Compile Include="Transfer\TestTransfer\TestObj.cs" />
+    <Compile Include="Transfer\TrackController\EditableTrackDto.cs" />
     <Compile Include="Transfer\TrackController\TrackDetailsDto.cs" />
     <Compile Include="Transfer\TrackController\TrackDto.cs" />
     <Compile Include="Transfer\User\Login\UserLoginDto.cs" />

@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201604161232304_initial.Designer.cs">
       <DependentUpon>201604161232304_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605081219000_trackChange.cs" />
+    <Compile Include="Migrations\201605081219000_trackChange.Designer.cs">
+      <DependentUpon>201605081219000_trackChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\Autobus.cs" />
@@ -93,6 +97,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201604161232304_initial.resx">
       <DependentUpon>201604161232304_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605081219000_trackChange.resx">
+      <DependentUpon>201605081219000_trackChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

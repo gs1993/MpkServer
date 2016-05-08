@@ -11896,6 +11896,10 @@ a.tabnav-extra:hover {
   font-size: 3em;
 }
 
+.panelDodajAutobus__dataLoader {
+  padding: 20px 0;
+}
+
 .panelDodajAutobus__dataLoader__svg {
   height: 200px;
   width: 200px;

@@ -11,6 +11,8 @@ namespace Data.Models
     {
         public int Id { get; set; }
 
+        public int LineNumber { get; set; }
+
         public string BusStops { get; set; }
 
         public bool IsArchive { get; set; }
