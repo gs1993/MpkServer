@@ -11,6 +11,7 @@ using System.Web.Http;
 using Core.Helpers;
 using Core.Logger;
 using Core.Transfer.TrackController;
+using Data;
 using Data.Models;
 using Data.Service;
 using WebApiServer.Converters;
@@ -76,6 +77,9 @@ namespace WebApiServer.Controllers
                 if (track != null)
                 {
                     track.IsArchive = true;
+
+                    TryCreateTrack(db, track.LineNumber);
+
                     db.Entry(track).State = EntityState.Modified;
                     db.SaveChanges();
                     _logger.Log($"Restore track {id}");
@@ -98,9 +102,10 @@ namespace WebApiServer.Controllers
                     BusStopsIds = dto.BusStops.ToArray()
                 };
                 if (dto.LineNumber == 0) return null;
-
-                
                 db.Tracks.Add(track);
+
+                TryCreateTrack(db, dto.LineNumber);
+
                 db.SaveChanges();
                 _logger.Log($"Created track {dto.LineNumber}");
 
@@ -118,17 +123,29 @@ namespace WebApiServer.Controllers
                 {
                     db.Tracks.AddOrUpdate(new Track()
                     {
-                        Id = dto.Id,
-                        LineNumber = dto.LineNumber,
-                        IsArchive = dto.IsArchive,
+                        Id = dto.Id.Value,
+                        LineNumber = dto.LineNumber.Value,
                         BusStopsIds = dto.BusStops.ToArray()
                     });
+
+                    TryCreateTrack(db,dto.LineNumber.Value);
+
                     db.SaveChanges();
-                    return dto;
+                    return db.Tracks.First(x=>x.Id==dto.Id).MapToDto();
                 }
                 return null;
 
             }
+        }
+
+        private void TryCreateTrack(MainDbContex db,int line)
+        {
+            var count = db.Tracks.Local.Count(x => x.IsArchive == true && x.LineNumber == line);
+
+            var count2 = db.Tracks.Count(x => x.IsArchive == true && x.LineNumber == line);;
+
+
+            if (count+count2>1) throw new Exception("Nie można posiadać dwóch aktywnych tras o takim samym numerze lini");
         }
     }
 }
