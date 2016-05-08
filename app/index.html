@@ -96,6 +96,18 @@
       </footer>
     </div>
     <div class="wrapper">
+      <div ng-hide="globals.UserIsLogin" class="panelWelcome__holder">
+        <div class="panelWelcome panel">
+          <div class="panelWelcome__wrapper"><span class="panelWelcome__buttonIconBG">
+              <div class="panelWelcome__buttonIcon fa fa-bus"></div></span>
+            <div class="panelWelcome__title">Witaj w systemie MPK</div>
+            <div class="panelWelcome__text">Projekt zespołowy.</div>
+          </div>
+          <div class="panelWelcome__navigation">
+            <!--<a href="#" style="display:block;">Link #01</a>--><a href="#/login" class="WelcomeClick blue">Logowanie</a><a href="#/register" class="WelcomeClick green">Rejestracja</a>
+          </div>
+        </div>
+      </div>
       <div class="googleMaps">
         <div id="googleMaps" class="googleMaps__API">
           <ng-map center="[{{lat}}, {{lng}}]" zoom="14" styles="[{featureType:'landscape',stylers:[{saturation: -100},{lightness: 65},{visibility: 'on'}]},{featureType: 'poi',stylers: [{saturation: -100},{lightness: 51},{visibility: 'simplified'}]},{featureType: 'road.highway',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'road.arterial',stylers: [{saturation: -100},{lightness: 30},{visibility: 'on'}]},{featureType: 'road.local',stylers: [{saturation: -100},{lightness: 40},{visibility: 'on'}]},{featureType: 'transit',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'administrative.province',stylers: [{visibility: 'off'}]},{featureType: 'water',elementType: 'labels',stylers: [{visibility: 'on'},{lightness: -25},{saturation: -100}]},{featureType: 'water',elementType: 'geometry',stylers: [{hue: '#ffff00'},{lightness: -25},{saturation: -97}]}]" pan-control="false" map-type-control="true" map-type-control-options="{style:'HORIZONTAL_BAR', position:'RIGHT_BOTTOM'}" zoom-control="true" zoom-control-options="{style:'LARGE', position:'RIGHT_CENTER'}" street-view-control="false" scale-control="false">
