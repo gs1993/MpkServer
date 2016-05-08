@@ -17,13 +17,20 @@
       .panelWyswietlTrase__columns
         .panelWyswietlTrase__column
           .panelWyswietlTrase__title Przystanki wybranej trasy
-          .panelWyswietlTrase__content
-            .panelWyswietlTrase__item Przstanek taki i taki
+          .panelWyswietlTrase__content(ng-repeat="przystanek in przystankiTrasy")
+            .panelWyswietlTrase__itemBox
+              .panelWyswietlTrase__item
+                .panelWyswietlTrase__itemTitle <i class="fa fa-map-signs"></i> {{ przystanek.Name }}
+                .panelWyswietlTrase__itemSubtitle {{ przystanek.LocalizationString }}
         .panelWyswietlTrase__column
           .panelWyswietlTrase__title Aktualne kursy
           .panelWyswietlTrase__content
-            .panelWyswietlTrase__item Autobus nr 1
+            .panelWyswietlTrase__itemBox
+              .panelWyswietlTrase__item
+                .panelWyswietlTrase__itemTitle <i class="fa fa-bus"></i> Autobus nr 1
+                .panelWyswietlTrase__itemSubtitle Opis
       .panelWyswietlAutobus__navigation
-        a(href="/#/track/delete/{{ TrackID }}" ng-hide="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.red Dezaktywuj
-        a(href="/#/track/restore/{{ TrackID }}" ng-show="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.greenDark Aktywuj
+        span(ng-click="UsuniecieTrasy(TrackID)" ng-hide="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.red Dezaktywuj
+        span(href="/#/track/restore/{{ TrackID }}" ng-show="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.greenDark Aktywuj
         a(href="/#/track").panelWyswietlAutobus__navigation__item.gray.-abort Wróć
+      .panelWyswietlTrase__alert(ng-show="komunikat") {{ komunikat }}
