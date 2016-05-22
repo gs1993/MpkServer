@@ -56,21 +56,21 @@ html(lang="pl" ng-app="app")
                     td Kiosk
                     td {{selectedBusstop.GotKioskName}}
 
-
+            //Markery przystanków
+            marker(ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" icon="{{markerIcon}}")
 
             directions(
-              id="d1"
+              ng-show="czyWyswietloneD1"
               draggable="false"
               travel-mode="DRIVING"
               waypoints="{{wayPoints}}"
               origin="{{origin}}"
               destination="{{destination}}"
               suppress-markers="true"
-
               )
 
-            //Markery przystanków
-            marker(ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" icon="{{markerIcon}}")
+
+
 
 
 

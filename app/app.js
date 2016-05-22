@@ -1512,9 +1512,15 @@
     };
 
     /////////////////////////////////////////////////////////////////////////
+    $scope.czyWyswietloneD1=false;
+    $scope.czyWyswietloneD2=false;
     $scope.wayPoints=[];
     $scope.origin;
     $scope.destination;
+
+
+
+
 
     $scope.initTrack=function (track) {
 
@@ -1572,15 +1578,9 @@
       console.log($scope.destination);
 
       $scope.initMap();
-      $scope.map.directionsRenderers.d1.setMap($scope.map);
+      $scope.map.directionsRenderers[0].setMap($scope.map);
+
       $scope.busstopMarker=$scope.busstopMarkers;
-
-
-
-
-
-
-
 
     };
 
@@ -1591,9 +1591,9 @@
     $scope.initMarkers=function () {
       $scope.wayPoints=[];
       $scope.showBusstopMarkers();
-      $scope.map.directionsRenderers.d1.setMap(null);
-
-     
+      $scope.map.directionsRenderers[0].setMap(null);
+      $scope.map.directionsRenderers=[];
+      $scope.map.directionsRenderers.push(new google.maps.DirectionsRenderer);
     };
 
     // $scope.initBuss=function () {

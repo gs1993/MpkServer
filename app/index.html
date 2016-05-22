@@ -134,9 +134,9 @@
                 </table>
               </div>
             </info-window>
-            <directions id="d1" draggable="false" travel-mode="DRIVING" waypoints="{{wayPoints}}" origin="{{origin}}" destination="{{destination}}" suppress-markers="true"></directions>
             <!--Markery przystanków-->
             <marker ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" icon="{{markerIcon}}"></marker>
+            <directions ng-show="czyWyswietloneD1" draggable="false" travel-mode="DRIVING" waypoints="{{wayPoints}}" origin="{{origin}}" destination="{{destination}}" suppress-markers="true"></directions>
           </ng-map>
         </div>
       </div>
