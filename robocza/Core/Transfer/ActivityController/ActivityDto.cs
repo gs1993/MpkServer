@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Enums;
 using Core.Transfer.Bus;
 using Core.Transfer.BusStop;
 using Core.Transfer.User;
-using Data.Enums;
-using Data.Models;
 
 namespace Core.Transfer.ActivityController
 {

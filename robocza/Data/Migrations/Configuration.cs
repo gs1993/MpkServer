@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Text;
-using Data.Enums;
+using Core.Enums;
 using Data.Models;
 using Microsoft.AspNet.Identity;
 

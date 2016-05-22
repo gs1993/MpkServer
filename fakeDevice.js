@@ -9,12 +9,43 @@ var sendAuth = function(){
 	};
 	deviceWebstocket.send(JSON.stringify(obj));
 }
-var sendActive = function(busStopId){
-	var data = {BusId:'1',BusStopId:busStopId};
+var sendActivity = function(x,y,type,addInfo){
+	var data = {DeviceId:'1',Lat:x,Lng:y,Type:type,AdditionalInfo:addInfo};
 	var obj = {
-			  Action: "busStop.Activity",
+			  Action: "activity.send",
 			  Data: JSON.stringify(data)
 	};
 	deviceWebstocket.send(JSON.stringify(obj));
 }
 
+var sampleStartCourse = function(){
+	sendActivity(26,26,6,"TRACKID=1;");   // ID TRASY
+}
+
+var sampleBusStop = function(){
+	sendActivity(26,26,4,"STOPID=1;")		// ID PRZYSTANKU
+}
+
+var sampleBusEndCourse  = function(){
+	sendActivity(26,26,7,"");
+}
+
+
+var sampleTicketCount  = function(){
+	sendActivity(26,26,0,"");
+}
+
+
+/*
+public enum ActivityType
+    {
+        TicketCheck=0,
+        Control=1,
+        CivilIncident=2,
+        TechnicalProblems=3,
+        BusStopCheck=4,
+        TicketSell=5,
+        StartCourse=6,
+        EndCourse=7
+    }
+*/

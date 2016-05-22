@@ -10,7 +10,7 @@ var sendAuth = function(){
 	deviceWebstocket.send(JSON.stringify(obj));
 }
 var sendSubscribe = function(busId){
-	var data = {EventType:1,IdOfObject:busId};
+	var data = {EventType:0,IdOfObject:busId}; //0 = busmove
 	var obj = {
           Action: "subscribe",
           Data: JSON.stringify(data)
@@ -18,7 +18,7 @@ var sendSubscribe = function(busId){
 	deviceWebstocket.send(JSON.stringify(obj));
 }
 var sendUnSubscribe = function(busId){
-	var data = {EventType:1,IdOfObject:busId};
+	var data = {EventType:0,IdOfObject:busId};
 	var obj = {
           Action: "unsubscribe",
           Data: JSON.stringify(data)
