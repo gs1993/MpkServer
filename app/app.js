@@ -3,7 +3,7 @@
  */
 (function () {
   'use strict';
-  var app = angular.module('app', ['ngRoute', 'ngMap', 'wt.responsive', 'ngCookies'])
+  var app = angular.module('app', ['ngRoute', 'ngMap', 'wt.responsive', 'ngCookies', 'ngWebsocket' ])
     .factory('AuthenticationService', AuthenticationService);
   app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
@@ -1613,5 +1613,20 @@
     };
   };
   app.directive("compareTo", compareTo);
+
+  angular.run(function ($websocket) {
+    var ws = $websocket.$new({
+      url: 'ws://localhost:7878',
+      reconnect: true,
+      reconnectInterval: 500 // it will reconnect after 0.5 seconds
+    });
+
+    ws.$on('$open', function () {
+      console.log('Here we are and I\'m pretty sure to get back here for another time at least!');
+    })
+      .$on('$close', function () {
+        console.log('Got close, damn you silly wifi!');
+      });
+  });
 })();
 
