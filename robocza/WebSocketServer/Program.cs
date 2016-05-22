@@ -1,17 +1,11 @@
 ﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Logger;
-using Core.Transfer.Attributes;
-using Core.Transfer.BusStopHandler;
 using Data.Service;
-using Fleck;
 using Newtonsoft.Json;
 using SimpleInjector;
-using SimpleInjector.Diagnostics;
+using WebSocketServer.Activity;
+using WebSocketServer.Activity.Resolvers;
 using WebSocketServer.Connection;
 using WebSocketServer.Events;
 using WebSocketServer.Handlers;
@@ -51,7 +45,7 @@ namespace WebSocketServer
 
         public static void SetJsonConfig()
         {
-            JsonConvert.DefaultSettings= ()=>new JsonSerializerSettings()
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings()
             {
                 NullValueHandling = NullValueHandling.Ignore
             };
@@ -72,15 +66,27 @@ namespace WebSocketServer
             container.Register<ILogger, ConsoleLogger>(Lifestyle.Singleton);
             container.Register<IDatabaseService, DatabaseService>(Lifestyle.Singleton);
             container.Register<IUserService, UserService>(Lifestyle.Singleton);
-            container.Register<IConnectionHolder,ConnectionHolder>(Lifestyle.Singleton);
-            container.Register<IMessageResolver,MessageResolver.MessageResolver>(Lifestyle.Singleton);
+            container.Register<IConnectionHolder, ConnectionHolder>(Lifestyle.Singleton);
+            container.Register<IMessageResolver, MessageResolver.MessageResolver>(Lifestyle.Singleton);
             container.Register(typeof(IMessageHandler<,>), assemblies);
-            container.Register<IEventEmitter,EventEmitter>(Lifestyle.Singleton);
+            container.Register<IEventEmitter, EventEmitter>(Lifestyle.Singleton);
 
+            container.RegisterCollection(typeof(IActivityResolver),
+                new[]
+                {
+                  typeof(ActivityResolveBusEndCourse),
+                    typeof(ActivityResolveBusMove),
+                    typeof(ActivityResolveBurStartCourse),
+                    typeof(ActivityResolveBusTicketCount)
+                }
+            );
+
+
+            container.Register<IActivityResolverProvider, ActivityResolverProvider>(Lifestyle.Transient);
             container.Verify();
 
             return container;
         }
     }
-    
+
 }

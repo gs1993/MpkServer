@@ -4,10 +4,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Enums;
 using Core.Transfer.Base;
 using Core.Transfer.BusStopHandler;
 using Core.Transfer.Emit;
-using Data.Enums;
 using Data.Models;
 using Data.Service;
 using WebSocketServer.Connection;
@@ -57,7 +57,7 @@ namespace WebSocketServer.Handlers.Action
                     });
                 }
 
-                var activity = db.Activities.Add(new Activity()
+                var activity = db.Activities.Add(new Data.Models.Activity()
                 {
                     BusStop = busstop,
                     ActivityType = ActivityType.BusStopCheck,
@@ -91,7 +91,7 @@ namespace WebSocketServer.Handlers.Action
                    Lng = busstop.Lng,
                    Lat = busstop.Lng,
                    Info = activity.ActivityType.ToString()
-                },EventType.BusMove,bus.Id);
+                },EventType.BusAction,bus.Id);
 
             }
             return Task.FromResult(new EmptyDto());

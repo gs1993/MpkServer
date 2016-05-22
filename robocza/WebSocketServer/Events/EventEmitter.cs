@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Enums;
 using Newtonsoft.Json;
 using WebSocketServer.Connection;
 
@@ -14,7 +15,7 @@ namespace WebSocketServer.Events
 
         public void Emit<T>(T obj, EventType type, int id)
         {
-            var sendData = new EmitMsg { Data = JsonConvert.SerializeObject(obj) };
+            var sendData = new EmitMsg { Data = JsonConvert.SerializeObject(obj), DeviceId = id, EventType = type};
             if (!_connections.ContainsKey(type)) _connections[type] = new Dictionary<int, List<IConnection>>();
             if (!_connections[type].ContainsKey(id)) _connections[type][id] = new List<IConnection>();
             foreach (var connection in _connections[type][id])

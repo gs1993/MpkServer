@@ -42,11 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\EnsureElements.cs" />
+    <Compile Include="Enums\ActivityType.cs" />
+    <Compile Include="Enums\BusStopType.cs" />
+    <Compile Include="Enums\BusType.cs" />
+    <Compile Include="Enums\EventType.cs" />
+    <Compile Include="Enums\Status.cs" />
+    <Compile Include="Enums\UserRank.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Logger\ConsoleLogger.cs" />
     <Compile Include="Logger\LogType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transfer\ActivitySendDto.cs" />
     <Compile Include="Transfer\ActivityController\ActivityDto.cs" />
     <Compile Include="Transfer\Attributes\MessageAttribute.cs" />
     <Compile Include="Transfer\Authhandler\AuthDto.cs" />
@@ -79,12 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Session\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{C19A71F2-2601-4E65-9C5C-4E00C364AB30}</Project>
-      <Name>Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
