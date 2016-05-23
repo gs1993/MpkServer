@@ -140,12 +140,9 @@ namespace WebApiServer.Controllers
 
         private void TryCreateTrack(MainDbContex db,int line)
         {
-            var count = db.Tracks.Local.Count(x => x.IsArchive == true && x.LineNumber == line);
-
-            var count2 = db.Tracks.Count(x => x.IsArchive == true && x.LineNumber == line);;
-
-
-            if (count+count2>1) throw new Exception("Nie można posiadać dwóch aktywnych tras o takim samym numerze lini");
+            if (db.Tracks.Local.Count(x => x.IsArchive == false && x.LineNumber == line) + 
+                db.Tracks.Count(x => x.IsArchive == false && x.LineNumber == line) > 1)
+                throw new Exception("Nie można posiadać dwóch aktywnych tras o takim samym numerze lini");
         }
     }
 }

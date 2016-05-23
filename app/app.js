@@ -3,8 +3,8 @@
  */
 (function () {
   'use strict';
-  var app = angular.module('app', ['ngRoute', 'ngMap','wt.responsive', 'ngCookies']).factory('AuthenticationService', AuthenticationService);
-
+  var app = angular.module('app', ['ngRoute', 'ngMap', 'wt.responsive', 'ngCookies', 'ngWebSocket'])
+    .factory('AuthenticationService', AuthenticationService);
   app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
       $routeProvider.//STANDARDOWE SCIEZKI
@@ -21,19 +21,19 @@
         templateUrl: 'panelRegister.html',
         controller: 'RegisterController'
       }).when('/forgot', {
-        templateUrl: 'panelResetPassword.html',
-        controller: 'ResetPasswordController'
-      })
+          templateUrl: 'panelResetPassword.html',
+          controller: 'ResetPasswordController'
+        })
         .when('/logout', {
           templateUrl: 'panelLogin.html',
           controller: 'LogoutController'
         })
-      //AUTOBUS SCIEZKI
+        //AUTOBUS SCIEZKI
         .when('/bus', {
-        templateUrl: 'panelAutobusy.html',
-        controller: 'BusController',
-        activetab: 'bus'
-      }).when('/bus/add', {
+          templateUrl: 'panelAutobusy.html',
+          controller: 'BusController',
+          activetab: 'bus'
+        }).when('/bus/add', {
         templateUrl: 'panelDodajAutobus.html',
         controller: 'AddBusController'
       }).when('/bus/show/:id', {
@@ -62,11 +62,10 @@
         templateUrl: 'panelPrzystanki.html',
         controller: 'RestoreBusstopController'
       }).//Trasy SCIEZKI
-        when('/track', {
-          templateUrl: 'panelTrasy.html',
-          controller: 'TrackController'
-        }).
-      when('/track/add', {
+      when('/track', {
+        templateUrl: 'panelTrasy.html',
+        controller: 'TrackController'
+      }).when('/track/add', {
         templateUrl: 'panelDodajTrase.html',
         controller: 'AddTrackController'
       }).when('/track/show/:id', {
@@ -113,24 +112,25 @@
    *==========================================================================*/
   HomeController.$inject = ['$scope', '$http', '$rootScope', '$timeout'];
   function HomeController($scope, $http, $rootScope, $timeout) {
-    if($rootScope.globals.currentUser){
-      console.log( $rootScope.globals);
-      console.log( $rootScope.globals.currentUser.Email);
+    if ($rootScope.globals.currentUser) {
+      console.log($rootScope.globals);
+      console.log($rootScope.globals.currentUser.Email);
       $scope.userName = $rootScope.globals.currentUser.Email;
     }
-    else{
+    else {
       $scope.userName = 'nieznajomy'
     }
   }
+
   app.controller('HomeController', HomeController);
 
   app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope) {
-   $rootScope.globals = {HeaderToHide: true, UserIsLogin: false};
-   $cookieStore.remove('globals');
-   $http.defaults.headers.common.Authorization = 'Session';
+    $rootScope.globals = {HeaderToHide: true, UserIsLogin: false};
+    $cookieStore.remove('globals');
+    $http.defaults.headers.common.Authorization = 'Session';
 
     $scope.deleteMarkers();
-   });
+  });
   AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$timeout'];
   function AuthenticationService($http, $cookieStore, $rootScope, $timeout) {
     var service = {};
@@ -142,15 +142,16 @@
     return service;
 
     function Login(username, password, callback) {
+
       /* Use this for real authentication
        ----------------------------------------------*/
-      $http.post('http://localhost:50000/User/Login', { Email: username, Password: password })
-          .success(function (response) {
-              $rootScope.authdata = response.Token;
-            console.log("Pobranie tokenu");
-            console.log($rootScope.authdata);
-              callback(response);
-          });
+      $http.post('http://localhost:50000/User/Login', {Email: username, Password: password})
+        .success(function (response) {
+          $rootScope.authdata = response.Token;
+          console.log("Pobranie tokenu");
+          console.log($rootScope.authdata);
+          callback(response);
+        });
     }
 
     function SetCredentials(username, password) {
@@ -174,9 +175,10 @@
       $cookieStore.remove('globals');
       $http.defaults.headers.common.Authorization = 'Session';
     }
-}
-  LoginController.$inject = ['$location', 'AuthenticationService', '$scope'];
-  function LoginController($location, AuthenticationService, $scope) {
+  }
+
+  LoginController.$inject = ['$location', 'AuthenticationService', '$scope', 'WebSocketService'];
+  function LoginController($location, AuthenticationService, $scope, WebSocketService) {
     $scope.sendForm = false;
     console.log("loaded1");
     $scope.Login = function () {
@@ -197,6 +199,8 @@
         AuthenticationService.Login($scope.Email, $scope.Password, function (response) {
           console.log("Sukces pobrania sprawdzenie");
           console.log(response.Result);
+          $scope.autoryzacjaSocketu = WebSocketService.sendAuth($scope.Email, $scope.Password);
+          console.log($scope.autoryzacjaSocketu)
           if (response.Result) {
             console.log("Sukces pobrania tokenu do ustawienia zmiennej globalnej");
             AuthenticationService.SetCredentials($scope.Email, $scope.Password);
@@ -204,8 +208,7 @@
 
             $scope.initMarkers();
           }
-          else 
-          {
+          else {
             $scope.KomunikatVal = true
             $scope.Komunikat = "Wprowadzone dane sa nie poprawne!"
           }
@@ -213,6 +216,7 @@
       }
     }
   }
+
   app.controller('LoginController', LoginController);
   app.controller('RegisterController', function ($scope, $http, $timeout) {
     $scope.RegisterSteps = {};
@@ -331,7 +335,6 @@
         }
 
 
-
       });
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania Autobusów.")
@@ -394,12 +397,19 @@
       }
     };
   });
-  app.controller('ShowBusController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+  app.controller('ShowBusController', ['$scope', '$routeParams', '$http', 'WebSocketService', function ($scope, $routeParams, $http, WebSocketService) {
 
     var WybraneId = $routeParams.id;
     $scope.sendForm = false;
     //WYSYLANY ID
     $scope.AutobusID = WybraneId;
+
+    $scope.SubskrypcjaAutobusu = function(index){
+      WebSocketService.sendSubscribe(index);
+    }
+    $scope.UnSubskrypcjaAutobusu = function(index){
+      WebSocketService.sendUnSubscribe(index);
+    }
 
     $http.get('http://localhost:50000/Bus/GetBus/' + WybraneId, {
         //headers: {'Session': ''}
@@ -408,6 +418,7 @@
       $scope.autobus = data;
       console.log($scope.autobus);
       console.log("Pobrano autobus.");
+      
       if ($scope.autobus.GotMachine == true) {
         $scope.autobus.GotMachineName = "Tak";
         $scope.autobus.GotMachineValue = 1
@@ -466,7 +477,7 @@
         BusNumber: $scope.BusNumber,
         BusType: $scope.BusType,
         GotMachine: $scope.GotMachine,
-        BusStatus:  $scope.autobus.BusStatus,
+        BusStatus: $scope.autobus.BusStatus,
         LastControl: $scope.autobus.LastControl
       });
       var config = {
@@ -613,9 +624,6 @@
     });
 
 
-
-    
-
   });
   app.controller('AddBusstopController', function ($scope, $http, $timeout) {
     $scope.sendForm = false;
@@ -761,10 +769,6 @@
       $scope.sendForm = true;
 
 
-
-
-
-
       ///////////////////////////////////////////////
 
       if ($scope.Name == null || $scope.Name == "") {
@@ -805,7 +809,6 @@
       else if ($scope.BusStopType == "1") {
         $scope.BusStopType = 1
       }
-
 
 
       if ($scope.Lat == null || $scope.Lat == "") {
@@ -943,7 +946,6 @@
    *==========================================================================*/
   app.controller('TrackController', function ($scope, $http) {
 
-    
 
     $http.get('http://localhost:50000/Track/GetList', {
       //headers: {'Session': ''}
@@ -1014,19 +1016,19 @@
     $scope.count = 0;
     $scope.przystankiWybrane = [];
     $scope.saPrzystanki = false;
-    $scope.usunieciePrzystanku = function (index){
-      $scope.przystankiWybrane.splice(-1,1);
-      if($scope.przystankiWybrane.length <= 0){
+    $scope.usunieciePrzystanku = function (index) {
+      $scope.przystankiWybrane.splice(-1, 1);
+      if ($scope.przystankiWybrane.length <= 0) {
         $scope.saPrzystanki = false;
       }
     };
-    $scope.zapiszTrase = function (){
+    $scope.zapiszTrase = function () {
       console.log("Zapisywanie przystankeeeee");
       $scope.tablicaWybranychPrzystankow = [];
       console.log("Wybrane Przystanki:");
       console.log($scope.przystankiWybrane.length);
       console.log("Wybrane Przystanki END");
-      if($scope.przystankiWybrane.length > 0) {
+      if ($scope.przystankiWybrane.length > 0) {
         for (var i = 0; i < $scope.przystankiWybrane.length; i++) {
           $scope.tablicaWybranychPrzystankow.push($scope.przystankiWybrane[i].Id)
         }
@@ -1058,12 +1060,12 @@
             $scope.CallbackServeraNegative = true;
           });
       }
-      else{
+      else {
         $scope.BrakPrzystankow = true
       }
     }
 
-    $scope.wybraniePrzystanku = function (index){
+    $scope.wybraniePrzystanku = function (index) {
       $scope.BrakPrzystankow = false
       $http.get('http://localhost:50000/Busstop/GetBusstop/' + index, {
           //headers: {'Session': ''}
@@ -1073,12 +1075,12 @@
         console.log("Pobrano przystanek.");
         console.log($scope.autobus);
         var przystanekDodany = false;
-        for (var i=0; i<$scope.przystankiWybrane.length; i++) {
-          if ($scope.autobus.Id == $scope.przystankiWybrane[i].Id){
+        for (var i = 0; i < $scope.przystankiWybrane.length; i++) {
+          if ($scope.autobus.Id == $scope.przystankiWybrane[i].Id) {
             przystanekDodany = true;
           }
         }
-        if(przystanekDodany == false){
+        if (przystanekDodany == false) {
           $scope.count++;
           $scope.przystankiWybrane.push($scope.autobus);
           console.log($scope.przystankiDoTras);
@@ -1139,7 +1141,7 @@
         $scope.track.IsArchiveName = "Nieaktywna";
         $scope.track.IsArchiveVar = true
       }
-      else{
+      else {
         $scope.track.IsArchiveName = "Aktywna";
         $scope.track.IsArchiveVar = false
       }
@@ -1148,7 +1150,19 @@
       console.log("Błąd pobrania trasy.")
     });
 
-    $scope.UsuniecieTrasy = function(index){
+    $http.get('http://localhost:50000/Course/GetList', {
+        //headers: {'Session': ''}
+      }
+    ).success(function (data, status, headers, config) {
+      $scope.kursy = data;
+      console.log($scope.kursy);
+    }).error(function (data, status, headers, config) {
+      console.log("Błąd pobrania kursów.")
+    });
+
+    
+
+    $scope.UsuniecieTrasy = function (index) {
       var WybraneId = index;
       console.log("WybraneID");
       console.log(WybraneId);
@@ -1160,28 +1174,28 @@
       if ($scope.sendForm) {
         $scope.message = "Dezaktywowanie trasy...";
 
-          $http.delete('http://localhost:50000/Track/Delete/' + WybraneId, config)
-            .success(function (status, headers, config) {
-              $scope.CallbackServera = true;
-              $scope.CallbackServeraPositive = true;
-              $scope.komunikat = "Trasa została dezaktywowana pomyślnie!";
+        $http.delete('http://localhost:50000/Track/Delete/' + WybraneId, config)
+          .success(function (status, headers, config) {
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraPositive = true;
+            $scope.komunikat = "Trasa została dezaktywowana pomyślnie!";
 
-              $scope.initMarkers();
-            })
-            .error(function (status, header, config) {
-              $scope.ResponseDetails =
-                "<hr />status: " + status +
-                "<hr />headers: " + header +
-                "<hr />config: " + config;
-              console.log($scope.ResponseDetails);
-              $scope.CallbackServera = true;
-              $scope.CallbackServeraNegative = true;
-              $scope.komunikat = "Coś poszło nie tak!";
-            });
+            $scope.initMarkers();
+          })
+          .error(function (status, header, config) {
+            $scope.ResponseDetails =
+              "<hr />status: " + status +
+              "<hr />headers: " + header +
+              "<hr />config: " + config;
+            console.log($scope.ResponseDetails);
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraNegative = true;
+            $scope.komunikat = "Coś poszło nie tak!";
+          });
 
       }
     }
-    $scope.AktywujTrasy = function(index){
+    $scope.AktywujTrasy = function (index) {
       var WybraneId = index;
       console.log("WybraneID");
       console.log(WybraneId);
@@ -1194,23 +1208,23 @@
         $scope.message = "Dezaktywowanie trasy...";
 
         $http.post('http://localhost:50000/Track/Restore/' + WybraneId, config)
-            .success(function (status, headers, config) {
-              $scope.CallbackServera = true;
-              $scope.CallbackServeraPositive = true;
-              $scope.komunikat = "Trasa został aktywowana pomyślnie!";
+          .success(function (status, headers, config) {
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraPositive = true;
+            $scope.komunikat = "Trasa został aktywowana pomyślnie!";
 
-              $scope.initMarkers();
-            })
-            .error(function (status, header, config) {
-              $scope.ResponseDetails =
-                  "<hr />status: " + status +
-                  "<hr />headers: " + header +
-                  "<hr />config: " + config;
-              console.log($scope.ResponseDetails);
-              $scope.CallbackServera = true;
-              $scope.CallbackServeraNegative = true;
-              $scope.komunikat = "Coś poszło nie tak!";
-            });
+            $scope.initMarkers();
+          })
+          .error(function (status, header, config) {
+            $scope.ResponseDetails =
+              "<hr />status: " + status +
+              "<hr />headers: " + header +
+              "<hr />config: " + config;
+            console.log($scope.ResponseDetails);
+            $scope.CallbackServera = true;
+            $scope.CallbackServeraNegative = true;
+            $scope.komunikat = "Coś poszło nie tak!";
+          });
 
       }
     }
@@ -1411,20 +1425,20 @@
   }]);
   /* Map Controler
    *==========================================================================*/
-  app.controller('MapController', function (NgMap,$scope,$http, $timeout) {
+  app.controller('MapController', function (NgMap, $scope, $http, $timeout) {
     var wrapper = $('.wrapper');
 
     $scope.lat = 53.77842200000001;
     $scope.lng = 20.48011930000007;
-    
-    $scope.markerIcon="blocks/googleMaps/src/busstopMarker.png";
-    
+
+    $scope.markerIcon = "blocks/googleMaps/src/busstopMarker.png";
+
     $scope.setPostitionBusstop = function (id) {
       $http.get('http://localhost:50000/Busstop/GetBusstop/' + id
       ).success(function (data, status, headers, config) {
         $scope.busstop = data;
-        $scope.lat=$scope.busstop.Lat;
-        $scope.lng=$scope.busstop.Lng;
+        $scope.lat = $scope.busstop.Lat;
+        $scope.lng = $scope.busstop.Lng;
         $scope.initMap()
       }).error(function (data, status, headers, config) {
         console.log("Błąd pobrania przystanku.")
@@ -1433,34 +1447,30 @@
 
     ///////////////////////////////////////////////////////////////
 
-    NgMap.getMap().then(function(map) {
+    NgMap.getMap().then(function (map) {
       $scope.map = map;
     });
-
-
-
-
 
 
     $scope.busstopMarker = [];
     $scope.bussMarker = [];
 
 
-    $scope.deleteMarkers = function() {
+    $scope.deleteMarkers = function () {
       $scope.busstopMarker = [];
       $scope.bussMarker = [];
     };
 
-    $scope.showBusstop = function(event, busstop) {
+    $scope.showBusstop = function (event, busstop) {
       $scope.selectedBusstop = busstop;
       $scope.map.showInfoWindow('myInfoWindow', this);
     };
 
 
-    $scope.showBusstopMarkers = function() {
-      $scope.markerIcon="blocks/googleMaps/src/busstopMarker.png";
+    $scope.showBusstopMarkers = function () {
+      $scope.markerIcon = "blocks/googleMaps/src/busstopMarker.png";
 
-      $scope.busstopMarkers=[];
+      $scope.busstopMarkers = [];
 
       $http.get('http://localhost:50000/Busstop/GetBusstopList/'
       ).success(function (data, status, headers, config) {
@@ -1486,13 +1496,12 @@
           else {
             przystanek.BusStopTypeName = "Zabudowany"
           }
-          if(przystanek.BusStopStatus==1)
-          {
+          if (przystanek.BusStopStatus == 1) {
             $scope.busstopMarkers.push({
               Id: przystanek.Id,
               Name: przystanek.Name,
               LocalizationString: przystanek.LocalizationString,
-              GotMachineName:  przystanek.GotMachineName,
+              GotMachineName: przystanek.GotMachineName,
               GotKioskName: przystanek.GotKioskName,
               BusStopTypeName: przystanek.BusStopTypeName,
               Position: [przystanek.Lat, przystanek.Lng]
@@ -1500,29 +1509,29 @@
           }
 
 
-
-
         });
       }).error(function (data, status, headers, config) {
         console.log("Błąd pobrania przystanków.")
       });
 
-      $scope.busstopMarker=$scope.busstopMarkers;
+      $scope.busstopMarker = $scope.busstopMarkers;
 
     };
 
     /////////////////////////////////////////////////////////////////////////
-    $scope.wayPoints=[];
+    $scope.czyWyswietloneD1 = false;
+    $scope.czyWyswietloneD2 = false;
+    $scope.wayPoints = [];
     $scope.origin;
     $scope.destination;
 
-    $scope.initTrack=function (track) {
-      $scope.initMap();
-      $scope.map.directionsRenderers.d1.setMap(null);
-      $scope.map.directionsRenderers.d1.setMap($scope.map);
-      $scope.busstopMarkers=[];
-      $scope.wayPoint=[];
-      $scope.markerIcon="blocks/googleMaps/src/busstopMarkerGreen.png";
+
+    $scope.initTrack = function (track) {
+
+      $scope.busstopMarker = [];
+      $scope.busstopMarkers = [];
+      $scope.punkty = [];
+      $scope.markerIcon = "blocks/googleMaps/src/busstopMarkerGreen.png";
       angular.forEach(track.BusStops, function (przystanek) {
         if (przystanek.GotMachine == true) {
           przystanek.GotMachineName = "Tak";
@@ -1542,71 +1551,67 @@
         else {
           przystanek.BusStopTypeName = "Zabudowany"
         }
-        if(przystanek.BusStopStatus==1)
-        {
+        if (przystanek.BusStopStatus == 1) {
           $scope.busstopMarkers.push({
             Id: przystanek.Id,
             Name: przystanek.Name,
             LocalizationString: przystanek.LocalizationString,
-            GotMachineName:  przystanek.GotMachineName,
+            GotMachineName: przystanek.GotMachineName,
             GotKioskName: przystanek.GotKioskName,
             BusStopTypeName: przystanek.BusStopTypeName,
             Position: [przystanek.Lat, przystanek.Lng]
           });
-          $scope.wayPoint.push({location: {lat:przystanek.Lat,lng: przystanek.Lng}});
+          $scope.punkty.push({location: {lat: przystanek.Lat, lng: przystanek.Lng}});
         }
       });
-      $scope.busstopMarker=$scope.busstopMarkers;
-      $scope.wayPoints=$scope.wayPoint;
 
-      $scope.origin=$scope.wayPoints[0];
+      var start = $scope.punkty[0];
+      var end = $scope.punkty[$scope.punkty.length - 1]
+      $scope.punkty.splice(0, 1);
+      $scope.punkty.splice($scope.punkty.length - 1, 1);
+
+      $scope.wayPoints = $scope.punkty;
+      console.log("Punkty");
+      console.log($scope.wayPoints);
+      $scope.origin = start;
       console.log("Start");
       console.log($scope.origin);
-      $scope.destination=$scope.wayPoints[$scope.wayPoints.length-1];
-      console.log("End");
+      $scope.destination = end;
+      console.log("end");
       console.log($scope.destination);
 
+      $scope.initMap();
+      $scope.map.directionsRenderers[0].setMap($scope.map);
+
+      $scope.busstopMarker = $scope.busstopMarkers;
 
     };
 
 
-
     ////////////////////////////////////////////////////////////////////////
 
-    $scope.initMarkers=function () {
-      $scope.wayPoints=[];
+    $scope.initMarkers = function () {
+      $scope.wayPoints = [];
       $scope.showBusstopMarkers();
-      $scope.initMap();
-      $scope.map.directionsRenderers.d1.setMap(null);
-     
+      $scope.map.directionsRenderers[0].setMap(null);
+
     };
 
     // $scope.initBuss=function () {
     //   $scope.deleteMarkers();
     //   //$scope.showBussMarkers();
     // };
-    $scope.initMap = function() {
-      console.log(' $sctret$scope.map');
-      google.maps.event.trigger( $scope.map, 'resize');
-      console.log(' $scope.map 2',  $scope.map)
-    }
-    $scope.initMapTimeout = function() {
+    $scope.initMap = function () {
+      google.maps.event.trigger($scope.map, 'resize');
+    };
+    $scope.initMapTimeout = function () {
       $timeout(function () {
-      console.log(' $sctret$scope.map');
-      google.maps.event.trigger( $scope.map, 'resize');
-      console.log(' $scope.map 2',  $scope.map)
+        google.maps.event.trigger($scope.map, 'resize');
       }, 500);
     }
 
 
   });
-
-
-
-
-
-
-
 
 
   /* Derektywy
@@ -1630,5 +1635,95 @@
     };
   };
   app.directive("compareTo", compareTo);
+
+  app.factory('WebSocketService', ['$q', '$rootScope', '$websocket', function ($q, $rootScope, $websocket) {
+    // We return this object to anything injecting our service
+    var Service = {};
+    // Keep all pending requests here until they get responses
+    var callbacks = {};
+    // Create a unique callback ID to map requests to responses
+    var currentCallbackId = 0;
+    // Create our websocket object with the address to the websocket
+    var ws = new WebSocket('ws://localhost:7878');
+
+    ws.onopen = function () {
+      console.log("Socket has been opened!");
+    }
+
+    ws.onmessage = function (message) {
+      console.log(message)
+      listener(JSON.parse(message.data));
+    };
+
+
+    function sendRequest(request) {
+      var defer = $q.defer();
+      var callbackId = getCallbackId();
+      callbacks[callbackId] = {
+        time: new Date(),
+        cb:defer
+      };
+      request.callback_id = callbackId;
+      console.log('Sending request', request);
+      ws.send(JSON.stringify(request));
+      return defer.promise;
+    }
+
+    function listener(data) {
+      var messageObj = data;
+      console.log("Received data from websocket: ", messageObj);
+      // If an object exists with callback_id in our callbacks object, resolve it
+      if(callbacks.hasOwnProperty(messageObj.callback_id)) {
+        console.log(callbacks[messageObj.callback_id]);
+        $rootScope.$apply(callbacks[messageObj.callback_id].cb.resolve(messageObj.data));
+        delete callbacks[messageObj.callbackID];
+      }
+    }
+
+    // This creates a new callback ID for a request
+    function getCallbackId() {
+      currentCallbackId += 1;
+      if(currentCallbackId > 10000) {
+        currentCallbackId = 0;
+      }
+      return currentCallbackId;
+    }
+
+    // Define a "getter" for getting customer data
+    Service.sendAuth = function(email,password) {
+      var data = {Email:email,Password:password};
+      var request = {
+        Action: "user.login",
+        Data: JSON.stringify(data)
+      }
+      // Storing in a variable for clarity on what sendRequest returns
+      var promise = sendRequest(request);
+      return promise;
+    }
+
+    Service.sendSubscribe = function(busId) {
+      var data = {EventType:0,IdOfObject:busId};
+      var request = {
+        Action: "subscribe",
+        Data: JSON.stringify(data)
+      }
+      // Storing in a variable for clarity on what sendRequest returns
+      var promise = sendRequest(request);
+      return promise;
+    }
+
+    Service.sendUnSubscribe = function(busId) {
+      var data = {EventType:0,IdOfObject:busId};
+      var request = {
+        Action: "unsubscribe",
+        Data: JSON.stringify(data)
+      }
+      // Storing in a variable for clarity on what sendRequest returns
+      var promise = sendRequest(request);
+      return promise;
+    }
+
+    return Service;
+  }])
 })();
 

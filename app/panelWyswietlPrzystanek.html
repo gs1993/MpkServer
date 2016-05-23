@@ -4,7 +4,7 @@
   <div class="panelWyswietlPrzystanek__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/busstop">Zarządzanie Przystankiem</a></span><span class="-active"><a href="/#/busstop/show/{{ PrzystanekID }}">Szczegóły Przystaku</a></span></div>
   <div ng-controller="UpdateBustopController" class="panelWyswietlPrzystanek__wrapper">
     <div ng-hide="sendForm" class="panelWyswietlPrzystanek__subtitle">Aktualne dane przystanku {{ item.Name }}</div>
-    <div ng-hide="sendForm" class="panelWyswietlPrzystanek__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div ng-hide="sendForm" class="panelWyswietlPrzystanek__text">Parametry aktualnie wybranego przystanku</div>
     <div ng-hide="sendForm" class="panelWyswietlPrzystanek__content__form">
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Nazwa Przystanku</span>
         <p>{{ autobus.Name }}</p>
@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="panelWyswietlPrzystanek__subtitle">Edycja przystanku</div>
-    <div class="panelWyswietlPrzystanek__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.</div>
+    <div class="panelWyswietlPrzystanek__text"></div>
     <form name="BusStopForm" ng-submit="updateBus()" novalidate="novalidate">
       <div ng-hide="sendForm" class="panelWyswietlPrzystanek__content__form">
         <div class="panelWyswietlPrzystanek__content__form__item"><span class="item">Nazwa Przystanku</span>

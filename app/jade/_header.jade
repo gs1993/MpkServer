@@ -1,7 +1,7 @@
 //
    Created by salimike on 18.03.16.
 .header(ng-hide="globals.HeaderToHide")
-  .header__corner
+  .header__corner(ng-click="initMapTimeout()")
     i.fa.fa-bus
   .header__switcher.-hidden
     .background
@@ -40,7 +40,7 @@
   span MPK OLSZTYN
 .headerProfile
   .headerProfile__corner
-    i.fa.fa-gears
+    i.fa.fa-th-large
   .headerProfile__switcher.-hidden
     .background
     ul.headerProfile__panel

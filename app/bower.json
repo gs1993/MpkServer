@@ -24,17 +24,18 @@
     "font-awesome": "latest",
     "jquery-sticky": "latest",
     "jquery-resize-image-to-parent": "latest",
-    "primer-css": "^2.7.1",
+    "primer-css": "latest",
     "select2": "latest",
-    "ajax": "^1.0.10",
-    "angular-route": "^1.5.3",
-    "angular-cookies": "^1.5.3",
-    "angular": "^1.5.3",
-    "angular-responsive-tables": "^0.1.3",
-    "responsive-tables-js": "^1.0.6",
-    "Ionicons": "ionicons#^2.0.1",
-    "ngmap": "^1.17.3",
-    "javascript-detect-element-resize": "^0.5.3"
+    "ajax": "latest",
+    "angular-route": "latest",
+    "angular-cookies": "latest",
+    "angular": "latest",
+    "angular-responsive-tables": "latest",
+    "responsive-tables-js": "latest",
+    "Ionicons": "ionicons#latest",
+    "ngmap": "latest",
+    "javascript-detect-element-resize": "latest",
+    "angular-websocket": "latest"
   },
   "dependencies": {
     "imagesloaded": "latest",
@@ -45,6 +46,6 @@
     "font-awesome": "latest",
     "jquery-sticky": "latest",
     "select2": "latest",
-    "angular-responsive-tables": "^0.1.3"
+    "angular-responsive-tables": "latest"
   }
 }

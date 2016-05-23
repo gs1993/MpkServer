@@ -11,7 +11,7 @@
       a(href="/#/bus/show/{{ AutobusID }}") Szczegóły Autobusu
   .panelWyswietlAutobus__wrapper(ng-controller="UpdateBusController")
     .panelWyswietlAutobus__subtitle(ng-hide="sendForm") Aktualny stan autobusu o numerze {{ item.RegistrationNumber }}
-    .panelWyswietlAutobus__text(ng-hide="sendForm") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelWyswietlAutobus__text(ng-hide="sendForm") Parametry aktualnie wybranego autobusu
     .panelWyswietlAutobus__content__form(ng-hide="sendForm")
       .panelWyswietlAutobus__content__form__item
         span.itemHeader Numer Rejestracyjny
@@ -35,7 +35,7 @@
         span.itemHeader Ostatnia lokalizacja
         p X Y
     .panelWyswietlAutobus__subtitle Edycja autobusu
-    .panelWyswietlAutobus__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelWyswietlAutobus__text
     form(name="BusForm" ng-submit="updateBus()" novalidate)
       .panelWyswietlAutobus__content__form(ng-hide="sendForm")
           .panelWyswietlAutobus__content__form__item
@@ -56,6 +56,9 @@
               option(value='') Biletomat
               option(value=0) Nie
               option(value=1) Tak
+      .panelWyswietlAutobus__navigation(ng-hide="sendForm")
+        span(ng-click="SubskrypcjaAutobusu(AutobusID)" ng-hide="autobus.BusStatus == 0").panelWyswietlAutobus__navigation__item.greenDark Obserwuj
+        span(ng-click="UnSubskrypcjaAutobusu(AutobusID)" ng-hide="autobus.BusStatus == 0").panelWyswietlAutobus__navigation__item.red Nie obserwuj
       .panelWyswietlAutobus__navigation(ng-hide="sendForm")
         button(ng-click="updateBus()").green.panelWyswietlAutobus__navigation__item.green Aktualizuj
         a(href="/#/bus/delete/{{ AutobusID }}" ng-hide="autobus.BusStatus == 0").panelWyswietlAutobus__navigation__item.red Dezaktywuj
