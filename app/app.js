@@ -1614,7 +1614,7 @@
   };
   app.directive("compareTo", compareTo);
 
-  angular.run(function ($websocket) {
+  app.run(function ($websocket) {
     var ws = $websocket.$new({
       url: 'ws://localhost:7878',
       reconnect: true,
