@@ -11,7 +11,7 @@
       a(href="/#/busstop/show/{{ PrzystanekID }}") Szczegóły Przystaku
   .panelWyswietlPrzystanek__wrapper(ng-controller="UpdateBustopController")
     .panelWyswietlPrzystanek__subtitle(ng-hide="sendForm") Aktualne dane przystanku {{ item.Name }}
-    .panelWyswietlPrzystanek__text(ng-hide="sendForm") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelWyswietlPrzystanek__text(ng-hide="sendForm") Parametry aktualnie wybranego przystanku
     .panelWyswietlPrzystanek__content__form(ng-hide="sendForm")
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Nazwa Przystanku
@@ -38,7 +38,7 @@
         span.itemHeader Ostatnia kontrola
         p {{ autobus.LastControl }}
     .panelWyswietlPrzystanek__subtitle Edycja przystanku
-    .panelWyswietlPrzystanek__text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae euismod lorem, vel commodo orci.
+    .panelWyswietlPrzystanek__text
     form(name="BusStopForm" ng-submit="updateBus()" novalidate)
       .panelWyswietlPrzystanek__content__form(ng-hide="sendForm")
           .panelWyswietlPrzystanek__content__form__item
