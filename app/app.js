@@ -1150,6 +1150,16 @@
       console.log("Błąd pobrania trasy.")
     });
 
+    $http.get('http://localhost:50000/Course/GetList', {
+        //headers: {'Session': ''}
+      }
+    ).success(function (data, status, headers, config) {
+      $scope.kursy = data;
+      console.log($scope.kursy);
+    }).error(function (data, status, headers, config) {
+      console.log("Błąd pobrania kursów.")
+    });
+
     
 
     $scope.UsuniecieTrasy = function (index) {
