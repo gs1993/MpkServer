@@ -1,6 +1,20 @@
 var deviceWebstocket = new WebSocket("ws://localhost:7878");
 deviceWebstocket.onmessage = function(data){console.log(data);}
 
+var marker = undefined;
+
+var mymap = L.map('mapid').setView([53.7784, 20.4801], 13);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(mymap);
+
+mymap.on('click',addMarker);
+
+function addMarker(e){
+    // Add marker to map at click location; add popup window
+    if(marker!=undefined)mymap.removeLayer(marker);
+    marker = new L.marker(e.latlng).addTo(mymap);
+}
+
 var sendAuth = function(){
 	var data = {Email:'driver1',Password:'Password@123'};
 	var obj = {
@@ -19,20 +33,23 @@ var sendActivity = function(x,y,type,addInfo){
 }
 
 var sampleStartCourse = function(){
-	sendActivity(26,26,6,"TRACKID=1;");   // ID TRASY
+	var latlng = marker.getLatLng();
+	sendActivity(latlng.Lat,latlng.Lng,6,"TRACKID=1;");   // ID TRASY
 }
 
 var sampleBusStop = function(){
-	sendActivity(26,26,4,"STOPID=1;")		// ID PRZYSTANKU
+	var latlng = marker.getLatLng();
+	sendActivity(latlng.Lat,latlng.Lng,4,"STOPID=1;")		// ID PRZYSTANKU
 }
 
 var sampleBusEndCourse  = function(){
-	sendActivity(26,26,7,"");
+	var latlng = marker.getLatLng();
+	sendActivity(latlng.Lat,latlng.Lng,7,"");
 }
 
-
 var sampleTicketCount  = function(){
-	sendActivity(26,26,0,"");
+	var latlng = marker.getLatLng();
+	sendActivity(latlng.Lat,latlng.Lng,0,"");
 }
 
 
