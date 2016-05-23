@@ -3,7 +3,7 @@
  */
 (function () {
   'use strict';
-  var app = angular.module('app', ['ngRoute', 'ngMap', 'wt.responsive', 'ngCookies', 'ngWebsocket' ])
+  var app = angular.module('app', ['ngRoute', 'ngMap', 'wt.responsive', 'ngCookies', 'ngWebSocket'])
     .factory('AuthenticationService', AuthenticationService);
   app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
@@ -177,8 +177,8 @@
     }
   }
 
-  LoginController.$inject = ['$location', 'AuthenticationService', '$scope'];
-  function LoginController($location, AuthenticationService, $scope) {
+  LoginController.$inject = ['$location', 'AuthenticationService', '$scope', 'WebSocketService'];
+  function LoginController($location, AuthenticationService, $scope, WebSocketService) {
     $scope.sendForm = false;
     console.log("loaded1");
     $scope.Login = function () {
@@ -199,6 +199,8 @@
         AuthenticationService.Login($scope.Email, $scope.Password, function (response) {
           console.log("Sukces pobrania sprawdzenie");
           console.log(response.Result);
+          $scope.autoryzacjaSocketu = WebSocketService.sendAuth($scope.Email, $scope.Password);
+          console.log($scope.autoryzacjaSocketu)
           if (response.Result) {
             console.log("Sukces pobrania tokenu do ustawienia zmiennej globalnej");
             AuthenticationService.SetCredentials($scope.Email, $scope.Password);
@@ -395,12 +397,19 @@
       }
     };
   });
-  app.controller('ShowBusController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+  app.controller('ShowBusController', ['$scope', '$routeParams', '$http', 'WebSocketService', function ($scope, $routeParams, $http, WebSocketService) {
 
     var WybraneId = $routeParams.id;
     $scope.sendForm = false;
     //WYSYLANY ID
     $scope.AutobusID = WybraneId;
+
+    $scope.SubskrypcjaAutobusu = function(index){
+      WebSocketService.sendSubscribe(index);
+    }
+    $scope.UnSubskrypcjaAutobusu = function(index){
+      WebSocketService.sendUnSubscribe(index);
+    }
 
     $http.get('http://localhost:50000/Bus/GetBus/' + WybraneId, {
         //headers: {'Session': ''}
@@ -409,6 +418,7 @@
       $scope.autobus = data;
       console.log($scope.autobus);
       console.log("Pobrano autobus.");
+      
       if ($scope.autobus.GotMachine == true) {
         $scope.autobus.GotMachineName = "Tak";
         $scope.autobus.GotMachineValue = 1
@@ -1140,6 +1150,8 @@
       console.log("Błąd pobrania trasy.")
     });
 
+    
+
     $scope.UsuniecieTrasy = function (index) {
       var WybraneId = index;
       console.log("WybraneID");
@@ -1614,19 +1626,94 @@
   };
   app.directive("compareTo", compareTo);
 
-  app.run(function ($websocket) {
-    var ws = $websocket.$new({
-      url: 'ws://localhost:7878',
-      reconnect: true,
-      reconnectInterval: 500 // it will reconnect after 0.5 seconds
-    });
+  app.factory('WebSocketService', ['$q', '$rootScope', '$websocket', function ($q, $rootScope, $websocket) {
+    // We return this object to anything injecting our service
+    var Service = {};
+    // Keep all pending requests here until they get responses
+    var callbacks = {};
+    // Create a unique callback ID to map requests to responses
+    var currentCallbackId = 0;
+    // Create our websocket object with the address to the websocket
+    var ws = new WebSocket('ws://localhost:7878');
 
-    ws.$on('$open', function () {
-      console.log('Here we are and I\'m pretty sure to get back here for another time at least!');
-    })
-      .$on('$close', function () {
-        console.log('Got close, damn you silly wifi!');
-      });
-  });
+    ws.onopen = function () {
+      console.log("Socket has been opened!");
+    }
+
+    ws.onmessage = function (message) {
+      console.log(message)
+      listener(JSON.parse(message.data));
+    };
+
+
+    function sendRequest(request) {
+      var defer = $q.defer();
+      var callbackId = getCallbackId();
+      callbacks[callbackId] = {
+        time: new Date(),
+        cb:defer
+      };
+      request.callback_id = callbackId;
+      console.log('Sending request', request);
+      ws.send(JSON.stringify(request));
+      return defer.promise;
+    }
+
+    function listener(data) {
+      var messageObj = data;
+      console.log("Received data from websocket: ", messageObj);
+      // If an object exists with callback_id in our callbacks object, resolve it
+      if(callbacks.hasOwnProperty(messageObj.callback_id)) {
+        console.log(callbacks[messageObj.callback_id]);
+        $rootScope.$apply(callbacks[messageObj.callback_id].cb.resolve(messageObj.data));
+        delete callbacks[messageObj.callbackID];
+      }
+    }
+
+    // This creates a new callback ID for a request
+    function getCallbackId() {
+      currentCallbackId += 1;
+      if(currentCallbackId > 10000) {
+        currentCallbackId = 0;
+      }
+      return currentCallbackId;
+    }
+
+    // Define a "getter" for getting customer data
+    Service.sendAuth = function(email,password) {
+      var data = {Email:email,Password:password};
+      var request = {
+        Action: "user.login",
+        Data: JSON.stringify(data)
+      }
+      // Storing in a variable for clarity on what sendRequest returns
+      var promise = sendRequest(request);
+      return promise;
+    }
+
+    Service.sendSubscribe = function(busId) {
+      var data = {EventType:0,IdOfObject:busId};
+      var request = {
+        Action: "subscribe",
+        Data: JSON.stringify(data)
+      }
+      // Storing in a variable for clarity on what sendRequest returns
+      var promise = sendRequest(request);
+      return promise;
+    }
+
+    Service.sendUnSubscribe = function(busId) {
+      var data = {EventType:0,IdOfObject:busId};
+      var request = {
+        Action: "unsubscribe",
+        Data: JSON.stringify(data)
+      }
+      // Storing in a variable for clarity on what sendRequest returns
+      var promise = sendRequest(request);
+      return promise;
+    }
+
+    return Service;
+  }])
 })();
 
