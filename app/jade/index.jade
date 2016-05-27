@@ -38,7 +38,7 @@ html(lang="pl" ng-app="app")
               street-view-control="false"
               scale-control="false"
               tilt="45"
-              )#foo
+              )
 
               info-window(id="myInfoWindow")
                 .googleMaps__API__infoWindow(ng-non-bindable)
@@ -69,7 +69,16 @@ html(lang="pl" ng-app="app")
                 destination="{{destination}}"
                 suppress-markers="true"
                 )
+              //Markery aktywnosci
+              marker(ng-repeat="a in activityMarker" position="{{a.Position}}" id="{{a.Id}}" on-click="showActivity(event, a)")
 
+              info-window(id="ActivityInfoWindow")
+                .googleMaps__API__infoWindow(ng-non-bindable)
+                  h4 {{selectedActivity.Name}}
+                  table
+                    tr
+                      td Numer Autobusu
+                      td {{selectedActivity.BusName}}
 
 
 
