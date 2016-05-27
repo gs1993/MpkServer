@@ -30,10 +30,9 @@
                 .panelWyswietlTrase__itemSubtitle Ulica: {{ aktywnosc.BusStop.LocalizationString }}
                 .panelWyswietlTrase__itemTitle Numer Autobusu: {{ aktywnosc.Bus.BusNumber }}
       .panelWyswietlAutobus__navigation(ng-hide="sendForm")
-        span(ng-click="SubskrypcjaAutobusu(AutobusID)" ng-hide="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.greenDark Rozpocznij Obserwacje
-        span(ng-click="UnSubskrypcjaAutobusu(AutobusID)" ng-show="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.red Zakoncz Obserwacje
+        section(ng-hide="course.Ended")
+          span(ng-click="SubskrypcjaAutobusu(AutobusID)" ng-hide="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.greenDark Rozpocznij Obserwacje
+          span(ng-click="UnSubskrypcjaAutobusu(AutobusID)" ng-show="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.red Zakoncz Obserwacje
       .panelWyswietlAutobus__navigation
-        span(ng-click="UsuniecieTrasy(TrackID)" ng-hide="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.red Dezaktywuj
-        span(ng-click="AktywujTrasy(TrackID)" ng-show="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.greenDark Aktywuj
-        a(href="/#/track").panelWyswietlAutobus__navigation__item.gray.-abort Wróć
+        a(href="/#/track/Get/{{ TrackID }}").panelWyswietlAutobus__navigation__item.gray.-abort Wróć
       .panelWyswietlTrase__alert(ng-show="komunikat") {{ komunikat }}
