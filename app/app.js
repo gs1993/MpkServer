@@ -3,7 +3,7 @@
  */
 (function () {
   'use strict';
-  var app = angular.module('app', ['ngRoute', 'ngMap', 'wt.responsive', 'ngCookies'])
+  var app = angular.module('app', ['ngRoute', 'ngMap', 'wt.responsive', 'ngCookies', 'ngWebSocket'])
     .factory('AuthenticationService', AuthenticationService);
   app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
@@ -71,7 +71,11 @@
       }).when('/track/show/:id', {
         templateUrl: 'panelWyswietlTrase.html',
         controller: 'ShowTrackController'
-      }).//UZYTKOWNICY SCIEZKI
+      })
+      .when('/course/show/:id', {
+          templateUrl: 'panelWyswietlKurs.html',
+          controller: 'ShowCourseController'
+        }).//UZYTKOWNICY SCIEZKI
 
       when('/user', {
         templateUrl: 'panelUsers.html',
@@ -88,7 +92,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
-      $rootScope.IP = '192.168.1.138';
+      $rootScope.IP = '192.168.1.4';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -125,8 +129,8 @@
       $scope.userName = 'nieznajomy'
     }
   }
-  app.controller('HomeController', HomeController);
 
+  app.controller('HomeController', HomeController);
 
 
   app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope) {
@@ -209,6 +213,7 @@
         console.log(data);
         AuthenticationService.Login($scope.Email, $scope.Password, function (response) {
           console.log("[Sukces] Logowanie na serwerze ustanowione!");
+          $rootScope.Service.sendAuth($scope.Email, $scope.Password)
           if (response.Result) {
             console.log("Sukces pobrania tokenu do ustawienia zmiennej globalnej");
             AuthenticationService.SetCredentials($scope.Email, $scope.Password);
@@ -224,6 +229,7 @@
       }
     }
   }
+
   app.controller('LoginController', LoginController);
 
 
@@ -414,10 +420,18 @@
   });
   app.controller('ShowBusController', ['$scope', '$routeParams', '$http', '$rootScope', function ($scope, $routeParams, $http, $rootScope) {
 
+
     var WybraneId = $routeParams.id;
     $scope.sendForm = false;
     //WYSYLANY ID
     $scope.AutobusID = WybraneId;
+
+    $scope.SubskrypcjaAutobusu = function (index) {
+      $rootScope.Service.sendSubscribe(index);
+    }
+    $scope.UnSubskrypcjaAutobusu = function (index) {
+      $rootScope.Service.sendUnSubscribe(index);
+    }
 
     $http.get('http://' + $rootScope.IP + ':50000/Bus/GetBus/' + WybraneId, {
         //headers: {'Session': ''}
@@ -1163,7 +1177,24 @@
       }
     ).success(function (data, status, headers, config) {
       $scope.kursy = data;
+      $scope.kursyPoprawne = [];
+      console.log("[Info] Pobrano kursy");
       console.log($scope.kursy);
+      angular.forEach($scope.kursy, function (kurs) {
+        if (kurs.Track.Id == WybraneId) {
+          if (kurs.Ended == false)
+          {
+            kurs.EndedName = "W trakcie"
+
+          }
+          else{
+            kurs.EndedName = "Zakonczony"
+          }
+          $scope.kursyPoprawne.push(kurs)
+        }
+      });
+      console.log("[Info] Kursy poprawne wygenerowane.")
+      console.log($scope.kursyPoprawne)
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania kursów.")
     });
@@ -1235,6 +1266,62 @@
 
       }
     }
+
+  }]);
+  app.controller('ShowCourseController', ['$scope', '$routeParams', '$http', '$rootScope', '$timeout', function ($scope, $routeParams, $http, $rootScope, $timeout) {
+
+    var WybraneId = $routeParams.id;
+    $scope.sendForm = false;
+    //WYSYLANY ID
+    $scope.CourseID = WybraneId;
+
+    $http.get('http://' + $rootScope.IP + ':50000/Course/Get/' + WybraneId, {
+        //headers: {'Session': ''}
+      }
+    ).success(function (data, status, headers, config) {
+      $scope.course = data;
+      $scope.SubskrypcjaAutobusu = function () {
+        console.log("Inicjowanie subskrypcji")
+        $scope.SubskrypcjaKlik = true
+        $rootScope.Service.sendSubscribe($scope.course.Bus.Id);
+      }
+      $scope.UnSubskrypcjaAutobusu = function () {
+        console.log("Inicjowanie unsubskrypcji")
+        $scope.SubskrypcjaKlik = false
+        $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password );
+        $rootScope.Service.sendUnSubscribe($scope.course.Bus.Id);
+      }
+      angular.forEach($scope.course.Activities, function (aktywnosc) {
+        if (aktywnosc.ActivityType == 0) {
+          aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
+        }
+        else if(aktywnosc.ActivityType == 1){
+          aktywnosc.ActivityTypeName = "Kontrola Biletów";
+        }
+        else if(aktywnosc.ActivityType == 2){
+          aktywnosc.ActivityTypeName = "Incydent z wandalami";
+        }
+        else if(aktywnosc.ActivityType == 3){
+          aktywnosc.ActivityTypeName = "Problem techniczny";
+        }
+        else if(aktywnosc.ActivityType == 4){
+          aktywnosc.ActivityTypeName = "Autobus dojechal do przystanku";
+        }
+        else if(aktywnosc.ActivityType == 5){
+          aktywnosc.ActivityTypeName = "Sprzedano bilet";
+        }
+        else if(aktywnosc.ActivityType == 6){
+          aktywnosc.ActivityTypeName = "Rozpoczeto kurs";
+        }
+        else if(aktywnosc.ActivityType == 7){
+          aktywnosc.ActivityTypeName = "Zakonczono kurs";
+        }
+      });
+      console.log("[Info] Pobrano kurs.");
+      console.log($scope.course);
+      $scope.TrackID = $scope.course.Track.Id
+    })
+
   }]);
   /* Użytkownicy Controlery
    *==========================================================================*/
@@ -1447,7 +1534,6 @@
         $scope.lat = $scope.busstop.Lat;
         $scope.lng = $scope.busstop.Lng;
         $scope.initMap()
-      }).error(function (data, status, headers, config) {
         console.log("Błąd pobrania przystanku.")
       });
     };
@@ -1642,5 +1728,52 @@
     };
   };
   app.directive("compareTo", compareTo);
+  app.controller('WebSocket', function ($websocket, $rootScope) {
+    var ws = $websocket('ws://' + $rootScope.IP + ':7878');
+    var collection = [];
+    $rootScope.Service = {};
+
+    ws.onMessage(function (message) {
+      console.info("message: ", message);
+      collection.push(JSON.parse(message.data));
+    });
+
+    ws.onOpen(function (message) {
+      console.log("Connection open!", message);
+    });
+
+    ws.onClose(function () {
+      console.log("Closing the socket.")
+    });
+
+    ws.onError(function (message) {
+      console.info("Error in socket", message);
+    });
+
+    $rootScope.Service.sendAuth = function () {
+      var data = {Email: 'lukraik@gmail.com', Password: 'Password@123'};
+      var obj = {
+        Action: "user.login",
+        Data: JSON.stringify(data)
+      };
+      ws.send(JSON.stringify(obj));
+    }
+    $rootScope.Service.sendSubscribe = function (busId) {
+      var data = {EventType: 0, IdOfObject: busId}; //0 = busmove
+      var obj = {
+        Action: "subscribe",
+        Data: JSON.stringify(data)
+      };
+      ws.send(JSON.stringify(obj));
+    }
+    $rootScope.Service.sendUnSubscribe = function (busId) {
+      var data = {EventType: 0, IdOfObject: busId};
+      var obj = {
+        Action: "unsubscribe",
+        Data: JSON.stringify(data)
+      };
+      ws.send(JSON.stringify(obj));
+    }
+  });
 })();
 
