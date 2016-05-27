@@ -1624,7 +1624,7 @@
       $scope.busstopMarker = [];
       $scope.busstopMarkers = [];
       $scope.punkty = [];
-      $scope.markerIcon = "blocks/googleMaps/src/busstopMarkerGreen.png";
+      $scope.markerIcon = "../blocks/googleMaps/src/busstopMarkerGreen.png";
       angular.forEach(track.BusStops, function (przystanek) {
         if (przystanek.GotMachine == true) {
           przystanek.GotMachineName = "Tak";
