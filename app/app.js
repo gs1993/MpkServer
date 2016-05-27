@@ -92,7 +92,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
-      $rootScope.IP = '192.168.1.4';
+      $rootScope.IP = 'localhost';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -1280,6 +1280,8 @@
       }
     ).success(function (data, status, headers, config) {
       $scope.course = data;
+      $scope.intCourse($scope.course);
+
       $scope.SubskrypcjaAutobusu = function () {
         console.log("Inicjowanie subskrypcji")
         $scope.SubskrypcjaKlik = true
@@ -1525,7 +1527,7 @@
     $scope.lat = 53.77842200000001;
     $scope.lng = 20.48011930000007;
 
-    $scope.markerIcon = "blocks/googleMaps/src/busstopMarker.png";
+    $scope.markerIcon = "../blocks/googleMaps/src/busstopMarker.png";
 
     $scope.setPostitionBusstop = function (id) {
       $http.get('http://' + $rootScope.IP + ':50000/Busstop/GetBusstop/' + id
@@ -1552,6 +1554,7 @@
     $scope.deleteMarkers = function () {
       $scope.busstopMarker = [];
       $scope.bussMarker = [];
+      $scope.activityMarker = [];
     };
 
     $scope.showBusstop = function (event, busstop) {
@@ -1561,7 +1564,7 @@
 
 
     $scope.showBusstopMarkers = function () {
-      $scope.markerIcon = "blocks/googleMaps/src/busstopMarker.png";
+      $scope.markerIcon = "../blocks/googleMaps/src/busstopMarker.png";
 
       $scope.busstopMarkers = [];
 
@@ -1618,8 +1621,10 @@
     $scope.origin;
     $scope.destination;
 
-
     $scope.initTrack = function (track) {
+      $scope.drawRoute(track);
+    };
+    $scope.drawRoute = function (track) {
 
       $scope.busstopMarker = [];
       $scope.busstopMarkers = [];
@@ -1684,16 +1689,67 @@
     ////////////////////////////////////////////////////////////////////////
 
     $scope.initMarkers = function () {
+      $scope.deleteMarkers();
       $scope.wayPoints = [];
       $scope.showBusstopMarkers();
       $scope.map.directionsRenderers[0].setMap(null);
 
     };
 
-    // $scope.initBuss=function () {
-    //   $scope.deleteMarkers();
-    //   //$scope.showBussMarkers();
-    // };
+    ////////////////////////////////////////////////////////////////////////
+    $scope.showActivity = function (event, activity) {
+      $scope.selectedActivity = activity;
+      $scope.map.showInfoWindow('ActivityInfoWindow', this);
+    };
+
+
+
+
+
+    $scope.activityMarker = [];
+    $scope.intCourse=function (kurs) {
+      $scope.activityMarker = [];
+      $scope.activityMarkers = [];
+      console.log("czy działa?");
+      console.log(kurs);
+      console.log("------------");
+      angular.forEach(kurs.Activities, function (aktywnosc) {
+        if (aktywnosc.ActivityType == 0) {
+          aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
+        }
+        else if(aktywnosc.ActivityType == 1){
+          aktywnosc.ActivityTypeName = "Kontrola Biletów";
+        }
+        else if(aktywnosc.ActivityType == 2){
+          aktywnosc.ActivityTypeName = "Incydent z wandalami";
+        }
+        else if(aktywnosc.ActivityType == 3){
+          aktywnosc.ActivityTypeName = "Problem techniczny";
+        }
+        else if(aktywnosc.ActivityType == 4){
+          aktywnosc.ActivityTypeName = "Autobus dojechal do przystanku";
+        }
+        else if(aktywnosc.ActivityType == 5){
+          aktywnosc.ActivityTypeName = "Sprzedano bilet";
+        }
+        else if(aktywnosc.ActivityType == 6){
+          aktywnosc.ActivityTypeName = "Rozpoczeto kurs";
+        }
+        else if(aktywnosc.ActivityType == 7){
+          aktywnosc.ActivityTypeName = "Zakonczono kurs";
+        }
+        $scope.activityMarkers.push({
+          Id: aktywnosc.Id,
+          Name: aktywnosc.ActivityTypeName,
+          BusName: aktywnosc.Bus.BusNumber,
+          Position: [aktywnosc.Lat, aktywnosc.Lng]
+        });
+      });
+      $scope.activityMarker=$scope.activityMarkers;
+    };
+
+
+
     $scope.initMap = function () {
       google.maps.event.trigger($scope.map, 'resize');
     };
