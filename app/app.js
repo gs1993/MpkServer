@@ -92,7 +92,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
-      $rootScope.IP = '192.168.1.4';
+      $rootScope.IP = 'localhost';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -1550,6 +1550,15 @@
     $scope.busstopMarker = [];
 
     $scope.deleteMarkers = function () {
+      $scope.markerBusstopCheck=[];
+      $scope.markerEnd=[];
+      $scope.markerIncydent=[];
+      $scope.markerKanar=[];
+      $scope.markerSellTicket=[];
+      $scope.markerStart=[];
+      $scope.markerTechnicla=[];
+      $scope.markerTicket=[];
+
       $scope.busstopMarker = [];
       $scope.busMarker = [];
       $scope.activityMarker = [];
@@ -1689,7 +1698,6 @@
       $scope.deleteMarkers();
       $scope.wayPoints = [];
       $scope.showBusstopMarkers();
-      $scope.showBussMarkers();
       $scope.map.directionsRenderers[0].setMap(null);
 
     };
@@ -1703,42 +1711,94 @@
 
 
 
-
+    $scope.markerBusstopCheck=[];
+    $scope.markerEnd=[];
+    $scope.markerIncydent=[];
+    $scope.markerKanar=[];
+    $scope.markerSellTicket=[];
+    $scope.markerStart=[];
+    $scope.markerTechnicla=[];
+    $scope.markerTicket=[];
     $scope.activityMarker = [];
+
     $scope.intCourse=function (kurs) {
+      $scope.markerBusstopCheck=[];
+      $scope.markerEnd=[];
+      $scope.markerIncydent=[];
+      $scope.markerKanar=[];
+      $scope.markerSellTicket=[];
+      $scope.markerStart=[];
+      $scope.markerTechnicla=[];
+      $scope.markerTicket=[];
+
       $scope.activityMarker = [];
       $scope.activityMarkers = [];
       angular.forEach(kurs.Activities, function (aktywnosc) {
         if (aktywnosc.ActivityType == 0) {
           aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
+          $scope.markerTicket.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
         }
         else if(aktywnosc.ActivityType == 1){
           aktywnosc.ActivityTypeName = "Kontrola Biletów";
+          $scope.markerKanar.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
         }
         else if(aktywnosc.ActivityType == 2){
           aktywnosc.ActivityTypeName = "Incydent z wandalami";
+          $scope.markerIncydent.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
         }
         else if(aktywnosc.ActivityType == 3){
           aktywnosc.ActivityTypeName = "Problem techniczny";
+          $scope.markerTechnicla.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
         }
         else if(aktywnosc.ActivityType == 4){
           aktywnosc.ActivityTypeName = "Autobus dojechal do przystanku";
+          $scope.markerBusstopCheck.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
         }
         else if(aktywnosc.ActivityType == 5){
-          aktywnosc.ActivityTypeName = "Sprzedano bilet";
+          aktywnosc.markerSellTicket = "Sprzedano bilet";
+          $scope.markerIncydent.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
         }
         else if(aktywnosc.ActivityType == 6){
           aktywnosc.ActivityTypeName = "Rozpoczeto kurs";
+          $scope.markerStart.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
         }
         else if(aktywnosc.ActivityType == 7){
           aktywnosc.ActivityTypeName = "Zakonczono kurs";
+          $scope.markerEnd.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
         }
-        $scope.activityMarkers.push({
-          Id: aktywnosc.Id,
-          Name: aktywnosc.ActivityTypeName,
-          BusName: aktywnosc.Bus.BusNumber,
-          Position: [aktywnosc.Lat, aktywnosc.Lng]
-        });
+
       });
       $scope.activityMarker=$scope.activityMarkers;
     };

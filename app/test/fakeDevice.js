@@ -37,7 +37,7 @@ var sampleStartCourse = function(){
 	console.log('Utworzenie Kursu')
 	console.log(latlng.lat)
 	console.log(latlng.lng)
-	sendActivity(latlng.lat,latlng.lng,6,"TRACKID=1;");   // ID TRASY
+	sendActivity(latlng.lat,latlng.lng,6,"TRACKID=17;");   // ID TRASY
 }
 
 var sampleBusStop = function(){
@@ -45,7 +45,7 @@ var sampleBusStop = function(){
 	console.log('Dojechanie do przystanku')
 	console.log(latlng.lat)
 	console.log(latlng.lng)
-	sendActivity(latlng.lat,latlng.lng,4,"STOPID=1;")		// ID PRZYSTANKU
+	sendActivity(latlng.lat,latlng.lng,4,"STOPID=14;")		// ID PRZYSTANKU
 }
 
 var sampleBusEndCourse  = function(){
