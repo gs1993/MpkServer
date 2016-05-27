@@ -1548,12 +1548,10 @@
 
 
     $scope.busstopMarker = [];
-    $scope.bussMarker = [];
-
 
     $scope.deleteMarkers = function () {
       $scope.busstopMarker = [];
-      $scope.bussMarker = [];
+      $scope.busMarker = [];
       $scope.activityMarker = [];
     };
 
@@ -1615,8 +1613,7 @@
     };
 
     /////////////////////////////////////////////////////////////////////////
-    $scope.czyWyswietloneD1 = false;
-    $scope.czyWyswietloneD2 = false;
+
     $scope.wayPoints = [];
     $scope.origin;
     $scope.destination;
@@ -1692,11 +1689,12 @@
       $scope.deleteMarkers();
       $scope.wayPoints = [];
       $scope.showBusstopMarkers();
+      $scope.showBussMarkers();
       $scope.map.directionsRenderers[0].setMap(null);
 
     };
 
-    ////////////////////////////////////////////////////////////////////////
+    ////////////////////////Aktywności//////////////////////////
     $scope.showActivity = function (event, activity) {
       $scope.selectedActivity = activity;
       $scope.map.showInfoWindow('ActivityInfoWindow', this);
@@ -1710,9 +1708,6 @@
     $scope.intCourse=function (kurs) {
       $scope.activityMarker = [];
       $scope.activityMarkers = [];
-      console.log("czy działa?");
-      console.log(kurs);
-      console.log("------------");
       angular.forEach(kurs.Activities, function (aktywnosc) {
         if (aktywnosc.ActivityType == 0) {
           aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
@@ -1747,6 +1742,55 @@
       });
       $scope.activityMarker=$scope.activityMarkers;
     };
+
+
+
+
+
+
+    ///////////////////Autobusy////////////////////////////////
+    $scope.busMarker = [];
+    $scope.showBusMarkers = function () {
+      $scope.markerIcon = "../blocks/googleMaps/src/busMarker.png";
+
+      $scope.busMarkers = [];
+
+      $http.get('http://' + $rootScope.IP + ':50000/Course/GetList/'
+      ).success(function (data, status, headers, config) {
+        $scope.course = data;
+
+        angular.forEach($scope.course, function (kurs) {
+
+          if (kurs.Ended == false) {
+
+            $scope.busstopMarkers.push({
+              Id: kurs.Bus.Id,
+              Name: kurs.Bus.BusNumber,
+              LocalizationString: autobus.LocalizationString,
+              GotMachineName: autobus.GotMachineName,
+              GotKioskName: autobus.GotKioskName,
+              BusStopTypeName: autobus.BusStopTypeName,
+              Position: [autobus.Lat, autobus.Lng]
+            });
+          }
+
+
+        });
+      }).error(function (data, status, headers, config) {
+        console.log("Błąd pobrania przystanków.")
+      });
+
+      $scope.busstopMarker = $scope.busstopMarkers;
+
+    };
+
+
+
+
+
+
+
+
 
 
 
