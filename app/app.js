@@ -1258,7 +1258,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Trasa została dezaktywowana pomyślnie!";
-
+            $scope.usuniecie= true
+            $scope.dodanie= false
             $scope.initMarkers();
           })
           .error(function (status, header, config) {
@@ -1291,7 +1292,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Trasa został aktywowana pomyślnie!";
-
+            $scope.usuniecie= false
+            $scope.dodanie= true
             $scope.initMarkers();
           })
           .error(function (status, header, config) {
