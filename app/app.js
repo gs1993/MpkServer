@@ -71,7 +71,11 @@
       }).when('/track/show/:id', {
         templateUrl: 'panelWyswietlTrase.html',
         controller: 'ShowTrackController'
-      }).//UZYTKOWNICY SCIEZKI
+      })
+      .when('/course/show/:id', {
+          templateUrl: 'panelWyswietlKurs.html',
+          controller: 'ShowCourseController'
+        }).//UZYTKOWNICY SCIEZKI
 
       when('/user', {
         templateUrl: 'panelUsers.html',
@@ -1173,7 +1177,24 @@
       }
     ).success(function (data, status, headers, config) {
       $scope.kursy = data;
+      $scope.kursyPoprawne = [];
+      console.log("[Info] Pobrano kursy");
       console.log($scope.kursy);
+      angular.forEach($scope.kursy, function (kurs) {
+        if (kurs.Track.Id == WybraneId) {
+          if (kurs.Ended == false)
+          {
+            kurs.EndedName = "W trakcie"
+
+          }
+          else{
+            kurs.EndedName = "Zakonczony"
+          }
+          $scope.kursyPoprawne.push(kurs)
+        }
+      });
+      console.log("[Info] Kursy poprawne wygenerowane.")
+      console.log($scope.kursyPoprawne)
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania kursów.")
     });
@@ -1245,6 +1266,62 @@
 
       }
     }
+
+  }]);
+  app.controller('ShowCourseController', ['$scope', '$routeParams', '$http', '$rootScope', '$timeout', function ($scope, $routeParams, $http, $rootScope, $timeout) {
+
+    var WybraneId = $routeParams.id;
+    $scope.sendForm = false;
+    //WYSYLANY ID
+    $scope.CourseID = WybraneId;
+
+    $http.get('http://' + $rootScope.IP + ':50000/Course/Get/' + WybraneId, {
+        //headers: {'Session': ''}
+      }
+    ).success(function (data, status, headers, config) {
+      $scope.course = data;
+      $scope.SubskrypcjaAutobusu = function () {
+        console.log("Inicjowanie subskrypcji")
+        $scope.SubskrypcjaKlik = true
+        $rootScope.Service.sendSubscribe($scope.course.Bus.Id);
+      }
+      $scope.UnSubskrypcjaAutobusu = function () {
+        console.log("Inicjowanie unsubskrypcji")
+        $scope.SubskrypcjaKlik = false
+        $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password );
+        $rootScope.Service.sendUnSubscribe($scope.course.Bus.Id);
+      }
+      angular.forEach($scope.course.Activities, function (aktywnosc) {
+        if (aktywnosc.ActivityType == 0) {
+          aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
+        }
+        else if(aktywnosc.ActivityType == 1){
+          aktywnosc.ActivityTypeName = "Kontrola Biletów";
+        }
+        else if(aktywnosc.ActivityType == 2){
+          aktywnosc.ActivityTypeName = "Incydent z wandalami";
+        }
+        else if(aktywnosc.ActivityType == 3){
+          aktywnosc.ActivityTypeName = "Problem techniczny";
+        }
+        else if(aktywnosc.ActivityType == 4){
+          aktywnosc.ActivityTypeName = "Autobus dojechal do przystanku";
+        }
+        else if(aktywnosc.ActivityType == 5){
+          aktywnosc.ActivityTypeName = "Sprzedano bilet";
+        }
+        else if(aktywnosc.ActivityType == 6){
+          aktywnosc.ActivityTypeName = "Rozpoczeto kurs";
+        }
+        else if(aktywnosc.ActivityType == 7){
+          aktywnosc.ActivityTypeName = "Zakonczono kurs";
+        }
+      });
+      console.log("[Info] Pobrano kurs.");
+      console.log($scope.course);
+      $scope.TrackID = $scope.course.Track.Id
+    })
+
   }]);
   /* Użytkownicy Controlery
    *==========================================================================*/
@@ -1457,7 +1534,6 @@
         $scope.lat = $scope.busstop.Lat;
         $scope.lng = $scope.busstop.Lng;
         $scope.initMap()
-      }).error(function (data, status, headers, config) {
         console.log("Błąd pobrania przystanku.")
       });
     };

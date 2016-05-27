@@ -1,0 +1,39 @@
+.panelWyswietlAutobus(ng-controller="ShowCourseController")
+  .panelWyswietlAutobus__title Szczegóły Kursu
+  .panelWyswietlAutobus__fastTravel
+    span
+      a(href="/#/")
+        i.fa.fa-home
+        | Home
+    span
+      a(href="/#/track") Zarządzanie Trasami
+    span
+      a(href="/#/track/Get/{{ TrackID }}") Szczegóły Trasy
+    span.-active
+      a(href="/#/course/Get/{{ CourseID }}") Szczegóły Kursu
+  .panelWyswietlAutobus__wrapper
+    .panelWyswietlAutobus__subtitle Kurs o numerze {{ CourseID }}
+    .panelWyswietlAutobus__text Parametry aktualnie wybranego kursu
+    .panelWyswietlTrase
+      .panelWyswietlTrase__alert(ng-show="course.Ended") Kurs zakończony!
+      .panelWyswietlTrase__columns
+        .panelWyswietlTrase__column.-width100
+          .panelWyswietlTrase__title Aktywności kursu
+          .panelWyswietlTrase__content(ng-repeat="aktywnosc in course.Activities")
+            .panelWyswietlTrase__itemBox
+              .panelWyswietlTrase__item
+                .panelWyswietlTrase__itemSubtitle Data: {{ aktywnosc.Date }}
+                .panelWyswietlTrase__itemTitle Aktywność: {{ aktywnosc.ActivityTypeName }}
+                .panelWyswietlTrase__itemSubtitle Pozycja: {{ aktywnosc.Lat }} {{ aktywnosc.Lng }}
+                .panelWyswietlTrase__itemTitle Przystanek: {{ aktywnosc.BusStop.Name }}
+                .panelWyswietlTrase__itemSubtitle Pozycja: {{ aktywnosc.BusStop.Lat }} {{ aktywnosc.BusStop.Lng }}
+                .panelWyswietlTrase__itemSubtitle Ulica: {{ aktywnosc.BusStop.LocalizationString }}
+                .panelWyswietlTrase__itemTitle Numer Autobusu: {{ aktywnosc.Bus.BusNumber }}
+      .panelWyswietlAutobus__navigation(ng-hide="sendForm")
+        span(ng-click="SubskrypcjaAutobusu(AutobusID)" ng-hide="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.greenDark Rozpocznij Obserwacje
+        span(ng-click="UnSubskrypcjaAutobusu(AutobusID)" ng-show="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.red Zakoncz Obserwacje
+      .panelWyswietlAutobus__navigation
+        span(ng-click="UsuniecieTrasy(TrackID)" ng-hide="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.red Dezaktywuj
+        span(ng-click="AktywujTrasy(TrackID)" ng-show="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.greenDark Aktywuj
+        a(href="/#/track").panelWyswietlAutobus__navigation__item.gray.-abort Wróć
+      .panelWyswietlTrase__alert(ng-show="komunikat") {{ komunikat }}

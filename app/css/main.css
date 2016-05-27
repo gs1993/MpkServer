@@ -14298,6 +14298,10 @@ a.tabnav-extra:hover {
   }
 }
 
+.panelWyswietlTrase__column.-width100 {
+  width: 100%;
+}
+
 .panelWyswietlTrase__title {
   font-size: 16px;
   font-weight: 700;
@@ -14312,22 +14316,29 @@ a.tabnav-extra:hover {
 
 .panelWyswietlTrase__itemBox {
   padding: 5px;
+  display: block;
+  cursor: pointer;
 }
 
 .panelWyswietlTrase__item {
   background-color: #2196F3;
   border-radius: 4px;
   padding: 5px 8px;
+  cursor: pointer;
+}
+
+.panelWyswietlTrase__item:hover {
+  background-color: #1d7ccc;
 }
 
 .panelWyswietlTrase__itemTitle {
   color: white;
   font-size: 17px;
   font-weight: 700;
-  cursor: default;
+  cursor: pointer;
 }
 
 .panelWyswietlTrase__itemSubtitle {
   color: whitesmoke;
-  cursor: default;
+  cursor: pointer;
 }

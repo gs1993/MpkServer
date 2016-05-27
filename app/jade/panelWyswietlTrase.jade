@@ -18,17 +18,24 @@
         .panelWyswietlTrase__column
           .panelWyswietlTrase__title Przystanki wybranej trasy
           .panelWyswietlTrase__content(ng-repeat="przystanek in przystankiTrasy")
-            .panelWyswietlTrase__itemBox
+            a(href="#/busstop/show/{{przystanek.Id}}").panelWyswietlTrase__itemBox
               .panelWyswietlTrase__item
                 .panelWyswietlTrase__itemTitle <i class="fa fa-map-signs"></i> {{ przystanek.Name }}
                 .panelWyswietlTrase__itemSubtitle {{ przystanek.LocalizationString }}
         .panelWyswietlTrase__column
-          .panelWyswietlTrase__title Aktualne kursy
-          .panelWyswietlTrase__content
-            .panelWyswietlTrase__itemBox
+          .panelWyswietlTrase__title Aktualne Kursy
+          .panelWyswietlTrase__content(ng-repeat="kurs in kursyPoprawne")
+            a(href="#/course/show/{{kurs.Id}}"  ng-hide="kurs.Ended").panelWyswietlTrase__itemBox
               .panelWyswietlTrase__item
-                .panelWyswietlTrase__itemTitle <i class="fa fa-bus"></i> Autobus nr 1
-                .panelWyswietlTrase__itemSubtitle Opis
+                .panelWyswietlTrase__itemTitle <i class="fa fa-bus"></i> Autobus nr {{ kurs.Bus.BusNumber }}
+                .panelWyswietlTrase__itemSubtitle {{ kurs.EndedName }}
+        .panelWyswietlTrase__column.-width100
+          .panelWyswietlTrase__title Zakonczone Kursy
+          .panelWyswietlTrase__content(ng-repeat="kurs in kursyPoprawne")
+            a(href="#/course/show/{{kurs.Id}}"  ng-show="kurs.Ended").panelWyswietlTrase__itemBox
+              .panelWyswietlTrase__item
+                .panelWyswietlTrase__itemTitle <i class="fa fa-bus"></i> Autobus nr {{ kurs.Bus.BusNumber }}
+                .panelWyswietlTrase__itemSubtitle {{ kurs.EndedName }}
       .panelWyswietlAutobus__navigation
         span(ng-click="UsuniecieTrasy(TrackID)" ng-hide="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.red Dezaktywuj
         span(ng-click="AktywujTrasy(TrackID)" ng-show="track.IsArchive == 1").panelWyswietlAutobus__navigation__item.greenDark Aktywuj
