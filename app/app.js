@@ -92,7 +92,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
-      $rootScope.IP = 'localhost';
+      $rootScope.IP = '192.168.1.4';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -1293,6 +1293,7 @@
         $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password );
         $rootScope.Service.sendUnSubscribe($scope.course.Bus.Id);
       }
+      $scope.TrackID = $scope.course.Track.Id
       angular.forEach($scope.course.Activities, function (aktywnosc) {
         if (aktywnosc.ActivityType == 0) {
           aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
@@ -1321,7 +1322,6 @@
       });
       console.log("[Info] Pobrano kurs.");
       console.log($scope.course);
-      $scope.TrackID = $scope.course.Track.Id
     })
 
   }]);

@@ -34,22 +34,34 @@ var sendActivity = function(x,y,type,addInfo){
 
 var sampleStartCourse = function(){
 	var latlng = marker.getLatLng();
-	sendActivity(latlng.Lat,latlng.Lng,6,"TRACKID=1;");   // ID TRASY
+	console.log('Utworzenie Kursu')
+	console.log(latlng.lat)
+	console.log(latlng.lng)
+	sendActivity(latlng.lat,latlng.lng,6,"TRACKID=1;");   // ID TRASY
 }
 
 var sampleBusStop = function(){
 	var latlng = marker.getLatLng();
-	sendActivity(latlng.Lat,latlng.Lng,4,"STOPID=1;")		// ID PRZYSTANKU
+	console.log('Dojechanie do przystanku')
+	console.log(latlng.lat)
+	console.log(latlng.lng)
+	sendActivity(latlng.lat,latlng.lng,4,"STOPID=1;")		// ID PRZYSTANKU
 }
 
 var sampleBusEndCourse  = function(){
 	var latlng = marker.getLatLng();
-	sendActivity(latlng.Lat,latlng.Lng,7,"");
+	console.log('Zamkniecie kursu')
+	console.log(latlng.lat)
+	console.log(latlng.lng)
+	sendActivity(latlng.lat,latlng.lng,7,"");
 }
 
 var sampleTicketCount  = function(){
 	var latlng = marker.getLatLng();
-	sendActivity(latlng.Lat,latlng.Lng,0,"");
+	console.log('Kasowanie BIletu')
+	console.log(latlng.lat)
+	console.log(latlng.lng)
+	sendActivity(latlng.lat,latlng.lng,0,"");
 }
 
 
