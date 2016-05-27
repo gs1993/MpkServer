@@ -2,7 +2,7 @@ doctype html
 html(lang="pl" ng-app="app")
   include _head.jade
   body(ng-controller="MapController")
-    .sectionMain
+    .sectionMain(ng-controller="WebSocket")
 
       .headerholder
         include _header.jade

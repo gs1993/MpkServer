@@ -3,7 +3,7 @@
  */
 (function () {
   'use strict';
-  var app = angular.module('app', ['ngRoute', 'ngMap', 'wt.responsive', 'ngCookies'])
+  var app = angular.module('app', ['ngRoute', 'ngMap', 'wt.responsive', 'ngCookies', 'ngWebSocket'])
     .factory('AuthenticationService', AuthenticationService);
   app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
@@ -88,7 +88,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
-      $rootScope.IP = '192.168.1.138';
+      $rootScope.IP = '192.168.1.4';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -125,8 +125,8 @@
       $scope.userName = 'nieznajomy'
     }
   }
-  app.controller('HomeController', HomeController);
 
+  app.controller('HomeController', HomeController);
 
 
   app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope) {
@@ -209,6 +209,7 @@
         console.log(data);
         AuthenticationService.Login($scope.Email, $scope.Password, function (response) {
           console.log("[Sukces] Logowanie na serwerze ustanowione!");
+          $rootScope.Service.sendAuth($scope.Email, $scope.Password)
           if (response.Result) {
             console.log("Sukces pobrania tokenu do ustawienia zmiennej globalnej");
             AuthenticationService.SetCredentials($scope.Email, $scope.Password);
@@ -224,6 +225,7 @@
       }
     }
   }
+
   app.controller('LoginController', LoginController);
 
 
@@ -414,10 +416,18 @@
   });
   app.controller('ShowBusController', ['$scope', '$routeParams', '$http', '$rootScope', function ($scope, $routeParams, $http, $rootScope) {
 
+
     var WybraneId = $routeParams.id;
     $scope.sendForm = false;
     //WYSYLANY ID
     $scope.AutobusID = WybraneId;
+
+    $scope.SubskrypcjaAutobusu = function (index) {
+      $rootScope.Service.sendSubscribe(index);
+    }
+    $scope.UnSubskrypcjaAutobusu = function (index) {
+      $rootScope.Service.sendUnSubscribe(index);
+    }
 
     $http.get('http://' + $rootScope.IP + ':50000/Bus/GetBus/' + WybraneId, {
         //headers: {'Session': ''}
@@ -1642,5 +1652,52 @@
     };
   };
   app.directive("compareTo", compareTo);
+  app.controller('WebSocket', function ($websocket, $rootScope) {
+    var ws = $websocket('ws://' + $rootScope.IP + ':7878');
+    var collection = [];
+    $rootScope.Service = {};
+
+    ws.onMessage(function (message) {
+      console.info("message: ", message);
+      collection.push(JSON.parse(message.data));
+    });
+
+    ws.onOpen(function (message) {
+      console.log("Connection open!", message);
+    });
+
+    ws.onClose(function () {
+      console.log("Closing the socket.")
+    });
+
+    ws.onError(function (message) {
+      console.info("Error in socket", message);
+    });
+
+    $rootScope.Service.sendAuth = function () {
+      var data = {Email: 'lukraik@gmail.com', Password: 'Password@123'};
+      var obj = {
+        Action: "user.login",
+        Data: JSON.stringify(data)
+      };
+      ws.send(JSON.stringify(obj));
+    }
+    $rootScope.Service.sendSubscribe = function (busId) {
+      var data = {EventType: 0, IdOfObject: busId}; //0 = busmove
+      var obj = {
+        Action: "subscribe",
+        Data: JSON.stringify(data)
+      };
+      ws.send(JSON.stringify(obj));
+    }
+    $rootScope.Service.sendUnSubscribe = function (busId) {
+      var data = {EventType: 0, IdOfObject: busId};
+      var obj = {
+        Action: "unsubscribe",
+        Data: JSON.stringify(data)
+      };
+      ws.send(JSON.stringify(obj));
+    }
+  });
 })();
 
