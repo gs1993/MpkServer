@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d1550c6-26d3-4ab5-a8d8-bf8bc96bb9a0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerBusstopCheck.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerEnd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerIncydent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerKanar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerSellTicket.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerStart.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerTechnicla.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerTicket.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/jade/panelWyswietlKurs.jade" afterPath="$PROJECT_DIR$/app/jade/panelWyswietlKurs.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/test/fakeDevice.js" afterPath="$PROJECT_DIR$/app/test/fakeDevice.js" />
     </list>
     <ignored path="coffee-or-riots.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +35,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="1310" column="72" selection-start-line="1310" selection-start-column="72" selection-end-line="1310" selection-end-column="72" />
+            <state relative-caret-position="20142">
+              <caret line="1442" column="35" selection-start-line="1442" selection-start-column="35" selection-end-line="1442" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -50,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/app/jade/panelWyswietlKurs.jade">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="613">
-              <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+              <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -76,7 +82,7 @@
       <file leaf-file-name="index.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/jade/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="18">
               <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
               <folding />
             </state>
@@ -96,8 +102,8 @@
       <file leaf-file-name="fakeDevice.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/test/fakeDevice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
+            <state relative-caret-position="276">
+              <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -106,7 +112,7 @@
       <file leaf-file-name="fakeDevice.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fakeDevice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
+            <state relative-caret-position="24">
               <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
               <folding />
             </state>
@@ -158,10 +164,10 @@
         <option value="$PROJECT_DIR$/app/blocks/panelWyswietlTrase/_panelWyswietlTrase.sass" />
         <option value="$PROJECT_DIR$/app/jade/panelWyswietlAutobus.jade" />
         <option value="$PROJECT_DIR$/app/jade/panelWyswietlTrase.jade" />
-        <option value="$PROJECT_DIR$/app/jade/panelWyswietlKurs.jade" />
         <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/fakeDevice.js" />
         <option value="$PROJECT_DIR$/app/test/fakeDevice.js" />
+        <option value="$PROJECT_DIR$/app/jade/panelWyswietlKurs.jade" />
       </list>
     </option>
   </component>
@@ -554,7 +560,7 @@
       <workItem from="1464043790804" duration="3000" />
       <workItem from="1464341549217" duration="12479000" />
       <workItem from="1464364631941" duration="9162000" />
-      <workItem from="1464380642591" duration="3021000" />
+      <workItem from="1464380642591" duration="5462000" />
     </task>
     <task id="LOCAL-00001" summary="Poprawiona responsywność w tabelkach">
       <created>1461941090029</created>
@@ -752,11 +758,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464380830115</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Poprawka fakeDevice">
+      <created>1464384549829</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1464384549829</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180147000" />
+    <option name="totallyTimeSpent" value="182588000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -771,7 +784,7 @@
     <frame x="1366" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20042194" sideWeight="0.6407263" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20042194" sideWeight="0.6407263" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49315068" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20042194" sideWeight="0.35927367" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26244953" sideWeight="0.51140684" order="7" side_tool="true" content_ui="tabs" />
@@ -825,7 +838,8 @@
     <MESSAGE value="WebSocket onMessage + Subksypcje poprawione" />
     <MESSAGE value="Kursy autoryzacja websoocket subskypcje na kursy" />
     <MESSAGE value="Merge branch 'master' of bitbucket.org:SaliMike/coffee-or-riots&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of bitbucket.org:SaliMike/coffee-or-riots&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
+    <MESSAGE value="Poprawka fakeDevice" />
+    <option name="LAST_COMMIT_MESSAGE" value="Poprawka fakeDevice" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1137,33 +1151,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/jade/index.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/blocks/googleMaps/src/busMarker.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/jade/panelWyswietlKurs.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="1310" column="72" selection-start-line="1310" selection-start-column="72" selection-end-line="1310" selection-end-column="72" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/test/fakeRead.js">
@@ -1182,9 +1172,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/jade/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20142">
+          <caret line="1442" column="35" selection-start-line="1442" selection-start-column="35" selection-end-line="1442" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/jade/panelWyswietlKurs.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="613">
+          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fakeDevice.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
+        <state relative-caret-position="24">
           <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
           <folding />
         </state>
@@ -1192,8 +1206,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/test/fakeDevice.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
+        <state relative-caret-position="276">
+          <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
           <folding />
         </state>
       </provider>

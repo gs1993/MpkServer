@@ -34,5 +34,5 @@
           span(ng-click="SubskrypcjaAutobusu(AutobusID)" ng-hide="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.greenDark Rozpocznij Obserwacje
           span(ng-click="UnSubskrypcjaAutobusu(AutobusID)" ng-show="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.red Zakoncz Obserwacje
       .panelWyswietlAutobus__navigation
-        a(href="/#/track/Get/{{ TrackID }}").panelWyswietlAutobus__navigation__item.gray.-abort Wróć
+        a(href="/#/track/show/{{ TrackID }}").panelWyswietlAutobus__navigation__item.gray.-abort Wróć
       .panelWyswietlTrase__alert(ng-show="komunikat") {{ komunikat }}
