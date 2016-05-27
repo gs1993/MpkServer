@@ -9979,8 +9979,9 @@ a.tabnav-extra:hover {
 .header__corner {
   transition: all 0.36s linear;
   position: absolute;
-  border-bottom-right-radius: 3px;
-  left: 0;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  left: 42px;
   top: 0;
   width: 40px;
   height: 40px;
@@ -10105,9 +10106,8 @@ a.tabnav-extra:hover {
 .headerProfile__corner {
   transition: all 0.36s linear;
   position: absolute;
-  border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
-  left: 42px;
+  left: 0;
   top: 0;
   width: 40px;
   height: 40px;
@@ -10124,6 +10124,7 @@ a.tabnav-extra:hover {
 @media (max-width: 767px) {
   .headerProfile__corner {
     right: 0;
+    left: inherit;
     top: 0;
     width: 40px;
     height: 40px;
@@ -10346,9 +10347,6 @@ a.tabnav-extra:hover {
 }
 
 @media (max-width: 767px) {
-  .panels__close {
-    top: 40px;
-  }
   .panels__close a i {
     color: #777 !important;
   }
@@ -10568,10 +10566,6 @@ a.tabnav-extra:hover {
   left: 0;
   right: 0;
   z-index: 100;
-}
-
-.panelLogin {
-  min-width: 560px;
 }
 
 .panelLogin.-hidden {
@@ -10836,10 +10830,6 @@ a.tabnav-extra:hover {
   display: block;
   font-weight: 700;
   padding: 5px;
-}
-
-.panelRegister {
-  min-width: 560px;
 }
 
 .panelRegister.-hidden {

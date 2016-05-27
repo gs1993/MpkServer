@@ -2,72 +2,73 @@ doctype html
 html(lang="pl" ng-app="app")
   include _head.jade
   body(ng-controller="MapController")
+    .sectionMain
 
-    .headerholder
-      include _header.jade
-    .panels(ng-init="initMarkers()")
-      div(ng-view)
-      .panels__close(ng-click="initMapTimeout()")
-        a(href="/")
-          i.fa.fa-angle-double-left
-      footer
-        p Zespół Coffee <br> Like?
-          img(src="img/coffee-cup.png" alt="Team")
-    .wrapper
-      .panelWelcome__holder(ng-hide="globals.UserIsLogin")
-        .panelWelcome.panel
-          .panelWelcome__wrapper
-            span.panelWelcome__buttonIconBG
-              .panelWelcome__buttonIcon.fa.fa-bus
-            .panelWelcome__title Witaj w systemie MPK
-            .panelWelcome__text Projekt zespołowy.
-          .panelWelcome__navigation
-            //<a href="#" style="display:block;">Link #01</a>
-            a(href="#/login").WelcomeClick.blue Logowanie
-            a(href="#/register").WelcomeClick.green Rejestracja
-      .googleMaps
-        .googleMaps__API#googleMaps
+      .headerholder
+        include _header.jade
+      .panels(ng-init="initMarkers()")
+        div(ng-view)
+        .panels__close(ng-click="initMapTimeout()")
+          a(href="/")
+            i.fa.fa-angle-double-left
+        footer
+          p Zespół Coffee <br> Like?
+            img(src="img/coffee-cup.png" alt="Team")
+      .wrapper
+        .panelWelcome__holder(ng-hide="globals.UserIsLogin")
+          .panelWelcome.panel
+            .panelWelcome__wrapper
+              span.panelWelcome__buttonIconBG
+                .panelWelcome__buttonIcon.fa.fa-bus
+              .panelWelcome__title Witaj w systemie MPK
+              .panelWelcome__text Projekt zespołowy.
+            .panelWelcome__navigation
+              //<a href="#" style="display:block;">Link #01</a>
+              a(href="#/login").WelcomeClick.blue Logowanie
+              a(href="#/register").WelcomeClick.green Rejestracja
+        .googleMaps
+          .googleMaps__API#googleMaps
 
-          ng-map( center="[{{lat}}, {{lng}}]" zoom="14" refresh="true" styles="[{featureType:'landscape',stylers:[{saturation: -100},{lightness: 65},{visibility: 'on'}]},{featureType: 'poi',stylers: [{saturation: -100},{lightness: 51},{visibility: 'simplified'}]},{featureType: 'road.highway',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'road.arterial',stylers: [{saturation: -100},{lightness: 30},{visibility: 'on'}]},{featureType: 'road.local',stylers: [{saturation: -100},{lightness: 40},{visibility: 'on'}]},{featureType: 'transit',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'administrative.province',stylers: [{visibility: 'off'}]},{featureType: 'water',elementType: 'labels',stylers: [{visibility: 'on'},{lightness: -25},{saturation: -100}]},{featureType: 'water',elementType: 'geometry',stylers: [{hue: '#ffff00'},{lightness: -25},{saturation: -97}]}]"
-            pan-control="false"
-            map-type-control="true"
-            map-type-control-options="{style:'HORIZONTAL_BAR', position:'RIGHT_BOTTOM'}"
-            zoom-control="true"
-            zoom-control-options="{style:'LARGE', position:'RIGHT_CENTER'}"
-            street-view-control="false"
-            scale-control="false"
-            tilt="45"
-            )#foo
+            ng-map( center="[{{lat}}, {{lng}}]" zoom="14" refresh="true" styles="[{featureType:'landscape',stylers:[{saturation: -100},{lightness: 65},{visibility: 'on'}]},{featureType: 'poi',stylers: [{saturation: -100},{lightness: 51},{visibility: 'simplified'}]},{featureType: 'road.highway',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'road.arterial',stylers: [{saturation: -100},{lightness: 30},{visibility: 'on'}]},{featureType: 'road.local',stylers: [{saturation: -100},{lightness: 40},{visibility: 'on'}]},{featureType: 'transit',stylers: [{saturation: -100},{visibility: 'simplified'}]},{featureType: 'administrative.province',stylers: [{visibility: 'off'}]},{featureType: 'water',elementType: 'labels',stylers: [{visibility: 'on'},{lightness: -25},{saturation: -100}]},{featureType: 'water',elementType: 'geometry',stylers: [{hue: '#ffff00'},{lightness: -25},{saturation: -97}]}]"
+              pan-control="false"
+              map-type-control="true"
+              map-type-control-options="{style:'HORIZONTAL_BAR', position:'RIGHT_BOTTOM'}"
+              zoom-control="true"
+              zoom-control-options="{style:'LARGE', position:'RIGHT_CENTER'}"
+              street-view-control="false"
+              scale-control="false"
+              tilt="45"
+              )#foo
 
-            info-window(id="myInfoWindow")
-              .googleMaps__API__infoWindow(ng-non-bindable)
-                h4 {{selectedBusstop.Name}}
-                table
-                  tr
-                    td Ulica
-                    td {{selectedBusstop.LocalizationString}}
-                  tr
-                    td Typ
-                    td {{selectedBusstop.BusStopTypeName}}
-                  tr
-                    td Biletomat
-                    td {{selectedBusstop.GotMachineName}}
-                  tr
-                    td Kiosk
-                    td {{selectedBusstop.GotKioskName}}
+              info-window(id="myInfoWindow")
+                .googleMaps__API__infoWindow(ng-non-bindable)
+                  h4 {{selectedBusstop.Name}}
+                  table
+                    tr
+                      td Ulica
+                      td {{selectedBusstop.LocalizationString}}
+                    tr
+                      td Typ
+                      td {{selectedBusstop.BusStopTypeName}}
+                    tr
+                      td Biletomat
+                      td {{selectedBusstop.GotMachineName}}
+                    tr
+                      td Kiosk
+                      td {{selectedBusstop.GotKioskName}}
 
-            //Markery przystanków
-            marker(ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" icon="{{markerIcon}}")
+              //Markery przystanków
+              marker(ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" icon="{{markerIcon}}")
 
-            directions(
-              ng-show="czyWyswietloneD1"
-              draggable="false"
-              travel-mode="DRIVING"
-              waypoints="{{wayPoints}}"
-              origin="{{origin}}"
-              destination="{{destination}}"
-              suppress-markers="true"
-              )
+              directions(
+                ng-show="czyWyswietloneD1"
+                draggable="false"
+                travel-mode="DRIVING"
+                waypoints="{{wayPoints}}"
+                origin="{{origin}}"
+                destination="{{destination}}"
+                suppress-markers="true"
+                )
 
 
 

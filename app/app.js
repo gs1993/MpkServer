@@ -3,7 +3,7 @@
  */
 (function () {
   'use strict';
-  var app = angular.module('app', ['ngRoute', 'ngMap', 'wt.responsive', 'ngCookies', 'ngWebSocket'])
+  var app = angular.module('app', ['ngRoute', 'ngMap', 'wt.responsive', 'ngCookies'])
     .factory('AuthenticationService', AuthenticationService);
   app.config(['$routeProvider', '$locationProvider',
     function ($routeProvider, $locationProvider) {
@@ -21,9 +21,9 @@
         templateUrl: 'panelRegister.html',
         controller: 'RegisterController'
       }).when('/forgot', {
-          templateUrl: 'panelResetPassword.html',
-          controller: 'ResetPasswordController'
-        })
+        templateUrl: 'panelResetPassword.html',
+        controller: 'ResetPasswordController'
+      })
         .when('/logout', {
           templateUrl: 'panelLogin.html',
           controller: 'LogoutController'
@@ -88,6 +88,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
+      $rootScope.IP = '192.168.1.138';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -108,8 +109,11 @@
         }
       });
     }]);
+
   /* Standardowe Controlery
    *==========================================================================*/
+
+
   HomeController.$inject = ['$scope', '$http', '$rootScope', '$timeout'];
   function HomeController($scope, $http, $rootScope, $timeout) {
     if ($rootScope.globals.currentUser) {
@@ -121,8 +125,9 @@
       $scope.userName = 'nieznajomy'
     }
   }
-
   app.controller('HomeController', HomeController);
+
+
 
   app.controller('LogoutController', function ($scope, $http, $cookieStore, $rootScope) {
     $rootScope.globals = {HeaderToHide: true, UserIsLogin: false};
@@ -131,6 +136,8 @@
 
     $scope.deleteMarkers();
   });
+
+
   AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope', '$timeout'];
   function AuthenticationService($http, $cookieStore, $rootScope, $timeout) {
     var service = {};
@@ -145,12 +152,15 @@
 
       /* Use this for real authentication
        ----------------------------------------------*/
-      $http.post('http://localhost:50000/User/Login', {Email: username, Password: password})
+      $http.post('http://' + $rootScope.IP + ':50000/User/Login', {Email: username, Password: password})
         .success(function (response) {
           $rootScope.authdata = response.Token;
           console.log("Pobranie tokenu");
           console.log($rootScope.authdata);
           callback(response);
+        })
+        .error(function (data, status) {
+          console.log("[Error] Blad polaczenia z serwerem logowania.");
         });
     }
 
@@ -160,6 +170,7 @@
       $rootScope.globals = {
         currentUser: {
           Email: username,
+          Password: password,
           authdata: authdata
         },
         HeaderToHide: false,
@@ -177,12 +188,11 @@
     }
   }
 
-  LoginController.$inject = ['$location', 'AuthenticationService', '$scope', 'WebSocketService'];
-  function LoginController($location, AuthenticationService, $scope, WebSocketService) {
+
+  LoginController.$inject = ['$location', 'AuthenticationService', '$scope', '$rootScope'];
+  function LoginController($location, AuthenticationService, $scope, $rootScope) {
     $scope.sendForm = false;
-    console.log("loaded1");
     $scope.Login = function () {
-      console.log("loaded2");
       $scope.sendForm = true;
       (function initController() {
         // reset login status
@@ -195,12 +205,10 @@
 
       if ($scope.sendForm) {
         $scope.message = "Logowanie do systemu...";
+        console.log("[Info] Inicjacja logowania. Dane do logowania:")
         console.log(data);
         AuthenticationService.Login($scope.Email, $scope.Password, function (response) {
-          console.log("Sukces pobrania sprawdzenie");
-          console.log(response.Result);
-          $scope.autoryzacjaSocketu = WebSocketService.sendAuth($scope.Email, $scope.Password);
-          console.log($scope.autoryzacjaSocketu)
+          console.log("[Sukces] Logowanie na serwerze ustanowione!");
           if (response.Result) {
             console.log("Sukces pobrania tokenu do ustawienia zmiennej globalnej");
             AuthenticationService.SetCredentials($scope.Email, $scope.Password);
@@ -216,13 +224,16 @@
       }
     }
   }
-
   app.controller('LoginController', LoginController);
-  app.controller('RegisterController', function ($scope, $http, $timeout) {
+
+
+  app.controller('RegisterController', function ($scope, $http, $timeout, $rootScope) {
     $scope.RegisterSteps = {};
     $scope.RegisterSteps.GoToSecondForm = false;
   });
-  app.controller('RegisterStepOneController', function ($scope, $http, $timeout) {
+
+
+  app.controller('RegisterStepOneController', function ($scope, $http, $timeout, $rootScope) {
 
     // Pierwszy formularz
     $scope.sendForm = false;
@@ -235,9 +246,10 @@
       });
       if ($scope.sendForm) {
         $scope.message = "Jeszcze chwilka...";
+        console.log('[Info] Inicjowanie rejestracji. Podane dane to:');
         console.log(data);
         $timeout(function () {
-          $http.post('http://localhost:50000/User/SelfRegister', data)
+          $http.post('http://' + $rootScope.IP + ':50000/User/SelfRegister', data)
             .success(function (data, status) {
               $scope.CallbackServera = true;
               $scope.PostDataResponse = data;
@@ -256,8 +268,9 @@
       }
     };
   });
-  app.controller('RegisterStepTwoController', function ($scope, $http, $timeout) {
 
+
+  app.controller('RegisterStepTwoController', function ($scope, $http, $timeout, $rootScope) {
     // Pierwszy formularz
     $scope.sendForm = false;
 
@@ -272,7 +285,7 @@
         $scope.message = "Jeszcze chwilka...";
         console.log(data);
         $timeout(function () {
-          $http.post('http://localhost:50000/User/ActivateUser', data)
+          $http.post('http://' + $rootScope.IP + ':50000/User/ActivateUser', data)
             .success(function (data, status) {
               $scope.CallbackServera = true;
               $scope.PostDataResponse = data;
@@ -291,18 +304,20 @@
     };
   });
 
+
   app.controller('ResetPasswordController', function ($scope) {
 
     $scope.message = 'This is Add new order screen';
 
   });
 
+
   /* Autobusy Controlery
    *==========================================================================*/
-  app.controller('BusController', function ($scope, $http) {
+  app.controller('BusController', function ($scope, $http, $rootScope) {
 
 
-    $http.get('http://localhost:50000/Bus/GetBusList/', {
+    $http.get('http://' + $rootScope.IP + ':50000/Bus/GetBusList/', {
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.autobusy = data;
@@ -341,7 +356,7 @@
     });
 
   });
-  app.controller('AddBusController', function ($scope, $http, $timeout) {
+  app.controller('AddBusController', function ($scope, $http, $timeout, $rootScope) {
     $scope.sendForm = false;
 
     $scope.createBus = function () {
@@ -374,7 +389,7 @@
         $scope.message = "Przygotowywanie autobusu do drogi...";
         console.log(data);
         $timeout(function () {
-          $http.post('http://localhost:50000/Bus/PostBus', data, config)
+          $http.post('http://' + $rootScope.IP + ':50000/Bus/PostBus', data, config)
             .success(function (data, status, headers, config) {
               $scope.CallbackServera = true;
               $scope.CallbackServeraPositive = true;
@@ -397,28 +412,21 @@
       }
     };
   });
-  app.controller('ShowBusController', ['$scope', '$routeParams', '$http', 'WebSocketService', function ($scope, $routeParams, $http, WebSocketService) {
+  app.controller('ShowBusController', ['$scope', '$routeParams', '$http', '$rootScope', function ($scope, $routeParams, $http, $rootScope) {
 
     var WybraneId = $routeParams.id;
     $scope.sendForm = false;
     //WYSYLANY ID
     $scope.AutobusID = WybraneId;
 
-    $scope.SubskrypcjaAutobusu = function(index){
-      WebSocketService.sendSubscribe(index);
-    }
-    $scope.UnSubskrypcjaAutobusu = function(index){
-      WebSocketService.sendUnSubscribe(index);
-    }
-
-    $http.get('http://localhost:50000/Bus/GetBus/' + WybraneId, {
+    $http.get('http://' + $rootScope.IP + ':50000/Bus/GetBus/' + WybraneId, {
         //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
       $scope.autobus = data;
       console.log($scope.autobus);
       console.log("Pobrano autobus.");
-      
+
       if ($scope.autobus.GotMachine == true) {
         $scope.autobus.GotMachineName = "Tak";
         $scope.autobus.GotMachineValue = 1
@@ -449,7 +457,7 @@
 
 
   }]);
-  app.controller('UpdateBusController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
+  app.controller('UpdateBusController', ['$scope', '$routeParams', '$http', '$rootScope', '$timeout', function ($scope, $routeParams, $http, $rootScope, $timeout) {
 
 
     var WybraneId = $routeParams.id;
@@ -488,7 +496,7 @@
         $scope.message = "Trwa Aktualizacja Autobusu...";
         console.log(data);
         $timeout(function () {
-          $http.put('http://localhost:50000/Bus/PutBus', data, config)
+          $http.put('http://' + $rootScope.IP + ':50000/Bus/PutBus', data, config)
             .success(function (data, status, headers, config) {
               $scope.CallbackServera = true;
               $scope.CallbackServeraPositive = true;
@@ -512,7 +520,7 @@
 
 
   }]);
-  app.controller('RestoreBusController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
+  app.controller('RestoreBusController', ['$scope', '$routeParams', '$http', '$rootScope', '$timeout', function ($scope, $routeParams, $http, $rootScope, $timeout) {
     var WybraneId = $routeParams.id;
     $scope.sendForm = true;
     var config = {
@@ -523,7 +531,7 @@
       $scope.message = "Przygotowywanie autobusu...";
       $timeout(function () {
 
-        $http.put('http://localhost:50000/Bus/PutRestore/' + WybraneId, config)
+        $http.put('http://' + $rootScope.IP + ':50000/Bus/PutRestore/' + WybraneId, config)
           .success(function (status, headers, config) {
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
@@ -543,7 +551,7 @@
       }, 2500);
     }
   }]);
-  app.controller('DeleteBusController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
+  app.controller('DeleteBusController', ['$scope', '$routeParams', '$http', '$rootScope', '$timeout', function ($scope, $routeParams, $http, $rootScope, $timeout) {
     var WybraneId = $routeParams.id;
 
     $scope.sendForm = true;
@@ -555,7 +563,7 @@
       $scope.message = "Dezaktywowanie autobusu...";
 
       $timeout(function () {
-        $http.delete('http://localhost:50000/Bus/delete/' + WybraneId, config)
+        $http.delete('http://' + $rootScope.IP + ':50000/Bus/delete/' + WybraneId, config)
           .success(function (status, headers, config) {
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
@@ -581,8 +589,8 @@
 
   /* Przystanki Controlery
    *==========================================================================*/
-  app.controller('BusstopController', function ($scope, $http) {
-    $http.get('http://localhost:50000/Busstop/GetBusstopList/', {
+  app.controller('BusstopController', function ($scope, $http, $rootScope) {
+    $http.get('http://' + $rootScope.IP + ':50000/Busstop/GetBusstopList/', {
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.przystanki = data;
@@ -625,7 +633,7 @@
 
 
   });
-  app.controller('AddBusstopController', function ($scope, $http, $timeout) {
+  app.controller('AddBusstopController', function ($scope, $http, $timeout, $rootScope) {
     $scope.sendForm = false;
 
     $scope.createBusstop = function () {
@@ -678,7 +686,7 @@
       if ($scope.sendForm) {
         $scope.message = "Przygotowywanie przystanku...";
         $timeout(function () {
-          $http.post('http://localhost:50000/Busstop/PostBusstop', data, config)
+          $http.post('http://' + $rootScope.IP + ':50000/Busstop/PostBusstop', data, config)
             .success(function (data, status, headers, config) {
               $scope.PostDataResponse = data;
               console.log($scope.PostDataResponse);
@@ -700,7 +708,7 @@
       }
     };
   });
-  app.controller('ShowBusstopController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+  app.controller('ShowBusstopController', ['$scope', '$routeParams', '$http', '$rootScope', function ($scope, $routeParams, $http, $rootScope) {
 
     var WybraneId = $routeParams.id;
 
@@ -721,7 +729,7 @@
      LastControl: '1'
      }];*/
 
-    $http.get('http://localhost:50000/Busstop/GetBusstop/' + WybraneId, {
+    $http.get('http://' + $rootScope.IP + ':50000/Busstop/GetBusstop/' + WybraneId, {
         //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
@@ -760,7 +768,7 @@
       console.log("Błąd pobrania przystanku.")
     });
   }]);
-  app.controller('UpdateBustopController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
+  app.controller('UpdateBustopController', ['$scope', '$routeParams', '$http', '$rootScope', '$timeout', function ($scope, $routeParams, $http, $rootScope, $timeout) {
 
     $scope.sendForm = false;
     var WybraneId = $routeParams.id;
@@ -848,7 +856,7 @@
         $scope.message = "Trwa Aktualizacja Autobusu...";
         console.log(data);
         $timeout(function () {
-          $http.put('http://localhost:50000/BusStop/PutBusStop', data, config)
+          $http.put('http://' + $rootScope.IP + ':50000/BusStop/PutBusStop', data, config)
             .success(function (data, status, headers, config) {
               $scope.CallbackServera = true;
               $scope.CallbackServeraPositive = true;
@@ -872,7 +880,7 @@
 
 
   }]);
-  app.controller('RestoreBusstopController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
+  app.controller('RestoreBusstopController', ['$scope', '$routeParams', '$http', '$rootScope', '$timeout', function ($scope, $routeParams, $http, $rootScope, $timeout) {
 
     var WybraneId = $routeParams.id;
     $scope.sendForm = true;
@@ -884,7 +892,7 @@
       $scope.message = "Przygotowywanie przystanku...";
       $timeout(function () {
 
-        $http.put('http://localhost:50000/BusStop/PutRestore/' + WybraneId, config)
+        $http.put('http://' + $rootScope.IP + ':50000/BusStop/PutRestore/' + WybraneId, config)
           .success(function (status, headers, config) {
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
@@ -906,7 +914,7 @@
 
 
   }]);
-  app.controller('DeleteBusstopController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
+  app.controller('DeleteBusstopController', ['$scope', '$routeParams', '$http', '$rootScope', '$timeout', function ($scope, $routeParams, $http, $rootScope, $timeout) {
 
     var WybraneId = $routeParams.id;
 
@@ -919,7 +927,7 @@
       $scope.message = "Dezaktywowanie przystanku...";
       $timeout(function () {
 
-        $http.delete('http://localhost:50000/BusStop/DeleteBusStop/' + WybraneId, config)
+        $http.delete('http://' + $rootScope.IP + ':50000/BusStop/DeleteBusStop/' + WybraneId, config)
           .success(function (status, headers, config) {
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
@@ -944,10 +952,10 @@
   }]);
   /* Trasy Controlery
    *==========================================================================*/
-  app.controller('TrackController', function ($scope, $http) {
+  app.controller('TrackController', function ($scope, $http, $rootScope) {
 
 
-    $http.get('http://localhost:50000/Track/GetList', {
+    $http.get('http://' + $rootScope.IP + ':50000/Track/GetList', {
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.tracks = data;
@@ -967,10 +975,10 @@
       console.log("Błąd pobrania tras.")
     });
   });
-  app.controller('AddTrackController', function ($scope, $http, $timeout) {
+  app.controller('AddTrackController', function ($scope, $http, $timeout, $rootScope) {
     $scope.DodanoTrase = false;
 
-    $http.get('http://localhost:50000/Busstop/GetBusstopList/', {
+    $http.get('http://' + $rootScope.IP + ':50000/Busstop/GetBusstopList/', {
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.przystanki = data;
@@ -1041,7 +1049,7 @@
         var config = {
           //headers: {'Session': ''}
         };
-        $http.post('http://localhost:50000/Track/Create', data, config)
+        $http.post('http://' + $rootScope.IP + ':50000/Track/Create', data, config)
           .success(function (data, status, headers, config) {
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
@@ -1067,7 +1075,7 @@
 
     $scope.wybraniePrzystanku = function (index) {
       $scope.BrakPrzystankow = false
-      $http.get('http://localhost:50000/Busstop/GetBusstop/' + index, {
+      $http.get('http://' + $rootScope.IP + ':50000/Busstop/GetBusstop/' + index, {
           //headers: {'Session': ''}
         }
       ).success(function (data, status, headers, config) {
@@ -1120,14 +1128,14 @@
       });
     }
   });
-  app.controller('ShowTrackController', ['$scope', '$routeParams', '$http', '$timeout', function ($scope, $routeParams, $http, $timeout) {
+  app.controller('ShowTrackController', ['$scope', '$routeParams', '$http', '$rootScope', '$timeout', function ($scope, $routeParams, $http, $rootScope, $timeout) {
 
     var WybraneId = $routeParams.id;
     $scope.sendForm = false;
     //WYSYLANY ID
     $scope.TrackID = WybraneId;
 
-    $http.get('http://localhost:50000/Track/Get/' + WybraneId, {
+    $http.get('http://' + $rootScope.IP + ':50000/Track/Get/' + WybraneId, {
         //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
@@ -1150,7 +1158,7 @@
       console.log("Błąd pobrania trasy.")
     });
 
-    $http.get('http://localhost:50000/Course/GetList', {
+    $http.get('http://' + $rootScope.IP + ':50000/Course/GetList', {
         //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
@@ -1160,7 +1168,6 @@
       console.log("Błąd pobrania kursów.")
     });
 
-    
 
     $scope.UsuniecieTrasy = function (index) {
       var WybraneId = index;
@@ -1174,7 +1181,7 @@
       if ($scope.sendForm) {
         $scope.message = "Dezaktywowanie trasy...";
 
-        $http.delete('http://localhost:50000/Track/Delete/' + WybraneId, config)
+        $http.delete('http://' + $rootScope.IP + ':50000/Track/Delete/' + WybraneId, config)
           .success(function (status, headers, config) {
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
@@ -1207,7 +1214,7 @@
       if ($scope.sendForm) {
         $scope.message = "Dezaktywowanie trasy...";
 
-        $http.post('http://localhost:50000/Track/Restore/' + WybraneId, config)
+        $http.post('http://' + $rootScope.IP + ':50000/Track/Restore/' + WybraneId, config)
           .success(function (status, headers, config) {
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
@@ -1231,7 +1238,7 @@
   }]);
   /* Użytkownicy Controlery
    *==========================================================================*/
-  app.controller('UserController', function ($scope, $http) {
+  app.controller('UserController', function ($scope, $http, $rootScope) {
 
     /*$scope.users = [
      {Id: 0, Email: 'dev@wp.pl', Rank: 0, Status: 0, Details: "Opis...?"},
@@ -1240,7 +1247,7 @@
      {Id: 2, Email: 'dev3@wp.pl', Rank: 2, Status: 0, Details: "Opis...?"}
      ];*/
 
-    $http.get('http://localhost:50000/user/GetUserList', {
+    $http.get('http://' + $rootScope.IP + ':50000/user/GetUserList', {
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.users = data;
@@ -1268,7 +1275,7 @@
     });
 
   });
-  app.controller('AddUserController', function ($scope, $http, $timeout) {
+  app.controller('AddUserController', function ($scope, $http, $timeout, $rootScope) {
     $scope.sendForm = false;
 
     $scope.createUser = function () {
@@ -1298,7 +1305,7 @@
       if ($scope.sendForm) {
         $scope.message = "Szykujemy nowe biurko...";
         $timeout(function () {
-          $http.post('http://localhost:50000/user/SelfRegister', data, config)
+          $http.post('http://' + $rootScope.IP + ':50000/user/SelfRegister', data, config)
             .success(function (data, status, headers, config) {
               $scope.PostDataResponse = data;
               console.log($scope.PostDataResponse);
@@ -1320,7 +1327,7 @@
       }
     };
   });
-  app.controller('ShowUserController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+  app.controller('ShowUserController', ['$scope', '$routeParams', '$http', '$rootScope', function ($scope, $routeParams, $http, $rootScope) {
 
     var WybraneId = $routeParams.id;
 
@@ -1339,7 +1346,7 @@
      Details: 'Jakis Opis'
      }];*/
 
-    $http.get('http://localhost:50000/user/getUser/' + WybraneId, {
+    $http.get('http://' + $rootScope.IP + ':50000/user/getUser/' + WybraneId, {
         //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
@@ -1425,7 +1432,7 @@
   }]);
   /* Map Controler
    *==========================================================================*/
-  app.controller('MapController', function (NgMap, $scope, $http, $timeout) {
+  app.controller('MapController', function (NgMap, $scope, $http, $timeout, $rootScope) {
     var wrapper = $('.wrapper');
 
     $scope.lat = 53.77842200000001;
@@ -1434,7 +1441,7 @@
     $scope.markerIcon = "blocks/googleMaps/src/busstopMarker.png";
 
     $scope.setPostitionBusstop = function (id) {
-      $http.get('http://localhost:50000/Busstop/GetBusstop/' + id
+      $http.get('http://' + $rootScope.IP + ':50000/Busstop/GetBusstop/' + id
       ).success(function (data, status, headers, config) {
         $scope.busstop = data;
         $scope.lat = $scope.busstop.Lat;
@@ -1472,7 +1479,7 @@
 
       $scope.busstopMarkers = [];
 
-      $http.get('http://localhost:50000/Busstop/GetBusstopList/'
+      $http.get('http://' + $rootScope.IP + ':50000/Busstop/GetBusstopList/'
       ).success(function (data, status, headers, config) {
         $scope.busstop = data;
         console.log($scope.przystanki);
@@ -1635,95 +1642,5 @@
     };
   };
   app.directive("compareTo", compareTo);
-
-  app.factory('WebSocketService', ['$q', '$rootScope', '$websocket', function ($q, $rootScope, $websocket) {
-    // We return this object to anything injecting our service
-    var Service = {};
-    // Keep all pending requests here until they get responses
-    var callbacks = {};
-    // Create a unique callback ID to map requests to responses
-    var currentCallbackId = 0;
-    // Create our websocket object with the address to the websocket
-    var ws = new WebSocket('ws://localhost:7878');
-
-    ws.onopen = function () {
-      console.log("Socket has been opened!");
-    }
-
-    ws.onmessage = function (message) {
-      console.log(message)
-      listener(JSON.parse(message.data));
-    };
-
-
-    function sendRequest(request) {
-      var defer = $q.defer();
-      var callbackId = getCallbackId();
-      callbacks[callbackId] = {
-        time: new Date(),
-        cb:defer
-      };
-      request.callback_id = callbackId;
-      console.log('Sending request', request);
-      ws.send(JSON.stringify(request));
-      return defer.promise;
-    }
-
-    function listener(data) {
-      var messageObj = data;
-      console.log("Received data from websocket: ", messageObj);
-      // If an object exists with callback_id in our callbacks object, resolve it
-      if(callbacks.hasOwnProperty(messageObj.callback_id)) {
-        console.log(callbacks[messageObj.callback_id]);
-        $rootScope.$apply(callbacks[messageObj.callback_id].cb.resolve(messageObj.data));
-        delete callbacks[messageObj.callbackID];
-      }
-    }
-
-    // This creates a new callback ID for a request
-    function getCallbackId() {
-      currentCallbackId += 1;
-      if(currentCallbackId > 10000) {
-        currentCallbackId = 0;
-      }
-      return currentCallbackId;
-    }
-
-    // Define a "getter" for getting customer data
-    Service.sendAuth = function(email,password) {
-      var data = {Email:email,Password:password};
-      var request = {
-        Action: "user.login",
-        Data: JSON.stringify(data)
-      }
-      // Storing in a variable for clarity on what sendRequest returns
-      var promise = sendRequest(request);
-      return promise;
-    }
-
-    Service.sendSubscribe = function(busId) {
-      var data = {EventType:0,IdOfObject:busId};
-      var request = {
-        Action: "subscribe",
-        Data: JSON.stringify(data)
-      }
-      // Storing in a variable for clarity on what sendRequest returns
-      var promise = sendRequest(request);
-      return promise;
-    }
-
-    Service.sendUnSubscribe = function(busId) {
-      var data = {EventType:0,IdOfObject:busId};
-      var request = {
-        Action: "unsubscribe",
-        Data: JSON.stringify(data)
-      }
-      // Storing in a variable for clarity on what sendRequest returns
-      var promise = sendRequest(request);
-      return promise;
-    }
-
-    return Service;
-  }])
 })();
 
