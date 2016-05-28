@@ -1777,6 +1777,8 @@
       $scope.deleteMarkers();
       $scope.wayPoints = [];
       $scope.showBusstopMarkers();
+      $scope.showBusMarkers();
+
       $scope.map.directionsRenderers[0].setMap(null);
 
     };
@@ -1798,7 +1800,6 @@
     $scope.markerStart=[];
     $scope.markerTechnicla=[];
     $scope.markerTicket=[];
-    $scope.activityMarker = [];
 
     $scope.intCourse=function (kurs) {
       $scope.markerBusstopCheck=[];
@@ -1810,8 +1811,6 @@
       $scope.markerTechnicla=[];
       $scope.markerTicket=[];
 
-      $scope.activityMarker = [];
-      $scope.activityMarkers = [];
       angular.forEach(kurs.Activities, function (aktywnosc) {
         if (aktywnosc.ActivityType == 0) {
           aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
@@ -1879,7 +1878,6 @@
         }
 
       });
-      $scope.activityMarker=$scope.activityMarkers;
     };
 
 
@@ -1890,7 +1888,7 @@
     ///////////////////Autobusy////////////////////////////////
     $scope.busMarker = [];
     $scope.showBusMarkers = function () {
-      $scope.markerIcon = "../blocks/googleMaps/src/busMarker.png";
+
 
       $scope.busMarkers = [];
 
@@ -1902,25 +1900,21 @@
 
           if (kurs.Ended == false) {
 
-            $scope.busstopMarkers.push({
+            $scope.busMarkers.push({
               Id: kurs.Bus.Id,
               Name: kurs.Bus.BusNumber,
-              LocalizationString: autobus.LocalizationString,
-              GotMachineName: autobus.GotMachineName,
-              GotKioskName: autobus.GotKioskName,
-              BusStopTypeName: autobus.BusStopTypeName,
-              Position: [autobus.Lat, autobus.Lng]
+              Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
             });
+            console.log("test");
+            console.log($scope.busMarkers);
+            console.log("--------------");
           }
-
-
         });
       }).error(function (data, status, headers, config) {
         console.log("Błąd pobrania przystanków.")
       });
 
-      $scope.busstopMarker = $scope.busstopMarkers;
-
+      $scope.busMarker = $scope.busMarkers;
     };
 
 

@@ -141,19 +141,21 @@
               <marker ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" icon="{{markerIcon}}"></marker>
               <directions ng-show="czyWyswietloneD1" draggable="false" travel-mode="DRIVING" waypoints="{{wayPoints}}" origin="{{origin}}" destination="{{destination}}" suppress-markers="true"></directions>
               <!--Markery aktywnosci-->
-              <marker ng-repeat="bc in markerBusstopCheck" position="{{bc.Position}}" id="{{bc.Id}}" on-click="showActivity(event, bc)" icon="{{markerIcon}}"></marker>
-              <marker ng-repeat="e in markerEnd" position="{{e.Position}}" id="{{e.Id}}" on-click="showActivity(event, e)" icon="{{markerIcon}}"></marker>
-              <marker ng-repeat="i in markerIncydent" position="{{i.Position}}" id="{{i.Id}}" on-click="showActivity(event, i)" icon="{{markerIcon}}"></marker>
-              <marker ng-repeat="k in markerKanar" position="{{k.Position}}" id="{{k.Id}}" on-click="showActivity(event, k)" icon="{{markerIcon}}"></marker>
-              <marker ng-repeat="st in markerSellTicket" position="{{st.Position}}" id="{{st.Id}}" on-click="showActivity(event, st)" icon="{{markerIcon}}"></marker>
-              <marker ng-repeat="s in markerStart" position="{{s.Position}}" id="{{s.Id}}" on-click="showActivity(event, s)" icon="{{markerIcon}}"></marker>
-              <marker ng-repeat="t in markerTechnicla" position="{{t.Position}}" id="{{t.Id}}" on-click="showActivity(event, t)" icon="{{markerIcon}}"></marker>
-              <marker ng-repeat="tic in markerTicket" position="{{tic.Position}}" id="{{tic.Id}}" on-click="showActivity(event, tic)" icon="{{markerIcon}}"></marker>
+              <marker ng-repeat="bc in markerBusstopCheck" position="{{bc.Position}}" id="{{bc.Id}}" on-click="showActivity(event, bc)" icon="../blocks/googleMaps/src/markerBusstopCheck.png"></marker>
+              <marker ng-repeat="e in markerEnd" position="{{e.Position}}" id="{{e.Id}}" on-click="showActivity(event, e)" icon="../blocks/googleMaps/src/markerEnd.png"></marker>
+              <marker ng-repeat="i in markerIncydent" position="{{i.Position}}" id="{{i.Id}}" on-click="showActivity(event, i)" icon="../blocks/googleMaps/src/markerIncydent.png"></marker>
+              <marker ng-repeat="k in markerKanar" position="{{k.Position}}" id="{{k.Id}}" on-click="showActivity(event, k)" icon="../blocks/googleMaps/src/markerKanar.png"></marker>
+              <marker ng-repeat="st in markerSellTicket" position="{{st.Position}}" id="{{st.Id}}" on-click="showActivity(event, st)" icon="../blocks/googleMaps/src/markerSellTicket.png"></marker>
+              <marker ng-repeat="s in markerStart" position="{{s.Position}}" id="{{s.Id}}" on-click="showActivity(event, s)" icon="../blocks/googleMaps/src/markerStart.png"></marker>
+              <marker ng-repeat="t in markerTechnicla" position="{{t.Position}}" id="{{t.Id}}" on-click="showActivity(event, t)" icon="../blocks/googleMaps/src/markerTechnicla.png"></marker>
+              <marker ng-repeat="tic in markerTicket" position="{{tic.Position}}" id="{{tic.Id}}" on-click="showActivity(event, tic)" icon="../blocks/googleMaps/src/markerTicket.png"></marker>
               <info-window id="ActivityInfoWindow">
                 <div ng-non-bindable class="googleMaps__API__infoWindow">
                   <h4>{{selectedActivity.Name}}</h4>
                 </div>
               </info-window>
+              <!--Markery autobusów-->
+              <marker ng-repeat="bus in busMarker" position="{{bus.Position}}" id="{{bus.Id}}" on-click="showActivity(event, bus)" icon="../blocks/googleMaps/src/busMarker.png"></marker>
             </ng-map>
           </div>
         </div>
