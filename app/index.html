@@ -141,16 +141,17 @@
               <marker ng-repeat="b in busstopMarker" position="{{b.Position}}" id="{{b.Id}}" on-click="showBusstop(event, b)" icon="{{markerIcon}}"></marker>
               <directions ng-show="czyWyswietloneD1" draggable="false" travel-mode="DRIVING" waypoints="{{wayPoints}}" origin="{{origin}}" destination="{{destination}}" suppress-markers="true"></directions>
               <!--Markery aktywnosci-->
-              <marker ng-repeat="a in activityMarker" position="{{a.Position}}" id="{{a.Id}}" on-click="showActivity(event, a)"></marker>
+              <marker ng-repeat="bc in markerBusstopCheck" position="{{bc.Position}}" id="{{bc.Id}}" on-click="showActivity(event, bc)" icon="{{markerIcon}}"></marker>
+              <marker ng-repeat="e in markerEnd" position="{{e.Position}}" id="{{e.Id}}" on-click="showActivity(event, e)" icon="{{markerIcon}}"></marker>
+              <marker ng-repeat="i in markerIncydent" position="{{i.Position}}" id="{{i.Id}}" on-click="showActivity(event, i)" icon="{{markerIcon}}"></marker>
+              <marker ng-repeat="k in markerKanar" position="{{k.Position}}" id="{{k.Id}}" on-click="showActivity(event, k)" icon="{{markerIcon}}"></marker>
+              <marker ng-repeat="st in markerSellTicket" position="{{st.Position}}" id="{{st.Id}}" on-click="showActivity(event, st)" icon="{{markerIcon}}"></marker>
+              <marker ng-repeat="s in markerStart" position="{{s.Position}}" id="{{s.Id}}" on-click="showActivity(event, s)" icon="{{markerIcon}}"></marker>
+              <marker ng-repeat="t in markerTechnicla" position="{{t.Position}}" id="{{t.Id}}" on-click="showActivity(event, t)" icon="{{markerIcon}}"></marker>
+              <marker ng-repeat="tic in markerTicket" position="{{tic.Position}}" id="{{tic.Id}}" on-click="showActivity(event, tic)" icon="{{markerIcon}}"></marker>
               <info-window id="ActivityInfoWindow">
                 <div ng-non-bindable class="googleMaps__API__infoWindow">
                   <h4>{{selectedActivity.Name}}</h4>
-                  <table>
-                    <tr>
-                      <td>Numer Autobusu</td>
-                      <td>{{selectedActivity.BusName}}</td>
-                    </tr>
-                  </table>
                 </div>
               </info-window>
             </ng-map>
