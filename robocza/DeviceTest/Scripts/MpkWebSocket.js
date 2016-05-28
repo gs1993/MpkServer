@@ -1,7 +1,17 @@
 ﻿var deviceWebstocket = new WebSocket("ws:" + host + ":7878");
 deviceWebstocket.onmessage = function (data) {
-    toastr.info(data.data);
-    console.log(data);
+    var result = JSON.parse(data.data);
+    switch(result.State) {
+        case 0:
+            toastr.success("Ok");
+            break;
+        case 400:
+            toastr.error(JSON.parse(result.Data).msg);
+            break;
+        default:
+            toastr.warning("Nieznana odpowiedź:" + data.data);
+            break;
+    }
 }
 
 var sendAuth = function (email, password) {
