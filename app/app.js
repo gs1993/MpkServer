@@ -72,7 +72,7 @@
         templateUrl: 'panelWyswietlTrase.html',
         controller: 'ShowTrackController'
       })
-      .when('/course/show/:id', {
+        .when('/course/show/:id', {
           templateUrl: 'panelWyswietlKurs.html',
           controller: 'ShowCourseController'
         }).//UZYTKOWNICY SCIEZKI
@@ -121,8 +121,8 @@
   HomeController.$inject = ['$scope', '$http', '$rootScope', '$timeout'];
   function HomeController($scope, $http, $rootScope, $timeout) {
     if ($rootScope.globals.currentUser) {
-      console.log($rootScope.globals);
-      console.log($rootScope.globals.currentUser.Email);
+      //console.log($rootScope.globals);
+      //console.log($rootScope.globals.currentUser.Email);
       $scope.userName = $rootScope.globals.currentUser.Email;
     }
     else {
@@ -159,8 +159,8 @@
       $http.post('http://' + $rootScope.IP + ':50000/User/Login', {Email: username, Password: password})
         .success(function (response) {
           $rootScope.authdata = response.Token;
-          console.log("Pobranie tokenu");
-          console.log($rootScope.authdata);
+          //console.log("Pobranie tokenu");
+          //console.log($rootScope.authdata);
           callback(response);
         })
         .error(function (data, status) {
@@ -170,7 +170,7 @@
 
     function SetCredentials(username, password) {
       var authdata = $rootScope.authdata;
-      console.log("Zmienna Globalna przypisna");
+      //console.log("Zmienna Globalna przypisna");
       $rootScope.globals = {
         currentUser: {
           Email: username,
@@ -182,7 +182,7 @@
       };
       $http.defaults.headers.common['Session'] = '' + authdata; // jshint ignore:line
       $cookieStore.put('globals', $rootScope.globals);
-      console.log("Cookies ustawione");
+      //console.log("Cookies ustawione");
     }
 
     function ClearCredentials() {
@@ -209,14 +209,14 @@
 
       if ($scope.sendForm) {
         $scope.message = "Logowanie do systemu...";
-        console.log("[Info] Inicjacja logowania. Dane do logowania:")
-        console.log(data);
+        //console.log("[Info] Inicjacja logowania. Dane do logowania:")
+        //console.log(data);
         AuthenticationService.Login($scope.Email, $scope.Password, function (response) {
-          console.log("[Sukces] Logowanie na serwerze ustanowione!");
+          //console.log("[Sukces] Logowanie na serwerze ustanowione!");
           $rootScope.Service.sendAuth($scope.Email, $scope.Password)
 
           if (response.Result) {
-            console.log("Sukces pobrania tokenu do ustawienia zmiennej globalnej");
+            //console.log("Sukces pobrania tokenu do ustawienia zmiennej globalnej");
             AuthenticationService.SetCredentials($scope.Email, $scope.Password);
             $location.path('/');
 
@@ -253,21 +253,21 @@
       });
       if ($scope.sendForm) {
         $scope.message = "Jeszcze chwilka...";
-        console.log('[Info] Inicjowanie rejestracji. Podane dane to:');
-        console.log(data);
+        //console.log('[Info] Inicjowanie rejestracji. Podane dane to:');
+        //console.log(data);
         $timeout(function () {
           $http.post('http://' + $rootScope.IP + ':50000/User/SelfRegister', data)
             .success(function (data, status) {
               $scope.CallbackServera = true;
               $scope.PostDataResponse = data;
-              console.log($scope.PostDataResponse);
+              //console.log($scope.PostDataResponse);
               $scope.messageToken = "Na twój email został wysłany link aktywacyjny...";
               $scope.RegisterSteps.GoToSecondForm = true;
             })
             .error(function (data, status) {
               $scope.ResponseDetails = "Data: " + data +
                 "<hr />status: " + status;
-              console.log($scope.ResponseDetails);
+              //console.log($scope.ResponseDetails);
               $scope.CallbackServera = true;
               $scope.messageTokenError = "Coś poszło nie tak, spóbuj jeszcze raz.";
             });
@@ -290,19 +290,19 @@
       });
       if ($scope.sendForm) {
         $scope.message = "Jeszcze chwilka...";
-        console.log(data);
+        //console.log(data);
         $timeout(function () {
           $http.post('http://' + $rootScope.IP + ':50000/User/ActivateUser', data)
             .success(function (data, status) {
               $scope.CallbackServera = true;
               $scope.PostDataResponse = data;
-              console.log($scope.PostDataResponse);
+              //console.log($scope.PostDataResponse);
               $scope.messageToken = "Twoje konto zostało aktywowane. Możesz się teraz zalogować.";
             })
             .error(function (data, status) {
               $scope.ResponseDetails = "Data: " + data +
                 "<hr />status: " + status;
-              console.log($scope.ResponseDetails);
+              //console.log($scope.ResponseDetails);
               $scope.CallbackServera = true;
               $scope.messageTokenError = "Coś poszło nie tak, spóbuj jeszcze raz.";
             });
@@ -328,9 +328,9 @@
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.autobusy = data;
-      console.log("Pobrano liste autobusów.")
+      //console.log("Pobrano liste autobusów.")
       angular.forEach($scope.autobusy, function (autobus) {
-        console.log(autobus);
+        //console.log(autobus);
         if (autobus.GotMachine == true) {
           autobus.GotMachineName = "Tak";
           autobus.GotMachineValue = 1
@@ -359,7 +359,7 @@
 
       });
     }).error(function (data, status, headers, config) {
-      console.log("Błąd pobrania Autobusów.")
+      //console.log("Błąd pobrania Autobusów.")
     });
 
   });
@@ -394,14 +394,14 @@
 
       if ($scope.sendForm) {
         $scope.message = "Przygotowywanie autobusu do drogi...";
-        console.log(data);
+        //console.log(data);
         $timeout(function () {
           $http.post('http://' + $rootScope.IP + ':50000/Bus/PostBus', data, config)
             .success(function (data, status, headers, config) {
               $scope.CallbackServera = true;
               $scope.CallbackServeraPositive = true;
               $scope.PostDataResponse = data;
-              console.log($scope.PostDataResponse);
+              //console.log($scope.PostDataResponse);
 
               $scope.initMarkers();
 
@@ -432,8 +432,8 @@
       }
     ).success(function (data, status, headers, config) {
       $scope.autobus = data;
-      console.log($scope.autobus);
-      console.log("Pobrano autobus.");
+      //console.log($scope.autobus);
+      //console.log("Pobrano autobus.");
 
       if ($scope.autobus.GotMachine == true) {
         $scope.autobus.GotMachineName = "Tak";
@@ -502,7 +502,7 @@
 
       if ($scope.sendForm) {
         $scope.message = "Trwa Aktualizacja Autobusu...";
-        console.log(data);
+        //console.log(data);
         $timeout(function () {
           $http.put('http://' + $rootScope.IP + ':50000/Bus/PutBus', data, config)
             .success(function (data, status, headers, config) {
@@ -602,8 +602,8 @@
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.przystanki = data;
-      console.log("Pobrano liste przystanków.");
-      console.log($scope.przystanki);
+      //console.log("Pobrano liste przystanków.");
+      //console.log($scope.przystanki);
       angular.forEach($scope.przystanki, function (przystanek) {
         if (przystanek.GotMachine == true) {
           przystanek.GotMachineName = "Tak";
@@ -697,7 +697,7 @@
           $http.post('http://' + $rootScope.IP + ':50000/Busstop/PostBusstop', data, config)
             .success(function (data, status, headers, config) {
               $scope.PostDataResponse = data;
-              console.log($scope.PostDataResponse);
+              //console.log($scope.PostDataResponse);
               $scope.CallbackServeraPositive = true;
               $scope.CallbackServera = true;
 
@@ -742,7 +742,7 @@
       }
     ).success(function (data, status, headers, config) {
       $scope.autobus = data;
-      console.log("Pobrano przystanek.")
+      //console.log("Pobrano przystanek.")
       if ($scope.autobus.GotMachine == true) {
         $scope.autobus.GotMachineName = "Tak";
         $scope.autobus.GotMachineValue = 1
@@ -862,14 +862,14 @@
 
       if ($scope.sendForm) {
         $scope.message = "Trwa Aktualizacja Autobusu...";
-        console.log(data);
+        //console.log(data);
         $timeout(function () {
           $http.put('http://' + $rootScope.IP + ':50000/BusStop/PutBusStop', data, config)
             .success(function (data, status, headers, config) {
               $scope.CallbackServera = true;
               $scope.CallbackServeraPositive = true;
               $scope.PostDataResponse = data;
-              console.log($scope.PostDataResponse);
+              //console.log($scope.PostDataResponse);
 
               $scope.initMarkers();
             })
@@ -967,8 +967,8 @@
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.tracks = data;
-      console.log("Pobrano liste tras.");
-      console.log(data);
+      //console.log("Pobrano liste tras.");
+      //console.log(data);
       angular.forEach($scope.tracks, function (track) {
         if (track.IsArchive == true) {
           track.StatusName = "Nieaktywny";
@@ -990,11 +990,11 @@
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.przystanki = data;
-      console.log($scope.przystanki);
-      console.log("Pobrano liste przystanków.");
+      //console.log($scope.przystanki);
+      //console.log("Pobrano liste przystanków.");
       $scope.przystankiDoTras = $scope.przystanki;
-      console.log("Clonowanie przystankow");
-      console.log($scope.przystankiDoTras);
+      //console.log("Clonowanie przystankow");
+      //console.log($scope.przystankiDoTras);
       angular.forEach($scope.przystanki, function (przystanek) {
         if (przystanek.GotMachine == true) {
           przystanek.GotMachineName = "Tak";
@@ -1088,8 +1088,8 @@
         }
       ).success(function (data, status, headers, config) {
         $scope.autobus = data;
-        console.log("Pobrano przystanek.");
-        console.log($scope.autobus);
+        //console.log("Pobrano przystanek.");
+        //console.log($scope.autobus);
         var przystanekDodany = false;
         for (var i = 0; i < $scope.przystankiWybrane.length; i++) {
           if ($scope.autobus.Id == $scope.przystankiWybrane[i].Id) {
@@ -1148,11 +1148,11 @@
       }
     ).success(function (data, status, headers, config) {
       $scope.track = data;
-      console.log($scope.track);
-      console.log("Pobrano trase.");
+      //console.log($scope.track);
+      //console.log("Pobrano trase.");
       $scope.przystankiTrasy = $scope.track.BusStops;
-      console.log("Przystanki trasy:")
-      console.log($scope.przystankiTrasy)
+      //console.log("Przystanki trasy:")
+      //console.log($scope.przystankiTrasy)
       if ($scope.track.IsArchive == 1) {
         $scope.track.IsArchiveName = "Nieaktywna";
         $scope.track.IsArchiveVar = true
@@ -1172,70 +1172,58 @@
     ).success(function (data, status, headers, config) {
       $scope.kursy = data;
       $scope.kursyPoprawne = [];
-      console.log("[Info] Pobrano kursy");
-      console.log($scope.kursy);
+      //console.log("[Info] Pobrano kursy");
+      //console.log($scope.kursy);
       angular.forEach($scope.kursy, function (kurs) {
         if (kurs.Track.Id == WybraneId) {
-          if (kurs.Ended == false)
-          {
+          if (kurs.Ended == false) {
             kurs.EndedName = "W trakcie"
 
           }
-          else{
+          else {
             kurs.EndedName = "Zakonczony"
           }
           $scope.kursyPoprawne.push(kurs)
         }
       });
-      console.log("[Info] Kursy poprawne wygenerowane.")
-      console.log($scope.kursyPoprawne)
-      $http.get('http://' + $rootScope.IP + ':50000/Bus/GetBusList', {
-          //headers: {'Session': ''}
-        }
-      ).success(function (data, status, headers, config) {
-        $scope.bus = data;
-        angular.forEach($scope.kursyPoprawne, function (kurs) {
-          if (kurs.Ended == false) {
-            $scope.SubskrypcjaAutobusu = function () {
-              $scope.SubskrypcjaKlik = true
-              console.log("[Info] Inicjowanie subskrypcji autobusu")
-              $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password );
-              $rootScope.Service.sendSubscribe(kurs.Bus.Id);
-            }
-            $scope.SubskrypcjaAutobusu();
-          }
-        });
-      });
+      //console.log("[Info] Kursy poprawne wygenerowane.")
+      //console.log($scope.kursyPoprawne)
+      $scope.SubskrypcjaAutobow = function () {
+        $scope.SubskrypcjaKlik = true
+        console.log("[Info] Inicjowanie subskrypcji autobusu")
+        $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password);
+        $rootScope.Service.sendSubscribeAll();
+      }
+      $scope.SubskrypcjaAutobow();
 
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania kursów.")
     });
     $rootScope.KursyTrasyWebSocketActive = true
     $rootScope.KursWebSocketReloadActive = false
-    $rootScope.KursyTrasyWebSocket = function() {
+    $rootScope.KursyTrasyWebSocket = function () {
       $http.get('http://' + $rootScope.IP + ':50000/Course/GetList', {
           //headers: {'Session': ''}
         }
       ).success(function (data, status, headers, config) {
         $scope.kursy = data;
         $scope.kursyPoprawne = [];
-        console.log("[Info] Pobrano kursy");
-        console.log($scope.kursy);
+        //console.log("[Info] Pobrano kursy");
+        //console.log($scope.kursy);
         angular.forEach($scope.kursy, function (kurs) {
           if (kurs.Track.Id == WybraneId) {
-            if (kurs.Ended == false)
-            {
+            if (kurs.Ended == false) {
               kurs.EndedName = "W trakcie"
 
             }
-            else{
+            else {
               kurs.EndedName = "Zakonczony"
             }
             $scope.kursyPoprawne.push(kurs)
           }
         });
-        console.log("[Info] Kursy poprawne wygenerowane.")
-        console.log($scope.kursyPoprawne)
+        //console.log("[Info] Kursy poprawne wygenerowane.")
+        //console.log($scope.kursyPoprawne)
 
       }).error(function (data, status, headers, config) {
         console.log("Błąd pobrania kursów.")
@@ -1259,8 +1247,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Trasa została dezaktywowana pomyślnie!";
-            $scope.usuniecie= true
-            $scope.dodanie= false
+            $scope.usuniecie = true
+            $scope.dodanie = false
             $scope.initMarkers();
           })
           .error(function (status, header, config) {
@@ -1293,8 +1281,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Trasa został aktywowana pomyślnie!";
-            $scope.usuniecie= false
-            $scope.dodanie= true
+            $scope.usuniecie = false
+            $scope.dodanie = true
             $scope.initMarkers();
           })
           .error(function (status, header, config) {
@@ -1329,7 +1317,8 @@
       $scope.SubskrypcjaAutobusu = function () {
         $scope.SubskrypcjaKlik = true
         console.log("[Info] Inicjowanie subskrypcji")
-        $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password );
+        $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password);
+        $rootScope.Service.sendUnSubscribeAll();
         $rootScope.Service.sendSubscribe($scope.course.Bus.Id);
       }
       $scope.SubskrypcjaAutobusu();
@@ -1338,34 +1327,34 @@
         if (aktywnosc.ActivityType == 0) {
           aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
         }
-        else if(aktywnosc.ActivityType == 1){
+        else if (aktywnosc.ActivityType == 1) {
           aktywnosc.ActivityTypeName = "Kontrola Biletów";
         }
-        else if(aktywnosc.ActivityType == 2){
+        else if (aktywnosc.ActivityType == 2) {
           aktywnosc.ActivityTypeName = "Incydent z wandalami";
         }
-        else if(aktywnosc.ActivityType == 3){
+        else if (aktywnosc.ActivityType == 3) {
           aktywnosc.ActivityTypeName = "Problem techniczny";
         }
-        else if(aktywnosc.ActivityType == 4){
+        else if (aktywnosc.ActivityType == 4) {
           aktywnosc.ActivityTypeName = "Autobus dojechal do przystanku";
         }
-        else if(aktywnosc.ActivityType == 5){
+        else if (aktywnosc.ActivityType == 5) {
           aktywnosc.ActivityTypeName = "Sprzedano bilet";
         }
-        else if(aktywnosc.ActivityType == 6){
+        else if (aktywnosc.ActivityType == 6) {
           aktywnosc.ActivityTypeName = "Rozpoczeto kurs";
         }
-        else if(aktywnosc.ActivityType == 7){
+        else if (aktywnosc.ActivityType == 7) {
           aktywnosc.ActivityTypeName = "Zakonczono kurs";
         }
       });
-      console.log("[Info] Pobrano kurs.");
-      console.log($scope.course);
+      //console.log("[Info] Pobrano kurs.");
+      //console.log($scope.course);
     })
     $rootScope.KursWebSocketReloadActive = true
     $rootScope.KursyTrasyWebSocketActive = false
-    $rootScope.KursWebSocketReload = function(){
+    $rootScope.KursWebSocketReload = function () {
       $http.get('http://' + $rootScope.IP + ':50000/Course/Get/' + WybraneId, {
           //headers: {'Session': ''}
         }
@@ -1377,25 +1366,25 @@
           if (aktywnosc.ActivityType == 0) {
             aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
           }
-          else if(aktywnosc.ActivityType == 1){
+          else if (aktywnosc.ActivityType == 1) {
             aktywnosc.ActivityTypeName = "Kontrola Biletów";
           }
-          else if(aktywnosc.ActivityType == 2){
+          else if (aktywnosc.ActivityType == 2) {
             aktywnosc.ActivityTypeName = "Incydent z wandalami";
           }
-          else if(aktywnosc.ActivityType == 3){
+          else if (aktywnosc.ActivityType == 3) {
             aktywnosc.ActivityTypeName = "Problem techniczny";
           }
-          else if(aktywnosc.ActivityType == 4){
+          else if (aktywnosc.ActivityType == 4) {
             aktywnosc.ActivityTypeName = "Autobus dojechal do przystanku";
           }
-          else if(aktywnosc.ActivityType == 5){
+          else if (aktywnosc.ActivityType == 5) {
             aktywnosc.ActivityTypeName = "Sprzedano bilet";
           }
-          else if(aktywnosc.ActivityType == 6){
+          else if (aktywnosc.ActivityType == 6) {
             aktywnosc.ActivityTypeName = "Rozpoczeto kurs";
           }
-          else if(aktywnosc.ActivityType == 7){
+          else if (aktywnosc.ActivityType == 7) {
             aktywnosc.ActivityTypeName = "Zakonczono kurs";
           }
         });
@@ -1420,8 +1409,8 @@
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.users = data;
-      console.log("Pobrano liste userów.");
-      console.log(data);
+      //console.log("Pobrano liste userów.");
+      //console.log(data);
       angular.forEach($scope.users, function (user) {
         if (user.Rank == 0) {
           user.RankName = "Użytkownik";
@@ -1519,8 +1508,8 @@
         //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
-      $scope.user = data;
-      console.log("Pobrano usera.")
+      //$scope.user = data;
+      //console.log("Pobrano usera.")
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania usera.")
     });
@@ -1630,14 +1619,14 @@
     $scope.busstopMarker = [];
 
     $scope.deleteMarkers = function () {
-      $scope.markerBusstopCheck=[];
-      $scope.markerEnd=[];
-      $scope.markerIncydent=[];
-      $scope.markerKanar=[];
-      $scope.markerSellTicket=[];
-      $scope.markerStart=[];
-      $scope.markerTechnicla=[];
-      $scope.markerTicket=[];
+      $scope.markerBusstopCheck = [];
+      $scope.markerEnd = [];
+      $scope.markerIncydent = [];
+      $scope.markerKanar = [];
+      $scope.markerSellTicket = [];
+      $scope.markerStart = [];
+      $scope.markerTechnicla = [];
+      $scope.markerTicket = [];
 
       $scope.busstopMarker = [];
       $scope.busMarker = [];
@@ -1658,8 +1647,8 @@
       $http.get('http://' + $rootScope.IP + ':50000/Busstop/GetBusstopList/'
       ).success(function (data, status, headers, config) {
         $scope.busstop = data;
-        console.log($scope.przystanki);
-        console.log("Pobrano liste przystanków.");
+        //console.log($scope.przystanki);
+        //console.log("Pobrano liste przystanków.");
         angular.forEach($scope.busstop, function (przystanek) {
           if (przystanek.GotMachine == true) {
             przystanek.GotMachineName = "Tak";
@@ -1711,15 +1700,15 @@
       $scope.drawRoute(track);
     };
     $scope.drawRoute = function (track) {
-      $scope.markerBusstopCheck=[];
-      $scope.markerEnd=[];
-      $scope.markerIncydent=[];
-      $scope.markerKanar=[];
-      $scope.markerSellTicket=[];
-      $scope.markerStart=[];
-      $scope.markerTechnicla=[];
-      $scope.markerTicket=[];
-      $scope.busMarker=[];
+      $scope.markerBusstopCheck = [];
+      $scope.markerEnd = [];
+      $scope.markerIncydent = [];
+      $scope.markerKanar = [];
+      $scope.markerSellTicket = [];
+      $scope.markerStart = [];
+      $scope.markerTechnicla = [];
+      $scope.markerTicket = [];
+      $scope.busMarker = [];
       $scope.busstopMarker = [];
       $scope.busstopMarkers = [];
       $scope.punkty = [];
@@ -1763,14 +1752,14 @@
       $scope.punkty.splice($scope.punkty.length - 1, 1);
 
       $scope.wayPoints = $scope.punkty;
-      console.log("Punkty");
-      console.log($scope.wayPoints);
+      //console.log("Punkty");
+      //console.log($scope.wayPoints);
       $scope.origin = start;
-      console.log("Start");
-      console.log($scope.origin);
+      //console.log("Start");
+      //console.log($scope.origin);
       $scope.destination = end;
-      console.log("end");
-      console.log($scope.destination);
+      //console.log("end");
+      //console.log($scope.destination);
 
       $scope.initMap();
       $scope.map.directionsRenderers[0].setMap($scope.map);
@@ -1799,27 +1788,25 @@
     };
 
 
+    $scope.markerBusstopCheck = [];
+    $scope.markerEnd = [];
+    $scope.markerIncydent = [];
+    $scope.markerKanar = [];
+    $scope.markerSellTicket = [];
+    $scope.markerStart = [];
+    $scope.markerTechnicla = [];
+    $scope.markerTicket = [];
 
-
-    $scope.markerBusstopCheck=[];
-    $scope.markerEnd=[];
-    $scope.markerIncydent=[];
-    $scope.markerKanar=[];
-    $scope.markerSellTicket=[];
-    $scope.markerStart=[];
-    $scope.markerTechnicla=[];
-    $scope.markerTicket=[];
-
-    $scope.intCourse=function (kurs) {
-      $scope.markerBusstopCheck=[];
-      $scope.markerEnd=[];
-      $scope.markerIncydent=[];
-      $scope.markerKanar=[];
-      $scope.markerSellTicket=[];
-      $scope.markerStart=[];
-      $scope.markerTechnicla=[];
-      $scope.markerTicket=[];
-      $scope.busMarker=[];
+    $scope.intCourse = function (kurs) {
+      $scope.markerBusstopCheck = [];
+      $scope.markerEnd = [];
+      $scope.markerIncydent = [];
+      $scope.markerKanar = [];
+      $scope.markerSellTicket = [];
+      $scope.markerStart = [];
+      $scope.markerTechnicla = [];
+      $scope.markerTicket = [];
+      $scope.busMarker = [];
 
       angular.forEach(kurs.Activities, function (aktywnosc) {
         if (aktywnosc.ActivityType == 0) {
@@ -1830,7 +1817,7 @@
             Position: [aktywnosc.Lat, aktywnosc.Lng]
           });
         }
-        else if(aktywnosc.ActivityType == 1){
+        else if (aktywnosc.ActivityType == 1) {
           aktywnosc.ActivityTypeName = "Kontrola Biletów";
           $scope.markerKanar.push({
             Id: aktywnosc.Id,
@@ -1838,7 +1825,7 @@
             Position: [aktywnosc.Lat, aktywnosc.Lng]
           });
         }
-        else if(aktywnosc.ActivityType == 2){
+        else if (aktywnosc.ActivityType == 2) {
           aktywnosc.ActivityTypeName = "Incydent z wandalami";
           $scope.markerIncydent.push({
             Id: aktywnosc.Id,
@@ -1846,7 +1833,7 @@
             Position: [aktywnosc.Lat, aktywnosc.Lng]
           });
         }
-        else if(aktywnosc.ActivityType == 3){
+        else if (aktywnosc.ActivityType == 3) {
           aktywnosc.ActivityTypeName = "Problem techniczny";
           $scope.markerTechnicla.push({
             Id: aktywnosc.Id,
@@ -1854,7 +1841,7 @@
             Position: [aktywnosc.Lat, aktywnosc.Lng]
           });
         }
-        else if(aktywnosc.ActivityType == 4){
+        else if (aktywnosc.ActivityType == 4) {
           aktywnosc.ActivityTypeName = "Autobus dojechal do przystanku";
           $scope.markerBusstopCheck.push({
             Id: aktywnosc.Id,
@@ -1862,7 +1849,7 @@
             Position: [aktywnosc.Lat, aktywnosc.Lng]
           });
         }
-        else if(aktywnosc.ActivityType == 5){
+        else if (aktywnosc.ActivityType == 5) {
           aktywnosc.markerSellTicket = "Sprzedano bilet";
           $scope.markerIncydent.push({
             Id: aktywnosc.Id,
@@ -1870,7 +1857,7 @@
             Position: [aktywnosc.Lat, aktywnosc.Lng]
           });
         }
-        else if(aktywnosc.ActivityType == 6){
+        else if (aktywnosc.ActivityType == 6) {
           aktywnosc.ActivityTypeName = "Rozpoczeto kurs";
           $scope.markerStart.push({
             Id: aktywnosc.Id,
@@ -1878,7 +1865,7 @@
             Position: [aktywnosc.Lat, aktywnosc.Lng]
           });
         }
-        else if(aktywnosc.ActivityType == 7){
+        else if (aktywnosc.ActivityType == 7) {
           aktywnosc.ActivityTypeName = "Zakonczono kurs";
           $scope.markerEnd.push({
             Id: aktywnosc.Id,
@@ -1896,10 +1883,6 @@
     };
 
 
-
-
-
-
     ///////////////////Autobusy////////////////////////////////
     $scope.busMarker = [];
     $scope.showBusMarkers = function () {
@@ -1910,6 +1893,13 @@
       $http.get('http://' + $rootScope.IP + ':50000/Course/GetList/'
       ).success(function (data, status, headers, config) {
         $scope.course = data;
+        $scope.SubskrypcjaAutobusow = function () {
+          $scope.SubskrypcjaKlik = true
+          //console.log("[Info] Inicjowanie subskrypcji wszystkich autobusów w widoku ogolnym")
+          $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password);
+          $rootScope.Service.sendSubscribeAll();
+        }
+        $scope.SubskrypcjaAutobusow();
 
         angular.forEach($scope.course, function (kurs) {
 
@@ -1920,16 +1910,9 @@
               Name: kurs.Bus.BusNumber,
               Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
             });
-            console.log("test");
-            console.log($scope.busMarkers);
-            $scope.SubskrypcjaAutobusu = function () {
-              $scope.SubskrypcjaKlik = true
-              console.log("[Info] Inicjowanie subskrypcji")
-              $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password );
-              $rootScope.Service.sendSubscribe(kurs.Bus.Id);
-            }
-            $scope.SubskrypcjaAutobusu();
-            console.log("--------------");
+            //console.log("test");
+            //console.log($scope.busMarkers);
+            //console.log("--------------");
           }
         });
       }).error(function (data, status, headers, config) {
@@ -1938,7 +1921,7 @@
 
       $scope.busMarker = $scope.busMarkers;
     };
-    $rootScope.showBusMarkersReload = function (){
+    $rootScope.showBusMarkersReload = function () {
       $scope.busMarkers = [];
 
       $http.get('http://' + $rootScope.IP + ':50000/Course/GetList/'
@@ -1954,9 +1937,6 @@
               Name: kurs.Bus.BusNumber,
               Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
             });
-            console.log("test");
-            console.log($scope.busMarkers);
-            console.log("--------------");
           }
         });
         $rootScope.busMarkersToSub = $scope.busMarkers
@@ -1965,15 +1945,6 @@
       });
       $scope.busMarker = $scope.busMarkers;
     };
-
-
-
-
-
-
-
-
-
 
 
     $scope.initMap = function () {
@@ -2018,11 +1989,10 @@
     ws.onMessage(function (message) {
       console.info("message: ", message.data);
       collection.push(JSON.parse(message.data));
-      if($rootScope.KursWebSocketReloadActive)
-      {
+      if ($rootScope.KursWebSocketReloadActive) {
         $rootScope.KursWebSocketReload();
       }
-      if($rootScope.KursyTrasyWebSocketActive){
+      if ($rootScope.KursyTrasyWebSocketActive) {
         $rootScope.KursyTrasyWebSocket();
       }
       $rootScope.showBusMarkersReload()
@@ -2060,6 +2030,22 @@
       var data = {EventType: 0, IdOfObject: busId};
       var obj = {
         Action: "unsubscribe",
+        Data: JSON.stringify(data)
+      };
+      ws.send(JSON.stringify(obj));
+    }
+    $rootScope.Service.sendSubscribeAll = function () {
+      var data = {EventType: 0};
+      var obj = {
+        Action: "subscribeAll",
+        Data: JSON.stringify(data)
+      };
+      ws.send(JSON.stringify(obj));
+    }
+    $rootScope.Service.sendUnSubscribeAll = function () {
+      var data = {EventType: 0};
+      var obj = {
+        Action: "unsubscribeAll",
         Data: JSON.stringify(data)
       };
       ws.send(JSON.stringify(obj));
