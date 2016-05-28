@@ -1,4 +1,4 @@
-var deviceWebstocket = new WebSocket("ws://localhost:7878");
+var deviceWebstocket = new WebSocket("ws://192.168.1.4:7878");
 deviceWebstocket.onmessage = function(data){console.log(data);}
 
 var marker = undefined;
