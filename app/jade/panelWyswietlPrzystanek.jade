@@ -15,28 +15,28 @@
     .panelWyswietlPrzystanek__content__form(ng-hide="sendForm")
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Nazwa Przystanku
-        p {{ autobus.Name }}
+        p {{ przystanek.Name }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Ulica
-        p {{ autobus.LocalizationString }}
+        p {{ przystanek.LocalizationString }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Lokalizacja
-        p {{ autobus.Lat }}, {{ autobus.Lng }}
+        p {{ przystanek.Lat }}, {{ przystanek.Lng }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Typ Przystanku
-        p {{ autobus.BusStopTypeName }}
+        p {{ przystanek.BusStopTypeName }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Biletomat
-        p {{ autobus.GotMachineName }}
+        p {{ przystanek.GotMachineName }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Kiosk
-        p {{ autobus.GotKioskName }}
+        p {{ przystanek.GotKioskName }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Aktualny status
-        p {{ autobus.BusStopStatusName }}
+        p {{ przystanek.BusStopStatusName }}
       .panelWyswietlPrzystanek__content__form__item
         span.itemHeader Ostatnia kontrola
-        p {{ autobus.LastControl }}
+        p {{ przystanek.LastControl }}
     .panelWyswietlPrzystanek__subtitle Edycja przystanku
     .panelWyswietlPrzystanek__text
     form(name="BusStopForm" ng-submit="updateBus()" novalidate)
@@ -50,7 +50,7 @@
           .panelWyswietlPrzystanek__content__form__item
             span.item Typ Przystanku
             select(ng-model="BusStopType")
-              option(value='') Typ Przystanku
+              option(value="") Typ Przystanku
               option(value=0) Normalny
               option(value=1) Zabudowany
           .panelWyswietlPrzystanek__content__form__item
@@ -62,13 +62,13 @@
           .panelWyswietlPrzystanek__content__form__item
             span.item Biletomat
             select(ng-model="GotMachine")
-              option(value='') Biletomat
+              option(value="") Biletomat
               option(value=0) Nie
               option(value=1) Tak
           .panelWyswietlPrzystanek__content__form__item
             span.item Kiosk
             select(ng-model="GotKiosk")
-              option(value='') Kiosk
+              option(value="") Kiosk
               option(value=0) Nie
               option(value=1) Tak
       .panelWyswietlPrzystanek__navigation(ng-hide="sendForm")

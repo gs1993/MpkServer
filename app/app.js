@@ -92,7 +92,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
-      $rootScope.IP = '192.168.1.4';
+      $rootScope.IP = 'localhost';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -485,7 +485,18 @@
       else if ($scope.GotMachine == "0") {
         $scope.GotMachine = false;
       }
-
+      if ($scope.RegistrationNumber == null || $scope.RegistrationNumber == "") {
+        $scope.RegistrationNumber = $scope.autobus.RegistrationNumber;
+      }
+      if ($scope.BusNumber == null || $scope.BusNumber == "") {
+        $scope.BusNumber = $scope.autobus.BusNumber;
+      }
+      if ($scope.BusType == null) {
+        $scope.BusType = $scope.autobus.BusType;
+      }
+      if ($scope.GotMachine == null) {
+        $scope.GotMachine = $scope.autobus.GotMachine;
+      }
 
       var data = JSON.stringify({
         Id: WybraneId,
@@ -741,36 +752,36 @@
         //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
-      $scope.autobus = data;
+      $scope.przystanek = data;
       //console.log("Pobrano przystanek.")
-      if ($scope.autobus.GotMachine == true) {
-        $scope.autobus.GotMachineName = "Tak";
-        $scope.autobus.GotMachineValue = 1
+      if ($scope.przystanek.GotMachine == true) {
+        $scope.przystanek.GotMachineName = "Tak";
+        $scope.przystanek.GotMachineValue = 1
       }
       else {
-        $scope.autobus.GotMachineName = "Nie";
-        $scope.autobus.GotMachineValue = 0
+        $scope.przystanek.GotMachineName = "Nie";
+        $scope.przystanek.GotMachineValue = 0
       }
-      if ($scope.autobus.GotKiosk == true) {
-        $scope.autobus.GotKioskName = "Tak";
-        $scope.autobus.GotKioskValue = 1
+      if ($scope.przystanek.GotKiosk == true) {
+        $scope.przystanek.GotKioskName = "Tak";
+        $scope.przystanek.GotKioskValue = 1
       }
       else {
-        $scope.autobus.GotKioskName = "Nie";
-        $scope.autobus.GotKioskValue = 0
+        $scope.przystanek.GotKioskName = "Nie";
+        $scope.przystanek.GotKioskValue = 0
       }
 
-      if ($scope.autobus.BusStopType == 0) {
-        $scope.autobus.BusStopTypeName = "Normalny"
+      if ($scope.przystanek.BusStopType == 0) {
+        $scope.przystanek.BusStopTypeName = "Normalny"
       }
       else {
-        $scope.autobus.BusStopTypeName = "Zabudowany"
+        $scope.przystanek.BusStopTypeName = "Zabudowany"
       }
-      if ($scope.autobus.BusStopStatus == 0) {
-        $scope.autobus.BusStopStatusName = "Nieaktywny"
+      if ($scope.przystanek.BusStopStatus == 0) {
+        $scope.przystanek.BusStopStatusName = "Nieaktywny"
       }
       else {
-        $scope.autobus.BusStopStatusName = "Aktywny"
+        $scope.przystanek.BusStopStatusName = "Aktywny"
       }
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania przystanku.")
@@ -788,12 +799,10 @@
       ///////////////////////////////////////////////
 
       if ($scope.Name == null || $scope.Name == "") {
-        $scope.Name = $scope.autobus.Name;
+        $scope.Name = $scope.przystanek.Name;
       }
-
-
       if ($scope.LocalizationString == null || $scope.LocalizationString == "") {
-        $scope.LocalizationString = $scope.autobus.LocalizationString;
+        $scope.LocalizationString = $scope.przystanek.LocalizationString;
       }
 
       if ($scope.GotMachine == 1) {
@@ -828,19 +837,19 @@
 
 
       if ($scope.Lat == null || $scope.Lat == "") {
-        $scope.Lat = $scope.autobus.Lat;
+        $scope.Lat = $scope.przystanek.Lat;
       }
       if ($scope.Lng == null || $scope.Lng == "") {
-        $scope.Lng = $scope.autobus.Lng;
+        $scope.Lng = $scope.przystanek.Lng;
       }
-      if ($scope.GotMachine == null || $scope.GotMachine == "") {
-        $scope.GotMachine = $scope.autobus.GotMachine;
+      if ($scope.GotMachine == null) {
+        $scope.GotMachine = $scope.przystanek.GotMachine;
       }
-      if ($scope.GotKiosk == null || $scope.GotKiosk == "") {
-        $scope.GotKiosk = $scope.autobus.GotKiosk;
+      if ($scope.GotKiosk == null) {
+        $scope.GotKiosk = $scope.przystanek.GotKiosk;
       }
-      if ($scope.BusStopType == null || $scope.BusStopType == "") {
-        $scope.BusStopType = $scope.autobus.BusStopType;
+      if ($scope.BusStopType == null) {
+        $scope.BusStopType = $scope.przystanek.BusStopType;
       }
 
 
@@ -853,15 +862,15 @@
         GotMachine: $scope.GotMachine,
         GotKiosk: $scope.GotKiosk,
         BusStopType: $scope.BusStopType,
-        BusStopStatus: $scope.autobus.BusStopStatus,
-        LastControl: $scope.autobus.LastControl
+        BusStopStatus: $scope.przystanek.BusStopStatus,
+        LastControl: $scope.przystanek.LastControl
       });
       var config = {
         //headers: {'Session': ''}
       };
 
       if ($scope.sendForm) {
-        $scope.message = "Trwa Aktualizacja Autobusu...";
+        $scope.message = "Trwa Aktualizacja Przystanku...";
         //console.log(data);
         $timeout(function () {
           $http.put('http://' + $rootScope.IP + ':50000/BusStop/PutBusStop', data, config)
@@ -1619,18 +1628,9 @@
     $scope.busstopMarker = [];
 
     $scope.deleteMarkers = function () {
-      $scope.markerBusstopCheck = [];
-      $scope.markerEnd = [];
-      $scope.markerIncydent = [];
-      $scope.markerKanar = [];
-      $scope.markerSellTicket = [];
-      $scope.markerStart = [];
-      $scope.markerTechnicla = [];
-      $scope.markerTicket = [];
-
+      $scope.clearActivityMarkers();
       $scope.busstopMarker = [];
       $scope.busMarker = [];
-      $scope.activityMarker = [];
     };
 
     $scope.showBusstop = function (event, busstop) {
@@ -1642,7 +1642,7 @@
     $scope.showBusstopMarkers = function () {
       $scope.markerIcon = "../blocks/googleMaps/src/busstopMarker.png";
 
-      $scope.busstopMarkers = [];
+      $scope.busstopMarker = [];
 
       $http.get('http://' + $rootScope.IP + ':50000/Busstop/GetBusstopList/'
       ).success(function (data, status, headers, config) {
@@ -1669,7 +1669,7 @@
             przystanek.BusStopTypeName = "Zabudowany"
           }
           if (przystanek.BusStopStatus == 1) {
-            $scope.busstopMarkers.push({
+            $scope.busstopMarker.push({
               Id: przystanek.Id,
               Name: przystanek.Name,
               LocalizationString: przystanek.LocalizationString,
@@ -1679,14 +1679,10 @@
               Position: [przystanek.Lat, przystanek.Lng]
             });
           }
-
-
         });
       }).error(function (data, status, headers, config) {
         console.log("Błąd pobrania przystanków.")
       });
-
-      $scope.busstopMarker = $scope.busstopMarkers;
 
     };
 
@@ -1697,21 +1693,12 @@
     $scope.destination;
 
     $scope.initTrack = function (track) {
+      $scope.busstopMarker = [];
       $scope.drawRoute(track);
-      $scope.busMarker=[];
+
     };
     $scope.drawRoute = function (track) {
-      $scope.markerBusstopCheck = [];
-      $scope.markerEnd = [];
-      $scope.markerIncydent = [];
-      $scope.markerKanar = [];
-      $scope.markerSellTicket = [];
-      $scope.markerStart = [];
-      $scope.markerTechnicla = [];
-      $scope.markerTicket = [];
-      $scope.busMarker = [];
-      $scope.busstopMarker = [];
-      $scope.busstopMarkers = [];
+      $scope.clearActivityMarkers();
       $scope.punkty = [];
       $scope.markerIcon = "../blocks/googleMaps/src/busstopMarkerGreen.png";
       angular.forEach(track.BusStops, function (przystanek) {
@@ -1734,7 +1721,7 @@
           przystanek.BusStopTypeName = "Zabudowany"
         }
         if (przystanek.BusStopStatus == 1) {
-          $scope.busstopMarkers.push({
+          $scope.busstopMarker.push({
             Id: przystanek.Id,
             Name: przystanek.Name,
             LocalizationString: przystanek.LocalizationString,
@@ -1765,8 +1752,6 @@
       $scope.initMap();
       $scope.map.directionsRenderers[0].setMap($scope.map);
 
-      $scope.busstopMarker = $scope.busstopMarkers;
-
     };
 
 
@@ -1774,10 +1759,8 @@
 
     $scope.initMarkers = function () {
       $scope.deleteMarkers();
-      $scope.wayPoints = [];
       $scope.showBusstopMarkers();
       $scope.showBusMarkers();
-
       $scope.map.directionsRenderers[0].setMap(null);
 
     };
@@ -1788,7 +1771,6 @@
       $scope.map.showInfoWindow('ActivityInfoWindow', this);
     };
 
-
     $scope.markerBusstopCheck = [];
     $scope.markerEnd = [];
     $scope.markerIncydent = [];
@@ -1798,7 +1780,7 @@
     $scope.markerTechnicla = [];
     $scope.markerTicket = [];
 
-    $scope.intCourse = function (kurs) {
+    $scope.clearActivityMarkers=function () {
       $scope.markerBusstopCheck = [];
       $scope.markerEnd = [];
       $scope.markerIncydent = [];
@@ -1807,6 +1789,10 @@
       $scope.markerStart = [];
       $scope.markerTechnicla = [];
       $scope.markerTicket = [];
+
+    };
+    $scope.intCourse = function (kurs) {
+      $scope.clearActivityMarkers();
       $scope.busMarker = [];
 
       angular.forEach(kurs.Activities, function (aktywnosc) {

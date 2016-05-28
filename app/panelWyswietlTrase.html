@@ -1,7 +1,7 @@
 
 <div ng-controller="ShowTrackController" class="panelWyswietlAutobus">
   <div class="panelWyswietlAutobus__title">Szczegóły Trasy</div>
-  <div class="panelWyswietlAutobus__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/track">Zarządzanie Trasami</a></span><span class="-active"><a href="/#/track/Get/{{ TrackID }}">Szczegóły Trasy</a></span></div>
+  <div class="panelWyswietlAutobus__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/track">Zarządzanie Trasami</a></span><span class="-active"><a href="/#/track/show/{{ TrackID }}">Szczegóły Trasy</a></span></div>
   <div class="panelWyswietlAutobus__wrapper">
     <div class="panelWyswietlAutobus__subtitle">Trasa o numerze {{ track.LineNumber }}</div>
     <div class="panelWyswietlAutobus__text">Parametry aktualnie wybranej trasy</div>
