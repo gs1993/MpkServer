@@ -12,7 +12,9 @@ using WebSocketServer.Events;
 namespace WebSocketServer.Handlers.Action
 {
     public class SubscribeHandler:IMessageHandler<SubscribeDto,EmptyDto>,
-        IMessageHandler<UnSubscribeDto,EmptyDto>
+        IMessageHandler<UnSubscribeDto,EmptyDto>,
+        IMessageHandler<SubscribeAllDto,EmptyDto>,
+        IMessageHandler<UnSubscribeAllDto,EmptyDto>
     {
         private readonly IEventEmitter _emitter;
 
@@ -32,6 +34,21 @@ namespace WebSocketServer.Handlers.Action
         public Task<EmptyDto> Handle(UnSubscribeDto dto, IConnection connection)
         {
             _emitter.UnSubscribe(connection, dto.EventType, dto.IdOfObject);
+
+            return Task.FromResult(new EmptyDto());
+        }
+
+
+        public Task<EmptyDto> Handle(SubscribeAllDto dto, IConnection connection)
+        {
+            _emitter.SubscribeAll(connection,dto.EventType);
+
+            return Task.FromResult(new EmptyDto());
+        }
+
+        public Task<EmptyDto> Handle(UnSubscribeAllDto dto, IConnection connection)
+        {
+            _emitter.UnsubscribeAll(connection, dto.EventType);
 
             return Task.FromResult(new EmptyDto());
         }

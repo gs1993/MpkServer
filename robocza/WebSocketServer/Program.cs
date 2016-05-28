@@ -77,7 +77,8 @@ namespace WebSocketServer
                   typeof(ActivityResolveBusEndCourse),
                     typeof(ActivityResolveBusMove),
                     typeof(ActivityResolveBurStartCourse),
-                    typeof(ActivityResolveBusTicketCount)
+                    typeof(ActivityResolveBusTicketCount),
+                    typeof(ActivityResolverBusControl)
                 }
             );
 

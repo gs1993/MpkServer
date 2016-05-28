@@ -78,7 +78,7 @@ namespace WebSocketServer.MessageResolver
             {
                 result.State = ResultState.Error;
 
-                result.Data = JsonConvert.SerializeObject(new {msg = exception.Message});
+                result.Data = JsonConvert.SerializeObject(new {msg = exception.InnerException.Message});
             }
 
             return JsonConvert.SerializeObject(result);

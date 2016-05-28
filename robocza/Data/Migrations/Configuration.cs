@@ -83,7 +83,7 @@ namespace Data.Migrations
                 Id = 3,
                 LastControl = new DateTime(2015, 01, 02),
                 RegistrationNumber = "TREWQ3",
-                BusStatus = Status.InActive,
+                BusStatus = Status.Inactive,
                 BusNumber = "0584"
             });
 
@@ -171,7 +171,7 @@ namespace Data.Migrations
                 Id = 100,
                 LastControl = new DateTime(2015, 01, 02),
                 RegistrationNumber = "POJAZD TESTOWY",
-                BusStatus = Status.InActive,
+                BusStatus = Status.Inactive,
                 BusNumber = "222"
             };
 

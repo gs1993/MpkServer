@@ -1,33 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Enums;
 using Core.Transfer;
+using Data.Models;
 using Data.Service;
+using Newtonsoft.Json;
 using WebSocketServer.Connection;
 using WebSocketServer.Events;
 
 namespace WebSocketServer.Activity.Resolvers
 {
-    public class ActivityResolveBusEndCourse : IActivityResolver
+    public class ActivityResolverBusControl : IActivityResolver
     {
-        public ActivityType ActivityType => ActivityType.EndCourse;
+        public ActivityType ActivityType => ActivityType.Control;
 
         private readonly IEventEmitter _eventEmitter;
-
         private readonly IDatabaseService _databaseService;
 
-        public ActivityResolveBusEndCourse(IEventEmitter eventEmitter, IDatabaseService databaseService)
+        public ActivityResolverBusControl(IDatabaseService databaseService, IEventEmitter eventEmitter)
         {
-            _eventEmitter = eventEmitter;
             _databaseService = databaseService;
+            _eventEmitter = eventEmitter;
         }
+
+
+        //Ile złapano osób
+        public static string CatchAmout { get; } = "CATCHAMOUT";
 
         public void Resolve(ActivitySendDto dto, IConnection connection)
         {
+            var data = ActivityHelper.GetData(dto.AdditionalInfo);
             using (var db = _databaseService.CreateContext())
             {
                 if (string.IsNullOrEmpty(dto.DeviceId)) throw new InvalidOperationException();
@@ -36,26 +41,25 @@ namespace WebSocketServer.Activity.Resolvers
 
                 var bus = db.Buss.Find(busId);
 
-                bus.BusStatus = Status.Inactive;
-
-                var course = db.Courses.Include(x => x.Bus).FirstOrDefault(x => x.Ended == false && x.Bus.Id == bus.Id);
+                var course = db.Courses.FirstOrDefault(x => x.Ended == false && x.Bus.Id == bus.Id);
 
                 if (course == null) throw new Exception("Cant find course");
 
                 var activity = ActivityHelper.GetPreparedActivity(dto, connection, db);
 
-                activity.Bus = bus;
-
                 activity.Course = course;
+
+                activity.AdditionalInfo = JsonConvert.SerializeObject(new ControlAdditionalInfo() {Catched = Convert.ToInt32(data[CatchAmout])});
 
                 db.Activities.Add(activity);
 
-                course.Ended = true;
-
                 db.SaveChanges();
 
-                _eventEmitter.Emit(ActivityHelper.CreateEventDto(dto, dto.Type.ToString()), EventType.BusAction, bus.Id);
+                _eventEmitter.Emit(ActivityHelper.CreateEventDto(dto, dto.Type.ToString(),activity.AdditionalInfo), EventType.BusAction, bus.Id);
+
+
             }
+
         }
     }
 }

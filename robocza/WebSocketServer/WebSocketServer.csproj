@@ -80,6 +80,7 @@
     <Compile Include="Activity\Resolvers\ActivityResolveBusEndCourse.cs" />
     <Compile Include="Activity\Resolvers\ActivityResolveBusMove.cs" />
     <Compile Include="Activity\Resolvers\ActivityResolveBusTicketCount.cs" />
+    <Compile Include="Activity\Resolvers\ActivityResolverBusControl.cs" />
     <Compile Include="Connection\Connection.cs" />
     <Compile Include="Connection\ConnectionHolder.cs" />
     <Compile Include="Connection\IConnection.cs" />

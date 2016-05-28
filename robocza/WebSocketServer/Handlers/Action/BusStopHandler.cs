@@ -17,12 +17,12 @@ using WebSocketServer.MessageResolver.Dto;
 
 namespace WebSocketServer.Handlers.Action
 {
-    public class BusStopHandler:IMessageHandler<BusStopActivityDto, EmptyDto>
+    public class BusStopHandler : IMessageHandler<BusStopActivityDto, EmptyDto>
     {
         private readonly IEventEmitter _emitter;
         private readonly IDatabaseService _db;
 
-        public BusStopHandler(IEventEmitter emitter,IDatabaseService db)
+        public BusStopHandler(IEventEmitter emitter, IDatabaseService db)
         {
             _emitter = emitter;
             _db = db;
@@ -42,7 +42,7 @@ namespace WebSocketServer.Handlers.Action
                     throw new HandlingException(ResultState.Error, "Id busa lub przystanku jest nieprawidłowe");
                 }
 
-                if (!(user?.Rank==UserRank.Device&&user.Activated&&connection.State==WSState.Authorized))
+                if (!(user?.Rank == UserRank.Device && user.Activated && connection.State == WSState.Authorized))
                 {
                     throw new HandlingException(ResultState.Error, "Dany użytkownik nie ma uprawnień do aktywności");
                 }
@@ -71,27 +71,27 @@ namespace WebSocketServer.Handlers.Action
 
                 course.Activities.Add(activity);
                 var trackString = db.Activities
-                    .Include(x=>x.BusStop)
-                    .Include(x=>x.Course)
-                    .Where(x=>x.Course.Id==course.Id)
+                    .Include(x => x.BusStop)
+                    .Include(x => x.Course)
+                    .Where(x => x.Course.Id == course.Id)
                     .Select(a => a.BusStop.Id.ToString())
                     .ToArray()
                     .Aggregate((y, z) => y + ";" + z);
-                var track = db.Tracks.FirstOrDefault(x => x.BusStops == trackString );
-                if (track!=null)
+                var track = db.Tracks.FirstOrDefault(x => x.BusStops == trackString);
+                if (track != null)
                 {
                     course.Ended = true;
                 }
 
                 db.SaveChanges();
 
-                _emitter.Emit(new EventDto<string>()
+                _emitter.Emit(new EventDto()
                 {
-                   Id = activity.Id,
-                   Lng = busstop.Lng,
-                   Lat = busstop.Lng,
-                   Info = activity.ActivityType.ToString()
-                },EventType.BusAction,bus.Id);
+                    Id = activity.Id,
+                    Lng = busstop.Lng,
+                    Lat = busstop.Lng,
+                    Type = activity.ActivityType.ToString()
+                }, EventType.BusAction, bus.Id);
 
             }
             return Task.FromResult(new EmptyDto());

@@ -89,7 +89,7 @@ namespace WebApiServer.Controllers
                 var busStop = db.BusStops.FirstOrDefault(b => b.Id == Id);
                 try
                 {
-                    busStop.BusStopStatus = Status.InActive;
+                    busStop.BusStopStatus = Status.Inactive;
                     db.SaveChanges();
                 }
                 catch (Exception)
@@ -151,7 +151,7 @@ namespace WebApiServer.Controllers
                 try
                 {
                     var busStop = Rewrite(busStopDto);
-                    busStop.BusStopStatus = Status.InActive; // chwilowo
+                    busStop.BusStopStatus = Status.Inactive; // chwilowo
 
                     db.BusStops.Add(busStop);
                     db.SaveChanges();

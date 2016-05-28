@@ -69,7 +69,9 @@
     <Compile Include="Transfer\Bus\GetBusDto.cs" />
     <Compile Include="Transfer\CourseController\CourseDto.cs" />
     <Compile Include="Transfer\Emit\EventDto.cs" />
+    <Compile Include="Transfer\SubscribeHandler\SubscribeAllDto.cs" />
     <Compile Include="Transfer\SubscribeHandler\SubscribeDto.cs" />
+    <Compile Include="Transfer\SubscribeHandler\UnSubscribeAllDto.cs" />
     <Compile Include="Transfer\SubscribeHandler\UnSubscribeDto.cs" />
     <Compile Include="Transfer\TestTransfer\TestObj.cs" />
     <Compile Include="Transfer\TrackController\EditableTrackDto.cs" />

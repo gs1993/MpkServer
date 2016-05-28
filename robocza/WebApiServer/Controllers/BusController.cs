@@ -71,7 +71,7 @@ namespace WebApiServer.Controllers
                 try
                 {
                     var bus = Rewrite(busDto);
-                    bus.BusStatus = Status.InActive; // chwilowo
+                    bus.BusStatus = Status.Inactive; // chwilowo
 
                     db.Buss.Add(bus);
                     db.SaveChanges();
@@ -97,7 +97,7 @@ namespace WebApiServer.Controllers
                 }
                 try
                 {
-                    bus.BusStatus = Status.InActive;
+                    bus.BusStatus = Status.Inactive;
                     db.SaveChanges();
                 }
                 catch (Exception)

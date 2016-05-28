@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Core.Transfer.Emit
 {
-    public class EventDto<T>
+    public class EventDto
     {
         public int Id { get; set; }
         public double Lat { get; set; }
         public double Lng { get; set; }
-        public T Info { get; set; }
+        public string Type { get; set; }
+        public string AdditionalInfo { get; set; }
     }
 }

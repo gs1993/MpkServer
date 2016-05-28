@@ -17,6 +17,22 @@ var sendSubscribe = function(busId){
         };
 	deviceWebstocket.send(JSON.stringify(obj));
 }
+var sendSubscribeAll = function(){
+  var data = {EventType:0}; //0 = busmove
+  var obj = {
+          Action: "subscribeAll",
+          Data: JSON.stringify(data)
+        };
+  deviceWebstocket.send(JSON.stringify(obj));
+}
+var sendUnSubscribeAll = function(){
+  var data = {EventType:0}; //0 = busmove
+  var obj = {
+          Action: "unsubscribeAll",
+          Data: JSON.stringify(data)
+        };
+  deviceWebstocket.send(JSON.stringify(obj));
+}
 var sendUnSubscribe = function(busId){
 	var data = {EventType:0,IdOfObject:busId};
 	var obj = {

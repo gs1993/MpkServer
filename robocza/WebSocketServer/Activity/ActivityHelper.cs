@@ -30,13 +30,23 @@ namespace WebSocketServer.Activity
             return pairsOfPairs.ToDictionary(x => x[0], x => x[1]);
         }
 
-        public static EventDto<T> CreateEventDto<T>(ActivitySendDto dto, T info)
+        public static EventDto CreateEventDto(ActivitySendDto dto, string info)
         {
-            return new EventDto<T>()
+            return new EventDto()
             {
-                Info = info,
+                Type = info,
                 Lat = dto.Lat,
                 Lng = dto.Lng
+            };
+        }
+        public static EventDto CreateEventDto(ActivitySendDto dto, string info,string addInfo)
+        {
+            return new EventDto()
+            {
+                Type = info,
+                Lat = dto.Lat,
+                Lng = dto.Lng,
+                AdditionalInfo = addInfo
             };
         }
     }

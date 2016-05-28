@@ -73,8 +73,13 @@
     <Compile Include="Migrations\201605221725453_minorchanges.Designer.cs">
       <DependentUpon>201605221725453_minorchanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605281437595_additionalInfo.cs" />
+    <Compile Include="Migrations\201605281437595_additionalInfo.Designer.cs">
+      <DependentUpon>201605281437595_additionalInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\AdditionalInfoModels.cs" />
     <Compile Include="Models\Autobus.cs" />
     <Compile Include="Models\BusStop.cs" />
     <Compile Include="Models\Course.cs" />
@@ -103,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605221725453_minorchanges.resx">
       <DependentUpon>201605221725453_minorchanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605281437595_additionalInfo.resx">
+      <DependentUpon>201605281437595_additionalInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -58,6 +58,9 @@ namespace WebSocketServer.Activity.Resolvers
                 if (db.Courses.Any(x => x.Bus.Id == bus.Id && x.Ended == false))
                     throw new Exception("Bus already doing course");
 
+
+                bus.BusStatus=Status.Active;
+
                 activity.Bus = bus;
 
                 activity = db.Activities.Add(activity);
