@@ -43,7 +43,7 @@ namespace WebSocketServer.Activity.Resolvers
                 //TODO przerobić aditional info, teraz nie mam na to czasu
                 if (string.IsNullOrEmpty(dto.DeviceId) ||
                     !additionalInfo.ContainsKey(TrackId) ||
-                    string.IsNullOrEmpty(additionalInfo[TrackId])) throw new InvalidOperationException();
+                    string.IsNullOrEmpty(additionalInfo[TrackId])) throw new InvalidOperationException("Brak TRACKID");
 
                 var busId = Convert.ToInt32(dto.DeviceId);
 

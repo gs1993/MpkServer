@@ -75,7 +75,7 @@ namespace WebSocketServer
                 new[]
                 {
                   typeof(ActivityResolveBusEndCourse),
-                    typeof(ActivityResolveBusMove),
+                    typeof(ActivityResolveBusStopCheck),
                     typeof(ActivityResolveBurStartCourse),
                     typeof(ActivityResolveBusTicketCount),
                     typeof(ActivityResolverBusControl)

@@ -11,3 +11,5 @@
 /robocza/WebApiServer/bin
 /robocza/WebSocketServer/obj
 /robocza/WebSocketServer/bin
+/robocza/DeviceApp
+/robocza/DeviceHtmlApp

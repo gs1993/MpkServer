@@ -64,7 +64,7 @@ namespace WebApiServer.Controllers
                 return busStopLocalization;
             }
         }
-
+        [HttpGet]
         public List<BusStopLocalizationDto> BusStopLocalizationList()
         {
             using (var db = _db.CreateContext())

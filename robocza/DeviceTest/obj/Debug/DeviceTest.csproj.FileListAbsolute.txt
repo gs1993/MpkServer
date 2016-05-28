@@ -1,0 +1,6 @@
+D:\Repos\coffee-or-riots\robocza\DeviceTest\bin\DeviceTest.dll.config
+D:\Repos\coffee-or-riots\robocza\DeviceTest\bin\DeviceTest.dll
+D:\Repos\coffee-or-riots\robocza\DeviceTest\bin\DeviceTest.pdb
+D:\Repos\coffee-or-riots\robocza\DeviceTest\obj\Debug\DeviceTest.csprojResolveAssemblyReference.cache
+D:\Repos\coffee-or-riots\robocza\DeviceTest\obj\Debug\DeviceTest.dll
+D:\Repos\coffee-or-riots\robocza\DeviceTest\obj\Debug\DeviceTest.pdb

@@ -12,7 +12,7 @@ using WebSocketServer.Events;
 
 namespace WebSocketServer.Activity.Resolvers
 {
-    public class ActivityResolveBusMove : IActivityResolver
+    public class ActivityResolveBusStopCheck : IActivityResolver
     {
         public ActivityType ActivityType => ActivityType.BusStopCheck;
 
@@ -20,7 +20,7 @@ namespace WebSocketServer.Activity.Resolvers
 
         private readonly IDatabaseService _databaseService;
 
-        public ActivityResolveBusMove(IEventEmitter eventEmitter, IDatabaseService databaseService)
+        public ActivityResolveBusStopCheck(IEventEmitter eventEmitter, IDatabaseService databaseService)
         {
             this._eventEmitter = eventEmitter;
             this._databaseService = databaseService;
@@ -40,7 +40,7 @@ namespace WebSocketServer.Activity.Resolvers
                 var additionalInfo = ActivityHelper.GetData(dto.AdditionalInfo);
                 if (string.IsNullOrEmpty(dto.DeviceId) ||
                     !additionalInfo.ContainsKey(StopId) ||
-                    string.IsNullOrEmpty(additionalInfo[StopId])) throw new InvalidOperationException();
+                    string.IsNullOrEmpty(additionalInfo[StopId])) throw new InvalidOperationException("Brak STOPID");
 
 
                 var busId = Convert.ToInt32(dto.DeviceId);

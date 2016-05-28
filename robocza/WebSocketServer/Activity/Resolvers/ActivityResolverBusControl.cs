@@ -35,7 +35,7 @@ namespace WebSocketServer.Activity.Resolvers
             var data = ActivityHelper.GetData(dto.AdditionalInfo);
             using (var db = _databaseService.CreateContext())
             {
-                if (string.IsNullOrEmpty(dto.DeviceId)) throw new InvalidOperationException();
+                if (string.IsNullOrEmpty(dto.DeviceId)) throw new InvalidOperationException("Brak CATCHAMOUT");
 
                 var busId = Convert.ToInt32(dto.DeviceId);
 
