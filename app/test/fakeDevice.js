@@ -1,4 +1,4 @@
-var deviceWebstocket = new WebSocket("ws://localhost:7878");
+var deviceWebstocket = new WebSocket("ws://192.168.1.4:7878");
 deviceWebstocket.onmessage = function(data){console.log(data);}
 
 var marker = undefined;
@@ -46,6 +46,14 @@ var sampleBusStop = function(){
 	console.log(latlng.lat)
 	console.log(latlng.lng)
 	sendActivity(latlng.lat,latlng.lng,4,"STOPID=14;")		// ID PRZYSTANKU
+}
+
+var sampleBusStop2 = function(){
+	var latlng = marker.getLatLng();
+	console.log('Dojechanie do przystanku')
+	console.log(latlng.lat)
+	console.log(latlng.lng)
+	sendActivity(latlng.lat,latlng.lng,4,"STOPID=1;")		// ID PRZYSTANKU
 }
 
 var sampleBusEndCourse  = function(){

@@ -26,7 +26,10 @@
         </div>
       </div>
       <div ng-hide="sendForm" class="panelWyswietlAutobus__navigation">
-        <section ng-hide="course.Ended"><span ng-click="SubskrypcjaAutobusu(AutobusID)" ng-hide="SubskrypcjaKlik" class="panelWyswietlAutobus__navigation__item greenDark">Rozpocznij Obserwacje</span><span ng-click="UnSubskrypcjaAutobusu(AutobusID)" ng-show="SubskrypcjaKlik" class="panelWyswietlAutobus__navigation__item red">Zakoncz Obserwacje</span></section>
+        <section ng-hide="course.Ended">
+          <!--span(ng-click="SubskrypcjaAutobusu(AutobusID)" ng-hide="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.greenDark Rozpocznij Obserwacje-->
+          <!--span(ng-click="UnSubskrypcjaAutobusu(AutobusID)" ng-show="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.red Zakoncz Obserwacje-->
+        </section>
       </div>
       <div class="panelWyswietlAutobus__navigation"><a href="/#/track/show/{{ TrackID }}" class="panelWyswietlAutobus__navigation__item gray -abort">Wróć</a></div>
       <div ng-show="komunikat" class="panelWyswietlTrase__alert">{{ komunikat }}</div>

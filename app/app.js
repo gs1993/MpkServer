@@ -92,7 +92,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
-      $rootScope.IP = 'localhost';
+      $rootScope.IP = '192.168.1.4';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -425,13 +425,6 @@
     $scope.sendForm = false;
     //WYSYLANY ID
     $scope.AutobusID = WybraneId;
-
-    $scope.SubskrypcjaAutobusu = function (index) {
-      $rootScope.Service.sendSubscribe(index);
-    }
-    $scope.UnSubskrypcjaAutobusu = function (index) {
-      $rootScope.Service.sendUnSubscribe(index);
-    }
 
     $http.get('http://' + $rootScope.IP + ':50000/Bus/GetBus/' + WybraneId, {
         //headers: {'Session': ''}
@@ -1195,10 +1188,58 @@
       });
       console.log("[Info] Kursy poprawne wygenerowane.")
       console.log($scope.kursyPoprawne)
+      $http.get('http://' + $rootScope.IP + ':50000/Bus/GetBusList', {
+          //headers: {'Session': ''}
+        }
+      ).success(function (data, status, headers, config) {
+        $scope.bus = data;
+        angular.forEach($scope.kursyPoprawne, function (kurs) {
+          if (kurs.Ended == false) {
+            $scope.SubskrypcjaAutobusu = function () {
+              $scope.SubskrypcjaKlik = true
+              console.log("[Info] Inicjowanie subskrypcji autobusu")
+              $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password );
+              $rootScope.Service.sendSubscribe(kurs.Bus.Id);
+            }
+            $scope.SubskrypcjaAutobusu();
+          }
+        });
+      });
+
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania kursów.")
     });
+    $rootScope.KursyTrasyWebSocketActive = true
+    $rootScope.KursWebSocketReloadActive = false
+    $rootScope.KursyTrasyWebSocket = function() {
+      $http.get('http://' + $rootScope.IP + ':50000/Course/GetList', {
+          //headers: {'Session': ''}
+        }
+      ).success(function (data, status, headers, config) {
+        $scope.kursy = data;
+        $scope.kursyPoprawne = [];
+        console.log("[Info] Pobrano kursy");
+        console.log($scope.kursy);
+        angular.forEach($scope.kursy, function (kurs) {
+          if (kurs.Track.Id == WybraneId) {
+            if (kurs.Ended == false)
+            {
+              kurs.EndedName = "W trakcie"
 
+            }
+            else{
+              kurs.EndedName = "Zakonczony"
+            }
+            $scope.kursyPoprawne.push(kurs)
+          }
+        });
+        console.log("[Info] Kursy poprawne wygenerowane.")
+        console.log($scope.kursyPoprawne)
+
+      }).error(function (data, status, headers, config) {
+        console.log("Błąd pobrania kursów.")
+      });
+    }
 
     $scope.UsuniecieTrasy = function (index) {
       var WybraneId = index;
@@ -1217,7 +1258,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Trasa została dezaktywowana pomyślnie!";
-
+            $scope.usuniecie= true
+            $scope.dodanie= false
             $scope.initMarkers();
           })
           .error(function (status, header, config) {
@@ -1250,7 +1292,8 @@
             $scope.CallbackServera = true;
             $scope.CallbackServeraPositive = true;
             $scope.komunikat = "Trasa został aktywowana pomyślnie!";
-
+            $scope.usuniecie= false
+            $scope.dodanie= true
             $scope.initMarkers();
           })
           .error(function (status, header, config) {
@@ -1283,16 +1326,12 @@
       $scope.intCourse($scope.course);
 
       $scope.SubskrypcjaAutobusu = function () {
-        console.log("Inicjowanie subskrypcji")
         $scope.SubskrypcjaKlik = true
+        console.log("[Info] Inicjowanie subskrypcji")
+        $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password );
         $rootScope.Service.sendSubscribe($scope.course.Bus.Id);
       }
-      $scope.UnSubskrypcjaAutobusu = function () {
-        console.log("Inicjowanie unsubskrypcji")
-        $scope.SubskrypcjaKlik = false
-        $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password );
-        $rootScope.Service.sendUnSubscribe($scope.course.Bus.Id);
-      }
+      $scope.SubskrypcjaAutobusu();
       $scope.TrackID = $scope.course.Track.Id
       angular.forEach($scope.course.Activities, function (aktywnosc) {
         if (aktywnosc.ActivityType == 0) {
@@ -1323,7 +1362,47 @@
       console.log("[Info] Pobrano kurs.");
       console.log($scope.course);
     })
+    $rootScope.KursWebSocketReloadActive = true
+    $rootScope.KursyTrasyWebSocketActive = false
+    $rootScope.KursWebSocketReload = function(){
+      $http.get('http://' + $rootScope.IP + ':50000/Course/Get/' + WybraneId, {
+          //headers: {'Session': ''}
+        }
+      ).success(function (data, status, headers, config) {
+        $scope.course = data;
+        $scope.intCourse($scope.course);
 
+        angular.forEach($scope.course.Activities, function (aktywnosc) {
+          if (aktywnosc.ActivityType == 0) {
+            aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
+          }
+          else if(aktywnosc.ActivityType == 1){
+            aktywnosc.ActivityTypeName = "Kontrola Biletów";
+          }
+          else if(aktywnosc.ActivityType == 2){
+            aktywnosc.ActivityTypeName = "Incydent z wandalami";
+          }
+          else if(aktywnosc.ActivityType == 3){
+            aktywnosc.ActivityTypeName = "Problem techniczny";
+          }
+          else if(aktywnosc.ActivityType == 4){
+            aktywnosc.ActivityTypeName = "Autobus dojechal do przystanku";
+          }
+          else if(aktywnosc.ActivityType == 5){
+            aktywnosc.ActivityTypeName = "Sprzedano bilet";
+          }
+          else if(aktywnosc.ActivityType == 6){
+            aktywnosc.ActivityTypeName = "Rozpoczeto kurs";
+          }
+          else if(aktywnosc.ActivityType == 7){
+            aktywnosc.ActivityTypeName = "Zakonczono kurs";
+          }
+        });
+        console.log("[Info] Pobrano kurs.");
+        console.log($scope.course);
+      })
+
+    }
   }]);
   /* Użytkownicy Controlery
    *==========================================================================*/
@@ -1902,8 +1981,14 @@
     $rootScope.Service = {};
 
     ws.onMessage(function (message) {
-      console.info("message: ", message);
+      console.info("message: ", message.data);
       collection.push(JSON.parse(message.data));
+      if($rootScope.KursWebSocketReloadActive)
+      {
+        $rootScope.KursWebSocketReload();
+      }
+      if($rootScope.KursyTrasyWebSocketActive)
+      $rootScope.KursyTrasyWebSocket();
     });
 
     ws.onOpen(function (message) {
