@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5d1550c6-26d3-4ab5-a8d8-bf8bc96bb9a0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/jade/panelWyswietlTrase.jade" afterPath="$PROJECT_DIR$/app/jade/panelWyswietlTrase.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/panelWyswietlTrase.html" afterPath="$PROJECT_DIR$/app/panelWyswietlTrase.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fakeDevice.js" afterPath="$PROJECT_DIR$/fakeDevice.js" />
     </list>
     <ignored path="coffee-or-riots.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +26,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="1320" column="46" selection-start-line="1320" selection-start-column="46" selection-end-line="1320" selection-end-column="46" />
+            <state relative-caret-position="91">
+              <caret line="2017" column="72" selection-start-line="2017" selection-start-column="72" selection-end-line="2017" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -50,7 +46,7 @@
       <file leaf-file-name="_header.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/jade/_header.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="703">
+            <state relative-caret-position="756">
               <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
               <folding />
             </state>
@@ -60,7 +56,7 @@
       <file leaf-file-name="fakeRead.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fakeRead.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
+            <state relative-caret-position="612">
               <caret line="34" column="1" selection-start-line="19" selection-start-column="0" selection-end-line="34" selection-end-column="1" />
               <folding />
             </state>
@@ -90,7 +86,7 @@
       <file leaf-file-name="panelWyswietlTrase.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/jade/panelWyswietlTrase.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
+            <state relative-caret-position="486">
               <caret line="27" column="92" selection-start-line="27" selection-start-column="91" selection-end-line="27" selection-end-column="92" />
               <folding />
             </state>
@@ -100,7 +96,7 @@
       <file leaf-file-name="fakeDevice.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/test/fakeDevice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-413">
+            <state relative-caret-position="414">
               <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
               <folding />
             </state>
@@ -269,6 +265,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -405,7 +402,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -564,6 +560,7 @@
       <workItem from="1464394797862" duration="2908000" />
       <workItem from="1464428369021" duration="605000" />
       <workItem from="1464445921010" duration="4872000" />
+      <workItem from="1464455148644" duration="668000" />
     </task>
     <task id="LOCAL-00001" summary="Poprawiona responsywność w tabelkach">
       <created>1461941090029</created>
@@ -814,7 +811,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="197808000" />
+    <option name="totallyTimeSpent" value="198476000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -829,9 +826,9 @@
     <frame x="1366" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14135021" sideWeight="0.6044099" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14135021" sideWeight="0.59792477" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49315068" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14135021" sideWeight="0.39559016" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14135021" sideWeight="0.40207523" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26244953" sideWeight="0.51140684" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18756586" sideWeight="0.45416227" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15279241" sideWeight="0.44415173" order="2" side_tool="false" content_ui="tabs" />
@@ -1169,7 +1166,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1199,7 +1195,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/test/fakeDevice.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-413">
+        <state relative-caret-position="414">
           <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
           <folding />
         </state>
@@ -1207,7 +1203,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/jade/panelWyswietlTrase.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
+        <state relative-caret-position="486">
           <caret line="27" column="92" selection-start-line="27" selection-start-column="91" selection-end-line="27" selection-end-column="92" />
           <folding />
         </state>
@@ -1223,7 +1219,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/jade/_header.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
+        <state relative-caret-position="756">
           <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
           <folding />
         </state>
@@ -1239,7 +1235,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fakeRead.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
+        <state relative-caret-position="612">
           <caret line="34" column="1" selection-start-line="19" selection-start-column="0" selection-end-line="34" selection-end-column="1" />
           <folding />
         </state>
@@ -1247,8 +1243,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="1320" column="46" selection-start-line="1320" selection-start-column="46" selection-end-line="1320" selection-end-column="46" />
+        <state relative-caret-position="91">
+          <caret line="2017" column="72" selection-start-line="2017" selection-start-column="72" selection-end-line="2017" selection-end-column="72" />
           <folding />
         </state>
       </provider>
