@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTests", "DataTests\DataTests.csproj", "{F3249EE8-293E-4699-B408-0CEF62FC55BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceTest", "DeviceTest\DeviceTest.csproj", "{60346A0D-FD0E-45E6-B02A-41C1821126C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F3249EE8-293E-4699-B408-0CEF62FC55BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3249EE8-293E-4699-B408-0CEF62FC55BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3249EE8-293E-4699-B408-0CEF62FC55BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60346A0D-FD0E-45E6-B02A-41C1821126C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60346A0D-FD0E-45E6-B02A-41C1821126C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60346A0D-FD0E-45E6-B02A-41C1821126C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60346A0D-FD0E-45E6-B02A-41C1821126C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

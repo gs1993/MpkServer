@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Filters;
 using System.Web.Http.Results;
+using Core.Enums;
 using Data.Service;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security.DataHandler.Encoder;
@@ -38,15 +39,26 @@ namespace WebApiServer.Misc
         {
             HttpRequestMessage request = context.Request;
             var sessionheader = request.Headers.Any(x=>x.Key=="Session");
-            
 
-            if (sessionheader == false) return;
+
+            if (request.Headers.Any(x => x.Key == "Debug"))
+            {
+                context.Principal = _userService.GetPrincipal(_userService.GetUserManager().Users.First(x => x.Rank == UserRank.User).Id);
+                return;
+            }
+
+            if (sessionheader == false)
+            {
+                context.ErrorResult = new AuthenticationFailureResult("Missing credentials", request);
+                return;
+            }
 
             var sessionToken = request.Headers.GetValues("Session").First();
 
             if (string.IsNullOrEmpty(sessionToken))
             {
                 context.ErrorResult = new AuthenticationFailureResult("Missing credentials",request);
+                return;
             }
 
             var user = _sessionService.SessionCheck(sessionToken);

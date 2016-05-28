@@ -92,7 +92,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
-      $rootScope.IP = 'localhost';
+      $rootScope.IP = '192.168.1.4';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -1619,9 +1619,18 @@
     $scope.busstopMarker = [];
 
     $scope.deleteMarkers = function () {
+      $scope.markerBusstopCheck = [];
+      $scope.markerEnd = [];
+      $scope.markerIncydent = [];
+      $scope.markerKanar = [];
+      $scope.markerSellTicket = [];
+      $scope.markerStart = [];
+      $scope.markerTechnicla = [];
+      $scope.markerTicket = [];
+
       $scope.busstopMarker = [];
       $scope.busMarker = [];
-      $scope.removeActivityMarker();
+      $scope.activityMarker = [];
     };
 
     $scope.showBusstop = function (event, busstop) {
@@ -1688,12 +1697,21 @@
     $scope.destination;
 
     $scope.initTrack = function (track) {
-      $scope.busstopMarker = [];
-      $scope.removeActivityMarker();
       $scope.drawRoute(track);
+      $scope.busMarker=[];
     };
-
     $scope.drawRoute = function (track) {
+      $scope.markerBusstopCheck = [];
+      $scope.markerEnd = [];
+      $scope.markerIncydent = [];
+      $scope.markerKanar = [];
+      $scope.markerSellTicket = [];
+      $scope.markerStart = [];
+      $scope.markerTechnicla = [];
+      $scope.markerTicket = [];
+      $scope.busMarker = [];
+      $scope.busstopMarker = [];
+      $scope.busstopMarkers = [];
       $scope.punkty = [];
       $scope.markerIcon = "../blocks/googleMaps/src/busstopMarkerGreen.png";
       angular.forEach(track.BusStops, function (przystanek) {
@@ -1716,7 +1734,7 @@
           przystanek.BusStopTypeName = "Zabudowany"
         }
         if (przystanek.BusStopStatus == 1) {
-          $scope.busstopMarker.push({
+          $scope.busstopMarkers.push({
             Id: przystanek.Id,
             Name: przystanek.Name,
             LocalizationString: przystanek.LocalizationString,
@@ -1728,15 +1746,27 @@
           $scope.punkty.push({location: {lat: przystanek.Lat, lng: przystanek.Lng}});
         }
       });
+
       var start = $scope.punkty[0];
       var end = $scope.punkty[$scope.punkty.length - 1]
       $scope.punkty.splice(0, 1);
       $scope.punkty.splice($scope.punkty.length - 1, 1);
+
       $scope.wayPoints = $scope.punkty;
+      //console.log("Punkty");
+      //console.log($scope.wayPoints);
       $scope.origin = start;
+      //console.log("Start");
+      //console.log($scope.origin);
       $scope.destination = end;
+      //console.log("end");
+      //console.log($scope.destination);
+
       $scope.initMap();
       $scope.map.directionsRenderers[0].setMap($scope.map);
+
+      $scope.busstopMarker = $scope.busstopMarkers;
+
     };
 
 
@@ -1744,9 +1774,12 @@
 
     $scope.initMarkers = function () {
       $scope.deleteMarkers();
+      $scope.wayPoints = [];
       $scope.showBusstopMarkers();
       $scope.showBusMarkers();
+
       $scope.map.directionsRenderers[0].setMap(null);
+
     };
 
     ////////////////////////Aktywności//////////////////////////
@@ -1765,7 +1798,7 @@
     $scope.markerTechnicla = [];
     $scope.markerTicket = [];
 
-    $scope.removeActivityMarker = function (){
+    $scope.intCourse = function (kurs) {
       $scope.markerBusstopCheck = [];
       $scope.markerEnd = [];
       $scope.markerIncydent = [];
@@ -1774,11 +1807,8 @@
       $scope.markerStart = [];
       $scope.markerTechnicla = [];
       $scope.markerTicket = [];
-    };
-
-    $scope.intCourse = function (kurs) {
-      $scope.removeActivityMarker();
       $scope.busMarker = [];
+
       angular.forEach(kurs.Activities, function (aktywnosc) {
         if (aktywnosc.ActivityType == 0) {
           aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
@@ -1858,8 +1888,12 @@
 
     ///////////////////Autobusy////////////////////////////////
     $scope.busMarker = [];
+    $scope.busMarkers = [];
     $scope.showBusMarkers = function () {
-      $scope.busMarker = [];
+      $scope.busMarkers = [];
+
+      //
+
       $http.get('http://' + $rootScope.IP + ':50000/Course/GetList/'
       ).success(function (data, status, headers, config) {
         $scope.course = data;
@@ -1870,29 +1904,39 @@
           $rootScope.Service.sendSubscribeAll();
         }
         $scope.SubskrypcjaAutobusow();
+
         angular.forEach($scope.course, function (kurs) {
+
           if (kurs.Ended == false && kurs.Track.IsArchive==false) {
-            $scope.busMarker.push({
+
+            $scope.busMarkers.push({
               Id: kurs.Bus.Id,
               Name: kurs.Bus.BusNumber,
               Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
             });
+            //console.log("test");
+            //console.log($scope.busMarkers);
+            //console.log("--------------");
           }
         });
       }).error(function (data, status, headers, config) {
         console.log("Błąd pobrania przystanków.")
       });
+
+      $scope.busMarker = $scope.busMarkers;
     };
-
-
     $rootScope.showBusMarkersReload = function () {
-      $scope.busMarker = [];
+      $scope.busMarkers = [];
+
       $http.get('http://' + $rootScope.IP + ':50000/Course/GetList/'
       ).success(function (data, status, headers, config) {
         $scope.course = data;
+
         angular.forEach($scope.course, function (kurs) {
+
           if (kurs.Ended == false && kurs.Track.IsArchive==false) {
-            $scope.busMarker.push({
+
+            $scope.busMarkers.push({
               Id: kurs.Bus.Id,
               Name: kurs.Bus.BusNumber,
               Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
@@ -1903,6 +1947,7 @@
       }).error(function (data, status, headers, config) {
         console.log("Błąd pobrania przystanków.")
       });
+      $scope.busMarker = $scope.busMarkers;
     };
 
 
@@ -1946,15 +1991,18 @@
     $rootScope.Service = {};
 
     ws.onMessage(function (message) {
-      console.info("message: ", message.data);
-      collection.push(JSON.parse(message.data));
+      //console.info("message: ", message.data);
+      //collection.push(JSON.parse(message.data));
       if ($rootScope.KursWebSocketReloadActive) {
+        //console.info("Odswiezenie kursu");
         $rootScope.KursWebSocketReload();
       }
       if ($rootScope.KursyTrasyWebSocketActive) {
+        //console.info("Odswiezenie kursu");
         $rootScope.KursyTrasyWebSocket();
 
       }
+      //console.info("Odswiezenie autobusu");
       $rootScope.showBusMarkersReload();
     });
 
