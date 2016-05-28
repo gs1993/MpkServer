@@ -1388,8 +1388,8 @@
             aktywnosc.ActivityTypeName = "Zakonczono kurs";
           }
         });
-        console.log("[Info] Pobrano kurs.");
-        console.log($scope.course);
+        //console.log("[Info] Pobrano kurs.");
+        //console.log($scope.course);
       })
 
     }
