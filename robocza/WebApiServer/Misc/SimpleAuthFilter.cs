@@ -40,6 +40,7 @@ namespace WebApiServer.Misc
             HttpRequestMessage request = context.Request;
             var sessionheader = request.Headers.Any(x=>x.Key=="Session");
 
+            if (context.ActionContext.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any()) return;
 
             if (request.Headers.Any(x => x.Key == "Debug"))
             {
