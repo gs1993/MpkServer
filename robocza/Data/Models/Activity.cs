@@ -19,6 +19,8 @@ namespace Data.Models
 
         public double Lng { get; set; }
 
+        public string AdditionalInfo { get; set; }
+
         public BusStop BusStop { get; set; }
 
         public Bus Bus { get; set; }

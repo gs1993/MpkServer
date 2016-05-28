@@ -13,5 +13,7 @@ namespace WebSocketServer.Events
         void Emit<T>(T obj,EventType type,int id);
         void Subscribe(IConnection connection,EventType type,int id);
         void UnSubscribe(IConnection connection, EventType type, int id);
+        void SubscribeAll(IConnection connection, EventType type);
+        void UnsubscribeAll(IConnection connection, EventType type);
     }
 }
