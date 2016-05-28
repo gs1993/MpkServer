@@ -92,7 +92,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
-      $rootScope.IP = 'localhost';
+      $rootScope.IP = '192.168.1.4';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -1888,10 +1888,11 @@
 
     ///////////////////Autobusy////////////////////////////////
     $scope.busMarker = [];
+    $scope.busMarkers = [];
     $scope.showBusMarkers = function () {
-
-
       $scope.busMarkers = [];
+
+      //
 
       $http.get('http://' + $rootScope.IP + ':50000/Course/GetList/'
       ).success(function (data, status, headers, config) {
@@ -1990,15 +1991,18 @@
     $rootScope.Service = {};
 
     ws.onMessage(function (message) {
-      console.info("message: ", message.data);
-      collection.push(JSON.parse(message.data));
+      //console.info("message: ", message.data);
+      //collection.push(JSON.parse(message.data));
       if ($rootScope.KursWebSocketReloadActive) {
+        //console.info("Odswiezenie kursu");
         $rootScope.KursWebSocketReload();
       }
       if ($rootScope.KursyTrasyWebSocketActive) {
+        //console.info("Odswiezenie kursu");
         $rootScope.KursyTrasyWebSocket();
 
       }
+      //console.info("Odswiezenie autobusu");
       $rootScope.showBusMarkersReload();
     });
 
