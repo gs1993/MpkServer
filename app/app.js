@@ -92,7 +92,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
-      $rootScope.IP = '192.168.1.4';
+      $rootScope.IP = 'localhost';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -1887,11 +1887,13 @@
         }
 
       });
-      $scope.busMarker.push({
-        Id: kurs.Bus.Id,
-        Name: kurs.Bus.BusNumber,
-        Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
-      });
+      if (kurs.Ended == false) {
+        $scope.busMarker.push({
+          Id: kurs.Bus.Id,
+          Name: kurs.Bus.BusNumber,
+          Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
+        });
+      }
     };
 
 
