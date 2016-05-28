@@ -34,7 +34,7 @@ var sendActivity = function(x,y,type,addInfo){
 
 var sampleStartCourse = function(){
 	var latlng = marker.getLatLng();
-	sendActivity(latlng.lat,latlng.lng,6,"TRACKID=1;");   // ID TRASY
+	sendActivity(latlng.lat,latlng.lng,6,"TRACKID=17;");   // ID TRASY
 }
 
 var sampleBusStop = function(){
