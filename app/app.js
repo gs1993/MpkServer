@@ -1709,6 +1709,7 @@
 
     $scope.initTrack = function (track) {
       $scope.drawRoute(track);
+      $scope.busMarker=[];
     };
     $scope.drawRoute = function (track) {
       $scope.markerBusstopCheck=[];
@@ -1888,7 +1889,7 @@
         }
 
       });
-      if (kurs.Ended == false) {
+      if (kurs.Ended == false && kurs.Track.IsArchive==false) {
         $scope.busMarker.push({
           Id: kurs.Bus.Id,
           Name: kurs.Bus.BusNumber,
@@ -1915,7 +1916,7 @@
 
         angular.forEach($scope.course, function (kurs) {
 
-          if (kurs.Ended == false) {
+          if (kurs.Ended == false && kurs.Track.IsArchive==false) {
 
             $scope.busMarkers.push({
               Id: kurs.Bus.Id,
@@ -1949,7 +1950,7 @@
 
         angular.forEach($scope.course, function (kurs) {
 
-          if (kurs.Ended == false) {
+          if (kurs.Ended == false && kurs.Track.IsArchive==false) {
 
             $scope.busMarkers.push({
               Id: kurs.Bus.Id,
@@ -2026,8 +2027,10 @@
       }
       if($rootScope.KursyTrasyWebSocketActive){
         $rootScope.KursyTrasyWebSocket();
+
       }
-      $rootScope.showBusMarkersReload()
+      $rootScope.showBusMarkersReload();
+      $scope.busMarker = [];
     });
 
     ws.onOpen(function (message) {
