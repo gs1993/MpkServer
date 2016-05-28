@@ -1631,7 +1631,15 @@
       $scope.drawRoute(track);
     };
     $scope.drawRoute = function (track) {
-
+      $scope.markerBusstopCheck=[];
+      $scope.markerEnd=[];
+      $scope.markerIncydent=[];
+      $scope.markerKanar=[];
+      $scope.markerSellTicket=[];
+      $scope.markerStart=[];
+      $scope.markerTechnicla=[];
+      $scope.markerTicket=[];
+      $scope.busMarker=[];
       $scope.busstopMarker = [];
       $scope.busstopMarkers = [];
       $scope.punkty = [];
@@ -1731,6 +1739,7 @@
       $scope.markerStart=[];
       $scope.markerTechnicla=[];
       $scope.markerTicket=[];
+      $scope.busMarker=[];
 
       angular.forEach(kurs.Activities, function (aktywnosc) {
         if (aktywnosc.ActivityType == 0) {
@@ -1798,6 +1807,11 @@
           });
         }
 
+      });
+      $scope.busMarker.push({
+        Id: kurs.Bus.Id,
+        Name: kurs.Bus.BusNumber,
+        Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
       });
     };
 

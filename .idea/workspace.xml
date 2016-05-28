@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d1550c6-26d3-4ab5-a8d8-bf8bc96bb9a0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerBusstopCheck.png" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerBusstopCheck.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerEnd.png" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerEnd.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerIncydent.png" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerIncydent.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerKanar.png" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerKanar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerSellTicket.png" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerSellTicket.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerStart.png" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerStart.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerTechnicla.png" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerTechnicla.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerTicket.png" afterPath="$PROJECT_DIR$/app/blocks/googleMaps/src/markerTicket.png" />
+    <list default="true" id="5d1550c6-26d3-4ab5-a8d8-bf8bc96bb9a0" name="Default" comment="wstepne markery autobusów cd">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/jade/index.jade" afterPath="$PROJECT_DIR$/app/jade/index.jade" />
     </list>
     <ignored path="coffee-or-riots.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,17 +24,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="1812" column="0" selection-start-line="1812" selection-start-column="0" selection-end-line="1812" selection-end-column="0" />
+            <state relative-caret-position="-1156">
+              <caret line="1640" column="29" selection-start-line="1640" selection-start-column="29" selection-end-line="1640" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jade" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/jade/index.jade">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="292">
@@ -168,8 +158,8 @@
         <option value="$PROJECT_DIR$/fakeDevice.js" />
         <option value="$PROJECT_DIR$/app/test/fakeRead.js" />
         <option value="$PROJECT_DIR$/app/test/fakeDevice.js" />
-        <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/app/jade/index.jade" />
+        <option value="$PROJECT_DIR$/app/app.js" />
       </list>
     </option>
   </component>
@@ -546,7 +536,7 @@
       <workItem from="1464364631941" duration="9162000" />
       <workItem from="1464380642591" duration="3021000" />
       <workItem from="1464384620567" duration="4685000" />
-      <workItem from="1464389778755" duration="2076000" />
+      <workItem from="1464389778755" duration="2899000" />
     </task>
     <task id="LOCAL-00001" summary="Poprawiona responsywność w tabelkach">
       <created>1461941090029</created>
@@ -758,11 +748,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464392712705</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="wstepne markery autobusów">
+      <created>1464393893358</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1464393893358</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="186908000" />
+    <option name="totallyTimeSpent" value="187731000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -832,7 +829,8 @@
     <MESSAGE value="Merge branch 'master' of bitbucket.org:SaliMike/coffee-or-riots&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
     <MESSAGE value="Merge branch 'master' of https://bitbucket.org/SaliMike/coffee-or-riots&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
     <MESSAGE value="markery cd.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="markery cd.&#10;" />
+    <MESSAGE value="wstepne markery autobusów" />
+    <option name="LAST_COMMIT_MESSAGE" value="wstepne markery autobusów" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1182,18 +1180,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="1812" column="0" selection-start-line="1812" selection-start-column="0" selection-end-line="1812" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/jade/index.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
           <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1156">
+          <caret line="1640" column="29" selection-start-line="1640" selection-start-column="29" selection-end-line="1640" selection-end-column="29" />
           <folding />
         </state>
       </provider>
