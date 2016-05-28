@@ -48,6 +48,14 @@ var sampleBusStop = function(){
 	sendActivity(latlng.lat,latlng.lng,4,"STOPID=14;")		// ID PRZYSTANKU
 }
 
+var sampleBusStop2 = function(){
+	var latlng = marker.getLatLng();
+	console.log('Dojechanie do przystanku')
+	console.log(latlng.lat)
+	console.log(latlng.lng)
+	sendActivity(latlng.lat,latlng.lng,4,"STOPID=1;")		// ID PRZYSTANKU
+}
+
 var sampleBusEndCourse  = function(){
 	var latlng = marker.getLatLng();
 	console.log('Zamkniecie kursu')

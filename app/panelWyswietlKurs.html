@@ -1,0 +1,38 @@
+
+<div ng-controller="ShowCourseController" class="panelWyswietlAutobus">
+  <div class="panelWyswietlAutobus__title">Szczegóły Kursu</div>
+  <div class="panelWyswietlAutobus__fastTravel"><span><a href="/#/"><i class="fa fa-home"></i>Home</a></span><span><a href="/#/track">Zarządzanie Trasami</a></span><span><a href="/#/track/Get/{{ TrackID }}">Szczegóły Trasy</a></span><span class="-active"><a href="/#/course/Get/{{ CourseID }}">Szczegóły Kursu</a></span></div>
+  <div class="panelWyswietlAutobus__wrapper">
+    <div class="panelWyswietlAutobus__subtitle">Kurs o numerze {{ CourseID }}</div>
+    <div class="panelWyswietlAutobus__text">Parametry aktualnie wybranego kursu</div>
+    <div class="panelWyswietlTrase">
+      <div ng-show="course.Ended" class="panelWyswietlTrase__alert">Kurs zakończony!</div>
+      <div class="panelWyswietlTrase__columns">
+        <div class="panelWyswietlTrase__column -width100">
+          <div class="panelWyswietlTrase__title">Aktywności kursu</div>
+          <div ng-repeat="aktywnosc in course.Activities" class="panelWyswietlTrase__content">
+            <div class="panelWyswietlTrase__itemBox">
+              <div class="panelWyswietlTrase__item">
+                <div class="panelWyswietlTrase__itemSubtitle">Data: {{ aktywnosc.Date }}</div>
+                <div class="panelWyswietlTrase__itemTitle">Aktywność: {{ aktywnosc.ActivityTypeName }}</div>
+                <div class="panelWyswietlTrase__itemSubtitle">Pozycja: {{ aktywnosc.Lat }} {{ aktywnosc.Lng }}</div>
+                <div class="panelWyswietlTrase__itemTitle">Przystanek: {{ aktywnosc.BusStop.Name }}</div>
+                <div class="panelWyswietlTrase__itemSubtitle">Pozycja: {{ aktywnosc.BusStop.Lat }} {{ aktywnosc.BusStop.Lng }}</div>
+                <div class="panelWyswietlTrase__itemSubtitle">Ulica: {{ aktywnosc.BusStop.LocalizationString }}</div>
+                <div class="panelWyswietlTrase__itemTitle">Numer Autobusu: {{ aktywnosc.Bus.BusNumber }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-hide="sendForm" class="panelWyswietlAutobus__navigation">
+        <section ng-hide="course.Ended">
+          <!--span(ng-click="SubskrypcjaAutobusu(AutobusID)" ng-hide="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.greenDark Rozpocznij Obserwacje-->
+          <!--span(ng-click="UnSubskrypcjaAutobusu(AutobusID)" ng-show="SubskrypcjaKlik").panelWyswietlAutobus__navigation__item.red Zakoncz Obserwacje-->
+        </section>
+      </div>
+      <div class="panelWyswietlAutobus__navigation"><a href="/#/track/show/{{ TrackID }}" class="panelWyswietlAutobus__navigation__item gray -abort">Wróć</a></div>
+      <div ng-show="komunikat" class="panelWyswietlTrase__alert">{{ komunikat }}</div>
+    </div>
+  </div>
+</div>
