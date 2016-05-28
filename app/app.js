@@ -485,7 +485,18 @@
       else if ($scope.GotMachine == "0") {
         $scope.GotMachine = false;
       }
-
+      if ($scope.RegistrationNumber == null || $scope.RegistrationNumber == "") {
+        $scope.RegistrationNumber = $scope.autobus.RegistrationNumber;
+      }
+      if ($scope.BusNumber == null || $scope.BusNumber == "") {
+        $scope.BusNumber = $scope.autobus.BusNumber;
+      }
+      if ($scope.BusType == null) {
+        $scope.BusType = $scope.autobus.BusType;
+      }
+      if ($scope.GotMachine == null) {
+        $scope.GotMachine = $scope.autobus.GotMachine;
+      }
 
       var data = JSON.stringify({
         Id: WybraneId,
@@ -741,36 +752,36 @@
         //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
-      $scope.autobus = data;
+      $scope.przystanek = data;
       //console.log("Pobrano przystanek.")
-      if ($scope.autobus.GotMachine == true) {
-        $scope.autobus.GotMachineName = "Tak";
-        $scope.autobus.GotMachineValue = 1
+      if ($scope.przystanek.GotMachine == true) {
+        $scope.przystanek.GotMachineName = "Tak";
+        $scope.przystanek.GotMachineValue = 1
       }
       else {
-        $scope.autobus.GotMachineName = "Nie";
-        $scope.autobus.GotMachineValue = 0
+        $scope.przystanek.GotMachineName = "Nie";
+        $scope.przystanek.GotMachineValue = 0
       }
-      if ($scope.autobus.GotKiosk == true) {
-        $scope.autobus.GotKioskName = "Tak";
-        $scope.autobus.GotKioskValue = 1
+      if ($scope.przystanek.GotKiosk == true) {
+        $scope.przystanek.GotKioskName = "Tak";
+        $scope.przystanek.GotKioskValue = 1
       }
       else {
-        $scope.autobus.GotKioskName = "Nie";
-        $scope.autobus.GotKioskValue = 0
+        $scope.przystanek.GotKioskName = "Nie";
+        $scope.przystanek.GotKioskValue = 0
       }
 
-      if ($scope.autobus.BusStopType == 0) {
-        $scope.autobus.BusStopTypeName = "Normalny"
+      if ($scope.przystanek.BusStopType == 0) {
+        $scope.przystanek.BusStopTypeName = "Normalny"
       }
       else {
-        $scope.autobus.BusStopTypeName = "Zabudowany"
+        $scope.przystanek.BusStopTypeName = "Zabudowany"
       }
-      if ($scope.autobus.BusStopStatus == 0) {
-        $scope.autobus.BusStopStatusName = "Nieaktywny"
+      if ($scope.przystanek.BusStopStatus == 0) {
+        $scope.przystanek.BusStopStatusName = "Nieaktywny"
       }
       else {
-        $scope.autobus.BusStopStatusName = "Aktywny"
+        $scope.przystanek.BusStopStatusName = "Aktywny"
       }
     }).error(function (data, status, headers, config) {
       console.log("Błąd pobrania przystanku.")
@@ -788,12 +799,10 @@
       ///////////////////////////////////////////////
 
       if ($scope.Name == null || $scope.Name == "") {
-        $scope.Name = $scope.autobus.Name;
+        $scope.Name = $scope.przystanek.Name;
       }
-
-
       if ($scope.LocalizationString == null || $scope.LocalizationString == "") {
-        $scope.LocalizationString = $scope.autobus.LocalizationString;
+        $scope.LocalizationString = $scope.przystanek.LocalizationString;
       }
 
       if ($scope.GotMachine == 1) {
@@ -828,19 +837,19 @@
 
 
       if ($scope.Lat == null || $scope.Lat == "") {
-        $scope.Lat = $scope.autobus.Lat;
+        $scope.Lat = $scope.przystanek.Lat;
       }
       if ($scope.Lng == null || $scope.Lng == "") {
-        $scope.Lng = $scope.autobus.Lng;
+        $scope.Lng = $scope.przystanek.Lng;
       }
-      if ($scope.GotMachine == null || $scope.GotMachine == "") {
-        $scope.GotMachine = $scope.autobus.GotMachine;
+      if ($scope.GotMachine == null) {
+        $scope.GotMachine = $scope.przystanek.GotMachine;
       }
-      if ($scope.GotKiosk == null || $scope.GotKiosk == "") {
-        $scope.GotKiosk = $scope.autobus.GotKiosk;
+      if ($scope.GotKiosk == null) {
+        $scope.GotKiosk = $scope.przystanek.GotKiosk;
       }
-      if ($scope.BusStopType == null || $scope.BusStopType == "") {
-        $scope.BusStopType = $scope.autobus.BusStopType;
+      if ($scope.BusStopType == null) {
+        $scope.BusStopType = $scope.przystanek.BusStopType;
       }
 
 
@@ -853,15 +862,15 @@
         GotMachine: $scope.GotMachine,
         GotKiosk: $scope.GotKiosk,
         BusStopType: $scope.BusStopType,
-        BusStopStatus: $scope.autobus.BusStopStatus,
-        LastControl: $scope.autobus.LastControl
+        BusStopStatus: $scope.przystanek.BusStopStatus,
+        LastControl: $scope.przystanek.LastControl
       });
       var config = {
         //headers: {'Session': ''}
       };
 
       if ($scope.sendForm) {
-        $scope.message = "Trwa Aktualizacja Autobusu...";
+        $scope.message = "Trwa Aktualizacja Przystanku...";
         //console.log(data);
         $timeout(function () {
           $http.put('http://' + $rootScope.IP + ':50000/BusStop/PutBusStop', data, config)

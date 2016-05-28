@@ -7,28 +7,28 @@
     <div ng-hide="sendForm" class="panelWyswietlPrzystanek__text">Parametry aktualnie wybranego przystanku</div>
     <div ng-hide="sendForm" class="panelWyswietlPrzystanek__content__form">
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Nazwa Przystanku</span>
-        <p>{{ autobus.Name }}</p>
+        <p>{{ przystanek.Name }}</p>
       </div>
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Ulica</span>
-        <p>{{ autobus.LocalizationString }}</p>
+        <p>{{ przystanek.LocalizationString }}</p>
       </div>
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Lokalizacja</span>
-        <p>{{ autobus.Lat }}, {{ autobus.Lng }}</p>
+        <p>{{ przystanek.Lat }}, {{ przystanek.Lng }}</p>
       </div>
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Typ Przystanku</span>
-        <p>{{ autobus.BusStopTypeName }}</p>
+        <p>{{ przystanek.BusStopTypeName }}</p>
       </div>
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Biletomat</span>
-        <p>{{ autobus.GotMachineName }}</p>
+        <p>{{ przystanek.GotMachineName }}</p>
       </div>
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Kiosk</span>
-        <p>{{ autobus.GotKioskName }}</p>
+        <p>{{ przystanek.GotKioskName }}</p>
       </div>
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Aktualny status</span>
-        <p>{{ autobus.BusStopStatusName }}</p>
+        <p>{{ przystanek.BusStopStatusName }}</p>
       </div>
       <div class="panelWyswietlPrzystanek__content__form__item"><span class="itemHeader">Ostatnia kontrola</span>
-        <p>{{ autobus.LastControl }}</p>
+        <p>{{ przystanek.LastControl }}</p>
       </div>
     </div>
     <div class="panelWyswietlPrzystanek__subtitle">Edycja przystanku</div>
