@@ -2030,7 +2030,6 @@
 
       }
       $rootScope.showBusMarkersReload();
-      $scope.busMarker = [];
     });
 
     ws.onOpen(function (message) {
