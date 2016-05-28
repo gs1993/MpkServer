@@ -16,7 +16,7 @@
                 <div class="panelWyswietlTrase__itemSubtitle">{{ przystanek.LocalizationString }}</div>
               </div></a></div>
         </div>
-        <div class="panelWyswietlTrase__column">
+        <div ng-hide="track.IsArchiveVar" class="panelWyswietlTrase__column">
           <div class="panelWyswietlTrase__title">Aktualne Kursy</div>
           <div ng-repeat="kurs in kursyPoprawne" class="panelWyswietlTrase__content"><a href="#/course/show/{{kurs.Id}}" ng-hide="kurs.Ended" class="panelWyswietlTrase__itemBox">
               <div class="panelWyswietlTrase__item">

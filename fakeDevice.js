@@ -24,7 +24,7 @@ var sendAuth = function(){
 	deviceWebstocket.send(JSON.stringify(obj));
 }
 var sendActivity = function(x,y,type,addInfo){
-	var data = {DeviceId:'1',Lat:x,Lng:y,Type:type,AdditionalInfo:addInfo};
+	var data = {DeviceId:'3',Lat:x,Lng:y,Type:type,AdditionalInfo:addInfo};
 	var obj = {
 			  Action: "activity.send",
 			  Data: JSON.stringify(data)
@@ -34,7 +34,7 @@ var sendActivity = function(x,y,type,addInfo){
 
 var sampleStartCourse = function(){
 	var latlng = marker.getLatLng();
-	sendActivity(latlng.lat,latlng.lng,6,"TRACKID=17;");   // ID TRASY
+	sendActivity(latlng.lat,latlng.lng,6,"TRACKID=2;");   // ID TRASY
 }
 
 var sampleBusStop = function(){

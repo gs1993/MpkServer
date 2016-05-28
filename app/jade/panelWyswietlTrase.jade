@@ -22,7 +22,7 @@
               .panelWyswietlTrase__item
                 .panelWyswietlTrase__itemTitle <i class="fa fa-map-signs"></i> {{ przystanek.Name }}
                 .panelWyswietlTrase__itemSubtitle {{ przystanek.LocalizationString }}
-        .panelWyswietlTrase__column
+        .panelWyswietlTrase__column(ng-hide="track.IsArchiveVar")
           .panelWyswietlTrase__title Aktualne Kursy
           .panelWyswietlTrase__content(ng-repeat="kurs in kursyPoprawne")
             a(href="#/course/show/{{kurs.Id}}"  ng-hide="kurs.Ended").panelWyswietlTrase__itemBox
