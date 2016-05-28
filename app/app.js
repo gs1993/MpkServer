@@ -92,7 +92,7 @@
     }]);
   app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
-      $rootScope.IP = '192.168.1.4';
+      $rootScope.IP = 'localhost';
       // keep user logged in after page refresh
       $rootScope.globals = $cookieStore.get('globals') || {};
       if ($rootScope.globals.currentUser) {
@@ -1698,6 +1698,7 @@
 
     $scope.initTrack = function (track) {
       $scope.drawRoute(track);
+      $scope.busMarker=[];
     };
     $scope.drawRoute = function (track) {
       $scope.markerBusstopCheck = [];
@@ -1875,11 +1876,13 @@
         }
 
       });
-      $scope.busMarker.push({
-        Id: kurs.Bus.Id,
-        Name: kurs.Bus.BusNumber,
-        Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
-      });
+      if (kurs.Ended == false && kurs.Track.IsArchive==false) {
+        $scope.busMarker.push({
+          Id: kurs.Bus.Id,
+          Name: kurs.Bus.BusNumber,
+          Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
+        });
+      }
     };
 
 
@@ -1903,7 +1906,7 @@
 
         angular.forEach($scope.course, function (kurs) {
 
-          if (kurs.Ended == false) {
+          if (kurs.Ended == false && kurs.Track.IsArchive==false) {
 
             $scope.busMarkers.push({
               Id: kurs.Bus.Id,
@@ -1930,7 +1933,7 @@
 
         angular.forEach($scope.course, function (kurs) {
 
-          if (kurs.Ended == false) {
+          if (kurs.Ended == false && kurs.Track.IsArchive==false) {
 
             $scope.busMarkers.push({
               Id: kurs.Bus.Id,
@@ -1994,8 +1997,9 @@
       }
       if ($rootScope.KursyTrasyWebSocketActive) {
         $rootScope.KursyTrasyWebSocket();
+
       }
-      $rootScope.showBusMarkersReload()
+      $rootScope.showBusMarkersReload();
     });
 
     ws.onOpen(function (message) {
