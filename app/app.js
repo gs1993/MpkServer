@@ -214,6 +214,7 @@
         AuthenticationService.Login($scope.Email, $scope.Password, function (response) {
           console.log("[Sukces] Logowanie na serwerze ustanowione!");
           $rootScope.Service.sendAuth($scope.Email, $scope.Password)
+
           if (response.Result) {
             console.log("Sukces pobrania tokenu do ustawienia zmiennej globalnej");
             AuthenticationService.SetCredentials($scope.Email, $scope.Password);
@@ -601,8 +602,8 @@
       //headers: {'Session': ''}
     }).success(function (data, status, headers, config) {
       $scope.przystanki = data;
-      console.log($scope.przystanki);
       console.log("Pobrano liste przystanków.");
+      console.log($scope.przystanki);
       angular.forEach($scope.przystanki, function (przystanek) {
         if (przystanek.GotMachine == true) {
           przystanek.GotMachineName = "Tak";
@@ -1921,6 +1922,13 @@
             });
             console.log("test");
             console.log($scope.busMarkers);
+            $scope.SubskrypcjaAutobusu = function () {
+              $scope.SubskrypcjaKlik = true
+              console.log("[Info] Inicjowanie subskrypcji")
+              $rootScope.Service.sendAuth($rootScope.globals.Email, $rootScope.globals.Password );
+              $rootScope.Service.sendSubscribe(kurs.Bus.Id);
+            }
+            $scope.SubskrypcjaAutobusu();
             console.log("--------------");
           }
         });
@@ -1928,6 +1936,33 @@
         console.log("Błąd pobrania przystanków.")
       });
 
+      $scope.busMarker = $scope.busMarkers;
+    };
+    $rootScope.showBusMarkersReload = function (){
+      $scope.busMarkers = [];
+
+      $http.get('http://' + $rootScope.IP + ':50000/Course/GetList/'
+      ).success(function (data, status, headers, config) {
+        $scope.course = data;
+
+        angular.forEach($scope.course, function (kurs) {
+
+          if (kurs.Ended == false) {
+
+            $scope.busMarkers.push({
+              Id: kurs.Bus.Id,
+              Name: kurs.Bus.BusNumber,
+              Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
+            });
+            console.log("test");
+            console.log($scope.busMarkers);
+            console.log("--------------");
+          }
+        });
+        $rootScope.busMarkersToSub = $scope.busMarkers
+      }).error(function (data, status, headers, config) {
+        console.log("Błąd pobrania przystanków.")
+      });
       $scope.busMarker = $scope.busMarkers;
     };
 
@@ -1987,8 +2022,10 @@
       {
         $rootScope.KursWebSocketReload();
       }
-      if($rootScope.KursyTrasyWebSocketActive)
-      $rootScope.KursyTrasyWebSocket();
+      if($rootScope.KursyTrasyWebSocketActive){
+        $rootScope.KursyTrasyWebSocket();
+      }
+      $rootScope.showBusMarkersReload()
     });
 
     ws.onOpen(function (message) {
