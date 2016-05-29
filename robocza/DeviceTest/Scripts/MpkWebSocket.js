@@ -27,7 +27,7 @@ var sendAuth = function (email, password) {
 
 var sendActivity = function (x, y, type, addInfo) {
     var data = {
-        DeviceId: '1', Lat: x, Lng: y, Type: type, AdditionalInfo: addInfo
+        DeviceId: busId, Lat: x, Lng: y, Type: type, AdditionalInfo: addInfo
     };
     var obj = {
         Action: "activity.send",

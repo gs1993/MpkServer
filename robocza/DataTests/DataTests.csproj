@@ -68,6 +68,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ControllersTests\BusControllerTest.cs" />
     <Compile Include="MainDbContexTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
