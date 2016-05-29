@@ -9,6 +9,19 @@
       <div ng-show="course.Ended" class="panelWyswietlTrase__alert">Kurs zakończony!</div>
       <div class="panelWyswietlTrase__columns">
         <div class="panelWyswietlTrase__column -width100">
+          <div class="panelWyswietlTrase__title">Statystyki kursu
+            <div class="panelWyswietlTrase__content">
+              <div class="panelWyswietlTrase__itemBox">
+                <div class="panelWyswietlTrase__item">
+                  <div class="panelWyswietlTrase__itemSubtitle">Ilosc skasowanych biletów:   {{statystyki.sprawdzenieBiletu}}</div>
+                  <div class="panelWyswietlTrase__itemSubtitle">Ilosc kontrol biletów:       {{statystyki.kontrolaBiltow}}</div>
+                  <div class="panelWyswietlTrase__itemSubtitle">Ilosc incydentów:            {{statystyki.incydent}}</div>
+                  <div class="panelWyswietlTrase__itemSubtitle">Ilosc problemów technicnych: {{statystyki.problemTechniczny}}</div>
+                  <div class="panelWyswietlTrase__itemSubtitle">Ilosc sprzedanych biletów:   {{statystyki.sprzedanoBilet}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="panelWyswietlTrase__title">Aktywności kursu</div>
           <div ng-repeat="aktywnosc in course.Activities" class="panelWyswietlTrase__content">
             <div class="panelWyswietlTrase__itemBox">
