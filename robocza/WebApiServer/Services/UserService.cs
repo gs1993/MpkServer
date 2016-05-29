@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Logger;
 using Data;
 using Data.Models;
 using Data.Service;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using WebApiServer.Services.Services;
 using WebApiServer.Session;
 
 namespace WebApiServer.Services

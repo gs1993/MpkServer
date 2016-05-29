@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using System.Web.Http.Results;
 using Core.Logger;
 using Core.Transfer.TestTransfer;
 using Data.Models;
 using Data.Service;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using WebApiServer.Misc;
 using WebApiServer.Services;
 
 namespace WebApiServer.Controllers
