@@ -59,7 +59,7 @@ namespace WebSocketServer.Activity.Resolvers
                     throw new Exception("Bus already doing course");
 
 
-                bus.BusStatus=Status.Active;
+                bus.BusStatus=Status.Working;
 
                 activity.Bus = bus;
 

@@ -36,7 +36,7 @@ namespace WebSocketServer.Activity.Resolvers
 
                 var bus = db.Buss.Find(busId);
 
-                bus.BusStatus = Status.Inactive;
+                bus.BusStatus = Status.Active;
 
                 var course = db.Courses.Include(x => x.Bus).FirstOrDefault(x => x.Ended == false && x.Bus.Id == bus.Id);
 
