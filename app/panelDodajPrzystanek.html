@@ -59,8 +59,10 @@
             </path>
           </svg>
         </div>
-        <div class="panelDodajPrzystanek__dataLoader__text">
-          <p ng-hide="CallbackServera">{{ message }}</p><a href="/#/busstop" ng-show="CallbackServeraPositive" class="panelDodajPrzystanek__navigation__item green">Przystanek został dodany pomyślnie!</a><a href="/#/bus/add" ng-show="CallbackServeraNegative" class="panelDodajPrzystanek__navigation__item red">Coś poszło nie tak...</a>
+        <div class="panelPrzystanki__dataLoader__text">
+          <p ng-hide="CallbackServera">{{ message }}</p><a href="/#/busstop" ng-show="CallbackServeraPositive" class="panelPrzystanki__text success">
+            <div class="panelPrzystanki success__text__icon"><i class="fa fa-smile-o"></i></div>Przystanek został dodany pomyślnie!</a><a href="/#/busstop/add" ng-show="CallbackServeraNegative" class="panelPrzystanki__text error">
+            <div class="panelPrzystanki success__text__icon"><i class="fa fa-frown-o"></i></div>Coś poszło nie tak...</a>
         </div>
       </div>
     </form>
