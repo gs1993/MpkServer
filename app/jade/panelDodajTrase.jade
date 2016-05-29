@@ -15,7 +15,10 @@
     .panelDodajTrase(ng-controller="AddTrackController")
       .panelDodajTrase__alert(ng-show="BrakPrzystankow") Prosze wybrac jakis przystanek!
       .panelDodajTrase__title(ng-hide="DodanoTrase") Nazwa Przystanku
-      input(type="text" ng-model="LineNumber" ng-hide="DodanoTrase")
+      form(name="form")
+        .panelDodajPrzystanek__content__form(ng-hide="sendForm")
+          .panelDodajPrzystanek__content__form__item
+            input(type="number" ng-model="LineNumber" placeholder="Numer trasy" ng-hide="DodanoTrase")
       .panelDodajTrase__columns(ng-hide="DodanoTrase")
         .panelDodajTrase__column
           .panelDodajTrase__title Dostępne przystanki

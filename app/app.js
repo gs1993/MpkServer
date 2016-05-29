@@ -1316,13 +1316,34 @@
     //WYSYLANY ID
     $scope.CourseID = WybraneId;
 
+
+    $scope.zerujStartsytki=function () {
+      $scope.statystyki={
+        sprawdzenieBiletu:0,
+        kontrolaBiltow:0,
+        incydent:0,
+        problemTechniczny:0,
+        sprzedanoBilet:0
+      };
+    };
+
+    $scope.statystyki={
+      sprawdzenieBiletu:0,
+      kontrolaBiltow:0,
+      incydent:0,
+      problemTechniczny:0,
+      sprzedanoBilet:0
+    };
+
+
+
     $http.get('http://' + $rootScope.IP + ':50000/Course/Get/' + WybraneId, {
         //headers: {'Session': ''}
       }
     ).success(function (data, status, headers, config) {
       $scope.course = data;
       $scope.intCourse($scope.course);
-
+      $scope.zerujStartsytki();
       $scope.SubskrypcjaAutobusu = function () {
         $scope.SubskrypcjaKlik = true
         console.log("[Info] Inicjowanie subskrypcji")
@@ -1335,21 +1356,26 @@
       angular.forEach($scope.course.Activities, function (aktywnosc) {
         if (aktywnosc.ActivityType == 0) {
           aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
+          $scope.statystyki.sprawdzenieBiletu++;
         }
         else if (aktywnosc.ActivityType == 1) {
           aktywnosc.ActivityTypeName = "Kontrola Biletów";
+          $scope.statystyki.kontrolaBiltow++;
         }
         else if (aktywnosc.ActivityType == 2) {
           aktywnosc.ActivityTypeName = "Incydent z wandalami";
+          $scope.statystyki.incydent++;
         }
         else if (aktywnosc.ActivityType == 3) {
           aktywnosc.ActivityTypeName = "Problem techniczny";
+          $scope.statystyki.problemTechniczny++;
         }
         else if (aktywnosc.ActivityType == 4) {
           aktywnosc.ActivityTypeName = "Autobus dojechal do przystanku";
         }
         else if (aktywnosc.ActivityType == 5) {
           aktywnosc.ActivityTypeName = "Sprzedano bilet";
+          $scope.statystyki.sprzedanoBilet++;
         }
         else if (aktywnosc.ActivityType == 6) {
           aktywnosc.ActivityTypeName = "Rozpoczeto kurs";
@@ -1370,25 +1396,30 @@
       ).success(function (data, status, headers, config) {
         $scope.course = data;
         $scope.intCourse($scope.course);
-
+        $scope.zerujStartsytki();
         angular.forEach($scope.course.Activities, function (aktywnosc) {
           if (aktywnosc.ActivityType == 0) {
             aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
+            $scope.statystyki.sprawdzenieBiletu++;
           }
           else if (aktywnosc.ActivityType == 1) {
             aktywnosc.ActivityTypeName = "Kontrola Biletów";
+            $scope.statystyki.kontrolaBiltow++;
           }
           else if (aktywnosc.ActivityType == 2) {
             aktywnosc.ActivityTypeName = "Incydent z wandalami";
+            $scope.statystyki.incydent++;
           }
           else if (aktywnosc.ActivityType == 3) {
             aktywnosc.ActivityTypeName = "Problem techniczny";
+            $scope.statystyki.problemTechniczny++;
           }
           else if (aktywnosc.ActivityType == 4) {
             aktywnosc.ActivityTypeName = "Autobus dojechal do przystanku";
           }
           else if (aktywnosc.ActivityType == 5) {
             aktywnosc.ActivityTypeName = "Sprzedano bilet";
+            $scope.statystyki.sprzedanoBilet++;
           }
           else if (aktywnosc.ActivityType == 6) {
             aktywnosc.ActivityTypeName = "Rozpoczeto kurs";

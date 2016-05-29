@@ -18,6 +18,15 @@
       .panelWyswietlTrase__alert(ng-show="course.Ended") Kurs zakończony!
       .panelWyswietlTrase__columns
         .panelWyswietlTrase__column.-width100
+          .panelWyswietlTrase__title Statystyki kursu
+            .panelWyswietlTrase__content
+              .panelWyswietlTrase__itemBox
+                .panelWyswietlTrase__item
+                  .panelWyswietlTrase__itemSubtitle Ilosc skasowanych biletów:   {{statystyki.sprawdzenieBiletu}}
+                  .panelWyswietlTrase__itemSubtitle Ilosc kontrol biletów:       {{statystyki.kontrolaBiltow}}
+                  .panelWyswietlTrase__itemSubtitle Ilosc incydentów:            {{statystyki.incydent}}
+                  .panelWyswietlTrase__itemSubtitle Ilosc problemów technicnych: {{statystyki.problemTechniczny}}
+                  .panelWyswietlTrase__itemSubtitle Ilosc sprzedanych biletów:   {{statystyki.sprzedanoBilet}}
           .panelWyswietlTrase__title Aktywności kursu
           .panelWyswietlTrase__content(ng-repeat="aktywnosc in course.Activities")
             .panelWyswietlTrase__itemBox
