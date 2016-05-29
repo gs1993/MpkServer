@@ -1,4 +1,4 @@
-var deviceWebstocket = new WebSocket("ws://192.168.1.4:7878");
+var deviceWebstocket = new WebSocket("ws://localhost:7878");
 deviceWebstocket.onmessage = function(data){console.log(data);}
 
 var marker = undefined;
@@ -24,7 +24,7 @@ var sendAuth = function(){
 	deviceWebstocket.send(JSON.stringify(obj));
 }
 var sendActivity = function(x,y,type,addInfo){
-	var data = {DeviceId:'5',Lat:x,Lng:y,Type:type,AdditionalInfo:addInfo};
+	var data = {DeviceId:'1',Lat:x,Lng:y,Type:type,AdditionalInfo:addInfo};
 	var obj = {
 			  Action: "activity.send",
 			  Data: JSON.stringify(data)
@@ -37,7 +37,7 @@ var sampleStartCourse = function(){
 	console.log('Utworzenie Kursu')
 	console.log(latlng.lat)
 	console.log(latlng.lng)
-	sendActivity(latlng.lat,latlng.lng,6,"TRACKID=4;");   // ID TRASY
+	sendActivity(latlng.lat,latlng.lng,6,"TRACKID=40;");   // ID TRASY
 }
 
 var sampleBusStop = function(){

@@ -58,10 +58,13 @@
             td
               a(href="#/").navigation
                 i.ionicons.ion-ios-location
+                  .tool-tip.left Pokaż na mapie
               a(href="#/bus/show/{{ autobus.Id }}").navigation
                 i.ionicons.ion-settings
+                  .tool-tip.left Wyświetl autobus
               a(href="#/bus/delete/{{ autobus.Id }}").navigation
                 i.ionicons.ion-android-cancel.-red
+                  .tool-tip.left Dezaktywuj autobus
           tr(ng-hide="filtrowaneAutobusy.length")
             td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
     .panelAutobusy__subtitle(ng-hide="sendForm") Autobusy nie wprowadzone do służby
@@ -87,8 +90,10 @@
               //  i.ionicons.ion-ios-location
               a(href="#/bus/show/{{ autobus.Id }}").navigation
                 i.ionicons.ion-settings
+                  .tool-tip.left Wyświetl autobus
               a(href="#/bus/restore/{{ autobus.Id }}").navigation
                 i.ionicons.ion-android-add-circle.-green
+                  .tool-tip.left Aktywuj autobus
           tr(ng-hide="filtrowaneAutobusyNieaktywne.length")
             td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
     .panelAutobusy__dataLoader(ng-show="sendForm")

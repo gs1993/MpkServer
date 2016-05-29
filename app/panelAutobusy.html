@@ -59,7 +59,10 @@
             <td>{{ autobus.BusTypeName }}</td>
             <td>{{ autobus.BusStatusName }}</td>
             <td>{{ autobus.GotMachineName }}</td>
-            <td><a href="#/" class="navigation"><i class="ionicons ion-ios-location"></i></a><a href="#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="#/bus/delete/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red"></i></a></td>
+            <td><a href="#/" class="navigation"><i class="ionicons ion-ios-location">
+                  <div class="tool-tip left">Pokaż na mapie</div></i></a><a href="#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-settings">
+                  <div class="tool-tip left">Wyświetl autobus</div></i></a><a href="#/bus/delete/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red">
+                  <div class="tool-tip left">Dezaktywuj autobus</div></i></a></td>
           </tr>
           <tr ng-hide="filtrowaneAutobusy.length">
             <td colspan="6" class="-alert">Brak wpisów, proszę zmienić kryteria wyszukiwania.</td>
@@ -89,7 +92,9 @@
             <td>{{ autobus.GotMachineName }}</td>
             <td>
               <!--a(href="#/").navigation-->
-              <!--  i.ionicons.ion-ios-location--><a href="#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-settings"></i></a><a href="#/bus/restore/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green"></i></a>
+              <!--  i.ionicons.ion-ios-location--><a href="#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-settings">
+                  <div class="tool-tip left">Wyświetl autobus</div></i></a><a href="#/bus/restore/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-add-circle -green">
+                  <div class="tool-tip left">Aktywuj autobus</div></i></a>
             </td>
           </tr>
           <tr ng-hide="filtrowaneAutobusyNieaktywne.length">
