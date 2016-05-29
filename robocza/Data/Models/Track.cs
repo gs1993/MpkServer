@@ -20,7 +20,12 @@ namespace Data.Models
         [NotMapped]
         public int[] BusStopsIds
         {
-            get { return BusStops.Split(';').Select(x => Convert.ToInt32(x)).ToArray(); }
+            get
+            {
+                var array = BusStops.Split(';').Select(x => Convert.ToInt32(x)).ToArray();
+                Array.Reverse(array);
+                return array;
+            }
             set { BusStops = String.Join(";", value); }
         }
     }

@@ -3,3 +3,9 @@ D:\Repos\coffee-or-riots\robocza\DeviceTest\bin\DeviceTest.dll
 D:\Repos\coffee-or-riots\robocza\DeviceTest\bin\DeviceTest.pdb
 D:\Repos\coffee-or-riots\robocza\DeviceTest\obj\Release\DeviceTest.dll
 D:\Repos\coffee-or-riots\robocza\DeviceTest\obj\Release\DeviceTest.pdb
+C:\Users\YOLO\Source\Repos\coffee-or-riots11\robocza\DeviceTest\bin\DeviceTest.dll.config
+C:\Users\YOLO\Source\Repos\coffee-or-riots11\robocza\DeviceTest\bin\DeviceTest.dll
+C:\Users\YOLO\Source\Repos\coffee-or-riots11\robocza\DeviceTest\bin\DeviceTest.pdb
+C:\Users\YOLO\Source\Repos\coffee-or-riots11\robocza\DeviceTest\obj\Release\DeviceTest.csprojResolveAssemblyReference.cache
+C:\Users\YOLO\Source\Repos\coffee-or-riots11\robocza\DeviceTest\obj\Release\DeviceTest.dll
+C:\Users\YOLO\Source\Repos\coffee-or-riots11\robocza\DeviceTest\obj\Release\DeviceTest.pdb
