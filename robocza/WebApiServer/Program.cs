@@ -38,12 +38,12 @@ namespace WebApiServer
                 var corsAttr = new EnableCorsAttribute("*", "*", "*");
                 Config.EnableCors(corsAttr);
 
-                Config.Filters.Add(new ExceptionFilter());
+                Config.Filters.Add(new ExceptionFilter(logger));
 
                 var us = container.GetInstance<IUserService>();
                 var ss = container.GetInstance<ISessionService>();
 
-                Config.Filters.Add(new SimpleAuthFilter(ss,us));
+                Config.Filters.Add(new SimpleAuthFilter(ss,us,logger));
 
                 using (HttpSelfHostServer server = new HttpSelfHostServer(Config))
                 {
