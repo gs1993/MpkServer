@@ -1458,7 +1458,7 @@
         else if (user.Rank == 1) {
           user.RankName = "Kontroler";
         }
-        else if (user.Rank == 2) {
+        else if (user.Rank == 3) {
           user.RankName = "Administrator";
         }
         if (user.Activated == false) {
