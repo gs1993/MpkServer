@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5d1550c6-26d3-4ab5-a8d8-bf8bc96bb9a0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/blocks/panelDodajTrase/_panelDodajTrase.sass" afterPath="$PROJECT_DIR$/app/blocks/panelDodajTrase/_panelDodajTrase.sass" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/main.css" afterPath="$PROJECT_DIR$/app/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/home.html" afterPath="$PROJECT_DIR$/app/home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/jade/_header.jade" afterPath="$PROJECT_DIR$/app/jade/_header.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/jade/panelDodajTrase.jade" afterPath="$PROJECT_DIR$/app/jade/panelDodajTrase.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/jade/panelUsers.jade" afterPath="$PROJECT_DIR$/app/jade/panelUsers.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/panelDodajTrase.html" afterPath="$PROJECT_DIR$/app/panelDodajTrase.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/panelUsers.html" afterPath="$PROJECT_DIR$/app/panelUsers.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/jade/home.jade" afterPath="$PROJECT_DIR$/app/jade/home.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/jade/index.jade" afterPath="$PROJECT_DIR$/app/jade/index.jade" />
     </list>
     <ignored path="coffee-or-riots.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,21 +27,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="panelAutobusy.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/jade/panelAutobusy.jade">
+      <file leaf-file-name="_panelDodajTrase.sass" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/blocks/panelDodajTrase/_panelDodajTrase.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="30" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="30" />
+            <state relative-caret-position="306">
+              <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_panelDodajTrase.sass" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/blocks/panelDodajTrase/_panelDodajTrase.sass">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+            <state relative-caret-position="117">
+              <caret line="1457" column="34" selection-start-line="1457" selection-start-column="34" selection-end-line="1457" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/jade/home.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="panelUsers.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/jade/panelUsers.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-145">
+              <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jade" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/jade/index.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="panelWyswietlAutobus.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/jade/panelWyswietlAutobus.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="31" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -72,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="panelDodajAutobus.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/jade/panelDodajAutobus.jade">
+      <file leaf-file-name="panelDodajUser.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/jade/panelDodajUser.jade">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="102" />
+              <caret line="13" column="92" selection-start-line="12" selection-start-column="51" selection-end-line="13" selection-end-column="133" />
               <folding />
             </state>
           </provider>
@@ -107,7 +152,6 @@
         <option value="$PROJECT_DIR$/app/jade/_head.jade" />
         <option value="$PROJECT_DIR$/app/blocks/panelWyswietlTrase/_panelWyswietlTrase.sass" />
         <option value="$PROJECT_DIR$/app/test/fakeRead.js" />
-        <option value="$PROJECT_DIR$/app/jade/index.jade" />
         <option value="$PROJECT_DIR$/fakeDevice.js" />
         <option value="$PROJECT_DIR$/app/jade/panelWyswietlTrase.jade" />
         <option value="$PROJECT_DIR$/app/jade/panelWyswietlPrzystanek.jade" />
@@ -121,10 +165,12 @@
         <option value="$PROJECT_DIR$/app/jade/panelAutobusy.jade" />
         <option value="$PROJECT_DIR$/app/jade/_header.jade" />
         <option value="$PROJECT_DIR$/app/jade/panelUsers.jade" />
-        <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/app/jade/panelLogin.jade" />
         <option value="$PROJECT_DIR$/app/jade/panelDodajTrase.jade" />
         <option value="$PROJECT_DIR$/app/blocks/panelDodajTrase/_panelDodajTrase.sass" />
+        <option value="$PROJECT_DIR$/app/app.js" />
+        <option value="$PROJECT_DIR$/app/jade/home.jade" />
+        <option value="$PROJECT_DIR$/app/jade/index.jade" />
       </list>
     </option>
   </component>
@@ -348,7 +394,7 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="nodejs_interpreter_path" value="C:\Program Files\nodejs\node" />
     <property name="js.buildTools.grunt.grunt-cli.package" value="$PROJECT_DIR$/app/node_modules/grunt-cli" />
-    <property name="SearchEverywhereHistoryKey" value="panelDodaj&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/blocks/panelDodajAutobus/_panelDodajAutobus.sass&#10;panelDodajTr&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/blocks/panelDodajTrase/_panelDodajTrase.sass&#10;dodajtra&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/blocks/panelDodajTrase/_panelDodajTrase.sass&#10;dodaj&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/szablon/blocks/panelDodajAutobus/_panelDodajAutobus.sass&#10;panelDodajA&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelDodajAutobus.jade&#10;panelDo&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelDodajTrase.jade&#10;tras&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelTrasy.jade&#10;panelA&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelAutobusy.jade&#10;panelAut&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelAutobusy.jade&#10;panelprz&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/blocks/panelPrzystanki/_panelPrzystanki.sass&#10;przysta&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelPrzystanki.jade&#10;wyswiet&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/blocks/panelWyswietlPrzystanek/_panelWyswietlPrzystanek.sass&#10;wyswietlTrase&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelWyswietlTrase.jade&#10;app&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/app.js&#10;Dodaj&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelDodajPrzystanek.jade&#10;panelD&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelDodajTrase.jade&#10;panelPrzystanki&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots/app/blocks/panelPrzystanki/_panelPrzystanki.sass" />
+    <property name="SearchEverywhereHistoryKey" value="ap&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/app.js&#10;app.js&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/app.js&#10;panelDodaj&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/blocks/panelDodajAutobus/_panelDodajAutobus.sass&#10;panelDodajTr&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/blocks/panelDodajTrase/_panelDodajTrase.sass&#10;dodajtra&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/blocks/panelDodajTrase/_panelDodajTrase.sass&#10;dodaj&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/szablon/blocks/panelDodajAutobus/_panelDodajAutobus.sass&#10;panelDodajA&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelDodajAutobus.jade&#10;panelDo&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelDodajTrase.jade&#10;tras&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelTrasy.jade&#10;panelA&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelAutobusy.jade&#10;panelAut&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelAutobusy.jade&#10;panelprz&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/blocks/panelPrzystanki/_panelPrzystanki.sass&#10;przysta&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelPrzystanki.jade&#10;wyswiet&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/blocks/panelWyswietlPrzystanek/_panelWyswietlPrzystanek.sass&#10;wyswietlTrase&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelWyswietlTrase.jade&#10;app&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/app.js&#10;Dodaj&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelDodajPrzystanek.jade&#10;panelD&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots_front/app/jade/panelDodajTrase.jade&#10;panelPrzystanki&#9;FILE&#9;file://C:/Users/rafal/Desktop/Projekty/coffee-or-riots/app/blocks/panelPrzystanki/_panelPrzystanki.sass" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
   </component>
   <component name="RecentsManager">
@@ -505,7 +551,7 @@
       <workItem from="1464540690121" duration="5423000" />
       <workItem from="1464546659657" duration="22000" />
       <workItem from="1464547027153" duration="6587000" />
-      <workItem from="1464561548774" duration="429000" />
+      <workItem from="1464561548774" duration="3025000" />
     </task>
     <task id="LOCAL-00001" summary="Poprawiona responsywność w tabelkach">
       <created>1461941090029</created>
@@ -843,11 +889,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464554848456</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Poprawki">
+      <created>1464562007588</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1464562007588</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229274000" />
+    <option name="totallyTimeSpent" value="231870000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -862,12 +915,12 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19835235" sideWeight="0.6450382" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19835235" sideWeight="0.64425164" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32839838" sideWeight="0.4904943" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Grunt " active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19835235" sideWeight="0.35496184" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2956989" sideWeight="0.57604563" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3795424" sideWeight="0.44740176" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2956989" sideWeight="0.42395437" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19835235" sideWeight="0.3557484" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3795424" sideWeight="0.5551331" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3795424" sideWeight="0.44486693" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2960969" sideWeight="0.42395437" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25893825" sideWeight="0.48630136" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -918,22 +971,15 @@
     <MESSAGE value="Merge branch 'master' of https://bitbucket.org/SaliMike/coffee-or-riots&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
     <MESSAGE value="Merge branch 'master' of https://bitbucket.org/SaliMike/coffee-or-riots&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;fakeDevice.js&#10;" />
     <MESSAGE value="Merge branch 'master' of https://bitbucket.org/SaliMike/coffee-or-riots&#10;&#10;# Conflicts:&#10;#&#9;app/app.js&#10;" />
-    <MESSAGE value="Poprawki" />
     <MESSAGE value="Statystyki kursu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Statystyki kursu" />
+    <MESSAGE value="Poprawki" />
+    <option name="LAST_COMMIT_MESSAGE" value="Poprawki" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/blocks/panelList/_panelList.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/blocks/_grid.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -978,13 +1024,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/panelAutobusy.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/jade/panelDodajUser.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1047,13 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/jade/home.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/blocks/panelWyswietlTrase/_panelWyswietlTrase.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1087,13 +1119,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/jade/index.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/test/fakeRead.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1119,20 +1144,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
           <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/jade/panelWyswietlAutobus.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/jade/panelDodajPrzystanek.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="52" selection-start-line="14" selection-start-column="4" selection-end-line="18" selection-end-column="88" />
         </state>
       </provider>
     </entry>
@@ -1203,20 +1214,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="62" column="50" selection-start-line="62" selection-start-column="50" selection-end-line="62" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/jade/panelUsers.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="1458" column="36" selection-start-line="1458" selection-start-column="27" selection-end-line="1458" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1250,18 +1248,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/jade/panelDodajTrase.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/szablon/blocks/panelDodajAutobus/_panelDodajAutobus.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1023">
           <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1277,6 +1268,78 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/jade/panelDodajPrzystanek.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/jade/panelWyswietlAutobus.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/jade/panelDodajUser.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="92" selection-start-line="12" selection-start-column="51" selection-end-line="13" selection-end-column="133" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/jade/panelUsers.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-145">
+          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/jade/panelDodajTrase.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="1457" column="34" selection-start-line="1457" selection-start-column="34" selection-end-line="1457" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/jade/home.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/jade/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
           <folding />
         </state>
       </provider>
