@@ -1,28 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Infrastructure.Interception;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Security.Principal;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Filters;
-using System.Web.Http.Results;
 using Core.Enums;
-using Data.Service;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security.DataHandler.Encoder;
 using WebApiServer.Services;
 
 namespace WebApiServer.Misc
 {
     public class SimpleAuthFilter:IAuthenticationFilter
     {
-        private const string AuthenticationScheme = "Session";
+        //private const string AuthenticationScheme = "Session";
 
         private ISessionService _sessionService;
 

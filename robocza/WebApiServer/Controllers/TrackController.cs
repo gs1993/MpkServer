@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 using Core.Helpers;
 using Core.Logger;
@@ -45,9 +41,11 @@ namespace WebApiServer.Controllers
                 var track = db.Tracks.FirstOrDefault(x => x.Id == id);
 
                 var trackDto = track.MapToDetailsDto();
-                trackDto.BusStops =
-                    db.BusStops.Where(x => track.BusStopsIds.Contains(x.Id)).ToArray().Select(x => x.MapToDto()).ToList();
-
+                //trackDto.BusStops =
+                //    db.BusStops.Where(x => track.BusStopsIds.Contains(x.Id)).ToArray().Select(x => x.MapToDto()).ToList();
+                foreach (var busStopId in track.BusStopsIds) {
+                    trackDto.BusStops.Add(db.BusStops.First(x => x.Id == busStopId).MapToDto());
+                }
                 return trackDto;
             }
         }
