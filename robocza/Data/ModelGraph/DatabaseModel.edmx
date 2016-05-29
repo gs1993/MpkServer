@@ -1,0 +1,598 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DefaultConnectionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Activities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActivityType" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Lat" Type="float" Nullable="false" />
+          <Property Name="Lng" Type="float" Nullable="false" />
+          <Property Name="Bus_Id" Type="int" />
+          <Property Name="BusStop_Id" Type="int" />
+          <Property Name="Course_Id" Type="int" />
+          <Property Name="User_Id" Type="nvarchar" MaxLength="128" />
+          <Property Name="AdditionalInfo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar(max)" />
+          <Property Name="Lastname" Type="nvarchar(max)" />
+          <Property Name="Activated" Type="bit" Nullable="false" />
+          <Property Name="Rank" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Buses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationNumber" Type="nvarchar(max)" />
+          <Property Name="BusNumber" Type="nvarchar(max)" />
+          <Property Name="GotMachine" Type="bit" Nullable="false" />
+          <Property Name="BusType" Type="int" Nullable="false" />
+          <Property Name="LastControl" Type="datetime" Nullable="false" />
+          <Property Name="BusStatus" Type="int" Nullable="false" />
+          <Property Name="Driver_Id" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="BusStops">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Lat" Type="float" Nullable="false" />
+          <Property Name="Lng" Type="float" Nullable="false" />
+          <Property Name="LocalizationString" Type="nvarchar(max)" />
+          <Property Name="GotMachine" Type="bit" Nullable="false" />
+          <Property Name="GotKiosk" Type="bit" Nullable="false" />
+          <Property Name="BusStopType" Type="int" Nullable="false" />
+          <Property Name="LastControl" Type="datetime" Nullable="false" />
+          <Property Name="BusStopStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ended" Type="bit" Nullable="false" />
+          <Property Name="Bus_Id" Type="int" />
+          <Property Name="Track_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="RegisterTokens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpireDate" Type="datetime" Nullable="false" />
+          <Property Name="Token" Type="nvarchar(max)" />
+          <Property Name="User_Id" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Tracks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusStops" Type="nvarchar(max)" />
+          <Property Name="IsArchive" Type="bit" Nullable="false" />
+          <Property Name="LineNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Activities_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Activities_dbo_Buses_Bus_Id">
+          <End Role="Buses" Type="Self.Buses" Multiplicity="0..1" />
+          <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="Bus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Activities_dbo_BusStops_BusStop_Id">
+          <End Role="BusStops" Type="Self.BusStops" Multiplicity="0..1" />
+          <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusStops">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="BusStop_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Activities_dbo_Courses_Course_Id">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="Course_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Buses_dbo_AspNetUsers_Driver_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Buses" Type="Self.Buses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Buses">
+              <PropertyRef Name="Driver_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Courses_dbo_Buses_Bus_Id">
+          <End Role="Buses" Type="Self.Buses" Multiplicity="0..1" />
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="Bus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Courses_dbo_Tracks_Track_Id">
+          <End Role="Tracks" Type="Self.Tracks" Multiplicity="0..1" />
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tracks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="Track_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RegisterTokens_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="RegisterTokens" Type="Self.RegisterTokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegisterTokens">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DefaultConnectionModelStoreContainer">
+          <EntitySet Name="Activities" EntityType="Self.Activities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buses" EntityType="Self.Buses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusStops" EntityType="Self.BusStops" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterTokens" EntityType="Self.RegisterTokens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tracks" EntityType="Self.Tracks" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Activities_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_Activities_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Activities_dbo_Buses_Bus_Id" Association="Self.FK_dbo_Activities_dbo_Buses_Bus_Id">
+            <End Role="Buses" EntitySet="Buses" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Activities_dbo_BusStops_BusStop_Id" Association="Self.FK_dbo_Activities_dbo_BusStops_BusStop_Id">
+            <End Role="BusStops" EntitySet="BusStops" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Activities_dbo_Courses_Course_Id" Association="Self.FK_dbo_Activities_dbo_Courses_Course_Id">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Buses_dbo_AspNetUsers_Driver_Id" Association="Self.FK_dbo_Buses_dbo_AspNetUsers_Driver_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Buses" EntitySet="Buses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Courses_dbo_Buses_Bus_Id" Association="Self.FK_dbo_Courses_dbo_Buses_Bus_Id">
+            <End Role="Buses" EntitySet="Buses" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Courses_dbo_Tracks_Track_Id" Association="Self.FK_dbo_Courses_dbo_Tracks_Track_Id">
+            <End Role="Tracks" EntitySet="Tracks" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RegisterTokens_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_RegisterTokens_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="RegisterTokens" EntitySet="RegisterTokens" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DefaultConnectionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityType" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Lat" Type="Double" Nullable="false" />
+          <Property Name="Lng" Type="Double" Nullable="false" />
+          <Property Name="Bus_Id" Type="Int32" />
+          <Property Name="BusStop_Id" Type="Int32" />
+          <Property Name="Course_Id" Type="Int32" />
+          <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_Activities_dbo_AspNetUsers_User_Id" FromRole="Activities" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Buses" Relationship="Self.FK_dbo_Activities_dbo_Buses_Bus_Id" FromRole="Activities" ToRole="Buses" />
+          <NavigationProperty Name="BusStops" Relationship="Self.FK_dbo_Activities_dbo_BusStops_BusStop_Id" FromRole="Activities" ToRole="BusStops" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK_dbo_Activities_dbo_Courses_Course_Id" FromRole="Activities" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firstname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Activated" Type="Boolean" Nullable="false" />
+          <Property Name="Rank" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Activities" Relationship="Self.FK_dbo_Activities_dbo_AspNetUsers_User_Id" FromRole="AspNetUsers" ToRole="Activities" />
+          <NavigationProperty Name="Buses" Relationship="Self.FK_dbo_Buses_dbo_AspNetUsers_Driver_Id" FromRole="AspNetUsers" ToRole="Buses" />
+          <NavigationProperty Name="RegisterTokens" Relationship="Self.FK_dbo_RegisterTokens_dbo_AspNetUsers_User_Id" FromRole="AspNetUsers" ToRole="RegisterTokens" />
+        </EntityType>
+        <EntityType Name="Buses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BusNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GotMachine" Type="Boolean" Nullable="false" />
+          <Property Name="BusType" Type="Int32" Nullable="false" />
+          <Property Name="LastControl" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BusStatus" Type="Int32" Nullable="false" />
+          <Property Name="Driver_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Activities" Relationship="Self.FK_dbo_Activities_dbo_Buses_Bus_Id" FromRole="Buses" ToRole="Activities" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_Buses_dbo_AspNetUsers_Driver_Id" FromRole="Buses" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK_dbo_Courses_dbo_Buses_Bus_Id" FromRole="Buses" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="BusStops">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lat" Type="Double" Nullable="false" />
+          <Property Name="Lng" Type="Double" Nullable="false" />
+          <Property Name="LocalizationString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GotMachine" Type="Boolean" Nullable="false" />
+          <Property Name="GotKiosk" Type="Boolean" Nullable="false" />
+          <Property Name="BusStopType" Type="Int32" Nullable="false" />
+          <Property Name="LastControl" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BusStopStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Activities" Relationship="Self.FK_dbo_Activities_dbo_BusStops_BusStop_Id" FromRole="BusStops" ToRole="Activities" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ended" Type="Boolean" Nullable="false" />
+          <Property Name="Bus_Id" Type="Int32" />
+          <Property Name="Track_Id" Type="Int32" />
+          <NavigationProperty Name="Activities" Relationship="Self.FK_dbo_Activities_dbo_Courses_Course_Id" FromRole="Courses" ToRole="Activities" />
+          <NavigationProperty Name="Buses" Relationship="Self.FK_dbo_Courses_dbo_Buses_Bus_Id" FromRole="Courses" ToRole="Buses" />
+          <NavigationProperty Name="Tracks" Relationship="Self.FK_dbo_Courses_dbo_Tracks_Track_Id" FromRole="Courses" ToRole="Tracks" />
+        </EntityType>
+        <EntityType Name="RegisterTokens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_RegisterTokens_dbo_AspNetUsers_User_Id" FromRole="RegisterTokens" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="Tracks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusStops" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsArchive" Type="Boolean" Nullable="false" />
+          <Property Name="LineNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK_dbo_Courses_dbo_Tracks_Track_Id" FromRole="Tracks" ToRole="Courses" />
+        </EntityType>
+        <Association Name="FK_dbo_Activities_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Activities_dbo_Buses_Bus_Id">
+          <End Role="Buses" Type="Self.Buses" Multiplicity="0..1" />
+          <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="Bus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Activities_dbo_BusStops_BusStop_Id">
+          <End Role="BusStops" Type="Self.BusStops" Multiplicity="0..1" />
+          <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusStops">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="BusStop_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Activities_dbo_Courses_Course_Id">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="Course_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Buses_dbo_AspNetUsers_Driver_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Buses" Type="Self.Buses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Buses">
+              <PropertyRef Name="Driver_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_RegisterTokens_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="RegisterTokens" Type="Self.RegisterTokens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegisterTokens">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Courses_dbo_Buses_Bus_Id">
+          <End Role="Buses" Type="Self.Buses" Multiplicity="0..1" />
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="Bus_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Courses_dbo_Tracks_Track_Id">
+          <End Role="Tracks" Type="Self.Tracks" Multiplicity="0..1" />
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tracks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="Track_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DefaultConnectionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activities" EntityType="Self.Activities" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Buses" EntityType="Self.Buses" />
+          <EntitySet Name="BusStops" EntityType="Self.BusStops" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" />
+          <EntitySet Name="RegisterTokens" EntityType="Self.RegisterTokens" />
+          <EntitySet Name="Tracks" EntityType="Self.Tracks" />
+          <AssociationSet Name="FK_dbo_Activities_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_Activities_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Activities_dbo_Buses_Bus_Id" Association="Self.FK_dbo_Activities_dbo_Buses_Bus_Id">
+            <End Role="Buses" EntitySet="Buses" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Activities_dbo_BusStops_BusStop_Id" Association="Self.FK_dbo_Activities_dbo_BusStops_BusStop_Id">
+            <End Role="BusStops" EntitySet="BusStops" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Activities_dbo_Courses_Course_Id" Association="Self.FK_dbo_Activities_dbo_Courses_Course_Id">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Buses_dbo_AspNetUsers_Driver_Id" Association="Self.FK_dbo_Buses_dbo_AspNetUsers_Driver_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Buses" EntitySet="Buses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_RegisterTokens_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_RegisterTokens_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="RegisterTokens" EntitySet="RegisterTokens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Courses_dbo_Buses_Bus_Id" Association="Self.FK_dbo_Courses_dbo_Buses_Bus_Id">
+            <End Role="Buses" EntitySet="Buses" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Courses_dbo_Tracks_Track_Id" Association="Self.FK_dbo_Courses_dbo_Tracks_Track_Id">
+            <End Role="Tracks" EntitySet="Tracks" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DefaultConnectionModelStoreContainer" CdmEntityContainer="DefaultConnectionEntities">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="DefaultConnectionModel.Activities">
+              <MappingFragment StoreEntitySet="Activities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ActivityType" ColumnName="ActivityType" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Bus_Id" ColumnName="Bus_Id" />
+                <ScalarProperty Name="BusStop_Id" ColumnName="BusStop_Id" />
+                <ScalarProperty Name="Course_Id" ColumnName="Course_Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="AdditionalInfo" ColumnName="AdditionalInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="DefaultConnectionModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Activated" ColumnName="Activated" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buses">
+            <EntityTypeMapping TypeName="DefaultConnectionModel.Buses">
+              <MappingFragment StoreEntitySet="Buses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="BusNumber" ColumnName="BusNumber" />
+                <ScalarProperty Name="GotMachine" ColumnName="GotMachine" />
+                <ScalarProperty Name="BusType" ColumnName="BusType" />
+                <ScalarProperty Name="LastControl" ColumnName="LastControl" />
+                <ScalarProperty Name="BusStatus" ColumnName="BusStatus" />
+                <ScalarProperty Name="Driver_Id" ColumnName="Driver_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusStops">
+            <EntityTypeMapping TypeName="DefaultConnectionModel.BusStops">
+              <MappingFragment StoreEntitySet="BusStops">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="LocalizationString" ColumnName="LocalizationString" />
+                <ScalarProperty Name="GotMachine" ColumnName="GotMachine" />
+                <ScalarProperty Name="GotKiosk" ColumnName="GotKiosk" />
+                <ScalarProperty Name="BusStopType" ColumnName="BusStopType" />
+                <ScalarProperty Name="LastControl" ColumnName="LastControl" />
+                <ScalarProperty Name="BusStopStatus" ColumnName="BusStopStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="DefaultConnectionModel.Courses">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ended" ColumnName="Ended" />
+                <ScalarProperty Name="Bus_Id" ColumnName="Bus_Id" />
+                <ScalarProperty Name="Track_Id" ColumnName="Track_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterTokens">
+            <EntityTypeMapping TypeName="DefaultConnectionModel.RegisterTokens">
+              <MappingFragment StoreEntitySet="RegisterTokens">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tracks">
+            <EntityTypeMapping TypeName="DefaultConnectionModel.Tracks">
+              <MappingFragment StoreEntitySet="Tracks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BusStops" ColumnName="BusStops" />
+                <ScalarProperty Name="IsArchive" ColumnName="IsArchive" />
+                <ScalarProperty Name="LineNumber" ColumnName="LineNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

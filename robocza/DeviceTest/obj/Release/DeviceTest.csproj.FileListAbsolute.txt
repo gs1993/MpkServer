@@ -9,3 +9,4 @@ C:\Users\YOLO\Source\Repos\coffee-or-riots11\robocza\DeviceTest\bin\DeviceTest.p
 C:\Users\YOLO\Source\Repos\coffee-or-riots11\robocza\DeviceTest\obj\Release\DeviceTest.csprojResolveAssemblyReference.cache
 C:\Users\YOLO\Source\Repos\coffee-or-riots11\robocza\DeviceTest\obj\Release\DeviceTest.dll
 C:\Users\YOLO\Source\Repos\coffee-or-riots11\robocza\DeviceTest\obj\Release\DeviceTest.pdb
+D:\Repos\coffee-or-riots\robocza\DeviceTest\obj\Release\DeviceTest.csprojResolveAssemblyReference.cache

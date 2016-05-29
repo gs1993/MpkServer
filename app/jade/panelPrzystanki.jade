@@ -56,10 +56,13 @@
             td
               a(href="" ng-click="setPostitionBusstop(przystanek.Id)").navigation
                 i.ionicons.ion-ios-location
+                  .tool-tip.left Pokaż na mapie
               a(href="/#/busstop/show/{{ przystanek.Id }}").navigation
-                i.ionicons.ion-settings
+                i.ionicons.ion-settings.tooltips
+                  .tool-tip.left Wyświetl przystanek
               a(href="/#/busstop/delete/{{ przystanek.Id }}").navigation
-                i.ionicons.ion-android-cancel.-red
+                i.ionicons.ion-android-cancel.-red.tooltips
+                  .tool-tip.left Dezaktywuj przystanek
           tr(ng-hide="filtrowanePrzystanku.length")
             td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
     .panelPrzystanki__subtitle(ng-hide="sendForm") Nieaktywne przystanki
@@ -85,8 +88,10 @@
               //  i.ionicons.ion-ios-location
               a(href="/#/busstop/show/{{ przystanek.Id }}").navigation
                 i.ionicons.ion-settings
+                  .tool-tip.left Wyświetl przystanek
               a(href="/#/busstop/restore/{{ przystanek.Id }}").navigation
                 i.ionicons.ion-android-add-circle.-green
+                  .tool-tip.left Aktywuj przystanek
           tr(ng-hide="filtrowanePrzystankuNieaktywe.length")
             td(colspan="6").-alert Brak wpisów, proszę zmienić kryteria wyszukiwania.
     .panelPrzystanki__dataLoader(ng-show="sendForm")

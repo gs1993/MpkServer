@@ -11783,6 +11783,7 @@ a.tabnav-extra:hover {
 
 .panelAutobusy__table .navigation:hover i {
   color: #2196F3;
+  position: relative;
 }
 
 .panelAutobusy__table .navigation:hover i.-red {
@@ -11791,6 +11792,63 @@ a.tabnav-extra:hover {
 
 .panelAutobusy__table .navigation:hover i.-green {
   color: green;
+}
+
+.panelAutobusy__table .navigation .tool-tip {
+  color: #fff;
+  min-width: 100px;
+  background-color: #2196F3;
+  text-shadow: none;
+  font-size: .8em;
+  visibility: hidden;
+  border-radius: 7px;
+  text-align: center;
+  opacity: 0;
+  z-index: 999;
+  padding: 3px 8px;
+  position: absolute;
+  cursor: default;
+}
+
+.panelAutobusy__table .navigation .tool-tip.top:after, .panelAutobusy__table .navigation .tool-tip:after {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  margin-left: -7px;
+  content: ' ';
+  height: 0;
+  width: 0;
+  border: 6px solid transparent;
+  border-top-color: #2196F3;
+}
+
+.panelAutobusy__table .navigation .tool-tip.tool-tip.top {
+  width: 80px;
+  height: 22px;
+  margin-left: -43px;
+}
+
+.panelAutobusy__table .navigation .tool-tip.left {
+  top: 50%;
+  left: auto;
+  right: 170%;
+  margin-top: -15px;
+  margin-left: auto;
+}
+
+.panelAutobusy__table .navigation .tool-tip.left:after {
+  left: auto;
+  right: -12px;
+  top: 50%;
+  margin-top: -6px;
+  bottom: auto;
+  border-top-color: transparent;
+  border-left-color: #2196F3;
+}
+
+.panelAutobusy__table .navigation *:not(.on-focus):hover > .tool-tip, .panelAutobusy__table .navigation .on-focus input:focus + .tool-tip {
+  visibility: visible;
+  opacity: 1;
 }
 
 .panelAutobusy__navigation {
@@ -12398,6 +12456,7 @@ a.tabnav-extra:hover {
 
 .panelPrzystanki__table .navigation:hover i {
   color: #2196F3;
+  position: relative;
 }
 
 .panelPrzystanki__table .navigation:hover i.-red {
@@ -12406,6 +12465,63 @@ a.tabnav-extra:hover {
 
 .panelPrzystanki__table .navigation:hover i.-green {
   color: green;
+}
+
+.panelPrzystanki__table .navigation .tool-tip {
+  color: #fff;
+  min-width: 100px;
+  background-color: #2196F3;
+  text-shadow: none;
+  font-size: .8em;
+  visibility: hidden;
+  border-radius: 7px;
+  text-align: center;
+  opacity: 0;
+  z-index: 999;
+  padding: 3px 8px;
+  position: absolute;
+  cursor: default;
+}
+
+.panelPrzystanki__table .navigation .tool-tip.top:after, .panelPrzystanki__table .navigation .tool-tip:after {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  margin-left: -7px;
+  content: ' ';
+  height: 0;
+  width: 0;
+  border: 6px solid transparent;
+  border-top-color: #2196F3;
+}
+
+.panelPrzystanki__table .navigation .tool-tip.tool-tip.top {
+  width: 80px;
+  height: 22px;
+  margin-left: -43px;
+}
+
+.panelPrzystanki__table .navigation .tool-tip.left {
+  top: 50%;
+  left: auto;
+  right: 170%;
+  margin-top: -15px;
+  margin-left: auto;
+}
+
+.panelPrzystanki__table .navigation .tool-tip.left:after {
+  left: auto;
+  right: -12px;
+  top: 50%;
+  margin-top: -6px;
+  bottom: auto;
+  border-top-color: transparent;
+  border-left-color: #2196F3;
+}
+
+.panelPrzystanki__table .navigation *:not(.on-focus):hover > .tool-tip, .panelPrzystanki__table .navigation .on-focus input:focus + .tool-tip {
+  visibility: visible;
+  opacity: 1;
 }
 
 .panelPrzystanki__navigation {
