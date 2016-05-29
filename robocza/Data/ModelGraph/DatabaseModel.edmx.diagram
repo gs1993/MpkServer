@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8934c613cd2943a0841f4f76ef3e1c3b" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="DefaultConnectionModel.Activities" Width="1.5" PointX="3.125" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DefaultConnectionModel.AspNetUsers" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DefaultConnectionModel.Buses" Width="1.5" PointX="2.875" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DefaultConnectionModel.BusStops" Width="1.5" PointX="7" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DefaultConnectionModel.Courses" Width="1.5" PointX="5.125" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DefaultConnectionModel.RegisterTokens" Width="1.5" PointX="0.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DefaultConnectionModel.Tracks" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="DefaultConnectionModel.FK_dbo_Activities_dbo_AspNetUsers_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DefaultConnectionModel.FK_dbo_Activities_dbo_Buses_Bus_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DefaultConnectionModel.FK_dbo_Activities_dbo_BusStops_BusStop_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DefaultConnectionModel.FK_dbo_Activities_dbo_Courses_Course_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DefaultConnectionModel.FK_dbo_Buses_dbo_AspNetUsers_Driver_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DefaultConnectionModel.FK_dbo_RegisterTokens_dbo_AspNetUsers_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DefaultConnectionModel.FK_dbo_Courses_dbo_Buses_Bus_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="DefaultConnectionModel.FK_dbo_Courses_dbo_Tracks_Track_Id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

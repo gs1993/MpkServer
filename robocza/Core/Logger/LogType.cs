@@ -9,6 +9,8 @@ namespace Core.Logger
     public enum LogType
     {
         Error,
-        Log
+        Log,
+        Warn,
+        Debug
     }
 }

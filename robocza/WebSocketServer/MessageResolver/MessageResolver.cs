@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Helpers;
+using Core.Logger;
 using Core.Transfer.Attributes;
 using Newtonsoft.Json;
 using SimpleInjector;
@@ -16,12 +17,15 @@ namespace WebSocketServer.MessageResolver
 {
     public class MessageResolver : IMessageResolver
     {
-        private Container _container;
+        private readonly Container _container;
+
+        private ILogger _logger;
 
 
-        public MessageResolver(Container container)
+        public MessageResolver(Container container, ILogger logger)
         {
             _container = container;
+            _logger = logger;
         }
 
         private Type[] getGenericTypes(string name)
@@ -54,6 +58,8 @@ namespace WebSocketServer.MessageResolver
             var result = new MessageResultDto();
             try
             {
+                _logger.Log($"Recived:{msg}");
+
                 var messageDto = JsonConvert.DeserializeObject<MessageDto>(msg);
 
                 var genericTypes = getGenericTypes(messageDto.Action);
@@ -76,12 +82,18 @@ namespace WebSocketServer.MessageResolver
             }
             catch (Exception exception)
             {
+                _logger.Log(exception.ToString(),LogType.Error);
+
                 result.State = ResultState.Error;
 
-                result.Data = JsonConvert.SerializeObject(new {msg = exception.InnerException.Message});
+                result.Data = JsonConvert.SerializeObject(new {msg = "Unexpected error, see logs for more details"});
             }
 
-            return JsonConvert.SerializeObject(result);
+            var stringResult = JsonConvert.SerializeObject(result);
+
+            _logger.Log($"Sending:{stringResult}");
+
+            return stringResult;
         }
     }
 }

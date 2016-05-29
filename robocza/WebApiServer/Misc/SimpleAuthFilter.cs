@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Filters;
 using Core.Enums;
+using Core.Logger;
 using WebApiServer.Services;
 
 namespace WebApiServer.Misc
@@ -19,16 +20,22 @@ namespace WebApiServer.Misc
 
         private IUserService _userService;
 
+        private ILogger _logger;
 
-        public SimpleAuthFilter(ISessionService sessionService, IUserService userService)
+
+        public SimpleAuthFilter(ISessionService sessionService, IUserService userService, ILogger logger)
         {
             _sessionService = sessionService;
             _userService = userService;
+            _logger = logger;
         }
 
         public async Task AuthenticateAsync(HttpAuthenticationContext context, CancellationToken cancellationToken)
         {
             HttpRequestMessage request = context.Request;
+
+            _logger.Log($"{context.Request.Method.Method}:{context.Request.RequestUri.ToString()}");
+
             var sessionheader = request.Headers.Any(x=>x.Key=="Session");
 
             if (context.ActionContext.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any()) return;

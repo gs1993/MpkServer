@@ -2,6 +2,7 @@
 using System.Linq;
 using Core.Logger;
 using Data.Service;
+using Fleck;
 using Newtonsoft.Json;
 using SimpleInjector;
 using WebSocketServer.Activity;
@@ -30,10 +31,34 @@ namespace WebSocketServer
         static void Main(string[] args)
         {
             // var ws = new WebSocket(ip);
+            
+
             var server = new Fleck.WebSocketServer("ws://0.0.0.0:7878");
             server.SupportedSubProtocols = new[] { "superchat", "chat" };
             using (var container = GetContainer())
             {
+                var logger = container.GetInstance<ILogger>();
+
+                Fleck.FleckLog.LogAction = (level, message, ex) =>
+                {
+                    switch (level)
+                    {
+                        case LogLevel.Warn:
+                            logger.Log($"WARN:Message:{message},AddInfo:{ex}",LogType.Warn);
+                            break;
+                        case LogLevel.Error:
+                            logger.Log($"Message:{message},AddInfo:{ex}", LogType.Error);
+                            break;
+                        case LogLevel.Debug:
+                            logger.Log($"Message:{message},AddInfo:{ex}",LogType.Debug);
+                            break;
+                        default:
+                            logger.Log($"Message:{message},AddInfo:{ex}");
+                            break;
+                    }
+                };
+
+
                 server.Start(socket =>
                 {
                     container.GetInstance<IConnectionHolder>().AddConnection(new Connection.Connection(socket, container));

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web.Http;
 using Core.Helpers;
 using Core.Logger;
+using Core.Transfer.BusStop;
 using Core.Transfer.TrackController;
 using Data;
 using Data.Models;
@@ -41,8 +43,13 @@ namespace WebApiServer.Controllers
                 var track = db.Tracks.FirstOrDefault(x => x.Id == id);
 
                 var trackDto = track.MapToDetailsDto();
+
+                trackDto.BusStops = new List<BusStopDto>();
+
                 //trackDto.BusStops =
                 //    db.BusStops.Where(x => track.BusStopsIds.Contains(x.Id)).ToArray().Select(x => x.MapToDto()).ToList();
+
+                if(track==null) throw new Exception("Nie istnieje kurs o takim id");
                 foreach (var busStopId in track.BusStopsIds) {
                     var busStop = db.BusStops.FirstOrDefault(x => x.Id == busStopId).MapToDto();
                     if (busStop != null) {
