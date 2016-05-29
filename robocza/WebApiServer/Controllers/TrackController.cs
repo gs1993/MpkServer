@@ -44,7 +44,10 @@ namespace WebApiServer.Controllers
                 //trackDto.BusStops =
                 //    db.BusStops.Where(x => track.BusStopsIds.Contains(x.Id)).ToArray().Select(x => x.MapToDto()).ToList();
                 foreach (var busStopId in track.BusStopsIds) {
-                    trackDto.BusStops.Add(db.BusStops.First(x => x.Id == busStopId).MapToDto());
+                    var busStop = db.BusStops.FirstOrDefault(x => x.Id == busStopId).MapToDto();
+                    if (busStop != null) {
+                        trackDto.BusStops.Add(busStop);
+                    }
                 }
                 return trackDto;
             }
