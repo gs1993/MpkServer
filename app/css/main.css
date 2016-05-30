@@ -12848,10 +12848,23 @@ a.tabnav-extra:hover {
 }
 
 .panelDodajPrzystanek__content__form span.error-info {
-  padding: 8px 0;
+  padding: 8px 5px;
   line-height: 1.2em;
   color: #800002;
   display: block;
+  font-size: 10px;
+  margin: 5px;
+  text-align: justify;
+}
+
+.panelDodajPrzystanek__content__form span.alert-info {
+  padding: 8px 5px;
+  line-height: 1.2em;
+  color: #2196F3;
+  display: block;
+  font-size: 10px;
+  margin: 5px;
+  text-align: justify;
 }
 
 .panelDodajPrzystanek form.ng-submitted input.ng-invalid, .panelDodajPrzystanek form.ng-submitted select.ng-invalid {
@@ -14381,7 +14394,7 @@ a.tabnav-extra:hover {
   text-align: center;
   padding: 5px 20px 20px;
   font-weight: 400;
-  color: #00b3ee;
+  color: #800002;
 }
 
 .panelDodajTrase__content {

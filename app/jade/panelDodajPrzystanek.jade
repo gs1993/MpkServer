@@ -18,30 +18,30 @@
             span.item Nazwa Przystanku
             input(placeholder="Nazwa Przystanku" ng-model="Name" required name="uNazwa")
             .row(ng-show="form.$submitted || form.uNazwa.$touched")
-              span(ng-show="form.uNazwa.$error.required").error-info Proszę podać nazwe przystanku
+              span(ng-show="form.uNazwa.$error.required").error-info Błąd: Proszę podać nazwe przystanku
           .panelDodajPrzystanek__content__form__item
             span.item Ulica
             input(placeholder="Ulica" ng-model="LocalizationString" required name="uUlica")
             .row(ng-show="form.$submitted || form.uUlica.$touched" )
-              span(ng-show="form.uUlica.$error.required").error-info Proszę podać nazwe ulicy
+              span(ng-show="form.uUlica.$error.required").error-info Błąd: Proszę podać nazwe ulicy
           .panelDodajPrzystanek__content__form__item
             span.item Typ Przystanku
             select(ng-model="BusStopType" required name="uTypPrzystanku")
-              option(value="" ng-selected="selected") Wybierz typ przystanku!
+              option(value="" ng-selected="selected")
               option(value=0) Normalny
               option(value=1) Zabudowany
             .row(ng-show="form.$submitted || form.uTypPrzystanku.$touched")
-              span(ng-show="form.uTypPrzystanku.$error.required").error-info Prosze wybrać odpowiedni typ przystanku
+              span(ng-show="form.uTypPrzystanku.$error.required").error-info Błąd: Proszę wybrać typ przystanku!
           .panelDodajPrzystanek__content__form__item
             span.item Koordynat Lat
             input(placeholder="Lat" ng-model="Lat" required name="uLat")
             .row(ng-show="form.$submitted || form.uLat.$touched")
-              span(ng-show="form.uLat.$error.required").error-info Prosze podać współrzędne!
+              span(ng-show="form.uLat.$error.required").error-info Błąd: Prosze podać współrzędne!
           .panelDodajPrzystanek__content__form__item
             span.item Koordynat Lng
             input(placeholder="Lng" ng-model="Lng" required name="uLng")
             .row(ng-show="form.$submitted || form.uLng.$touched")
-              span(ng-show="form.uLng.$error.required").error-info Prosze podać współrzędne!
+              span(ng-show="form.uLng.$error.required").error-info Błąd: Prosze podać współrzędne!
           .panelDodajPrzystanek__content__form__item
             span.item Czy ma biletomat?
             select(ng-model="GotMachine" required name="uBiletomat")
@@ -49,7 +49,7 @@
               option(value=0) Nie
               option(value=1) Tak
             .row(ng-show="form.$submitted || form.uBiletomat.$touched")
-              span(ng-show="form.uBiletomat.$error.required").error-info Proszę wybrać odpowiednią opcje
+              span(ng-show="form.uBiletomat.$error.required").error-info Błąd: Proszę wybrać odpowiednią opcje
           .panelDodajPrzystanek__content__form__item
             span.item Czy ma kiosk?
             select(ng-model="GotKiosk" required name="uKiosk")
@@ -57,7 +57,7 @@
               option(value=0) Nie
               option(value=1) Tak
             .row(ng-show="form.$submitted || form.uKiosk.$touched")
-              span(ng-show="form.uKiosk.$error.required").error-info Proszę wybrać odpowiednią opcje
+              span(ng-show="form.uKiosk.$error.required").error-info Błąd: Proszę wybrać odpowiednią opcje
       .panelDodajPrzystanek__navigation(ng-hide="sendForm")
         button.panelDodajPrzystanek__navigation__item.green Dodaj Przystanek
         a(href="/#/busstop").panelDodajPrzystanek__navigation__item.gray.-abort Anuluj

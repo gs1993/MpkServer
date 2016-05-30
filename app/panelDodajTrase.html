@@ -37,7 +37,10 @@
         </div>
       </div>
       <div ng-click="zapiszTrase()" ng-hide="DodanoTrase" class="panelDodajTrase__buttonToSave">Zapisz trase</div>
-      <div ng-show="DodanoTrase" class="panelDodajTrase__alert">Przystanek został dodany pomyślnie!</div><a ng-show="DodanoTrase" href="#/track/" class="panelDodajTrase__buttonToSave">Wróć do przystanków</a>
+      <div ng-show="DodanoTrase" class="panelDodajTrase__alert">
+        <div class="panelAutobusy__dataLoader__text"><a href="" class="panelPrzystanki__text success">
+            <div class="panelAutobusy success__text__icon"><i class="fa fa-smile-o"></i></div>Trasa została dodana pomyślnie!</a></div>
+      </div><a ng-show="DodanoTrase" href="#/track/" class="panelDodajTrase__buttonToSave">Wróć do tras</a>
     </div>
   </div>
 </div>

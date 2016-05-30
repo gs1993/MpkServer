@@ -9,27 +9,27 @@
       <div ng-hide="sendForm" class="panelDodajPrzystanek__content__form">
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Nazwa Przystanku</span>
           <input placeholder="Nazwa Przystanku" ng-model="Name" required="required" name="uNazwa"/>
-          <div ng-show="form.$submitted || form.uNazwa.$touched" class="row"><span ng-show="form.uNazwa.$error.required" class="error-info">Proszę podać nazwe przystanku</span></div>
+          <div ng-show="form.$submitted || form.uNazwa.$touched" class="row"><span ng-show="form.uNazwa.$error.required" class="error-info">Błąd: Proszę podać nazwe przystanku</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Ulica</span>
           <input placeholder="Ulica" ng-model="LocalizationString" required="required" name="uUlica"/>
-          <div ng-show="form.$submitted || form.uUlica.$touched" class="row"><span ng-show="form.uUlica.$error.required" class="error-info">Proszę podać nazwe ulicy</span></div>
+          <div ng-show="form.$submitted || form.uUlica.$touched" class="row"><span ng-show="form.uUlica.$error.required" class="error-info">Błąd: Proszę podać nazwe ulicy</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Typ Przystanku</span>
           <select ng-model="BusStopType" required="required" name="uTypPrzystanku">
-            <option value="" ng-selected="selected">Wybierz typ przystanku!</option>
+            <option value="" ng-selected="selected"></option>
             <option value="0">Normalny</option>
             <option value="1">Zabudowany</option>
           </select>
-          <div ng-show="form.$submitted || form.uTypPrzystanku.$touched" class="row"><span ng-show="form.uTypPrzystanku.$error.required" class="error-info">Prosze wybrać odpowiedni typ przystanku</span></div>
+          <div ng-show="form.$submitted || form.uTypPrzystanku.$touched" class="row"><span ng-show="form.uTypPrzystanku.$error.required" class="error-info">Błąd: Proszę wybrać typ przystanku!</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Koordynat Lat</span>
           <input placeholder="Lat" ng-model="Lat" required="required" name="uLat"/>
-          <div ng-show="form.$submitted || form.uLat.$touched" class="row"><span ng-show="form.uLat.$error.required" class="error-info">Prosze podać współrzędne!</span></div>
+          <div ng-show="form.$submitted || form.uLat.$touched" class="row"><span ng-show="form.uLat.$error.required" class="error-info">Błąd: Prosze podać współrzędne!</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Koordynat Lng</span>
           <input placeholder="Lng" ng-model="Lng" required="required" name="uLng"/>
-          <div ng-show="form.$submitted || form.uLng.$touched" class="row"><span ng-show="form.uLng.$error.required" class="error-info">Prosze podać współrzędne!</span></div>
+          <div ng-show="form.$submitted || form.uLng.$touched" class="row"><span ng-show="form.uLng.$error.required" class="error-info">Błąd: Prosze podać współrzędne!</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma biletomat?</span>
           <select ng-model="GotMachine" required="required" name="uBiletomat">
@@ -37,7 +37,7 @@
             <option value="0">Nie</option>
             <option value="1">Tak</option>
           </select>
-          <div ng-show="form.$submitted || form.uBiletomat.$touched" class="row"><span ng-show="form.uBiletomat.$error.required" class="error-info">Proszę wybrać odpowiednią opcje</span></div>
+          <div ng-show="form.$submitted || form.uBiletomat.$touched" class="row"><span ng-show="form.uBiletomat.$error.required" class="error-info">Błąd: Proszę wybrać odpowiednią opcje</span></div>
         </div>
         <div class="panelDodajPrzystanek__content__form__item"><span class="item">Czy ma kiosk?</span>
           <select ng-model="GotKiosk" required="required" name="uKiosk">
@@ -45,7 +45,7 @@
             <option value="0">Nie</option>
             <option value="1">Tak</option>
           </select>
-          <div ng-show="form.$submitted || form.uKiosk.$touched" class="row"><span ng-show="form.uKiosk.$error.required" class="error-info">Proszę wybrać odpowiednią opcje</span></div>
+          <div ng-show="form.$submitted || form.uKiosk.$touched" class="row"><span ng-show="form.uKiosk.$error.required" class="error-info">Błąd: Proszę wybrać odpowiednią opcje</span></div>
         </div>
       </div>
       <div ng-hide="sendForm" class="panelDodajPrzystanek__navigation">

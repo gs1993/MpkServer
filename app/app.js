@@ -1724,8 +1724,11 @@
     $scope.destination;
 
     $scope.initTrack = function (track) {
-      $scope.busstopMarker = [];
-      $scope.drawRoute(track);
+      $timeout(function () {
+        $scope.busstopMarker = [];
+        $scope.drawRoute(track);
+      }, 500);
+
 
     };
     $scope.drawRoute = function (track) {

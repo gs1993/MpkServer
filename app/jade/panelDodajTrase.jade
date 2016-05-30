@@ -33,8 +33,13 @@
               .panelDodajTrase__przystanekNazwa {{$index + 1}}. {{przystanek.Name}}
             .panelDodajTrase__button(ng-click="usunieciePrzystanku(przystanek.Id)" data="{{przystanek.Id}}" ng-show="saPrzystanki") Usuń przystanek
       .panelDodajTrase__buttonToSave(ng-click="zapiszTrase()" ng-hide="DodanoTrase") Zapisz trase
-      .panelDodajTrase__alert(ng-show="DodanoTrase") Przystanek został dodany pomyślnie!
-      a.panelDodajTrase__buttonToSave(ng-show="DodanoTrase" href="#/track/") Wróć do przystanków
+      .panelDodajTrase__alert(ng-show="DodanoTrase")
+        .panelAutobusy__dataLoader__text
+          a(href="").panelPrzystanki__text.success
+            .panelAutobusy.success__text__icon
+              i.fa.fa-smile-o
+            | Trasa została dodana pomyślnie!
+      a.panelDodajTrase__buttonToSave(ng-show="DodanoTrase" href="#/track/") Wróć do tras
 
 
 
