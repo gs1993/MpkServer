@@ -1904,6 +1904,86 @@
       $scope.markerTicket = [];
 
     };
+    $scope.intCourse = function (kurs) {
+      $scope.clearActivityMarkers();
+      $scope.busMarker = [];
+
+      angular.forEach(kurs.Activities, function (aktywnosc) {
+        if (aktywnosc.ActivityType == 0) {
+          aktywnosc.ActivityTypeName = "Sprawdzenie Biletu";
+          $scope.markerTicket.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
+        }
+        else if (aktywnosc.ActivityType == 1) {
+          aktywnosc.ActivityTypeName = "Kontrola Biletów";
+          $scope.markerKanar.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
+        }
+        else if (aktywnosc.ActivityType == 2) {
+          aktywnosc.ActivityTypeName = "Incydent z wandalami";
+          $scope.markerIncydent.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
+        }
+        else if (aktywnosc.ActivityType == 3) {
+          aktywnosc.ActivityTypeName = "Problem techniczny";
+          $scope.markerTechnicla.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
+        }
+        else if (aktywnosc.ActivityType == 4) {
+          aktywnosc.ActivityTypeName = "Autobus dojechal do przystanku";
+          $scope.markerBusstopCheck.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
+        }
+        else if (aktywnosc.ActivityType == 5) {
+          aktywnosc.markerSellTicket = "Sprzedano bilet";
+          $scope.markerIncydent.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
+        }
+        else if (aktywnosc.ActivityType == 6) {
+          aktywnosc.ActivityTypeName = "Rozpoczeto kurs";
+          $scope.markerStart.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
+        }
+        else if (aktywnosc.ActivityType == 7) {
+          aktywnosc.ActivityTypeName = "Zakonczono kurs";
+          $scope.markerEnd.push({
+            Id: aktywnosc.Id,
+            Name: aktywnosc.ActivityTypeName,
+            Position: [aktywnosc.Lat, aktywnosc.Lng]
+          });
+        }
+
+      });
+      if (kurs.Ended == false && kurs.Track.IsArchive==false) {
+        $scope.busMarker.push({
+          Id: kurs.Bus.Id,
+          Name: kurs.Bus.BusNumber,
+          Position: [kurs.Activities[kurs.Activities.length - 1].Lat, kurs.Activities[kurs.Activities.length - 1].Lng]
+        });
+      }
+    };
+
 
 
 
