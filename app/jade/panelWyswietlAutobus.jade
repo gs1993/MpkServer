@@ -31,9 +31,9 @@
       .panelWyswietlAutobus__content__form__item
         span.itemHeader Ostatnia kontrola
         p {{ autobus.LastControl }}
-      .panelWyswietlAutobus__content__form__item
+      .panelWyswietlAutobus__content__form__item(ng-hide="autobus.BusStatus == 0")
         span.itemHeader Ostatnia lokalizacja
-        p X Y
+        p {{ LastBusLat }}, {{ LastBusLng }}
     .panelWyswietlAutobus__subtitle Edycja autobusu
     .panelWyswietlAutobus__text
     form(name="BusForm" ng-submit="updateBus()" novalidate)

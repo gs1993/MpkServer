@@ -24,8 +24,8 @@
       <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Ostatnia kontrola</span>
         <p>{{ autobus.LastControl }}</p>
       </div>
-      <div class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Ostatnia lokalizacja</span>
-        <p>X Y</p>
+      <div ng-hide="autobus.BusStatus == 0" class="panelWyswietlAutobus__content__form__item"><span class="itemHeader">Ostatnia lokalizacja</span>
+        <p>{{ LastBusLat }}, {{ LastBusLng }}</p>
       </div>
     </div>
     <div class="panelWyswietlAutobus__subtitle">Edycja autobusu</div>

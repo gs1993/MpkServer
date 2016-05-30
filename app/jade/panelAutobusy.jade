@@ -56,7 +56,7 @@
             td {{ autobus.BusStatusName }}
             td {{ autobus.GotMachineName }}
             td
-              a(href="#/").navigation
+              a(href="" ng-click="setPostitionBus(autobus.Id)").navigation
                 i.ionicons.ion-ios-location
                   .tool-tip.left Pokaż na mapie
               a(href="#/bus/show/{{ autobus.Id }}").navigation
