@@ -81,6 +81,7 @@
     <Compile Include="Activity\Resolvers\ActivityResolveBusStopCheck.cs" />
     <Compile Include="Activity\Resolvers\ActivityResolveBusTicketCount.cs" />
     <Compile Include="Activity\Resolvers\ActivityResolverBusControl.cs" />
+    <Compile Include="Activity\Resolvers\ActivityResolverTicketSold.cs" />
     <Compile Include="Connection\Connection.cs" />
     <Compile Include="Connection\ConnectionHolder.cs" />
     <Compile Include="Connection\IConnection.cs" />

@@ -112,6 +112,7 @@ function clickEvent(e, val) {
         '<select id="type">' +
         '<option value="0">TicketCheck</option>' +
         '<option value="1">Control</option>' +
+        '<option value="5">TicketSold</option>' +
         '<option value="6">StartCourse</option>' +
         '<option value="4">BusStopCheck</option>' +
         '<option value="7">EndCourse</option>' +
