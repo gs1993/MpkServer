@@ -59,7 +59,7 @@
             <td>{{ autobus.BusTypeName }}</td>
             <td>{{ autobus.BusStatusName }}</td>
             <td>{{ autobus.GotMachineName }}</td>
-            <td><a href="" ng-click="setPostitionBus(autobus.Id)" class="navigation"><i class="ionicons ion-ios-location">
+            <td><a href="" ng-hide="autobus.BusStatus!=2" ng-click="setPostitionBus(autobus.Id)" class="navigation"><i class="ionicons ion-ios-location">
                   <div class="tool-tip left">Pokaż na mapie</div></i></a><a href="#/bus/show/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-settings">
                   <div class="tool-tip left">Wyświetl autobus</div></i></a><a href="#/bus/delete/{{ autobus.Id }}" class="navigation"><i class="ionicons ion-android-cancel -red">
                   <div class="tool-tip left">Dezaktywuj autobus</div></i></a></td>
