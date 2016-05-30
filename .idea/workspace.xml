@@ -87,8 +87,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="1986" column="0" selection-start-line="1986" selection-start-column="0" selection-end-line="1986" selection-end-column="0" />
+            <state relative-caret-position="-49">
+              <caret line="1687" column="27" selection-start-line="1687" selection-start-column="27" selection-end-line="1687" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -551,14 +551,7 @@
       <workItem from="1464546659657" duration="22000" />
       <workItem from="1464547027153" duration="6587000" />
       <workItem from="1464561548774" duration="13168000" />
-      <workItem from="1464585339997" duration="1095000" />
-    </task>
-    <task id="LOCAL-00006" summary="markery lokalizacji przystanków">
-      <created>1462137321934</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1462137321934</updated>
+      <workItem from="1464585339997" duration="2444000" />
     </task>
     <task id="LOCAL-00007" summary="markery lokalizacji przystanków">
       <created>1462137479630</created>
@@ -896,11 +889,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464575043430</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Poprawka">
+      <created>1464586452829</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1464586452904</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="243108000" />
+    <option name="totallyTimeSpent" value="244457000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -915,12 +915,12 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19835235" sideWeight="0.63740456" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19835235" sideWeight="0.6367113" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32839838" sideWeight="0.4904943" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19835235" sideWeight="0.3625954" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2956989" sideWeight="0.5779468" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19835235" sideWeight="0.36328873" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2960969" sideWeight="0.5779468" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14247312" sideWeight="0.44233206" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2956989" sideWeight="0.42205322" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2960969" sideWeight="0.42205322" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25893825" sideWeight="0.48630136" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -948,7 +948,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Odświeżanie markerów fix" />
     <MESSAGE value="mapy" />
     <MESSAGE value="Merge branch 'master' of https://bitbucket.org/SaliMike/coffee-or-riots&#10;&#10;# Conflicts:&#10;#&#9;robocza/.vs/MpkServer/v14/.suo&#10;&#10;Obsługa Mapy dla tras" />
     <MESSAGE value="Trasy z zielonymi markerami" />
@@ -973,7 +972,8 @@
     <MESSAGE value="Poprawki  w interfejsie" />
     <MESSAGE value="Ostatnia Lokalizacja autobusów, centrowanie mapy na autobus." />
     <MESSAGE value="Ukrycia ikonki, do wycentrowania mapy, dla autobsów, którzy mają inny status niż w trasie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ukrycia ikonki, do wycentrowania mapy, dla autobsów, którzy mają inny status niż w trasie" />
+    <MESSAGE value="Poprawka" />
+    <option name="LAST_COMMIT_MESSAGE" value="Poprawka" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1309,8 +1309,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="1986" column="0" selection-start-line="1986" selection-start-column="0" selection-end-line="1986" selection-end-column="0" />
+        <state relative-caret-position="-49">
+          <caret line="1687" column="27" selection-start-line="1687" selection-start-column="27" selection-end-line="1687" selection-end-column="27" />
           <folding />
         </state>
       </provider>

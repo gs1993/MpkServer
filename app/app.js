@@ -1688,7 +1688,7 @@
         var idAktywnosci=0;
         var zlicz=0;
         angular.forEach($scope.ostatnieLokalizacje, function (kurs) {
-          if (id == $scope.AutobusID) {
+          if (id == kurs.Bus.Id) {
             if(kurs.Activities[kurs.Activities.length-1].Id>idAktywnosci)
             {
               idAktywnosci=kurs.Activities[kurs.Activities.length-1].Id;
@@ -1699,16 +1699,8 @@
             }
           }
         });
-        if(zlicz==0)
-        {
-          $scope.lat=53.780771;
-          $scope.lng=20.510495;
-        }
-        else
-        {
           $scope.lat = $scope.LastBusLat;
           $scope.lng = $scope.LastBusLng;
-        }
         $scope.initMap();
       });
     };
@@ -1806,7 +1798,11 @@
       $timeout(function () {
         $scope.busstopMarker = [];
         $scope.drawRoute(track);
-      }, 700);
+        $scope.map.directionsRenderers[0].setMap($scope.map);
+        $scope.initMap();
+        $scope.busstopMarker = [];
+        $scope.drawRoute(track);
+      }, 600);
 
 
     };
